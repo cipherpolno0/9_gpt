@@ -110,3 +110,7 @@ eslint-config-next16.3.8มีpluginsimport/jsx-a11y/reactที่peerยัง
 รันtests/workerด้วยnode --import tsx แทนtsxCLIเพื่อไม่ต้องสร้างIPC Unixsocketในruntimeนี้ เป็นtsxรุ่นเดียวกัน ไม่เปลี่ยนTypeScript/Next API
 
 check scriptเรียกpnpmผ่านnpm_execpathของตัวเปิดคำสั่งเดิมเพื่อให้Corepackใช้11.28.2ตลอดทั้งpipeline ไม่ตกไปใช้global11.25.0 Nextdevสร้างAGENTS.md/CLAUDE.mdอัตโนมัติ จึงเก็บไว้และอ่านเอกสารในnode_modules/next/dist/docsก่อนแก้NextAPI พร้อมเก็บlicenseของButtonในdocs/licenses/shadcn-ui.txt
+
+## สถานะต่อยอดบท06
+
+ข้อความไม่มีmodel/migrationในADR001เป็นสถานะบท05 ปัจจุบันมีcore19models/schema0.6.0ตาม[ADR002](002-core-database.md) client/adapterยัง7.10.0เดิม เพิ่มdev-onlyPGlite0.5.8และlockfileสำหรับSQLWASMchecksเท่านั้น ไม่เปลี่ยนruntimePostgreSQL/Supabase ไม่มีAuth/publicDTOหรือruntimeallowpolicy และDB-06ยังรอserverจริง

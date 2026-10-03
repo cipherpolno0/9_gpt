@@ -1,5 +1,5 @@
-# ขอบเขตการต่อฐานข้อมูล
+# การเชื่อมต่อฐานข้อมูลฝั่งserver
 
-ส่วนนี้สำหรับconnection/transaction helperฝั่งserver โมดูลเป็นเจ้าของbusinessservice ไม่ให้หน้าเว็บ importpg/Prismaโดยตรง
+บท06สร้างschema/migrationและPrismaPg seedสำหรับฐานทดลองเท่านั้น ไม่มีruntimeDBclientบริการธุรกิจหรือqueryในหน้าเว็บ/worker ทุกprivate tableมีRLSdenyall
 
-Prisma7 ต้องใช้PrismaPgกับclientที่generateในsrc/generated/prisma/client.ts DBmigrationใช้DIRECT_DATABASE_URLแยกจากruntimeDATABASE_URL การเชื่อมDBไม่ส่งSupabase JWTเข้าRLSเอง ต้องสร้างlimited roleและrequestcontextด้วยtransactionและทดสอบdenyก่อนเปิดqueriesในบทที่เกี่ยวข้อง บท05ยังไม่มีclientfactoryหรือmodelเพื่อไม่เพิ่มสิทธิ์/queryล่วงหน้า
+GeneratedPrisma7clientpathคือsrc/generated/prisma/client บทถัดไปที่เชื่อมruntimeต้องใช้limitedrole, verifiedrequestcontextและserverguard/transactionauditตามADR001/002 ไม่ใช้postgres/servicecredentialเป็นสิทธิ์ธุรกิจ ดูdocs/DATABASE.md และDB-06ก่อนพึ่งฐานทดลอง

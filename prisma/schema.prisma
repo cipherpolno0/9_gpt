@@ -1,5 +1,6 @@
-// บท05ตั้งเครื่องมือเท่านั้น; ยังไม่มีbusinessmodelsหรือmigration
-// 128ตารางจากบท04เป็นlogicaldesign รอพรอมป์ต์บทสร้างschemaจริง
+// บท06: core schema v0.6.0 เท่านั้น; แบบ128ตารางยังเป็นแผนบท04
+// UTC timestamptz / Gregorian date; ไม่มี login/application อีกชุด
+// SQL migration เพิ่ม RLS, CHECK, temporal exclusions, audit และ soft-delete guards
 generator client {
   provider = "prisma-client"
   output   = "../src/generated/prisma"
@@ -8,4 +9,497 @@ generator client {
 datasource db {
   provider = "postgresql"
   schemas  = ["private"]
+}
+
+model ServiceActor {
+  id        String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  actorCode String   @unique @map("actor_code")
+  labelTh   String   @map("label_th")
+  createdAt DateTime @default(now()) @map("created_at") @db.Timestamptz(6)
+  isActive  Boolean  @default(true) @map("is_active")
+
+  referenceCodeByCreatedByActorId            ReferenceCode[]           @relation("ReferenceCode_createdByActorId")
+  referenceCodeByUpdatedByActorId            ReferenceCode[]           @relation("ReferenceCode_updatedByActorId")
+  organizationTypeByCreatedByActorId         OrganizationType[]        @relation("OrganizationType_createdByActorId")
+  organizationTypeByUpdatedByActorId         OrganizationType[]        @relation("OrganizationType_updatedByActorId")
+  geographyByCreatedByActorId                Geography[]               @relation("Geography_createdByActorId")
+  geographyByUpdatedByActorId                Geography[]               @relation("Geography_updatedByActorId")
+  organizationByCreatedByActorId             Organization[]            @relation("Organization_createdByActorId")
+  organizationByUpdatedByActorId             Organization[]            @relation("Organization_updatedByActorId")
+  documentByCreatedByActorId                 Document[]                @relation("Document_createdByActorId")
+  documentByUpdatedByActorId                 Document[]                @relation("Document_updatedByActorId")
+  policyVersionByCreatedByActorId            PolicyVersion[]           @relation("PolicyVersion_createdByActorId")
+  policyVersionByUpdatedByActorId            PolicyVersion[]           @relation("PolicyVersion_updatedByActorId")
+  personByCreatedByActorId                   Person[]                  @relation("Person_createdByActorId")
+  personByUpdatedByActorId                   Person[]                  @relation("Person_updatedByActorId")
+  personPrivateByCreatedByActorId            PersonPrivate[]           @relation("PersonPrivate_createdByActorId")
+  personPrivateByUpdatedByActorId            PersonPrivate[]           @relation("PersonPrivate_updatedByActorId")
+  personNameHistoryByRecordedByActorId       PersonNameHistory[]       @relation("PersonNameHistory_recordedByActorId")
+  personContactByRecordedByActorId           PersonContact[]           @relation("PersonContact_recordedByActorId")
+  organizationNameHistoryByRecordedByActorId OrganizationNameHistory[] @relation("OrganizationNameHistory_recordedByActorId")
+  addressVersionByRecordedByActorId          AddressVersion[]          @relation("AddressVersion_recordedByActorId")
+  organizationContactByRecordedByActorId     OrganizationContact[]     @relation("OrganizationContact_recordedByActorId")
+  academicYearByCreatedByActorId             AcademicYear[]            @relation("AcademicYear_createdByActorId")
+  academicYearByUpdatedByActorId             AcademicYear[]            @relation("AcademicYear_updatedByActorId")
+  fiscalYearByCreatedByActorId               FiscalYear[]              @relation("FiscalYear_createdByActorId")
+  fiscalYearByUpdatedByActorId               FiscalYear[]              @relation("FiscalYear_updatedByActorId")
+  examTypeByCreatedByActorId                 ExamType[]                @relation("ExamType_createdByActorId")
+  examTypeByUpdatedByActorId                 ExamType[]                @relation("ExamType_updatedByActorId")
+  examLevelByCreatedByActorId                ExamLevel[]               @relation("ExamLevel_createdByActorId")
+  examLevelByUpdatedByActorId                ExamLevel[]               @relation("ExamLevel_updatedByActorId")
+  auditLogByServiceActorId                   AuditLog[]                @relation("AuditLog_serviceActorId")
+
+  @@map("service_actor")
+  @@schema("private")
+}
+
+model ReferenceCode {
+  id                 String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  createdAt          DateTime @default(now()) @map("created_at") @db.Timestamptz(6)
+  updatedAt          DateTime @default(now()) @map("updated_at") @db.Timestamptz(6)
+  createdByActorId   String   @map("created_by_actor_id") @db.Uuid
+  updatedByActorId   String   @map("updated_by_actor_id") @db.Uuid
+  rowVersion         Int      @default(1) @map("row_version")
+  isActive           Boolean  @default(true) @map("is_active")
+  codeSet            String   @map("code_set")
+  code               String
+  labelTh            String   @map("label_th")
+  verificationStatus String   @default("TO_VERIFY") @map("verification_status")
+
+  createdByActor                     ServiceActor          @relation("ReferenceCode_createdByActorId", fields: [createdByActorId], references: [id], onDelete: Restrict, onUpdate: Restrict)
+  updatedByActor                     ServiceActor          @relation("ReferenceCode_updatedByActorId", fields: [updatedByActorId], references: [id], onDelete: Restrict, onUpdate: Restrict)
+  geographyByGeographyKindId         Geography[]           @relation("Geography_geographyKindId")
+  organizationByCurrentStatusId      Organization[]        @relation("Organization_currentStatusId")
+  personByIdentityReviewStatusId     Person[]              @relation("Person_identityReviewStatusId")
+  personByCurrentStateId             Person[]              @relation("Person_currentStateId")
+  personNameHistoryByNameKindId      PersonNameHistory[]   @relation("PersonNameHistory_nameKindId")
+  personContactByChannelKindId       PersonContact[]       @relation("PersonContact_channelKindId")
+  addressVersionByAddressKindId      AddressVersion[]      @relation("AddressVersion_addressKindId")
+  organizationContactByChannelKindId OrganizationContact[] @relation("OrganizationContact_channelKindId")
+
+  @@unique([codeSet, code])
+  @@map("reference_code")
+  @@schema("private")
+}
+
+model OrganizationType {
+  id                 String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  createdAt          DateTime @default(now()) @map("created_at") @db.Timestamptz(6)
+  updatedAt          DateTime @default(now()) @map("updated_at") @db.Timestamptz(6)
+  createdByActorId   String   @map("created_by_actor_id") @db.Uuid
+  updatedByActorId   String   @map("updated_by_actor_id") @db.Uuid
+  rowVersion         Int      @default(1) @map("row_version")
+  isActive           Boolean  @default(true) @map("is_active")
+  typeCode           String   @unique @map("type_code")
+  labelTh            String   @map("label_th")
+  verificationStatus String   @default("TO_VERIFY") @map("verification_status")
+
+  createdByActor                   ServiceActor   @relation("OrganizationType_createdByActorId", fields: [createdByActorId], references: [id], onDelete: Restrict, onUpdate: Restrict)
+  updatedByActor                   ServiceActor   @relation("OrganizationType_updatedByActorId", fields: [updatedByActorId], references: [id], onDelete: Restrict, onUpdate: Restrict)
+  organizationByOrganizationTypeId Organization[] @relation("Organization_organizationTypeId")
+
+  @@map("organization_type")
+  @@schema("private")
+}
+
+model Geography {
+  id                String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  createdAt         DateTime @default(now()) @map("created_at") @db.Timestamptz(6)
+  updatedAt         DateTime @default(now()) @map("updated_at") @db.Timestamptz(6)
+  createdByActorId  String   @map("created_by_actor_id") @db.Uuid
+  updatedByActorId  String   @map("updated_by_actor_id") @db.Uuid
+  rowVersion        Int      @default(1) @map("row_version")
+  isActive          Boolean  @default(true) @map("is_active")
+  geographyCode     String   @unique @map("geography_code")
+  geographyKindId   String   @map("geography_kind_id") @db.Uuid
+  labelTh           String   @map("label_th")
+  parentGeographyId String?  @map("parent_geography_id") @db.Uuid
+
+  createdByActor               ServiceActor     @relation("Geography_createdByActorId", fields: [createdByActorId], references: [id], onDelete: Restrict, onUpdate: Restrict)
+  updatedByActor               ServiceActor     @relation("Geography_updatedByActorId", fields: [updatedByActorId], references: [id], onDelete: Restrict, onUpdate: Restrict)
+  geographyKind                ReferenceCode    @relation("Geography_geographyKindId", fields: [geographyKindId], references: [id], onDelete: Restrict, onUpdate: Restrict)
+  parentGeography              Geography?       @relation("Geography_parentGeographyId", fields: [parentGeographyId], references: [id], onDelete: Restrict, onUpdate: Restrict)
+  geographyByParentGeographyId Geography[]      @relation("Geography_parentGeographyId")
+  addressVersionByGeographyId  AddressVersion[] @relation("AddressVersion_geographyId")
+
+  @@index([parentGeographyId])
+  @@map("geography")
+  @@schema("private")
+}
+
+model Organization {
+  id                       String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  createdAt                DateTime @default(now()) @map("created_at") @db.Timestamptz(6)
+  updatedAt                DateTime @default(now()) @map("updated_at") @db.Timestamptz(6)
+  createdByActorId         String   @map("created_by_actor_id") @db.Uuid
+  updatedByActorId         String   @map("updated_by_actor_id") @db.Uuid
+  rowVersion               Int      @default(1) @map("row_version")
+  isActive                 Boolean  @default(true) @map("is_active")
+  organizationCode         String   @unique @map("organization_code")
+  organizationTypeId       String   @map("organization_type_id") @db.Uuid
+  currentStatusId          String   @map("current_status_id") @db.Uuid
+  mergedIntoOrganizationId String?  @map("merged_into_organization_id") @db.Uuid
+
+  createdByActor                          ServiceActor              @relation("Organization_createdByActorId", fields: [createdByActorId], references: [id], onDelete: Restrict, onUpdate: Restrict)
+  updatedByActor                          ServiceActor              @relation("Organization_updatedByActorId", fields: [updatedByActorId], references: [id], onDelete: Restrict, onUpdate: Restrict)
+  organizationType                        OrganizationType          @relation("Organization_organizationTypeId", fields: [organizationTypeId], references: [id], onDelete: Restrict, onUpdate: Restrict)
+  currentStatus                           ReferenceCode             @relation("Organization_currentStatusId", fields: [currentStatusId], references: [id], onDelete: Restrict, onUpdate: Restrict)
+  mergedIntoOrganization                  Organization?             @relation("Organization_mergedIntoOrganizationId", fields: [mergedIntoOrganizationId], references: [id], onDelete: Restrict, onUpdate: Restrict)
+  organizationByMergedIntoOrganizationId  Organization[]            @relation("Organization_mergedIntoOrganizationId")
+  documentByOwnerOrganizationId           Document[]                @relation("Document_ownerOrganizationId")
+  organizationNameHistoryByOrganizationId OrganizationNameHistory[] @relation("OrganizationNameHistory_organizationId")
+  addressVersionByOrganizationId          AddressVersion[]          @relation("AddressVersion_organizationId")
+  organizationContactByOrganizationId     OrganizationContact[]     @relation("OrganizationContact_organizationId")
+
+  @@index([organizationTypeId])
+  @@index([mergedIntoOrganizationId])
+  @@map("organization")
+  @@schema("private")
+}
+
+model Document {
+  id                  String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  createdAt           DateTime @default(now()) @map("created_at") @db.Timestamptz(6)
+  updatedAt           DateTime @default(now()) @map("updated_at") @db.Timestamptz(6)
+  createdByActorId    String   @map("created_by_actor_id") @db.Uuid
+  updatedByActorId    String   @map("updated_by_actor_id") @db.Uuid
+  rowVersion          Int      @default(1) @map("row_version")
+  isActive            Boolean  @default(true) @map("is_active")
+  documentCode        String   @unique @map("document_code")
+  ownerOrganizationId String   @map("owner_organization_id") @db.Uuid
+  documentKind        String   @map("document_kind")
+  title               String
+  visibilityClass     String   @default("H") @map("visibility_class")
+  lifecycleStatus     String   @default("METADATA_ONLY") @map("lifecycle_status")
+
+  createdByActor                              ServiceActor              @relation("Document_createdByActorId", fields: [createdByActorId], references: [id], onDelete: Restrict, onUpdate: Restrict)
+  updatedByActor                              ServiceActor              @relation("Document_updatedByActorId", fields: [updatedByActorId], references: [id], onDelete: Restrict, onUpdate: Restrict)
+  ownerOrganization                           Organization              @relation("Document_ownerOrganizationId", fields: [ownerOrganizationId], references: [id], onDelete: Restrict, onUpdate: Restrict)
+  policyVersionByEvidenceDocumentId           PolicyVersion[]           @relation("PolicyVersion_evidenceDocumentId")
+  personNameHistoryByEvidenceDocumentId       PersonNameHistory[]       @relation("PersonNameHistory_evidenceDocumentId")
+  personContactByEvidenceDocumentId           PersonContact[]           @relation("PersonContact_evidenceDocumentId")
+  organizationNameHistoryByEvidenceDocumentId OrganizationNameHistory[] @relation("OrganizationNameHistory_evidenceDocumentId")
+  addressVersionByEvidenceDocumentId          AddressVersion[]          @relation("AddressVersion_evidenceDocumentId")
+  organizationContactByEvidenceDocumentId     OrganizationContact[]     @relation("OrganizationContact_evidenceDocumentId")
+
+  @@index([ownerOrganizationId])
+  @@map("document")
+  @@schema("private")
+}
+
+model PolicyVersion {
+  id                 String    @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  createdAt          DateTime  @default(now()) @map("created_at") @db.Timestamptz(6)
+  updatedAt          DateTime  @default(now()) @map("updated_at") @db.Timestamptz(6)
+  createdByActorId   String    @map("created_by_actor_id") @db.Uuid
+  updatedByActorId   String    @map("updated_by_actor_id") @db.Uuid
+  rowVersion         Int       @default(1) @map("row_version")
+  isActive           Boolean   @default(true) @map("is_active")
+  policyNamespace    String    @map("policy_namespace")
+  versionNo          Int       @map("version_no")
+  verificationStatus String    @default("TO_VERIFY") @map("verification_status")
+  configuration      Json
+  effectiveFrom      DateTime  @map("effective_from") @db.Date
+  effectiveTo        DateTime? @map("effective_to") @db.Date
+  evidenceDocumentId String?   @map("evidence_document_id") @db.Uuid
+
+  createdByActor                ServiceActor   @relation("PolicyVersion_createdByActorId", fields: [createdByActorId], references: [id], onDelete: Restrict, onUpdate: Restrict)
+  updatedByActor                ServiceActor   @relation("PolicyVersion_updatedByActorId", fields: [updatedByActorId], references: [id], onDelete: Restrict, onUpdate: Restrict)
+  evidenceDocument              Document?      @relation("PolicyVersion_evidenceDocumentId", fields: [evidenceDocumentId], references: [id], onDelete: Restrict, onUpdate: Restrict)
+  academicYearByPolicyVersionId AcademicYear[] @relation("AcademicYear_policyVersionId")
+  fiscalYearByPolicyVersionId   FiscalYear[]   @relation("FiscalYear_policyVersionId")
+
+  @@unique([policyNamespace, versionNo])
+  @@map("policy_version")
+  @@schema("private")
+}
+
+model Person {
+  id                     String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  createdAt              DateTime @default(now()) @map("created_at") @db.Timestamptz(6)
+  updatedAt              DateTime @default(now()) @map("updated_at") @db.Timestamptz(6)
+  createdByActorId       String   @map("created_by_actor_id") @db.Uuid
+  updatedByActorId       String   @map("updated_by_actor_id") @db.Uuid
+  rowVersion             Int      @default(1) @map("row_version")
+  isActive               Boolean  @default(true) @map("is_active")
+  personCode             String   @unique @map("person_code")
+  identityReviewStatusId String   @map("identity_review_status_id") @db.Uuid
+  currentStateId         String   @map("current_state_id") @db.Uuid
+  mergedIntoPersonId     String?  @map("merged_into_person_id") @db.Uuid
+
+  createdByActor              ServiceActor        @relation("Person_createdByActorId", fields: [createdByActorId], references: [id], onDelete: Restrict, onUpdate: Restrict)
+  updatedByActor              ServiceActor        @relation("Person_updatedByActorId", fields: [updatedByActorId], references: [id], onDelete: Restrict, onUpdate: Restrict)
+  identityReviewStatus        ReferenceCode       @relation("Person_identityReviewStatusId", fields: [identityReviewStatusId], references: [id], onDelete: Restrict, onUpdate: Restrict)
+  currentState                ReferenceCode       @relation("Person_currentStateId", fields: [currentStateId], references: [id], onDelete: Restrict, onUpdate: Restrict)
+  mergedIntoPerson            Person?             @relation("Person_mergedIntoPersonId", fields: [mergedIntoPersonId], references: [id], onDelete: Restrict, onUpdate: Restrict)
+  personByMergedIntoPersonId  Person[]            @relation("Person_mergedIntoPersonId")
+  personPrivateByPersonId     PersonPrivate?      @relation("PersonPrivate_personId")
+  personNameHistoryByPersonId PersonNameHistory[] @relation("PersonNameHistory_personId")
+  personContactByPersonId     PersonContact[]     @relation("PersonContact_personId")
+
+  @@index([mergedIntoPersonId])
+  @@map("person")
+  @@schema("private")
+}
+
+model PersonPrivate {
+  id                 String    @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  createdAt          DateTime  @default(now()) @map("created_at") @db.Timestamptz(6)
+  updatedAt          DateTime  @default(now()) @map("updated_at") @db.Timestamptz(6)
+  createdByActorId   String    @map("created_by_actor_id") @db.Uuid
+  updatedByActorId   String    @map("updated_by_actor_id") @db.Uuid
+  rowVersion         Int       @default(1) @map("row_version")
+  isActive           Boolean   @default(true) @map("is_active")
+  personId           String    @unique @map("person_id") @db.Uuid
+  birthDate          DateTime? @map("birth_date") @db.Date
+  privateAddressText String?   @map("private_address_text")
+  privatePhone       String?   @map("private_phone")
+  privateNotes       String?   @map("private_notes")
+
+  createdByActor ServiceActor @relation("PersonPrivate_createdByActorId", fields: [createdByActorId], references: [id], onDelete: Restrict, onUpdate: Restrict)
+  updatedByActor ServiceActor @relation("PersonPrivate_updatedByActorId", fields: [updatedByActorId], references: [id], onDelete: Restrict, onUpdate: Restrict)
+  person         Person       @relation("PersonPrivate_personId", fields: [personId], references: [id], onDelete: Restrict, onUpdate: Restrict)
+
+  @@map("person_private")
+  @@schema("private")
+}
+
+model PersonNameHistory {
+  id                 String    @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  effectiveFrom      DateTime  @map("effective_from") @db.Date
+  effectiveTo        DateTime? @map("effective_to") @db.Date
+  recordedAt         DateTime  @default(now()) @map("recorded_at") @db.Timestamptz(6)
+  recordedByActorId  String    @map("recorded_by_actor_id") @db.Uuid
+  evidenceDocumentId String    @map("evidence_document_id") @db.Uuid
+  supersededAt       DateTime? @map("superseded_at") @db.Timestamptz(6)
+  replacesId         String?   @map("replaces_id") @db.Uuid
+  personId           String    @map("person_id") @db.Uuid
+  nameKindId         String    @map("name_kind_id") @db.Uuid
+  prefixText         String?   @map("prefix_text")
+  givenName          String    @map("given_name")
+  familyName         String?   @map("family_name")
+
+  recordedByActor               ServiceActor        @relation("PersonNameHistory_recordedByActorId", fields: [recordedByActorId], references: [id], onDelete: Restrict, onUpdate: Restrict)
+  evidenceDocument              Document            @relation("PersonNameHistory_evidenceDocumentId", fields: [evidenceDocumentId], references: [id], onDelete: Restrict, onUpdate: Restrict)
+  replaces                      PersonNameHistory?  @relation("PersonNameHistory_replacesId", fields: [replacesId], references: [id], onDelete: Restrict, onUpdate: Restrict)
+  personNameHistoryByReplacesId PersonNameHistory[] @relation("PersonNameHistory_replacesId")
+  person                        Person              @relation("PersonNameHistory_personId", fields: [personId], references: [id], onDelete: Restrict, onUpdate: Restrict)
+  nameKind                      ReferenceCode       @relation("PersonNameHistory_nameKindId", fields: [nameKindId], references: [id], onDelete: Restrict, onUpdate: Restrict)
+
+  @@index([personId, nameKindId, effectiveFrom])
+  @@map("person_name_history")
+  @@schema("private")
+}
+
+model PersonContact {
+  id                 String    @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  effectiveFrom      DateTime  @map("effective_from") @db.Date
+  effectiveTo        DateTime? @map("effective_to") @db.Date
+  recordedAt         DateTime  @default(now()) @map("recorded_at") @db.Timestamptz(6)
+  recordedByActorId  String    @map("recorded_by_actor_id") @db.Uuid
+  evidenceDocumentId String    @map("evidence_document_id") @db.Uuid
+  supersededAt       DateTime? @map("superseded_at") @db.Timestamptz(6)
+  replacesId         String?   @map("replaces_id") @db.Uuid
+  personId           String    @map("person_id") @db.Uuid
+  contactCode        String    @map("contact_code")
+  channelKindId      String    @map("channel_kind_id") @db.Uuid
+  contactValue       String    @map("contact_value")
+  isPublicEligible   Boolean   @default(false) @map("is_public_eligible")
+
+  recordedByActor           ServiceActor    @relation("PersonContact_recordedByActorId", fields: [recordedByActorId], references: [id], onDelete: Restrict, onUpdate: Restrict)
+  evidenceDocument          Document        @relation("PersonContact_evidenceDocumentId", fields: [evidenceDocumentId], references: [id], onDelete: Restrict, onUpdate: Restrict)
+  replaces                  PersonContact?  @relation("PersonContact_replacesId", fields: [replacesId], references: [id], onDelete: Restrict, onUpdate: Restrict)
+  personContactByReplacesId PersonContact[] @relation("PersonContact_replacesId")
+  person                    Person          @relation("PersonContact_personId", fields: [personId], references: [id], onDelete: Restrict, onUpdate: Restrict)
+  channelKind               ReferenceCode   @relation("PersonContact_channelKindId", fields: [channelKindId], references: [id], onDelete: Restrict, onUpdate: Restrict)
+
+  @@unique([contactCode, effectiveFrom, recordedAt])
+  @@index([personId, effectiveFrom])
+  @@map("person_contact")
+  @@schema("private")
+}
+
+model OrganizationNameHistory {
+  id                 String    @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  effectiveFrom      DateTime  @map("effective_from") @db.Date
+  effectiveTo        DateTime? @map("effective_to") @db.Date
+  recordedAt         DateTime  @default(now()) @map("recorded_at") @db.Timestamptz(6)
+  recordedByActorId  String    @map("recorded_by_actor_id") @db.Uuid
+  evidenceDocumentId String    @map("evidence_document_id") @db.Uuid
+  supersededAt       DateTime? @map("superseded_at") @db.Timestamptz(6)
+  replacesId         String?   @map("replaces_id") @db.Uuid
+  organizationId     String    @map("organization_id") @db.Uuid
+  displayName        String    @map("display_name")
+
+  recordedByActor                     ServiceActor              @relation("OrganizationNameHistory_recordedByActorId", fields: [recordedByActorId], references: [id], onDelete: Restrict, onUpdate: Restrict)
+  evidenceDocument                    Document                  @relation("OrganizationNameHistory_evidenceDocumentId", fields: [evidenceDocumentId], references: [id], onDelete: Restrict, onUpdate: Restrict)
+  replaces                            OrganizationNameHistory?  @relation("OrganizationNameHistory_replacesId", fields: [replacesId], references: [id], onDelete: Restrict, onUpdate: Restrict)
+  organizationNameHistoryByReplacesId OrganizationNameHistory[] @relation("OrganizationNameHistory_replacesId")
+  organization                        Organization              @relation("OrganizationNameHistory_organizationId", fields: [organizationId], references: [id], onDelete: Restrict, onUpdate: Restrict)
+
+  @@index([organizationId, effectiveFrom])
+  @@map("organization_name_history")
+  @@schema("private")
+}
+
+model AddressVersion {
+  id                 String    @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  effectiveFrom      DateTime  @map("effective_from") @db.Date
+  effectiveTo        DateTime? @map("effective_to") @db.Date
+  recordedAt         DateTime  @default(now()) @map("recorded_at") @db.Timestamptz(6)
+  recordedByActorId  String    @map("recorded_by_actor_id") @db.Uuid
+  evidenceDocumentId String    @map("evidence_document_id") @db.Uuid
+  supersededAt       DateTime? @map("superseded_at") @db.Timestamptz(6)
+  replacesId         String?   @map("replaces_id") @db.Uuid
+  organizationId     String    @map("organization_id") @db.Uuid
+  addressKindId      String    @map("address_kind_id") @db.Uuid
+  addressText        String    @map("address_text")
+  geographyId        String    @map("geography_id") @db.Uuid
+  postalCode         String?   @map("postal_code")
+
+  recordedByActor            ServiceActor     @relation("AddressVersion_recordedByActorId", fields: [recordedByActorId], references: [id], onDelete: Restrict, onUpdate: Restrict)
+  evidenceDocument           Document         @relation("AddressVersion_evidenceDocumentId", fields: [evidenceDocumentId], references: [id], onDelete: Restrict, onUpdate: Restrict)
+  replaces                   AddressVersion?  @relation("AddressVersion_replacesId", fields: [replacesId], references: [id], onDelete: Restrict, onUpdate: Restrict)
+  addressVersionByReplacesId AddressVersion[] @relation("AddressVersion_replacesId")
+  organization               Organization     @relation("AddressVersion_organizationId", fields: [organizationId], references: [id], onDelete: Restrict, onUpdate: Restrict)
+  addressKind                ReferenceCode    @relation("AddressVersion_addressKindId", fields: [addressKindId], references: [id], onDelete: Restrict, onUpdate: Restrict)
+  geography                  Geography        @relation("AddressVersion_geographyId", fields: [geographyId], references: [id], onDelete: Restrict, onUpdate: Restrict)
+
+  @@index([organizationId, addressKindId, effectiveFrom])
+  @@index([geographyId])
+  @@map("address_version")
+  @@schema("private")
+}
+
+model OrganizationContact {
+  id                 String    @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  effectiveFrom      DateTime  @map("effective_from") @db.Date
+  effectiveTo        DateTime? @map("effective_to") @db.Date
+  recordedAt         DateTime  @default(now()) @map("recorded_at") @db.Timestamptz(6)
+  recordedByActorId  String    @map("recorded_by_actor_id") @db.Uuid
+  evidenceDocumentId String    @map("evidence_document_id") @db.Uuid
+  supersededAt       DateTime? @map("superseded_at") @db.Timestamptz(6)
+  replacesId         String?   @map("replaces_id") @db.Uuid
+  organizationId     String    @map("organization_id") @db.Uuid
+  contactCode        String    @map("contact_code")
+  channelKindId      String    @map("channel_kind_id") @db.Uuid
+  contactValue       String    @map("contact_value")
+  isPublicEligible   Boolean   @default(false) @map("is_public_eligible")
+
+  recordedByActor                 ServiceActor          @relation("OrganizationContact_recordedByActorId", fields: [recordedByActorId], references: [id], onDelete: Restrict, onUpdate: Restrict)
+  evidenceDocument                Document              @relation("OrganizationContact_evidenceDocumentId", fields: [evidenceDocumentId], references: [id], onDelete: Restrict, onUpdate: Restrict)
+  replaces                        OrganizationContact?  @relation("OrganizationContact_replacesId", fields: [replacesId], references: [id], onDelete: Restrict, onUpdate: Restrict)
+  organizationContactByReplacesId OrganizationContact[] @relation("OrganizationContact_replacesId")
+  organization                    Organization          @relation("OrganizationContact_organizationId", fields: [organizationId], references: [id], onDelete: Restrict, onUpdate: Restrict)
+  channelKind                     ReferenceCode         @relation("OrganizationContact_channelKindId", fields: [channelKindId], references: [id], onDelete: Restrict, onUpdate: Restrict)
+
+  @@unique([contactCode, effectiveFrom, recordedAt])
+  @@index([organizationId, effectiveFrom])
+  @@map("organization_contact")
+  @@schema("private")
+}
+
+model AcademicYear {
+  id               String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  createdAt        DateTime @default(now()) @map("created_at") @db.Timestamptz(6)
+  updatedAt        DateTime @default(now()) @map("updated_at") @db.Timestamptz(6)
+  createdByActorId String   @map("created_by_actor_id") @db.Uuid
+  updatedByActorId String   @map("updated_by_actor_id") @db.Uuid
+  rowVersion       Int      @default(1) @map("row_version")
+  isActive         Boolean  @default(true) @map("is_active")
+  yearCode         String   @unique @map("year_code")
+  labelYearCe      Int      @map("label_year_ce")
+  startsOn         DateTime @map("starts_on") @db.Date
+  endsOn           DateTime @map("ends_on") @db.Date
+  policyVersionId  String   @map("policy_version_id") @db.Uuid
+
+  createdByActor ServiceActor  @relation("AcademicYear_createdByActorId", fields: [createdByActorId], references: [id], onDelete: Restrict, onUpdate: Restrict)
+  updatedByActor ServiceActor  @relation("AcademicYear_updatedByActorId", fields: [updatedByActorId], references: [id], onDelete: Restrict, onUpdate: Restrict)
+  policyVersion  PolicyVersion @relation("AcademicYear_policyVersionId", fields: [policyVersionId], references: [id], onDelete: Restrict, onUpdate: Restrict)
+
+  @@map("academic_year")
+  @@schema("private")
+}
+
+model FiscalYear {
+  id               String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  createdAt        DateTime @default(now()) @map("created_at") @db.Timestamptz(6)
+  updatedAt        DateTime @default(now()) @map("updated_at") @db.Timestamptz(6)
+  createdByActorId String   @map("created_by_actor_id") @db.Uuid
+  updatedByActorId String   @map("updated_by_actor_id") @db.Uuid
+  rowVersion       Int      @default(1) @map("row_version")
+  isActive         Boolean  @default(true) @map("is_active")
+  yearCode         String   @unique @map("year_code")
+  labelYearCe      Int      @map("label_year_ce")
+  startsOn         DateTime @map("starts_on") @db.Date
+  endsOn           DateTime @map("ends_on") @db.Date
+  policyVersionId  String   @map("policy_version_id") @db.Uuid
+
+  createdByActor ServiceActor  @relation("FiscalYear_createdByActorId", fields: [createdByActorId], references: [id], onDelete: Restrict, onUpdate: Restrict)
+  updatedByActor ServiceActor  @relation("FiscalYear_updatedByActorId", fields: [updatedByActorId], references: [id], onDelete: Restrict, onUpdate: Restrict)
+  policyVersion  PolicyVersion @relation("FiscalYear_policyVersionId", fields: [policyVersionId], references: [id], onDelete: Restrict, onUpdate: Restrict)
+
+  @@map("fiscal_year")
+  @@schema("private")
+}
+
+model ExamType {
+  id                 String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  createdAt          DateTime @default(now()) @map("created_at") @db.Timestamptz(6)
+  updatedAt          DateTime @default(now()) @map("updated_at") @db.Timestamptz(6)
+  createdByActorId   String   @map("created_by_actor_id") @db.Uuid
+  updatedByActorId   String   @map("updated_by_actor_id") @db.Uuid
+  rowVersion         Int      @default(1) @map("row_version")
+  isActive           Boolean  @default(true) @map("is_active")
+  typeCode           String   @unique @map("type_code")
+  labelTh            String   @map("label_th")
+  verificationStatus String   @default("TO_VERIFY") @map("verification_status")
+
+  createdByActor        ServiceActor @relation("ExamType_createdByActorId", fields: [createdByActorId], references: [id], onDelete: Restrict, onUpdate: Restrict)
+  updatedByActor        ServiceActor @relation("ExamType_updatedByActorId", fields: [updatedByActorId], references: [id], onDelete: Restrict, onUpdate: Restrict)
+  examLevelByExamTypeId ExamLevel[]  @relation("ExamLevel_examTypeId")
+
+  @@map("exam_type")
+  @@schema("private")
+}
+
+model ExamLevel {
+  id                 String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  createdAt          DateTime @default(now()) @map("created_at") @db.Timestamptz(6)
+  updatedAt          DateTime @default(now()) @map("updated_at") @db.Timestamptz(6)
+  createdByActorId   String   @map("created_by_actor_id") @db.Uuid
+  updatedByActorId   String   @map("updated_by_actor_id") @db.Uuid
+  rowVersion         Int      @default(1) @map("row_version")
+  isActive           Boolean  @default(true) @map("is_active")
+  examTypeId         String   @map("exam_type_id") @db.Uuid
+  levelCode          String   @map("level_code")
+  labelTh            String   @map("label_th")
+  verificationStatus String   @default("TO_VERIFY") @map("verification_status")
+
+  createdByActor ServiceActor @relation("ExamLevel_createdByActorId", fields: [createdByActorId], references: [id], onDelete: Restrict, onUpdate: Restrict)
+  updatedByActor ServiceActor @relation("ExamLevel_updatedByActorId", fields: [updatedByActorId], references: [id], onDelete: Restrict, onUpdate: Restrict)
+  examType       ExamType     @relation("ExamLevel_examTypeId", fields: [examTypeId], references: [id], onDelete: Restrict, onUpdate: Restrict)
+
+  @@unique([examTypeId, levelCode])
+  @@unique([id, examTypeId])
+  @@map("exam_level")
+  @@schema("private")
+}
+
+model AuditLog {
+  id             String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  recordedAt     DateTime @default(now()) @map("recorded_at") @db.Timestamptz(6)
+  serviceActorId String   @map("service_actor_id") @db.Uuid
+  actionCode     String   @map("action_code")
+  targetKind     String   @map("target_kind")
+  targetId       String   @map("target_id") @db.Uuid
+  changedFields  String[] @map("changed_fields")
+  correlationId  String   @map("correlation_id") @db.Uuid
+
+  serviceActor ServiceActor @relation("AuditLog_serviceActorId", fields: [serviceActorId], references: [id], onDelete: Restrict, onUpdate: Restrict)
+
+  @@index([targetKind, targetId, recordedAt])
+  @@index([serviceActorId, recordedAt])
+  @@map("audit_logs")
+  @@schema("private")
 }

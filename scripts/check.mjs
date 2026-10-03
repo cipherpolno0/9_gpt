@@ -8,9 +8,11 @@ if (!runner) {
 } else {
   try {
     for (const name of [
+      "db:validate",
       "lint",
       "typecheck",
       "test",
+      "db:test:sql",
       "format:check",
       "secrets:check",
       "build",

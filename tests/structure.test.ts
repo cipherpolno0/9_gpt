@@ -15,7 +15,7 @@ test("9โมดูลหนึ่งrepositoryไม่มีpackageหรื�
 test("Prisma7configไม่ใช้URLในdatasourceหรือgeneratorรุ่นเก่า", () => {
   const schema = readFileSync("prisma/schema.prisma", "utf8");
   assert.match(schema, /provider\s*=\s*"prisma-client"/);
-  assert.doesNotMatch(schema, /\bmodel\s+|prisma-client-js|url\s*=/);
+  assert.doesNotMatch(schema, /prisma-client-js|url\s*=/);
   assert.match(readFileSync("prisma.config.ts", "utf8"), /DIRECT_DATABASE_URL/);
 });
 test("dependencyตรงรุ่นstableและReact/Prismaเป็นชุดเดียว", () => {

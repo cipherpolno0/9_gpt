@@ -216,3 +216,26 @@ Backup ต้องครอบคลุมข้อมูลและเนื�
 - ทุกฟิลด์ใน JSON ต้องพบใน dictionary และแถวชั้นข้อมูลหนึ่งครั้ง ชื่อ/ชนิด/FK/class ไม่ขัดกัน ทุกตารางมี RLS/scope/owner/retention เสนอ
 - ข้อมูลสมมติทดสอบ projection: policy TO VERIFY ไม่ออกข้อมูลจริง allowlist ที่ขอข้อมูล H/raw private ID/alias จากแหล่งห้ามต้องปฏิเสธ ผลปีเก่าดึง snapshot รุ่นที่รับรอง
 - การตรวจเอกสารและ fixture ไม่ใช่ API/RLS/Auth/Storage/scan/restore/cache จริง ทั้งหมดนั้นยัง NOT RUN เช่นเดียวกับ TC90 ของบท02 ดูหลักฐานจริงใน [PROGRESS](PROGRESS.md)
+
+## ส่วนเพิ่มบท06 — physical core schema0.6.0
+
+แบบ128ตารางเดิมยังเป็นlogicaldesign ไม่ถูกอ้างว่าทำครบ ปัจจุบันมี19ตาราง/213scalar fieldsจริงตามprisma/schema.prisma ไม่รวมrelation navigation ทุกตารางprivate ENABLE/FORCE RLS ไม่มีpublic DTO/view/API; ทุกฟิลด์ยังห้ามเผยแพร่ ใช้ระดับด้านล่างเป็นminimumสำหรับcoreทดลอง หากนโยบายจริงกำหนดเข้มกว่าให้ปรับผ่านรุ่นเอกสาร/implementationและQ025
+
+| ตาราง/กลุ่ม | ระดับของทุกscalar field | เหตุผล/วิธีใช้ |
+| --- | --- | --- |
+| service_actor | R ทุกฟิลด์ | provenancebootstrap ไม่มีlogin/grants ไม่เปิดactor/codeต่อสาธารณะ |
+| reference_code, organization_type, exam_type, exam_level | I ยกเว้นid/FK/actorIdเป็นR | mastersสมมติ TO_VERIFY ไม่ใช่รหัสทางการ; labelsยังไม่เผยแพร่ |
+| geography | I สำหรับcode/label/time/flag/version; id/FK/actorIdเป็นR | ไม่เป็นscopeอัตโนมัติ รหัสสมมติ |
+| organization | R สำหรับid/FK/actorId/code/status/merge; timestamp/flag/versionเป็นI | organizationกลาง currentstatusเป็นbootstrapplaceholder |
+| person | R สำหรับid/FK/actorId/code/status/merge; timestamp/flag/versionเป็นI | ไม่ระบุpublicnameจากทะเบียนนี้ |
+| person_private | H ทุกฟิลด์ | วันเกิด ที่อยู่ เบอร์และnotes รวมPK/FK/timeของรายการส่วนตัวไม่เป็นDTO |
+| person_name_history, person_contact | H ทุกฟิลด์ | personlink, name/contact, หลักฐานและประวัติของบุคคล ไม่ส่งออกAPI/cache/print/exportโดยไม่มีpolicy |
+| organization_name_history, address_version, organization_contact | R ทุกฟิลด์ | ชื่อ/ที่ตั้ง/ช่องทางและประวัติต้องรับรองpublicallowlistก่อน ไม่เปิดจากis_public_eligibleอย่างเดียว |
+| document | H ทุกฟิลด์ | หลักฐานmetadataไม่มีไฟล์จริง การเลือกI/R/Hในvisibility_classไม่ให้สิทธิ์เอง |
+| policy_version | R ทุกฟิลด์; JSONleafขั้นต่ำR | configurationทดลองเท่านั้น ไม่มีsecret/ข้อมูลจริงในJSON Unknownkeysต้องvalidatedในbusinessserviceบทที่จะรับinput |
+| academic_year, fiscal_year | I สำหรับyear_code/label_year_ce/dates/time/flag/version; id/FK/actorIdเป็นR | labelCEเก็บมาตรฐาน แปลงBEตอนแสดง; ช่วงปีทดลองไม่ใช่ปฏิทินทางการ |
+| audit_logs | R ทุกฟิลด์ | target/actor/correlation/ชื่อฟิลด์ ไม่มีrawPII values หรือpassword/token/secret |
+
+ครอบคลุมทั้ง213scalar fields: defaultของตารางตามแถวนี้รวมcreated_at/updated_at/effective_from/effective_to/recorded_at/superseded_at/replaces_id/row_version/is_activeและFKทุกตัว ไม่ตกเป็นPublicเพียงเพราะชื่อคอลัมน์ คลาสIไม่ได้แปลว่าข้อมูลเผยแพร่ได้
+
+Retention: current rowsปิดด้วยis_active, historysupersede+replacement, auditappend-only ทุกตารางห้ามphysicalDELETEในDML Migration/seedสิทธิ์สูงเฉพาะlocal ข้อมูลสมมติไม่มีเลขบัตร/วันเกิด/เบอร์/ที่อยู่จริง; นโยบายอายุเก็บ/retentionจริงยังQ016/Q025 การทำลายข้อมูลจริงต้องผ่านนโยบายที่รับรองและmigration/ขั้นตอนรักษาหลักฐาน

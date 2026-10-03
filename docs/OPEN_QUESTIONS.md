@@ -1,6 +1,6 @@
 # ประเด็นที่ต้องยืนยัน — เว็บไซต์กองบริหารทะเบียนและวัดผล
 
-บท 05 | รุ่นเอกสาร 1.5 | 3 ตุลาคม 2569 (2026-10-03) | ทุกแถวมีสถานะเปิด
+บท 06 | รุ่นเอกสาร 1.6 | 3 ตุลาคม 2569 (2026-10-03) | ทุกแถวมีสถานะเปิด
 
 ผู้รับผิดชอบ O01–O09 และ C01–C04 เป็นบทบาทเสนอจาก Charter ไม่ใช่ชื่อบุคคล/ฝ่ายทางการที่เดาขึ้น C01 ประสานยืนยันผู้รับงานจริงใน Q005 การยังไม่มีคำตอบไม่ขวางการพัฒนาด้วยข้อมูลสมมติ แต่ห้ามนำกฎจำลองไปอ้างเป็นระเบียบหรือออกข้อมูล/ผล/เอกสารทางการของส่วนที่ยังขาดหลักฐาน
 
@@ -70,3 +70,11 @@ Q001–Q022ยังเปิด ไม่ใช้คำตอบสมมต�
 | Q026 | TO VERIFY / DOCKER-05 | เครื่องพัฒนาที่รันDockerdaemonได้และรุ่นDB/Redislocalที่ทดสอบกับSupabaseจริงเป็นเครื่องใด | C02 + C01 | docker version/compose version ผลpull/up--wait/healthy การเก็บvolumeหลังrestart workerSELECT1/PING และรุ่น/extensions/สิทธิ์ของSupabaseจริงโดยไม่ส่งcredential | runtimeปัจจุบันไม่มีdaemon CapEff0 unshareuid_mapถูกปฏิเสธ; ยังไม่พิสูจน์บริการ/workerหรือcompatibilityproduction; REQ-C18/REQ-N06 และdependencyบทฐานข้อมูล | เว็บไม่มีDBqueryจึงfrozeninstall/dev/build/HTTPได้ ใช้Composeconfigผ่านและmocktests ไม่แต่งผลDBhealthy/workerpositive | ก่อนบทที่พึ่งDB/Redis/container และก่อนเชื่อมข้อมูลจริง; C02บันทึกผล C01รับรองเครื่อง/บัญชี ไม่ปิดจากconfigsyntax |
 
 Q001–Q025ยังเปิด Q023เลือกได้เฉพาะรุ่นComposelocalในบท05 ไม่ปิดเรื่องSupabase/exposed schemas/limitedrole/RLS Q011ยังไม่เลือกqueue/scanner/hostingjob Q020ได้รับพรอมป์ต์ถึง05เท่านั้น ไม่เดาเลขบทลงมือถัดไป BROWSER-03เดิมยังเปิดแยกจากDOCKER-05
+
+## เพิ่มบท06 — PostgreSQLserver acceptance
+
+| รหัส | สถานะ | คำถามที่ต้องยืนยัน | ผู้รับผิดชอบเสนอ | หลักฐานที่ต้องขอ | ผลกระทบ | ทดลองต่ออย่างไร | gate |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| Q027 | TO VERIFY / DB-06 | เครื่องใดรันPostgreSQLserverด้วยผู้ใช้ทั่วไปหรือDockerได้สำหรับPrisma7core06 | C02 + C01 | ผลmigrationdeployฐานว่าง/seed2ครั้ง/concurrentretry/db:test13testsและSELECTversion/extension/RLS flags โดยไม่ส่งcredential พร้อมchecksummigration | บท06ยังไม่ผ่านAC06-01/AC06-02ส่วนserver; nativeinitdbrootonlyและnamespaceไม่มีuidอื่น | SQLWASM12testsกับunit17ผ่านแยก ใช้schema/seed/contractsเตรียมแล้ว ไม่มีข้อมูลจริง/publicruntime | ก่อนบทถัดไปที่พึ่งฐานและก่อนนำเข้าข้อมูลจริง C02บันทึกผล; ปิดQ026Redis/worker/volumeแยก |
+
+บท06มีphysicalschema/migrationจริงเฉพาะcore19tables Q023/Q024/Q025ยังไม่ปิดสำหรับSupabase/สิทธิ์/กฎจริง ไม่มีการใช้seedสมมติรับรองข้อมูลจริง ปีเริ่ม/สิ้นยังQ017 ปิดDB-06ไม่ได้จากSQLWASMหรือPrisma validateเพียงอย่างเดียว

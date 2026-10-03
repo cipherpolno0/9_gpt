@@ -1,7 +1,7 @@
-# เครื่องมือฐานข้อมูลบท05
+# ข้อมูลกลางบท06
 
-มีPrisma7 configและdatasource PostgreSQL แต่ยังไม่มีmodel/migration ไม่สร้าง128ตารางล่วงหน้า ไม่มีauth.usersในPostgreSQLเดี่ยวของCompose และไม่อ้างว่าเป็นSupabase local stack
+Schema 0.6.0 มี19models ตาม ADR002 และ migrationเดียว `20261003130000_core_foundation` UUID/snake_case/RESTRICT FK, RLSdenyall, auditและประวัติ ผ่านPrisma validate/generateและSQLWASM แต่ยังมีDB-06รอPostgreSQLserver/Prismaจริง
 
-`pnpm db:validate` ตรวจschemaเท่านั้น `pnpm db:generate` สร้างclientเมื่อมีmodelที่อนุมัติแล้ว ดูADRเรื่องoutput path/adapter ไม่ใช้importClientจาก@prisma/clientแบบรุ่นเก่า
+อ่าน [DATABASE](../docs/DATABASE.md) ก่อน migrate/seed ใช้ `pnpm db:new:local`, `pnpm db:migrate:local`, `pnpm db:seed` กับฐานเฉพาะloopbackชื่อsangha_ch06_demo ไม่ใช้db push/migrate reset ไม่มีproductioncredentialหรือruntimegrant
 
-ห้ามใช้db pushหรือแก้Dashboardแทนmigration ก่อนruntime queryต้องมีlimited DB role/RLSและtransactioncontextตามQ023 ไม่ใช้postgresหรือbypassrlsเป็นบัญชีแอป CredentialของComposeมีไว้bootstrap/readinessในเครื่อง ไม่มีbusinessqueryในบทนี้
+Generated clientอยู่src/generated/prisma/client ใช้PrismaPg ตามAPI7 configseedอยู่prisma.config.ts บัญชีUserAccount/auth.usersยังรอบทบัญชี ServiceActorเป็นprovenancebootstrapไม่มีloginหรือสิทธิ์ธุรกิจ Documentเป็นmetadataสมมติยังไม่มีไฟล์/scan/ACLdownload

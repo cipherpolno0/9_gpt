@@ -89,3 +89,16 @@ Confirmed คือข้อกำหนดที่ผู้ใช้ให้ 
 | DEC-044 | Accepted ตามหลักฐานเฉพาะstarter | cleanfolderไม่มี.env/node_modules/.next frozeninstallแล้วvalidate/lint/type/test12/format/secret/build/HTTP27ผ่าน และdevHTTP200ไทยผ่าน | คำสั่งจริงในPROGRESS; ใช้cacheแพ็กเกจกลางตามปกติ ไม่มีDBในstarter | C02 + C01 | ผ่านเกณฑ์เว็บ/เครื่องมือ ไม่ใช้ผลแทนcontainer/Auth/RLS/audit/import/ธุรกิจ/TC90หรือBROWSER-03 ไม่มีpush/deploy |
 
 การอนุมัติบท05ไม่ปิดกฎทางการและไม่อนุญาตบทถัดไป เปลี่ยนเทคโนโลยีเฉพาะเครื่องมือที่พรอมป์ต์บท05เพิ่ม ไม่ย้ายaccount/StorageออกจากSupabase
+
+## การตัดสินใจบท06 — core0.6.0
+
+| รหัส | สถานะ | การตัดสินใจและเหตุผล | หลักฐาน/ผลตรวจ | ผู้รับผิดชอบเสนอ | ขอบเขต/ความเสี่ยง |
+| --- | --- | --- | --- | --- | --- |
+| DEC-045 | Accepted สำหรับทดลอง | สร้าง19models/213fieldscoreเท่านั้นตามADR002 Person/Organizationร่วม UUID/FKRESTRICT snake_case ไม่มีlogin/applicationอีกชุด | Prisma7validate/generate/typecheck; migration20261003130000_core_foundation | C02 + O01 + O02 | แบบ128ตารางยังdesign ไม่สร้างExamSession/ธุรกิจล่วงหน้า |
+| DEC-046 | Accepted สำหรับlocalbootstrap | ServiceActorเป็นprovenanceไม่มีloginสิทธิ์ แยกจากPerson/UserAccount; DocumentmetadataและPolicyVersionเป็นdependencyหลักฐาน/ปี | seedสมมติ41rows + audit41; RLSปิดทุกตารางและไม่เชื่อGUCเป็นauthorization | C02 + C03 | ไม่มีAuth/storagefiles/scan/ACLdownloadจริง accountprovenanceเพิ่มในบทบัญชีด้วยmigrationรักษาหลักฐาน |
+| DEC-047 | Accepted สำหรับทดลอง | ใช้dateGregorian+timestamptz, CElabelแปลงBEตอนแสดง; ranges[จาก,ถึง)ตัดวันAsia/Bangkok ปีงบแยกปีศึกษา | unit testsก่อน/หลัง17:00UTC+ปีใหม่+leapdate; SQLWASMเทียบวันไทย | O05 + O06 + C02 | Q017ยังรอปฏิทินทางการ ไม่deriveFYจากAY/วันที่เริ่ม |
+| DEC-048 | Accepted สำหรับทดลอง | ประวัติimmutableพร้อมeffective/recorded/evidence/supersession exclusioncurrentknowledge; auditร่วมtransactionเก็บชื่อฟิลด์ไม่มีค่าข้อมูลส่วนตัว | SQLWASM FK/unique/exclusion/history/softdelete/auditrollbackผ่าน | C02 + C03 | btree_gistต้องพร้อมบนเป้าหมาย; concurrency/nativePrismaยังNOT RUN |
+| DEC-049 | Accepted สำหรับlocal | migrate/create/seed/testguardบังคับAPP_ENVlocal/test+loopback+ชื่อฐานเฉพาะ ไม่มีDROP/RESET; ใช้ฐานใหม่suffixเพื่อเริ่มซ้ำ | guardunitผ่าน ปฏิเสธremote/production/query/ชื่อฐานอื่น ไม่logURL/password | C02 | loopbackต้องเป็นบริการทดลองจริง ไม่มีการแตะproduction |
+| DEC-050 | Accepted แบบผลตรวจแยก | เพิ่มdev-onlyPGlite0.5.8pinlockfileตรวจSQLด้วยPostgreSQL18.3WASM; ไม่เปลี่ยนCompose18.6หรือAPIPrisma7 | db:test:sql12testsผ่าน; fixtureSQLreplayคง41rows/audit41; engineversionบันทึกจริง | C02 | ไม่ถือแทนmigrate deploy/PrismaPg seed/concurrency/networkserver; DB-06ยังเปิด ห้ามอ้างผ่านAC06 |
+
+ข้อกำหนดทางการQ001–Q026ยังเปิด และประเด็นใหม่Q027ติดตามผลPostgreSQLserver ไม่push/deployหรือเริ่มบท07จากการอนุมัติบท06

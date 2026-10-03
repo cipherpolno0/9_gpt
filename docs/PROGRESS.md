@@ -1,6 +1,8 @@
 # ความก้าวหน้าโครงการ — เว็บไซต์กองบริหารทะเบียนและวัดผล
 
-อัปเดตบท 05 | รุ่นเอกสารล่าสุด 1.5 | 3 ตุลาคม 2569 (2026-10-03)
+อัปเดตบท 06 | รุ่นเอกสารล่าสุด 1.6 | 3 ตุลาคม 2569 (2026-10-03)
+
+**สถานะล่าสุดบท06: implementationพร้อมตรวจ แต่ BLOCKED (DB-06) สำหรับPostgreSQLserver/Prismaจริง ยังไม่ผ่านตรวจรับครบและยังไม่เริ่มบท07**
 
 ## บันทึกบท 01 ที่เก็บไว้เป็นประวัติ
 
@@ -408,3 +410,98 @@ Q001–Q026ยังเปิด กฎทางการ/owners/อำนาจ
 - `CLAUDE.md`
 - `docs/licenses/shadcn-ui.txt`
 - `scripts/check.mjs`
+
+
+## บท06 — สร้างข้อมูลกลางและฐานข้อมูลทดลอง
+
+ผู้ใช้อนุมัติแผนบท06ด้วย “ตกลง” 3ตุลาคม2569 เริ่มจากcommit5b47b0a/worktreeสะอาด origincipherpolno0/9_gpt ไม่มีการpush/deployหรือแก้Supabase/production ไม่มีsubagent ทำเฉพาะcoreและdependencyหลักฐาน/ปี/audit
+
+### สิ่งที่ทำและเหตุผล
+
+19models/213scalar fieldsร่วม9ระบบ: Person/PersonPrivate/PersonNameHistory/PersonContact, Organization/OrganizationType/OrganizationNameHistory/OrganizationContact/AddressVersion/Geography, AcademicYear/FiscalYear, ReferenceCode/ExamType/ExamLevel และServiceActor/Document/PolicyVersion/AuditLogเป็นdependencyขั้นต่ำ ไม่มีUserAccount/loginหรือapplicationอีกชุด Documentมีmetadataสมมติไม่มีไฟล์อัปโหลดจริง Code/status/policyสมมติTO_VERIFY
+
+UUID PK + FKRESTRICT, snake_case, uniqueรหัส/คนprivate/examlevel, historyexclusionผ่านbtree_gist, code-domainchecks, geographycycleguard, validdate ranges, immutablehistory+supersede/replacement, softdeleteและauditร่วมtransaction ชื่อฟิลด์แต่ไม่มีค่าข้อมูลส่วนตัว RLSทุก19tablesENABLE/FORCEไม่มีallowpolicies/publicviews/grants Server/appยัง403 workerยังไม่มีbusinessDBquery ไม่อ้างAuth/role+scope+time/ACL/maker-checkerจริง
+
+seed-entrypointPrisma7ในprisma.config.ts ใช้PrismaPg+generatedclient และseed-dataแยกเพื่อทดสอบ deterministicUUID/DEMOlabels/email.invalid ไม่มีเลขบัตร วันเกิด เบอร์โทรหรือที่อยู่จริง upsertupdate{}+transaction+advisorylock ไม่มีoverwriteข้อมูลเดิม seed41domainrowsและaudit41เมื่อเริ่มชุดใหม่
+
+ปีเก็บlabelCE/dateGregorian แสดงBE; ตัดวันAsia/Bangkokช่วง[start,end) calendarseedสมมติปีศึกษาเริ่มก.พ./ปีงบเม.ย.เพื่อไม่เดาปฏิทินทางการ Q017ยังเปิด
+
+### Schema/migrations/versions/policies
+
+| รายการ | สถานะบท06 |
+| --- | --- |
+| package/schema | 0.6.0; private19models/213scalar fields |
+| Prisma CLI/client/adapter | 7.10.0เดิม; Node24.19.0/pnpm11.28.2เดิม |
+| migration | 1ไฟล์ 20261003130000_core_foundation; generatedDDL+customSQL มีBEGIN/COMMIT |
+| migration SHA256 | 04a149fcd349f0ac3f1b5929cfcf571f8b0880541e84a40ad929054b67d72756 |
+| SQL RLS/trigger/constraints | อยู่ในmigrationและผ่านWASMSQLchecks; serverยังNOT RUN |
+| permissions/publicDTO | RLSdenyall/ไม่มีallowpolicyหรือpublicview; runtime/publicqueriesยังปิด |
+| targetPostgreSQL | Compose18.6เดิมไม่ได้รัน; native18.4ดาวน์โหลดชั่วคราวเปิดไม่ได้ |
+| supplementarySQLengine | dev-only @electric-sql/pglite0.5.8ล็อกในlockfile; PostgreSQL18.3WASMจากSELECTversionจริง |
+| migrationsบนserver / Prisma seed | NOT RUN — DB-06 ไม่ถือWASMreplayแทนผลนี้ |
+| Supabase/Auth/Storage/Redis/worker | ไม่มีการเชื่อมจริง/ไม่ทดสอบpositive; DOCKER-05เดิมยังเปิด |
+
+### คำสั่งและผลที่รันจริง
+
+| คำสั่ง/การตรวจ | ผล |
+| --- | --- |
+| corepack pnpm install --frozen-lockfile --offline | PASSในโครงการและcleanfolderไม่มี.env/node_modules/.next ใช้sharedpackagecacheปกติ |
+| pnpm db:validate / db:generate | PASS Prisma7valid/generate19models |
+| pnpm check | PASS dbvalidate/lint/typecheck/test17/db:test:sql12/format/secrets/build |
+| pnpm test | 17/17รวมวันที่ไทย/ปีใหม่/leapdate/unsafeURL guards และstarterเดิม |
+| pnpm db:test:sql | 12/12รวมwrapper; freshWASMmigration/replayseed2ครั้ง/unique/FK/domain/range/immutablehistory/supersession/softdelete/auditprivacyrollback/geographycycle/RLS19tables/SQLvsJSdate |
+| pnpm smoke | HTTP27/27หน้าแรกCSSfont/403ทุกmethod/404ผ่าน |
+| cleanfolder frozeninstall + pnpm check + pnpm smoke | PASSซ้ำ ไม่มี.env/generatedclientมาก่อน; dbgenerateทำก่อนtype/build |
+| git diff --check / secrets:check | PASS ไม่มี.envจริงtrackedและไม่พบรูปแบบsecretที่ตัวตรวจรองรับ |
+| nativePG18.4 initdb | FAIL exit1 cannot be run as root |
+| runuser -u nobody initdb | FAIL cannot set groups: Operation not permitted |
+| uid_map/gid_map / os.setuid(65534) | 0:0:1เท่านั้น / EINVAL ไม่มีmappeduidทั่วไป |
+| APP_ENV=test CH06_TEST_DATABASE_URL=loopback5546/sangha_ch06_test pnpm db:test | FAIL exit1 ไม่มีPGserver ไม่มีnativeintegrationcasesเริ่มรัน |
+| pnpm db:migrate:local / db:seed / db:status กับserver | NOT RUN เพราะไม่มีserver; ไม่อ้างว่าseedผ่านPrismaจริง |
+| Prisma/concurrency/volume/Redisworkerpositive/EXPLAIN/SupabaseRLSJWT | NOT RUN |
+
+ช่วงformatterเรียกprettierกับ.prismaตรง ๆ ไม่มีparser จึงใช้PrismaformatตามCLIและprettierไฟล์ที่รองรับ; finalformatcheckผ่าน schema/client validationและtypecheckจริง ไม่ปิดblockerจากstaticchecks ไม่มีการแก้เวอร์ชันruntimeเพื่อทำผลให้ผ่าน
+
+### ตรวจรับและบทถัดไป
+
+| เกณฑ์ | สถานะ |
+| --- | --- |
+| AC06-01 PostgreSQLว่างmigrate+seedซ้ำไม่ซ้ำ | BLOCKED DB-06; มีnativeintegrationtestพร้อม แต่รันไม่ถึงฐานจริง |
+| AC06-02 FK/unique/วันไทย | unit+SQLWASMผ่าน; nativePGserver/Prismaส่วนที่เกี่ยวข้องยังBLOCKED |
+| starterติดตั้งสะอาด/เว็บ/lint/type/build/secret | PASSจากcleanfolderจริง ไม่ใช้แทนAC06-01 |
+
+DB-06ปิดเมื่อC02ใช้เครื่องDocker/nativePGพร้อม รันDATABASEข้อ5กับฐานtestชื่อใหม่และบันทึกversion/checksummigration+13nativeintegrationtests โดยไม่ส่งcredential ไม่มีreset/dropคำสั่งในscripts ใช้ชื่อฐานdemo/testsuffixใหม่เพื่อเริ่มทดลองซ้ำ ฐานเดิมไม่ถูกลบ Q027ติดตามเฉพาะserver acceptance, Q026ยังต้องRedis/worker/volume, BROWSER-03เดิมค้าง Q001–Q027ยังไม่รับรองกฎทางการ
+
+บท06ส่งมอบimplementationพร้อมข้อจำกัดที่พิสูจน์ได้ **ยังไม่ผ่านบท06ครบ ไม่เริ่มบท07** บทถัดไปรอปิดdependencyserverและพรอมป์ต์/แผนที่อนุมัติ ห้ามเดาเนื้อหาบท07 ไม่มีpushGitHub/deploy
+
+### ไฟล์ที่สร้างหรือแก้บท06
+
+- `.env.example`
+- `README.md`
+- `docs/ADR/001-stack.md`
+- `docs/ADR/002-core-database.md`
+- `docs/DATABASE.md`
+- `docs/DATA_CLASSIFICATION.md`
+- `docs/DECISIONS.md`
+- `docs/OPEN_QUESTIONS.md`
+- `docs/PROGRESS.md`
+- `package.json`
+- `pnpm-lock.yaml`
+- `prisma.config.ts`
+- `prisma/README.md`
+- `prisma/fixtures.ts`
+- `prisma/local-safety.ts`
+- `prisma/migrations/20261003130000_core_foundation/migration.sql`
+- `prisma/migrations/migration_lock.toml`
+- `prisma/schema.prisma`
+- `prisma/seed-data.ts`
+- `prisma/seed.ts`
+- `scripts/check.mjs`
+- `scripts/database.mts`
+- `src/server/db/README.md`
+- `src/shared/dates/bangkok.ts`
+- `tests/database-safety.test.ts`
+- `tests/database/core.integration.ts`
+- `tests/database/sql-wasm.test.ts`
+- `tests/dates.test.ts`
+- `tests/structure.test.ts`
