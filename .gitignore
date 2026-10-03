@@ -1,0 +1,17 @@
+# Local uploads and tooling
+upload/
+.codex/
+node_modules/
+.next/
+.vercel/
+__pycache__/
+*.pyc
+*.log
+.DS_Store
+# Secrets
+.env
+.env.*
+!.env.example
+!.env.*.example
+# Generated download packages
+deliverables/
