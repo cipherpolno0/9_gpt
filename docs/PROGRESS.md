@@ -1,6 +1,8 @@
 # ความก้าวหน้าโครงการ — เว็บไซต์กองบริหารทะเบียนและวัดผล
 
-อัปเดตบท 01 | รุ่นเอกสาร 1.1 | 3 ตุลาคม 2569 (2026-10-03)
+อัปเดตบท 02 | รุ่นเอกสารล่าสุด 1.2 | 3 ตุลาคม 2569 (2026-10-03)
+
+## บันทึกบท 01 ที่เก็บไว้เป็นประวัติ
 
 ## สถานะที่ตรวจพบก่อนเริ่ม
 
@@ -68,3 +70,59 @@ AC-04 รัน `git show --stat --oneline HEAD` แล้วพบ commit ข�
 Q001–Q016 ยังเปิด เจ้าของงานจริง/อำนาจ/แบบทางการ/กฎสอบ/นโยบายเผยแพร่ยังไม่ได้ยืนยัน เอกสารกำหนดหน้าที่ตามข้อเสนอเท่านั้น ไม่มีผลทดสอบ UI/Auth/RLS/DB/import/เงิน/stock/backup เพราะยังไม่มี implementation ไม่มีการเชื่อม GitHub หรือ push remote
 
 บท 02: รอผู้ใช้ส่งพรอมป์ต์ ยังไม่เริ่มและไม่กำหนดเนื้อหาจากการเดา
+
+## บท02 — ข้อกำหนดและสิทธิ์ที่ตรวจรับได้
+
+อัปเดต 3 ตุลาคม 2569 (2026-10-03) | เอกสารบท02รุ่น1.2 | ผ่านก่อนหน้า: commit f3bbce8 ของบท01
+
+### งานและไฟล์บท02
+
+| ไฟล์ | สิ่งที่ทำ |
+| --- | --- |
+| docs/REQUIREMENTS.md | สร้าง22usecases ครบ9ระบบ+บริการกลาง ActorถึงAuditและhappy/directAPI/nativeAPIdenial; เพิ่มREQ-N01–N06 |
+| docs/TRACEABILITY.md | สร้างmatrix35REQและcatalog90TC ทุกกรณีruntimePLANNED/NOT RUN; เลขบทลงมือรอQ020 |
+| docs/PERMISSIONS.md | สร้างactionsP01–P11 rolematrixและscope/เวลา/ACL/maker-checker/techadminboundaries |
+| docs/DECISIONS.md | เพิ่มDEC-015–DEC-022โดยรักษาบันทึกบท01 |
+| docs/OPEN_QUESTIONS.md | เพิ่มQ017–Q020; Q001–Q016ยังเปิด |
+| docs/PROGRESS.md | บันทึกงานบท02พร้อมสถานะจริงและGitHubconnection |
+
+### Schema/migrations/versions/policies
+
+เอกสารใหม่รุ่น1.2; BLUEPRINT/MASTER/CHARTERจากบท01ยังเป็นฐาน1.1 ไม่มีpackage.json/lockfileหรือเวอร์ชันdependencyที่เลือก ไม่มีschema/migrationsจริง (0ไฟล์) ไม่มีRLS/Storagepolicies/audittriggers/worker/UI/HTMLprint/importที่สร้าง ไม่มีSupabaseprojectหรือVerceldeploy และไม่ใช้ผลตรวจเอกสารแทนruntime
+
+### ผลตรวจจริงบท02
+
+**บท02ผ่านการตรวจเอกสาร DOC-02-01 ถึง DOC-02-04** ผลนี้ไม่ใช่ผลAPI/RLS/UIหรือrestoreจริง ทุกTC90กรณีในTRACEABILITYยังเป็นPLANNED / NOT RUN
+
+| คำสั่ง/การตรวจที่รันจริง | ผล |
+|---|---|
+| `git status --short --branch` และ `git log -1` ก่อนเริ่ม | mainสะอาด; บท01ที่f3bbce8เป็นฐาน |
+| `python /tmp/verify_chapter02.py` (เครื่องมือตรวจเอกสารชั่วคราว) | ผ่าน32/32: UC9ระบบ/9หัวข้อ, happy+directapp/nativeAPI, REQ35, TC90, mapping, permissions, owner/Q/DEC, เวลา/ปี/a11y/backup, Markdownและlinks |
+| `git diff --check` | ผ่าน ไม่มีwhitespace errorsในไฟล์trackedที่แก้ |
+| GitHubplugin: metadataของ9_gptและbranches | ยืนยันrepo publicและสิทธิ์เข้าถึง; branches=[] ไม่มีงานเดิมบนremoteขณะตรวจ |
+| `git remote -v` | origin(fetch/push)ตรงhttps://github.com/cipherpolno0/9_gpt.git |
+
+ตรวจครั้งแรกพบการเขียนรหัสREQแบบย่อทำให้สับสนกับรหัสowner ได้แก้ให้ใช้REQเต็มแล้วรันใหม่ผ่านทุกข้อ เพิ่มกรณีหลักฐานข้ามระบบ7กรณีสำหรับmigration/reuse/versions/chapter/rules/release/language รวมcatalog90กรณี
+
+ตรวจstagedไฟล์ด้วย `git diff --cached --check` ก่อนcommitตามรูปแบบบท02 ตรวจไฟล์และความสะอาดหลังcommitด้วย `git show --stat HEAD` และ `git status --short` เลขcommitอยู่ในGitและคำตอบส่งมอบ ไม่ใส่เลขcommitตัวเองลงไฟล์ซึ่งจะทำให้เลขเปลี่ยน
+
+### GitHubที่เชื่อม
+
+- repository: [cipherpolno0/9_gpt](https://github.com/cipherpolno0/9_gpt)
+- origin(fetch/push): https://github.com/cipherpolno0/9_gpt.git
+- GitHubpluginยืนยันowner/repo บัญชีเชื่อมcipherpolno0และpermissionspull/push; branchesคืน[] repositoryเป็นpublicและว่างขณะตรวจ
+- การผูกoriginและอ่านrepositoryสำเร็จ localcommitsของบท01/02อยู่โครงการนี้ ยังไม่มีการอัปโหลดcommitขึ้นGitHubในขอบเขตการเชื่อมครั้งนี้
+
+### วิธีตรวจรับทีละขั้น
+
+1. เปิดREQUIREMENTS หัวข้อ3 เลือกแต่ละระบบ01–09 ดู9หัวข้อและhappy/directAPI/nativeAPIกรณีdeny; ตรวจExcel ก่อน–หลังเรียนและค้นผลรายปีโดยเฉพาะ
+2. เปิดTRACEABILITY เลือกREQจากCharterแล้วตามUC/page/table/service/บท/TC ตรวจว่าfutureimplementationติดQ020และTCทุกข้อยังNOT RUN
+3. เปิดPERMISSIONS ดูP01–P08แยกกันและtechadminP08ไม่ได้P05/P06; ตรวจscope/เวลามอบหมาย/ACL/maker-checkerพร้อมtestdeny
+4. ตรวจREQ-N01–N06ในREQUIREMENTS โดยเฉพาะเวลาไทย พ.ศ. ปีแยก accessibility และbackupทั้งฐาน/ไฟล์; ชื่อกฎทางการไม่ถูกเดา
+5. ที่รากโครงการรัน `git show --stat HEAD`, `git status --short` และ `git remote -v` เพื่อตรวจcommit ไฟล์งานค้างและorigin; การเชื่อมไม่ได้ยืนยันว่ามีไฟล์บนremoteแล้ว
+
+### ข้อจำกัดและบทถัดไป
+
+Q001–Q020ยังเปิด เจ้าของ/อำนาจ/แบบ/เกณฑ์สอบ/นโยบายจริงยังไม่ได้รับรอง ไม่ได้รันAPI/RLS/UI/a11y/restoreหรือtypecheck/lint/test/buildเพราะไม่มีimplementation ขอบเขตเวลาปีและมาตรฐานa11yย่อยเป็นconfig/ข้อเสนอที่ระบุสถานะแล้ว
+
+บท03: รอผู้ใช้ส่งพรอมป์ต์และอนุมัติแผน ยังไม่เริ่มและไม่เดาเนื้อหา

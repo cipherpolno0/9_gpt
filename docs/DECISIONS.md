@@ -1,6 +1,6 @@
 # รายการตัดสินใจ — เว็บไซต์กองบริหารทะเบียนและวัดผล
 
-บท 01 | รุ่นเอกสาร 1.1 | 3 ตุลาคม 2569 (2026-10-03)
+บท 02 | รุ่นเอกสาร 1.2 | 3 ตุลาคม 2569 (2026-10-03)
 
 Confirmed คือข้อกำหนดที่ผู้ใช้ให้ ไม่ใช่คำวินิจฉัยทางการ Proposal คือข้อเสนอที่รอผู้รับผิดชอบพิจารณา TO VERIFY คือยังไม่พอให้ตัดสินหรือใช้งานจริง ผู้ใช้อนุมัติแผนงานบทนี้ด้วย “ตกลง” แต่ไม่ได้ยืนยันกฎทางการหรือแต่งตั้งเจ้าของงานจริงใน Q005
 
@@ -31,3 +31,18 @@ Confirmed คือข้อกำหนดที่ผู้ใช้ให้ 
 - ใช้ Supabase แทนข้อเสนอ Auth.js/Keycloak/Prisma เดิม และคงรายละเอียดธุรกิจ 9 ระบบ ไม่ติดตั้งแพ็กเกจหรือสร้าง migration ในบทนี้
 
 ประเด็นที่ยังไม่มีคำตัดสินติดตาม Q001–Q016 ใน OPEN_QUESTIONS และผู้รับหน้าที่จริงของ O01–O09/C01–C04 อยู่ Q005
+
+## รายการเพิ่มจากบท02
+
+| รหัส | สถานะ | การตัดสินใจ/ข้อเสนอ | หลักฐานและเหตุผล | ผู้รับผิดชอบเสนอ | ผลต่อการทำงาน |
+| --- | --- | --- | --- | --- | --- |
+| DEC-015 | Confirmed | บท02ทำspecification/usecases/matrix/permissionsและอัปเดตสถานะ ไม่ทำimplementation | พรอมป์ต์บท02และผู้ใช้ตอบตกลงวันที่3 ตุลาคม 2569 (2026-10-03) | C01 + C02 | TCทุกกรณีplanned/notrun; บทถัดไปรอพรอมป์ต์ |
+| DEC-016 | Proposal | contractpermission P01–P11และserver+RLSdeny by default | ขยายREQ-C05/REQ-C06/REQ-C07จากCharterเป็นสิทธิ์รายaction | C02 + เจ้าของเรื่อง | roleตามหน้าที่ไม่ใช่การแต่งตั้ง; ตรวจQ002/Q005/Q006/Q019ก่อนเปิดจริง |
+| DEC-017 | Confirmed + Proposal | เวลาไทย Asia/Bangkok แสดงพ.ศ.และแยกปีการศึกษา/ปีงบ; ช่วงเวลาปิดปลายเสนอ | ข้อกำหนดบท02; PostgreSQL date/time docsประกอบการออกแบบ | C02 + O05 + O06 | Q017รับรองขอบเขตปี หน้าต่างเวลาและcalendar ก่อนใช้จริง; ไม่เดาวันเริ่มปีงบ |
+| DEC-018 | Proposal | เป้าหมายaccessibility WCAG2.2 AAพร้อมmanual/fullflowและautomated review | ข้อกำหนดaccessibilityในบท02และW3C WCAG2.2ที่อ่าน | C02 + O03 + C01 | Q018ต้องยืนยันscope/browser/assistivetech; ไม่รับรองผ่านจากคะแนนtool |
+| DEC-019 | Confirmed + Proposal | backupต้องรวมDBและเนื้อไฟล์จริง มีmanifest/hashและrestoreแยกพื้นที่ | REQ-C20/Q012และเอกสารSupabaseระบุDBbackupไม่รวมStoragebytes | C02 + C01 | RPO24h/RTO4hยังproposal; ต้องวัดจริงและตรวจACL/outboxหลังrestore |
+| DEC-020 | Proposal | appAPIใช้401/403/404/409/422ตามcontract; nativeAPIพิสูจน์norows/nowrite | ข้อกำหนดตรวจสิทธิ์และไม่ให้ข้อมูลรั่ว; RLSreturnไม่เหมือนappAPIเสมอ | C02 | Q019รับรองerror/privacy/tracking/URLexpiry; ความหมาย403ไม่ใช้แทนRLSทุกกรณี |
+| DEC-021 | TO VERIFY | บทimplementationของแต่ละREQยังไม่ระบุเลขจากการเดา | มีพรอมป์ต์เพียง01และ02 ไม่มีชุดบทลงมือครบ | C01 + C02 | Q020เติมเมื่อได้รับพรอมป์ต์; matrixระบุ02spec+futureTO VERIFY |
+| DEC-022 | Confirmed | เชื่อมoriginกับhttps://github.com/cipherpolno0/9_gpt.gitและยืนยันrepoผ่านGitHubplugin | ผู้ใช้สั่งเชื่อม; pluginget_repoพบpublicและpermissionspull/push; branchesคืน[] | C02 | repositoryว่างณการตรวจ ยังไม่มีcommitบนGitHub; localcommitsคงประวัติบท01/02 |
+
+ใช้การอนุมัติแผนบท02เฉพาะขอบเขตที่ผู้ใช้สั่ง ข้อกำหนดของบท01คงเดิมและไม่ถูกเขียนทับ
