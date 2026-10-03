@@ -1,0 +1,536 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>แบบร่างบทที่ 03 — เว็บไซต์กองบริหารทะเบียนและวัดผล</title>
+<style>
+:root{color-scheme:light;--ink:#26323b;--muted:#53616d;--line:#b6c1ca;--bg:#f2f4f6;--paper:#fff;--accent:#304a5e}
+*{box-sizing:border-box}body{margin:0;font-family:Sarabun,Tahoma,sans-serif;font-size:1rem;line-height:1.65;color:var(--ink);background:var(--bg)}
+a{color:var(--accent)}button,input,select,textarea{font:inherit}button,a,input,select,textarea{touch-action:manipulation}button{cursor:pointer}button:disabled{cursor:default;color:#697680;background:#eef1f3}
+button,.button{padding:.55rem .9rem;min-height:2.75rem;border:1px solid var(--line);border-radius:.4rem;background:var(--paper);color:var(--ink);text-decoration:none;display:inline-flex;align-items:center;justify-content:center;gap:.35rem}
+.primary{background:var(--accent);color:#fff;border-color:var(--accent)}:focus-visible{outline:3px solid #93690f;outline-offset:3px}input,select,textarea{width:100%;min-width:0;min-height:2.75rem;padding:.6rem;border:1px solid #8796a3;border-radius:.3rem;background:#fff;color:var(--ink)}textarea{min-height:5rem;resize:vertical}label{display:block;font-weight:600}label small{display:block;font-weight:400;color:var(--muted)}
+h1{font-size:1.8rem;line-height:1.4;margin:0 0 .5rem}h2{font-size:1.2rem;margin:0 0 .6rem}h3{font-size:1rem;margin:0 0 .5rem}p{margin:.5rem 0 1rem}small,.muted{color:var(--muted)}
+.skip{position:absolute;left:.5rem;top:-5rem;z-index:10;background:white;padding:.7rem}.skip:focus{top:.5rem}.reviewbar{padding:1rem 1.25rem;background:#e1e7ec;border-bottom:2px dashed #8d9daa}.reviewbar h2{font-size:1rem}.reviewcontrols{display:grid;grid-template-columns:2fr 1.5fr 1.5fr auto;gap:.8rem;align-items:end}.reviewbar p{font-size:.85rem;margin:.5rem 0 0;overflow-wrap:anywhere}.siteheader{background:#fff;padding:1rem 1.25rem;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;gap:1rem}.brand{font-size:1.15rem;font-weight:700;color:var(--ink);text-decoration:none;max-width:38rem}.headeractions{display:flex;gap:.5rem;align-items:center;flex-wrap:wrap}.mobilemenu{display:none}
+.publicnav{background:#fff;padding:.4rem 1.25rem;display:flex;flex-wrap:wrap;gap:.2rem;border-bottom:1px solid var(--line)}nav a{display:block;padding:.5rem .7rem;border-radius:.35rem;text-decoration:none}nav a[aria-current=page]{background:#e2e9ef;font-weight:700;border:1px solid #a8b8c5}.layout{display:grid;grid-template-columns:15rem minmax(0,1fr);max-width:92rem;margin:auto}.layout.public{display:block;max-width:76rem}.sidebar{padding:1rem;background:#f8f9fa;border-right:1px solid var(--line)}.group{font-size:.85rem;color:var(--muted);margin:1.1rem .7rem .25rem;font-weight:700}.subnav{padding-left:1rem}main{padding:1.5rem;min-width:0;min-height:34rem}.pageintro{margin-bottom:1.1rem}.badge{display:inline-block;border:1px solid #98a8b4;border-radius:1rem;padding:.12rem .65rem;font-size:.85rem;background:#f5f7f9}.notice{padding:.8rem 1rem;background:#edf1f4;border-left:4px solid #8293a1;margin:.8rem 0}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem}.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(10rem,1fr));gap:1rem}.panel{background:#fff;border:1px solid var(--line);border-radius:.5rem;padding:1.1rem;margin-bottom:1rem;min-width:0}.actions{display:flex;gap:.6rem;flex-wrap:wrap;margin-top:1rem}.filters{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.8rem;align-items:end}.filters.four{grid-template-columns:repeat(4,minmax(0,1fr))}.stack{display:grid;gap:1rem}.amount{font-size:1.45rem;font-weight:700;font-variant-numeric:tabular-nums}.stepbar{display:flex;flex-wrap:wrap;gap:.5rem;padding:0;list-style:none}.stepbar li{padding:.3rem .7rem;border:1px solid var(--line);border-radius:.35rem}.stepbar [aria-current=step]{background:#dce6ed;font-weight:700}.statuspanel{padding:2rem;background:white;border:1px dashed #95a6b3;border-radius:.5rem;max-width:55rem}.placeholder{height:3rem;margin:.5rem 0;background:#e6ebef;border-radius:.3rem}.errsummary{padding:1rem;border:2px solid #984e35;background:#fff7f2;margin-bottom:1rem}.field-error{color:#8a3c25;font-weight:600}.tablewrap{max-width:100%;overflow:auto;background:white;border:1px solid var(--line);border-radius:.5rem}.tablewrap:focus-visible{outline-offset:1px}table{width:100%;border-collapse:collapse;font-size:.95rem}caption{text-align:left;font-weight:600;padding:.8rem}th,td{text-align:left;padding:.65rem .8rem;border-bottom:1px solid #d8e0e6;vertical-align:top}th{background:#edf1f4}td{overflow-wrap:anywhere}.tablewrap.dense table{min-width:36rem}.previewtools{border:1px dashed #8495a4;padding:.8rem;margin:1rem 0;background:#f4f7fa}.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap}.sitefooter{padding:1.25rem;border-top:1px solid var(--line);background:white}.footerlinks{display:flex;gap:.8rem;flex-wrap:wrap}.sitefooter p{margin:.7rem 0 0;font-size:.85rem}.toast{min-height:1.5rem;margin-top:.75rem}.linkbutton{border:0;padding:.25rem;background:none;text-decoration:underline;min-height:2.75rem;justify-content:start}dialog{max-width:min(42rem,calc(100% - 2rem));max-height:90vh;overflow:auto;border:1px solid #8d9caa;border-radius:.5rem;padding:1.25rem;color:var(--ink)}dialog::backdrop{background:rgb(30 40 50 / 55%)}.dialoghead{display:flex;align-items:center;justify-content:space-between;gap:1rem;margin-bottom:1rem}#menudialog{width:25rem}.demo-input{border:1px solid var(--line);padding:.6rem;border-radius:.3rem;min-height:2.75rem;background:#f7f8fa}
+@media(max-width:47.99rem){.reviewcontrols,.grid,.filters,.filters.four{grid-template-columns:1fr}.reviewbar{padding:.8rem}.reviewcontrols{gap:.5rem}.siteheader{padding:.8rem;align-items:start;flex-wrap:wrap}.brand{font-size:1rem;width:100%}.headeractions{width:100%}.mobilemenu{display:inline-flex}.publicnav,.sidebar{display:none}.layout{display:block}main{padding:1rem .8rem}.sitefooter{padding:.9rem}.cards{grid-template-columns:1fr}h1{font-size:1.5rem}.tablewrap:not(.dense){border:0;background:transparent;overflow:visible}.tablewrap:not(.dense) thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)}.tablewrap:not(.dense) table,.tablewrap:not(.dense) tbody{display:block}.tablewrap:not(.dense) tr{display:block;border:1px solid var(--line);border-radius:.5rem;margin-bottom:.7rem;background:white;padding:.4rem}.tablewrap:not(.dense) td{display:grid;grid-template-columns:7rem minmax(0,1fr);gap:.5rem;padding:.45rem;border:0}.tablewrap:not(.dense) td:before{content:attr(data-label);font-weight:600;color:var(--muted)}.tablewrap:not(.dense) caption{display:block}.statuspanel{padding:1.2rem}.actions>*{flex-grow:1}.reviewbar button{width:100%}}
+@media print{.reviewbar,.publicnav,.sidebar,.headeractions,.sitefooter,.actions,.previewtools{display:none!important}.layout{display:block}main{padding:0}.panel{break-inside:avoid}body{background:white}body:before{content:'แบบร่างทดลอง — ไม่ใช่เอกสารทางการ';display:block;padding:1rem;font-weight:bold}dialog{display:none!important}}
+</style>
+</head>
+<body>
+<a class="skip" href="#maincontent">ข้ามไปเนื้อหา</a>
+<section class="reviewbar" aria-label="เครื่องมือดูแบบร่าง">
+<h2>เครื่องมือดูแบบร่างบทที่ 03 — ข้อมูลสมมติ ไม่มีการบันทึกจริง</h2>
+<div class="reviewcontrols">
+<label for="screenchoice">หน้าจอ<select id="screenchoice"></select></label>
+<label for="actorchoice">มุมมองบัญชีสมมติ<select id="actorchoice"></select></label>
+<label for="statechoice">สถานะหน้าจอ<select id="statechoice"><option value="normal">ปกติ</option><option value="loading">กำลังโหลด</option><option value="empty">ไม่มีข้อมูล</option><option value="error">เกิดข้อผิดพลาด</option><option value="403">ไม่มีสิทธิ์ (403)</option><option value="404">ไม่พบหน้า (404)</option></select></label>
+<button id="resetdemo" type="button">เริ่มตัวอย่างใหม่</button>
+</div>
+<p id="routeLabel"></p>
+</section>
+<header class="siteheader">
+<a class="brand" href="#home" data-view="home">เว็บไซต์กองบริหารทะเบียนและวัดผล</a>
+<div class="headeractions"><button type="button" class="mobilemenu" id="openmenu" aria-haspopup="dialog">เมนู</button><span id="accounttools"></span></div>
+</header>
+<nav class="publicnav" id="publicnav" aria-label="เมนูสาธารณะ"></nav>
+<div class="layout public" id="layout"><aside class="sidebar" id="sidebar" hidden><nav aria-label="เมนูพื้นที่ทำงาน" id="worknav"></nav></aside><main id="maincontent" tabindex="-1"></main></div>
+<footer class="sitefooter"><nav class="footerlinks" aria-label="บริการกลาง"><a href="#news" data-service="news">ข่าวประกาศ</a><a href="#help" data-service="help">คู่มือ</a><a href="#downloads" data-service="downloads">ดาวน์โหลด</a><a href="#faq" data-service="faq">คำถามที่พบบ่อย</a><a href="#contact" data-service="contact">ติดต่อเรา</a><a href="#about" data-service="about">ข้อมูลหน่วยงาน</a><a href="#policies" data-service="policies">นโยบาย</a></nav><p>ต้นแบบการจัดวาง ใช้ข้อมูลสมมติทั้งหมด • 3 ตุลาคม 2569 • ข้อมูลติดต่อและเนื้อหาทางการรอยืนยัน</p></footer>
+<dialog id="menudialog" aria-labelledby="menutitle"><div class="dialoghead"><h2 id="menutitle">เมนูเว็บไซต์</h2><button type="button" data-close="menudialog" autofocus>ปิดเมนู</button></div><nav id="dialognav" aria-label="เมนูมือถือ"></nav></dialog>
+<dialog id="servicedialog" aria-labelledby="servicetitle"><div class="dialoghead"><h2 id="servicetitle"></h2><button type="button" data-close="servicedialog" autofocus>ปิด</button></div><div id="servicebody"></div></dialog>
+<dialog id="confirmdialog" aria-labelledby="confirmtitle"><h2 id="confirmtitle">ยืนยันการอนุมัติคำขอทดลอง</h2><p>คำขอ R-001 รุ่น 2 • ผู้สร้างทดสอบคนที่ 1 • ผู้อนุมัติทดสอบคนที่ 2</p><p>วันที่มีผล: 4 ตุลาคม 2569 (ข้อมูลทดลอง) การอนุมัติครั้งนี้ยังไม่เปลี่ยนสถานะหน่วยงาน</p><div class="actions"><button type="button" data-close="confirmdialog" autofocus>ย้อนกลับไปตรวจ</button><button type="button" class="primary" data-action="confirmapprove">ยืนยันอนุมัติในตัวอย่าง</button></div></dialog>
+<script>
+const SCREENS=[
+  {
+    "id": "WF-01",
+    "key": "home",
+    "title": "หน้าแรก",
+    "route": "/",
+    "role": "public",
+    "pg": "PG-01, PG-10",
+    "req": "REQ-C02, REQ-C04",
+    "uc": "UC-C02",
+    "layout": [
+      [
+        "หัวเว็บ",
+        "ชื่อเว็บไซต์ เมนูสาธารณะ7รายการ เข้าสู่ระบบ"
+      ],
+      [
+        "บนเนื้อหา",
+        "ข่าวประกาศสำคัญจากต้นทาง/news และทางลัดค้นผล/ทะเบียน/เรียน"
+      ],
+      [
+        "สองคอลัมน์→หนึ่งบนมือถือ",
+        "ข่าวล่าสุด + คู่มือ/ดาวน์โหลด/FAQจากบริการกลาง"
+      ],
+      [
+        "ท้ายเว็บ",
+        "ข้อมูลหน่วยงานกลาง ติดต่อเรา นโยบาย ชุดเดียว"
+      ]
+    ],
+    "focus": "ข้ามเนื้อหา→หัวเว็บ→เมนู→h1→ทางลัด→ข่าว→บริการกลาง→ท้ายเว็บ",
+    "actions": "เลือกค้นผลไปWF-06 เลือกทะเบียนไปWF-02/03 เลือกเรียนไปWF-04 และloginไปWF-12; ข่าวและcontactใช้service dialogต้นทางเดียวในต้นแบบ",
+    "back": "จากหน้าย่อยกลับหน้าแรก; ข่าวไม่มีข้อมูลยังเลือกงานอื่นได้",
+    "empty": "ยังไม่มีข่าวประกาศในขณะนี้ กรุณาเลือกบริการที่ต้องการ",
+    "error": "ยังโหลดข่าวไม่ได้ เลือกบริการอื่นหรือลองอีกครั้งได้",
+    "permission": "P09; ทางลัดงานภายในต้องตรวจsessionและgrantอีกครั้ง"
+  },
+  {
+    "id": "WF-02",
+    "key": "people",
+    "title": "ค้นหาบุคคล",
+    "route": "/registry/people; /app/people/me; /app/people",
+    "role": "public",
+    "pg": "PG-02, PG-03, PG-17",
+    "req": "REQ-S01, REQ-C08",
+    "uc": "UC-S01-01, UC-S01-02",
+    "layout": [
+      [
+        "ใต้หัวเรื่อง",
+        "ป้ายมุมมองสาธารณะ/ข้อมูลของฉัน/ในพื้นที่ตามgrant"
+      ],
+      [
+        "ตัวกรอง",
+        "ชื่อที่policyอนุญาต สังกัด/หน้าที่ที่รับรอง แล้วปุ่มค้นหา"
+      ],
+      [
+        "ผล/บัตรมือถือ",
+        "รหัสตัวอย่าง ชื่อสมมติ สังกัด สถานะข้อมูล ปุ่มดูรายละเอียด"
+      ],
+      [
+        "แผงรายละเอียด",
+        "ประวัติวันมีผล/วันบันทึก หลักฐานเฉพาะสิทธิ์; ปุ่มเสนอแก้ไปคำขอกลาง"
+      ]
+    ],
+    "focus": "h1→ตัวกรอง→ค้นหา→statusผล→รายละเอียด→กลับผล/เสนอแก้",
+    "actions": "ค้น publicprojection; learnerแสดงเฉพาะตนไม่มีช่องค้นบุคคลอื่น; เจ้าหน้าที่ค้นในscope ไม่ได้roleทะเบียนเพียงเพราะเป็นschool",
+    "back": "ปุ่มกลับผลค้นรักษาตัวกรอง; เสนอแก้ย้อนกลับข้อมูลเดิมโดยยังไม่เปลี่ยนทะเบียน",
+    "empty": "ไม่พบบุคคลตามเงื่อนไขนี้ ลองแก้เงื่อนไขค้นหา",
+    "error": "ยังค้นข้อมูลบุคคลไม่ได้ กรุณาลองอีกครั้ง",
+    "permission": "P09 public หรือP01ตน/P02ในscope; P03/P04เสนอแก้; fieldvisibilityและP07แยก"
+  },
+  {
+    "id": "WF-03",
+    "key": "organizations",
+    "title": "หน่วยงานและสนามสอบ",
+    "route": "/registry/organizations; /app/organizations; /app/organizations/exam-centers",
+    "role": "public",
+    "pg": "PG-04, PG-19, PG-20",
+    "req": "REQ-S02, REQ-C01",
+    "uc": "UC-S02-01, UC-S02-02",
+    "layout": [
+      [
+        "ตัวกรอง",
+        "ชื่อ/ประเภทสมมติ สายสัมพันธ์ และปี/รอบเมื่อเป็นสนาม"
+      ],
+      [
+        "ผลตาราง/บัตร",
+        "องค์กรกลางรหัสเดียว ชื่อ/ประเภท/สถานะที่มีผล ล่าสุดยืนยันเมื่อใด"
+      ],
+      [
+        "รายละเอียด",
+        "ที่ตั้งหน่วยงานpublicหรือภายในตามpolicy; ประวัติชื่อ/ที่อยู่วันมีผล+วันบันทึก"
+      ],
+      [
+        "งานสนาม",
+        "สนามแม่บทแยกการเปิดรายรอบ ประธาน/ผู้รับจากPersonพร้อมsnapshot"
+      ]
+    ],
+    "focus": "h1→filter→ค้นหา→บัตรองค์กร→รายละเอียด→ปี/รอบ→กลับรายการ",
+    "actions": "ดูองค์กรเดิมทั้งpublic/private; เปลี่ยนปีไม่เปลี่ยนแม่บท; คำขอเปลี่ยนสถานะไปWF-05ไม่แก้สถานะจากหน้านี้โดยลัดขั้น",
+    "back": "กลับรายการรักษาสาย/ปี/รอบ; parentผิดให้กลับฟิลด์ ไม่เขียนความสัมพันธ์วน",
+    "empty": "ไม่พบหน่วยงานตามเงื่อนไขนี้ ลองเปลี่ยนตัวกรอง",
+    "error": "ยังโหลดทะเบียนสถานที่ไม่ได้ กรุณาลองอีกครั้ง",
+    "permission": "P09projection; P02/P03ตามชนิดสาย+scope; P07ไฟล์แยก ไม่ให้สิทธิ์จากภูมิศาสตร์อย่างเดียว"
+  },
+  {
+    "id": "WF-04",
+    "key": "courses",
+    "title": "หลักสูตรและการเรียน",
+    "route": "/learn/courses; /app/learning/courses/{curriculum_id}; /app/learning/attempts/{attempt_id}; /app/learning/progress",
+    "role": "learner",
+    "pg": "PG-08, PG-09, PG-28, PG-29, PG-30, PG-31",
+    "req": "REQ-S03, REQ-C17",
+    "uc": "UC-S03-01, UC-S03-02",
+    "layout": [
+      [
+        "ตัวกรอง",
+        "9กลุ่มธรรมศึกษาตามBLUEPRINT กลุ่ม/รุ่นหลักสูตร"
+      ],
+      [
+        "หลักสูตร",
+        "ชื่อเนื้อหาทดลอง รุ่น/แหล่งที่มารอยืนยัน ป้ายคะแนนเพื่อเรียนรู้"
+      ],
+      [
+        "เส้นทางเรียน",
+        "ก่อนเรียน→คำแนะนำ→บทเรียน/แบบฝึก→หลังเรียน→ความก้าวหน้า"
+      ],
+      [
+        "แผงทำแบบทดสอบ",
+        "คำถามsnapshot คำตอบที่ยังไม่ส่ง สถานะบันทึกและปุ่มส่งที่แยกแต่ละattempt"
+      ]
+    ],
+    "focus": "h1→กลุ่ม→หลักสูตร→เริ่ม/เรียนต่อ→คำถาม→บันทึก→ส่ง→ผลฝึก→กลับหลักสูตร",
+    "actions": "publicดูเผยแพร่และloginก่อนattempt; learnerก่อน/หลังแยก; ไม่มีanswerkeyก่อนส่ง ข้อเขียนรอตรวจจริง; ต้นแบบเปลี่ยนขั้นเท่านั้นไม่ให้คะแนนเนื้อหาจริง",
+    "back": "ออกกลับหลักสูตร/เรียนต่อจากข้อมูลที่serverยืนยัน; เครือข่ายขาดแสดงยังไม่บันทึกและไม่สูญหายเงียบ",
+    "empty": "ยังไม่มีหลักสูตรที่เผยแพร่ในกลุ่มนี้ ลองเลือกกลุ่มอื่น",
+    "error": "ยังโหลดบทเรียนไม่ได้ กรุณาลองอีกครั้งโดยกลับมาทำต่อได้",
+    "permission": "P09published; P01/P04attemptตน; backendunlock; ผู้จัดทำP03/P04/P05/P06แยกตามgrant"
+  },
+  {
+    "id": "WF-05",
+    "key": "request",
+    "title": "ยื่นคำขอและตรวจรายการ",
+    "route": "/app/requests/new; /app/requests/{request_id}; /app/exams/applications/{application_id}",
+    "role": "approver",
+    "pg": "PG-18, PG-21, PG-22, PG-24, PG-25",
+    "req": "REQ-S04, REQ-S01, REQ-S05, REQ-C07",
+    "uc": "UC-S04-01, UC-S04-02, UC-S05-01",
+    "layout": [
+      [
+        "หัวเรื่อง",
+        "ชนิดเรื่อง/โหมดใบสมัคร ผู้สร้าง รุ่น สถานะปัจจุบันและวันมีผล"
+      ],
+      [
+        "ขั้น1–4",
+        "บริบท→ข้อมูล→หลักฐาน/ตรวจ→สรุป ใช้ฟอร์มกลาง ป้ายกฎทดลอง"
+      ],
+      [
+        "แผงผู้ตรวจ",
+        "อ่านต้นฉบับ เหตุผลส่งกลับ/ตัดสิน ผู้สร้างกับผู้อนุมัติคนละคน"
+      ],
+      [
+        "ผล/ประวัติ",
+        "ร่าง/ส่งกลับ/ส่งตรวจ/อนุมัติรอมีผล/มีผล; receiptและauditอ้างอิง"
+      ]
+    ],
+    "focus": "h1→หัวขั้น→fields→ย้อนกลับ/ร่าง/ถัดไป; errorfocus summary→field; ผู้ตรวจอ่าน→เหตุผล→ส่งกลับ/อนุมัติ",
+    "actions": "ผู้เสนอแก้เฉพาะร่าง/ส่งกลับ ผู้อนุมัติไม่แก้ต้นฉบับ; ตรวจconfirmationรุ่นและวันก่อนอนุมัติ; โหมดapplicationใช้service05ไม่มีทะเบียนใหม่",
+    "back": "ย้อนขั้นเก็บค่าที่ถูก; ส่งกลับมีลิงก์แก้field/หลักฐาน; 409โหลดรุ่นล่าสุด; ไม่เปลี่ยนสถานะจริงเพราะส่งหรืออนุมัติก่อนวันมีผล",
+    "empty": "ไม่มีคำขอที่คุณต้องดำเนินการในขณะนี้",
+    "error": "ยังโหลดคำขอไม่ได้ กรุณาลองอีกครั้งและตรวจผลเดิมก่อนส่งซ้ำ",
+    "permission": "P01/P02ตามowner; P03/P04ร่าง; P05เฉพาะอำนาจ/ช่วงเวลา maker≠checker; ACL/P07แยก"
+  },
+  {
+    "id": "WF-06",
+    "key": "results",
+    "title": "ผลสอบรายปี",
+    "route": "/exams/results; /app/exams/results",
+    "role": "public",
+    "pg": "PG-05, PG-06, PG-23, PG-26",
+    "req": "REQ-S05, REQ-N02, REQ-C08",
+    "uc": "UC-S05-02, UC-S05-03",
+    "layout": [
+      [
+        "ตัวกรองบน",
+        "ปีการศึกษา ประเภทสอบ ระดับ เงื่อนไขค้นที่Q008อนุญาต"
+      ],
+      [
+        "ผลค้น",
+        "ปีที่ค้น/รุ่นประกาศ/วันเผยแพร่; รหัสและชื่อสมมติขั้นต่ำตามpolicy"
+      ],
+      [
+        "แผงภายในเมื่อgrant",
+        "คะแนนร่าง/ข้อผิดพลาด→ส่งรับรอง→รับรอง→เผยแพร่ที่ต้องP06แยก"
+      ],
+      [
+        "ทางกลับ",
+        "แก้เงื่อนไข ดูปีเก่าจากsnapshot และกลับหน้าแรก"
+      ]
+    ],
+    "focus": "h1→ปี→ประเภท→ระดับ→คำค้น→ค้นหา→status→รายการ→แก้เงื่อนไข",
+    "actions": "ต้นแบบสาธารณะให้ค้นปี2569/2568ชัด ไม่ปะปนฝึกกับผลสอบ; แผงรับรอง/เผยแพร่เป็นสัญญาออกแบบไม่ได้จำลองครบในHTML",
+    "back": "แก้filterโดยไม่ใช้ข้อมูลส่วนตัว; draftไม่ค้นเจอ public; ไม่ถือemptyว่าไม่สอบผ่าน",
+    "empty": "ยังไม่มีผลที่เผยแพร่ตามเงื่อนไขนี้ กรุณาตรวจปีและตัวกรอง",
+    "error": "ยังค้นผลสอบไม่ได้ กรุณาลองอีกครั้ง",
+    "permission": "P09approvedpublishedrelease; P02/P03/P04/P05/P06ภายในแยก; P07exportแยก"
+  },
+  {
+    "id": "WF-07",
+    "key": "budget",
+    "title": "งบประมาณ",
+    "route": "/app/budget; /app/budget/transactions/{transaction_id}; /app/budget/reports",
+    "role": "finance",
+    "pg": "PG-32, PG-33",
+    "req": "REQ-S06, REQ-C16, REQ-N02",
+    "uc": "UC-S06-01, UC-S06-02",
+    "layout": [
+      [
+        "บริบท",
+        "ปีงบประมาณและแหล่งเงิน แยกจากปีการศึกษาที่อ้าง"
+      ],
+      [
+        "ยอด4ช่อง",
+        "จัดสรรสุทธิ จองคงค้าง ผูกพันยังไม่จ่าย ค่าใช้จ่ายแล้ว พร้อมคงเหลือ"
+      ],
+      [
+        "รายการ/บัตร",
+        "วันที่ ประเภท ยอดdecimal สถานะ หลักฐานและreceipt"
+      ],
+      [
+        "ร่าง/อนุมัติ",
+        "รายละเอียด/ส่งตรวจ ผู้อนุมัติตามวงเงินที่รับรอง; โพสต์แล้วกลับรายการ"
+      ]
+    ],
+    "focus": "h1→ปีงบ→แหล่งเงิน→ยอด→รายการ→รายละเอียด→ส่งตรวจ/กลับรายการเมื่อgrant",
+    "actions": "ตัวอย่าง100000จอง20000คงเหลือ80000; ผูกพันแทนจองไม่หักซ้ำ; จ่าย5000ผูกพันค้าง15000คงเหลือ80000; ไม่โอนเงินธนาคารจริง",
+    "back": "ร่างผิดกลับfieldยอด; postedห้ามลบ/แก้ทับ ใช้กลับรายการตามworkflow; 409โหลดบัญชีล่าสุด",
+    "empty": "ยังไม่มีรายการในปีงบและแหล่งเงินนี้ ลองแก้ตัวกรอง",
+    "error": "ยังโหลดข้อมูลงบไม่ได้ กรุณาตรวจผลรายการเดิมก่อนทำซ้ำ",
+    "permission": "P02/P03/P04ปีงบ+แหล่งเงิน+หน่วย; P05ตามวงเงินจริง maker≠checker; techไม่มีP05; P07รายงานแยก"
+  },
+  {
+    "id": "WF-08",
+    "key": "inventory",
+    "title": "พัสดุและครุภัณฑ์",
+    "route": "/app/inventory/stock; /app/inventory/assets; /app/inventory/assets/{asset_id}",
+    "role": "inventory",
+    "pg": "PG-34, PG-35",
+    "req": "REQ-S07, REQ-C12",
+    "uc": "UC-S07-01, UC-S07-02",
+    "layout": [
+      [
+        "บริบท",
+        "คลัง/หน่วย ประเภทวัสดุหรือครุภัณฑ์ ตัวกรองสถานะ"
+      ],
+      [
+        "ตาราง/บัตรวัสดุ",
+        "รหัส รายการ หน่วยนับ จำนวนคงเหลือ ปุ่มรายละเอียดledger"
+      ],
+      [
+        "ครุภัณฑ์",
+        "รหัสรายชิ้น ผู้ถือครองประวัติ ยืมคืน ซ่อม/ตรวจนับ; QRเป็นลิงก์ตรวจสิทธิ์"
+      ],
+      [
+        "งานรับ/โอน",
+        "อ้างขอซื้อ/งบ ตรวจรับบางส่วน คลังต้นทางปลายทางและหลักฐาน"
+      ]
+    ],
+    "focus": "h1→คลัง→ชนิด→ค้นหา→รายการ→ประวัติ→ทำรายการที่มีgrant",
+    "actions": "แยกวัสดุจำนวนกับครุภัณฑ์รายชิ้น; ตรวจรับไม่บันทึกจ่ายอัตโนมัติ; ไม่มีQRข้อมูลส่วนตัว; การปรับยอดต้องapproval",
+    "back": "จำนวน/คลังผิดย้อนแก้ก่อนส่ง; หลังpostedใช้เหตุการณ์แก้ ไม่เขียนstockทับหรือลบจริง",
+    "empty": "ไม่พบรายการในคลังตามตัวกรองนี้",
+    "error": "ยังโหลดรายการพัสดุไม่ได้ กรุณาลองอีกครั้ง",
+    "permission": "P01ผู้ถือครองหรือP02คลัง/หน่วย; P03/P04/P05แยก; transferตรวจทั้งต้นปลาย; P07แยก"
+  },
+  {
+    "id": "WF-09",
+    "key": "office",
+    "title": "สารบรรณ",
+    "route": "/app/office; /app/office/{record_id}; /app/office/{record_id}/print",
+    "role": "office",
+    "pg": "PG-36, PG-37",
+    "req": "REQ-S08, REQ-C15",
+    "uc": "UC-S08-01, UC-S08-02",
+    "layout": [
+      [
+        "ตัวกรอง",
+        "หนังสือรับ/ส่ง/เวียน งานของฉัน สถานะและรุ่น"
+      ],
+      [
+        "ตาราง/บัตร",
+        "เลขทะเบียนทดลอง เรื่อง วันที่ รุ่น สถานะรับทราบที่มีสิทธิ์"
+      ],
+      [
+        "รายละเอียด",
+        "previewรุ่นที่ผ่านตรวจ+ACL ผู้รับจากPerson/Organizationเดิม"
+      ],
+      [
+        "ปุ่มงาน",
+        "รับทราบชัดเจน มอบหมายตามอำนาจ ดาวน์โหลด/พิมพ์เมื่อP07; ประวัติแยกรุ่น"
+      ]
+    ],
+    "focus": "h1→filter→เรื่อง→อ่าน→รับทราบ→มอบหมาย→ดาวน์โหลด/พิมพ์→กลับรายการ",
+    "actions": "เปิดไม่receipt; ต้นแบบปุ่มรับทราบเปลี่ยนเฉพาะflagสมมติ; printpreviewใช้ชิ้นส่วนเอกสาร ไม่อ้างลงนามจริง",
+    "back": "ไม่มีP07กลับรายละเอียด; รุ่นใหม่ส่งตรวจใหม่; คนไม่มีACLได้รับ404เหมือนไม่พบ",
+    "empty": "ไม่มีหนังสือที่คุณเข้าถึงได้ตามเงื่อนไขนี้",
+    "error": "ยังโหลดหนังสือไม่ได้ กรุณาลองอีกครั้ง",
+    "permission": "P02+ACLเรื่อง/รุ่น; P04รับทราบ; P03/P05ตามงาน; P07previewdownloadprintตามcontract; techไม่มีACLอัตโนมัติ"
+  },
+  {
+    "id": "WF-10",
+    "key": "imports",
+    "title": "นำเข้า Excel",
+    "route": "/app/exams/imports; /app/exams/imports/{batch_id}",
+    "role": "school",
+    "pg": "PG-27, PG-11, PG-25",
+    "req": "REQ-S09, REQ-S05, REQ-C16",
+    "uc": "UC-S09-01, UC-S09-02",
+    "layout": [
+      [
+        "ขั้น1",
+        "ปีการศึกษา/รอบ/หน่วยที่ได้รับมอบหมาย ทางลัดเทมเพลต/downloads"
+      ],
+      [
+        "ขั้น2",
+        "ไฟล์และรุ่นschema quarantine/ชนิด/scan/jobสถานะ"
+      ],
+      [
+        "ขั้น3",
+        "สรุปถูก/error/warning ตารางเลขแถว+field+ปัญหา+วิธีแก้และกลับเปลี่ยนไฟล์"
+      ],
+      [
+        "ขั้น4/receipt",
+        "ตรวจ3รายการตัวอย่าง error0 รับทราบwarning ยืนยันcommit→receiptและใบสมัครรออนุมัติ"
+      ]
+    ],
+    "focus": "h1→บริบท→เทมเพลต→เลือกไฟล์→ตรวจ→สรุปerror→แถว/แก้ไฟล์→ยืนยัน→receipt→ใบสมัคร",
+    "actions": "ต้นแบบเลือกไฟล์ตัวอย่างผิด/แก้แล้ว ไม่อ่านไฟล์จริงหรือscanจริง; dryrunไม่application; commitใช้service05และkeyเดิมเมื่อretry",
+    "back": "กลับขั้น2รักษาบริบท; error1ห้ามถัดไป; timeoutlookupreceipt; batchมีปลายทางใช้amendmentไม่ลบ",
+    "empty": "ยังไม่มีชุดนำเข้า เริ่มจากเลือกปี รอบ และเทมเพลต",
+    "error": "ยังตรวจผลชุดนำเข้าไม่ได้ กรุณาตรวจสถานะชุดเดิมก่อนส่งใหม่",
+    "permission": "P03/P04importsตามหน่วย/รอบ; P07template/report; workerlatestgrant; ไม่อนุมัติapplicationจากimport"
+  },
+  {
+    "id": "WF-11",
+    "key": "dashboard",
+    "title": "งานค้างของฉัน",
+    "route": "/app; /app/notifications",
+    "role": "school",
+    "pg": "PG-16, PG-38",
+    "req": "REQ-C03, REQ-C05",
+    "uc": "UC-C01, UC-S04-02, UC-S09-02",
+    "layout": [
+      [
+        "หัวเนื้อหา",
+        "บริบทบัญชี/หน้าที่ที่มอบหมาย ไม่เปลี่ยนroleเองจากapp"
+      ],
+      [
+        "สรุปงาน",
+        "ต้องทำ/ส่งกลับ/รอผู้อื่น/รอวันมีผล/รอระบบ แยกสถานะ"
+      ],
+      [
+        "ตาราง/บัตร",
+        "งานที่มีสิทธิ์ ณ ปัจจุบัน พร้อมลิงก์ต้นเรื่องและขั้นที่ต้องทำ"
+      ],
+      [
+        "ทางลัด",
+        "เรียนต่อ นำเข้า ตรวจคำขอ หรือแจ้งเตือนตามgrant"
+      ]
+    ],
+    "focus": "h1→บริบท→หมวดงาน→รายการ→เปิดงาน→แจ้งเตือนกลาง",
+    "actions": "school→Excel; approver→คำขอ; learner→เรียนต่อ; ห้ามนับงานprivateนอกscopeแม้ไม่แสดงแถว",
+    "back": "เปิดต้นเรื่องตรวจสิทธิ์ใหม่; revokeแล้วล้างจำนวน/ข้อมูลprivateและกลับหน้าที่เข้าได้",
+    "empty": "ไม่มีงานค้างที่ต้องดำเนินการในขณะนี้",
+    "error": "ยังโหลดงานของคุณไม่ได้ กรุณาลองอีกครั้ง",
+    "permission": "validsession+grantต้นทางทุกitem/count; ไม่ใช่grantเข้าทุกระบบ; notificationไม่รับทราบหนังสือ"
+  },
+  {
+    "id": "WF-12",
+    "key": "login",
+    "title": "เข้าสู่ระบบ",
+    "route": "/login",
+    "role": "public",
+    "pg": "PG-15",
+    "req": "REQ-C01, REQ-C04, REQ-N03",
+    "uc": "UC-C01",
+    "layout": [
+      [
+        "หัว",
+        "ชื่อเว็บเดียวและคำอธิบายเข้าสู่พื้นที่ทำงาน"
+      ],
+      [
+        "ฟอร์ม",
+        "อีเมล/รหัสผ่านพร้อมlabel ปุ่มแสดงรหัสผ่านที่เข้าถึงได้ในแบบจริง; อนุญาตpaste/passwordmanager"
+      ],
+      [
+        "ผล/ทางช่วย",
+        "ข้อความผิดแบบไม่เปิดเผยว่ามีบัญชี; กู้บัญชีขั้นย่อยและcontactต้นทางเดียว"
+      ],
+      [
+        "หลังเข้า",
+        "ตรวจreturn_toภายในและgrant แล้วdashboardหรืองานเดิม"
+      ]
+    ],
+    "focus": "h1→อีเมล→รหัสผ่าน→แสดงรหัสผ่าน→เข้าสู่ระบบ→กู้บัญชี→ติดต่อกลาง",
+    "actions": "HTMLต้นแบบแสดงฟอร์มเป็นภาพเชิงโครงสร้างไม่รับcredential; ปุ่ม3บัญชีสมมติในเครื่องมือจำลองเริ่มschool/approver/learner",
+    "back": "กรอกผิดไม่เผยบัญชีมีอยู่หรือไม่; userกลับหน้าแรกได้; sessionหมดอายุหยุดข้อมูลprivateจนตรวจใหม่",
+    "empty": "ยังไม่ได้เข้าสู่ระบบ กรุณาใช้บัญชีที่ได้รับมอบหมาย",
+    "error": "ยังเข้าสู่ระบบไม่ได้ กรุณาลองอีกครั้ง",
+    "permission": "publicshell; Authจริงยังไม่มี; P08ไม่ให้P05/P06อัตโนมัติ"
+  },
+  {
+    "id": "WF-13",
+    "key": "tracking",
+    "title": "ติดตามคำขอ",
+    "route": "/requests/track",
+    "role": "public",
+    "pg": "PG-07",
+    "req": "REQ-S04, REQ-C08",
+    "uc": "UC-S04-02",
+    "layout": [
+      [
+        "หัว",
+        "บอกติดตามเฉพาะเรื่องที่มีสิทธิ์"
+      ],
+      [
+        "ช่องตรวจ",
+        "รหัสอ้างอิงและหลักฐานสิทธิ์ตามpolicyQ019 ไม่กำหนดproofจริงจากการเดา"
+      ],
+      [
+        "ผลขั้นต่ำ",
+        "สถานะ/ขั้นถัดไปตามprojection หลังproofผ่านเท่านั้น"
+      ],
+      [
+        "ทางกลับ",
+        "แก้ข้อมูลตรวจสิทธิ์ กลับหน้าแรก contactต้นทางเดียว"
+      ]
+    ],
+    "focus": "h1→รหัสอ้างอิง→proof→ตรวจ→status→แก้ข้อมูล/กลับ",
+    "actions": "ต้นแบบใช้proofคำว่าทดลองเพื่อแสดงโครงเท่านั้น ไม่ใช่วิธียืนยันสิทธิ์จริง; proofผิด/ไม่พบใช้ข้อความรูปแบบเดียว",
+    "back": "แก้รหัส/proofแล้วตรวจใหม่; ไม่เผยชื่อ/หลักฐานจากเลขคำขออย่างเดียว",
+    "empty": "ยังไม่มีสถานะที่คุณเข้าถึงได้ กรุณาตรวจข้อมูลอ้างอิง",
+    "error": "ยังตรวจสถานะไม่ได้ กรุณาลองอีกครั้ง",
+    "permission": "publicshell; restrictedproofตามQ019ก่อนสถานะ; ส่วนจริงยังปิดgate"
+  }
+];
+const PROFILES={public:{name:'บุคคลทั่วไป',views:['home','people','organizations','courses','results','login','tracking'],menus:[]},school:{name:'เจ้าหน้าที่สำนักเรียน',views:['home','dashboard','imports','request','results','login'],menus:['exams']},approver:{name:'ผู้อนุมัติคำขอ',views:['home','dashboard','request','login'],menus:['requests']},learner:{name:'ผู้เรียน',views:['home','dashboard','courses','people','results','login'],menus:['people','learning']},finance:{name:'เจ้าหน้าที่การเงิน',views:['home','dashboard','budget','login'],menus:['budget']},inventory:{name:'เจ้าหน้าที่พัสดุ',views:['home','dashboard','inventory','login'],menus:['inventory']},office:{name:'เจ้าหน้าที่สารบรรณ',views:['home','dashboard','office','login'],menus:['office']},registry:{name:'เจ้าหน้าที่ทะเบียน',views:['home','dashboard','people','organizations','request','login'],menus:['people','organizations','requests']},tech:{name:'ผู้ดูแลเทคนิค',views:['home','dashboard','login'],menus:['admin']}};
+const PUBLIC_NAV=[['หน้าแรก','home'],['ทะเบียน','people'],['สอบธรรมสนามหลวง','results'],['ติดตามคำขอ','tracking'],['คลังข้อสอบ','courses'],['ดาวน์โหลด','downloads'],['ติดต่อเรา','contact']];
+const WORK_NAV=[['','แดชบอร์ด','dashboard','dashboard'],['บุคคลและทะเบียน','บุคลากร','people','people'],['บุคคลและทะเบียน','ทะเบียนสถานที่','organizations','organizations'],['บุคคลและทะเบียน','คำขอ','requests','request'],['การสอบและการเรียน','สมัครสอบและผลสอบ','exams','results'],['การสอบและการเรียน','คลังข้อสอบ','learning','courses'],['งานสำนักงาน','สารบรรณ','office','office'],['งานสำนักงาน','งบประมาณ','budget','budget'],['งานสำนักงาน','พัสดุ-ครุภัณฑ์','inventory','inventory']];
+const GROUPS=['ประถมตรี','ประถมโท','ประถมเอก','มัธยมตรี','มัธยมโท','มัธยมเอก','อุดมตรี','อุดมโท','อุดมเอก'];
+const SERVICES={news:['ข่าวประกาศ','/news','ประกาศทดลอง: คู่มือใช้งานชุดทดลองอยู่ระหว่างทบทวน เนื้อหานี้ไม่ได้ประกาศวันสมัครหรือวันสอบจริง'],help:['คู่มือ','/help','คู่มือทุกระบบใช้ต้นทางนี้ร่วมกัน เลือกหัวข้อแล้วกลับงานเดิมได้'],downloads:['ดาวน์โหลด','/downloads','เทมเพลตทดลองรุ่น 1 — ยังไม่ใช่แบบทางการ ในต้นแบบไม่มีการดาวน์โหลดไฟล์จริง'],faq:['คำถามที่พบบ่อย','/faq','คำถามตัวอย่าง: นำเข้า Excel แล้วอนุมัติสอบเลยหรือไม่? ต้องรอผู้มีอำนาจตรวจและอนุมัติแยกต่างหาก'],contact:['ติดต่อเรา','/contact','ข้อมูลติดต่อหน่วยงานส่วนกลางรอยืนยัน ไม่มีเบอร์หรืออีเมลบุคคลจริงในต้นแบบ'],about:['ข้อมูลหน่วยงาน','/about','ข้อมูลหน่วยงานส่วนกลางใช้ทะเบียนหน่วยงานชุดเดียว เนื้อหาทางการรอยืนยัน'],policies:['นโยบาย','/policies','เนื้อหานโยบายต้องได้รับการรับรองก่อนเผยแพร่ ต้นแบบไม่ได้แต่งข้อความทางกฎหมาย'],notifications:['แจ้งเตือน','/app/notifications','ตัวอย่างแจ้งเตือนเฉพาะงานในสิทธิ์ เปิดการแจ้งเตือนไม่เท่ากับรับทราบหนังสือ'],admin:['ผู้ดูแลระบบ','/app/admin','ตัวอย่างโครงหน้าจัดการบัญชี ผู้ดูแลเทคนิคไม่มีสิทธิ์อนุมัติงบหรือผลสอบโดยอัตโนมัติ']};
+const $=id=>document.getElementById(id); const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+let view='home',actor='public',state='normal',errors=[];
+const fresh=()=>({reqStep:0,reqStatus:'pending',reqVersion:1,reason:'',draft:{unit:'หน่วยสมมติ A',subject:'',effective:'03/10/2569',evidence:'หลักฐานทดลอง'},importStep:0,importFile:'bad',importReceipt:false,learnStage:0,resultYear:'2569',resultSearched:false,group:GROUPS[0],ack:false});
+let model=fresh();
+function link(label,key,service=false){return `<a href="#${key}" data-${service?'service':'view'}="${key}"${!service&&view===key?' aria-current="page"':''}>${label}</a>`}
+function navHTML(){if(actor==='public')return PUBLIC_NAV.map(([l,k])=>link(l,k,!!SERVICES[k])).join('');let group='',s=link('แดชบอร์ด','dashboard');for(const [g,l,m,k]of WORK_NAV.slice(1)){if(!PROFILES[actor].menus.includes(m))continue;if(group!==g){s+=`<div class="group">${g}</div>`;group=g}s+=link(l,k);if(m==='exams'&&actor==='school')s+=`<div class="subnav">${link('นำเข้า Excel','imports')}</div>`}if(actor==='tech')s+=`<div class="group">การดูแลระบบ</div>${link('ผู้ดูแลระบบ','admin',true)}`;return s}
+function button(text,action,primary=false,extra=''){return `<button type="button" data-action="${action}" class="${primary?'primary':''}" ${extra}>${text}</button>`}
+function table(caption,heads,rows,dense=false){return `<div class="tablewrap ${dense?'dense':''}" ${dense?'tabindex="0" role="region" aria-label="ตารางตรวจแถว เลื่อนดูรายละเอียดได้"':''}><table><caption>${caption}</caption><thead><tr>${heads.map(h=>`<th scope="col">${h}</th>`).join('')}</tr></thead><tbody>${rows.map(row=>`<tr>${row.map((c,i)=>`<td data-label="${heads[i]}">${c}</td>`).join('')}</tr>`).join('')}</tbody></table></div>`}
+function errBox(){return errors.length?`<div class="errsummary" id="errors" tabindex="-1" role="alert"><h2>กรุณาแก้ข้อมูลก่อนทำรายการต่อ</h2>${errors.map(e=>`<p><a href="#${e.id}" data-focus="${e.id}">${e.text}</a></p>`).join('')}</div>`:''}
+function fields(items){return `<div class="stack">${items.map(([id,label,value])=>`<label for="${id}">${label}<input id="${id}" data-draft="${id}" value="${esc(value)}" ${errors.some(e=>e.id===id)?`aria-invalid="true" aria-describedby="${id}-error"`:''}>${errors.some(e=>e.id===id)?`<span id="${id}-error" class="field-error">${errors.find(e=>e.id===id).text}</span>`:''}</label>`).join('')}</div>`}
+function steps(names,index){return `<ol class="stepbar" aria-label="ขั้นตอน">${names.map((n,i)=>`<li${i===index?' aria-current="step"':''}>${i+1}. ${n}</li>`).join('')}</ol>`}
+function intro(s){let mode=actor==='public'?'สาธารณะ':PROFILES[actor].name;return `<div class="pageintro"><h1 id="pagetitle" tabindex="-1">${s.title}</h1><span class="badge">มุมมองตัวอย่าง: ${mode}</span><div class="notice">ข้อมูลสมมติ — กฎและเนื้อหาทางการยังรอยืนยัน</div></div>`}
+function statePanel(s,t){let title={loading:'กำลังโหลดข้อมูล',empty:'ไม่มีข้อมูลตามเงื่อนไข',error:'เกิดข้อผิดพลาด',403:'ไม่มีสิทธิ์ทำรายการนี้',404:'ไม่พบหน้าหรือรายการ'}[t];let message={loading:'กำลังโหลดข้อมูล กรุณารอสักครู่',empty:s.empty,error:s.error,403:'บัญชีนี้ไม่มีสิทธิ์ทำรายการนี้',404:'ไม่พบหน้าหรือรายการที่คุณเข้าถึงได้'}[t];return `<section class="statuspanel" ${t==='loading'?'aria-busy="true"':''}><h2>${title}</h2><p role="status">${message}</p>${t==='loading'?'<div class="placeholder" aria-hidden="true"></div><div class="placeholder" aria-hidden="true"></div>':''}${t==='error'?'<p class="muted">รหัสอ้างอิงทดลอง: DEMO-03</p>':''}<div class="actions">${['error','empty'].includes(t)?button(t==='error'?'ลองอีกครั้ง':'กลับไปแก้เงื่อนไข','normal',true):''}<a class="button" href="#home" data-view="home">กลับหน้าแรก</a>${actor!=='public'?'<a class="button" href="#dashboard" data-view="dashboard">งานของฉัน</a>':''}</div></section>`}
+function home(){return `<div class="panel"><h2>บริการทะเบียนและการศึกษาในเว็บไซต์เดียว</h2><p>ค้นข้อมูลที่เผยแพร่ ติดตามเรื่องที่มีสิทธิ์ และเข้าสู่พื้นที่ทำงานของคุณ</p><div class="actions"><a class="button primary" href="#results" data-view="results">ค้นผลสอบรายปี</a><a class="button" href="#people" data-view="people">ค้นทะเบียนบุคคล</a><a class="button" href="#courses" data-view="courses">เลือกหลักสูตร</a></div></div><div class="grid"><section class="panel"><h2>ข่าวประกาศสำคัญ</h2><p>ประกาศทดลอง — ข้อมูลจริงรอยืนยัน</p>${link('ดูข่าวจากแหล่งกลาง','news',true)}</section><section class="panel"><h2>คู่มือและเอกสาร</h2><p>คู่มือ เทมเพลต และคำถามที่พบบ่อยใช้บริการกลางร่วมกัน</p><div class="actions">${link('คู่มือ','help',true)}${link('ดาวน์โหลด','downloads',true)}${link('คำถามที่พบบ่อย','faq',true)}</div></section></div>`}
+function registry(person){const self=person&&actor==='learner';return `${self?'<p>ข้อมูลของฉัน — ไม่เปิดช่องค้นคนอื่น</p>':`<section class="panel"><div class="filters"><label for="registryquery">${person?'ชื่อที่ต้องการค้น':'ชื่อหน่วยงาน'}<input id="registryquery" value="" placeholder="คำค้นจากข้อมูลที่เผยแพร่"></label><label for="registryunit">สังกัดที่มีสิทธิ์<select id="registryunit"><option>ทั้งหมดที่เข้าถึงได้</option><option>หน่วยสมมติ A</option></select></label>${button('ค้นหา','searchregistry',true)}</div><p class="toast" id="registryfeedback" role="status">ตัวอย่างรายการสมมติ เงื่อนไขเผยแพร่ยังรอยืนยัน</p></section>`}${table(person?'ทะเบียนบุคคลชุดเดียว':'ทะเบียนหน่วยงานชุดเดียว',['รหัส','ชื่อ','สังกัดหรือประเภท','สถานะ'],[[person?'P-DEMO-001':'ORG-DEMO-A',person?'บุคคลทดสอบ ก':'หน่วยสมมติ A',person?'หน่วยสมมติ A':'หน่วยงานทดลอง','ข้อมูลทดลอง']])}<div class="panel"><h2>รายละเอียดและประวัติ</h2><p>${person?'วันที่มีผลและวันที่บันทึกแสดงแยกกัน ไม่เปิดข้อมูลส่วนตัวในมุมสาธารณะ':'สนามแม่บทแยกการเปิดสนามรายรอบ เปลี่ยนปีโดยไม่เปลี่ยนประวัติปีเก่า'}</p><p>วันมีผล: 3 ตุลาคม 2569 • วันบันทึก: 3 ตุลาคม 2569 16:00 น.</p><div class="actions">${person&&actor==='registry'?'<a class="button" href="#request" data-view="request">เสนอแก้ผ่านคำขอกลาง</a>':''}${person&&actor==='public'?'<a class="button" href="#organizations" data-view="organizations">ค้นหน่วยงาน</a>':''}<a class="button" href="#home" data-view="home">กลับหน้าแรก</a></div></div>`}
+function results(){return `<section class="panel"><div class="filters four"><label for="resultyear">ปีการศึกษา<select id="resultyear">${['2569','2568'].map(y=>`<option ${model.resultYear===y?'selected':''}>${y}</option>`).join('')}</select></label><label for="examtype">ประเภทสอบ<select id="examtype"><option>ประเภทสอบทดลอง</option></select></label><label for="examlevel">ระดับ<select id="examlevel"><option>ระดับทดลอง</option></select></label><label for="resultquery">คำค้นที่อนุญาต<input id="resultquery" placeholder="ข้อมูลเผยแพร่ตามนโยบาย"></label></div><div class="actions">${button('ค้นผลสอบ','searchresults',true)}${button('แก้เงื่อนไขค้นหา','editresults')}</div></section><div id="resultoutput" aria-live="polite">${model.resultSearched?`<p>ผลค้นปีการศึกษา <strong>${model.resultYear}</strong> • รุ่นเผยแพร่ทดลอง 1</p>${table('ผลที่เผยแพร่ทดลอง',['ปีการศึกษา','รหัส','ชื่อสมมติ','ผล'],[[model.resultYear,'RES-DEMO-'+model.resultYear,'ผู้เข้าสอบทดสอบ '+(model.resultYear==='2569'?'ก':'ข'),'ตัวอย่างข้อมูลเผยแพร่']])}`:'<p>เลือกเงื่อนไขแล้วกดค้นหา ยังไม่ได้ค้นผลสอบ</p>'}</div><div class="notice">ผลหน้านี้เป็นตัวอย่างชุดเผยแพร่ ไม่มีคะแนนร่างหรือคะแนนฝึก</div>`}
+function dashboard(){let key=actor==='school'?'imports':actor==='approver'?'request':actor==='learner'?'courses':actor==='finance'?'budget':actor==='inventory'?'inventory':actor==='office'?'office':actor==='registry'?'people':'login';let task={school:'ตรวจชุดนำเข้าและส่งใบสมัคร',approver:'ตรวจคำขอ R-001 ที่คนอื่นสร้าง',learner:'เรียนต่อหลักสูตรทดลอง',finance:'ตรวจรายการงบในแหล่งเงินที่มอบหมาย',inventory:'ตรวจรับวัสดุในคลังที่มอบหมาย',office:'รับทราบหนังสือที่ส่งถึงคุณ',registry:'ตรวจข้อมูลบุคคลในพื้นที่',tech:'ตรวจงานบัญชีที่ได้รับมอบหมาย'}[actor];return `<div class="cards"><div class="panel"><h2>ต้องดำเนินการ</h2><div class="amount">1 งานทดลอง</div></div><div class="panel"><h2>รอผู้อื่น</h2><div class="amount">0 งาน</div></div><div class="panel"><h2>รอวันมีผล</h2><div class="amount">${model.reqStatus==='waiting'?'1':'0'} งาน</div></div></div>${table('งานเฉพาะสิทธิ์ของฉัน',['งาน','บริบท','สถานะ','ดำเนินการ'],[[task,'หน่วยสมมติ A','งานทดลอง',`<a href="#${key}" data-view="${key}">เปิดงาน</a>`]])}<p>จำนวนงานไม่รวมข้อมูลของหน่วยอื่น การแจ้งเตือนใช้รายการกลางเดียวกัน</p>`}
+function login(){return `<div class="panel"><h2>เข้าสู่พื้นที่ทำงานด้วยบัญชีเดียว</h2><div class="stack"><div><div>อีเมล</div><div class="demo-input">ช่องอีเมลในแบบจริง</div></div><div><div>รหัสผ่าน</div><div class="demo-input">ช่องรหัสผ่านในแบบจริง</div></div></div><p class="muted">ต้นแบบนี้ไม่รับอีเมลหรือรหัสผ่านจริง</p><div class="actions">${link('กู้บัญชีจากต้นทางเดียว','help',true)}${link('ติดต่อเรา','contact',true)}</div></div><section class="previewtools" aria-label="เครื่องมือจำลองบัญชี"><h2>จำลองการเข้าสู่ระบบเพื่อเดินเส้นทาง</h2><p>ปุ่มด้านล่างเป็นเครื่องมือดูแบบร่าง ไม่ใช่การตรวจบัญชีจริง</p><div class="actions">${button('จำลองเจ้าหน้าที่สำนักเรียน','login_school')}${button('จำลองผู้อนุมัติ','login_approver')}${button('จำลองผู้เรียน','login_learner')}</div></section>`}
+function request(){if(actor==='school')return `<div class="panel"><h2>ใบสมัครจากทะเบียนเดียวกับ Excel</h2><p>${model.importReceipt?'ผลจำลอง: ใบสมัคร 3 รายการรออนุมัติ • อ้างอิง DEMO-IMPORT-001':'ยังไม่มีใบสมัครจากชุดทดลองนี้'}</p><p>การนำเข้าและส่งตรวจไม่ใช่การอนุมัติให้เข้าสอบ</p></div>${model.importReceipt?table('ใบสมัครทดลองที่ส่งตรวจ',['รหัสใบสมัคร','บุคคลกลาง','สถานะ'],[1,2,3].map(i=>['APP-DEMO-00'+i,'บุคคลทดสอบ '+i,'รออนุมัติ'])):''}<div class="actions"><a class="button" href="#imports" data-view="imports">กลับชุดนำเข้าเดิม</a><a class="button" href="#dashboard" data-view="dashboard">งานของฉัน</a></div>`;
+if(actor==='approver')return `${errBox()}<div class="panel"><h2>คำขอทดลอง R-001 รุ่น ${model.reqVersion}</h2><p>ผู้สร้าง: ผู้เสนอทดสอบคนที่ 1 • ผู้ตรวจ: ผู้อนุมัติทดสอบคนที่ 2</p><p>สถานะ: <strong id="requeststatus">${({pending:'รออนุมัติ',returned:'ส่งกลับแก้ไข',waiting:'อนุมัติแล้ว รอวันมีผล'})[model.reqStatus]}</strong></p><p>${model.reqVersion===1?'หลักฐานทดลองยังไม่ครบ ต้องส่งกลับแก้ไข':'หลักฐานทดลองรุ่น 2 ครบสำหรับการจำลอง'}</p><p>วันบันทึก: 3 ตุลาคม 2569 • วันมีผล: 4 ตุลาคม 2569 (ข้อมูลทดลอง)</p><label for="reviewreason">เหตุผลส่งกลับหรือคำวินิจฉัย<textarea id="reviewreason" ${errors.length?'aria-invalid="true" aria-describedby="reasonerror"':''}>${esc(model.reason)}</textarea>${errors.length?'<span id="reasonerror" class="field-error">กรุณาระบุจุดที่ต้องแก้ไข</span>':''}</label><div class="actions">${button('ส่งกลับแก้ไข','returnrequest',false,model.reqStatus!=='pending'?'disabled':'')}${button('อนุมัติ','approve',true,model.reqVersion!==2||model.reqStatus!=='pending'?'disabled':'')}</div></div>${model.reqStatus==='returned'?`<section class="previewtools"><h2>เครื่องมือจำลองผู้เสนอคนอื่น</h2><p>จำลองผู้เสนอแก้หลักฐานแล้วส่งรุ่น 2 ไม่ใช่ให้ผู้อนุมัติแก้ต้นฉบับ</p>${button('จำลองผู้เสนอแก้และส่งใหม่','revise')}</section>`:''}${model.reqStatus==='waiting'?'<div class="notice" role="status">งานอนุมัติเสร็จแล้ว สถานะหน่วยงานยังไม่เปลี่ยนจนถึงวันมีผลและมีหลักฐานการปรับสถานะ</div>':''}`;
+let i=model.reqStep;return `${errBox()}${steps(['บริบท','ข้อมูล','หลักฐาน','ตรวจสรุป'],i)}<div class="panel"><h2 id="steptitle" tabindex="-1">ขั้นที่ ${i+1}: ${['เลือกบริบท','กรอกข้อมูล','แนบหลักฐาน','ตรวจสรุปก่อนส่ง'][i]}</h2>${i===0?fields([['unit','หน่วยที่ได้รับมอบหมาย',model.draft.unit],['effective','วันที่มีผล (พ.ศ. วว/ดด/ปปปป)',model.draft.effective]]):i===1?fields([['subject','เรื่องคำขอทดลอง (จำเป็น)',model.draft.subject]]):i===2?fields([['evidence','หลักฐานตัวอย่าง (ยังไม่ใช่ไฟล์จริง)',model.draft.evidence]]):`<p>หน่วย: ${esc(model.draft.unit)}</p><p>เรื่อง: ${esc(model.draft.subject)}</p><p>วันที่มีผล: ${esc(model.draft.effective)}</p><p>หลักฐาน: ${esc(model.draft.evidence)}</p>`}<div class="actions">${button('ย้อนกลับ','reqback',false,i===0?'disabled':'')}${button('บันทึกร่าง','savedraft')}${button(i===3?'ส่งตรวจในตัวอย่าง':'ถัดไป','reqnext',true)}</div><p id="draftfeedback" class="toast" role="status"></p></div>`}
+function imports(){if(model.importReceipt)return `<div class="panel"><h2>ผลจำลอง: นำเข้าและส่งตรวจแล้ว</h2><p>อ้างอิง DEMO-IMPORT-001 • 3 ใบสมัคร • ใช้ทะเบียนใบสมัครเดิม</p><p>สถานะ: รออนุมัติ ไม่ใช่อนุมัติให้เข้าสอบ</p><div class="actions"><a class="button primary" href="#request" data-view="request">เปิดใบสมัครจากชุดนี้</a><a class="button" href="#dashboard" data-view="dashboard">งานของฉัน</a></div></div>`;let i=model.importStep;return `${steps(['บริบท','ไฟล์','ผลตรวจ','ยืนยัน'],i)}<div class="panel"><h2 id="steptitle" tabindex="-1">ขั้นที่ ${i+1}: ${['เลือกรอบและหน่วย','เลือกไฟล์ตัวอย่าง','ตรวจข้อผิดพลาดรายแถว','ตรวจสรุปก่อนนำเข้า'][i]}</h2>${i===0?`<div class="filters"><label for="importyear">ปีการศึกษา<select id="importyear"><option>2569</option></select></label><label for="importround">รอบสอบ<select id="importround"><option>รอบทดลอง 1</option></select></label><label for="importunit">หน่วยที่ได้รับมอบหมาย<select id="importunit"><option>หน่วยสมมติ A</option></select></label></div><div class="actions">${link('เทมเพลตจากดาวน์โหลดกลาง','downloads',true)}</div>`:i===1?`<p>เครื่องมือจำลองไม่มีการอัปโหลดหรืออ่านไฟล์จริง เลือกผลตัวอย่างเพื่อทบทวนขั้นตอน</p><div class="actions">${button('เลือกตัวอย่างไฟล์ผิด','filebad')}${button('เลือกตัวอย่างไฟล์แก้แล้ว','filegood')}</div><p role="status">เลือก: ${model.importFile==='bad'?'ไฟล์ทดลองผิด 1 แถว':'ไฟล์ทดลองแก้แล้ว 3 แถว'}</p><p>ตัวอย่างสถานะ: ผ่านตรวจชนิดและตรวจไฟล์แล้ว (เป็นข้อมูลจำลอง)</p>`:i===2?`<p id="importcounts" role="status">จำนวน 3 แถว • ถูก ${model.importFile==='bad'?2:3} • ข้อผิดพลาด ${model.importFile==='bad'?1:0} • คำเตือน 0</p>${table('รายงานตรวจแถวทดลอง',['เลขแถว','ข้อมูล','ผลตรวจ','วิธีแก้'],[[1,'รหัสบุคคลทดลอง 1','ถูกต้อง','—'],[2,'รหัสบุคคลทดลอง 2','ถูกต้อง','—'],[3,'ปีการศึกษา',model.importFile==='bad'?'ปีไม่ตรงกับรอบที่เลือก':'ถูกต้อง',model.importFile==='bad'?'แก้ปีในไฟล์ให้ตรง 2569 แล้วตรวจใหม่':'—']],true)}<p>การตรวจเบื้องต้นยังไม่สร้างใบสมัคร ต้องแก้ข้อผิดพลาดให้เป็น 0 ก่อนยืนยัน</p>`:`<p>ปีการศึกษา2569 • หน่วยสมมติ A • รอบทดลอง1 • เทมเพลตทดลองรุ่น1</p><p>ใบสมัคร 3 รายการ • ข้อผิดพลาด0 • คำเตือน0</p><p>การนำเข้าใช้ทะเบียนใบสมัครเดิม และยังต้องรออนุมัติ</p>`}<div class="actions">${button(i===2?'กลับไปเปลี่ยนไฟล์':'ย้อนกลับ','importback',false,i===0?'disabled':'')}${button(i===1?'ตรวจไฟล์ตัวอย่าง':i===3?'ยืนยันนำเข้าและส่งตรวจ':'ถัดไป','importnext',true,i===2&&model.importFile==='bad'?'disabled':'')}</div></div>`}
+function courses(){let st=model.learnStage;return `<section class="panel"><label for="coursegroup">กลุ่มหลักสูตร<select id="coursegroup">${GROUPS.map(g=>`<option ${model.group===g?'selected':''}>${g}</option>`).join('')}</select></label><h2 style="margin-top:1rem">หลักสูตรทดลอง — ${model.group}</h2><p>รุ่นเนื้อหาทดลอง1 • ชื่อบทเรียนและเนื้อหาทางการรอยืนยัน</p><div class="notice">คะแนนเพื่อการเรียนรู้ ไม่ใช่ผลสอบธรรมสนามหลวง</div></section>${actor==='public'?'<section class="panel"><p>อ่านรายละเอียดหลักสูตรที่เผยแพร่ได้ เข้าสู่ระบบเพื่อบันทึกการเรียนของตน</p><a class="button primary" href="#login" data-view="login">เข้าสู่ระบบเพื่อเริ่มเรียน</a></section>':`${steps(['ก่อนเรียน','บทเรียน','หลังเรียน','ความก้าวหน้า'],st)}<section class="panel"><h2 id="learntitle">${['แบบทดสอบก่อนเรียนทดลอง','บทเรียนทดลองและคำแนะนำ','แบบทดสอบหลังเรียนทดลอง','ความก้าวหน้าของฉัน'][st]}</h2>${st===0||st===2?'<label for="demoanswer">ช่องคำตอบตัวอย่าง<textarea id="demoanswer" placeholder="ตัวอย่างคำตอบ ไม่ใช่ข้อสอบจริง"></textarea></label><p>ต้นแบบไม่สร้างคำถามธรรมจริง ไม่ตรวจคะแนนและไม่ส่งเฉลยก่อนตอบ</p>':st===1?'<p>เรียนหัวข้อทดลองและกลับมาทำต่อได้เมื่อมีบริการจริง</p>':'<p>ผลจำลอง: ส่งก่อนเรียนแล้ว • เรียนบทเรียนแล้ว • ส่งหลังเรียนแล้ว</p><p>ไม่มีผลสอบทางการหรือคะแนนจริงในหน้านี้</p>'}<div class="actions">${st<3?button(['ส่งแบบทดสอบก่อนเรียน','เรียนบทเรียนแล้ว ไปหลังเรียน','ส่งแบบทดสอบหลังเรียน'][st],'learnnext',true):'<a class="button" href="#dashboard" data-view="dashboard">กลับงานของฉัน</a>'}</div></section>`}`}
+function budget(){return `<section class="panel"><div class="filters"><label for="fiscalyear">ปีงบประมาณ<select id="fiscalyear"><option>2569 (ปีงบทดลอง)</option></select></label><label for="fund">แหล่งเงิน<select id="fund"><option>แหล่งเงินทดลอง A</option></select></label><p>ปีการศึกษาที่อ้าง: 2568 (แยกจากปีงบ)</p></div></section><div class="cards">${[['จัดสรรสุทธิ','100,000.00'],['จองคงค้าง','0.00'],['ผูกพันยังไม่จ่าย','15,000.00'],['ค่าใช้จ่ายแล้ว','5,000.00'],['คงเหลือ','80,000.00']].map(([l,n])=>`<div class="panel"><h2>${l}</h2><div class="amount">${n}</div><small>บาท • ยอดสมมติ</small></div>`).join('')}</div>${table('รายการงบทดลอง',['รายการ','ยอด (บาท)','สถานะ','หลักฐาน'],[['จองงบ','20,000.00','เปลี่ยนเป็นผูกพันแล้ว','หลักฐานกลางทดลอง'],['ผูกพันคงค้าง','15,000.00','จ่ายบางส่วนแล้ว','รุ่นเอกสารเดิม'],['ค่าใช้จ่าย','5,000.00','บันทึกจ่ายแล้ว','หลักฐานยืนยันทดลอง']])}<div class="notice">หลังโพสต์แล้วแก้ด้วยกลับรายการ ไม่ลบหรือแก้ยอดเดิมทับ การบันทึกจ่ายไม่ใช่การโอนธนาคาร</div>`}
+function inventory(){return `<section class="panel"><div class="filters"><label for="warehouse">คลังที่ได้รับมอบหมาย<select id="warehouse"><option>คลังทดลอง A</option></select></label><label for="stocktype">ประเภท<select id="stocktype"><option>วัสดุและครุภัณฑ์ทดลอง</option></select></label><label for="stockquery">ค้นรหัสหรือรายการ<input id="stockquery" placeholder="ข้อมูลในคลังที่มีสิทธิ์"></label></div></section>${table('วัสดุคุมจำนวน',['รหัส','รายการ','คงเหลือ','หน่วย'],[['ITEM-DEMO-01','วัสดุทดลอง','10','หน่วยทดลอง']])}<div class="panel"><h2>ครุภัณฑ์ทะเบียนรายชิ้น</h2><p>ASSET-DEMO-01 • ครุภัณฑ์ทดลอง • ผู้ถือครอง: บุคคลทดสอบ ก</p><p>ประวัติถือครอง/ยืมคืน/ซ่อมอ้างบุคคลกลาง ไม่เก็บข้อมูลลับใน QR</p></div><div class="notice">ตรวจรับของแยกจากบันทึกจ่าย ปรับยอดจากตรวจนับต้องผ่านการอนุมัติ</div>`}
+function office(){return `${table('หนังสือที่เข้าถึงได้',['เลขทดลอง','เรื่อง','รุ่น','สถานะ'],[['OFF-DEMO-01','หนังสือทดลองสำหรับทบทวนหน้าจอ','1',model.ack?'รับทราบแล้ว':'ยังไม่รับทราบ']])}<div class="panel"><h2>รายละเอียดหนังสือรุ่น 1</h2><p>ผู้รับ: บุคคลทดสอบ ก • วันบันทึก: 3 ตุลาคม 2569</p><div class="placeholder" aria-hidden="true"></div><p>แผงเอกสารอ้างไฟล์กลางที่ผ่านตรวจและตรวจสิทธิ์ตามรุ่น เปิดรายละเอียดนี้ยังไม่ถือว่ารับทราบ</p><div class="actions">${button(model.ack?'รับทราบแล้ว':'รับทราบหนังสือ','ack',true,model.ack?'disabled':'')}${button('ดูโครงหน้าพิมพ์','printpreview')}</div><p class="toast" id="officefeedback" role="status"></p></div>`}
+function tracking(){return `<section class="panel"><p>รูปแบบพิสูจน์สิทธิ์จริงยังรอยืนยัน ตัวอย่างนี้ไม่ใช่ช่องติดตามข้อมูลจริง</p><div class="stack"><label for="trackingref">รหัสอ้างอิงทดลอง<input id="trackingref" value="R-001"></label><label for="trackingproof">หลักฐานสิทธิ์ตัวอย่าง<input id="trackingproof" placeholder="ใช้คำว่า ทดลอง เพื่อดูโครงเท่านั้น"></label></div><div class="actions">${button('ตรวจสถานะตัวอย่าง','track',true)}</div><p class="toast" id="trackingfeedback" role="status"></p></section>`}
+function render(focus=false){const s=SCREENS.find(x=>x.key===view);$('screenchoice').value=view;$('actorchoice').value=actor;$('statechoice').value=state;$('routeLabel').textContent=`${s.id} • เส้นทางที่เสนอ: ${s.route} • ยังไม่มีบริการจริง`;
+let work=actor!=='public';$('layout').className='layout'+(work?'':' public');$('sidebar').hidden=!work;$('publicnav').hidden=work;$('publicnav').style.display=work?'none':'';$('publicnav').innerHTML=PUBLIC_NAV.map(([l,k])=>link(l,k,!!SERVICES[k])).join('');$('worknav').innerHTML=navHTML();$('dialognav').innerHTML=navHTML();$('accounttools').innerHTML=work?`<span class="badge">${PROFILES[actor].name}</span><button type="button" data-service="notifications">แจ้งเตือน</button>`:'<a class="button" href="#login" data-view="login">เข้าสู่ระบบ</a>';
+let actual=PROFILES[actor].views.includes(view)?state:'403';let body=actual!=='normal'?statePanel(s,actual):({home,people:()=>registry(true),organizations:()=>registry(false),results,dashboard,login,request,imports,courses,budget,inventory,office,tracking})[view]();$('maincontent').innerHTML=intro(s)+body;if(focus)$('pagetitle').focus({preventScroll:true})}
+function choose(key,auto=false){if(!SCREENS.some(s=>s.key===key))return;view=key;state='normal';errors=[];if(auto)actor=SCREENS.find(s=>s.key===key).role;render(true)}
+function service(key){const s=SERVICES[key];if(!s)return;$('servicetitle').textContent=s[0];$('servicebody').innerHTML=`<p>${s[2]}</p><p class="muted">แบบร่างบริการกลางต้นทางเดียว: ${s[1]}</p>`;$('servicedialog').showModal()}
+function focusErrors(){render();$('errors')?.focus()}
+document.addEventListener('input',e=>{if(e.target.matches('[data-draft]'))model.draft[e.target.dataset.draft]=e.target.value;if(e.target.id==='reviewreason')model.reason=e.target.value});
+document.addEventListener('change',e=>{if(e.target.id==='screenchoice')choose(e.target.value,true);else if(e.target.id==='actorchoice'){actor=e.target.value;errors=[];render()}else if(e.target.id==='statechoice'){state=e.target.value;render(true)}else if(e.target.id==='resultyear')model.resultYear=e.target.value;else if(e.target.id==='coursegroup'){model.group=e.target.value;render();$('coursegroup').focus()}});
+document.addEventListener('click',e=>{const el=e.target.closest('button,a');if(!el)return;if(el.dataset.close){$(el.dataset.close).close();return}if(el.dataset.view){e.preventDefault();if($('menudialog').open)$('menudialog').close();choose(el.dataset.view);return}if(el.dataset.service){e.preventDefault();if($('menudialog').open)$('menudialog').close();service(el.dataset.service);return}if(el.dataset.focus){e.preventDefault();$(el.dataset.focus)?.focus();return}if(el.id==='openmenu'){$('menudialog').showModal();return}if(el.id==='resetdemo'){model=fresh();actor='public';choose('home');return}let a=el.dataset.action;if(!a)return;
+if(a.startsWith('login_')){actor=a.slice(6);choose('dashboard');return}if(a==='normal'){state='normal';render(true);return}if(a==='searchresults'){model.resultSearched=true;render();document.querySelector('[data-action="searchresults"]').focus();return}if(a==='editresults'){$('resultyear').focus();return}if(a==='searchregistry'){$('registryfeedback').textContent='ผลจำลอง: 1 รายการที่เข้าถึงได้';return}if(a==='track'){$('trackingfeedback').textContent=$('trackingproof').value==='ทดลอง'?'ผลจำลอง: อยู่ระหว่างตรวจ — ไม่แสดงรายละเอียดส่วนตัว':'ไม่พบสถานะที่คุณเข้าถึงได้ กรุณาตรวจข้อมูลอ้างอิง';return}
+if(a==='reqback'){model.reqStep=Math.max(0,model.reqStep-1);errors=[];render();$('steptitle')?.focus();return}if(a==='savedraft'){$('draftfeedback').textContent='เก็บร่างเฉพาะหน่วยความจำของต้นแบบ ยังไม่บันทึกจริง';return}if(a==='reqnext'){if(model.reqStep===1&&!model.draft.subject.trim()){errors=[{id:'subject',text:'กรุณาระบุเรื่องคำขอทดลอง'}];focusErrors();return}if(model.reqStep<3){model.reqStep++;errors=[];render();$('steptitle').focus()}else $('draftfeedback').textContent='ผลจำลอง: ส่งตรวจแล้ว ยังไม่อนุมัติและยังไม่เปลี่ยนทะเบียน';return}
+if(a==='returnrequest'){if(!model.reason.trim()){errors=[{id:'reviewreason',text:'กรุณาระบุจุดที่ต้องแก้ไข'}];focusErrors();return}model.reqStatus='returned';errors=[];render(true);return}if(a==='revise'){model.reqStatus='pending';model.reqVersion=2;model.reason='';render(true);return}if(a==='approve'){if(actor==='approver'&&model.reqVersion===2&&model.reqStatus==='pending')$('confirmdialog').showModal();return}if(a==='confirmapprove'){if(actor!=='approver'||model.reqVersion!==2)return;$('confirmdialog').close();model.reqStatus='waiting';render(true);return}
+if(a==='filebad'||a==='filegood'){model.importFile=a==='filebad'?'bad':'good';render();document.querySelector(`[data-action="${a}"]`).focus();return}if(a==='importback'){model.importStep=Math.max(0,model.importStep-1);render();$('steptitle')?.focus();return}if(a==='importnext'){if(model.importStep===2&&model.importFile==='bad')return;if(model.importStep===3){model.importReceipt=true;render(true)}else{model.importStep++;render();$('steptitle').focus()}return}
+if(a==='learnnext'){model.learnStage=Math.min(3,model.learnStage+1);render(true);return}if(a==='ack'){model.ack=true;render();$('officefeedback').textContent='ผลจำลอง: รับทราบหนังสือรุ่น 1 แล้ว';return}if(a==='printpreview'){$('servicetitle').textContent='โครงเอกสารพิมพ์จากเรื่องเดิม';$('servicebody').innerHTML='<p>หนังสือทดลอง OFF-DEMO-01 รุ่น 1</p><p>หน้าเอกสารพิมพ์ต้องตรวจสิทธิ์ดาวน์โหลดและพิมพ์ก่อนแสดงข้อมูล</p><p>แบบร่างนี้ไม่ใช่เอกสารหรือการลงนามทางการ</p>';$('servicedialog').showModal();return}});
+$('screenchoice').innerHTML=SCREENS.map(s=>`<option value="${s.key}">${s.id} ${s.title}</option>`).join('');$('actorchoice').innerHTML=Object.entries(PROFILES).map(([k,p])=>`<option value="${k}">${p.name}</option>`).join('');render();
+</script>
+</body>
+</html>
