@@ -1,6 +1,6 @@
 # ความก้าวหน้าโครงการ — เว็บไซต์กองบริหารทะเบียนและวัดผล
 
-อัปเดตบท 03 | รุ่นเอกสารล่าสุด 1.3 | 3 ตุลาคม 2569 (2026-10-03)
+อัปเดตบท 04 | รุ่นเอกสารล่าสุด 1.4 | 3 ตุลาคม 2569 (2026-10-03)
 
 ## บันทึกบท 01 ที่เก็บไว้เป็นประวัติ
 
@@ -195,3 +195,67 @@ Q001–Q022ยังเปิด เจ้าของ/แบบ/อำนาจ
 สถานะบท03: ออกแบบและตรวจเอกสาร/ลำดับจำลองครบ พร้อมส่งมอบ มีBROWSER-03ค้างสำหรับตรวจภาพมือถือและkeyboardจริง ยังไม่ใช้ผลจำลองรับรองDOC-03-05ด้านbrowser การปิดgateตรวจจริงต้องมีหลักฐานจากbrowserที่ใช้งานได้ก่อนรับรองส่วนนี้
 
 บท04: รอผู้ใช้ส่งพรอมป์ต์และอนุมัติแผน ไม่เริ่มหรือเดาเนื้อหา และต้องแจ้งBROWSER-03ที่ยังค้างก่อนเลื่อนไปงานที่พึ่งผลตรวจหน้าจอ
+
+## บท04 — ออกแบบฐานข้อมูลรวมและขอบเขตข้อมูล
+
+3 ตุลาคม2569 (2026-10-03) | รุ่นเอกสาร1.4 | ฐานบท02 134cf16 และบท03 10adf9a | ผู้ใช้อนุมัติแผนด้วยตกลง
+
+อ่านBLUEPRINT/00_MASTER_PROMPT/PROGRESS/DECISIONSและเอกสารบท02/03ก่อนแก้ mainสะอาดที่10adf9a BROWSER-03ยังเปิด ไม่ใช่dependencyของการออกแบบข้อมูล จึงทำบท04ตามที่ผู้ใช้สั่งโดยไม่รับรองภาพ/focusแทนผลbrowser
+
+### ไฟล์ที่สร้างหรือแก้และเหตุผล
+
+| ไฟล์ | สิ่งที่ทำ |
+| --- | --- |
+| docs/ERD.md | 15ภาพความสัมพันธ์แยกมุม + บัญชีFKครบ128ตาราง ประวัติสองเวลา ขอบเขตแยก snapshot และledger |
+| docs/DATA_DICTIONARY.md | ทุก1551ฟิลด์ของ128ตาราง พร้อมชนิดNULL/default/class PK/FK/unique/index/owner/scope/retentionครบcore+9ระบบ |
+| docs/DATA_CLASSIFICATION.md | บัญชีชั้นทุกฟิลด์ P10/I684/R833/H24 รวมmetadata PublicDTOdenylist/allowlist/ไฟล์/JSON/retention gates |
+| docs/data_model.json | บัญชีเชิงโครงสร้างสนับสนุนการตรวจเอกสาร ไม่ใช่SQL/ORM/migration |
+| docs/DECISIONS.md | เพิ่มDEC-029–DEC-036และรักษาประวัติเดิม; โครงตาราง/precision/naturalkeysเป็นProposal |
+| docs/OPEN_QUESTIONS.md | เพิ่มQ023–Q025พร้อมowner/evidence/impact/mock/gate ทุกQ001–Q025ยังเปิด |
+| docs/PROGRESS.md | บันทึกหลักฐานบท04และข้อจำกัด โดยรักษาประวัติบท01–03 |
+
+### Schema migrations versions
+
+แบบlogicalรุ่น1.4 มี128ตาราง private schemaเสนอ ครบ9โมดูล+core; ยังไม่มีschemaจริง migrations0ไฟล์ ไม่รันDDL/DB/Auth/RLS/Storage/audittrigger/worker/scan/backup/restore/transaction APIหรือNext.js ไม่มีpackage/lockfile/เวอร์ชันdependencyที่เลือก ไม่มีSupabaseprojectหรือdeploy ไม่มีข้อมูลคนจริง
+
+BLUEPRINT/MASTER/Charter1.1 requirements/traceability/permissions1.2 sitemap/flows/wireframes1.3คงเดิม เอกสารอ้างPostgreSQLcurrentเพื่อหลักการ ไม่ถือเลขเวอร์ชันเว็บอ้างอิงเป็นเวอร์ชันDBที่เลือก Q023รอข้อมูลจริง
+
+### ผลตรวจจริงและเกณฑ์
+
+**บท04ผ่านการตรวจแบบข้อมูล DOC-04-01–DOC-04-06 และ fixture DATA-04-01–DATA-04-06 ในระดับที่ระบุเท่านั้น**
+
+| คำสั่ง/หลักฐานที่ตรวจจริง | ผล |
+| --- | --- |
+| `python3 /tmp/verify_chapter04.py` เครื่องมือตรวจเอกสารและfixtureชั่วคราว | ผ่าน318/318 แยกเอกสาร280/280และfixture38/38; ไม่ใช่เครื่องมือของappหรือSQLtest |
+| DOC-04-01–DOC-04-04 | core+9โมดูล 128ตาราง/1551ฟิลด์; private/RLS/scope/owner/retentionทุกตาราง PK/FK/type/RESTRICT/compoundparentunique/FKindexครบ ประวัติ12ตาราง exactnumericไม่มีfloat |
+| DOC-04-05 | 256รายการ เทียบdictionaryกับJSONทีละ128ตาราง และclassificationกับJSONอีก128ตาราง ฟิลด์ไม่ตกหล่นหรือเปลี่ยนชั้น |
+| DOC-04-06 | 15Mermaidblocksชื่อ/ความสัมพันธ์ตรงFKจริง บัญชีFK128ตาราง ลิงก์/รูปตารางครบ ประวัติDEC/Qเดิมคงเดิม ไม่มีmigration/packageใหม่; ไม่ได้renderภาพMermaid |
+| DATA-04-01 (8รายการ) | Personเดิมเชื่อมผู้สอน/เจ้าหน้าที่/candidate/สมัครสองปี; partialfixturefields/UUIDตรงแบบ compositeFKจำลองปฏิเสธคนผิด การตรวจปีผ่านบริการจำลองปฏิเสธenrollmentผิดปีและพบduplicateตามkeyเสนอ |
+| DATA-04-02 (3รายการ) | สนามถาวรหนึ่งแห่ง center_session2/levelofferings3 ประธาน+ผู้รับ4รายการแยกรอบ snapshotเก่าคงเดิม ผูกระดับข้ามรอบถูกปฏิเสธในโมเดลcompoundFK |
+| DATA-04-03/DATA-04-04 (อย่างละ3รายการ) | หน่วยจังหวัดเดียวต่างสายไม่อยู่scopeเดียว แยกปีศึกษา/งบ และประวัติสองแกนเวลา/asof[)ยังอ่านรุ่นเดิมในsnapshotได้ |
+| DATA-04-05 (11รายการ) | Decimal100000→จอง20000→ผูกพัน20000→จ่าย5000 คง80000 ไม่มีหักซ้ำ retryเดิมไม่เพิ่มjournal payloadเปลี่ยนปฏิเสธ ทศนิยมเกินscale/NaN/Infinity/overflowปฏิเสธ |
+| DATA-04-06 (10รายการ) | whitelistส่งเฉพาะpublic_refที่รับรอง ข้อมูลจริงTO VERIFYปิด rawID/aliasเบอร์/วันเกิด/ที่อยู่/ตัวระบุ/filekey/เฉลยปฏิเสธ และprivatefieldsชั้นHครบ |
+| `git diff --check` และ `git diff --cached --check` | ผ่าน ไม่มีwhitespace errors; stagedเฉพาะ7ไฟล์บท04ก่อนcommit |
+
+ระหว่างตรวจพบnumericพิกัดยังขาดข้อกำหนดfinite/scale จึงเพิ่มvalidationโดยไม่แทนพิกัดไม่มีหลักฐานด้วย0 ตัวตรวจclassificationครั้งแรกไปอ่านแถวaudit_logsในตารางคำอธิบายก่อนบัญชีฟิลด์ จึงแก้ให้ตรวจเฉพาะบัญชีหัวข้อ7 ตรวจทานเพิ่มความสัมพันธ์ปี/สนาม/หลักสูตรและคะแนน0 รวมเลิกindexซ้ำกับunique25รายการก่อนรันผลสุดท้าย ไม่มีการอ้างว่าข้อกำหนดเหล่านี้ทำงานบนฐานจริงแล้ว
+
+เครื่องมือและfixtureชั่วคราวอยู่/tmp ไม่เป็นseedหรือimplementationในcommit วิธีตรวจรับด้วยการเปิดเอกสารทีละขั้นอยู่ด้านล่าง ตรวจcommitจริงด้วย `git show --stat HEAD` และความสะอาดด้วย `git status --short` หลังcommit เลขcommitอยู่ในประวัติGitและคำตอบส่งมอบ ไม่ฝังเลขcommitตัวเองในเอกสาร
+
+แบบข้อมูลครบและผ่านการตรวจระดับเอกสาร/fixtureตามเกณฑ์บท04 ไม่ใช่การรับรองconstraints/RLS/scan/ACL/การเงินที่ทำงานบนPostgreSQLจริง ไม่แสดงMermaidผ่านbrowserและไม่อ้างว่าแผนqueryมีประสิทธิภาพโดยไม่มีEXPLAIN RuntimeTC90ของบท02ยังPLANNED / NOT RUN BROWSER-03ยังเปิด
+
+### วิธีตรวจรับทีละขั้น
+
+1. เปิดERDหัวข้อ2–4 ตรวจPerson/Accountแยก ภูมิศาสตร์/สาย/สังกัด/scopeแยก และปฏิทินศึกษา/งบแยก
+2. ดูภาพ05–06และdictionaryของexam_center/center_session/center_session_level/exam_center_appointment ตรวจสนามเดิมใช้ต่างปี/ระดับและผู้รับ/ประธานผูกแต่ละรอบ
+3. ดูperson/position_assignment/candidate/application ตรวจบุคคลสมมติเดียวใช้หลายหน้าที่/หลายปีด้วยPersonเดิม และsnapshotจากปีเก่าไม่joinชื่อใหม่ทับ
+4. ดูDATA_CLASSIFICATIONหัวข้อ4/7 เทียบทุกฟิลด์กับdictionary ตรวจpublicไม่มีเลขประชาชน วันเกิด ที่อยู่/เบอร์ส่วนตัว และpolicyTO VERIFYยังปิดข้อมูลจริง
+5. ดูERDledgerและbudget_posting ตรวจ100000จอง20000→ผูกพัน20000→จ่าย5000 ยอดพร้อมใช้คง80000 ดูrefsแยกรับของ/จ่าย/ทะเบียนasset
+6. ดูQ023–Q025และDEC-029–036 แล้วรัน `git show --stat HEAD`, `git status --short` ที่รากโครงการ ตรวจcommitบท04และไฟล์ค้าง ไม่ถือoriginเป็นหลักฐานpush
+
+### ข้อจำกัด ปัญหาค้าง และบทถัดไป
+
+Q001–Q025ยังเปิด ชื่อตำแหน่ง/จศป./ศ.3/ปี/คะแนน/อำนาจ/วงเงิน/นโยบายเผยแพร่และretentionจริงยังไม่รับรอง โมเดลเป็นProposalไม่บล็อกfixture แต่gateข้อมูลจริงของเรื่องนั้นยังปิด ต้องพิสูจน์DBconcurrency/unique/exclusion/RLS/API/StorageACL/scan/restoreเมื่อมีimplementation ไม่อ้างผลPythonfixtureเป็นผลtransactionจริง
+
+เกณฑ์บท04ผ่านระดับแบบข้อมูล BROWSER-03ยังค้างตรวจภาพมือถือ/keyboardจริงจากบท03 ไม่เลื่อนผลจำลองไปปิดgateนั้น Commitบท04อยู่ในโครงการนี้ originเดิม9_gpt ไม่มีpushบทนี้
+
+บท05: รอพรอมป์ต์และอนุมัติแผน ไม่เดางานหรือสร้างdependencyบทถัดไป

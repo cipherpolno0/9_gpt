@@ -1,6 +1,6 @@
 # รายการตัดสินใจ — เว็บไซต์กองบริหารทะเบียนและวัดผล
 
-บท 03 | รุ่นเอกสาร 1.3 | 3 ตุลาคม 2569 (2026-10-03)
+บท 04 | รุ่นเอกสาร 1.4 | 3 ตุลาคม 2569 (2026-10-03)
 
 Confirmed คือข้อกำหนดที่ผู้ใช้ให้ ไม่ใช่คำวินิจฉัยทางการ Proposal คือข้อเสนอที่รอผู้รับผิดชอบพิจารณา TO VERIFY คือยังไม่พอให้ตัดสินหรือใช้งานจริง ผู้ใช้อนุมัติแผนงานบทนี้ด้วย “ตกลง” แต่ไม่ได้ยืนยันกฎทางการหรือแต่งตั้งเจ้าของงานจริงใน Q005
 
@@ -59,3 +59,18 @@ Confirmed คือข้อกำหนดที่ผู้ใช้ให้ 
 | DEC-028 | Confirmed + Proposal | แยกส่งตรวจ/อนุมัติ/วันมีผล importreceipt/approval learning/officialresult และread/receiptหนังสือในUX | กติกากลางConfirmed; labelsและตำแหน่งเป็นProposalจากUCบท02 | O03 + O04 + O05 + O06 + O08 + O09 | กฎTO VERIFYยังเป็นconfigurationทดลองและปิดgateทางการ ไม่มีวงเงิน/คะแนน/ชื่อแบบที่แต่งขึ้น |
 
 การอนุมัติแผนบท03อนุญาตสร้างเอกสารและต้นแบบในขอบเขตนี้ ไม่ปิดQทางการหรืออนุญาตเผยแพร่ขึ้นGitHub/เปิดproduction ไม่มีการเปลี่ยนการตัดสินใจบท01/02ย้อนหลัง
+
+## รายการเพิ่มจากบท04
+
+| รหัส | สถานะ | การตัดสินใจ/ข้อเสนอ | หลักฐานและเหตุผล | ผู้รับผิดชอบเสนอ | ผลต่อการทำงาน |
+| --- | --- | --- | --- | --- | --- |
+| DEC-029 | Confirmed | บท04ทำแบบข้อมูล ERD/dictionary/classification ครบ9ระบบและตรวจข้อมูลสมมติ ไม่สร้างmigration | พรอมป์ต์บท04และผู้ใช้อนุมัติด้วยตกลง; ฐานบท02 134cf16/บท03 10adf9a | C01 + C02 | รุ่นเอกสาร1.4 schemaจริงยังไม่มี migration0 ไม่เริ่มบท05 |
+| DEC-030 | Confirmed + Proposal | Person/Organization/AcademicYear/ExamSessionร่วม UserAccountแยก; private schema RLSทุกตารางและpublicผ่านDTO | หลักแชร์/สิทธิ์เป็นConfirmed; 128ตารางและแยกฟิลด์Hเป็นProposalในdata_model.json | C02 + C03 + O01–O09 | ไม่มีlogin/Person/application/import registryซ้ำ ชื่อ/โครงphysicalรอQ023/Q024 |
+| DEC-031 | Confirmed + Proposal | แยกภูมิศาสตร์ สายปกครอง สังกัดศึกษา scope; ใช้ประวัติสองเวลาและsnapshotรายปี | กติกาประวัติ/ขอบเขตConfirmed; interval/exclusion/recorded-superseded/sourceFKเป็นProposal | O01 + O02 + O05 + C02 | ไม่ใช้จังหวัดให้สิทธิ์ ไม่เอาชื่อปัจจุบันทับผลเก่า; อำนาจ/จำนวนหน้าที่จริงQ002/Q024 |
+| DEC-032 | Confirmed + Proposal | ทุกฟิลด์มีชั้น P/I/R/H และpublic DTOallowlistตามsource/รุ่นpolicy | ห้ามข้อมูลส่วนตัวบนpublicเป็นConfirmed; fieldclasses/whitelistเสนอC03ตรวจQ025 | C03 + C04 + เจ้าของเรื่อง | Pไม่เปิดdraft private tablesไม่เผยแพร่ ข้อมูลจริงเผยแพร่ปิดระหว่างQ008เปิด |
+| DEC-033 | Confirmed + Proposal | งบใช้budget_event/posting ledger exactdecimal แยกreserve/obligate/spent; พัสดุและassetแยกแต่เชื่อมref | exactdecimal/แยกงบพัสดุครุภัณฑ์Confirmed; bucketledgerและprecisionเป็นProposal | O06 + O07 + C02 | ไม่หักยอดซ้ำ reserve→obligate; chart/วงเงิน/หน่วย/precisionจริงQ006/Q024 |
+| DEC-034 | Proposal | PK/FKRESTRICT typedtargets compositeFK unique/contextindexesและcurrenthistoryexclusion | dictionaryระบุครบ; การป้องกันปลอมคน/รอบ/รุ่นต้องconstraints+transaction+RLSจริง | C02 + เจ้าของข้อมูล | naturalkeys/cardinality/extension/versionรอQ023/Q024 ไม่อ้างconstraintทำงานจากเอกสาร |
+| DEC-035 | Proposal | ชื่อconceptเดิมปรับorder→purchase_order learning_attempt→attempt; person_change_requestเป็นextensionของchange_request | BLUEPRINT/บท02เป็นlogicalconcept ไม่ใช่ตารางจริง; aliasmappingท้ายdictionary | O01 + O04 + C02 | ไม่มีengineคำขอ/ใบสมัครซ้ำ ต้องรับรองชนิดเรื่องQ024ก่อนmigration |
+| DEC-036 | Confirmed + TO VERIFY | BROWSER-03คงเปิด แยกจากการตรวจแบบข้อมูลบท04 | บท03มีหลักฐานbrowserติดตั้งไม่สำเร็จ; บท04ไม่พึ่งผลภาพ/focusเพื่อออกแบบPK/FK | C02 + C04 | ไม่ใช้fixtureบท04ปิดgatebrowser/API/RLSหรือTC90; งานที่พึ่งUXต้องตรวจจริงภายหลัง |
+
+เอกสาร/ข้อมูลสมมติไม่ได้ปิดประเด็นทางการ บท04ไม่เปลี่ยนฐานข้อมูลจริง ไม่อัปโหลดcommitไปGitHub และไม่เลือกเวอร์ชันPostgreSQLจากเลขเวอร์ชันหน้าอ้างอิง
