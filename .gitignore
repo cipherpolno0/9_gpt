@@ -15,3 +15,11 @@ __pycache__/
 !.env.*.example
 # Generated download packages
 deliverables/
+# Chapter05 build/runtime/local services
+*.tsbuildinfo
+src/generated/
+.pnpm-store/
+coverage/
+postgres_data/
+redis_data/
+.vscode/

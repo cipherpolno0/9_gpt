@@ -1,0 +1,13 @@
+saveExact: true
+engineStrict: true
+strictPeerDependencies: true
+verifyDepsBeforeRun: error
+allowBuilds:
+  "@prisma/engines": true
+  prisma: true
+  "@prisma/client": false
+  esbuild: true
+  sharp: true
+  unrs-resolver@1.12.2: true
+minimumReleaseAgeExclude:
+  - eslint@10.12.0

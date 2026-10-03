@@ -1,6 +1,6 @@
 # ความก้าวหน้าโครงการ — เว็บไซต์กองบริหารทะเบียนและวัดผล
 
-อัปเดตบท 04 | รุ่นเอกสารล่าสุด 1.4 | 3 ตุลาคม 2569 (2026-10-03)
+อัปเดตบท 05 | รุ่นเอกสารล่าสุด 1.5 | 3 ตุลาคม 2569 (2026-10-03)
 
 ## บันทึกบท 01 ที่เก็บไว้เป็นประวัติ
 
@@ -259,3 +259,152 @@ Q001–Q025ยังเปิด ชื่อตำแหน่ง/จศป./�
 เกณฑ์บท04ผ่านระดับแบบข้อมูล BROWSER-03ยังค้างตรวจภาพมือถือ/keyboardจริงจากบท03 ไม่เลื่อนผลจำลองไปปิดgateนั้น Commitบท04อยู่ในโครงการนี้ originเดิม9_gpt ไม่มีpushบทนี้
 
 บท05: รอพรอมป์ต์และอนุมัติแผน ไม่เดางานหรือสร้างdependencyบทถัดไป
+
+## บท05 — ตั้งโครงการและเครื่องมือพัฒนา
+
+3 ตุลาคม2569 (2026-10-03) | เอกสารเพิ่มเติมรุ่น1.5/แอป0.5.0 | ฐานบท04 commit95f8032 | ผู้ใช้อนุมัติแผนด้วยตกลง
+
+ก่อนแก้อ่านBLUEPRINT MASTER PROGRESS DECISIONSและบท04 mainสะอาด ไม่มีpackage/Compose/migrations พบUbuntu24.04.3x86_64 Node24.19.0 pnpm11.25.0เดิม ไม่พบAGENTSในโครงการ ไม่มีDocker/daemon จึงตั้งแอปในrepositoryเดิม ไม่สร้างrepositoryแยกหรือเลือกSupabaseaccountเอง
+
+### งานและไฟล์เปลี่ยน
+
+| กลุ่มไฟล์ | สิ่งที่ทำและเหตุผล |
+| --- | --- |
+| package.json/pnpm-lock.yaml/pnpm-workspace.yaml/.nvmrc | package0.5.0 stablepinsและscriptsจริง ใช้pnpm11.28.2ผ่านCorepack ติดตั้งfrozenได้ |
+| tsconfig/next-env/next.config/postcss/eslint/prettier/editorconfig | AppRouterTSstrict Tailwind4 ESLint10flat/Nextpluginตรงรุ่น formatterและboundaryไม่ให้หน้าimportDBตรง |
+| src/app/layout/page/globals/not-found + app/[[...path]]/route.ts | หน้าแรกไทย Sarabunจากlocalpackage CSS/ฟอนต์โหลดได้จริง 404 และ/app403ทุกmethod/no-store ไม่มีbusinessUI/Authจำลอง |
+| components.json + src/shared/components/ui/button.tsx + lib/utils.ts + README | shadcnButtonต้นทางหนึ่งชุด ปรับalias/Slotและtheme ไม่มีตาราง/ฟอร์ม/workflowซ้ำ |
+| src/modules/*/README.md 9โฟลเดอร์ | เจ้าของservice01–09พร้อมsharedPerson/Organization และimportใช้examsเดิม ยังไม่มีbusinessimplementation |
+| prisma/schema.prisma/prisma.config.ts/prisma/README.md + src/server/db/README.md | templatePrisma7 valid datasourceprivate ไม่มีmodels/migration/clientfactory รุ่นAPIตามADR ไม่สร้าง128ตารางล่วงหน้า |
+| src/server/config/local-services.ts + authorization/bootstrap.ts | readinessจำกัดlocalและerrorไม่เปิดcredential; ปิดพื้นที่งานจนถึงบทAuth/สิทธิ์ |
+| compose.yaml/.env.example/.gitignore + scripts/init-env.mjs/check-secrets.mjs | PostgreSQL18.6/Redis8.10.2 localhost/healthchecks/volume path18 envสุ่มไม่แสดงsecret ไม่ทับเดิม ไม่commit.envจริง |
+| worker/index.ts/README.md | processแยกในrepoเดียว SELECT1/PINGlocalแล้วรอ ยังไม่มีqueue/processorหรือbusinessjob |
+| tests/bootstrap.test.ts/structure.test.ts + scripts/smoke.mjs | tests12และHTTP27สำหรับstarter ปฏิเสธconfigremote/ผิดและไม่มีsecretในerror ตรวจทั้งCSS/font/403ทุกmethod/404 |
+| docs/SETUP.md + docs/ADR/001-stack.md + README.md | ขั้นติดตั้งUbuntuที่ตรวจจริงและWindowsทางเลือก คำสั่งครบ รุ่น/API/path/ผลและblockersอธิบายไทย |
+| BLUEPRINT.md/00_MASTER_PROMPT.md | เพิ่มข้อกำหนดบท05Prisma/pnpm/Compose/workerเหนือข้อเสนอเก่า คงSupabaseAuth/Storage/RLS/Vercel ไม่เปลี่ยนรายละเอียดระบบ9ด้านย้อนหลัง |
+| docs/DECISIONS.md/OPEN_QUESTIONS.md/PROGRESS.md | DEC037–044 Q026 DOCKER-05ผลจริง และบทถัดไปรอพรอมป์ต์ รักษาประวัติเดิม |
+
+รายชื่อไฟล์ทุกpathของบท05อยู่ท้ายบันทึกนี้และ `git show --stat HEAD` ไม่มีไฟล์helper/fixtureจาก/tmpหรือ.envในcommit
+
+### Schema migrations versions และcontract
+
+Node24.19.0 pnpm11.28.2 Next16.3.8 React/DOM19.3.0 TypeScript5.9.3 Tailwind/PostCSS4.3.3 PrismaCLI/client/adapter7.10.0 ESM ESLint10.12.0รายละเอียดทุกdependencyดูADR001/lockfile v9.0 ไม่ใช้Prisma8RCจากlatest ไม่มีpeerissuesหลังปรับชุดlinter
+
+Prismatemplate validateผ่าน แต่models0 migrations0 generatedbusinessclient0 ไม่มีDBtables/RLS/Storagepolicies/audittrigger/Auth/Storage/Supabaseconnection/workerprocessorจริงหรือdeploy Prisma URLในconfigและgeneratedpathที่กำหนดเตรียมAPI7ไว้ บทฐานข้อมูลต้องlimitedrole+context/RLSจริง ไม่ใช้Composepostgres/bypassrlsเป็นruntimebusinessrole
+
+PostgreSQL18.6-bookworm/Redis8.10.2-alpineเป็นlocalofficialstabletagsที่ตรวจ ไม่ยืนยันรุ่นSupabaseจริงQ023 ข้อกำหนดข้อมูลบท04ยังlogical1.4 ส่วนเอกสารบท05/บันทึกกลาง1.5 การแสดงหน้าแรกยังไม่มีวันที่หรือคนจริง BROWSER-03เดิมไม่ได้ทดสอบซ้ำหรือปิด
+
+### ผลตรวจจริง
+
+**เกณฑ์ติดตั้งเว็บและเครื่องมือผ่าน; บริการDocker/workerpositiveยังBLOCKEDตามDOCKER-05** ไม่ถือconfigsyntaxเป็นcontainerผ่าน
+
+| คำสั่ง/หลักฐานที่รัน | ผลจริง |
+| --- | --- |
+| corepack pnpm --version | 11.28.2; pnpmเดิม11.25.0ถูกenginecheckปฏิเสธตามpin จึงใช้Corepackตรงรุ่น |
+| corepack pnpm install และ pnpm peers check | สำเร็จ directdependenciesเลขstable ไม่มีpeerissuesหลังเปลี่ยนESLint10เป็นcustomNextplugin |
+| corepack pnpm env:init | สร้าง.envlocalmode0600สุ่มและไม่แสดงค่า มีไฟล์เดิมไม่ทับ Gitignore.envจริง |
+| corepack pnpm db:validate | templatePrisma7 valid; ไม่connectDB ไม่สร้างmodel/schema |
+| corepack pnpm lint / typecheck | exit0 ไม่มีwarning/error |
+| corepack pnpm test | 12/12ผ่าน ใช้node--importtsxเพื่อไม่ต้องUnixIPCจากtsxCLI |
+| corepack pnpm format:check / secrets:check | exit0 ตรวจรูปแบบเฉพาะไฟล์ที่กำหนด ตัวตรวจGitไม่พบ.envจริงหรือsecretpatternที่รองรับ ไม่รับรองทุกsecretชนิด |
+| corepack pnpm build | exit0 Next16Turbopack compile/type/staticgenerationครบ หน้า/404/staticและappcatchall/dynamic |
+| corepack pnpm smoke | 27/27ผ่าน productionHTTPหน้าแรกไทย CSS/woffจริง app3path×7methods403/no-storeและ404 ไม่มีDBqueries |
+| เปิดNextdev--hostname127.0.0.1--port3110ผ่านNodechildแล้วfetchในprocessเดียว | HTTP200และหัวเรื่องไทยตรงจริง ปิดprocessหลังตรวจ ไม่ใช่browserภาพ/keyboardtest |
+| cleanfolderใหม่ไม่มี.env/node_modules/.next: corepack pnpm install --frozen-lockfile ต่อ validate/lint/typecheck/test/format/secret/build/smoke | ทั้งสายexit0 lockfileไม่เปลี่ยน tests12/HTTP27ผ่าน ใช้pnpmcacheกลางตามปกติ ไม่ต้องDB/Supabasecredentialสำหรับstarter |
+| DockerCLI29.8.2 + Compose5.6.0 config--quiet | exit0 configsyntax/interpolationผ่าน ใช้helperclientแยกนอกrepo ไม่มีprintconfigที่มีsecret |
+| Dockercomposeup-d--wait และversionส่วนdaemon | exit1 permissiondenied dockerAPI socket; daemonไม่มีและCapEff0 |
+| unshare-Urtrue | exit1 uid_map Operationnotpermitted; ไม่ใช้rootlesscontainerเป็นผลสำเร็จแทน |
+| corepack pnpm worker:check | exit1 ข้อความไทยทั่วไปไม่แสดงcredential ไม่มีDB/Redisรันจึงไม่อ้างSELECT1/PINGสำเร็จ |
+| git diff --check / git diff --cached --check และsecrets:checkหลังstage | exit0ทั้งwhitespace/secretcheckก่อนcommit staged58ไฟล์และไม่มี.envจริงในtrackedfiles |
+
+ระหว่างตั้งเครื่องมือพบESLint9deprecated และbundleNextมี3pluginที่peerไม่รับ10 จึงใช้Nextpluginโดยตรงที่เอกสารทางการรองรับและTS-eslint/ReactHooksที่ตรวจpeer10จริง ไม่ใส่overrideเพื่อปิดwarning Postinstallunrs-resolver1.12.2เพิ่มallowBuildsเฉพาะรุ่นแล้วติดตั้งใหม่จนผ่าน
+
+tsxCLIเปิดUnixIPCถูกEPERM จึงเปลี่ยนtest/workerเป็นnode--importtsxตามแพ็กเกจเดียวกัน HTTPcheckครั้งแรกชี้woffrelativeURLจากรากผิด จึงแก้ตัวตรวจให้อ้างbaseของstylesheetจริง หน้าเว็บไม่ต้องแก้fontpath จากนั้นsmokeผ่าน27 รวมcleaninstall ส่วนlintของsmokeต้องประกาศfetchเป็นNodeglobalแล้วตรวจใหม่ผ่าน ไม่ใช้ผลล้มเหลวเดิมอ้างว่าผ่าน
+
+### DOCKER-05 — blockerที่พิสูจน์ได้และวิธีปิด
+
+runtimeไม่มีdaemon/สิทธิ์kernelสำหรับcontainersแม้uidเป็นroot CapEff0000000000000000และSeccomp2 ไม่มีDockerแรกเริ่ม ดาวน์โหลดเฉพาะCLI/Composeเพื่อconfigcheckไม่ได้เพิ่มdaemon/socketpermission ผลupและunshareปฏิเสธอยู่ข้างบน ไม่มีimagepull/DBhealthy/RedisPONG/volume restart/workerpositiveที่จะรับรอง
+
+วิธีปิด: ใช้เครื่องที่Engineพร้อมตามSETUP env:initแล้วdockercomposeconfig--quiet/up--wait/ps ตรวจpg_isready/PING/worker:checkและvolumeหลังrestart บันทึกversion/statusโดยไม่ส่งcredential ก่อนบทที่ต้องเชื่อมDB/Redis/container C02รับผิดชอบQ026 ส่วนเว็บstarterตรวจต่อและส่งมอบได้โดยไม่DB ไม่มีการขอtokenจากผู้ใช้หรือdeploy
+
+### วิธีตรวจรับทีละขั้น
+
+1. เปิดADR001เทียบเลขรุ่นกับpackage.jsonและlockfile ดูPrisma7/Tailwind4/Node24/pnpm11ไม่ปนรุ่น
+2. แตกZIPในโฟลเดอร์ใหม่ ใช้Node24.19.0/pnpm11.28.2 gitinitถ้าไม่มี.git แล้วfrozeninstallตามSETUP ไม่copy.envจากเครื่องคนอื่น
+3. env:init เปิดpnpmdevดูหน้าแรกไทย หยุดด้วยCtrl+C รันpnpmcheckและpnpmdb:validate ผลtests12และbuildต้องผ่าน ไม่มีDBจริงในขั้นนี้
+4. รันpnpmsmokeที่พอร์ต3105 ตรวจ27HTTP cases หรือเปิดpnpmstartแล้วดูหน้า/app/admin403และ404 ไฟล์CSS/fontต้องโหลด ไม่ใช้แทนAuth/UAT/a11y
+5. ตรวจsecrets:checkและgitls-filesชื่อ.envจริงต้องไม่มี ดูcomposeเลือกlocalhostและvolume18 ตรวจDockerตามQ026บนเครื่องที่รองรับก่อนอ้างบริการพร้อม
+6. gitshow--statHEAD/gitstatus--short/gitremote-v ดูcommitและoriginเดิม9_gpt localcommitยังไม่push/deploy
+
+### ข้อจำกัดและบทถัดไป
+
+Q001–Q026ยังเปิด กฎทางการ/owners/อำนาจ/คะแนน/ศ.3/จศป./public/retentionไม่เปลี่ยน มีBROWSER-03เดิมและDOCKER-05ใหม่ ยังไม่มีAuth/RLS/ACL/scan/audittransaction/import/ledgerธุรกิจ/backuprestore runtimeTC90จากบท02ยังPLANNED/NOT RUN ผล12+27เป็นstarterเท่านั้น ไม่รับรองระบบ9ด้านหรือproduction
+
+ส่งมอบเครื่องมือ/เว็บ/cleaninstallที่ตรวจผ่าน พร้อมblockerDockerที่ต้องปิดก่อนdependencyบทฐานข้อมูล ไม่มีการpushGitHub ไม่เริ่มบท06 รอผู้ใช้ส่งพรอมป์ต์และอนุมัติแผน ไม่เดาเนื้อหาบทถัดไป
+
+### เพิ่มเติมหลังตรวจpipelineรวม
++
++pnpmcheckเดิมเรียกชื่อpnpmซ้อนทำให้Corepackกลับไปใช้global11.25.0 จึงเปลี่ยนเป็นscripts/check.mjsเรียกผ่านnpm_execpathของpnpmเดิมและตรวจpipelineรวมใหม่ env:initรันซ้ำเก็บbyteเดิมและmode0600จริง Nextdevสร้างAGENTS.md/CLAUDE.mdตามรุ่น16.3.8โดยอัตโนมัติ อ่านคำแนะนำและlocalNextdocsแล้วเก็บไฟล์ไว้ให้Gitสะอาดหลังdev ไม่มีการใช้subagent เก็บMITlicenseของButtonต้นทางตามsourceในdocs/licenses/shadcn-ui.txt
++
++ตรวจเอกสารบท05ด้วยPythonชั่วคราวผ่าน12รายการสำหรับtablewidth/local links/DEC44/Q26/ประวัติเดิม/migration0/pathsและไม่รวม.env ต่อด้วยchecksในโครงการ ไม่มีการปิดDOCKER-05หรือBROWSER-03จากผลเหล่านี้
++
++### รายชื่อไฟล์บท05ครบทุกpath
++
++- `package.json`
+- `.nvmrc`
+- `pnpm-workspace.yaml`
+- `tsconfig.json`
+- `next-env.d.ts`
+- `next.config.ts`
+- `postcss.config.mjs`
+- `eslint.config.mjs`
+- `.prettierrc.json`
+- `.prettierignore`
+- `.editorconfig`
+- `components.json`
+- `.env.example`
+- `compose.yaml`
+- `prisma/schema.prisma`
+- `prisma.config.ts`
+- `prisma/README.md`
+- `src/server/config/local-services.ts`
+- `src/server/db/README.md`
+- `src/server/authorization/bootstrap.ts`
+- `src/app/app/[[...path]]/route.ts`
+- `src/shared/lib/utils.ts`
+- `src/shared/components/ui/button.tsx`
+- `src/app/globals.css`
+- `src/app/layout.tsx`
+- `src/app/page.tsx`
+- `src/app/not-found.tsx`
+- `src/modules/people/README.md`
+- `src/modules/organizations/README.md`
+- `src/modules/learning/README.md`
+- `src/modules/requests/README.md`
+- `src/modules/exams/README.md`
+- `src/modules/budget/README.md`
+- `src/modules/inventory/README.md`
+- `src/modules/correspondence/README.md`
+- `src/modules/exam-imports/README.md`
+- `src/shared/README.md`
+- `worker/index.ts`
+- `worker/README.md`
+- `scripts/init-env.mjs`
+- `scripts/check-secrets.mjs`
+- `tests/bootstrap.test.ts`
+- `tests/structure.test.ts`
+- `.gitignore`
+- `docs/ADR/001-stack.md`
+- `docs/SETUP.md`
+- `README.md`
+- `BLUEPRINT.md`
+- `00_MASTER_PROMPT.md`
+- `pnpm-lock.yaml`
+- `scripts/smoke.mjs`
+- `docs/DECISIONS.md`
+- `docs/OPEN_QUESTIONS.md`
+- `docs/PROGRESS.md`
+- `AGENTS.md`
+- `CLAUDE.md`
+- `docs/licenses/shadcn-ui.txt`
+- `scripts/check.mjs`

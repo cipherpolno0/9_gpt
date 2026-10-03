@@ -1,0 +1,11 @@
+// บท05ตั้งเครื่องมือเท่านั้น; ยังไม่มีbusinessmodelsหรือmigration
+// 128ตารางจากบท04เป็นlogicaldesign รอพรอมป์ต์บทสร้างschemaจริง
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+  schemas  = ["private"]
+}

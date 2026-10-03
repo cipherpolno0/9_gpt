@@ -1,6 +1,6 @@
 # รายการตัดสินใจ — เว็บไซต์กองบริหารทะเบียนและวัดผล
 
-บท 04 | รุ่นเอกสาร 1.4 | 3 ตุลาคม 2569 (2026-10-03)
+บท 05 | รุ่นเอกสาร 1.5 | 3 ตุลาคม 2569 (2026-10-03)
 
 Confirmed คือข้อกำหนดที่ผู้ใช้ให้ ไม่ใช่คำวินิจฉัยทางการ Proposal คือข้อเสนอที่รอผู้รับผิดชอบพิจารณา TO VERIFY คือยังไม่พอให้ตัดสินหรือใช้งานจริง ผู้ใช้อนุมัติแผนงานบทนี้ด้วย “ตกลง” แต่ไม่ได้ยืนยันกฎทางการหรือแต่งตั้งเจ้าของงานจริงใน Q005
 
@@ -74,3 +74,18 @@ Confirmed คือข้อกำหนดที่ผู้ใช้ให้ 
 | DEC-036 | Confirmed + TO VERIFY | BROWSER-03คงเปิด แยกจากการตรวจแบบข้อมูลบท04 | บท03มีหลักฐานbrowserติดตั้งไม่สำเร็จ; บท04ไม่พึ่งผลภาพ/focusเพื่อออกแบบPK/FK | C02 + C04 | ไม่ใช้fixtureบท04ปิดgatebrowser/API/RLSหรือTC90; งานที่พึ่งUXต้องตรวจจริงภายหลัง |
 
 เอกสาร/ข้อมูลสมมติไม่ได้ปิดประเด็นทางการ บท04ไม่เปลี่ยนฐานข้อมูลจริง ไม่อัปโหลดcommitไปGitHub และไม่เลือกเวอร์ชันPostgreSQLจากเลขเวอร์ชันหน้าอ้างอิง
+
+## รายการเพิ่มจากบท05
+
+| รหัส | สถานะ | การตัดสินใจ/ข้อเสนอ | หลักฐานและเหตุผล | ผู้รับผิดชอบเสนอ | ผลต่อการทำงาน |
+| --- | --- | --- | --- | --- | --- |
+| DEC-037 | Confirmed | บท05ตั้งเครื่องมือในrepositoryเดิม เพิ่มPrisma pnpm ComposeRedisและworkerตามพรอมป์ต์ | ผู้ใช้ส่งบท05และอนุมัติแผนด้วยตกลง; ฐานบท04 95f8032 | C01 + C02 | ไม่ทำ128models/Auth/import/ธุรกิจหรือบท06 ไม่เปลี่ยนSupabaseAuth/Storage/Vercel |
+| DEC-038 | Accepted สำหรับlocal | Node24.19.0 pnpm11.28.2 Next16.3.8 React19.3.0 TS5.9.3 Tailwind4.3.3 Prisma7.10.0 CLI/client/adapterและlockfileชุดเดียว | เอกสารทางการ+registryengines/peers+ผลcleaninstall/build ดูADR001; Prisma latestเป็น8RCจึงไม่เลือก | C02 | packageManager/engines/.nvmrcตรงกัน ไม่ใช้latestหรือAPIPrisma6ปน7 ตัวอย่างบทถัดไปตามADR |
+| DEC-039 | Confirmed + Proposal | โมดูล9โฟลเดอร์เป็นเจ้าของบริการ core/server/sharedร่วม Excelใช้examsเดิม workerprocessแยก | กติกาผู้ใช้+โครงsrc/modulesในบท05 | C02 + O01–O09 | มีREADMEขอบเขตแต่ยังไม่มีbusinesshandlers ไม่สร้างlogin/application/Personซ้ำ |
+| DEC-040 | Accepted สำหรับlocal / TO VERIFY runtime | ComposeofficialPostgreSQL18.6/Redis8.10.2 bindlocalhost volume18pathใหม่ healthchecks envlocalสุ่ม | ตรวจofficialimages+configด้วยDockerCLI29.8.2/Compose5.6.0; daemonและnamespaceใช้ไม่ได้ | C02 | DOCKER-05ค้างpull/up/healthy/volume/workerpositive; Q026ต้องหลักฐานก่อนบทพึ่งบริการ ไม่ยืนยันรุ่นSupabaseจริงQ023 |
+| DEC-041 | Accepted bootstrap | /app catchallทุกHTTPmethodคืนserver403/no-storeระหว่างไม่มีAuth/grants | unitและHTTP27กรณีผ่านรวม/app/admin/imports ไม่มีข้อมูลจริง | C02 | ปิดพื้นที่ทำงาน ไม่ถือAuth/RBAC/RLSสำเร็จ เพิ่มrouteภายหลังต้องserverguardและnegative testsจริง |
+| DEC-042 | Accepted | ESLint10.12.0ใช้@next/eslint-plugin-next16.3.8โดยตรง+typescript-eslint8.71.0/ReactHooks7.1.1/@eslint/js10.0.1 | ESLint9deprecated และbundleeslint-config-nextยังมี3pluginที่peerไม่รับ10; เปลี่ยนตามทางเลือกทางการ ผลpeerscheckไม่มีissue | C02 | ไม่overridepeersให้เงียบ ไม่มีjsx-a11ypluginที่peerไม่ตรง; a11y/BROWSERจริงยังค้างแยก |
+| DEC-043 | Confirmed + Proposal | env:initสร้าง.envlocalสุ่มไม่แสดง/ไม่ทับเดิม Gitignore/secretcheckแพตเทิร์นก่อนcommit ติดตั้งscriptsแบบallowBuilds | ข้อกำหนดsecretConfirmed กลไกเสนอมีผลตรวจlocal/clean/staged | C02 | ZIP/Gitไม่รวม.env/node_modules/.next; ไม่อ้างตรวจsecretทุกชนิดหรือปลอดภัย100% |
+| DEC-044 | Accepted ตามหลักฐานเฉพาะstarter | cleanfolderไม่มี.env/node_modules/.next frozeninstallแล้วvalidate/lint/type/test12/format/secret/build/HTTP27ผ่าน และdevHTTP200ไทยผ่าน | คำสั่งจริงในPROGRESS; ใช้cacheแพ็กเกจกลางตามปกติ ไม่มีDBในstarter | C02 + C01 | ผ่านเกณฑ์เว็บ/เครื่องมือ ไม่ใช้ผลแทนcontainer/Auth/RLS/audit/import/ธุรกิจ/TC90หรือBROWSER-03 ไม่มีpush/deploy |
+
+การอนุมัติบท05ไม่ปิดกฎทางการและไม่อนุญาตบทถัดไป เปลี่ยนเทคโนโลยีเฉพาะเครื่องมือที่พรอมป์ต์บท05เพิ่ม ไม่ย้ายaccount/StorageออกจากSupabase

@@ -329,3 +329,11 @@ staging ต้องติดตั้งจาก clean checkout และ smok
 ### ข้อกำหนดเพิ่มจากบท 01
 
 เปิด RLS ทุกตารางของโครงการ บันทึกทุกการเปลี่ยนข้อมูลใน `audit_logs` และปิดใช้งานแทนลบข้อมูลจริง การออกแบบรายชื่อข้อมูลเป็นอังกฤษ snake_case ยังไม่มี schema หรือ migration จริง รายละเอียดการตรวจรับตาม REQ-C01 ถึง REQ-C20 และ REQ-S01 ถึง REQ-S09 อยู่ใน PROJECT_CHARTER บทถัดไปทำได้เมื่อผู้ใช้ส่งพรอมป์ต์และอนุมัติแผนเท่านั้น
+
+## ข้อกำหนดเพิ่มเติมจากบท05 — เครื่องมือพัฒนา
+
+ผู้ใช้สั่งPrisma PostgreSQL pnpm DockerComposeRedisและworkerในrepositoryเดียว และอนุมัติแผนบท05วันที่3 ตุลาคม2569 ส่วนเพิ่มเติมนี้ใช้เหนือข้อเสนอเดิมที่บอกว่ายังไม่เลือกเครื่องมือในบท01 ไม่เปลี่ยนSupabaseAuth/Storage/RLSหรือVercelปลายทาง
+
+ใช้รุ่นstableที่ล็อกในpackage.json/pnpm-lock.yamlและ[ADR001](docs/ADR/001-stack.md) ตัวอย่างบทถัดไปต้องตามAPI/pathรุ่นเดียวกัน Prisma7URLในprisma.config.ts generatedclientpath+PrismaPg adapter ไม่ใช้ตัวอย่างรุ่น6ปน Tailwind4PostCSSและpnpm11allowBuildsตามADR ยังไม่มีmodels/migration/RLSจริงในบท05 PostgreSQLComposeไม่ใช่Supabasestackและไม่มีauth.users
+
+การใช้Prismaไม่อนุญาตข้ามRLS; ต้องแยกmigrationroleจากruntime limitedroleและrequestcontextในบทที่เกี่ยวข้อง กฎทางการ/นโยบายยังTO VERIFY บท05ไม่สร้าง128modelsหรือbusinessservicesล่วงหน้า ผลDockerจริงต้องดูDOCKER-05ในPROGRESSก่อนพึ่งบริการ

@@ -1,0 +1,12 @@
+node_modules
+.next
+src/generated
+deliverables
+pnpm-lock.yaml
+next-env.d.ts
+# เอกสารบทเดิมรักษาประวัติและไม่formatทั้งโครงการย้อนหลัง
+BLUEPRINT.md
+00_MASTER_PROMPT.md
+docs/*.md
+docs/data_model.json
+docs/wireframes
