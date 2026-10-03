@@ -102,3 +102,11 @@ Confirmed คือข้อกำหนดที่ผู้ใช้ให้ 
 | DEC-050 | Accepted แบบผลตรวจแยก | เพิ่มdev-onlyPGlite0.5.8pinlockfileตรวจSQLด้วยPostgreSQL18.3WASM; ไม่เปลี่ยนCompose18.6หรือAPIPrisma7 | db:test:sql12testsผ่าน; fixtureSQLreplayคง41rows/audit41; engineversionบันทึกจริง | C02 | ไม่ถือแทนmigrate deploy/PrismaPg seed/concurrency/networkserver; DB-06ยังเปิด ห้ามอ้างผ่านAC06 |
 
 ข้อกำหนดทางการQ001–Q026ยังเปิด และประเด็นใหม่Q027ติดตามผลPostgreSQLserver ไม่push/deployหรือเริ่มบท07จากการอนุมัติบท06
+
+## ตรวจ dependency ก่อนบท07
+
+| รหัส | สถานะ | การตัดสินใจและเหตุผล | หลักฐาน | ผู้รับผิดชอบเสนอ | ขอบเขต |
+| --- | --- | --- | --- | --- | --- |
+| DEC-051 | BLOCKED / ตามแผนบท07ที่อนุมัติ | ตรวจทางปิดDB-06ก่อนสร้างauthz ถ้าไม่มีPGserverให้หยุดที่dependency ไม่ถือพรอมป์ต์/การอนุมัติเป็นผลผ่านบท06 | 3ต.ค.2569ตรวจซ้ำinitdbroot/runuserปฏิเสธ; pg127.0.0.1:5432ECONNREFUSED; pnpmdb:testฐานtestใหม่loopback5546exit1 | C02 + C01 | ไม่สร้างschema/migration/UserAccount/Role/Permission/Scope/DALของบท07 ผลserverยังNOT RUN; วิธีปิดในDATABASEข้อ10 ไม่push/deploy |
+
+แผนบท07ได้รับคำว่า “ตกลง” แล้ว การอนุมัติคงอยู่สำหรับขอบเขตแผนเดิมเมื่อdependencyผ่าน ไม่ร้องขออนุมัติแผนเดิมซ้ำ ไม่ใช้ServiceActorแทนloginหรือสร้างบัญชีซ้ำเพื่อลัดขั้นตอน

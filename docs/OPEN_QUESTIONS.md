@@ -78,3 +78,9 @@ Q001–Q025ยังเปิด Q023เลือกได้เฉพาะร�
 | Q027 | TO VERIFY / DB-06 | เครื่องใดรันPostgreSQLserverด้วยผู้ใช้ทั่วไปหรือDockerได้สำหรับPrisma7core06 | C02 + C01 | ผลmigrationdeployฐานว่าง/seed2ครั้ง/concurrentretry/db:test13testsและSELECTversion/extension/RLS flags โดยไม่ส่งcredential พร้อมchecksummigration | บท06ยังไม่ผ่านAC06-01/AC06-02ส่วนserver; nativeinitdbrootonlyและnamespaceไม่มีuidอื่น | SQLWASM12testsกับunit17ผ่านแยก ใช้schema/seed/contractsเตรียมแล้ว ไม่มีข้อมูลจริง/publicruntime | ก่อนบทถัดไปที่พึ่งฐานและก่อนนำเข้าข้อมูลจริง C02บันทึกผล; ปิดQ026Redis/worker/volumeแยก |
 
 บท06มีphysicalschema/migrationจริงเฉพาะcore19tables Q023/Q024/Q025ยังไม่ปิดสำหรับSupabase/สิทธิ์/กฎจริง ไม่มีการใช้seedสมมติรับรองข้อมูลจริง ปีเริ่ม/สิ้นยังQ017 ปิดDB-06ไม่ได้จากSQLWASMหรือPrisma validateเพียงอย่างเดียว
+
+### Q027 / DB-06 — ตรวจซ้ำก่อนบท07
+
+3ตุลาคม2569 หลังผู้ใช้อนุมัติแผนบท07 ตรวจซ้ำแล้วroot-onlynamespaceเหมือนเดิม ไม่มีDocker socket/PGserver local Native18.4initdbexit1root, runuserexit1permission, pg5432ECONNREFUSED และdb:testloopback5546กับฐานชื่อใหม่exit1ก่อนmigration ผลตรวจรับserverยังNOT RUN ไม่ปิดQ027/Q026
+
+ผู้รับผิดชอบเสนอC02ใช้เครื่องDocker/nativePGพร้อมรันDATABASEข้อ10 และส่งผล13nativeintegrationtests/version/checksumที่ปกปิดcredential เกณฑ์เดิมยังใช้ ขั้นตอนบท07ยังไม่ได้ลงมือเพราะdependencyไม่ผ่าน แผนบท07อนุมัติแล้วและไม่ต้องขอซ้ำเมื่อกลับมาดำเนินงานตามแผนเดิม

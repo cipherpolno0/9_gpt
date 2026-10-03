@@ -2,7 +2,7 @@
 
 อัปเดตบท 06 | รุ่นเอกสารล่าสุด 1.6 | 3 ตุลาคม 2569 (2026-10-03)
 
-**สถานะล่าสุดบท06: implementationพร้อมตรวจ แต่ BLOCKED (DB-06) สำหรับPostgreSQLserver/Prismaจริง ยังไม่ผ่านตรวจรับครบและยังไม่เริ่มบท07**
+**สถานะล่าสุด: แผนบท07อนุมัติแล้ว แต่ยังไม่เริ่ม implementation เพราะตรวจซ้ำ DB-06 แล้วยัง BLOCKED; บท06ยังไม่ผ่าน PostgreSQLserver/Prismaจริง**
 
 ## บันทึกบท 01 ที่เก็บไว้เป็นประวัติ
 
@@ -505,3 +505,22 @@ DB-06ปิดเมื่อC02ใช้เครื่องDocker/nativePGพ
 - `tests/database/sql-wasm.test.ts`
 - `tests/dates.test.ts`
 - `tests/structure.test.ts`
+
+## ตรวจ dependency ก่อนบท07 — ยังไม่เริ่ม implementation
+
+วันที่3ตุลาคม2569 ผู้ใช้ส่งพรอมป์ต์บท07และอนุมัติแผนด้วย“ตกลง” แผนข้อ1ให้ตรวจ/ปิดDB-06ก่อน หากเปิดserverไม่ได้ให้หยุดที่blocker ตรวจจากcommit522a52c/worktreeสะอาด
+
+| คำสั่ง/หลักฐานจริง | ผล |
+| --- | --- |
+| id + /proc/self/uid_map/gid_map | uid0/root, mappings0:0:1เท่านั้น |
+| command -v docker/postgres/initdb และtestDocker socket | ไม่พบPATH commands / socket |
+| native18.4 postgres --version + initdb data directoryใหม่ | version18.4; initdbexit1cannot be run as root |
+| runuser -u nobody nativeinitdb | exit1cannot set groups: Operation not permitted |
+| pg Pool SELECTversionที่127.0.0.1:5432 | ECONNREFUSED |
+| APP_ENV=test CH06_TEST_DATABASE_URL=loopback5546/sangha_ch06_test_recheck pnpm db:test | exit1 ไม่มีserver ก่อนmigrationและintegrationcases |
+
+DB-06/Q027ยังBLOCKED ไม่มีmigration/seed/13nativeintegrationtestsที่ผ่าน ไม่มีschemaหรือpoliciesเปลี่ยน models19/fields213/migrations1/schema0.6.0/checksummigrationเดิม ไม่มีauthz/DAL/UserAccount/Role/Permission/RoleAssignment/Scope/role matrixบท07ถูกสร้าง ไม่เปลี่ยนServiceActorเป็นlogin ไม่มีการเริ่มบท08
+
+แก้เอกสาร4ไฟล์: DATABASEเพิ่มผลตรวจซ้ำและขั้นตอนปิดบนเครื่องพร้อม, DECISIONSเพิ่มDEC-051, OPEN_QUESTIONSติดตามQ027 และPROGRESSบันทึกการหยุดตามdependency ไม่รันlint/type/build/unit/WASMซ้ำเพราะไม่มีโค้ด/schemaเปลี่ยนและผลเดิมไม่ปิดblocker ตรวจgit diff --check, local linksของDATABASE และpnpm secrets:check ผ่านสำหรับเอกสารชุดนี้ ไม่มี.envจริงtracked
+
+ข้อจำกัดมาจากenvironmentที่พิสูจน์ได้ ไม่ใช่การปฏิเสธautomaticapproval ไม่มีการขอcredential/permissionยกระดับหรือเชื่อมproduction ต้องใช้เครื่องรองรับตามDATABASEข้อ10ก่อนตรวจรับ06แล้วดำเนิน07 แผน07อนุมัติคงอยู่ ไม่ขออนุมัติเดิมซ้ำ ไม่มีpushGitHub/deploy

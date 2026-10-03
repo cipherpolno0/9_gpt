@@ -114,3 +114,44 @@ Migrationติดตั้งbtree_gistสำหรับhistoryexclusionแล
 ผลที่ผ่าน: schema validate/generate; unit/date/guard tests; SQLWASM migration+fixturereplay+constraints ยังไม่ได้รันPrisma migrate deploy, db:seedด้วยPrismaPg, concurrency, worker/Redis/volume/PostgreSQL18.6กับserverจริง
 
 C02ใช้เครื่องDockerพร้อมหรือnativePGที่รันด้วยผู้ใช้ทั่วไป สร้างฐานtestชื่อใหม่ รันข้อ5และบันทึกversion/ผลPASSพร้อมmigrationchecksumโดยไม่ส่งcredential ปิดDB-06ได้เมื่อหลักฐานnativeintegrationครบ DOCKER-05ยังต้องตรวจRedis/worker/volumeแยก ก่อนปิดอย่าเลื่อนไปบทถัดไปที่พึ่งฐานข้อมูล
+
+## 10 ตรวจซ้ำก่อนบท07 — 3 ตุลาคม 2569 เวลาไทย
+
+ผู้ใช้อนุมัติแผนบท07ที่กำหนดให้ปิดDB-06ก่อนเริ่ม implementation หากเปิดserverไม่ได้ให้หยุดที่blocker ผลตรวจซ้ำในสภาพแวดล้อมเดิมยังไม่ผ่าน จึงไม่สร้างUserAccount/Role/Permission/Scope, migrationบท07 หรือauthz/DALล่วงหน้า
+
+| ตรวจจริง | ผล |
+| --- | --- |
+| gitก่อนตรวจ | commit522a52c / working treeสะอาด |
+| uid_map/gid_map | มีเฉพาะ0:0:1 / processเป็นroot |
+| docker/postgres/initdbในPATH และDocker socket | ไม่พบในPATH; ไม่พบ/var/run/docker.sock |
+| nativebinaryชั่วคราวpostgres --version | PostgreSQL18.4 |
+| nativeinitdbไปdata directoryใหม่ | exit1: cannot be run as root |
+| runuser -u nobody แล้วinitdb | exit1: cannot set groups: Operation not permitted |
+| SELECTversionที่127.0.0.1:5432ผ่านpg driver | เชื่อมต่อไม่ได้ ECONNREFUSED |
+| APP_ENV=test + CH06_TEST_DATABASE_URLฐานsangha_ch06_test_recheckบนloopback5546 + pnpm db:test | exit1 ก่อนmigration/integrationtests ไม่มีPostgreSQLserver |
+
+ไม่มีฐานใหม่ถูกสร้าง ไม่มีmigration/seedหรือintegrationcasesรันผ่าน ไม่ใช้ผลunit/WASMเดิมปิดDB-06 ไม่แก้สิทธิ์kernel ไม่ใช้credentialproduction และไม่มีการpush/deploy
+
+### ขั้นตอนปิดblockerบนเครื่องที่รองรับ
+
+1. ติดตั้งและเปิดDocker Desktop/EngineตามSETUP ให้`docker version`มีส่วนServer; เปิดterminalในโครงการนี้
+2. รันคำสั่งต่อไปนี้โดยใช้Node/pnpmรุ่นในADR001:
+
+```bash
+pnpm install --frozen-lockfile
+pnpm env:init
+pnpm services:up
+```
+
+3. เปิด.envในเครื่อง ตั้งAPP_ENV=local ตรวจCH06_TEST_DATABASE_URLให้เป็นlocalhost/127.0.0.1 กับport/passwordlocalของCompose และใช้ชื่อฐานใหม่เช่นsangha_ch06_test_recheck ไม่มีquery/hash ถ้า.envมาจากบท05ให้เพิ่มตัวแปรจาก.env.exampleเอง **ไม่ส่ง.envหรือรหัสผ่านในแชต**
+4. รัน:
+
+```bash
+pnpm db:test
+pnpm check
+pnpm smoke
+```
+
+5. ผลdb:testต้องผ่าน13testsรวมtestครอบ โดยmigrationเริ่มจากฐานPostgreSQLว่าง seedซ้ำและพร้อมกันไม่ซ้ำ FK/unique/RLS/วันไทยผ่าน เก็บversion/ผลPASSและchecksum migrationจากข้อ9 ไม่ใช้ข้อความจากSQLWASMแทนผลserver
+
+หากเจอerror ให้ส่งเฉพาะชื่อคำสั่ง ข้อความผิดพลาดที่ปกปิดURL/password/token และสรุปPASS/FAIL ไม่ต้องแนบ.envหรือconnection string ผลครบจึงตรวจรับบท06และดำเนินบท07ตามแผนที่อนุมัติได้ การอนุมัติบท07ยังคงอยู่ ไม่ต้องอนุมัติแผนเดิมซ้ำ
