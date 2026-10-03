@@ -1,6 +1,6 @@
 # รายการตัดสินใจ — เว็บไซต์กองบริหารทะเบียนและวัดผล
 
-บท 02 | รุ่นเอกสาร 1.2 | 3 ตุลาคม 2569 (2026-10-03)
+บท 03 | รุ่นเอกสาร 1.3 | 3 ตุลาคม 2569 (2026-10-03)
 
 Confirmed คือข้อกำหนดที่ผู้ใช้ให้ ไม่ใช่คำวินิจฉัยทางการ Proposal คือข้อเสนอที่รอผู้รับผิดชอบพิจารณา TO VERIFY คือยังไม่พอให้ตัดสินหรือใช้งานจริง ผู้ใช้อนุมัติแผนงานบทนี้ด้วย “ตกลง” แต่ไม่ได้ยืนยันกฎทางการหรือแต่งตั้งเจ้าของงานจริงใน Q005
 
@@ -46,3 +46,16 @@ Confirmed คือข้อกำหนดที่ผู้ใช้ให้ 
 | DEC-022 | Confirmed | เชื่อมoriginกับhttps://github.com/cipherpolno0/9_gpt.gitและยืนยันrepoผ่านGitHubplugin | ผู้ใช้สั่งเชื่อม; pluginget_repoพบpublicและpermissionspull/push; branchesคืน[] | C02 | repositoryว่างณการตรวจ ยังไม่มีcommitบนGitHub; localcommitsคงประวัติบท01/02 |
 
 ใช้การอนุมัติแผนบท02เฉพาะขอบเขตที่ผู้ใช้สั่ง ข้อกำหนดของบท01คงเดิมและไม่ถูกเขียนทับ
+
+## รายการเพิ่มจากบท03
+
+| รหัส | สถานะ | การตัดสินใจ/ข้อเสนอ | หลักฐานและเหตุผล | ผู้รับผิดชอบเสนอ | ผลต่อการทำงาน |
+| --- | --- | --- | --- | --- | --- |
+| DEC-023 | Confirmed | บท03ออกแบบผังเมนู เส้นทางใช้และแบบร่างร่วม ไม่สร้างระบบจริงหรือเริ่มบท04 | พรอมป์ต์บท03และผู้ใช้ตอบตกลงวันที่3 ตุลาคม2569 | C01 + C02 + C04 | ส่งมอบSITEMAP/UX_FLOWS/WIREFRAMESและHTMLต้นแบบแก้ไขได้ ไม่มีmigration/deploy |
+| DEC-024 | Confirmed + Proposal | เมนูpublic7/app9สามกลุ่มตามBLUEPRINT; 9ระบบธุรกิจและExcelย่อยของสอบ | จำนวน/ชื่อเป็นConfirmed; pageinventoryPG-01–PG-41และrouteย่อยเป็นProposal | C02 + O01–O09 | adminแยกตามgrant แดชบอร์ดนับเฉพาะงานที่มีสิทธิ์ backend/RLSตรวจเองไม่พึ่งเมนู |
+| DEC-025 | Confirmed + Proposal | header/menu/content servicesและcontact/login/download/news/help/FAQ/policies/notificationsใช้ต้นทางเดียว | ผู้ใช้สั่งบริการร่วม; route/help/FAQ/policiesและcomponentเป็นข้อเสนอ | C04 + C02 + C03 | public/privateเป็นprojectionจากทะเบียนเดิม ไม่สร้างPerson/Organization/Application/เอกสารอีกชุด |
+| DEC-026 | Proposal | 13wireframesแก้ไขได้พร้อม65สถานะผิด/รอ; ต้นแบบHTMLออฟไลน์แยกจากappจริง | 10หน้าที่สั่ง+dashboard/login/trackingเพื่อเดิน4กลุ่มครบ | C02 + C04 + เจ้าของเรื่อง | ใช้rendererกลางสำหรับtable/form/state/navigation; ไม่เก็บcredentialหรือส่งข้อมูลจริง ทุกruntimeTCยังNOT RUN |
+| DEC-027 | Proposal | mobile<48remใช้modalnav; tabledatasetเดียวเป็นบัตรหรือกรอบเลื่อน; stepformรักษาร่างและfocuserror | ข้อกำหนดบท03และแนวทางW3C dialog/formnotificationsที่อ่าน | C02 + C04 + O03 | Q018/Q021ตรวจผู้ใช้/อุปกรณ์จริง; ตรวจprototypeไม่เท่ากับผ่านWCAGหรือUAT |
+| DEC-028 | Confirmed + Proposal | แยกส่งตรวจ/อนุมัติ/วันมีผล importreceipt/approval learning/officialresult และread/receiptหนังสือในUX | กติกากลางConfirmed; labelsและตำแหน่งเป็นProposalจากUCบท02 | O03 + O04 + O05 + O06 + O08 + O09 | กฎTO VERIFYยังเป็นconfigurationทดลองและปิดgateทางการ ไม่มีวงเงิน/คะแนน/ชื่อแบบที่แต่งขึ้น |
+
+การอนุมัติแผนบท03อนุญาตสร้างเอกสารและต้นแบบในขอบเขตนี้ ไม่ปิดQทางการหรืออนุญาตเผยแพร่ขึ้นGitHub/เปิดproduction ไม่มีการเปลี่ยนการตัดสินใจบท01/02ย้อนหลัง

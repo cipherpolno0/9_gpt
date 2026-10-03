@@ -1,6 +1,6 @@
 # ความก้าวหน้าโครงการ — เว็บไซต์กองบริหารทะเบียนและวัดผล
 
-อัปเดตบท 02 | รุ่นเอกสารล่าสุด 1.2 | 3 ตุลาคม 2569 (2026-10-03)
+อัปเดตบท 03 | รุ่นเอกสารล่าสุด 1.3 | 3 ตุลาคม 2569 (2026-10-03)
 
 ## บันทึกบท 01 ที่เก็บไว้เป็นประวัติ
 
@@ -126,3 +126,72 @@ Q001–Q016 ยังเปิด เจ้าของงานจริง/อ
 Q001–Q020ยังเปิด เจ้าของ/อำนาจ/แบบ/เกณฑ์สอบ/นโยบายจริงยังไม่ได้รับรอง ไม่ได้รันAPI/RLS/UI/a11y/restoreหรือtypecheck/lint/test/buildเพราะไม่มีimplementation ขอบเขตเวลาปีและมาตรฐานa11yย่อยเป็นconfig/ข้อเสนอที่ระบุสถานะแล้ว
 
 บท03: รอผู้ใช้ส่งพรอมป์ต์และอนุมัติแผน ยังไม่เริ่มและไม่เดาเนื้อหา
+
+## บท03 — ออกแบบเมนูและหน้าจอร่วม
+
+วันที่3 ตุลาคม2569 (2026-10-03) | รุ่นเอกสาร1.3 | ฐานบท02 commit134cf16 | ผู้ใช้อนุมัติแผนบท03แล้ว
+
+### งานและไฟล์ที่เปลี่ยน
+
+| ไฟล์ | สิ่งที่ทำ/เหตุผล |
+| --- | --- |
+| docs/SITEMAP.md | ผังpublic7/app9/admin/3กลุ่ม บัญชี41หน้าและcanonicalบริการกลาง พร้อมprojection/สิทธิ์; ครบ9ระบบโดยExcelอยู่ใต้สอบ |
+| docs/UX_FLOWS.md | FLOW-01–04สำหรับบุคคลทั่วไป สำนักเรียน ผู้อนุมัติ ผู้เรียน และFLOW-05–12ครอบคลุมงานอื่น; back/recovery/mobile/table/focus/ข้อความไทย |
+| docs/WIREFRAMES.md | 13แบบร่างแก้ไขได้ มีlayout/focus/action/back/permission และ65สถานะloading/empty/error/403/404เฉพาะหน้า |
+| docs/wireframes/chapter03.html | ต้นแบบออฟไลน์13หน้า6สถานะ ใช้rendererกลาง มี4เส้นทางสมมติและเมนูตามprofileทดลอง ไม่สร้างappหรือAuthจริง |
+| docs/DECISIONS.md | เพิ่มDEC-023–DEC-028 รักษาประวัติและแยกConfirmed/Proposal |
+| docs/OPEN_QUESTIONS.md | เพิ่มQ021/Q022เรื่องUXผู้ใช้/เนื้อหาฟิลด์จริง; Q001–Q020ยังเปิด ไม่แต่งกฎทางการ |
+| docs/PROGRESS.md | ผลตรวจจริง แยกdocument/modelจากbrowser/runtimeและระบุบทถัดไป |
+
+### Schema, migrations, versions และ policies
+
+เอกสารบท03รุ่น1.3 ฐานBLUEPRINT/MASTER/Charter1.1 และrequirements/traceability/permissions1.2คงเดิม ไม่มีschemaฐานข้อมูลหรือmigration (0ไฟล์) ไม่มีpackage.json/lockfileหรือเวอร์ชันNext.js/Supabase/ExcelJSที่เลือก ไม่มีRLS/Storagepolicies/Auth/audittrigger/worker/scan/productionUIหรือVerceldeploy ต้นแบบHTMLแยกจากเป้าหมายNext.js ไม่ใช่การเปลี่ยนเทคโนโลยีDEC-003
+
+PlaywrightและNodeที่ใช้ตรวจเป็นเครื่องมือที่มีในruntime ไม่ติดตั้งdependencyลงโครงการหรือcommitเครื่องมือชั่วคราว การพยายามติดตั้งbrowserสำหรับตรวจในruntimeไม่สำเร็จ ไม่มีผลbrowserให้รับรอง ไม่เปลี่ยนTC90กรณีบท02เป็นผ่าน
+
+### เกณฑ์ตรวจรับและผลจริง
+
+| เกณฑ์ | ผลตรวจระดับที่ทำได้จริง |
+| --- | --- |
+| DOC-03-01 เมนู/9ระบบครบ | ตรวจเอกสารเทียบBLUEPRINTครบ; Excelเป็นช่องทางระบบ05และdashboard/adminไม่เพิ่มระบบธุรกิจ |
+| DOC-03-02 ไม่มีบริการ/ทะเบียนซ้ำ | มีcanonicalcontact/login/download/news/help/FAQ/policies/notifications; public/privateอ้างข้อมูลกลางเดียว |
+| DOC-03-03 เส้นทาง4กลุ่ม | walkthroughเอกสารและNodeVMจำลองลำดับ/ผล4เส้นทางผ่าน; ไม่ใช่browserE2EหรือAPIจริง |
+| DOC-03-04 แบบร่างครบ | มี10หน้าที่สั่ง+dashboard/login/tracking รวม13หน้าและ65สถานะผิด/รอ; การสร้างmarkup13×6=78รูปแบบผ่าน |
+| DOC-03-05 mobile/form/table/keyboard | ข้อกำหนดและmarkupมีครบ ฟอร์มย้อนกลับรักษาข้อมูลถูกในmodel; ผลlayout/focusจริงในbrowserยังBLOCKED BROWSER-03 |
+
+ผลตรวจเอกสารอัตโนมัติผ่าน43/43รายการ ไม่อ้างว่าUATผู้ใช้จริงหรือWCAGผ่านจากmodel simulation
+
+| คำสั่ง/การตรวจที่รันจริง | ผล |
+| --- | --- |
+| `git status --short --branch`, `git log -2 --oneline`, `git remote -v` ก่อนทำ | mainสะอาด บท01/02อยู่ในGit originยังตรง9_gpt |
+| อ่านBLUEPRINT/MASTER/Charter/Progress/Decisions/OpenQuestions/Permissions/Traceability | ใช้ข้อกำหนดเดิมและประวัติร่วม ไม่มีAGENTS.mdที่ตรวจพบ |
+| `node /tmp/verify_chapter03_logic.cjs` | ผ่าน144 assertions: 78render combinations, 4journeys, draftback/errors, menu/receipt/officiallearning separation; เป็นNodeVMกับDOMstub ไม่ใช่browser/keyboard/layout |
+| `node --check /tmp/chapter03_inline.js` | ผ่าน syntaxJavaScriptที่สกัดจากต้นแบบจริง |
+| `python3 /tmp/verify_chapter03_docs.py` พร้อมlocalserverในprocessตรวจเดียวกัน | ผ่าน43/43: เมนู/41PG/13WF/65states/4flows, REQ/TCอ้างอิง, links/tablewidth/HTMLIDs/history, noapp/migration และHTTP200ได้HTMLbytesตรงไฟล์ |
+| `git diff --check` และ `git diff --cached --check` | ตรวจก่อนcommit ไม่มีwhitespace errors |
+| `python3 -m http.server 8000 --bind 127.0.0.1` | เปิดserverเฉพาะเครื่องเพื่อเตรียมตรวจต้นแบบ ไม่deploy |
+| `node /tmp/verify_chapter03_ui.cjs` | เริ่มไม่ได้: Playwrightไม่พบchromium_headless_shell-1234/chrome-headless-shell; ไม่มีUItestcaseใดรัน ไม่ได้สร้างภาพหน้าจอ |
+| `node …/playwright/cli.js install chromium --only-shell` | exit1: ชุดดาวน์โหลดแตกไม่ได้ “End of central directory record signature not found”; ไม่พบbrowserที่ใช้งานได้ จึงไม่อ้างvisual/mobile/focusผ่าน |
+
+การตรวจเอกสารครั้งแรกพบรหัสTC-C-MAKERที่ไม่อยู่ในcatalogบท02 แก้เป็นTC-C-SELFและรันใหม่ การตรวจHTTPครั้งแรกconnection refused จึงเริ่มและหยุดserverภายในprocessตรวจเดียวกันแล้วได้รับHTTP200และbytesตรงไฟล์ ไม่มีการใช้ผลครั้งที่ล้มเหลวอ้างว่าผ่าน
+
+### Blocker ที่พิสูจน์ได้และวิธีตรวจต่อ
+
+BROWSER-03: สภาพแวดล้อมไม่มีตัวbrowserและติดตั้งbrowserชั่วคราวไม่สำเร็จตามคำสั่งข้างต้น ขัดขวางการตรวจrender/keyboard/focusจริง ไม่ขัดขวางเอกสารหรือการจำลองลำดับงานด้วยfixture หลักฐานชั่วคราวมีผลfailureของPlaywrightและผลNodeVM แยกจากระบบจริง วิธีปลดคือเปิดHTMLที่ส่งมอบด้วยbrowserที่ใช้ได้ แล้วตรวจSIM-03-01–04, viewport320/375/768/1280px, Tab/Shift+Tab/Escapeในmobilemodal, focusreturnและลิงก์แก้field พร้อมบันทึกผล ไม่จำเป็นต้องติดตั้งแพ็กเกจโครงการเพื่อตรวจไฟล์นี้
+
+### วิธีตรวจด้วยตนเองทีละขั้น
+
+1. เปิดSITEMAPดูpublic7/app9และสามกลุ่ม; ตรวจ41pageIDsและcontact/login/download/news/help/FAQ/policies/notificationsต้นทางเดียว
+2. เปิดUX_FLOWSเดินFLOW-01–04โดยใช้fixtureสมมติ ดูจบงาน/recovery/back; เปิดWIREFRAMESตามWFที่อ้าง
+3. เปิดdocs/wireframes/chapter03.html หรือรันserverเฉพาะเครื่องตามคำสั่งในWIREFRAMES เลือก13หน้าและ6สถานะ ไม่มีการส่งบัญชี/ไฟล์/เงินจริง
+4. เดิน4SIMตามตารางในWIREFRAMES; ถ้าExcelผิดกลับเปลี่ยนไฟล์แล้วตรวจใหม่; ถ้าคำขอขาดเหตุผลใช้ลิงก์ไปfield; ก่อน/หลังเรียนแยกผลทางการ
+5. ลดหน้าจอ320/375/768/1280px ตรวจไม่เลื่อนทั้งหน้าแนวนอนนอกกรอบตาราง ใช้keyboardในdialogและformตามUX_FLOWS บันทึกผลเพื่อปิดBROWSER-03 ซึ่งบทนี้ยังไม่ได้ตรวจจริง
+6. ตรวจGitด้วย `git show --stat HEAD`, `git status --short`, `git remote -v`; commitบท03เก็บในโครงการนี้ ไม่มีการpushขึ้นGitHubในบทนี้
+
+### ข้อจำกัดและบทถัดไป
+
+Q001–Q022ยังเปิด เจ้าของ/แบบ/อำนาจ/ปี/ผลสอบ/นโยบาย/คำเรียกจริงยังไม่ได้รับรอง การแสดงเมนูตามprofileในต้นแบบไม่ใช่serverauthorization การพิสูจน์API/RLS/Storage/worker/scan/restore/transactionและTC90กรณีบท02ยังPLANNED / NOT RUN ไม่ได้รันtypecheck/lint/test/buildของNext.jsเพราะไม่มีapp/แพ็กเกจ ไม่มีผลUATหรือscreenreaderจริง
+
+สถานะบท03: ออกแบบและตรวจเอกสาร/ลำดับจำลองครบ พร้อมส่งมอบ มีBROWSER-03ค้างสำหรับตรวจภาพมือถือและkeyboardจริง ยังไม่ใช้ผลจำลองรับรองDOC-03-05ด้านbrowser การปิดgateตรวจจริงต้องมีหลักฐานจากbrowserที่ใช้งานได้ก่อนรับรองส่วนนี้
+
+บท04: รอผู้ใช้ส่งพรอมป์ต์และอนุมัติแผน ไม่เริ่มหรือเดาเนื้อหา และต้องแจ้งBROWSER-03ที่ยังค้างก่อนเลื่อนไปงานที่พึ่งผลตรวจหน้าจอ
