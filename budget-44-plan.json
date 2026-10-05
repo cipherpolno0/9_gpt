@@ -1,0 +1,223 @@
+{
+  "document_version": "0.1",
+  "lesson": 44,
+  "source_commit": "0905a84",
+  "received_on": "2026-10-05",
+  "status": "PLAN_ONLY",
+  "seeded": false,
+  "runtime_loaded": false,
+  "official_allowed": false,
+  "policy": {
+    "code": "DEMO_DISBURSEMENT_44",
+    "version": 1,
+    "verification_status": "TO_VERIFY",
+    "currency": "THB",
+    "money_storage_proposal": "NUMERIC(20,2)",
+    "authority_bands": [],
+    "approved_decision_id": null,
+    "source_evidence_file_version_id": null,
+    "direct_expense_allowed": false,
+    "refund_posting_allowed": false,
+    "partial_reversal_allowed": false,
+    "bank_transfer_enabled": false,
+    "separate_maker_reviewer_approver": true
+  },
+  "context": {
+    "organization_ref": "DEMO_ORG_FINANCE_44_A",
+    "outside_scope_organization_ref": "DEMO_ORG_FINANCE_44_B",
+    "verified_issuer_reference": "DEMO_ISSUER_44_A",
+    "issuer_is_actually_verified": false,
+    "fiscal_year_ref": "DEMO_FY_2027",
+    "obligation_ref": "DEMO_OBLIGATION_44",
+    "voucher_ref": "DEMO_VOUCHER_44",
+    "actor_refs_are_runtime_accounts": false,
+    "maker_ref": "DEMO_MAKER_44",
+    "reviewer_ref": "DEMO_REVIEWER_44",
+    "approver_ref": "DEMO_APPROVER_44"
+  },
+  "invoice_reference_examples": {
+    "namespace": "DEMO_INVOICE_44",
+    "raw_reference": "  DEMO-INV-0001  ",
+    "canonical_reference": "DEMO-INV-0001",
+    "normalization_proposal": "TRIM_AND_NFC_CASE_SENSITIVE_NO_DIGIT_OR_PUNCTUATION_REWRITE",
+    "reference_with_significant_leading_zero": "DEMO-INV-001",
+    "different_reference": "DEMO-INV-1",
+    "approved_payable_amount_reference": "5000.00",
+    "payment_installments": ["3000.00", "2000.00"],
+    "extra_installment": "1000.00",
+    "expected_extra": "REJECT_INVOICE_AND_OWN_CLAIM_LIMIT"
+  },
+  "reference_flow": [
+    {
+      "step": "submitted_claim",
+      "U": "20000.00",
+      "P": "0.00",
+      "C": "0.00",
+      "invoice_paid_net": "0.00",
+      "invoice_unpaid_claim": "5000.00",
+      "available": "80000.00"
+    },
+    {
+      "step": "certified",
+      "U": "20000.00",
+      "P": "0.00",
+      "C": "5000.00",
+      "invoice_paid_net": "0.00",
+      "invoice_unpaid_claim": "5000.00",
+      "available": "80000.00"
+    },
+    {
+      "step": "recorded_installment_1",
+      "U": "17000.00",
+      "P": "3000.00",
+      "C": "2000.00",
+      "invoice_paid_net": "3000.00",
+      "invoice_unpaid_claim": "2000.00",
+      "available": "80000.00"
+    },
+    {
+      "step": "recorded_installment_2",
+      "U": "15000.00",
+      "P": "5000.00",
+      "C": "0.00",
+      "invoice_paid_net": "5000.00",
+      "invoice_unpaid_claim": "0.00",
+      "available": "80000.00"
+    }
+  ],
+  "reference_ledger_context": { "A": "100000.00", "R": "0.00" },
+  "authority_reference_examples_only": {
+    "not_runtime_grants": true,
+    "base_current_max": "5000.00",
+    "delegated_max": "3000.00",
+    "basis": "DEMO_WHOLE_REQUEST_AMOUNT",
+    "starts_at": "2027-04-01T00:00:00+07:00",
+    "ends_at": "2027-05-01T00:00:00+07:00",
+    "cases": [
+      {
+        "now": "2027-03-31T23:59:59+07:00",
+        "amount": "2000.00",
+        "expected": "DENY_NOT_STARTED"
+      },
+      {
+        "now": "2027-04-01T00:00:00+07:00",
+        "amount": "3000.00",
+        "expected": "WITHIN_REFERENCE_WINDOW_AND_LIMIT"
+      },
+      {
+        "now": "2027-04-01T00:00:00+07:00",
+        "amount": "3000.01",
+        "expected": "DENY_ABOVE_DELEGATED_LIMIT"
+      },
+      {
+        "now": "2027-05-01T00:00:00+07:00",
+        "amount": "2000.00",
+        "expected": "DENY_EXPIRED"
+      }
+    ],
+    "split_whole_request_amount": "5000.00",
+    "split_installment_amounts": ["2500.00", "2500.00"],
+    "split_does_not_reduce_approval_basis": true
+  },
+  "obligation_claim_reference": {
+    "U": "20000.00",
+    "active_unpaid_claims": "15000.00",
+    "C_subset_of_claims": "10000.00",
+    "remaining_claim_capacity": "5000.00",
+    "new_claim_amount": "6000.00",
+    "expected": "REJECT_OBLIGATION_CLAIM_LIMIT"
+  },
+  "reversal_reference_plan": {
+    "kind": "CORRECTION_PAYMENT_RECORD",
+    "original_payment_ref": "DEMO_PAYMENT_44_FULL",
+    "amount": "5000.00",
+    "initial_U": "15000.00",
+    "initial_P": "5000.00",
+    "expected_U": "20000.00",
+    "expected_P": "0.00",
+    "expected_available": "80000.00",
+    "requires_new_approved_correction": true,
+    "voucher_reopen_requires_explicit_approval": true,
+    "correspondence_document_ref": "DEMO_PRIVATE_DOCUMENT_44",
+    "actual_document_present": false,
+    "actual_approval_present": false,
+    "bank_refund_executed": false,
+    "native_execution": "NOT_RUN"
+  },
+  "acceptance_cases": [
+    {
+      "id": "P44-01",
+      "case": "draft resume/returned revision/sealed hash submit retry one request",
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "P44-02",
+      "case": "certify confirm retry one certificate, submission does not record payment",
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "P44-03",
+      "case": "payment retry same key/hash one event; different hash conflict; different key same business reference denied",
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "P44-04",
+      "case": "invoice key/nonnull/issuer/normalization/cross-FY duplicate/approved partial installments",
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "P44-05",
+      "case": "concurrent claims/payments cannot exceed invoice amount own voucher or obligation; no claim and paid double count",
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "P44-06",
+      "case": "maker editor reviewer approver all distinct, technical role alone never money grant",
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "P44-07",
+      "case": "verified authority scope exact amount basis; split requests/installments cannot evade band",
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "P44-08",
+      "case": "delegation start/end/revocation/base ceiling/current account API and worker deny",
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "P44-09",
+      "case": "atomic invoice claim ledger receipt audit outbox rollback/native bounded retry",
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "P44-10",
+      "case": "outside scope IDs/query/body/payment/refund/export/download direct SQL denied",
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "P44-11",
+      "case": "TO VERIFY authority/invoice policy/evidence/period/direct expense prevents official posting",
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "P44-12",
+      "case": "full UI evidence/review/certify/installments keyboard focus 4viewports current server authorization",
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "P44-13",
+      "case": "cancel unpaid claim/certificate/correction/real refund distinct effects, no automatic voucher reopening",
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "P44-14",
+      "case": "approved full reversal once preserves original event/reason/evidence/correspondence private lineage",
+      "status": "NOT_RUN"
+    }
+  ],
+  "acceptance_mapping": {
+    "44-01": ["P44-01", "P44-02", "P44-03", "P44-04", "P44-05", "P44-09"],
+    "44-02": ["P44-06", "P44-07", "P44-08", "P44-10", "P44-11", "P44-12"]
+  }
+}
