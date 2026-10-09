@@ -52,7 +52,8 @@ async function snapshot() {
     // Names come from trusted migration catalog, limited identifiers.
     assert.match(tablename, /^[a-z_]+$/);
     const rows = await pool.query(
-      `SELECT to_jsonb(t) AS data FROM private."${tablename}" t ORDER BY id`,
+      // Snapshot every column deterministically, including tables whose key is a hash.
+      `SELECT to_jsonb(t) AS data FROM private."${tablename}" t ORDER BY data`,
     );
     result[tablename] = rows.rows.map((r) => r.data);
   }
