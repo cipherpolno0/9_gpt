@@ -1,5 +1,5 @@
 {
-  "version": "0.1",
+  "version": "0.2",
   "date": "2026-10-09",
   "app_schema_version": "0.7.0",
   "baseline_commit": "f317c2afb7a9e4a96dfaefc63f0bfc6e597591a6",
@@ -45,7 +45,59 @@
     "business_9_system_uat": "NOT_RUN_IMPLEMENTATION_GAPS",
     "backup_restore": "NOT_RUN",
     "browser_a11y": "NOT_RUN",
-    "remote_ci": "NOT_RUN_UPLOAD_PENDING"
+    "remote_ci": {
+      "status": "PASS",
+      "source_commit": "ada2595c82dbd631bc5d915cc3de13f6a6f08fa3",
+      "push_run_id": 37973088946,
+      "pull_request_run_id": 37973093420,
+      "urls": [
+        "https://github.com/cipherpolno0/9_gpt/actions/runs/37973088946",
+        "https://github.com/cipherpolno0/9_gpt/actions/runs/37973093420"
+      ],
+      "completed_at": "2026-10-09T18:25:57Z",
+      "environment": {
+        "runner": "ubuntu-24.04",
+        "node": "24.19.0",
+        "pnpm": "11.28.2",
+        "postgres_image": "postgres:18-bookworm",
+        "synthetic_isolated_database": true
+      },
+      "checks": {
+        "frozen_install": "PASS",
+        "lint": "PASS",
+        "typecheck": "PASS",
+        "unit": {
+          "passed": 23,
+          "tests": 23
+        },
+        "schema": "PASS",
+        "supported_pattern_secret_scan": "PASS_WORKTREE_NOT_HISTORY",
+        "native_postgresql": {
+          "passed": 18,
+          "tests": 18,
+          "includes_parent_tests": true,
+          "migrations_applied": 2,
+          "scope": "core constraints seed concurrency and portal RLS; not business seats/budget/stock/import acceptance"
+        },
+        "build": "PASS",
+        "http_smoke": {
+          "checks": 25,
+          "status": "PASS"
+        }
+      },
+      "resolved_failures": [
+        {
+          "run_id": 37972574364,
+          "failure": "root legacy seed.ts relative imports",
+          "fix": "include executable src/prisma/scripts/tests/worker and config files; preserve legacy file; no ignoreBuildErrors"
+        },
+        {
+          "run_id": 37972831965,
+          "failure": "snapshot ORDER BY id incompatible with portal_auth_limit hash key",
+          "fix": "order complete JSONB row deterministically; retain full table assertions"
+        }
+      ]
+    }
   },
   "migrations": [
     {
@@ -65,9 +117,21 @@
   },
   "release_decision": "NO_GO_FULL_PROJECT",
   "source_publication": {
-    "status": "APPROVED_PENDING_UPLOAD",
+    "status": "PUBLISHED_DRAFT_PR",
     "main_modified": false,
-    "branch_head_contains_new_source": false,
-    "reason": "User explicitly approved public publication of code and internal documents according to PUBLICATION_REVIEW.md"
+    "branch_head_contains_new_source": true,
+    "reason": "Explicit user approval according to PUBLICATION_REVIEW.md",
+    "pull_request": "https://github.com/cipherpolno0/9_gpt/pull/1",
+    "branch": "codex/portal-foundation-20261009",
+    "initial_source_commit": "7b780327538854d4440e8f662c1e107d291ff1eb",
+    "verified_source_files": 334,
+    "preserved_remote_only_files": 87,
+    "deleted_snapshot_paths": [
+      ".env",
+      "src/app/app/[[...path]]/route.ts",
+      "tsconfig.tsbuildinfo"
+    ],
+    "merged": false,
+    "deployed": false
   }
 }

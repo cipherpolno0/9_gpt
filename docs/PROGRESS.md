@@ -2599,3 +2599,14 @@ Versions app/schema0.7.0 core25models migration2; coreเดิมchecksumไม
 ## อนุมัติขอบเขตเผยแพร่ source
 
 2026-10-09 ผู้ใช้อนุมัติ public egress ของโค้ดและเอกสารภายในตาม PUBLICATION_REVIEW.md ไป cipherpolno0/9_gpt ชัดเจนแล้ว จึงปิด blocker ขอบเขตการเผยแพร่เดิม เตรียมส่งสาขา codex/portal-foundation-20261009 โดยรักษาไฟล์เพิ่มเติมบน main ยังไม่ merge/deploy และไม่ปลด NO_GO ระบบธุรกิจ 9 ระบบ บันทึกผล CI เมื่อรันจริงเท่านั้น App/schema 0.7.0; migration 20261003130000_core_foundation และ 20261009170000_portal_access ไม่เปลี่ยน ขั้นถัดไปตรวจ native CI แล้วปิด provider/staging/business/UAT gaps ตาม PORTAL_READINESS.md
+
+
+## ผลเผยแพร่ source ตามคำอนุมัติ
+
+ส่ง snapshot ขึ้นสาขา codex/portal-foundation-20261009 และเปิด Draft PR https://github.com/cipherpolno0/9_gpt/pull/1 แล้ว ตรวจ Git blob SHA ของต้นทาง 334 ไฟล์ตรงทั้งหมด เก็บ remote-only 87 ไฟล์ไม่เปลี่ยน ถอด .env, route handler เก่าที่ทับหน้า workspace และ tsconfig.tsbuildinfo จาก snapshot เท่านั้น main ยังคง 9bad69ba271555abf9cdf47748062a1e4602c0a9 ไม่ merge/deploy หรือแก้ประวัติ
+
+CI รอบแรก 37972574364 พบ root seed.ts เก่าที่ผู้ใช้อัปโหลดมี path ไม่ตรง แก้ tsconfig.include ให้ตรวจ src/prisma/scripts/tests/worker/configs จริงทั้งหมดและคงไฟล์ legacy ไว้ ไม่ใช้ ignoreBuildErrors รอบ 37972831965 ผ่าน compile/unit/scan แต่ native core snapshot ORDER BY id ใช้กับ portal_auth_limit ไม่ได้ แก้เรียง JSONB ทั้งแถวเพื่อเทียบทุกคอลัมน์ ไม่ข้ามตารางหรือ constraint Native portal subtests ผ่านในรอบนั้น แต่ทั้ง suite ยัง failed จึงไม่อ้าง PASS ผลรอบใหม่ให้ตรวจ tests/results/portal-foundation-results.json และ Actions URL ที่บันทึกจริง
+
+หลังแก้รัน local lint/typecheck/unit 23/build/HTTP smoke 25/supported-pattern secrets scan ผ่าน รุ่นแอป/schema 0.7.0; 25 models; migration 2 ชุดและ SHA256 เดิมไม่เปลี่ยน Source publication สำเร็จไม่เท่ากับ full-project release: NO_GO ยังอยู่ ขั้นต่อไปปิด provider/Auth/MFA/documents/workflow/business/native/UAT/staging/restore gaps ตาม PORTAL_READINESS.md และทบทวนบท70–72 ไม่เลื่อนไปบท73
+
+ผล native CI ที่รันจริง: commit ada2595c82dbd631bc5d915cc3de13f6a6f08fa3 · push run 37973088946 และ PR run 37973093420 success ทั้งคู่ เมื่อ 2026-10-09 ใช้ Ubuntu24.04 Node24.19.0 pnpm11.28.2 PostgreSQL18-bookworm ฐานสมมติแยกใหม่ migration2ผ่าน; unit23/23; native PostgreSQL18/18 (นับ parent tests2ด้วย); buildและHTTP25ผ่าน พร้อมlint/typecheck/schema/supported-patternscan ผลนี้ปิด blocker native foundation ในCI ไม่เปลี่ยนผล native localที่BLOCKED ไม่ใช่ all9 concurrency/UAT/provider/signoff

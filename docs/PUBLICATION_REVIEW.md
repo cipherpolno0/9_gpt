@@ -1,6 +1,6 @@
 # ตรวจขอบเขตการเผยแพร่ก่อนส่ง GitHub
 
-รุ่น 0.2 · 2026-10-09 · ผู้ใช้อนุมัติ public egress ตามรายการนี้แล้ว
+รุ่น 0.3 · 2026-10-09 · ผู้ใช้อนุมัติ public egress ตามรายการนี้แล้ว
 
 ปลายทาง https://github.com/cipherpolno0/9_gpt เป็น public repository สาขาเสนอ codex/portal-foundation-20261009 ไม่ merge main และไม่ deploy จากการอนุมัติส่ง source เพียงอย่างเดียว
 
@@ -303,3 +303,13 @@ automatic approval review ปฏิเสธการสร้าง tree ที
 ผู้ใช้ยืนยันในบทสนทนาว่า “อนุมัติให้ส่งโค้ดและเอกสารภายในตาม PUBLICATION_REVIEW.md ขึ้น GitHub https://github.com/cipherpolno0/9_gpt สาธารณะได้” อนุมัติรายการต้นทาง 277 ไฟล์และ manifest รวมเอกสารภายในที่ระบุ ไม่รวม secrets ข้อมูลจริง การ merge main หรือ production deployment
 
 ตาราง SHA ด้านบนเก็บ snapshot ที่ได้รับอนุมัติ การบันทึกคำอนุมัติและผลส่ง/CI ต่อจากนี้ปรับเฉพาะเอกสารสถานะกับผลตรวจที่เกี่ยวข้อง รุ่นแอป/schema 0.7.0 และ migration 2 ชุดไม่เปลี่ยน ต้องตรวจ tree SHA กับ source จริงก่อนอัปเดตสาขา
+
+## ผลการส่งและการแก้ CI
+
+Draft PR: https://github.com/cipherpolno0/9_gpt/pull/1 · source snapshot commit 7b780327538854d4440e8f662c1e107d291ff1eb · verified tree d24620a95dfccca9f669772d8e398d557f30fffd
+
+ตรวจ SHA 334 ไฟล์และ remote-only 87 ไฟล์ตรงทั้งหมดก่อนเปลี่ยน ref พร้อม expected head lease ไม่ force ไม่ merge main การแก้ CI ต่อจาก snapshot: tsconfig.json จำกัด include เฉพาะ executable source/test/config; tests/database/core.integration.ts เปลี่ยน ORDER BY id เป็นข้อมูล JSONB ครบทั้งแถวเพื่อรองรับ hash key โดยไม่ลด assertions เอกสารสถานะและ JSON ผลตรวจบันทึกคำอนุมัติ/ผลส่ง/ผล CI เพิ่มจากตาราง SHA ของ snapshot เดิม
+
+ผล CI จริงและข้อจำกัด: tests/results/portal-foundation-results.json ไม่รับรอง provider/staging/9-system UAT หรือ deployment authority
+
+CI ที่ตรวจ source หลังแก้: https://github.com/cipherpolno0/9_gpt/actions/runs/37973088946 และ https://github.com/cipherpolno0/9_gpt/actions/runs/37973093420 สำเร็จทั้งคู่ commit ada2595c82dbd631bc5d915cc3de13f6a6f08fa3; unit23 native18 HTTP25 รวม migration2 บันทึก native18 นับ parent testsด้วย ไม่อ้างเป็น business9 acceptance
