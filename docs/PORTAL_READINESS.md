@@ -1,6 +1,6 @@
 # ความพร้อม runtime หลังคำขอให้เว็บไซต์ใช้งานจริง
 
-รุ่น 0.2 · 2026-10-09 · app/schema 0.8.0 · คำตัดสินเปิดจริงครบโครงการ: NO_GO
+รุ่น 0.3 · 2026-10-09 · app/schema 0.8.0 · คำตัดสินเปิดจริงครบโครงการ: NO_GO
 
 เอกสารบทก่อนเป็น specification และแผนเป็นส่วนใหญ่ ไม่ใช่ implementation ที่ผ่านตรวจรับ การพัฒนารอบนี้เริ่มจาก core เดิมและสร้าง portal จริง ไม่ถือว่าได้พัฒนาบท 07–72 ครบจากการมีไฟล์เอกสาร
 
@@ -18,7 +18,7 @@
 
 สิ่งร่วมที่ทำแล้ว: public navigation 7 เมนู, workspace navigation 9 เมนู, contact URL เดียว, login/password+verified TOTP ผ่าน Supabase API, server-side provider user validation, cookie HttpOnly, local session hash/revocation, timed role assignments, SQL scope ก่อน pagination, no-store private pages/API, จำกัด login form และ rate, fixed provider URL, TLS verify สำหรับ production DB, base API deny by default
 
-สิ่งร่วมที่ยังค้าง: provider integration จริง, MFA enroll/reset/recovery, privileged provisioning audit/authorities, public field policies, file bytes/version/scan/ACL, workflows/jobs/outbox, monitoring/backup/restore, business UAT 9 ระบบ และ deployment authorization/owner ของข้อมูลจริง
+สิ่งร่วมที่ยังค้าง: provider integration จริง, MFA enroll/reset/recovery, privileged provisioning/authorities, public field policies, storage/scan daemon/worker host จริง, monitoring/backup/restore, business UAT 9 ระบบ และ deployment authorization/owner ของข้อมูลจริง; file versions/ACL/generic workflow/outbox มี implementation และ native CI แล้ว
 
 ## หลักฐานการตรวจ
 
@@ -45,3 +45,14 @@ Vercel สร้าง project9-gpt-stagingแล้ว ตั้ง preview APP
 ส่งมอบร่วม: [SHARED_WORKFLOW_SETUP](SHARED_WORKFLOW_SETUP.md), [UAT_SHARED_WORKFLOW](UAT_SHARED_WORKFLOW.md), migration20261009190000_documents_workflow เพิ่ม10models รวม35 ใช้ Person/Organization/Document/PolicyVersion/UserAccount/RoleAssignmentเดิม ไม่สร้าง loginหรือApplicationชุดที่สอง คำอนุมัติทดลองไม่เปลี่ยนทะเบียน ไม่มีข้อความว่า digital signature สำเร็จ
 
 กฎจริง/ฟอร์ม/ผู้มีอำนาจและ UAT เจ้าหน้าที่ยัง PENDING/TO VERIFY ขั้นถัดไปปิด blockerสร้างฐานแยก/credentialsในsecretstore/privatebucket/daemon/workers แล้วตรวจ provider login/MFA/revocation/browserUAT บริการกลาง จากนั้นพัฒนา activation, Application/seat/import, ledgerงบ-stock และสารบรรณตามdependencyเดิม ไม่เปิดจริงครบ9หรือข้ามบท70–72
+
+
+## หลักฐาน CI และข้อขัดข้อง deployment ที่ตรวจแล้ว
+
+2026-10-09 source commit 5938b96091726a5528d0f60457ab4ebffddfbb33: [GitHub Actions run37981290444](https://github.com/cipherpolno0/9_gpt/actions/runs/37981290444) job113992168809 completed/success ทุกขั้น ใช้ Ubuntu24.04 Node24.19.0 pnpm11.28.2 PostgreSQL18.6 ฐานสมมติแยก; migration3ชุดผ่าน unit27/27 native PostgreSQL32/32 (รวม parent tests) build/HTTP35/lint/typecheck/schema/supported-pattern scanผ่าน หลักฐาน native รวมสอง connectionอนุมัติแข่งได้หนึ่งคำตัดสิน, keyซ้ำได้หนึ่งร่าง, injected outboxfailure rollbackทั้งstatus/decision/audit/receipt และconsumerretryไม่ซ้ำ ผลนี้ปิด PENDING_RUN ของบริการร่วม ไม่แทน concurrency ledger/seat/stock/import ที่ยังไม่มี runtime
+
+Vercel project9-gpt-stagingมีจริง แต่ยังไม่มี READY deployment: dpl_GQoDFw21MgrDWG7QqTXAqrh5Y5Lb ส่ง target preview แต่ providerรายงาน production/ERROR git_info_failก่อนbuild; ไม่มีการเผยแพร่สำเร็จ การลองไม่ระบุtargetถูก automatic approval reviewปฏิเสธเพราะเสี่ยงผิดenvironment ไม่ได้ดำเนินการ จากนั้นใช้ target staging ตาม APIโดยตรง ได้ dpl_2RSe9jvVxqbH8ttEFX17S2hpz3ao reported staging/ERROR git_info_failเช่นกัน การส่ง source filesจากcommitเดิมพร้อมmanifestSHA2563196558170df663340308b477ad30b59186a91c11d9853a79c0f612fb148986eถูกขัดจังหวะ; inventoryหลังเหตุการณ์ยังมีเพียงสองdeploymentที่ERROR ไม่อ้างว่าส่ง/buildสำเร็จ ยังไม่มี staging HTTPsmoke หรือproviderlogin/PlaywrightUAT ไม่ปิดSSO protection
+
+Supabase get_costยังUNAVAILABLEในการตรวจซ้ำครั้งที่3 จึงไม่มีราคา/costconfirmation/projectใหม่ ไม่แก้ฐานเดิม ต้องใช้ช่องทางproviderที่ยืนยันราคาและสิทธิ์ได้ Browser fallbackยังไม่ได้เริ่ม: กติกาเครื่องมือกำหนดให้ผู้ใช้อนุมัติก่อนเมื่อconnectorไม่เพียงพอ ownerUATยังPENDING_OWNER all9NO_GO
+
+app/schema0.8.0 models35 migrations3SHAเดิมตามshared-workflow-results.json ไม่เปลี่ยนschemaในรอบบันทึกหลักฐานนี้ ขั้นต่อไปปิดproviderdeployment/DB/credential/privatebucket/scan/workers แล้วรันMFA/revocationและbrowserUATบริการกลาง จากนั้นพัฒนาธุรกรรมทั้ง9ตามPORTAL_READINESSและทบทวนบท70–72 ไม่เลื่อนไปบท73 ไม่เซ็นแทนเจ้าหน้าที่

@@ -1,6 +1,6 @@
 # รายการตัดสินใจ — เว็บไซต์กองบริหารทะเบียนและวัดผล
 
-ต่อยอด portal | รุ่นเอกสาร 1.50 | 9 ตุลาคม 2569 (2026-10-09)
+ต่อยอด portal | รุ่นเอกสาร 1.51 | 9 ตุลาคม 2569 (2026-10-09)
 
 Confirmed คือข้อกำหนดที่ผู้ใช้ให้ ไม่ใช่คำวินิจฉัยทางการ Proposal คือข้อเสนอที่รอผู้รับผิดชอบพิจารณา TO VERIFY คือยังไม่พอให้ตัดสินหรือใช้งานจริง ผู้ใช้อนุมัติแผนบท07แล้ว แต่ไม่ได้ยืนยันกฎทางการหรือแต่งตั้งเจ้าของงานจริงใน Q005
 
@@ -752,3 +752,27 @@ DEC-307 Confirmed software change: แก้ clean-checkout typecheck และ 
 | DEC-310 | Confirmed software change | FileVersionimmutable, objectno-upsert, privatebucket/ACL+scan+SHA ก่อนอ่าน; upload4MiB | ครอบคลุมwebceiling; daemon/retention/activecontentpolicyจริงยังค้าง | C02/O08 |
 | DEC-311 | Confirmed transaction design | source/decision/audit/outbox/idempotency atomic; notificationreceiptunique+SESSION_USERscope | consumerล้มไม่ย้อนลบsource; noPIIpayload; nativeconcurrencyแยกจากWASM | C02 |
 | DEC-312 | Confirmed staging configuration / No release acceptance | Vercel project9-gpt-stagingและpreviewsyntheticenv ใช้personalcontextเดิม | การสร้างprojectไม่เท่ากับdeployพร้อมDB; ไม่production/merge; UATownerPENDING | C01/C02 |
+
+
+## หลักฐาน CI และข้อขัดข้อง deployment ที่ตรวจแล้ว
+
+2026-10-09 source commit 5938b96091726a5528d0f60457ab4ebffddfbb33: [GitHub Actions run37981290444](https://github.com/cipherpolno0/9_gpt/actions/runs/37981290444) job113992168809 completed/success ทุกขั้น ใช้ Ubuntu24.04 Node24.19.0 pnpm11.28.2 PostgreSQL18.6 ฐานสมมติแยก; migration3ชุดผ่าน unit27/27 native PostgreSQL32/32 (รวม parent tests) build/HTTP35/lint/typecheck/schema/supported-pattern scanผ่าน หลักฐาน native รวมสอง connectionอนุมัติแข่งได้หนึ่งคำตัดสิน, keyซ้ำได้หนึ่งร่าง, injected outboxfailure rollbackทั้งstatus/decision/audit/receipt และconsumerretryไม่ซ้ำ ผลนี้ปิด PENDING_RUN ของบริการร่วม ไม่แทน concurrency ledger/seat/stock/import ที่ยังไม่มี runtime
+
+Vercel project9-gpt-stagingมีจริง แต่ยังไม่มี READY deployment: dpl_GQoDFw21MgrDWG7QqTXAqrh5Y5Lb ส่ง target preview แต่ providerรายงาน production/ERROR git_info_failก่อนbuild; ไม่มีการเผยแพร่สำเร็จ การลองไม่ระบุtargetถูก automatic approval reviewปฏิเสธเพราะเสี่ยงผิดenvironment ไม่ได้ดำเนินการ จากนั้นใช้ target staging ตาม APIโดยตรง ได้ dpl_2RSe9jvVxqbH8ttEFX17S2hpz3ao reported staging/ERROR git_info_failเช่นกัน การส่ง source filesจากcommitเดิมพร้อมmanifestSHA2563196558170df663340308b477ad30b59186a91c11d9853a79c0f612fb148986eถูกขัดจังหวะ; inventoryหลังเหตุการณ์ยังมีเพียงสองdeploymentที่ERROR ไม่อ้างว่าส่ง/buildสำเร็จ ยังไม่มี staging HTTPsmoke หรือproviderlogin/PlaywrightUAT ไม่ปิดSSO protection
+
+Supabase get_costยังUNAVAILABLEในการตรวจซ้ำครั้งที่3 จึงไม่มีราคา/costconfirmation/projectใหม่ ไม่แก้ฐานเดิม ต้องใช้ช่องทางproviderที่ยืนยันราคาและสิทธิ์ได้ Browser fallbackยังไม่ได้เริ่ม: กติกาเครื่องมือกำหนดให้ผู้ใช้อนุมัติก่อนเมื่อconnectorไม่เพียงพอ ownerUATยังPENDING_OWNER all9NO_GO
+
+app/schema0.8.0 models35 migrations3SHAเดิมตามshared-workflow-results.json ไม่เปลี่ยนschemaในรอบบันทึกหลักฐานนี้ ขั้นต่อไปปิดproviderdeployment/DB/credential/privatebucket/scan/workers แล้วรันMFA/revocationและbrowserUATบริการกลาง จากนั้นพัฒนาธุรกรรมทั้ง9ตามPORTAL_READINESSและทบทวนบท70–72 ไม่เลื่อนไปบท73 ไม่เซ็นแทนเจ้าหน้าที่
+
+DEC-313 Confirmed test evidence / No release acceptance: native CI run37981290444สำเร็จ ปิดเฉพาะsoftware shared workflow foundation; เก็บdeployment ERROR/การปฏิเสธtarget/การขัดจังหวะเป็นหลักฐาน คงUATownerและall9NO_GO ใช้ target stagingโดยตรงก่อนdeploymentครั้งต่อไป ไม่ใช้defaultที่ตีความเป็นproduction
+
+
+## ตรวจไฟล์ก่อนเชื่อม provider ตามคำขอผู้ใช้
+
+10 ตุลาคม 2569 เวลาไทย: git fetch originสำเร็จ พบไฟล์ค้าง6รายการ เป็นPROGRESS/DECISIONS/OPEN_QUESTIONS/PORTAL_READINESS/UAT_SHARED_WORKFLOW และshared-workflow-results.json บันทึกในcommit44fc4e6แล้ว ไม่มีuntracked source โค้ดapp0.8.0และmigration3ชุดอยู่ใน5938b960แล้ว
+
+mainล่าสุดb306f96ลบเอกสารระดับราก78รายการ นำการลบสำเนา77รายการเข้ามาในสาขางานโดยตรวจว่าทุกชื่อมีฉบับหลักในdocs/หรือtests/แล้ว คงBLUEPRINT.mdเพียงรายการเดียวเพราะเป็นเอกสารหลักที่ผู้ใช้กำหนดให้อ่านและไม่มีcanonicalcopyอื่น ไม่เปลี่ยนmainโดยตรง ไม่force push
+
+ไม่ส่ง.envจริง/credentials, node_modules, .next, Prisma generated client, build cache, ZIPdeliverablesที่สร้างซ้ำได้ และต้นฉบับuploadที่มีเอกสารหลักอยู่แล้วผ่าน.gitignore ใช้secrets:checkและdiffcheckผ่าน JSONผลCIและSHA256migrationทั้ง3ตรง รอบนี้ไม่แก้runtime/schemaและไม่อ้างผลCIเดิมว่าเป็นUATprovider
+
+ผล git push origin HEAD:refs/heads/codex/portal-foundation-20261009: exit128 could not read Username for https://github.com ไม่มีHTTPS credentialในเครื่อง ใช้ GitHub connectorที่ผู้ใช้เลือกเผยแพร่Git blobs/tree/commit/refด้วยexpected-head leaseแทน ไม่ขอหรือพิมพ์token และต้องตรวจremote treeตรงกับlocalก่อนสรุปว่าเผยแพร่แล้ว

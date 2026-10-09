@@ -1,6 +1,6 @@
 # Software acceptance และ UAT ของบริการกลาง
 
-รุ่น0.1 · app/schema0.8.0 · ข้อมูลสมมติ · เจ้าหน้าที่ลงนาม: PENDING_OWNER
+รุ่น0.2 · app/schema0.8.0 · ข้อมูลสมมติ · เจ้าหน้าที่ลงนาม: PENDING_OWNER
 
 | รหัส | Scenario / trace | Implementation | หลักฐานซอฟต์แวร์ | UAT เจ้าหน้าที่ |
 | --- | --- | --- | --- | --- |
@@ -27,3 +27,7 @@
 8. เก็บ screenshots สมมติและเวลา เจ้าหน้าที่ระบุ PASS/FAIL เหตุผล ผู้รับผิดชอบ และหลักฐาน ห้ามระบบใส่ลายเซ็นหรือปิดรายการแทนผู้ใช้
 
 UAT นี้ไม่ครอบคลุม activation/historyคำสั่ง ผลสอบที่นั่งจริง ledgerงบ stock custody สารบรรณและExcelครบ9ระบบ รายการ UAT01–09 และ UAT_MASTER ยังไม่ผ่านจากการส่งมอบบริการกลางนี้
+
+## ผลซอฟต์แวร์ที่ยืนยันเพิ่ม
+
+Native PostgreSQL32/32ผ่านจริงใน [CI run37981290444](https://github.com/cipherpolno0/9_gpt/actions/runs/37981290444) บน source5938b96091726a5528d0f60457ab4ebffddfbb33 รวม approval race, same-key race และ injected outbox rollback; unit27/27 HTTP35ผ่าน ไม่เปลี่ยนคอลัมน์ UATเจ้าหน้าที่จาก PENDING เพราะยังไม่มี provider storage/scan/Auth และไม่มี READY deployment

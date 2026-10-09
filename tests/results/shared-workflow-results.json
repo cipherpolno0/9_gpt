@@ -1,5 +1,5 @@
 {
-  "version": "0.1",
+  "version": "0.2",
   "date": "2026-10-09",
   "app_schema_version": "0.8.0",
   "models": 35,
@@ -46,29 +46,75 @@
     }
   },
   "native_ci": {
-    "status": "PENDING_RUN",
-    "tests": null
+    "status": "PASS",
+    "run_id": 37981290444,
+    "job_id": 113992168809,
+    "url": "https://github.com/cipherpolno0/9_gpt/actions/runs/37981290444",
+    "source_commit": "5938b96091726a5528d0f60457ab4ebffddfbb33",
+    "tests": 32,
+    "passed": 32,
+    "failed": 0,
+    "includes_parent_tests": true,
+    "postgresql_version": "18.6",
+    "node_version": "24.19.0",
+    "pnpm_version": "11.28.2",
+    "environment": "Ubuntu 24.04 isolated synthetic PostgreSQL service",
+    "migrations_applied": 3,
+    "unit_tests": 27,
+    "http_checks": 35,
+    "all_steps_conclusion": "success",
+    "proven_cases": [
+      "same-key simultaneous draft creates one request",
+      "two independent approvers produce one final decision and explicit conflict",
+      "injected outbox error rolls back decision status audit and idempotency receipt",
+      "consumer crash rollback retry and event order prevent duplicate notifications",
+      "scope target checks expired delegation revoked session and document ACL"
+    ]
   },
   "staging": {
     "vercel": {
       "project_id": "prj_8CVr1S52aQ865ZjpbXEHReE6RXpo",
       "name": "9-gpt-staging",
       "preview_env_configured": true,
-      "deployment_status": "NOT_DEPLOYED_YET"
+      "deployment_status": "BLOCKED_GIT_INFO_FAIL",
+      "deployments": [
+        {
+          "id": "dpl_GQoDFw21MgrDWG7QqTXAqrh5Y5Lb",
+          "requested_target": "preview",
+          "reported_target": "production",
+          "state": "ERROR",
+          "error_code": "git_info_fail",
+          "ready": false
+        },
+        {
+          "id": "dpl_2RSe9jvVxqbH8ttEFX17S2hpz3ao",
+          "requested_target": "staging",
+          "reported_target": "staging",
+          "state": "ERROR",
+          "error_code": "git_info_fail",
+          "ready": false
+        }
+      ],
+      "omitted_target_attempt": "AUTO_REVIEW_REJECTED_ENVIRONMENT_RISK; not executed",
+      "file_upload_attempt": "INTERRUPTED; subsequent deployment inventory shows no new deployment",
+      "runtime_smoke": "NOT_RUN; no READY deployment",
+      "protection": "SSO all_except_custom_domains retained",
+      "git_connection": "NOT_VERIFIED"
     },
     "supabase": {
       "connector": "CONNECTED",
       "new_staging": "NOT_CREATED",
       "selected_organization": "cipherpolno0",
       "blocker": "get_cost UNAVAILABLE: MCP tool get_cost was not returned by tools/list",
-      "existing_database_modified": false
+      "existing_database_modified": false,
+      "cost_attempts_unavailable": 3
     },
     "provider_login": "NOT_RUN",
     "private_storage_scan": "NOT_RUN",
     "worker_host": "NOT_CONFIGURED"
   },
   "uat": {
-    "software_shared_scope": "PARTIAL_LOCAL",
+    "software_shared_scope": "PASS_UNIT_NATIVE_POSTGRESQL_HTTP; provider and browser acceptance pending",
     "owner_signoff": "PENDING_OWNER",
     "all_9_systems": "NO_GO"
   },
@@ -84,5 +130,6 @@
     "shared requests are SYNTHETIC; no register activation",
     "owner UAT not signed",
     "native concurrency requires real PostgreSQL; not WASM"
-  ]
+  ],
+  "source_commit": "5938b96091726a5528d0f60457ab4ebffddfbb33"
 }
