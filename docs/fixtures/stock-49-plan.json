@@ -1,0 +1,820 @@
+{
+  "version": "0.1",
+  "lesson": 49,
+  "received_at": "2026-10-08T05:18:45+07:00",
+  "source_commit": "2a5b70f",
+  "status": "PLAN_ONLY",
+  "prerequisite48": "BLOCKED",
+  "seeded": false,
+  "runtime_implemented": false,
+  "native_transactions_tested": false,
+  "actual_receipts_inspections_movements_created": false,
+  "policy": {
+    "ref": "DEMO_STOCK_POLICY_49",
+    "status": "TO_VERIFY",
+    "negative_stock_allowed": false,
+    "replacement_returns_restore_capacity_reference": true,
+    "actual_replacement_policy_verified": false,
+    "lot_tracking_reference": "NONE",
+    "lot_policy_actual_verified": false,
+    "rounding_actual_verified": false,
+    "authority_bands": [],
+    "actual_clean_file_version": null,
+    "official_enabled": false
+  },
+  "notes": [
+    "ทุกชื่อ/รหัส/qty/เงินเป็นสมมติ ไม่seed ไม่เป็นstock/order/obligationจริง",
+    "case20NOT_RUN และsource refsไม่เป็นFK/คำอนุมัติ/หลักฐานCLEANจริง",
+    "financeopeningเป็นreferencepreexistingOrder6000 ไม่postงบหรือจ่ายจากการรับของ",
+    "rejectedreturnไม่มีusableOUT acceptedreturnต้องของยังมี/approvedpolicy/เดิมsourceและต้องไม่ข้ามdependencies",
+    "snapshotquantitiesไม่ใช้พิสูจน์nativeconcurrency/RLS/idempotencyหรือเปลี่ยนclientstock"
+  ],
+  "contexts": [
+    {
+      "warehouse_ref": "DEMO_WAREHOUSE_49_A",
+      "location_ref": "DEMO_LOCATION_49_A",
+      "organization_ref": "DEMO_ORG_49_A",
+      "item_ref": "DEMO_ITEM_47_PAPER",
+      "unit_ref": "DEMO_UNIT_47_PIECE",
+      "unit_version_ref": "DEMO_UV_47_PIECE_1",
+      "quantity_scale": 0,
+      "lot_ref": null,
+      "actual_created": false
+    },
+    {
+      "warehouse_ref": "DEMO_WAREHOUSE_49_B",
+      "location_ref": "DEMO_LOCATION_49_B",
+      "organization_ref": "DEMO_ORG_49_A",
+      "item_ref": "DEMO_ITEM_47_PAPER",
+      "unit_ref": "DEMO_UNIT_47_PIECE",
+      "unit_version_ref": "DEMO_UV_47_PIECE_1",
+      "quantity_scale": 0,
+      "lot_ref": null,
+      "actual_created": false
+    }
+  ],
+  "order_descriptor": {
+    "ref": "DEMO_ORDER_49_A",
+    "source_contract": "PROCUREMENT48",
+    "quantity": "6",
+    "unit_ref": "DEMO_UNIT_47_PIECE",
+    "unit_version_ref": "DEMO_UV_47_PIECE_1",
+    "unit_price": "1000.00",
+    "contract_amount": "6000.00",
+    "obligation_ref": "DEMO_OBLIGATION_49_A",
+    "actual_issued": false,
+    "fiscal_year_ref": "DEMO_FY_2027",
+    "academic_year_ref": "DEMO_AY_2027"
+  },
+  "inspection_descriptors": [
+    {
+      "ref": "DEMO_INSPECTION_49_1",
+      "receipt_line_ref": "DEMO_RL49_1",
+      "inspector_ref": "DEMO_ACTOR_49_REVIEWER",
+      "approver_ref": "DEMO_ACTOR_49_APPROVER",
+      "source_version": 1,
+      "actual_approved": false,
+      "evidence_ref": "DEMO_EVIDENCE_49_REQUIRED"
+    },
+    {
+      "ref": "DEMO_INSPECTION_49_2",
+      "receipt_line_ref": "DEMO_RL49_2",
+      "inspector_ref": "DEMO_ACTOR_49_REVIEWER",
+      "approver_ref": "DEMO_ACTOR_49_APPROVER",
+      "source_version": 1,
+      "actual_approved": false,
+      "evidence_ref": "DEMO_EVIDENCE_49_REQUIRED"
+    },
+    {
+      "ref": "DEMO_INSPECTION_49_3",
+      "receipt_line_ref": "DEMO_RL49_3",
+      "inspector_ref": "DEMO_ACTOR_49_REVIEWER",
+      "approver_ref": "DEMO_ACTOR_49_APPROVER",
+      "source_version": 1,
+      "actual_approved": false,
+      "evidence_ref": "DEMO_EVIDENCE_49_REQUIRED"
+    }
+  ],
+  "opening_stock": {
+    "DEMO_WAREHOUSE_49_A": "0",
+    "DEMO_WAREHOUSE_49_B": "0"
+  },
+  "finance_opening_reference": {
+    "allocated": "100000.00",
+    "reserved": "0.00",
+    "unpaid_obligation": "6000.00",
+    "paid": "0.00",
+    "certified": "0.00",
+    "available": "94000.00"
+  },
+  "reference_steps": [
+    {
+      "ref": "DEMO_STEP_49_01",
+      "type": "ACCEPT_PARTIAL_RECEIPT_1",
+      "movement_ref": "DEMO_MOVEMENT_49_01",
+      "would_post_stock_movement": true,
+      "legs": [
+        {
+          "warehouse_ref": "DEMO_WAREHOUSE_49_A",
+          "location_ref": "DEMO_LOCATION_49_A",
+          "item_ref": "DEMO_ITEM_47_PAPER",
+          "unit_version_ref": "DEMO_UV_47_PIECE_1",
+          "lot_ref": null,
+          "quantity_delta": "3",
+          "source_receipt_line_ref": "DEMO_RL49_1"
+        }
+      ],
+      "expected_balances": {
+        "DEMO_WAREHOUSE_49_A": "3",
+        "DEMO_WAREHOUSE_49_B": "0"
+      },
+      "expected_order_counts": {
+        "physical_delivered_total": "4",
+        "accepted_gross": "3",
+        "rejected_total": "1",
+        "accepted_returned": "0",
+        "accepted_net": "3",
+        "pending_inspection": "0",
+        "cancelled_order_quantity": "0",
+        "order_remaining": "3",
+        "quantity_fulfilled_expected": false,
+        "whole_order_closed_expected": false,
+        "financial_liability_open_expected": true
+      },
+      "expected_finance_buckets": {
+        "allocated": "100000.00",
+        "reserved": "0.00",
+        "unpaid_obligation": "6000.00",
+        "paid": "0.00",
+        "certified": "0.00",
+        "available": "94000.00"
+      },
+      "financial_delta": {
+        "allocated": "0.00",
+        "reserved": "0.00",
+        "unpaid_obligation": "0.00",
+        "paid": "0.00",
+        "certified": "0.00"
+      },
+      "effective_on": "2027-04-01",
+      "recorded_at": "2027-04-01T02:00:00Z",
+      "evidence_ref": "DEMO_EVIDENCE_49_REQUIRED",
+      "decision_ref": "DEMO_DECISION_49_REQUIRED",
+      "receipt_binding_ref": "DEMO_OPERATION_RECEIPT_49_01",
+      "actual_posted": false,
+      "actual_approved_decision": null,
+      "delivery_descriptor": {
+        "received": "4",
+        "accepted": "3",
+        "rejected": "1",
+        "pending": "0",
+        "actual_created": false
+      }
+    },
+    {
+      "ref": "DEMO_STEP_49_02",
+      "type": "RETURN_REJECTED_BEFORE_ACCEPTANCE",
+      "movement_ref": null,
+      "would_post_stock_movement": false,
+      "legs": [],
+      "expected_balances": {
+        "DEMO_WAREHOUSE_49_A": "3",
+        "DEMO_WAREHOUSE_49_B": "0"
+      },
+      "expected_order_counts": {
+        "physical_delivered_total": "4",
+        "accepted_gross": "3",
+        "rejected_total": "1",
+        "accepted_returned": "0",
+        "accepted_net": "3",
+        "pending_inspection": "0",
+        "cancelled_order_quantity": "0",
+        "order_remaining": "3",
+        "quantity_fulfilled_expected": false,
+        "whole_order_closed_expected": false,
+        "financial_liability_open_expected": true
+      },
+      "expected_finance_buckets": {
+        "allocated": "100000.00",
+        "reserved": "0.00",
+        "unpaid_obligation": "6000.00",
+        "paid": "0.00",
+        "certified": "0.00",
+        "available": "94000.00"
+      },
+      "financial_delta": {
+        "allocated": "0.00",
+        "reserved": "0.00",
+        "unpaid_obligation": "0.00",
+        "paid": "0.00",
+        "certified": "0.00"
+      },
+      "effective_on": "2027-04-02",
+      "recorded_at": "2027-04-02T02:00:00Z",
+      "evidence_ref": "DEMO_EVIDENCE_49_REQUIRED",
+      "decision_ref": "DEMO_DECISION_49_REQUIRED",
+      "receipt_binding_ref": null,
+      "actual_posted": false,
+      "actual_approved_decision": null,
+      "rejected_supplier_return_quantity": "1"
+    },
+    {
+      "ref": "DEMO_STEP_49_03",
+      "type": "ACCEPT_PARTIAL_RECEIPT_2",
+      "movement_ref": "DEMO_MOVEMENT_49_03",
+      "would_post_stock_movement": true,
+      "legs": [
+        {
+          "warehouse_ref": "DEMO_WAREHOUSE_49_A",
+          "location_ref": "DEMO_LOCATION_49_A",
+          "item_ref": "DEMO_ITEM_47_PAPER",
+          "unit_version_ref": "DEMO_UV_47_PIECE_1",
+          "lot_ref": null,
+          "quantity_delta": "3",
+          "source_receipt_line_ref": "DEMO_RL49_2"
+        }
+      ],
+      "expected_balances": {
+        "DEMO_WAREHOUSE_49_A": "6",
+        "DEMO_WAREHOUSE_49_B": "0"
+      },
+      "expected_order_counts": {
+        "physical_delivered_total": "7",
+        "accepted_gross": "6",
+        "rejected_total": "1",
+        "accepted_returned": "0",
+        "accepted_net": "6",
+        "pending_inspection": "0",
+        "cancelled_order_quantity": "0",
+        "order_remaining": "0",
+        "quantity_fulfilled_expected": true,
+        "whole_order_closed_expected": false,
+        "financial_liability_open_expected": true
+      },
+      "expected_finance_buckets": {
+        "allocated": "100000.00",
+        "reserved": "0.00",
+        "unpaid_obligation": "6000.00",
+        "paid": "0.00",
+        "certified": "0.00",
+        "available": "94000.00"
+      },
+      "financial_delta": {
+        "allocated": "0.00",
+        "reserved": "0.00",
+        "unpaid_obligation": "0.00",
+        "paid": "0.00",
+        "certified": "0.00"
+      },
+      "effective_on": "2027-04-03",
+      "recorded_at": "2027-04-03T02:00:00Z",
+      "evidence_ref": "DEMO_EVIDENCE_49_REQUIRED",
+      "decision_ref": "DEMO_DECISION_49_REQUIRED",
+      "receipt_binding_ref": "DEMO_OPERATION_RECEIPT_49_03",
+      "actual_posted": false,
+      "actual_approved_decision": null
+    },
+    {
+      "ref": "DEMO_STEP_49_04",
+      "type": "APPROVED_RETURN_ACCEPTED_FOR_REPLACEMENT",
+      "movement_ref": "DEMO_MOVEMENT_49_04",
+      "would_post_stock_movement": true,
+      "legs": [
+        {
+          "warehouse_ref": "DEMO_WAREHOUSE_49_A",
+          "location_ref": "DEMO_LOCATION_49_A",
+          "item_ref": "DEMO_ITEM_47_PAPER",
+          "unit_version_ref": "DEMO_UV_47_PIECE_1",
+          "lot_ref": null,
+          "quantity_delta": "-1",
+          "source_receipt_line_ref": "DEMO_RL49_1"
+        }
+      ],
+      "expected_balances": {
+        "DEMO_WAREHOUSE_49_A": "5",
+        "DEMO_WAREHOUSE_49_B": "0"
+      },
+      "expected_order_counts": {
+        "physical_delivered_total": "7",
+        "accepted_gross": "6",
+        "rejected_total": "1",
+        "accepted_returned": "1",
+        "accepted_net": "5",
+        "pending_inspection": "0",
+        "cancelled_order_quantity": "0",
+        "order_remaining": "1",
+        "quantity_fulfilled_expected": false,
+        "whole_order_closed_expected": false,
+        "financial_liability_open_expected": true
+      },
+      "expected_finance_buckets": {
+        "allocated": "100000.00",
+        "reserved": "0.00",
+        "unpaid_obligation": "6000.00",
+        "paid": "0.00",
+        "certified": "0.00",
+        "available": "94000.00"
+      },
+      "financial_delta": {
+        "allocated": "0.00",
+        "reserved": "0.00",
+        "unpaid_obligation": "0.00",
+        "paid": "0.00",
+        "certified": "0.00"
+      },
+      "effective_on": "2027-04-04",
+      "recorded_at": "2027-04-04T02:00:00Z",
+      "evidence_ref": "DEMO_EVIDENCE_49_REQUIRED",
+      "decision_ref": "DEMO_DECISION_49_REQUIRED",
+      "receipt_binding_ref": "DEMO_OPERATION_RECEIPT_49_04",
+      "actual_posted": false,
+      "actual_approved_decision": null,
+      "original_receipt_line_ref": "DEMO_RL49_1",
+      "return_quantity": "1",
+      "replacement_capacity_restored_reference": "1"
+    },
+    {
+      "ref": "DEMO_STEP_49_05",
+      "type": "ACCEPT_REPLACEMENT_RECEIPT_3",
+      "movement_ref": "DEMO_MOVEMENT_49_05",
+      "would_post_stock_movement": true,
+      "legs": [
+        {
+          "warehouse_ref": "DEMO_WAREHOUSE_49_A",
+          "location_ref": "DEMO_LOCATION_49_A",
+          "item_ref": "DEMO_ITEM_47_PAPER",
+          "unit_version_ref": "DEMO_UV_47_PIECE_1",
+          "lot_ref": null,
+          "quantity_delta": "1",
+          "source_receipt_line_ref": "DEMO_RL49_3"
+        }
+      ],
+      "expected_balances": {
+        "DEMO_WAREHOUSE_49_A": "6",
+        "DEMO_WAREHOUSE_49_B": "0"
+      },
+      "expected_order_counts": {
+        "physical_delivered_total": "8",
+        "accepted_gross": "7",
+        "rejected_total": "1",
+        "accepted_returned": "1",
+        "accepted_net": "6",
+        "pending_inspection": "0",
+        "cancelled_order_quantity": "0",
+        "order_remaining": "0",
+        "quantity_fulfilled_expected": true,
+        "whole_order_closed_expected": false,
+        "financial_liability_open_expected": true
+      },
+      "expected_finance_buckets": {
+        "allocated": "100000.00",
+        "reserved": "0.00",
+        "unpaid_obligation": "6000.00",
+        "paid": "0.00",
+        "certified": "0.00",
+        "available": "94000.00"
+      },
+      "financial_delta": {
+        "allocated": "0.00",
+        "reserved": "0.00",
+        "unpaid_obligation": "0.00",
+        "paid": "0.00",
+        "certified": "0.00"
+      },
+      "effective_on": "2027-04-05",
+      "recorded_at": "2027-04-05T02:00:00Z",
+      "evidence_ref": "DEMO_EVIDENCE_49_REQUIRED",
+      "decision_ref": "DEMO_DECISION_49_REQUIRED",
+      "receipt_binding_ref": "DEMO_OPERATION_RECEIPT_49_05",
+      "actual_posted": false,
+      "actual_approved_decision": null
+    },
+    {
+      "ref": "DEMO_STEP_49_06",
+      "type": "POST_ISSUE_REQUEST_A",
+      "movement_ref": "DEMO_MOVEMENT_49_06",
+      "would_post_stock_movement": true,
+      "legs": [
+        {
+          "warehouse_ref": "DEMO_WAREHOUSE_49_A",
+          "location_ref": "DEMO_LOCATION_49_A",
+          "item_ref": "DEMO_ITEM_47_PAPER",
+          "unit_version_ref": "DEMO_UV_47_PIECE_1",
+          "lot_ref": null,
+          "quantity_delta": "-2",
+          "source_receipt_line_ref": "DEMO_RL49_1"
+        }
+      ],
+      "expected_balances": {
+        "DEMO_WAREHOUSE_49_A": "4",
+        "DEMO_WAREHOUSE_49_B": "0"
+      },
+      "expected_order_counts": {
+        "physical_delivered_total": "8",
+        "accepted_gross": "7",
+        "rejected_total": "1",
+        "accepted_returned": "1",
+        "accepted_net": "6",
+        "pending_inspection": "0",
+        "cancelled_order_quantity": "0",
+        "order_remaining": "0",
+        "quantity_fulfilled_expected": true,
+        "whole_order_closed_expected": false,
+        "financial_liability_open_expected": true
+      },
+      "expected_finance_buckets": {
+        "allocated": "100000.00",
+        "reserved": "0.00",
+        "unpaid_obligation": "6000.00",
+        "paid": "0.00",
+        "certified": "0.00",
+        "available": "94000.00"
+      },
+      "financial_delta": {
+        "allocated": "0.00",
+        "reserved": "0.00",
+        "unpaid_obligation": "0.00",
+        "paid": "0.00",
+        "certified": "0.00"
+      },
+      "effective_on": "2027-04-06",
+      "recorded_at": "2027-04-06T02:00:00Z",
+      "evidence_ref": "DEMO_EVIDENCE_49_REQUIRED",
+      "decision_ref": "DEMO_DECISION_49_REQUIRED",
+      "receipt_binding_ref": "DEMO_OPERATION_RECEIPT_49_06",
+      "actual_posted": false,
+      "actual_approved_decision": null
+    },
+    {
+      "ref": "DEMO_STEP_49_07",
+      "type": "POST_CONFIRMED_HANDOVER_TRANSFER",
+      "movement_ref": "DEMO_MOVEMENT_49_07",
+      "would_post_stock_movement": true,
+      "legs": [
+        {
+          "warehouse_ref": "DEMO_WAREHOUSE_49_A",
+          "location_ref": "DEMO_LOCATION_49_A",
+          "item_ref": "DEMO_ITEM_47_PAPER",
+          "unit_version_ref": "DEMO_UV_47_PIECE_1",
+          "lot_ref": null,
+          "quantity_delta": "-3",
+          "source_receipt_line_ref": "DEMO_RL49_2"
+        },
+        {
+          "warehouse_ref": "DEMO_WAREHOUSE_49_B",
+          "location_ref": "DEMO_LOCATION_49_B",
+          "item_ref": "DEMO_ITEM_47_PAPER",
+          "unit_version_ref": "DEMO_UV_47_PIECE_1",
+          "lot_ref": null,
+          "quantity_delta": "3",
+          "source_receipt_line_ref": "DEMO_RL49_2"
+        }
+      ],
+      "expected_balances": {
+        "DEMO_WAREHOUSE_49_A": "1",
+        "DEMO_WAREHOUSE_49_B": "3"
+      },
+      "expected_order_counts": {
+        "physical_delivered_total": "8",
+        "accepted_gross": "7",
+        "rejected_total": "1",
+        "accepted_returned": "1",
+        "accepted_net": "6",
+        "pending_inspection": "0",
+        "cancelled_order_quantity": "0",
+        "order_remaining": "0",
+        "quantity_fulfilled_expected": true,
+        "whole_order_closed_expected": false,
+        "financial_liability_open_expected": true
+      },
+      "expected_finance_buckets": {
+        "allocated": "100000.00",
+        "reserved": "0.00",
+        "unpaid_obligation": "6000.00",
+        "paid": "0.00",
+        "certified": "0.00",
+        "available": "94000.00"
+      },
+      "financial_delta": {
+        "allocated": "0.00",
+        "reserved": "0.00",
+        "unpaid_obligation": "0.00",
+        "paid": "0.00",
+        "certified": "0.00"
+      },
+      "effective_on": "2027-04-07",
+      "recorded_at": "2027-04-07T02:00:00Z",
+      "evidence_ref": "DEMO_EVIDENCE_49_REQUIRED",
+      "decision_ref": "DEMO_DECISION_49_REQUIRED",
+      "receipt_binding_ref": "DEMO_OPERATION_RECEIPT_49_07",
+      "actual_posted": false,
+      "actual_approved_decision": null,
+      "handover_confirmed_reference_only": true
+    },
+    {
+      "ref": "DEMO_STEP_49_08",
+      "type": "POST_ISSUE_REQUEST_B",
+      "movement_ref": "DEMO_MOVEMENT_49_08",
+      "would_post_stock_movement": true,
+      "legs": [
+        {
+          "warehouse_ref": "DEMO_WAREHOUSE_49_B",
+          "location_ref": "DEMO_LOCATION_49_B",
+          "item_ref": "DEMO_ITEM_47_PAPER",
+          "unit_version_ref": "DEMO_UV_47_PIECE_1",
+          "lot_ref": null,
+          "quantity_delta": "-1",
+          "source_receipt_line_ref": "DEMO_RL49_2"
+        }
+      ],
+      "expected_balances": {
+        "DEMO_WAREHOUSE_49_A": "1",
+        "DEMO_WAREHOUSE_49_B": "2"
+      },
+      "expected_order_counts": {
+        "physical_delivered_total": "8",
+        "accepted_gross": "7",
+        "rejected_total": "1",
+        "accepted_returned": "1",
+        "accepted_net": "6",
+        "pending_inspection": "0",
+        "cancelled_order_quantity": "0",
+        "order_remaining": "0",
+        "quantity_fulfilled_expected": true,
+        "whole_order_closed_expected": false,
+        "financial_liability_open_expected": true
+      },
+      "expected_finance_buckets": {
+        "allocated": "100000.00",
+        "reserved": "0.00",
+        "unpaid_obligation": "6000.00",
+        "paid": "0.00",
+        "certified": "0.00",
+        "available": "94000.00"
+      },
+      "financial_delta": {
+        "allocated": "0.00",
+        "reserved": "0.00",
+        "unpaid_obligation": "0.00",
+        "paid": "0.00",
+        "certified": "0.00"
+      },
+      "effective_on": "2027-04-08",
+      "recorded_at": "2027-04-08T02:00:00Z",
+      "evidence_ref": "DEMO_EVIDENCE_49_REQUIRED",
+      "decision_ref": "DEMO_DECISION_49_REQUIRED",
+      "receipt_binding_ref": "DEMO_OPERATION_RECEIPT_49_08",
+      "actual_posted": false,
+      "actual_approved_decision": null
+    }
+  ],
+  "decimal_reference": {
+    "item_ref": "DEMO_ITEM_47_POWDER",
+    "unit_ref": "DEMO_UNIT_47_KG",
+    "unit_version_ref": "DEMO_UV_47_KG_1",
+    "quantity_scale": 6,
+    "receipt_quantity": "1.250000",
+    "issue_quantity": "0.500000",
+    "expected_remaining": "0.750000",
+    "actual_posted": false
+  },
+  "native_race_plan": {
+    "status": "NOT_RUN",
+    "warehouse_ref": "DEMO_WAREHOUSE_49_A",
+    "available_reference": "1",
+    "request_quantities": ["1", "1"],
+    "native_connection_count": 2,
+    "barrier_required": true,
+    "expected_success_count": 1,
+    "expected_remaining": "0",
+    "expected_movement_count": 1,
+    "fixed_winner": null,
+    "barrier_phase": "BEFORE_LOCK_ACQUISITION"
+  },
+  "guard_plans": [
+    {
+      "id": "OVERISSUE",
+      "quantity": "2",
+      "available": "1",
+      "expected": "DENY"
+    },
+    {
+      "id": "REVERSE_TRANSFER_AFTER_DESTINATION_ISSUE",
+      "original_transfer_quantity": "3",
+      "destination_available": "2",
+      "expected": "DENY_OR_APPROVED_DEPENDENCY_RESOLUTION_NO_BLIND_INVERSE"
+    },
+    {
+      "id": "NO_REPLACEMENT_RULE",
+      "accepted_return_quantity": "1",
+      "policy_actual_verified": false,
+      "expected": "NO_AUTOMATIC_FULFILMENT_CAPACITY_RESTORE"
+    },
+    {
+      "id": "FRACTIONAL_DISCRETE",
+      "quantity": "0.5",
+      "scale": 0,
+      "expected": "DENY"
+    },
+    {
+      "id": "NULL_LOT_DUPLICATE_IDENTITY",
+      "lot_ref": null,
+      "expected": "NATIVE_UNIQUE_IDENTITY_TEST_REQUIRED"
+    },
+    {
+      "id": "PAID_NOT_FROM_RECEIPT",
+      "expected_delta_paid": "0.00",
+      "expected": "KEEP_FINANCE_SEPARATE"
+    }
+  ],
+  "fault_native_plan": {
+    "status": "NOT_RUN",
+    "failpoints": [
+      "after_inspection_before_stock_event",
+      "after_stock_event_before_projection",
+      "after_projection_before_order_fulfilment",
+      "after_order_before_accepted_liability_ref",
+      "after_receipt_audit_before_outbox",
+      "before_commit",
+      "after_commit_before_response",
+      "after_worker_delivery_before_ack"
+    ],
+    "rollback_set": [
+      "inspection_source_version",
+      "stock_events_projection",
+      "order_fulfilment",
+      "accepted_liability_ref",
+      "operation_receipt",
+      "audit",
+      "outbox"
+    ],
+    "retry_rule": "currentgrants + samecanonicalbusinessop + samekeyhash; no duplicate movements"
+  },
+  "criteria": {
+    "49-01": [
+      "P49-03",
+      "P49-04",
+      "P49-05",
+      "P49-06",
+      "P49-07",
+      "P49-08",
+      "P49-11",
+      "P49-12",
+      "P49-13",
+      "P49-14",
+      "P49-19"
+    ],
+    "49-02": [
+      "P49-01",
+      "P49-02",
+      "P49-09",
+      "P49-10",
+      "P49-16",
+      "P49-17",
+      "P49-18",
+      "P49-20"
+    ]
+  },
+  "cases": [
+    {
+      "id": "P49-01",
+      "expected": "partialphysical/accepted/rejected/pending counts sourceFK/CLEAN/inspectionmakerchecker; availableเฉพาะaccepted",
+      "status": "NOT_RUN",
+      "actual": null,
+      "execution_manifest_ref": null
+    },
+    {
+      "id": "P49-02",
+      "expected": "รับหลายreceipt/netaccepted/ordercancelled/overdelivery/replacementversion guards ไม่ปิดOrderก่อนครบเงื่อนไข",
+      "status": "NOT_RUN",
+      "actual": null,
+      "execution_manifest_ref": null
+    },
+    {
+      "id": "P49-03",
+      "expected": "เบิก1พร้อมกันสองconnectionเมื่อเหลือ1 barrierก่อนlock; หนึ่งmovement/receipt A0อีกคำขอdeny",
+      "status": "NOT_RUN",
+      "actual": null,
+      "execution_manifest_ref": null
+    },
+    {
+      "id": "P49-04",
+      "expected": "transferสองlegsหนึ่งtx/globalorder/two-scope/units/locations/lot/currentgrant/net0 ไม่มีhalftransfer",
+      "status": "NOT_RUN",
+      "actual": null,
+      "execution_manifest_ref": null
+    },
+    {
+      "id": "P49-05",
+      "expected": "samekeyhashretry/newhashconflict/newkeysamebusinessopdeny approvedrevisionamendmentไม่consumeซ้ำ",
+      "status": "NOT_RUN",
+      "actual": null,
+      "execution_manifest_ref": null
+    },
+    {
+      "id": "P49-06",
+      "expected": "missingbalance concurrentfirstreceipt/upsert/nullablelotidentityไม่duplicate projections/finite DBguards",
+      "status": "NOT_RUN",
+      "actual": null,
+      "execution_manifest_ref": null
+    },
+    {
+      "id": "P49-07",
+      "expected": "issue/transfer/return/cancel/receipt/paymentแข่งsource/order/finance/stockremainingไม่ติดลบ",
+      "status": "NOT_RUN",
+      "actual": null,
+      "execution_manifest_ref": null
+    },
+    {
+      "id": "P49-08",
+      "expected": "quantitiesexact/scale/conversionpins/mixunits/lot/expiryonlyverifiedsource; nofloat/NaN/roundsilent",
+      "status": "NOT_RUN",
+      "actual": null,
+      "execution_manifest_ref": null
+    },
+    {
+      "id": "P49-09",
+      "expected": "rejectedreturnไม่usableOUT; acceptedreturnapprovedsource/protecteddownstream/replacementnetcount/history",
+      "status": "NOT_RUN",
+      "actual": null,
+      "execution_manifest_ref": null
+    },
+    {
+      "id": "P49-10",
+      "expected": "acceptanceไม่เปลี่ยนU/P/Cเอง partialqty/financialliability/claim/evidence/cancelguardsร่วม48/44",
+      "status": "NOT_RUN",
+      "actual": null,
+      "execution_manifest_ref": null
+    },
+    {
+      "id": "P49-11",
+      "expected": "failpointsdecision/ledger/projection/orderlink/liabilityref/receipt/audit/outbox/beforecommit rollbackทั้งหมด",
+      "status": "NOT_RUN",
+      "actual": null,
+      "execution_manifest_ref": null
+    },
+    {
+      "id": "P49-12",
+      "expected": "commitresponseหาย+workerrestart/deliveryACK/dedupe/deadletter/currentauthority ไม่มีmovement/notificationซ้ำ",
+      "status": "NOT_RUN",
+      "actual": null,
+      "execution_manifest_ref": null
+    },
+    {
+      "id": "P49-13",
+      "expected": "scopeURL/body/queryorg/source/destination/fileIDs/objectkeys/listcounts/export/cache/currentrevokedjobdeny",
+      "status": "NOT_RUN",
+      "actual": null,
+      "execution_manifest_ref": null
+    },
+    {
+      "id": "P49-14",
+      "expected": "delegation/expiry/suspend/revoke/maker/techdeny serveractions/routes/services/directlimitedSQL",
+      "status": "NOT_RUN",
+      "actual": null,
+      "execution_manifest_ref": null
+    },
+    {
+      "id": "P49-15",
+      "expected": "readonlyGET/report/UIlinksไม่issue/transfer/รับ/จ่าย/ส่งหนังสือใหม่ มีkeyboardและ4viewports",
+      "status": "NOT_RUN",
+      "actual": null,
+      "execution_manifest_ref": null
+    },
+    {
+      "id": "P49-16",
+      "expected": "ledger/projection/source manifests/watermarks/oldunit/location/sourceversionsย้อนหลัง/Bangkokdates",
+      "status": "NOT_RUN",
+      "actual": null,
+      "execution_manifest_ref": null
+    },
+    {
+      "id": "P49-17",
+      "expected": "ASSETadapter47/SERVICEacceptance48 ไม่ทำmaterialstockอีกชุด แหล่งadapterไม่พร้อมfailclosed",
+      "status": "NOT_RUN",
+      "actual": null,
+      "execution_manifest_ref": null
+    },
+    {
+      "id": "P49-18",
+      "expected": "closedperiod/backdate/negative-stock/lot/replacement/tax/authority/officialunknownpolicydeny",
+      "status": "NOT_RUN",
+      "actual": null,
+      "execution_manifest_ref": null
+    },
+    {
+      "id": "P49-19",
+      "expected": "reversalหลังของเบิก/โอนต่อแล้ว ห้ามinverseเกินremainingหรือrestoremoney/สิทธิ์เอง ไม่ลบaudit",
+      "status": "NOT_RUN",
+      "actual": null,
+      "execution_manifest_ref": null
+    },
+    {
+      "id": "P49-20",
+      "expected": "partialfinishแยกquantityfulfilled/inspectionremaining/paymentopen/returnresolution ธุรกรรมservice06ถูกต้องตามวัน",
+      "status": "NOT_RUN",
+      "actual": null,
+      "execution_manifest_ref": null
+    }
+  ]
+}

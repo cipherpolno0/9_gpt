@@ -1,0 +1,132 @@
+{
+  "version": "0.1",
+  "lesson": 67,
+  "baseline": "ac22bdd",
+  "run_date": "2026-10-09",
+  "timezone": "Asia/Bangkok",
+  "exact_started_at": null,
+  "status": "BLOCKED_NOT_ACCEPTED",
+  "source_scope": "EXISTING_REPOSITORY_SUITES_ONLY_NO_NEW_BUSINESS_RUNTIME",
+  "checks": [
+    {
+      "command": "corepack pnpm test",
+      "exit_code": 0,
+      "status": "PASS_EXISTING_ONLY",
+      "backend": "NODE_TEST_RUNNER",
+      "reported_test_count": 17,
+      "passed": 17,
+      "failed": 0,
+      "skipped": 0,
+      "scope": "date3/database-guard2/bootstrap9/structure3; no domain authorization"
+    },
+    {
+      "command": "corepack pnpm db:test",
+      "exit_code": 1,
+      "status": "FAILED_SETUP_BLOCKED",
+      "backend": "NATIVE_POSTGRESQL_ENTRYPOINT",
+      "native_cases_started": 0,
+      "passed": null,
+      "failed": null,
+      "safe_message": "คำสั่งฐานทดลองไม่สำเร็จ ตรวจ PostgreSQL/URL รุ่น migration และ DATABASE.md; ไม่แสดง credential"
+    },
+    {
+      "command": "corepack pnpm worker:check",
+      "exit_code": 1,
+      "status": "FAILED_READINESS",
+      "backend": "PG_REDIS_CONNECTION_CHECKER",
+      "business_worker_cases_started": 0,
+      "safe_message": "ยังเชื่อมบริการในเครื่องไม่ได้ ตรวจการตั้งค่าและการเปิดบริการตามคู่มือ"
+    },
+    {
+      "command": "corepack pnpm lint",
+      "exit_code": 0,
+      "status": "PASS_BASELINE",
+      "backend": "ESLINT"
+    },
+    {
+      "command": "corepack pnpm db:validate",
+      "exit_code": 0,
+      "status": "PASS_SCHEMA_SYNTAX_ONLY",
+      "backend": "PRISMA_7.10.0"
+    },
+    {
+      "command": "corepack pnpm db:test:sql",
+      "exit_code": 0,
+      "status": "PASS_SUPPLEMENTARY_ONLY",
+      "backend": "POSTGRESQL_18.3_WASM_PGLITE_0.5.8",
+      "reported_test_count": 12,
+      "parent_tests": 1,
+      "subtests": 11,
+      "passed": 12,
+      "failed": 0,
+      "skipped": 0,
+      "native_server": false,
+      "native_concurrency_proven": false
+    },
+    {
+      "command": "corepack pnpm typecheck",
+      "exit_code": 0,
+      "status": "PASS_BASELINE",
+      "backend": "PRISMA_GENERATE_TSC"
+    },
+    {
+      "command": "corepack pnpm build",
+      "exit_code": 0,
+      "status": "PASS_STARTER_ONLY",
+      "backend": "NEXT_16.3.8",
+      "routes": ["/", "/_not-found", "/app/[[...path]]"],
+      "business_routes_complete": false
+    },
+    {
+      "command": "corepack pnpm format:check",
+      "exit_code": 0,
+      "status": "PASS_BASELINE_BEFORE_DOC_ADDITIONS",
+      "backend": "PRETTIER"
+    }
+  ],
+  "environment_probe": {
+    "read_only": true,
+    "uid": 0,
+    "docker_in_path": false,
+    "postgres_in_path": false,
+    "standard_postgres_binaries": [],
+    "docker_socket": false,
+    "loopback_connect_ex": { "5432": 111, "5546": 111 },
+    "database_created": false,
+    "database_reset": false
+  },
+  "inventory": {
+    "core_models": 19,
+    "migrations": 1,
+    "migration_sha256": "04a149fcd349f0ac3f1b5929cfcf571f8b0880541e84a40ad929054b67d72756",
+    "business_services": "README_ONLY",
+    "auth": "CLOSED_WORKSPACE_NOT_IMPLEMENTED",
+    "file_version_service": "NOT_IMPLEMENTED"
+  },
+  "missing_acceptance": {
+    "authorization9systems": "NOT_RUN",
+    "temporal_assignment_service": "NOT_RUN",
+    "seats_concurrency": "NOT_RUN",
+    "budget_concurrency": "NOT_RUN",
+    "stock_concurrency": "NOT_RUN",
+    "import_atomicity": "NOT_RUN",
+    "file_workflow_worker_current_acl": "NOT_RUN"
+  },
+  "root_cause_limits": "Entry points mask credentials and do not expose precise failing branch; independent probes show no local PG listener/standard server/Docker; required domain/Auth/files services are also absent.",
+  "next_lesson68": "NOT_STARTED",
+  "document_verification": {
+    "status": "PASS_DOCUMENTS_ONLY",
+    "negative_families": 54,
+    "unit_specs": 6,
+    "native_not_run_specs": 12,
+    "actual_command_summaries": 9,
+    "local_links": 372,
+    "new_tables": 7,
+    "tested_source_unchanged": true,
+    "prettier_new_files": "PASS_6_FILES",
+    "prettier_lesson67_sections": "PASS_4_SECTIONS",
+    "historical_full_documents": "PRE_EXISTING_WARN",
+    "secrets_check_exit": 0,
+    "git_diff_check_exit": 0
+  }
+}

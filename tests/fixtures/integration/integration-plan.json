@@ -1,0 +1,270 @@
+{
+  "version": "0.1",
+  "lesson": 65,
+  "baseline": "a809bcc",
+  "status": "PLAN_ONLY",
+  "execution": "ALL_NOT_RUN",
+  "runtime": "NOT_IMPLEMENTED",
+  "data_mode": "DEMO_ONLY",
+  "handler_enabled": false,
+  "prerequisite64": "BLOCKED",
+  "system_owner_roles": [
+    "O01",
+    "O02",
+    "O03",
+    "O04",
+    "O05",
+    "O06",
+    "O07",
+    "O08",
+    "O09"
+  ],
+  "owner_roles_are_confirmed_official_assignments": false,
+  "envelope_required_fields": [
+    "event_id",
+    "event_type",
+    "contract_version",
+    "producer",
+    "aggregate_kind",
+    "aggregate_id",
+    "aggregate_version",
+    "occurred_at",
+    "correlation_id",
+    "causation_id",
+    "effective_at",
+    "source_receipt_ref",
+    "source_decision_ref",
+    "payload"
+  ],
+  "mandatory_user_fields": [
+    "event_id",
+    "aggregate_id",
+    "aggregate_version",
+    "occurred_at",
+    "correlation_id"
+  ],
+  "event_shapes_plan": [
+    {
+      "event_type": "PersonChanged",
+      "producer": "people01",
+      "aggregate_kind": "Person",
+      "required_payload_refs": ["change_revision_ref"],
+      "nullable_payload_refs": [],
+      "consumers": [
+        "AUTH_IMPACT",
+        "RECORD_ACCESS_RECHECK",
+        "CENTER_CUSTODY_IMPACT"
+      ],
+      "extra_payload_fields": "REJECT",
+      "actual_event_id": null,
+      "actual_aggregate_id": null,
+      "actual_source_receipt_id": null
+    },
+    {
+      "event_type": "OrganizationStatusEffective",
+      "producer": "organizations02",
+      "aggregate_kind": "Organization",
+      "required_payload_refs": ["status_event_ref", "request_version_ref"],
+      "nullable_payload_refs": [],
+      "consumers": ["ORGANIZATION_REPORT_REFRESH", "CENTER_READINESS_RECHECK"],
+      "extra_payload_fields": "REJECT",
+      "actual_event_id": null,
+      "actual_aggregate_id": null,
+      "actual_source_receipt_id": null
+    },
+    {
+      "event_type": "ExamCenterChanged",
+      "producer": "organizations02",
+      "aggregate_kind": "ExamCenter",
+      "required_payload_refs": ["change_revision_ref", "center_session_ref"],
+      "nullable_payload_refs": [],
+      "consumers": ["CENTER_APPOINTMENT_IMPACT", "IMPORT_CONTEXT_RECHECK"],
+      "extra_payload_fields": "REJECT",
+      "actual_event_id": null,
+      "actual_aggregate_id": null,
+      "actual_source_receipt_id": null
+    },
+    {
+      "event_type": "ApplicationCommitted",
+      "producer": "exams05",
+      "aggregate_kind": "Application",
+      "required_payload_refs": [
+        "application_snapshot_ref",
+        "operation_receipt_ref"
+      ],
+      "nullable_payload_refs": ["import_commit_receipt_ref"],
+      "consumers": ["IMPORT_MONITORING", "APPLICATION_REPORT_REFRESH"],
+      "extra_payload_fields": "REJECT",
+      "actual_event_id": null,
+      "actual_aggregate_id": null,
+      "actual_source_receipt_id": null
+    },
+    {
+      "event_type": "BudgetReserved",
+      "producer": "budget06",
+      "aggregate_kind": "BudgetLine",
+      "required_payload_refs": ["reservation_receipt_ref", "budget_line_ref"],
+      "nullable_payload_refs": [],
+      "consumers": ["PROCUREMENT_BUDGET_LINK", "BUDGET_REPORT_REFRESH"],
+      "extra_payload_fields": "REJECT",
+      "actual_event_id": null,
+      "actual_aggregate_id": null,
+      "actual_source_receipt_id": null
+    },
+    {
+      "event_type": "GoodsReceived",
+      "producer": "inventory07",
+      "aggregate_kind": "GoodsReceipt",
+      "required_payload_refs": [
+        "inspection_ref",
+        "stock_posting_receipt_ref",
+        "order_ref"
+      ],
+      "nullable_payload_refs": [],
+      "consumers": ["STOCK_REPORT_REFRESH", "RECORD_LINK_RECONCILE"],
+      "extra_payload_fields": "REJECT",
+      "actual_event_id": null,
+      "actual_aggregate_id": null,
+      "actual_source_receipt_id": null
+    },
+    {
+      "event_type": "RecordDelivered",
+      "producer": "correspondence08",
+      "aggregate_kind": "RecordDelivery",
+      "required_payload_refs": ["record_version_ref", "delivery_receipt_ref"],
+      "nullable_payload_refs": [],
+      "consumers": ["INBOX_NOTIFICATION", "DELIVERY_REPORT_REFRESH"],
+      "extra_payload_fields": "REJECT",
+      "actual_event_id": null,
+      "actual_aggregate_id": null,
+      "actual_source_receipt_id": null
+    }
+  ],
+  "dedupe_proposal": {
+    "consumer_key": ["consumer_id", "event_id"],
+    "semantic_effect_key": [
+      "effect_family",
+      "source_domain_receipt_ref",
+      "effect_kind",
+      "target_ref"
+    ],
+    "effect_family_stable_across_handler_upgrades": true,
+    "event_payload_change": "EVENT_CONTENT_CONFLICT",
+    "event_receipt_atomic_with_effect": true,
+    "source_outbox_atomic_with_domain_change": true,
+    "global_order_guarantee": false,
+    "version_gap_proves_missing_event": false,
+    "drop_all_older_immutable_facts": false,
+    "external_delivery_exactly_once_claim": false,
+    "retry_max_attempts_including_first": 3,
+    "production_canonicalization": "ADR_REQUIRED"
+  },
+  "scenarios_plan": [
+    {
+      "scenario_id": "S65-01",
+      "title": "TEST_65_POSITION_AUTH_RECORDS",
+      "systems": [1, 2, 7, 8],
+      "actual_correlation_id": null,
+      "actual_file_version_ids": [],
+      "actual_decision_ids": [],
+      "execution": "NOT_RUN"
+    },
+    {
+      "scenario_id": "S65-02",
+      "title": "TEST_65_CENTER_APPOINTMENT_EXCEL_APPLICATION",
+      "systems": [1, 2, 4, 5, 8, 9],
+      "actual_correlation_id": null,
+      "actual_file_version_ids": [],
+      "actual_decision_ids": [],
+      "execution": "NOT_RUN"
+    },
+    {
+      "scenario_id": "S65-03",
+      "title": "TEST_65_PROCUREMENT_BUDGET_RECEIPT_RECORDS",
+      "systems": [6, 7, 8],
+      "actual_correlation_id": null,
+      "actual_file_version_ids": [],
+      "actual_decision_ids": [],
+      "execution": "NOT_RUN"
+    }
+  ],
+  "system03_learning_boundary": {
+    "uses_central_person_organization_document": true,
+    "progress_private": true,
+    "practice_score_enters_official_system05": false,
+    "new_event_type_in_lesson65": false
+  },
+  "forbidden_payload_fields": [
+    "full_name",
+    "identity_value",
+    "birth_date",
+    "private_phone",
+    "private_address",
+    "email",
+    "raw_person",
+    "raw_application",
+    "document_body",
+    "answer_key",
+    "password",
+    "token",
+    "storage_url"
+  ],
+  "mutation_labels_plan": [
+    "DUPLICATE_SAME_EVENT",
+    "SAME_EVENT_CHANGED_BODY",
+    "NEW_EVENT_SAME_SOURCE_RECEIPT",
+    "PROJECTION_VERSION_2_BEFORE_1",
+    "GLOBAL_VERSION_GAP_WITH_UNSUBSCRIBED_EVENT",
+    "SOURCE_RECEIPT_PENDING",
+    "SOURCE_OUTBOX_INSERT_FAILS",
+    "CONSUMER_RECEIPT_INSERT_FAILS",
+    "CONSUMER_COMMIT_ACK_FAILS",
+    "STALE_LEASE_WORKER_RESUMES",
+    "REPORT_STORAGE_FAILURE",
+    "NOTIFICATION_REDELIVERY",
+    "AUTHORITY_REVOKED",
+    "EXTRA_PRIVATE_PAYLOAD",
+    "CONTRACT_VERSION_UNKNOWN"
+  ],
+  "actual": {
+    "event_ids": [],
+    "aggregate_ids": [],
+    "source_receipt_ids": [],
+    "consumer_receipt_ids": [],
+    "effect_receipt_ids": [],
+    "file_version_ids": [],
+    "decision_ids": [],
+    "correlation_ids": [],
+    "runtime_report": null
+  },
+  "case_ids": [
+    "P65-01",
+    "P65-02",
+    "P65-03",
+    "P65-04",
+    "P65-05",
+    "P65-06",
+    "P65-07",
+    "P65-08",
+    "P65-09",
+    "P65-10",
+    "P65-11",
+    "P65-12",
+    "P65-13",
+    "P65-14",
+    "P65-15",
+    "P65-16",
+    "P65-17",
+    "P65-18",
+    "P65-19",
+    "P65-20",
+    "P65-21",
+    "P65-22",
+    "P65-23",
+    "P65-24"
+  ],
+  "acceptance": {
+    "AC65-01": "BLOCKED_NOT_RUN",
+    "AC65-02": "BLOCKED_NOT_RUN"
+  }
+}

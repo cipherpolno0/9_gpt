@@ -1,0 +1,133 @@
+{
+  "version": "0.1",
+  "scope": "READ_ONLY_TRUSTED_LESSON59_ARCHIVES_ONLY",
+  "recorded_at": "2026-10-09T00:24:58.917870+00:00",
+  "python_version": "3.12.14",
+  "source_verification": "docs/fixtures/excel-template-59-verification.json",
+  "runtime_parser": "NOT_IMPLEMENTED",
+  "security_acceptance": "NOT_RUN",
+  "load_time_memory_acceptance": "NOT_RUN",
+  "file_edits": 0,
+  "artifacts": [
+    {
+      "path": "outputs/lesson59/TEST_exam_upload_blank.xlsx",
+      "sha256": "453b55d1e6b7a169280e6b69443742ce370e15c471c87b869952343b17e7bf3a",
+      "compressed_file_bytes": 10469,
+      "zip_entries": 10,
+      "actual_expanded_bytes": 51128,
+      "largest_part_bytes": 20376,
+      "largest_entry_expansion_ratio": 7.956,
+      "actual_cell_nodes": 900,
+      "crc_size_checks": "MATCH_FOR_TRUSTED_SAMPLES_ONLY",
+      "cell_formula_nodes": 0,
+      "macro_part_names": 0,
+      "external_relationships": 0,
+      "worksheets": [
+        {
+          "part": "xl/worksheets/sheet1.xml",
+          "physical_rows": 24,
+          "largest_row_index": 24,
+          "cell_nodes": 504,
+          "validation_formula_nodes": 3
+        },
+        {
+          "part": "xl/worksheets/sheet2.xml",
+          "physical_rows": 24,
+          "largest_row_index": 24,
+          "cell_nodes": 120,
+          "validation_formula_nodes": 0
+        },
+        {
+          "part": "xl/worksheets/sheet3.xml",
+          "physical_rows": 92,
+          "largest_row_index": 92,
+          "cell_nodes": 276,
+          "validation_formula_nodes": 0
+        }
+      ],
+      "read_elapsed_ms": 3.155
+    },
+    {
+      "path": "outputs/lesson59/TEST_exam_upload_valid.xlsx",
+      "sha256": "82371a4fb71a80d16d97ebcbe3b38802c956556ef92c695bd156158d3e41ecff",
+      "compressed_file_bytes": 11645,
+      "zip_entries": 10,
+      "actual_expanded_bytes": 61062,
+      "largest_part_bytes": 23595,
+      "largest_entry_expansion_ratio": 7.956,
+      "actual_cell_nodes": 900,
+      "crc_size_checks": "MATCH_FOR_TRUSTED_SAMPLES_ONLY",
+      "cell_formula_nodes": 0,
+      "macro_part_names": 0,
+      "external_relationships": 0,
+      "worksheets": [
+        {
+          "part": "xl/worksheets/sheet1.xml",
+          "physical_rows": 24,
+          "largest_row_index": 24,
+          "cell_nodes": 504,
+          "validation_formula_nodes": 3
+        },
+        {
+          "part": "xl/worksheets/sheet2.xml",
+          "physical_rows": 24,
+          "largest_row_index": 24,
+          "cell_nodes": 120,
+          "validation_formula_nodes": 0
+        },
+        {
+          "part": "xl/worksheets/sheet3.xml",
+          "physical_rows": 92,
+          "largest_row_index": 92,
+          "cell_nodes": 276,
+          "validation_formula_nodes": 0
+        }
+      ],
+      "read_elapsed_ms": 2.184
+    },
+    {
+      "path": "outputs/lesson59/TEST_exam_upload_invalid.xlsx",
+      "sha256": "41fb005dfb683bb1d0d09c8893ab12baa18523dcd2e5af1b1c511170c060d0e8",
+      "compressed_file_bytes": 11826,
+      "zip_entries": 10,
+      "actual_expanded_bytes": 62053,
+      "largest_part_bytes": 23159,
+      "largest_entry_expansion_ratio": 7.956,
+      "actual_cell_nodes": 900,
+      "crc_size_checks": "MATCH_FOR_TRUSTED_SAMPLES_ONLY",
+      "cell_formula_nodes": 0,
+      "macro_part_names": 0,
+      "external_relationships": 0,
+      "worksheets": [
+        {
+          "part": "xl/worksheets/sheet1.xml",
+          "physical_rows": 24,
+          "largest_row_index": 24,
+          "cell_nodes": 504,
+          "validation_formula_nodes": 0
+        },
+        {
+          "part": "xl/worksheets/sheet2.xml",
+          "physical_rows": 24,
+          "largest_row_index": 24,
+          "cell_nodes": 120,
+          "validation_formula_nodes": 0
+        },
+        {
+          "part": "xl/worksheets/sheet3.xml",
+          "physical_rows": 92,
+          "largest_row_index": 92,
+          "cell_nodes": 276,
+          "validation_formula_nodes": 0
+        }
+      ],
+      "read_elapsed_ms": 2.328
+    }
+  ],
+  "limitations": [
+    "ไม่ใช่ bounded worker หรือการทดสอบ malicious files",
+    "read_elapsed_ms เป็นการอ่านไฟล์เล็กครั้งเดียว ไม่ใช่ load-test หรือ deadline proof",
+    "ZIP/scan/Auth/ACL/queue/staging/runtime normalization ยัง NOT_RUN",
+    "ตรวจด้วย stdlib เฉพาะ bytes ที่ hash ตรงแหล่งสมมติบท59 ไม่ใช่ upload validator"
+  ]
+}

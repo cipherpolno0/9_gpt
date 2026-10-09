@@ -1,0 +1,162 @@
+{
+  "version": "0.4",
+  "date": "2026-10-09",
+  "app_schema_version": "0.8.0",
+  "models": 35,
+  "source_base_commit": "6a22e59b138dfdbaf61f2fa9e58d3691f01c4eb8",
+  "migrations": {
+    "20261009190000_documents_workflow": "aa399441a55341b33b6794fc36ca5759e852d0eb08653f5f763492b5d0a961e0",
+    "20261003130000_core_foundation": "04a149fcd349f0ac3f1b5929cfcf571f8b0880541e84a40ad929054b67d72756",
+    "20261009170000_portal_access": "1f23ac1d90953ab3d6088f2915e18060fbf93ead05bdd3c70e7e56d87b5529d8"
+  },
+  "local": {
+    "frozen_install": {
+      "exit": 0
+    },
+    "lint": {
+      "exit": 0
+    },
+    "typecheck": {
+      "exit": 0
+    },
+    "unit": {
+      "exit": 0,
+      "tests": 27,
+      "passed": 27
+    },
+    "sql_wasm": {
+      "exit": 0,
+      "tests": 34,
+      "passed": 34,
+      "native_concurrency": false
+    },
+    "schema_validate": {
+      "exit": 0
+    },
+    "build": {
+      "exit": 0
+    },
+    "http_smoke": {
+      "exit": 0,
+      "checks": 35
+    },
+    "supported_secret_patterns": {
+      "exit": 0,
+      "full_history_scan": false
+    }
+  },
+  "native_ci": {
+    "status": "PASS",
+    "run_id": 37981290444,
+    "job_id": 113992168809,
+    "url": "https://github.com/cipherpolno0/9_gpt/actions/runs/37981290444",
+    "source_commit": "5938b96091726a5528d0f60457ab4ebffddfbb33",
+    "tests": 32,
+    "passed": 32,
+    "failed": 0,
+    "includes_parent_tests": true,
+    "postgresql_version": "18.6",
+    "node_version": "24.19.0",
+    "pnpm_version": "11.28.2",
+    "environment": "Ubuntu 24.04 isolated synthetic PostgreSQL service",
+    "migrations_applied": 3,
+    "unit_tests": 27,
+    "http_checks": 35,
+    "all_steps_conclusion": "success",
+    "proven_cases": [
+      "same-key simultaneous draft creates one request",
+      "two independent approvers produce one final decision and explicit conflict",
+      "injected outbox error rolls back decision status audit and idempotency receipt",
+      "consumer crash rollback retry and event order prevent duplicate notifications",
+      "scope target checks expired delegation revoked session and document ACL"
+    ]
+  },
+  "staging": {
+    "vercel": {
+      "project_id": "prj_8CVr1S52aQ865ZjpbXEHReE6RXpo",
+      "name": "9-gpt-staging",
+      "preview_env_configured": true,
+      "deployment_status": "BLOCKED_GIT_INFO_FAIL",
+      "deployments": [
+        {
+          "id": "dpl_GQoDFw21MgrDWG7QqTXAqrh5Y5Lb",
+          "requested_target": "preview",
+          "reported_target": "production",
+          "state": "ERROR",
+          "error_code": "git_info_fail",
+          "ready": false
+        },
+        {
+          "id": "dpl_2RSe9jvVxqbH8ttEFX17S2hpz3ao",
+          "requested_target": "staging",
+          "reported_target": "staging",
+          "state": "ERROR",
+          "error_code": "git_info_fail",
+          "ready": false
+        }
+      ],
+      "omitted_target_attempt": "AUTO_REVIEW_REJECTED_ENVIRONMENT_RISK; not executed",
+      "file_upload_attempt": "INTERRUPTED; subsequent deployment inventory shows no new deployment",
+      "runtime_smoke": "NOT_RUN; no READY deployment",
+      "protection": "SSO all_except_custom_domains retained",
+      "git_connection": "NOT_VERIFIED"
+    },
+    "supabase": {
+      "connector": "CONNECTED",
+      "new_staging": "NOT_CREATED",
+      "selected_organization": "cipherpolno0",
+      "blocker": "get_cost UNAVAILABLE: MCP tool get_cost was not returned by tools/list",
+      "existing_database_modified": false,
+      "cost_attempts_unavailable": 3
+    },
+    "provider_login": "NOT_RUN",
+    "private_storage_scan": "NOT_RUN",
+    "worker_host": "NOT_CONFIGURED"
+  },
+  "uat": {
+    "software_shared_scope": "PASS_UNIT_NATIVE_POSTGRESQL_HTTP; provider and browser acceptance pending",
+    "owner_signoff": "PENDING_OWNER",
+    "all_9_systems": "NO_GO"
+  },
+  "not_run": [
+    "real ClamAV daemon/signature database",
+    "Supabase staging auth/TOTP/file/UAT",
+    "Playwright authenticated UI",
+    "all9 business transactions",
+    "backup restore drill"
+  ],
+  "limitations": [
+    "ClamAV unit tests simulate protocol, not signature scans",
+    "shared requests are SYNTHETIC; no register activation",
+    "owner UAT not signed",
+    "native concurrency requires real PostgreSQL; not WASM"
+  ],
+  "source_commit": "5938b96091726a5528d0f60457ab4ebffddfbb33",
+  "publication_ci": {
+    "commit": "290fbc7c8ecff5e8f77ee0742db30e3a94bd1802",
+    "run_id": 37995237432,
+    "job_id": 114039469662,
+    "status": "FAILED_INFRASTRUCTURE_BEFORE_CHECKOUT",
+    "tests_executed": false,
+    "cause": "Docker Hub unauthenticated image pull rate limit and token request timeout",
+    "remediation": "Use Docker Official PostgreSQL 18.6 bookworm mirror on public.ecr.aws",
+    "remediation_ci": "PASS",
+    "remediation_run": {
+      "source_commit": "4f2b39668899aff461173444b0379dc77fe41b78",
+      "run_id": 37995727585,
+      "job_id": 114041175363,
+      "url": "https://github.com/cipherpolno0/9_gpt/actions/runs/37995727585",
+      "conclusion": "success",
+      "unit_tests": 27,
+      "unit_passed": 27,
+      "native_tests": 32,
+      "native_passed": 32,
+      "failed": 0,
+      "http_checks": 35,
+      "build": "PASS",
+      "image": "public.ecr.aws/docker/library/postgres:18.6-bookworm",
+      "migrations": 3,
+      "timestamp_utc": "2026-10-09T21:50:34Z"
+    }
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "fixture_version": "0.1",
+  "result_kind": "HAND_AUTHORED_EXPECTED_FOCUS_NOT_EXECUTED",
+  "source_fixture": "legacy-organizations-plan.json",
+  "not_exhaustive": true,
+  "expected_focus": [
+    {
+      "source_row_ref": "DEMO_LEGACY_ROW_01",
+      "proposal": "PROPOSE_UPDATE_HISTORY_AFTER_EVIDENCE",
+      "note": "ชื่อเสนอเปลี่ยนจากDEMO target ไม่ใช่คำอนุมัติ"
+    },
+    {
+      "source_row_ref": "DEMO_LEGACY_ROW_02",
+      "quality_codes": ["DQ23-15"],
+      "note": "ไม่มีพิกัดไม่ใช่ข้อมูลผิด"
+    },
+    {
+      "source_row_ref": "DEMO_LEGACY_ROW_03",
+      "quality_codes": ["DQ23-03", "DQ23-08", "DQ23-09", "DQ23-10"]
+    },
+    {
+      "source_row_ref": "DEMO_LEGACY_ROW_04",
+      "quality_codes": ["DQ23-04"]
+    },
+    {
+      "source_row_ref": "DEMO_LEGACY_ROW_05",
+      "quality_codes": ["DQ23-05"]
+    },
+    {
+      "source_row_ref": "DEMO_LEGACY_ROW_06",
+      "quality_codes": ["DQ23-01", "DQ23-02"]
+    },
+    {
+      "source_row_ref": "DEMO_LEGACY_ROW_07",
+      "quality_codes": ["DQ23-16"],
+      "proposal": "REVIEW_ONLY_NO_AUTO_MERGE"
+    },
+    {
+      "source_row_ref": "DEMO_LEGACY_ROW_08",
+      "quality_codes": ["DQ23-06"]
+    },
+    {
+      "source_row_ref": "DEMO_LEGACY_ROW_09",
+      "quality_codes": ["DQ23-06"]
+    },
+    {
+      "source_row_ref": "DEMO_LEGACY_ROW_10",
+      "quality_codes": ["DQ23-11"],
+      "proposal": "DENY_CROSS_SCOPE_OR_PUBLIC_PRIVATE_FIELDS"
+    }
+  ]
+}

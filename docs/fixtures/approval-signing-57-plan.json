@@ -1,0 +1,986 @@
+{
+  "fixture_version": "0.1",
+  "lesson": 57,
+  "mode": "PLAN_ONLY",
+  "source_commit": "846b64b",
+  "data_classification": "SYNTHETIC_ONLY_NOT_OFFICIAL",
+  "prerequisite56": "BLOCKED",
+  "runtime_implementation": false,
+  "reference_digest_spec": "SHA256(JSON UTF8 sorted keys compact separators); reference only, not production canonicalization or signature validation",
+  "configuration": {
+    "provider_ref": null,
+    "provider_confirmed": false,
+    "status": "SIGNING_NOT_CONFIGURED",
+    "official_policy_status": "TO_VERIFY",
+    "private_key_in_app": false,
+    "actual_provider_network_calls": 0
+  },
+  "actual_execution": {
+    "approval_evidence_count": 0,
+    "signing_jobs": 0,
+    "signatures": 0,
+    "certificates": 0,
+    "trusted_timestamps": 0,
+    "validation_reports": 0,
+    "official_success": false
+  },
+  "files": [
+    {
+      "file_version_ref": "DEMO-F57-V1",
+      "media_type": "text/plain",
+      "synthetic_utf8": "เนื้อหาสมมติบท57 รุ่น1 ไม่ใช่หนังสือทางการ\n",
+      "byte_length": 117,
+      "sha256": "fa31229faed9f5f8e045c6fb5281852cc017c8f4c59408fa080a20f7cc1305a6",
+      "actual_storage_ref": null
+    },
+    {
+      "file_version_ref": "DEMO-F57-ATT1",
+      "media_type": "text/plain",
+      "synthetic_utf8": "เอกสารแนบสมมติ ห้ามอ้างรับรอง\n",
+      "byte_length": 86,
+      "sha256": "ab22e97ff09aed4eeeb6d9a6f06572d39b3a7eab242f3f393ec380e0a9e82cb1",
+      "actual_storage_ref": null
+    }
+  ],
+  "approved_manifest_reference": {
+    "record_version_ref": "DEMO-R57-V1",
+    "body_ast": {
+      "type": "text",
+      "value": "ข้อความทดลองหลักฐานอนุมัติ"
+    },
+    "signer_refs": ["DEMO-PERSON-CHECKER"],
+    "recipient_refs": [
+      {
+        "person_ref": "DEMO-PERSON-RECIPIENT",
+        "organization_ref": "DEMO-ORG-A",
+        "context": "DEMO_RECEIVER"
+      }
+    ],
+    "files": [
+      {
+        "file_version_ref": "DEMO-F57-V1",
+        "sha256": "fa31229faed9f5f8e045c6fb5281852cc017c8f4c59408fa080a20f7cc1305a6",
+        "byte_length": 117,
+        "role": "primary"
+      },
+      {
+        "file_version_ref": "DEMO-F57-ATT1",
+        "sha256": "ab22e97ff09aed4eeeb6d9a6f06572d39b3a7eab242f3f393ec380e0a9e82cb1",
+        "byte_length": 86,
+        "role": "attachment"
+      }
+    ],
+    "template_ref": "DEMO-TEMPLATE-V1",
+    "font_ref": "Sarabun-5.3.0",
+    "layout_ref": "DEMO-PRINT-V1",
+    "content_policy_ref": "DEMO-CONTENT-V1",
+    "conditions": ["ข้อมูลสมมติเท่านั้น"]
+  },
+  "manifest_reference_digest": "58f8518eb7fe0c896359ce6ba4b494efa6c83f9bb53e9147595da121a8785c3b",
+  "approval_reference": {
+    "record_version_ref": "DEMO-R57-V1",
+    "decision_ref": "DEMO-DECISION-57-1",
+    "review_cycle_ref": "DEMO-CYCLE-1",
+    "approver_account_ref": "DEMO-ACCOUNT-CHECKER",
+    "approver_person_ref": "DEMO-PERSON-CHECKER",
+    "maker_account_ref": "DEMO-ACCOUNT-MAKER",
+    "recorded_at": "2026-10-08T15:00:00Z",
+    "effective_at": "2026-10-08T15:00:00Z",
+    "time_basis": "SYNTHETIC_SERVER_TIME_NOT_TRUSTED_TIMESTAMP",
+    "authority": {
+      "assignment_ref": "DEMO-ASSIGNMENT-V1",
+      "scope_ref": "DEMO-ORG-A",
+      "action": "record.approve",
+      "starts_at": "2026-10-01T00:00:00Z",
+      "ends_at": "2026-11-01T00:00:00Z",
+      "policy_ref": "DEMO-INTERNAL-POLICY-V1",
+      "confirmed_official_authority": false
+    },
+    "read_receipt": {
+      "actor_ref": "DEMO-ACCOUNT-CHECKER",
+      "record_version_ref": "DEMO-R57-V1",
+      "manifest_digest": "58f8518eb7fe0c896359ce6ba4b494efa6c83f9bb53e9147595da121a8785c3b",
+      "issued_at": "2026-10-08T14:59:00Z",
+      "expires_at": "2026-10-08T15:09:00Z"
+    },
+    "approved_manifest_digest": "58f8518eb7fe0c896359ce6ba4b494efa6c83f9bb53e9147595da121a8785c3b",
+    "actual_evidence_ref": null
+  },
+  "manifest_mutations": [
+    {
+      "field": "body_ast",
+      "modified_manifest": {
+        "record_version_ref": "DEMO-R57-V1",
+        "body_ast": {
+          "type": "text",
+          "value": "ข้อความทดลองเปลี่ยนสาระ"
+        },
+        "signer_refs": ["DEMO-PERSON-CHECKER"],
+        "recipient_refs": [
+          {
+            "person_ref": "DEMO-PERSON-RECIPIENT",
+            "organization_ref": "DEMO-ORG-A",
+            "context": "DEMO_RECEIVER"
+          }
+        ],
+        "files": [
+          {
+            "file_version_ref": "DEMO-F57-V1",
+            "sha256": "fa31229faed9f5f8e045c6fb5281852cc017c8f4c59408fa080a20f7cc1305a6",
+            "byte_length": 117,
+            "role": "primary"
+          },
+          {
+            "file_version_ref": "DEMO-F57-ATT1",
+            "sha256": "ab22e97ff09aed4eeeb6d9a6f06572d39b3a7eab242f3f393ec380e0a9e82cb1",
+            "byte_length": 86,
+            "role": "attachment"
+          }
+        ],
+        "template_ref": "DEMO-TEMPLATE-V1",
+        "font_ref": "Sarabun-5.3.0",
+        "layout_ref": "DEMO-PRINT-V1",
+        "content_policy_ref": "DEMO-CONTENT-V1",
+        "conditions": ["ข้อมูลสมมติเท่านั้น"]
+      },
+      "modified_digest": "59f07413bab4df17ef39d97eca5126bf41cd55a690f5f3eaf60753d40e606ab6",
+      "expected": "NEW_REVIEW_REQUIRED",
+      "actual": null
+    },
+    {
+      "field": "record_version_ref",
+      "modified_manifest": {
+        "record_version_ref": "DEMO-R57-V2",
+        "body_ast": {
+          "type": "text",
+          "value": "ข้อความทดลองหลักฐานอนุมัติ"
+        },
+        "signer_refs": ["DEMO-PERSON-CHECKER"],
+        "recipient_refs": [
+          {
+            "person_ref": "DEMO-PERSON-RECIPIENT",
+            "organization_ref": "DEMO-ORG-A",
+            "context": "DEMO_RECEIVER"
+          }
+        ],
+        "files": [
+          {
+            "file_version_ref": "DEMO-F57-V1",
+            "sha256": "fa31229faed9f5f8e045c6fb5281852cc017c8f4c59408fa080a20f7cc1305a6",
+            "byte_length": 117,
+            "role": "primary"
+          },
+          {
+            "file_version_ref": "DEMO-F57-ATT1",
+            "sha256": "ab22e97ff09aed4eeeb6d9a6f06572d39b3a7eab242f3f393ec380e0a9e82cb1",
+            "byte_length": 86,
+            "role": "attachment"
+          }
+        ],
+        "template_ref": "DEMO-TEMPLATE-V1",
+        "font_ref": "Sarabun-5.3.0",
+        "layout_ref": "DEMO-PRINT-V1",
+        "content_policy_ref": "DEMO-CONTENT-V1",
+        "conditions": ["ข้อมูลสมมติเท่านั้น"]
+      },
+      "modified_digest": "b1dabab2bcd0e196c2dc6a3fc07e3ffe1d2a82435db5fe3da90d1cbdeff18fdf",
+      "expected": "NEW_REVIEW_REQUIRED",
+      "actual": null
+    },
+    {
+      "field": "signer_refs",
+      "modified_manifest": {
+        "record_version_ref": "DEMO-R57-V1",
+        "body_ast": {
+          "type": "text",
+          "value": "ข้อความทดลองหลักฐานอนุมัติ"
+        },
+        "signer_refs": ["DEMO-PERSON-OTHER"],
+        "recipient_refs": [
+          {
+            "person_ref": "DEMO-PERSON-RECIPIENT",
+            "organization_ref": "DEMO-ORG-A",
+            "context": "DEMO_RECEIVER"
+          }
+        ],
+        "files": [
+          {
+            "file_version_ref": "DEMO-F57-V1",
+            "sha256": "fa31229faed9f5f8e045c6fb5281852cc017c8f4c59408fa080a20f7cc1305a6",
+            "byte_length": 117,
+            "role": "primary"
+          },
+          {
+            "file_version_ref": "DEMO-F57-ATT1",
+            "sha256": "ab22e97ff09aed4eeeb6d9a6f06572d39b3a7eab242f3f393ec380e0a9e82cb1",
+            "byte_length": 86,
+            "role": "attachment"
+          }
+        ],
+        "template_ref": "DEMO-TEMPLATE-V1",
+        "font_ref": "Sarabun-5.3.0",
+        "layout_ref": "DEMO-PRINT-V1",
+        "content_policy_ref": "DEMO-CONTENT-V1",
+        "conditions": ["ข้อมูลสมมติเท่านั้น"]
+      },
+      "modified_digest": "c09164d56a042aa75090a9e6ca47199acef469a059eb62b7b0ee87d84a45c51d",
+      "expected": "NEW_REVIEW_REQUIRED",
+      "actual": null
+    },
+    {
+      "field": "recipient_refs",
+      "modified_manifest": {
+        "record_version_ref": "DEMO-R57-V1",
+        "body_ast": {
+          "type": "text",
+          "value": "ข้อความทดลองหลักฐานอนุมัติ"
+        },
+        "signer_refs": ["DEMO-PERSON-CHECKER"],
+        "recipient_refs": [],
+        "files": [
+          {
+            "file_version_ref": "DEMO-F57-V1",
+            "sha256": "fa31229faed9f5f8e045c6fb5281852cc017c8f4c59408fa080a20f7cc1305a6",
+            "byte_length": 117,
+            "role": "primary"
+          },
+          {
+            "file_version_ref": "DEMO-F57-ATT1",
+            "sha256": "ab22e97ff09aed4eeeb6d9a6f06572d39b3a7eab242f3f393ec380e0a9e82cb1",
+            "byte_length": 86,
+            "role": "attachment"
+          }
+        ],
+        "template_ref": "DEMO-TEMPLATE-V1",
+        "font_ref": "Sarabun-5.3.0",
+        "layout_ref": "DEMO-PRINT-V1",
+        "content_policy_ref": "DEMO-CONTENT-V1",
+        "conditions": ["ข้อมูลสมมติเท่านั้น"]
+      },
+      "modified_digest": "980e66d681497d1457a670d76a9efd006da5c29e76fa15ff876d7e4637c77380",
+      "expected": "NEW_REVIEW_REQUIRED",
+      "actual": null
+    },
+    {
+      "field": "template_ref",
+      "modified_manifest": {
+        "record_version_ref": "DEMO-R57-V1",
+        "body_ast": {
+          "type": "text",
+          "value": "ข้อความทดลองหลักฐานอนุมัติ"
+        },
+        "signer_refs": ["DEMO-PERSON-CHECKER"],
+        "recipient_refs": [
+          {
+            "person_ref": "DEMO-PERSON-RECIPIENT",
+            "organization_ref": "DEMO-ORG-A",
+            "context": "DEMO_RECEIVER"
+          }
+        ],
+        "files": [
+          {
+            "file_version_ref": "DEMO-F57-V1",
+            "sha256": "fa31229faed9f5f8e045c6fb5281852cc017c8f4c59408fa080a20f7cc1305a6",
+            "byte_length": 117,
+            "role": "primary"
+          },
+          {
+            "file_version_ref": "DEMO-F57-ATT1",
+            "sha256": "ab22e97ff09aed4eeeb6d9a6f06572d39b3a7eab242f3f393ec380e0a9e82cb1",
+            "byte_length": 86,
+            "role": "attachment"
+          }
+        ],
+        "template_ref": "DEMO-TEMPLATE-V2",
+        "font_ref": "Sarabun-5.3.0",
+        "layout_ref": "DEMO-PRINT-V1",
+        "content_policy_ref": "DEMO-CONTENT-V1",
+        "conditions": ["ข้อมูลสมมติเท่านั้น"]
+      },
+      "modified_digest": "8d8faa0555293ffa7604110aebba2282fdb46ad8c7c032071e321d1ca9e55c38",
+      "expected": "NEW_REVIEW_REQUIRED",
+      "actual": null
+    },
+    {
+      "field": "layout_ref",
+      "modified_manifest": {
+        "record_version_ref": "DEMO-R57-V1",
+        "body_ast": {
+          "type": "text",
+          "value": "ข้อความทดลองหลักฐานอนุมัติ"
+        },
+        "signer_refs": ["DEMO-PERSON-CHECKER"],
+        "recipient_refs": [
+          {
+            "person_ref": "DEMO-PERSON-RECIPIENT",
+            "organization_ref": "DEMO-ORG-A",
+            "context": "DEMO_RECEIVER"
+          }
+        ],
+        "files": [
+          {
+            "file_version_ref": "DEMO-F57-V1",
+            "sha256": "fa31229faed9f5f8e045c6fb5281852cc017c8f4c59408fa080a20f7cc1305a6",
+            "byte_length": 117,
+            "role": "primary"
+          },
+          {
+            "file_version_ref": "DEMO-F57-ATT1",
+            "sha256": "ab22e97ff09aed4eeeb6d9a6f06572d39b3a7eab242f3f393ec380e0a9e82cb1",
+            "byte_length": 86,
+            "role": "attachment"
+          }
+        ],
+        "template_ref": "DEMO-TEMPLATE-V1",
+        "font_ref": "Sarabun-5.3.0",
+        "layout_ref": "DEMO-PRINT-V2",
+        "content_policy_ref": "DEMO-CONTENT-V1",
+        "conditions": ["ข้อมูลสมมติเท่านั้น"]
+      },
+      "modified_digest": "f75b3ca651bd8812d22a6e24a48a485d04375fd0a92be8cb2101bf565b1cc161",
+      "expected": "NEW_REVIEW_REQUIRED",
+      "actual": null
+    },
+    {
+      "field": "content_policy_ref",
+      "modified_manifest": {
+        "record_version_ref": "DEMO-R57-V1",
+        "body_ast": {
+          "type": "text",
+          "value": "ข้อความทดลองหลักฐานอนุมัติ"
+        },
+        "signer_refs": ["DEMO-PERSON-CHECKER"],
+        "recipient_refs": [
+          {
+            "person_ref": "DEMO-PERSON-RECIPIENT",
+            "organization_ref": "DEMO-ORG-A",
+            "context": "DEMO_RECEIVER"
+          }
+        ],
+        "files": [
+          {
+            "file_version_ref": "DEMO-F57-V1",
+            "sha256": "fa31229faed9f5f8e045c6fb5281852cc017c8f4c59408fa080a20f7cc1305a6",
+            "byte_length": 117,
+            "role": "primary"
+          },
+          {
+            "file_version_ref": "DEMO-F57-ATT1",
+            "sha256": "ab22e97ff09aed4eeeb6d9a6f06572d39b3a7eab242f3f393ec380e0a9e82cb1",
+            "byte_length": 86,
+            "role": "attachment"
+          }
+        ],
+        "template_ref": "DEMO-TEMPLATE-V1",
+        "font_ref": "Sarabun-5.3.0",
+        "layout_ref": "DEMO-PRINT-V1",
+        "content_policy_ref": "DEMO-CONTENT-V2",
+        "conditions": ["ข้อมูลสมมติเท่านั้น"]
+      },
+      "modified_digest": "0ac57ce88d8bb82f669e41ef863e90e92ec18f950fc641024ad3784765058eb9",
+      "expected": "NEW_REVIEW_REQUIRED",
+      "actual": null
+    },
+    {
+      "field": "conditions",
+      "modified_manifest": {
+        "record_version_ref": "DEMO-R57-V1",
+        "body_ast": {
+          "type": "text",
+          "value": "ข้อความทดลองหลักฐานอนุมัติ"
+        },
+        "signer_refs": ["DEMO-PERSON-CHECKER"],
+        "recipient_refs": [
+          {
+            "person_ref": "DEMO-PERSON-RECIPIENT",
+            "organization_ref": "DEMO-ORG-A",
+            "context": "DEMO_RECEIVER"
+          }
+        ],
+        "files": [
+          {
+            "file_version_ref": "DEMO-F57-V1",
+            "sha256": "fa31229faed9f5f8e045c6fb5281852cc017c8f4c59408fa080a20f7cc1305a6",
+            "byte_length": 117,
+            "role": "primary"
+          },
+          {
+            "file_version_ref": "DEMO-F57-ATT1",
+            "sha256": "ab22e97ff09aed4eeeb6d9a6f06572d39b3a7eab242f3f393ec380e0a9e82cb1",
+            "byte_length": 86,
+            "role": "attachment"
+          }
+        ],
+        "template_ref": "DEMO-TEMPLATE-V1",
+        "font_ref": "Sarabun-5.3.0",
+        "layout_ref": "DEMO-PRINT-V1",
+        "content_policy_ref": "DEMO-CONTENT-V1",
+        "conditions": ["เงื่อนไขใหม่"]
+      },
+      "modified_digest": "f79ea3cc09fb7a54e3a73f393c18d90f8d57b8fe8744bcb62562b79b46aaec07",
+      "expected": "NEW_REVIEW_REQUIRED",
+      "actual": null
+    },
+    {
+      "field": "primary_file_bytes",
+      "modified_manifest": {
+        "record_version_ref": "DEMO-R57-V1",
+        "body_ast": {
+          "type": "text",
+          "value": "ข้อความทดลองหลักฐานอนุมัติ"
+        },
+        "signer_refs": ["DEMO-PERSON-CHECKER"],
+        "recipient_refs": [
+          {
+            "person_ref": "DEMO-PERSON-RECIPIENT",
+            "organization_ref": "DEMO-ORG-A",
+            "context": "DEMO_RECEIVER"
+          }
+        ],
+        "files": [
+          {
+            "file_version_ref": "DEMO-F57-V1",
+            "sha256": "45bb62523febc5379008af727d208bd6e3e35e56f15b84cce5d6999a36355a6e",
+            "byte_length": 117,
+            "role": "primary"
+          },
+          {
+            "file_version_ref": "DEMO-F57-ATT1",
+            "sha256": "ab22e97ff09aed4eeeb6d9a6f06572d39b3a7eab242f3f393ec380e0a9e82cb1",
+            "byte_length": 86,
+            "role": "attachment"
+          }
+        ],
+        "template_ref": "DEMO-TEMPLATE-V1",
+        "font_ref": "Sarabun-5.3.0",
+        "layout_ref": "DEMO-PRINT-V1",
+        "content_policy_ref": "DEMO-CONTENT-V1",
+        "conditions": ["ข้อมูลสมมติเท่านั้น"]
+      },
+      "modified_digest": "04307606912c7dc477aa32e21f79fae171c50c98ae662e644f163a264f512ba8",
+      "expected": "VERSION_MISMATCH",
+      "actual": null
+    },
+    {
+      "field": "attachment_version",
+      "modified_manifest": {
+        "record_version_ref": "DEMO-R57-V1",
+        "body_ast": {
+          "type": "text",
+          "value": "ข้อความทดลองหลักฐานอนุมัติ"
+        },
+        "signer_refs": ["DEMO-PERSON-CHECKER"],
+        "recipient_refs": [
+          {
+            "person_ref": "DEMO-PERSON-RECIPIENT",
+            "organization_ref": "DEMO-ORG-A",
+            "context": "DEMO_RECEIVER"
+          }
+        ],
+        "files": [
+          {
+            "file_version_ref": "DEMO-F57-V1",
+            "sha256": "fa31229faed9f5f8e045c6fb5281852cc017c8f4c59408fa080a20f7cc1305a6",
+            "byte_length": 117,
+            "role": "primary"
+          },
+          {
+            "file_version_ref": "DEMO-F57-ATT2",
+            "sha256": "ab22e97ff09aed4eeeb6d9a6f06572d39b3a7eab242f3f393ec380e0a9e82cb1",
+            "byte_length": 86,
+            "role": "attachment"
+          }
+        ],
+        "template_ref": "DEMO-TEMPLATE-V1",
+        "font_ref": "Sarabun-5.3.0",
+        "layout_ref": "DEMO-PRINT-V1",
+        "content_policy_ref": "DEMO-CONTENT-V1",
+        "conditions": ["ข้อมูลสมมติเท่านั้น"]
+      },
+      "modified_digest": "8b01b6598d8ee7f5c9eed71a544aec4c68c834ad42cad105d05e21c4e0b93bd9",
+      "expected": "NEW_REVIEW_REQUIRED",
+      "actual": null
+    }
+  ],
+  "approval_guard_reference": {
+    "all_true_inputs": {
+      "verified_account": true,
+      "current_business_authority": true,
+      "scope_matches": true,
+      "maker_checker": true,
+      "candidate_revision_matches": true,
+      "read_receipt_matches": true,
+      "source_acl_allows": true,
+      "file_acl_allows": true,
+      "all_files_clean": true,
+      "byte_hashes_match": true,
+      "policy_confirmed_for_internal_approval": true,
+      "authorization_guard_version_matches": true
+    },
+    "expected_conditional_internal_allowed": true,
+    "actual": null,
+    "negative_cases": [
+      {
+        "failed_guard": "verified_account",
+        "inputs": {
+          "verified_account": false,
+          "current_business_authority": true,
+          "scope_matches": true,
+          "maker_checker": true,
+          "candidate_revision_matches": true,
+          "read_receipt_matches": true,
+          "source_acl_allows": true,
+          "file_acl_allows": true,
+          "all_files_clean": true,
+          "byte_hashes_match": true,
+          "policy_confirmed_for_internal_approval": true,
+          "authorization_guard_version_matches": true
+        },
+        "expected_internal_approval_allowed": false,
+        "actual": null
+      },
+      {
+        "failed_guard": "current_business_authority",
+        "inputs": {
+          "verified_account": true,
+          "current_business_authority": false,
+          "scope_matches": true,
+          "maker_checker": true,
+          "candidate_revision_matches": true,
+          "read_receipt_matches": true,
+          "source_acl_allows": true,
+          "file_acl_allows": true,
+          "all_files_clean": true,
+          "byte_hashes_match": true,
+          "policy_confirmed_for_internal_approval": true,
+          "authorization_guard_version_matches": true
+        },
+        "expected_internal_approval_allowed": false,
+        "actual": null
+      },
+      {
+        "failed_guard": "scope_matches",
+        "inputs": {
+          "verified_account": true,
+          "current_business_authority": true,
+          "scope_matches": false,
+          "maker_checker": true,
+          "candidate_revision_matches": true,
+          "read_receipt_matches": true,
+          "source_acl_allows": true,
+          "file_acl_allows": true,
+          "all_files_clean": true,
+          "byte_hashes_match": true,
+          "policy_confirmed_for_internal_approval": true,
+          "authorization_guard_version_matches": true
+        },
+        "expected_internal_approval_allowed": false,
+        "actual": null
+      },
+      {
+        "failed_guard": "maker_checker",
+        "inputs": {
+          "verified_account": true,
+          "current_business_authority": true,
+          "scope_matches": true,
+          "maker_checker": false,
+          "candidate_revision_matches": true,
+          "read_receipt_matches": true,
+          "source_acl_allows": true,
+          "file_acl_allows": true,
+          "all_files_clean": true,
+          "byte_hashes_match": true,
+          "policy_confirmed_for_internal_approval": true,
+          "authorization_guard_version_matches": true
+        },
+        "expected_internal_approval_allowed": false,
+        "actual": null
+      },
+      {
+        "failed_guard": "candidate_revision_matches",
+        "inputs": {
+          "verified_account": true,
+          "current_business_authority": true,
+          "scope_matches": true,
+          "maker_checker": true,
+          "candidate_revision_matches": false,
+          "read_receipt_matches": true,
+          "source_acl_allows": true,
+          "file_acl_allows": true,
+          "all_files_clean": true,
+          "byte_hashes_match": true,
+          "policy_confirmed_for_internal_approval": true,
+          "authorization_guard_version_matches": true
+        },
+        "expected_internal_approval_allowed": false,
+        "actual": null
+      },
+      {
+        "failed_guard": "read_receipt_matches",
+        "inputs": {
+          "verified_account": true,
+          "current_business_authority": true,
+          "scope_matches": true,
+          "maker_checker": true,
+          "candidate_revision_matches": true,
+          "read_receipt_matches": false,
+          "source_acl_allows": true,
+          "file_acl_allows": true,
+          "all_files_clean": true,
+          "byte_hashes_match": true,
+          "policy_confirmed_for_internal_approval": true,
+          "authorization_guard_version_matches": true
+        },
+        "expected_internal_approval_allowed": false,
+        "actual": null
+      },
+      {
+        "failed_guard": "source_acl_allows",
+        "inputs": {
+          "verified_account": true,
+          "current_business_authority": true,
+          "scope_matches": true,
+          "maker_checker": true,
+          "candidate_revision_matches": true,
+          "read_receipt_matches": true,
+          "source_acl_allows": false,
+          "file_acl_allows": true,
+          "all_files_clean": true,
+          "byte_hashes_match": true,
+          "policy_confirmed_for_internal_approval": true,
+          "authorization_guard_version_matches": true
+        },
+        "expected_internal_approval_allowed": false,
+        "actual": null
+      },
+      {
+        "failed_guard": "file_acl_allows",
+        "inputs": {
+          "verified_account": true,
+          "current_business_authority": true,
+          "scope_matches": true,
+          "maker_checker": true,
+          "candidate_revision_matches": true,
+          "read_receipt_matches": true,
+          "source_acl_allows": true,
+          "file_acl_allows": false,
+          "all_files_clean": true,
+          "byte_hashes_match": true,
+          "policy_confirmed_for_internal_approval": true,
+          "authorization_guard_version_matches": true
+        },
+        "expected_internal_approval_allowed": false,
+        "actual": null
+      },
+      {
+        "failed_guard": "all_files_clean",
+        "inputs": {
+          "verified_account": true,
+          "current_business_authority": true,
+          "scope_matches": true,
+          "maker_checker": true,
+          "candidate_revision_matches": true,
+          "read_receipt_matches": true,
+          "source_acl_allows": true,
+          "file_acl_allows": true,
+          "all_files_clean": false,
+          "byte_hashes_match": true,
+          "policy_confirmed_for_internal_approval": true,
+          "authorization_guard_version_matches": true
+        },
+        "expected_internal_approval_allowed": false,
+        "actual": null
+      },
+      {
+        "failed_guard": "byte_hashes_match",
+        "inputs": {
+          "verified_account": true,
+          "current_business_authority": true,
+          "scope_matches": true,
+          "maker_checker": true,
+          "candidate_revision_matches": true,
+          "read_receipt_matches": true,
+          "source_acl_allows": true,
+          "file_acl_allows": true,
+          "all_files_clean": true,
+          "byte_hashes_match": false,
+          "policy_confirmed_for_internal_approval": true,
+          "authorization_guard_version_matches": true
+        },
+        "expected_internal_approval_allowed": false,
+        "actual": null
+      },
+      {
+        "failed_guard": "policy_confirmed_for_internal_approval",
+        "inputs": {
+          "verified_account": true,
+          "current_business_authority": true,
+          "scope_matches": true,
+          "maker_checker": true,
+          "candidate_revision_matches": true,
+          "read_receipt_matches": true,
+          "source_acl_allows": true,
+          "file_acl_allows": true,
+          "all_files_clean": true,
+          "byte_hashes_match": true,
+          "policy_confirmed_for_internal_approval": false,
+          "authorization_guard_version_matches": true
+        },
+        "expected_internal_approval_allowed": false,
+        "actual": null
+      },
+      {
+        "failed_guard": "authorization_guard_version_matches",
+        "inputs": {
+          "verified_account": true,
+          "current_business_authority": true,
+          "scope_matches": true,
+          "maker_checker": true,
+          "candidate_revision_matches": true,
+          "read_receipt_matches": true,
+          "source_acl_allows": true,
+          "file_acl_allows": true,
+          "all_files_clean": true,
+          "byte_hashes_match": true,
+          "policy_confirmed_for_internal_approval": true,
+          "authorization_guard_version_matches": false
+        },
+        "expected_internal_approval_allowed": false,
+        "actual": null
+      }
+    ]
+  },
+  "unconfigured_expected_response": {
+    "status": "SIGNING_NOT_CONFIGURED",
+    "provider_job_ref": null,
+    "artifact_ref": null,
+    "provider_receipt_ref": null,
+    "technical_validation": "NOT_PERFORMED",
+    "official_acceptance": "BLOCKED",
+    "official_success": false,
+    "message": "ยังไม่ได้ตั้งค่าผู้ให้บริการลงนาม มีได้เฉพาะหลักฐานอนุมัติภายในที่ตรวจได้",
+    "operation_ref": "DEMO-OP-57-1",
+    "received_at": null,
+    "reason_code": "PROVIDER_NOT_CONFIRMED"
+  },
+  "provider_conditional_scenarios": [
+    {
+      "scenario": "receipt_success_without_artifact_validation",
+      "expected_technical": "NOT_PERFORMED",
+      "expected_official": "BLOCKED",
+      "actual": null
+    },
+    {
+      "scenario": "valid_signature_under_confirmed_sandbox_profile",
+      "expected_technical": "VALID_UNDER_PROFILE",
+      "expected_official": "BLOCKED",
+      "actual": null
+    },
+    {
+      "scenario": "unknown_trust_or_revocation",
+      "expected_technical": "INDETERMINATE",
+      "expected_official": "BLOCKED",
+      "actual": null
+    },
+    {
+      "scenario": "artifact_bytes_changed_after_validation",
+      "expected_technical": "INVALID_OR_INDETERMINATE_PENDING_REAL_VERIFIER",
+      "expected_official": "BLOCKED",
+      "actual": null
+    },
+    {
+      "scenario": "output_hash_differs_because_of_signature_container",
+      "expected_technical": "REQUIRES_REAL_CONTENT_BINDING_VALIDATION",
+      "expected_official": "BLOCKED",
+      "actual": null
+    }
+  ],
+  "history_reference": {
+    "old_record_ref": "DEMO-R57-V1",
+    "old_evidence_ref": "DEMO-E57-1",
+    "new_record_ref": "DEMO-R57-V2",
+    "new_cycle_ref": "DEMO-CYCLE-2",
+    "supersedes_ref": "DEMO-E57-1",
+    "correction_reason": "แก้ข้อความสมมติที่ผิด เปิดตรวจรุ่นใหม่",
+    "correction_document_ref": "DEMO-CORRECTION-V1",
+    "old_evidence_deleted": false,
+    "old_hash_rewritten": false,
+    "actual": null
+  },
+  "idempotency_reference": {
+    "operation_ref": "DEMO-OP-57-1",
+    "request_fingerprint": "cd1dddd0e30fdc389d88f41939b6e1c0fe472991c5064f3e22a545da06ed0d3f",
+    "expected_first_evidence_delta": 1,
+    "expected_retry_evidence_delta": 0,
+    "expected_first_audit_delta": 1,
+    "expected_retry_audit_delta": 0,
+    "same_key_different_payload_expected": "IDEMPOTENCY_CONFLICT",
+    "actual": null
+  },
+  "cases": [
+    {
+      "case_id": "P57-01",
+      "description": "อนุมัติแล้วผูกบัญชี เวลา สิทธิ์ manifest และไฟล์ที่อ่านเดียวกัน",
+      "status": "NOT_RUN",
+      "actual": null
+    },
+    {
+      "case_id": "P57-02",
+      "description": "แก้ bytes ของไฟล์รุ่นเดิมหลังอนุมัติ ตรวจพบและห้ามส่ง",
+      "status": "NOT_RUN",
+      "actual": null
+    },
+    {
+      "case_id": "P57-03",
+      "description": "เพิ่ม V2 ไม่แทนไฟล์ V1 ในหลักฐานเดิม",
+      "status": "NOT_RUN",
+      "actual": null
+    },
+    {
+      "case_id": "P57-04",
+      "description": "แก้สาระสำคัญต้อง review ใหม่และเก็บคำตัดสินเก่า",
+      "status": "NOT_RUN",
+      "actual": null
+    },
+    {
+      "case_id": "P57-05",
+      "description": "browser ส่ง approver/time/hash ปลอม server ไม่ใช้เป็นหลักฐาน",
+      "status": "NOT_RUN",
+      "actual": null
+    },
+    {
+      "case_id": "P57-06",
+      "description": "maker checker ปฏิเสธผู้สร้างอนุมัติตนเอง",
+      "status": "NOT_RUN",
+      "actual": null
+    },
+    {
+      "case_id": "P57-07",
+      "description": "admin เทคนิคไม่มีอำนาจธุรกิจ อ่านหรืออนุมัติไม่ได้",
+      "status": "NOT_RUN",
+      "actual": null
+    },
+    {
+      "case_id": "P57-08",
+      "description": "delegation หมดอายุหรือถูกถอนก่อน commit ตัดสินไม่ได้",
+      "status": "NOT_RUN",
+      "actual": null
+    },
+    {
+      "case_id": "P57-09",
+      "description": "แข่งอนุมัติ/เปลี่ยนรุ่นได้คำตัดสินหนึ่งชุดและ conflict",
+      "status": "NOT_RUN",
+      "actual": null
+    },
+    {
+      "case_id": "P57-10",
+      "description": "retry เดิมได้ evidence เดิม ไม่ audit/outbox ซ้ำ",
+      "status": "NOT_RUN",
+      "actual": null
+    },
+    {
+      "case_id": "P57-11",
+      "description": "rollback ระหว่าง decision/evidence/audit/outbox ไม่เหลือครึ่งรายการ",
+      "status": "NOT_RUN",
+      "actual": null
+    },
+    {
+      "case_id": "P57-12",
+      "description": "read/download/export/search/worker ตรวจ current source-file ACL",
+      "status": "NOT_RUN",
+      "actual": null
+    },
+    {
+      "case_id": "P57-13",
+      "description": "ไม่ตั้ง provider คืน SIGNING_NOT_CONFIGURED ไม่มี network/งานลงนาม",
+      "status": "NOT_RUN",
+      "actual": null
+    },
+    {
+      "case_id": "P57-14",
+      "description": "internal evidence/image/hash ไม่แสดงลงนามทางการสำเร็จ",
+      "status": "NOT_RUN",
+      "actual": null
+    },
+    {
+      "case_id": "P57-15",
+      "description": "provider success อย่างเดียวไม่มีผลตรวจ artifact ให้รับรองไม่ได้",
+      "status": "NOT_RUN",
+      "actual": null
+    },
+    {
+      "case_id": "P57-16",
+      "description": "signed output hash ต่างอย่างถูกต้องต้องตรวจ content binding ตาม profile",
+      "status": "NOT_RUN",
+      "actual": null
+    },
+    {
+      "case_id": "P57-17",
+      "description": "แก้ signed artifact แล้วตรวจพบ เก็บผลเก่าและสร้างรุ่นใหม่",
+      "status": "NOT_RUN",
+      "actual": null
+    },
+    {
+      "case_id": "P57-18",
+      "description": "certificate chain/trust/revocation ไม่ทราบหรือไม่ผ่าน ปิดการยอมรับ",
+      "status": "NOT_RUN",
+      "actual": null
+    },
+    {
+      "case_id": "P57-19",
+      "description": "เวลา server/client ไม่แทน trusted timestamp ที่ตรวจจริง",
+      "status": "NOT_RUN",
+      "actual": null
+    },
+    {
+      "case_id": "P57-20",
+      "description": "callback ปลอม/ซ้ำ/ผิดงาน/ผิดรุ่นไม่เปลี่ยนสถานะสำเร็จ",
+      "status": "NOT_RUN",
+      "actual": null
+    },
+    {
+      "case_id": "P57-21",
+      "description": "provider timeout ไม่ retry สร้างลายมือชื่อเพิ่มโดยไม่ reconcile",
+      "status": "NOT_RUN",
+      "actual": null
+    },
+    {
+      "case_id": "P57-22",
+      "description": "ผูก artifact/report/receipt/source ใน ACL และ legal hold เดิม",
+      "status": "NOT_RUN",
+      "actual": null
+    },
+    {
+      "case_id": "P57-23",
+      "description": "sandbox ผ่านหรือ technical valid แต่ official policy ยัง TO VERIFY ไม่รับรองทางการ",
+      "status": "NOT_RUN",
+      "actual": null
+    },
+    {
+      "case_id": "P57-24",
+      "description": "revalidation/revocation เพิ่มรายงานใหม่ ไม่เขียนทับผลตรวจในอดีต",
+      "status": "NOT_RUN",
+      "actual": null
+    }
+  ],
+  "acceptance": {
+    "57-01": {
+      "case_ids": [
+        "P57-01",
+        "P57-02",
+        "P57-03",
+        "P57-04",
+        "P57-16",
+        "P57-17",
+        "P57-24"
+      ],
+      "status": "BLOCKED_NOT_RUN",
+      "actual": null
+    },
+    "57-02": {
+      "case_ids": ["P57-13", "P57-14", "P57-15", "P57-18", "P57-19", "P57-23"],
+      "status": "BLOCKED_NOT_RUN",
+      "actual": null
+    }
+  }
+}

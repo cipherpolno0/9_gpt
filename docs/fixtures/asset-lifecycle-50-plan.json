@@ -1,0 +1,839 @@
+{
+  "version": "0.1",
+  "lesson": 50,
+  "received_at": "2026-10-08T05:38:02+07:00",
+  "source_commit": "3441054",
+  "status": "PLAN_ONLY",
+  "prerequisite49": "BLOCKED",
+  "runtime_implemented": false,
+  "seeded": false,
+  "native_transactions_tested": false,
+  "actual_assets_loans_returns_repairs_created": false,
+  "policy": {
+    "ref": "DEMO_ASSET_LIFECYCLE_POLICY_50",
+    "status": "TO_VERIFY",
+    "primary_custody_mode_reference": "EXCLUSIVE_PER_ASSET_AND_KIND",
+    "loan_approval_claims_asset_reference": true,
+    "repair_blocks_borrowing_reference": true,
+    "official_enabled": false,
+    "authority_bands": [],
+    "actual_clean_file_version": null,
+    "claim_liability_rule_verified": false,
+    "reservation_timeout_verified": false
+  },
+  "notes": [
+    "ทุกDEMO/TESTชื่อและIDเป็นข้อมูลสมมติ ไม่เป็นFK/สิทธิ์/คำอนุมัติ/เอกสารCLEANที่ใช้จริง",
+    "ช่วงknowledgeเป็นprojection descriptorจากsupersessionevents ไม่เป็นคำสั่งupdatehistoryเดิม",
+    "อนาคตและการแก้ที่ตั้งเป็นasof referenceไม่ใช่activation jobที่ทดสอบแล้ว",
+    "disposal/inactiveเป็นdeny guard descriptorเท่านั้น ไม่มีการทำจำหน่ายล่วงหน้า",
+    "reference arithmetic/history ไม่พิสูจน์API/RLS/concurrency/transaction"
+  ],
+  "asset_descriptor": {
+    "ref": "DEMO_ASSET_50_A",
+    "asset_register_source": "INVENTORY47",
+    "owner_org_ref": "DEMO_ORG_50_A",
+    "asset_code": "TEST_ASSET_50_A",
+    "actual_registered": false
+  },
+  "places": [
+    {
+      "ref": "DEMO_PLACE_50_A",
+      "kind": "STOCK_LOCATION",
+      "org_ref": "DEMO_ORG_50_A",
+      "snapshot_label": "TEST_จุดเก็บ ก รุ่น1",
+      "actual_created": false,
+      "coordinates": null
+    },
+    {
+      "ref": "DEMO_PLACE_50_B",
+      "kind": "STOCK_LOCATION",
+      "org_ref": "DEMO_ORG_50_B",
+      "snapshot_label": "TEST_จุดเก็บ ข รุ่น1",
+      "actual_created": false,
+      "coordinates": null
+    },
+    {
+      "ref": "DEMO_PLACE_50_B_CORRECTED",
+      "kind": "STOCK_LOCATION",
+      "org_ref": "DEMO_ORG_50_B",
+      "snapshot_label": "TEST_จุดเก็บ ข ที่แก้แล้ว",
+      "actual_created": false,
+      "coordinates": null
+    },
+    {
+      "ref": "DEMO_PLACE_50_C",
+      "kind": "STOCK_LOCATION",
+      "org_ref": "DEMO_ORG_50_C",
+      "snapshot_label": "TEST_จุดเก็บ ค รุ่น1",
+      "actual_created": false,
+      "coordinates": null
+    },
+    {
+      "ref": "DEMO_PLACE_50_BORROWER",
+      "kind": "ORGANIZATION_LOCATION",
+      "org_ref": "DEMO_ORG_50_A",
+      "snapshot_label": "TEST_จุดส่งมอบที่ยืนยันสมมติ",
+      "actual_created": false,
+      "coordinates": null
+    },
+    {
+      "ref": "DEMO_PLACE_50_INTAKE",
+      "kind": "STOCK_LOCATION",
+      "org_ref": "DEMO_ORG_50_A",
+      "snapshot_label": "TEST_จุดรับคืนรอตรวจ",
+      "actual_created": false,
+      "coordinates": null
+    },
+    {
+      "ref": "DEMO_PLACE_50_REPAIR",
+      "kind": "ORGANIZATION_LOCATION",
+      "org_ref": "DEMO_ORG_50_A",
+      "snapshot_label": "TEST_สถานที่ผู้ซ่อมสมมติ",
+      "actual_created": false,
+      "coordinates": null
+    }
+  ],
+  "loan_reference": {
+    "ref": "DEMO_LOAN_50_A",
+    "borrower_person_ref": "DEMO_PERSON_50_BORROWER",
+    "due_at": "2027-06-04T09:00:00+07:00",
+    "handover_step_ref": "DEMO_LIFECYCLE_50_03",
+    "return_received_step_ref": "DEMO_LIFECYCLE_50_04",
+    "actual_created": false
+  },
+  "reference_steps": [
+    {
+      "ref": "DEMO_LIFECYCLE_50_01",
+      "kind": "REGISTER_INITIAL_CUSTODY",
+      "effective_at": "2027-06-01T09:00:00+07:00",
+      "recorded_at": "2027-06-01T02:05:00Z",
+      "expected": {
+        "owner_org_ref": "DEMO_ORG_50_A",
+        "primary_custodian_ref": "DEMO_PERSON_50_A",
+        "custodian_org_ref": "DEMO_ORG_50_A",
+        "place_ref": "DEMO_PLACE_50_A",
+        "borrower_physical_holder_ref": null,
+        "loan_status": "NONE",
+        "maintenance_status": "NONE",
+        "condition": "SERVICEABLE",
+        "blocking_claim_open": false,
+        "available": true,
+        "unavailable_reason": null
+      },
+      "source_revision": 1,
+      "actual_posted": false,
+      "actual_decision_ref": null
+    },
+    {
+      "ref": "DEMO_LIFECYCLE_50_02",
+      "kind": "APPROVE_AND_RESERVE_LOAN",
+      "effective_at": "2027-06-02T09:00:00+07:00",
+      "recorded_at": "2027-06-02T02:05:00Z",
+      "expected": {
+        "owner_org_ref": "DEMO_ORG_50_A",
+        "primary_custodian_ref": "DEMO_PERSON_50_A",
+        "custodian_org_ref": "DEMO_ORG_50_A",
+        "place_ref": "DEMO_PLACE_50_A",
+        "borrower_physical_holder_ref": null,
+        "loan_status": "APPROVED_RESERVED",
+        "maintenance_status": "NONE",
+        "condition": "SERVICEABLE",
+        "blocking_claim_open": false,
+        "available": false,
+        "unavailable_reason": "LOAN_RESERVED"
+      },
+      "source_revision": 1,
+      "actual_posted": false,
+      "actual_decision_ref": null
+    },
+    {
+      "ref": "DEMO_LIFECYCLE_50_03",
+      "kind": "HANDOVER_LOAN",
+      "effective_at": "2027-06-03T09:00:00+07:00",
+      "recorded_at": "2027-06-03T02:05:00Z",
+      "expected": {
+        "owner_org_ref": "DEMO_ORG_50_A",
+        "primary_custodian_ref": "DEMO_PERSON_50_A",
+        "custodian_org_ref": "DEMO_ORG_50_A",
+        "place_ref": "DEMO_PLACE_50_BORROWER",
+        "borrower_physical_holder_ref": "DEMO_PERSON_50_BORROWER",
+        "loan_status": "HANDED_OVER",
+        "maintenance_status": "NONE",
+        "condition": "SERVICEABLE",
+        "blocking_claim_open": false,
+        "available": false,
+        "unavailable_reason": "ON_LOAN"
+      },
+      "source_revision": 1,
+      "actual_posted": false,
+      "actual_decision_ref": null
+    },
+    {
+      "ref": "DEMO_LIFECYCLE_50_04",
+      "kind": "RECEIVE_RETURN",
+      "effective_at": "2027-06-05T09:00:00+07:00",
+      "recorded_at": "2027-06-05T02:05:00Z",
+      "expected": {
+        "owner_org_ref": "DEMO_ORG_50_A",
+        "primary_custodian_ref": "DEMO_PERSON_50_A",
+        "custodian_org_ref": "DEMO_ORG_50_A",
+        "place_ref": "DEMO_PLACE_50_INTAKE",
+        "borrower_physical_holder_ref": null,
+        "loan_status": "RETURN_RECEIVED_PENDING_INSPECTION",
+        "maintenance_status": "NONE",
+        "condition": "CHECK_PENDING",
+        "blocking_claim_open": false,
+        "available": false,
+        "unavailable_reason": "RETURN_INSPECTION_PENDING"
+      },
+      "source_revision": 1,
+      "actual_posted": false,
+      "actual_decision_ref": null
+    },
+    {
+      "ref": "DEMO_LIFECYCLE_50_05",
+      "kind": "INSPECT_RETURN_DAMAGED_CLOSE_PHYSICAL_LOAN",
+      "effective_at": "2027-06-06T09:00:00+07:00",
+      "recorded_at": "2027-06-06T02:05:00Z",
+      "expected": {
+        "owner_org_ref": "DEMO_ORG_50_A",
+        "primary_custodian_ref": "DEMO_PERSON_50_A",
+        "custodian_org_ref": "DEMO_ORG_50_A",
+        "place_ref": "DEMO_PLACE_50_INTAKE",
+        "borrower_physical_holder_ref": null,
+        "loan_status": "CLOSED",
+        "maintenance_status": "NONE",
+        "condition": "DAMAGED",
+        "blocking_claim_open": true,
+        "available": false,
+        "unavailable_reason": "DAMAGED_AND_CLAIM"
+      },
+      "source_revision": 1,
+      "actual_posted": false,
+      "actual_decision_ref": null
+    },
+    {
+      "ref": "DEMO_LIFECYCLE_50_06",
+      "kind": "START_APPROVED_MAINTENANCE",
+      "effective_at": "2027-06-07T09:00:00+07:00",
+      "recorded_at": "2027-06-07T02:05:00Z",
+      "expected": {
+        "owner_org_ref": "DEMO_ORG_50_A",
+        "primary_custodian_ref": "DEMO_PERSON_50_A",
+        "custodian_org_ref": "DEMO_ORG_50_A",
+        "place_ref": "DEMO_PLACE_50_REPAIR",
+        "borrower_physical_holder_ref": null,
+        "loan_status": "CLOSED",
+        "maintenance_status": "IN_PROGRESS",
+        "condition": "DAMAGED",
+        "blocking_claim_open": true,
+        "available": false,
+        "unavailable_reason": "IN_MAINTENANCE"
+      },
+      "source_revision": 1,
+      "actual_posted": false,
+      "actual_decision_ref": null
+    },
+    {
+      "ref": "DEMO_LIFECYCLE_50_07",
+      "kind": "RECEIVE_FROM_REPAIR",
+      "effective_at": "2027-06-08T09:00:00+07:00",
+      "recorded_at": "2027-06-08T02:05:00Z",
+      "expected": {
+        "owner_org_ref": "DEMO_ORG_50_A",
+        "primary_custodian_ref": "DEMO_PERSON_50_A",
+        "custodian_org_ref": "DEMO_ORG_50_A",
+        "place_ref": "DEMO_PLACE_50_INTAKE",
+        "borrower_physical_holder_ref": null,
+        "loan_status": "CLOSED",
+        "maintenance_status": "RETURNED_PENDING_INSPECTION",
+        "condition": "CHECK_PENDING",
+        "blocking_claim_open": true,
+        "available": false,
+        "unavailable_reason": "REPAIR_INSPECTION_PENDING"
+      },
+      "source_revision": 1,
+      "actual_posted": false,
+      "actual_decision_ref": null
+    },
+    {
+      "ref": "DEMO_LIFECYCLE_50_08",
+      "kind": "INSPECT_REPAIR_AND_APPROVED_CLAIM_RESOLUTION",
+      "effective_at": "2027-06-09T09:00:00+07:00",
+      "recorded_at": "2027-06-09T02:05:00Z",
+      "expected": {
+        "owner_org_ref": "DEMO_ORG_50_A",
+        "primary_custodian_ref": "DEMO_PERSON_50_A",
+        "custodian_org_ref": "DEMO_ORG_50_A",
+        "place_ref": "DEMO_PLACE_50_A",
+        "borrower_physical_holder_ref": null,
+        "loan_status": "CLOSED",
+        "maintenance_status": "CLOSED",
+        "condition": "SERVICEABLE",
+        "blocking_claim_open": false,
+        "available": true,
+        "unavailable_reason": null
+      },
+      "source_revision": 1,
+      "actual_posted": false,
+      "actual_decision_ref": null,
+      "claim_resolution_required_ref": "DEMO_CLAIM_RESOLUTION_50_REQUIRED"
+    },
+    {
+      "ref": "DEMO_LIFECYCLE_50_09",
+      "kind": "CUSTODY_HANDOVER_ON_PERSON_TRANSFER",
+      "effective_at": "2027-06-10T09:00:00+07:00",
+      "recorded_at": "2027-06-10T02:05:00Z",
+      "expected": {
+        "owner_org_ref": "DEMO_ORG_50_A",
+        "primary_custodian_ref": "DEMO_PERSON_50_B",
+        "custodian_org_ref": "DEMO_ORG_50_B",
+        "place_ref": "DEMO_PLACE_50_B",
+        "borrower_physical_holder_ref": null,
+        "loan_status": "CLOSED",
+        "maintenance_status": "CLOSED",
+        "condition": "SERVICEABLE",
+        "blocking_claim_open": false,
+        "available": true,
+        "unavailable_reason": null
+      },
+      "source_revision": 1,
+      "actual_posted": false,
+      "actual_decision_ref": null,
+      "person_change_source_ref": "DEMO_PERSON_CHANGE_17_REQUIRED",
+      "changes_owner_or_roles": false
+    }
+  ],
+  "assignment_versions": [
+    {
+      "ref": "DEMO_ASSIGN_50_A_V1",
+      "asset_ref": "DEMO_ASSET_50_A",
+      "kind": "PRIMARY_CUSTODIAN",
+      "person_ref": "DEMO_PERSON_50_A",
+      "org_ref": "DEMO_ORG_50_A",
+      "valid_from": "2027-06-01",
+      "valid_to": null,
+      "recorded_at": "2027-06-01T02:05:00Z",
+      "knowledge_to_from_supersession_event": "2027-06-10T02:05:00Z",
+      "replaces_ref": null,
+      "snapshot_person_label": "TEST_ผู้รับผิดชอบ ก ณ วันเดิม",
+      "snapshot_org_label": "TEST_หน่วย ก รุ่นเดิม",
+      "evidence_ref": "DEMO_EVIDENCE_50_REQUIRED",
+      "actual_created": false
+    },
+    {
+      "ref": "DEMO_ASSIGN_50_A_V2",
+      "asset_ref": "DEMO_ASSET_50_A",
+      "kind": "PRIMARY_CUSTODIAN",
+      "person_ref": "DEMO_PERSON_50_A",
+      "org_ref": "DEMO_ORG_50_A",
+      "valid_from": "2027-06-01",
+      "valid_to": "2027-06-10",
+      "recorded_at": "2027-06-10T02:05:00Z",
+      "knowledge_to_from_supersession_event": null,
+      "replaces_ref": "DEMO_ASSIGN_50_A_V1",
+      "snapshot_person_label": "TEST_ผู้รับผิดชอบ ก ณ วันเดิม",
+      "snapshot_org_label": "TEST_หน่วย ก รุ่นเดิม",
+      "evidence_ref": "DEMO_EVIDENCE_50_REQUIRED",
+      "actual_created": false
+    },
+    {
+      "ref": "DEMO_ASSIGN_50_B_V1",
+      "asset_ref": "DEMO_ASSET_50_A",
+      "kind": "PRIMARY_CUSTODIAN",
+      "person_ref": "DEMO_PERSON_50_B",
+      "org_ref": "DEMO_ORG_50_B",
+      "valid_from": "2027-06-10",
+      "valid_to": null,
+      "recorded_at": "2027-06-10T02:05:00Z",
+      "knowledge_to_from_supersession_event": "2027-06-12T02:05:00Z",
+      "replaces_ref": null,
+      "snapshot_person_label": "TEST_ผู้รับผิดชอบ ข ณ วันส่งมอบ",
+      "snapshot_org_label": "TEST_หน่วย ข รุ่นเดิม",
+      "evidence_ref": "DEMO_EVIDENCE_50_REQUIRED",
+      "actual_created": false
+    },
+    {
+      "ref": "DEMO_ASSIGN_50_B_V2",
+      "asset_ref": "DEMO_ASSET_50_A",
+      "kind": "PRIMARY_CUSTODIAN",
+      "person_ref": "DEMO_PERSON_50_B",
+      "org_ref": "DEMO_ORG_50_B",
+      "valid_from": "2027-06-10",
+      "valid_to": "2027-06-15",
+      "recorded_at": "2027-06-12T02:05:00Z",
+      "knowledge_to_from_supersession_event": null,
+      "replaces_ref": "DEMO_ASSIGN_50_B_V1",
+      "snapshot_person_label": "TEST_ผู้รับผิดชอบ ข ณ วันส่งมอบ",
+      "snapshot_org_label": "TEST_หน่วย ข รุ่นเดิม",
+      "evidence_ref": "DEMO_EVIDENCE_50_REQUIRED",
+      "actual_created": false
+    },
+    {
+      "ref": "DEMO_ASSIGN_50_C_V1",
+      "asset_ref": "DEMO_ASSET_50_A",
+      "kind": "PRIMARY_CUSTODIAN",
+      "person_ref": "DEMO_PERSON_50_C",
+      "org_ref": "DEMO_ORG_50_C",
+      "valid_from": "2027-06-15",
+      "valid_to": null,
+      "recorded_at": "2027-06-12T02:05:00Z",
+      "knowledge_to_from_supersession_event": null,
+      "replaces_ref": null,
+      "snapshot_person_label": "TEST_ผู้รับผิดชอบ ค ตามแผน",
+      "snapshot_org_label": "TEST_หน่วย ค รุ่นเดิม",
+      "evidence_ref": "DEMO_EVIDENCE_50_REQUIRED",
+      "actual_created": false
+    }
+  ],
+  "location_events": [
+    {
+      "ref": "DEMO_LOCATION_EVENT_50_01",
+      "effective_at": "2027-06-01T09:00:00+07:00",
+      "recorded_at": "2027-06-01T02:05:00Z",
+      "place_ref": "DEMO_PLACE_50_A",
+      "physical_borrower_ref": null,
+      "replaces_ref": null,
+      "reason": "DEMO_HANDOVER_SOURCE_REQUIRED",
+      "actual_posted": false
+    },
+    {
+      "ref": "DEMO_LOCATION_EVENT_50_03",
+      "effective_at": "2027-06-03T09:00:00+07:00",
+      "recorded_at": "2027-06-03T02:05:00Z",
+      "place_ref": "DEMO_PLACE_50_BORROWER",
+      "physical_borrower_ref": "DEMO_PERSON_50_BORROWER",
+      "replaces_ref": null,
+      "reason": "DEMO_HANDOVER_SOURCE_REQUIRED",
+      "actual_posted": false
+    },
+    {
+      "ref": "DEMO_LOCATION_EVENT_50_04",
+      "effective_at": "2027-06-05T09:00:00+07:00",
+      "recorded_at": "2027-06-05T02:05:00Z",
+      "place_ref": "DEMO_PLACE_50_INTAKE",
+      "physical_borrower_ref": null,
+      "replaces_ref": null,
+      "reason": "DEMO_HANDOVER_SOURCE_REQUIRED",
+      "actual_posted": false
+    },
+    {
+      "ref": "DEMO_LOCATION_EVENT_50_06",
+      "effective_at": "2027-06-07T09:00:00+07:00",
+      "recorded_at": "2027-06-07T02:05:00Z",
+      "place_ref": "DEMO_PLACE_50_REPAIR",
+      "physical_borrower_ref": null,
+      "replaces_ref": null,
+      "reason": "DEMO_HANDOVER_SOURCE_REQUIRED",
+      "actual_posted": false
+    },
+    {
+      "ref": "DEMO_LOCATION_EVENT_50_07",
+      "effective_at": "2027-06-08T09:00:00+07:00",
+      "recorded_at": "2027-06-08T02:05:00Z",
+      "place_ref": "DEMO_PLACE_50_INTAKE",
+      "physical_borrower_ref": null,
+      "replaces_ref": null,
+      "reason": "DEMO_HANDOVER_SOURCE_REQUIRED",
+      "actual_posted": false
+    },
+    {
+      "ref": "DEMO_LOCATION_EVENT_50_08",
+      "effective_at": "2027-06-09T09:00:00+07:00",
+      "recorded_at": "2027-06-09T02:05:00Z",
+      "place_ref": "DEMO_PLACE_50_A",
+      "physical_borrower_ref": null,
+      "replaces_ref": null,
+      "reason": "DEMO_HANDOVER_SOURCE_REQUIRED",
+      "actual_posted": false
+    },
+    {
+      "ref": "DEMO_LOCATION_EVENT_50_09",
+      "effective_at": "2027-06-10T09:00:00+07:00",
+      "recorded_at": "2027-06-10T02:05:00Z",
+      "place_ref": "DEMO_PLACE_50_B",
+      "physical_borrower_ref": null,
+      "replaces_ref": null,
+      "reason": "DEMO_HANDOVER_SOURCE_REQUIRED",
+      "actual_posted": false
+    },
+    {
+      "ref": "DEMO_LOCATION_EVENT_50_FUTURE",
+      "effective_at": "2027-06-15T09:00:00+07:00",
+      "recorded_at": "2027-06-12T02:05:00Z",
+      "place_ref": "DEMO_PLACE_50_C",
+      "physical_borrower_ref": null,
+      "replaces_ref": null,
+      "reason": "DEMO_FUTURE_APPROVED_SOURCE_REQUIRED",
+      "actual_posted": false
+    },
+    {
+      "ref": "DEMO_LOCATION_EVENT_50_CORRECTION",
+      "effective_at": "2027-06-10T09:00:00+07:00",
+      "recorded_at": "2027-06-13T02:05:00Z",
+      "place_ref": "DEMO_PLACE_50_B_CORRECTED",
+      "physical_borrower_ref": null,
+      "replaces_ref": "DEMO_LOCATION_EVENT_50_09",
+      "reason": "TEST_แก้จุดเก็บที่บันทึกผิด ต้องคำอนุมัติและหลักฐานใหม่",
+      "actual_posted": false
+    }
+  ],
+  "history_queries": [
+    {
+      "ref": "DEMO_QUERY_50_01",
+      "valid_at": "2027-06-02T12:00:00+07:00",
+      "known_at": "2027-06-02T12:00:00+07:00",
+      "expected_primary_person_ref": "DEMO_PERSON_50_A",
+      "expected_place_ref": "DEMO_PLACE_50_A",
+      "actual_query_executed": false
+    },
+    {
+      "ref": "DEMO_QUERY_50_02",
+      "valid_at": "2027-06-04T12:00:00+07:00",
+      "known_at": "2027-06-04T12:00:00+07:00",
+      "expected_primary_person_ref": "DEMO_PERSON_50_A",
+      "expected_place_ref": "DEMO_PLACE_50_BORROWER",
+      "actual_query_executed": false
+    },
+    {
+      "ref": "DEMO_QUERY_50_03",
+      "valid_at": "2027-06-10T12:00:00+07:00",
+      "known_at": "2027-06-10T12:00:00+07:00",
+      "expected_primary_person_ref": "DEMO_PERSON_50_B",
+      "expected_place_ref": "DEMO_PLACE_50_B",
+      "actual_query_executed": false
+    },
+    {
+      "ref": "DEMO_QUERY_50_04",
+      "valid_at": "2027-06-11T12:00:00+07:00",
+      "known_at": "2027-06-12T12:00:00+07:00",
+      "expected_primary_person_ref": "DEMO_PERSON_50_B",
+      "expected_place_ref": "DEMO_PLACE_50_B",
+      "actual_query_executed": false
+    },
+    {
+      "ref": "DEMO_QUERY_50_05",
+      "valid_at": "2027-06-11T12:00:00+07:00",
+      "known_at": "2027-06-14T12:00:00+07:00",
+      "expected_primary_person_ref": "DEMO_PERSON_50_B",
+      "expected_place_ref": "DEMO_PLACE_50_B_CORRECTED",
+      "actual_query_executed": false
+    },
+    {
+      "ref": "DEMO_QUERY_50_06",
+      "valid_at": "2027-06-14T12:00:00+07:00",
+      "known_at": "2027-06-14T12:00:00+07:00",
+      "expected_primary_person_ref": "DEMO_PERSON_50_B",
+      "expected_place_ref": "DEMO_PLACE_50_B_CORRECTED",
+      "actual_query_executed": false
+    },
+    {
+      "ref": "DEMO_QUERY_50_07",
+      "valid_at": "2027-06-16T12:00:00+07:00",
+      "known_at": "2027-06-13T12:00:00+07:00",
+      "expected_primary_person_ref": "DEMO_PERSON_50_C",
+      "expected_place_ref": "DEMO_PLACE_50_C",
+      "actual_query_executed": false
+    },
+    {
+      "ref": "DEMO_QUERY_50_08",
+      "valid_at": "2027-06-02T12:00:00+07:00",
+      "known_at": "2027-06-14T12:00:00+07:00",
+      "expected_primary_person_ref": "DEMO_PERSON_50_A",
+      "expected_place_ref": "DEMO_PLACE_50_A",
+      "actual_query_executed": false
+    },
+    {
+      "ref": "DEMO_QUERY_50_09",
+      "valid_at": "2027-06-11T12:00:00+07:00",
+      "known_at": "2027-06-09T12:00:00+07:00",
+      "expected_primary_person_ref": "DEMO_PERSON_50_A",
+      "expected_place_ref": "DEMO_PLACE_50_A",
+      "actual_query_executed": false
+    }
+  ],
+  "maintenance_cost_reference": {
+    "currency": "THB",
+    "estimated_cost": "1200.50",
+    "approved_extra_reference": "299.50",
+    "accepted_cost_reference": "1500.00",
+    "actual_accepted_cost": null,
+    "paid_amount_reference": "0.00",
+    "actual_budget_event_id": null,
+    "unknown_cost_reference": null,
+    "unknown_cost_reason": "TEST_ยังไม่มีใบเสนอราคาหรือผลตรวจรับจริง",
+    "fiscal_year_ref": "DEMO_FY_2027",
+    "academic_year_ref": null
+  },
+  "overdue_queries": [
+    {
+      "now": "2027-06-04T09:00:00+07:00",
+      "loan_status": "HANDED_OVER",
+      "return_received_at": null,
+      "expected_overdue": false
+    },
+    {
+      "now": "2027-06-05T08:00:00+07:00",
+      "loan_status": "HANDED_OVER",
+      "return_received_at": null,
+      "expected_overdue": true
+    },
+    {
+      "now": "2027-06-05T10:00:00+07:00",
+      "loan_status": "RETURN_RECEIVED_PENDING_INSPECTION",
+      "return_received_at": "2027-06-05T09:00:00+07:00",
+      "expected_overdue": false
+    }
+  ],
+  "deny_guards": [
+    {
+      "condition": "APPROVED_RESERVED",
+      "expected": "DENY_NEW_LOAN",
+      "actual": null
+    },
+    {
+      "condition": "HANDED_OVER",
+      "expected": "DENY_NEW_LOAN",
+      "actual": null
+    },
+    {
+      "condition": "RETURN_RECEIVED_PENDING_INSPECTION",
+      "expected": "DENY_NEW_LOAN",
+      "actual": null
+    },
+    {
+      "condition": "MAINTENANCE_HOLD",
+      "expected": "DENY_NEW_LOAN",
+      "actual": null
+    },
+    {
+      "condition": "IN_PROGRESS",
+      "expected": "DENY_NEW_LOAN",
+      "actual": null
+    },
+    {
+      "condition": "REPAIR_RETURN_PENDING_INSPECTION",
+      "expected": "DENY_NEW_LOAN",
+      "actual": null
+    },
+    {
+      "condition": "DAMAGED",
+      "expected": "DENY_NEW_LOAN",
+      "actual": null
+    },
+    {
+      "condition": "OPEN_BLOCKING_CLAIM",
+      "expected": "DENY_NEW_LOAN",
+      "actual": null
+    },
+    {
+      "condition": "DISPOSED",
+      "expected": "DENY_NEW_LOAN",
+      "actual": null
+    },
+    {
+      "condition": "INACTIVE",
+      "expected": "DENY_NEW_LOAN",
+      "actual": null
+    },
+    {
+      "condition": "UNKNOWN_STATE",
+      "expected": "DENY_NEW_LOAN",
+      "actual": null
+    }
+  ],
+  "native_race_plan": {
+    "status": "NOT_RUN",
+    "connection_count": 2,
+    "barrier_phase": "BEFORE_ASSET_LOCK",
+    "operations": ["approveAndReserveLoanA", "approveAndReserveLoanB"],
+    "expected_claim_count": 1,
+    "expected_success_count": 1,
+    "fixed_winner": null,
+    "also_required": [
+      "approveLoan_vs_startMaintenance",
+      "handover_vs_return_or_custody",
+      "expiredgrant_before_apply",
+      "disposedstatus_before_claim"
+    ]
+  },
+  "fault_native_plan": {
+    "status": "NOT_RUN",
+    "before_commit_rollback_entities": [
+      "business_claim",
+      "loan",
+      "asset_return",
+      "maintenance",
+      "asset_assignment",
+      "location_history",
+      "lifecycle_event",
+      "projection",
+      "operation_receipt",
+      "audit",
+      "outbox"
+    ],
+    "after_commit_retry_requires": [
+      "current_read_authority",
+      "same_business_operation_binding",
+      "durable_inbox",
+      "dev_sink_dedupe"
+    ],
+    "actual_execution_manifest_ref": null
+  },
+  "criteria": {
+    "50-01": [
+      "P50-01",
+      "P50-02",
+      "P50-03",
+      "P50-04",
+      "P50-05",
+      "P50-06",
+      "P50-07",
+      "P50-10",
+      "P50-11",
+      "P50-12",
+      "P50-13",
+      "P50-14",
+      "P50-15",
+      "P50-18"
+    ],
+    "50-02": [
+      "P50-08",
+      "P50-09",
+      "P50-10",
+      "P50-11",
+      "P50-12",
+      "P50-16",
+      "P50-17",
+      "P50-18"
+    ]
+  },
+  "cases": [
+    {
+      "id": "P50-01",
+      "expected": "draft/returned resume/revision→approval claim→physicalhandover→due/overdue→returnreceived→inspectionclosed; ไม่availableก่อนตรวจ",
+      "status": "NOT_RUN",
+      "actual": null,
+      "execution_manifest_ref": null
+    },
+    {
+      "id": "P50-02",
+      "expected": "approve/reserveหรือhandoverชิ้นเดียวพร้อมกันสองnativeconnections barrierก่อนlock หนึ่งbusinessclaim/activeLoan อีกคำขอconflict",
+      "status": "NOT_RUN",
+      "actual": null,
+      "execution_manifest_ref": null
+    },
+    {
+      "id": "P50-03",
+      "expected": "Loanactive/returnpending/reservation/repairhold/maintenance/closed-damaged/openclaim/disposed/inactive ไม่ให้ยืมซ้ำ; unknownstatefailclosed",
+      "status": "NOT_RUN",
+      "actual": null,
+      "execution_manifest_ref": null
+    },
+    {
+      "id": "P50-04",
+      "expected": "approveLoanแข่งstartMaintenance/closeReturn/custody/revokeddisposal status writer ใช้assetlockเดียว ไม่มีloanและซ่อมที่ขัดกัน",
+      "status": "NOT_RUN",
+      "actual": null,
+      "execution_manifest_ref": null
+    },
+    {
+      "id": "P50-05",
+      "expected": "samekey/hashretry/newhashconflict/newkeysameoperation/CAS ไม่doublehandover/return/claim/event",
+      "status": "NOT_RUN",
+      "actual": null,
+      "execution_manifest_ref": null
+    },
+    {
+      "id": "P50-06",
+      "expected": "physicalreturnยังไม่inspected สภาพเสียหาย/อุปกรณ์ขาด/claim แยกloanphysicalclosedจากavailabilityและliability",
+      "status": "NOT_RUN",
+      "actual": null,
+      "execution_manifest_ref": null
+    },
+    {
+      "id": "P50-07",
+      "expected": "repairfinish/expectedend/workerlateยังไม่releaseจนinspect; exactcost/unknownNULL/currency/approvedbudget refs ไม่autoจ่าย",
+      "status": "NOT_RUN",
+      "actual": null,
+      "execution_manifest_ref": null
+    },
+    {
+      "id": "P50-08",
+      "expected": "custodyhandoverสร้างช่วงใหม่/oldnames-place-docsคงเดิม Persontransfer/resignationeventretryไม่เลือกคนแทนอัตโนมัติ",
+      "status": "NOT_RUN",
+      "actual": null,
+      "execution_manifest_ref": null
+    },
+    {
+      "id": "P50-09",
+      "expected": "valid_at/known_at/half-open/same-day timestamp/future/correctionreplaces อ่านต้นเรื่องได้ ไม่มีhistoryหาย",
+      "status": "NOT_RUN",
+      "actual": null,
+      "execution_manifest_ref": null
+    },
+    {
+      "id": "P50-10",
+      "expected": "primarycustodyช่วงซ้อนข้ามPersonถูกปฏิเสธ ส่วนsecondarykindเฉพาะpolicy ไม่autoRoleAssignment/ownership",
+      "status": "NOT_RUN",
+      "actual": null,
+      "execution_manifest_ref": null
+    },
+    {
+      "id": "P50-11",
+      "expected": "Loan/asset/person/place/org/file IDsข้ามscopeผ่านURL/body/export/job/QR/privateHTMLcacheไม่ได้ ตรวจสองscope",
+      "status": "NOT_RUN",
+      "actual": null,
+      "execution_manifest_ref": null
+    },
+    {
+      "id": "P50-12",
+      "expected": "maker/techdeny/delegationexpiry/suspend/revokedworker/currentAuthDAL/directlimitedSQL ไฟล์notCLEANหรือACLdenyไม่post",
+      "status": "NOT_RUN",
+      "actual": null,
+      "execution_manifest_ref": null
+    },
+    {
+      "id": "P50-13",
+      "expected": "failpointsclaim/loan/return/maintenance/custody/location/event/projection/receipt/audit/outbox/beforecommit rollbackทั้งหมด",
+      "status": "NOT_RUN",
+      "actual": null,
+      "execution_manifest_ref": null
+    },
+    {
+      "id": "P50-14",
+      "expected": "commitแล้วresponseหาย/workerrestart-deliveryACK durableinbox/devsinkdedupe/deadletter ไม่event/notificationซ้ำ",
+      "status": "NOT_RUN",
+      "actual": null,
+      "execution_manifest_ref": null
+    },
+    {
+      "id": "P50-15",
+      "expected": "ค้างคืนเวลาserver/reload/networkretry/ไม่มีบัญชีPerson/ผู้ยืมถูกระงับมีauthorizedintake ไม่มีautoforgedreturn",
+      "status": "NOT_RUN",
+      "actual": null,
+      "execution_manifest_ref": null
+    },
+    {
+      "id": "P50-16",
+      "expected": "Thai keyboard/labels/focus/empty-error/4viewports/read-onlyreport/export/print/filedownload privacy",
+      "status": "NOT_RUN",
+      "actual": null,
+      "execution_manifest_ref": null
+    },
+    {
+      "id": "P50-17",
+      "expected": "current/historyprojectionreconcile source manifests/pinnedversions/oldnames ไม่ใช้latestjoinหรือ0ซ่อนsourceหาย",
+      "status": "NOT_RUN",
+      "actual": null,
+      "execution_manifest_ref": null
+    },
+    {
+      "id": "P50-18",
+      "expected": "unknownauthority/custody/repairliability/rounding/closedperiod/futureconflicts/returnrecovery/adaptersไม่พร้อมdeny มีpolicyTO VERIFY",
+      "status": "NOT_RUN",
+      "actual": null,
+      "execution_manifest_ref": null
+    }
+  ]
+}

@@ -1,0 +1,2161 @@
+{
+  "version": "0.1",
+  "lesson": 56,
+  "source_commit": "c82341c",
+  "received_at": "2026-10-08T21:25:57+07:00",
+  "status": "PLAN_ONLY",
+  "seeded": false,
+  "runtime_implemented": false,
+  "native_tests_executed": false,
+  "browser_tests_executed": false,
+  "actual_files_deleted": 0,
+  "actual_audit_rows_deleted": 0,
+  "actual_holds_placed": 0,
+  "actual_holds_released": 0,
+  "actual_disclosures_created": 0,
+  "actual_searches_executed": 0,
+  "actual_thumbnails_generated": 0,
+  "actual_external_requests_sent": 0,
+  "actual_execution_manifest": null,
+  "owner_signoff": null,
+  "prerequisite": {
+    "lesson": 55,
+    "status": "BLOCKED"
+  },
+  "dependencies": [
+    "07/08 Auth/currentDAL/grants",
+    "10 centralFileVersion/ACL/CLEAN/storage",
+    "11 workflow/operationreceipt/audit/outbox",
+    "53/54/55 record-version-approval-recipient current binding",
+    "DB-06 native PostgreSQL",
+    "verified retention/disclosure/hold/sourceowner policies",
+    "verified allwriter hold-vs-purge and storage adapter"
+  ],
+  "policy": {
+    "id": "DEMO_RETENTION_POLICY_56_V1",
+    "namespace": "RECORD_RETENTION",
+    "status": "TO_VERIFY",
+    "official_duration": null,
+    "official_duration_unit": null,
+    "official_destruction_enabled": false,
+    "official_disclosure_enabled": false,
+    "storage_hold_protocol_verified": false,
+    "owner_signoff": null,
+    "official_source_file_version": null,
+    "provisional_hold_auto_expires": false,
+    "hold_release_requires_independent_approval": true,
+    "hold_implies_read_grant": false,
+    "technical_admin_implies_content_read": false,
+    "destruction_request_deletes_audit": false,
+    "demo_arithmetic_only": {
+      "duration_days": 30,
+      "time_source": "SERVER",
+      "timezone": "Asia/Bangkok"
+    }
+  },
+  "digest_reference_spec": {
+    "status": "REFERENCE_ONLY",
+    "method": "Python sorted-key JSON ensure_ascii=False separators comma-colon UTF-8 SHA256; production canonicalization ADR required"
+  },
+  "inventory": [
+    {
+      "id": "DEMO_FILE_53_V1",
+      "document_id": "DEMO_DOCUMENT_53_SHARED",
+      "artifact_kind": "PRIMARY",
+      "parent_file_version_id": null,
+      "file_version_id": "DEMO_FILE_53_V1",
+      "synthetic_content": "TEST_RECORD_53_CONTENT_V1",
+      "expected_synthetic_sha256": "9a694a6cdd72c50bd63c1755d3c2d649c0ddb629788f09c1f632a67f5908711c",
+      "actual_exists": false,
+      "actual_clean": null,
+      "actual_storage_verification": null
+    },
+    {
+      "id": "DEMO_FILE_53_V2",
+      "document_id": "DEMO_DOCUMENT_53_SHARED",
+      "artifact_kind": "PRIMARY",
+      "parent_file_version_id": null,
+      "file_version_id": "DEMO_FILE_53_V2",
+      "synthetic_content": "TEST_RECORD_53_CONTENT_V2",
+      "expected_synthetic_sha256": "779b7fb55f7769dd0992e0c144b68acf850eda2bc990672def6c300d18eef6fc",
+      "actual_exists": false,
+      "actual_clean": null,
+      "actual_storage_verification": null
+    },
+    {
+      "id": "DEMO_THUMB_56_SHARED",
+      "document_id": "DEMO_DOCUMENT_53_SHARED",
+      "artifact_kind": "THUMBNAIL",
+      "parent_file_version_id": "DEMO_FILE_53_V1",
+      "file_version_id": null,
+      "synthetic_content": "TEST_56_DEMO_THUMB_56_SHARED",
+      "expected_synthetic_sha256": "903cf5926a2a4d2bc8d4f8bc6963c689fc7ff79db382cc64981c4369d98bc8a6",
+      "actual_exists": false,
+      "actual_clean": null,
+      "actual_storage_verification": null
+    },
+    {
+      "id": "DEMO_INDEX_56_SHARED",
+      "document_id": "DEMO_DOCUMENT_53_SHARED",
+      "artifact_kind": "SEARCH_INDEX",
+      "parent_file_version_id": "DEMO_FILE_53_V1",
+      "file_version_id": null,
+      "synthetic_content": "TEST_56_DEMO_INDEX_56_SHARED",
+      "expected_synthetic_sha256": "053d514742dce0ebc625940daf0452cc33d51e72b8cd687209a84935a3ca6936",
+      "actual_exists": false,
+      "actual_clean": null,
+      "actual_storage_verification": null
+    },
+    {
+      "id": "DEMO_BACKUP_56_SHARED",
+      "document_id": "DEMO_DOCUMENT_53_SHARED",
+      "artifact_kind": "BACKUP",
+      "parent_file_version_id": "DEMO_FILE_53_V1",
+      "file_version_id": null,
+      "synthetic_content": "TEST_56_DEMO_BACKUP_56_SHARED",
+      "expected_synthetic_sha256": "40de41e1bdbc43be8fca3add91f9ddb23e960da3d81a4b56a44e06da4cebade8",
+      "actual_exists": false,
+      "actual_clean": null,
+      "actual_storage_verification": null
+    },
+    {
+      "id": "DEMO_FILE_56_SHARED_V3",
+      "document_id": "DEMO_DOCUMENT_53_SHARED",
+      "artifact_kind": "FUTURE_VERSION",
+      "parent_file_version_id": null,
+      "file_version_id": "DEMO_FILE_56_SHARED_V3",
+      "synthetic_content": "TEST_56_DEMO_FILE_56_SHARED_V3",
+      "expected_synthetic_sha256": "85cc2b135f4c86c14a69dfed28f26d1ec22cea57bf1474a91985e79c04caae45",
+      "actual_exists": false,
+      "actual_clean": null,
+      "actual_storage_verification": null
+    },
+    {
+      "id": "DEMO_FILE_56_PRIVATE_V1",
+      "document_id": "DEMO_DOCUMENT_56_PRIVATE",
+      "artifact_kind": "PRIMARY",
+      "parent_file_version_id": null,
+      "file_version_id": "DEMO_FILE_56_PRIVATE_V1",
+      "synthetic_content": "TEST_56_DEMO_FILE_56_PRIVATE_V1",
+      "expected_synthetic_sha256": "77b49082166c44ccd6d752687eba3216b6d5d02c68f7820eb6a607cc3e928c2c",
+      "actual_exists": false,
+      "actual_clean": null,
+      "actual_storage_verification": null
+    },
+    {
+      "id": "DEMO_THUMB_56_PRIVATE",
+      "document_id": "DEMO_DOCUMENT_56_PRIVATE",
+      "artifact_kind": "THUMBNAIL",
+      "parent_file_version_id": "DEMO_FILE_56_PRIVATE_V1",
+      "file_version_id": null,
+      "synthetic_content": "TEST_56_DEMO_THUMB_56_PRIVATE",
+      "expected_synthetic_sha256": "945ecc428f9219e0cb1566c880be246824932603b28def8818c0a91c874f5e25",
+      "actual_exists": false,
+      "actual_clean": null,
+      "actual_storage_verification": null
+    },
+    {
+      "id": "DEMO_INDEX_56_PRIVATE",
+      "document_id": "DEMO_DOCUMENT_56_PRIVATE",
+      "artifact_kind": "SEARCH_INDEX",
+      "parent_file_version_id": "DEMO_FILE_56_PRIVATE_V1",
+      "file_version_id": null,
+      "synthetic_content": "TEST_56_DEMO_INDEX_56_PRIVATE",
+      "expected_synthetic_sha256": "a6cdd65dc8d525788408045e08f2eff232e61f35684c7b46ac2788c77a1a1838",
+      "actual_exists": false,
+      "actual_clean": null,
+      "actual_storage_verification": null
+    },
+    {
+      "id": "DEMO_EXPORT_56_PRIVATE",
+      "document_id": "DEMO_DOCUMENT_56_PRIVATE",
+      "artifact_kind": "GENERATED_EXPORT",
+      "parent_file_version_id": "DEMO_FILE_56_PRIVATE_V1",
+      "file_version_id": null,
+      "synthetic_content": "TEST_56_DEMO_EXPORT_56_PRIVATE",
+      "expected_synthetic_sha256": "44f1195047fec704a1ce06492f979f25a895261fcd89f8db963e77ce1d6bb157",
+      "actual_exists": false,
+      "actual_clean": null,
+      "actual_storage_verification": null
+    },
+    {
+      "id": "DEMO_BACKUP_56_PRIVATE",
+      "document_id": "DEMO_DOCUMENT_56_PRIVATE",
+      "artifact_kind": "BACKUP",
+      "parent_file_version_id": "DEMO_FILE_56_PRIVATE_V1",
+      "file_version_id": null,
+      "synthetic_content": "TEST_56_DEMO_BACKUP_56_PRIVATE",
+      "expected_synthetic_sha256": "8d20d94ba230f530d11e918b905e935e4e66707384eb2fa655e0de2988b2568d",
+      "actual_exists": false,
+      "actual_clean": null,
+      "actual_storage_verification": null
+    }
+  ],
+  "source_references": [
+    {
+      "id": "DEMO_SOURCE_LINK_53_01",
+      "module": "01",
+      "source_kind": "PersonChangeRequest",
+      "source_id": "DEMO_SOURCE_53_01",
+      "source_version": "DEMO_SOURCE_VERSION_53_V1",
+      "record_version_id": "DEMO_RECORD_VERSION_53_V1",
+      "document_id": "DEMO_DOCUMENT_53_SHARED",
+      "file_version_id": "DEMO_FILE_53_V1",
+      "expected_file_hash": "9a694a6cdd72c50bd63c1755d3c2d649c0ddb629788f09c1f632a67f5908711c",
+      "actual_source_created": false,
+      "actual_grant_created": false,
+      "copies_created": 0
+    },
+    {
+      "id": "DEMO_SOURCE_LINK_53_04",
+      "module": "04",
+      "source_kind": "OrganizationChangeRequest",
+      "source_id": "DEMO_SOURCE_53_04",
+      "source_version": "DEMO_SOURCE_VERSION_53_V1",
+      "record_version_id": "DEMO_RECORD_VERSION_53_V1",
+      "document_id": "DEMO_DOCUMENT_53_SHARED",
+      "file_version_id": "DEMO_FILE_53_V1",
+      "expected_file_hash": "9a694a6cdd72c50bd63c1755d3c2d649c0ddb629788f09c1f632a67f5908711c",
+      "actual_source_created": false,
+      "actual_grant_created": false,
+      "copies_created": 0
+    },
+    {
+      "id": "DEMO_SOURCE_LINK_53_06",
+      "module": "06",
+      "source_kind": "BudgetLedgerEvent",
+      "source_id": "DEMO_SOURCE_53_06",
+      "source_version": "DEMO_SOURCE_VERSION_53_V1",
+      "record_version_id": "DEMO_RECORD_VERSION_53_V1",
+      "document_id": "DEMO_DOCUMENT_53_SHARED",
+      "file_version_id": "DEMO_FILE_53_V1",
+      "expected_file_hash": "9a694a6cdd72c50bd63c1755d3c2d649c0ddb629788f09c1f632a67f5908711c",
+      "actual_source_created": false,
+      "actual_grant_created": false,
+      "copies_created": 0
+    },
+    {
+      "id": "DEMO_SOURCE_LINK_53_07",
+      "module": "07",
+      "source_kind": "ProcurementRequest",
+      "source_id": "DEMO_SOURCE_53_07",
+      "source_version": "DEMO_SOURCE_VERSION_53_V1",
+      "record_version_id": "DEMO_RECORD_VERSION_53_V1",
+      "document_id": "DEMO_DOCUMENT_53_SHARED",
+      "file_version_id": "DEMO_FILE_53_V1",
+      "expected_file_hash": "9a694a6cdd72c50bd63c1755d3c2d649c0ddb629788f09c1f632a67f5908711c",
+      "actual_source_created": false,
+      "actual_grant_created": false,
+      "copies_created": 0
+    }
+  ],
+  "other_retention_obligations": [
+    {
+      "id": "DEMO_SOURCE_LINK_53_05",
+      "module": "05",
+      "source_kind": "Application",
+      "source_id": "DEMO_SOURCE_53_05",
+      "source_version": "DEMO_SOURCE_VERSION_53_V1",
+      "record_version_id": "DEMO_RECORD_VERSION_53_V1",
+      "document_id": "DEMO_DOCUMENT_53_SHARED",
+      "file_version_id": "DEMO_FILE_53_V1",
+      "expected_file_hash": "9a694a6cdd72c50bd63c1755d3c2d649c0ddb629788f09c1f632a67f5908711c",
+      "actual_source_created": false,
+      "actual_grant_created": false,
+      "copies_created": 0
+    }
+  ],
+  "recipient_binding_reference": {
+    "source55_digest": "b1495812fb2f7c1846d34b8ef3b594065672aceb24bbea0ac7c338de7847766e",
+    "source55_accounts": ["DEMO_ACCOUNT_55_A", "DEMO_ACCOUNT_55_B"],
+    "actual_binding_exists": false,
+    "late_member_auto_eligible": false
+  },
+  "access_matrix": [
+    {
+      "id": "AUTHORIZED_RECORD_READ",
+      "channel": "READ",
+      "planned_predicates": {
+        "active_verified_account": true,
+        "action_grant": true,
+        "assignment_current": true,
+        "record_scope": true,
+        "record_version_acl": true,
+        "recipient_context_binding": true,
+        "clearance_current": true,
+        "source_purpose_acl": true,
+        "file_action_acl": true,
+        "current_clean_scan": true,
+        "pinned_file_integrity": true,
+        "representation_policy_current": true
+      },
+      "technical_admin_role": false,
+      "expected_representation_allowed": true,
+      "expected_denied_metadata_fields": [],
+      "actual_executed": false,
+      "actual": null
+    },
+    {
+      "id": "TECH_ADMIN_ONLY",
+      "channel": "READ",
+      "planned_predicates": {
+        "active_verified_account": true,
+        "action_grant": false,
+        "assignment_current": true,
+        "record_scope": true,
+        "record_version_acl": true,
+        "recipient_context_binding": true,
+        "clearance_current": true,
+        "source_purpose_acl": true,
+        "file_action_acl": true,
+        "current_clean_scan": true,
+        "pinned_file_integrity": true,
+        "representation_policy_current": true
+      },
+      "technical_admin_role": true,
+      "expected_representation_allowed": false,
+      "expected_denied_metadata_fields": [
+        "subject",
+        "snippet",
+        "filename",
+        "file_size",
+        "etag",
+        "hold_reason"
+      ],
+      "actual_executed": false,
+      "actual": null
+    },
+    {
+      "id": "TECH_WITH_EXPLICIT_SCOPED_GRANT",
+      "channel": "READ",
+      "planned_predicates": {
+        "active_verified_account": true,
+        "action_grant": true,
+        "assignment_current": true,
+        "record_scope": true,
+        "record_version_acl": true,
+        "recipient_context_binding": true,
+        "clearance_current": true,
+        "source_purpose_acl": true,
+        "file_action_acl": true,
+        "current_clean_scan": true,
+        "pinned_file_integrity": true,
+        "representation_policy_current": true
+      },
+      "technical_admin_role": true,
+      "expected_representation_allowed": true,
+      "expected_denied_metadata_fields": [],
+      "actual_executed": false,
+      "actual": null
+    },
+    {
+      "id": "PUBLIC_UNKNOWN",
+      "channel": "READ",
+      "planned_predicates": {
+        "active_verified_account": false,
+        "action_grant": true,
+        "assignment_current": true,
+        "record_scope": true,
+        "record_version_acl": true,
+        "recipient_context_binding": true,
+        "clearance_current": true,
+        "source_purpose_acl": true,
+        "file_action_acl": true,
+        "current_clean_scan": true,
+        "pinned_file_integrity": true,
+        "representation_policy_current": true
+      },
+      "technical_admin_role": false,
+      "expected_representation_allowed": false,
+      "expected_denied_metadata_fields": [
+        "subject",
+        "snippet",
+        "filename",
+        "file_size",
+        "etag",
+        "hold_reason"
+      ],
+      "actual_executed": false,
+      "actual": null
+    },
+    {
+      "id": "EXPIRED_ASSIGNMENT",
+      "channel": "READ",
+      "planned_predicates": {
+        "active_verified_account": true,
+        "action_grant": true,
+        "assignment_current": false,
+        "record_scope": true,
+        "record_version_acl": true,
+        "recipient_context_binding": true,
+        "clearance_current": true,
+        "source_purpose_acl": true,
+        "file_action_acl": true,
+        "current_clean_scan": true,
+        "pinned_file_integrity": true,
+        "representation_policy_current": true
+      },
+      "technical_admin_role": false,
+      "expected_representation_allowed": false,
+      "expected_denied_metadata_fields": [
+        "subject",
+        "snippet",
+        "filename",
+        "file_size",
+        "etag",
+        "hold_reason"
+      ],
+      "actual_executed": false,
+      "actual": null
+    },
+    {
+      "id": "NO_RECORD_SCOPE",
+      "channel": "SEARCH",
+      "planned_predicates": {
+        "active_verified_account": true,
+        "action_grant": true,
+        "assignment_current": true,
+        "record_scope": false,
+        "record_version_acl": true,
+        "recipient_context_binding": true,
+        "clearance_current": true,
+        "source_purpose_acl": true,
+        "file_action_acl": true,
+        "current_clean_scan": true,
+        "pinned_file_integrity": true,
+        "representation_policy_current": true
+      },
+      "technical_admin_role": false,
+      "expected_representation_allowed": false,
+      "expected_denied_metadata_fields": [
+        "subject",
+        "snippet",
+        "filename",
+        "file_size",
+        "etag",
+        "hold_reason"
+      ],
+      "actual_executed": false,
+      "actual": null
+    },
+    {
+      "id": "OLD_VERSION_SECURITY_FLOOR",
+      "channel": "PREVIEW",
+      "planned_predicates": {
+        "active_verified_account": true,
+        "action_grant": true,
+        "assignment_current": true,
+        "record_scope": true,
+        "record_version_acl": true,
+        "recipient_context_binding": true,
+        "clearance_current": false,
+        "source_purpose_acl": true,
+        "file_action_acl": true,
+        "current_clean_scan": true,
+        "pinned_file_integrity": true,
+        "representation_policy_current": true
+      },
+      "technical_admin_role": false,
+      "expected_representation_allowed": false,
+      "expected_denied_metadata_fields": [
+        "subject",
+        "snippet",
+        "filename",
+        "file_size",
+        "etag",
+        "hold_reason"
+      ],
+      "actual_executed": false,
+      "actual": null
+    },
+    {
+      "id": "LATE_GROUP_MEMBER",
+      "channel": "READ",
+      "planned_predicates": {
+        "active_verified_account": true,
+        "action_grant": true,
+        "assignment_current": true,
+        "record_scope": true,
+        "record_version_acl": true,
+        "recipient_context_binding": false,
+        "clearance_current": true,
+        "source_purpose_acl": true,
+        "file_action_acl": true,
+        "current_clean_scan": true,
+        "pinned_file_integrity": true,
+        "representation_policy_current": true
+      },
+      "technical_admin_role": false,
+      "expected_representation_allowed": false,
+      "expected_denied_metadata_fields": [
+        "subject",
+        "snippet",
+        "filename",
+        "file_size",
+        "etag",
+        "hold_reason"
+      ],
+      "actual_executed": false,
+      "actual": null
+    },
+    {
+      "id": "TASK_WITHOUT_FILE_GRANT",
+      "channel": "DOWNLOAD",
+      "planned_predicates": {
+        "active_verified_account": true,
+        "action_grant": true,
+        "assignment_current": true,
+        "record_scope": true,
+        "record_version_acl": true,
+        "recipient_context_binding": true,
+        "clearance_current": true,
+        "source_purpose_acl": true,
+        "file_action_acl": false,
+        "current_clean_scan": true,
+        "pinned_file_integrity": true,
+        "representation_policy_current": true
+      },
+      "technical_admin_role": false,
+      "expected_representation_allowed": false,
+      "expected_denied_metadata_fields": [
+        "subject",
+        "snippet",
+        "filename",
+        "file_size",
+        "etag",
+        "hold_reason"
+      ],
+      "actual_executed": false,
+      "actual": null
+    },
+    {
+      "id": "SOURCE_DENIED",
+      "channel": "READ",
+      "planned_predicates": {
+        "active_verified_account": true,
+        "action_grant": true,
+        "assignment_current": true,
+        "record_scope": true,
+        "record_version_acl": true,
+        "recipient_context_binding": true,
+        "clearance_current": true,
+        "source_purpose_acl": false,
+        "file_action_acl": true,
+        "current_clean_scan": true,
+        "pinned_file_integrity": true,
+        "representation_policy_current": true
+      },
+      "technical_admin_role": false,
+      "expected_representation_allowed": false,
+      "expected_denied_metadata_fields": [
+        "subject",
+        "snippet",
+        "filename",
+        "file_size",
+        "etag",
+        "hold_reason"
+      ],
+      "actual_executed": false,
+      "actual": null
+    },
+    {
+      "id": "SCAN_RECALL",
+      "channel": "THUMBNAIL",
+      "planned_predicates": {
+        "active_verified_account": true,
+        "action_grant": true,
+        "assignment_current": true,
+        "record_scope": true,
+        "record_version_acl": true,
+        "recipient_context_binding": true,
+        "clearance_current": true,
+        "source_purpose_acl": true,
+        "file_action_acl": true,
+        "current_clean_scan": false,
+        "pinned_file_integrity": true,
+        "representation_policy_current": true
+      },
+      "technical_admin_role": false,
+      "expected_representation_allowed": false,
+      "expected_denied_metadata_fields": [
+        "subject",
+        "snippet",
+        "filename",
+        "file_size",
+        "etag",
+        "hold_reason"
+      ],
+      "actual_executed": false,
+      "actual": null
+    },
+    {
+      "id": "VERSION_HASH_DRIFT",
+      "channel": "PREVIEW",
+      "planned_predicates": {
+        "active_verified_account": true,
+        "action_grant": true,
+        "assignment_current": true,
+        "record_scope": true,
+        "record_version_acl": true,
+        "recipient_context_binding": true,
+        "clearance_current": true,
+        "source_purpose_acl": true,
+        "file_action_acl": true,
+        "current_clean_scan": true,
+        "pinned_file_integrity": false,
+        "representation_policy_current": true
+      },
+      "technical_admin_role": false,
+      "expected_representation_allowed": false,
+      "expected_denied_metadata_fields": [
+        "subject",
+        "snippet",
+        "filename",
+        "file_size",
+        "etag",
+        "hold_reason"
+      ],
+      "actual_executed": false,
+      "actual": null
+    },
+    {
+      "id": "READ_NOT_EXPORT",
+      "channel": "EXPORT",
+      "planned_predicates": {
+        "active_verified_account": true,
+        "action_grant": false,
+        "assignment_current": true,
+        "record_scope": true,
+        "record_version_acl": true,
+        "recipient_context_binding": true,
+        "clearance_current": true,
+        "source_purpose_acl": true,
+        "file_action_acl": true,
+        "current_clean_scan": true,
+        "pinned_file_integrity": true,
+        "representation_policy_current": true
+      },
+      "technical_admin_role": false,
+      "expected_representation_allowed": false,
+      "expected_denied_metadata_fields": [
+        "subject",
+        "snippet",
+        "filename",
+        "file_size",
+        "etag",
+        "hold_reason"
+      ],
+      "actual_executed": false,
+      "actual": null
+    },
+    {
+      "id": "REVOKED_WORKER_SCOPE",
+      "channel": "WORKER",
+      "planned_predicates": {
+        "active_verified_account": true,
+        "action_grant": true,
+        "assignment_current": true,
+        "record_scope": false,
+        "record_version_acl": true,
+        "recipient_context_binding": true,
+        "clearance_current": true,
+        "source_purpose_acl": true,
+        "file_action_acl": true,
+        "current_clean_scan": true,
+        "pinned_file_integrity": true,
+        "representation_policy_current": true
+      },
+      "technical_admin_role": false,
+      "expected_representation_allowed": false,
+      "expected_denied_metadata_fields": [
+        "subject",
+        "snippet",
+        "filename",
+        "file_size",
+        "etag",
+        "hold_reason"
+      ],
+      "actual_executed": false,
+      "actual": null
+    },
+    {
+      "id": "STALE_REPRESENTATION_POLICY",
+      "channel": "HEAD",
+      "planned_predicates": {
+        "active_verified_account": true,
+        "action_grant": true,
+        "assignment_current": true,
+        "record_scope": true,
+        "record_version_acl": true,
+        "recipient_context_binding": true,
+        "clearance_current": true,
+        "source_purpose_acl": true,
+        "file_action_acl": true,
+        "current_clean_scan": true,
+        "pinned_file_integrity": true,
+        "representation_policy_current": false
+      },
+      "technical_admin_role": false,
+      "expected_representation_allowed": false,
+      "expected_denied_metadata_fields": [
+        "subject",
+        "snippet",
+        "filename",
+        "file_size",
+        "etag",
+        "hold_reason"
+      ],
+      "actual_executed": false,
+      "actual": null
+    }
+  ],
+  "linked_source_cases": [
+    {
+      "id": "01_ALL_CURRENT",
+      "source_link_id": "DEMO_SOURCE_LINK_53_01",
+      "planned_record_allowed": true,
+      "planned_source_allowed": true,
+      "planned_file_allowed": true,
+      "expected_link_content_allowed": true,
+      "copies_created": 0,
+      "actual": null
+    },
+    {
+      "id": "01_SOURCE_ONLY",
+      "source_link_id": "DEMO_SOURCE_LINK_53_01",
+      "planned_record_allowed": false,
+      "planned_source_allowed": true,
+      "planned_file_allowed": true,
+      "expected_link_content_allowed": false,
+      "copies_created": 0,
+      "actual": null
+    },
+    {
+      "id": "01_RECORD_ONLY",
+      "source_link_id": "DEMO_SOURCE_LINK_53_01",
+      "planned_record_allowed": true,
+      "planned_source_allowed": false,
+      "planned_file_allowed": true,
+      "expected_link_content_allowed": false,
+      "copies_created": 0,
+      "actual": null
+    },
+    {
+      "id": "01_FILE_DENIED",
+      "source_link_id": "DEMO_SOURCE_LINK_53_01",
+      "planned_record_allowed": true,
+      "planned_source_allowed": true,
+      "planned_file_allowed": false,
+      "expected_link_content_allowed": false,
+      "copies_created": 0,
+      "actual": null
+    },
+    {
+      "id": "04_ALL_CURRENT",
+      "source_link_id": "DEMO_SOURCE_LINK_53_04",
+      "planned_record_allowed": true,
+      "planned_source_allowed": true,
+      "planned_file_allowed": true,
+      "expected_link_content_allowed": true,
+      "copies_created": 0,
+      "actual": null
+    },
+    {
+      "id": "04_SOURCE_ONLY",
+      "source_link_id": "DEMO_SOURCE_LINK_53_04",
+      "planned_record_allowed": false,
+      "planned_source_allowed": true,
+      "planned_file_allowed": true,
+      "expected_link_content_allowed": false,
+      "copies_created": 0,
+      "actual": null
+    },
+    {
+      "id": "04_RECORD_ONLY",
+      "source_link_id": "DEMO_SOURCE_LINK_53_04",
+      "planned_record_allowed": true,
+      "planned_source_allowed": false,
+      "planned_file_allowed": true,
+      "expected_link_content_allowed": false,
+      "copies_created": 0,
+      "actual": null
+    },
+    {
+      "id": "04_FILE_DENIED",
+      "source_link_id": "DEMO_SOURCE_LINK_53_04",
+      "planned_record_allowed": true,
+      "planned_source_allowed": true,
+      "planned_file_allowed": false,
+      "expected_link_content_allowed": false,
+      "copies_created": 0,
+      "actual": null
+    },
+    {
+      "id": "06_ALL_CURRENT",
+      "source_link_id": "DEMO_SOURCE_LINK_53_06",
+      "planned_record_allowed": true,
+      "planned_source_allowed": true,
+      "planned_file_allowed": true,
+      "expected_link_content_allowed": true,
+      "copies_created": 0,
+      "actual": null
+    },
+    {
+      "id": "06_SOURCE_ONLY",
+      "source_link_id": "DEMO_SOURCE_LINK_53_06",
+      "planned_record_allowed": false,
+      "planned_source_allowed": true,
+      "planned_file_allowed": true,
+      "expected_link_content_allowed": false,
+      "copies_created": 0,
+      "actual": null
+    },
+    {
+      "id": "06_RECORD_ONLY",
+      "source_link_id": "DEMO_SOURCE_LINK_53_06",
+      "planned_record_allowed": true,
+      "planned_source_allowed": false,
+      "planned_file_allowed": true,
+      "expected_link_content_allowed": false,
+      "copies_created": 0,
+      "actual": null
+    },
+    {
+      "id": "06_FILE_DENIED",
+      "source_link_id": "DEMO_SOURCE_LINK_53_06",
+      "planned_record_allowed": true,
+      "planned_source_allowed": true,
+      "planned_file_allowed": false,
+      "expected_link_content_allowed": false,
+      "copies_created": 0,
+      "actual": null
+    },
+    {
+      "id": "07_ALL_CURRENT",
+      "source_link_id": "DEMO_SOURCE_LINK_53_07",
+      "planned_record_allowed": true,
+      "planned_source_allowed": true,
+      "planned_file_allowed": true,
+      "expected_link_content_allowed": true,
+      "copies_created": 0,
+      "actual": null
+    },
+    {
+      "id": "07_SOURCE_ONLY",
+      "source_link_id": "DEMO_SOURCE_LINK_53_07",
+      "planned_record_allowed": false,
+      "planned_source_allowed": true,
+      "planned_file_allowed": true,
+      "expected_link_content_allowed": false,
+      "copies_created": 0,
+      "actual": null
+    },
+    {
+      "id": "07_RECORD_ONLY",
+      "source_link_id": "DEMO_SOURCE_LINK_53_07",
+      "planned_record_allowed": true,
+      "planned_source_allowed": false,
+      "planned_file_allowed": true,
+      "expected_link_content_allowed": false,
+      "copies_created": 0,
+      "actual": null
+    },
+    {
+      "id": "07_FILE_DENIED",
+      "source_link_id": "DEMO_SOURCE_LINK_53_07",
+      "planned_record_allowed": true,
+      "planned_source_allowed": true,
+      "planned_file_allowed": false,
+      "expected_link_content_allowed": false,
+      "copies_created": 0,
+      "actual": null
+    }
+  ],
+  "search_fixture": {
+    "actor": "DEMO_LIMITED_READER_56",
+    "query": "TEST",
+    "raw_index_descriptors": [
+      {
+        "id": "DEMO_SEARCH_56_SECRET",
+        "record_version_id": "DEMO_RECORD_VERSION_53_V1",
+        "planned_current_authorized": false,
+        "subject": "TEST_หัวเรื่องลับสมมติ_56",
+        "snippet": "TEST_SECRET_CANARY_56_SHARED"
+      },
+      {
+        "id": "DEMO_SEARCH_56_DISCLOSED",
+        "record_version_id": "DEMO_DISCLOSED_RECORD_56_V1",
+        "planned_current_authorized": true,
+        "subject": "TEST_ข้อมูลสรุปที่เสนอให้เปิดเผย",
+        "snippet": "TEST_SAFE_DISCLOSURE_56"
+      },
+      {
+        "id": "DEMO_SEARCH_56_OTHER_ORG",
+        "record_version_id": "DEMO_RECORD_56_OTHER_ORG",
+        "planned_current_authorized": false,
+        "subject": "TEST_เรื่องต่างหน่วยงาน",
+        "snippet": "TEST_SECRET_CANARY_56_OTHER"
+      }
+    ],
+    "expected_response_reference": {
+      "items": [
+        {
+          "id": "DEMO_SEARCH_56_DISCLOSED",
+          "subject": "TEST_ข้อมูลสรุปที่เสนอให้เปิดเผย",
+          "snippet": "TEST_SAFE_DISCLOSURE_56"
+        }
+      ],
+      "authorized_count": 1
+    },
+    "expected_canaries_absent": [
+      "TEST_SECRET_CANARY_56_SHARED",
+      "TEST_SECRET_CANARY_56_OTHER"
+    ],
+    "actual": null,
+    "actual_response": null
+  },
+  "metadata_channel_cases": [
+    {
+      "channel": "FULLTEXT",
+      "planned_current_authorized": false,
+      "expected_response_fields": [],
+      "expected_content_or_metadata_bytes_returned": 0,
+      "actual": null
+    },
+    {
+      "channel": "SNIPPET",
+      "planned_current_authorized": false,
+      "expected_response_fields": [],
+      "expected_content_or_metadata_bytes_returned": 0,
+      "actual": null
+    },
+    {
+      "channel": "FACET_COUNT",
+      "planned_current_authorized": false,
+      "expected_response_fields": [],
+      "expected_content_or_metadata_bytes_returned": 0,
+      "actual": null
+    },
+    {
+      "channel": "AUTOCOMPLETE",
+      "planned_current_authorized": false,
+      "expected_response_fields": [],
+      "expected_content_or_metadata_bytes_returned": 0,
+      "actual": null
+    },
+    {
+      "channel": "THUMBNAIL",
+      "planned_current_authorized": false,
+      "expected_response_fields": [],
+      "expected_content_or_metadata_bytes_returned": 0,
+      "actual": null
+    },
+    {
+      "channel": "EXIF",
+      "planned_current_authorized": false,
+      "expected_response_fields": [],
+      "expected_content_or_metadata_bytes_returned": 0,
+      "actual": null
+    },
+    {
+      "channel": "ALT_TEXT",
+      "planned_current_authorized": false,
+      "expected_response_fields": [],
+      "expected_content_or_metadata_bytes_returned": 0,
+      "actual": null
+    },
+    {
+      "channel": "HEAD",
+      "planned_current_authorized": false,
+      "expected_response_fields": [],
+      "expected_content_or_metadata_bytes_returned": 0,
+      "actual": null
+    },
+    {
+      "channel": "RANGE",
+      "planned_current_authorized": false,
+      "expected_response_fields": [],
+      "expected_content_or_metadata_bytes_returned": 0,
+      "actual": null
+    },
+    {
+      "channel": "CONDITIONAL_304",
+      "planned_current_authorized": false,
+      "expected_response_fields": [],
+      "expected_content_or_metadata_bytes_returned": 0,
+      "actual": null
+    },
+    {
+      "channel": "NOTIFICATION_UNFURL",
+      "planned_current_authorized": false,
+      "expected_response_fields": [],
+      "expected_content_or_metadata_bytes_returned": 0,
+      "actual": null
+    },
+    {
+      "channel": "PUBLIC_TRACKING",
+      "planned_current_authorized": false,
+      "expected_response_fields": [],
+      "expected_content_or_metadata_bytes_returned": 0,
+      "actual": null
+    }
+  ],
+  "cache_contract": {
+    "status": "PROPOSED_NOT_EXECUTED",
+    "sensitive_response_reference": "private, no-store",
+    "shared_cache_allowed": false,
+    "assumes_headers_replace_auth": false,
+    "assumes_downloaded_copies_recalled": false,
+    "assumes_every_browser_bfcache_disabled": false,
+    "conditional_response_requires_current_auth": true,
+    "actual_headers_verified": false,
+    "actual": null
+  },
+  "disclosure_cases": [
+    {
+      "id": "EXPLICIT_LIMITED_REPRESENTATION",
+      "planned_predicates": {
+        "independent_authorized_reviewer": true,
+        "source_owner_disclosure_allowed": true,
+        "explicit_field_allowlist": true,
+        "recipient_purpose_context_allowed": true,
+        "reviewed_derivative_manifest_matches": true,
+        "current_derivative_file_acl": true,
+        "current_clean_scan": true,
+        "no_hidden_original_text_or_metadata": true,
+        "original_evidence_preserved_if_held": true,
+        "current_disclosure_policy_valid": true
+      },
+      "expected_demo_limited_representation_allowed": true,
+      "expected_original_file_read_granted": false,
+      "expected_official_public_release_allowed": false,
+      "actual": null
+    },
+    {
+      "id": "SELF_APPROVAL",
+      "planned_predicates": {
+        "independent_authorized_reviewer": false,
+        "source_owner_disclosure_allowed": true,
+        "explicit_field_allowlist": true,
+        "recipient_purpose_context_allowed": true,
+        "reviewed_derivative_manifest_matches": true,
+        "current_derivative_file_acl": true,
+        "current_clean_scan": true,
+        "no_hidden_original_text_or_metadata": true,
+        "original_evidence_preserved_if_held": true,
+        "current_disclosure_policy_valid": true
+      },
+      "expected_demo_limited_representation_allowed": false,
+      "expected_original_file_read_granted": false,
+      "expected_official_public_release_allowed": false,
+      "actual": null
+    },
+    {
+      "id": "SOURCE_FORBIDS_DISCLOSURE",
+      "planned_predicates": {
+        "independent_authorized_reviewer": true,
+        "source_owner_disclosure_allowed": false,
+        "explicit_field_allowlist": true,
+        "recipient_purpose_context_allowed": true,
+        "reviewed_derivative_manifest_matches": true,
+        "current_derivative_file_acl": true,
+        "current_clean_scan": true,
+        "no_hidden_original_text_or_metadata": true,
+        "original_evidence_preserved_if_held": true,
+        "current_disclosure_policy_valid": true
+      },
+      "expected_demo_limited_representation_allowed": false,
+      "expected_original_file_read_granted": false,
+      "expected_official_public_release_allowed": false,
+      "actual": null
+    },
+    {
+      "id": "UNKNOWN_FIELDS",
+      "planned_predicates": {
+        "independent_authorized_reviewer": true,
+        "source_owner_disclosure_allowed": true,
+        "explicit_field_allowlist": false,
+        "recipient_purpose_context_allowed": true,
+        "reviewed_derivative_manifest_matches": true,
+        "current_derivative_file_acl": true,
+        "current_clean_scan": true,
+        "no_hidden_original_text_or_metadata": true,
+        "original_evidence_preserved_if_held": true,
+        "current_disclosure_policy_valid": true
+      },
+      "expected_demo_limited_representation_allowed": false,
+      "expected_original_file_read_granted": false,
+      "expected_official_public_release_allowed": false,
+      "actual": null
+    },
+    {
+      "id": "RECIPIENT_NOT_IN_BINDING",
+      "planned_predicates": {
+        "independent_authorized_reviewer": true,
+        "source_owner_disclosure_allowed": true,
+        "explicit_field_allowlist": true,
+        "recipient_purpose_context_allowed": false,
+        "reviewed_derivative_manifest_matches": true,
+        "current_derivative_file_acl": true,
+        "current_clean_scan": true,
+        "no_hidden_original_text_or_metadata": true,
+        "original_evidence_preserved_if_held": true,
+        "current_disclosure_policy_valid": true
+      },
+      "expected_demo_limited_representation_allowed": false,
+      "expected_original_file_read_granted": false,
+      "expected_official_public_release_allowed": false,
+      "actual": null
+    },
+    {
+      "id": "DERIVATIVE_CHANGED_AFTER_REVIEW",
+      "planned_predicates": {
+        "independent_authorized_reviewer": true,
+        "source_owner_disclosure_allowed": true,
+        "explicit_field_allowlist": true,
+        "recipient_purpose_context_allowed": true,
+        "reviewed_derivative_manifest_matches": false,
+        "current_derivative_file_acl": true,
+        "current_clean_scan": true,
+        "no_hidden_original_text_or_metadata": true,
+        "original_evidence_preserved_if_held": true,
+        "current_disclosure_policy_valid": true
+      },
+      "expected_demo_limited_representation_allowed": false,
+      "expected_original_file_read_granted": false,
+      "expected_official_public_release_allowed": false,
+      "actual": null
+    },
+    {
+      "id": "PRIVATE_FILE_DENIED",
+      "planned_predicates": {
+        "independent_authorized_reviewer": true,
+        "source_owner_disclosure_allowed": true,
+        "explicit_field_allowlist": true,
+        "recipient_purpose_context_allowed": true,
+        "reviewed_derivative_manifest_matches": true,
+        "current_derivative_file_acl": false,
+        "current_clean_scan": true,
+        "no_hidden_original_text_or_metadata": true,
+        "original_evidence_preserved_if_held": true,
+        "current_disclosure_policy_valid": true
+      },
+      "expected_demo_limited_representation_allowed": false,
+      "expected_original_file_read_granted": false,
+      "expected_official_public_release_allowed": false,
+      "actual": null
+    },
+    {
+      "id": "UNSCANNED_DERIVATIVE",
+      "planned_predicates": {
+        "independent_authorized_reviewer": true,
+        "source_owner_disclosure_allowed": true,
+        "explicit_field_allowlist": true,
+        "recipient_purpose_context_allowed": true,
+        "reviewed_derivative_manifest_matches": true,
+        "current_derivative_file_acl": true,
+        "current_clean_scan": false,
+        "no_hidden_original_text_or_metadata": true,
+        "original_evidence_preserved_if_held": true,
+        "current_disclosure_policy_valid": true
+      },
+      "expected_demo_limited_representation_allowed": false,
+      "expected_original_file_read_granted": false,
+      "expected_official_public_release_allowed": false,
+      "actual": null
+    },
+    {
+      "id": "HIDDEN_PDF_OR_EXIF",
+      "planned_predicates": {
+        "independent_authorized_reviewer": true,
+        "source_owner_disclosure_allowed": true,
+        "explicit_field_allowlist": true,
+        "recipient_purpose_context_allowed": true,
+        "reviewed_derivative_manifest_matches": true,
+        "current_derivative_file_acl": true,
+        "current_clean_scan": true,
+        "no_hidden_original_text_or_metadata": false,
+        "original_evidence_preserved_if_held": true,
+        "current_disclosure_policy_valid": true
+      },
+      "expected_demo_limited_representation_allowed": false,
+      "expected_original_file_read_granted": false,
+      "expected_official_public_release_allowed": false,
+      "actual": null
+    },
+    {
+      "id": "ORIGINAL_HOLD_EVIDENCE_OVERWRITTEN",
+      "planned_predicates": {
+        "independent_authorized_reviewer": true,
+        "source_owner_disclosure_allowed": true,
+        "explicit_field_allowlist": true,
+        "recipient_purpose_context_allowed": true,
+        "reviewed_derivative_manifest_matches": true,
+        "current_derivative_file_acl": true,
+        "current_clean_scan": true,
+        "no_hidden_original_text_or_metadata": true,
+        "original_evidence_preserved_if_held": false,
+        "current_disclosure_policy_valid": true
+      },
+      "expected_demo_limited_representation_allowed": false,
+      "expected_original_file_read_granted": false,
+      "expected_official_public_release_allowed": false,
+      "actual": null
+    }
+  ],
+  "limited_disclosure_reference": {
+    "allowed_fields": [
+      "record_code",
+      "summary",
+      "purpose_label",
+      "representation_version"
+    ],
+    "expected_payload": {
+      "record_code": "TEST_56_DISCLOSURE",
+      "summary": "TEST_สรุปสมมติที่รอตรวจ",
+      "purpose_label": "TEST_ทดลอง ไม่ใช่การเผยแพร่ทางการ",
+      "representation_version": "DEMO_DISCLOSURE_56_V1"
+    },
+    "original_file_version_id": "DEMO_FILE_53_V1",
+    "proposed_derivative_id": "DEMO_DERIVATIVE_56_REDACTED_V1",
+    "actual_generated": false,
+    "actual_approved": false,
+    "actual": null
+  },
+  "retention_clock_cases": [
+    {
+      "id": "DEMO_DAYS_ONLY",
+      "anchor_date": "2027-06-01",
+      "demo_duration_days": 30,
+      "as_of": "2027-07-03",
+      "expected_demo_due_date": "2027-07-01",
+      "expected_demo_due": true,
+      "expected_official_execution_allowed": false,
+      "actual": null
+    },
+    {
+      "id": "DEMO_NOT_DUE",
+      "anchor_date": "2027-07-01",
+      "demo_duration_days": 30,
+      "as_of": "2027-07-03",
+      "expected_demo_due_date": "2027-07-31",
+      "expected_demo_due": false,
+      "expected_official_execution_allowed": false,
+      "actual": null
+    },
+    {
+      "id": "UNKNOWN_ANCHOR",
+      "anchor_date": null,
+      "demo_duration_days": 30,
+      "as_of": "2027-07-03",
+      "expected_demo_due_date": null,
+      "expected_demo_due": false,
+      "expected_official_execution_allowed": false,
+      "actual": null
+    }
+  ],
+  "hold_scope_descriptors": [
+    {
+      "id": "DOCUMENT_WIDE",
+      "scope_kind": "DOCUMENT",
+      "document_id": "DEMO_DOCUMENT_53_SHARED",
+      "expected_protected_artifacts": [
+        "DEMO_FILE_53_V1",
+        "DEMO_FILE_53_V2",
+        "DEMO_THUMB_56_SHARED",
+        "DEMO_INDEX_56_SHARED",
+        "DEMO_BACKUP_56_SHARED",
+        "DEMO_FILE_56_SHARED_V3"
+      ],
+      "includes_future_registered_versions": true,
+      "actual": null
+    },
+    {
+      "id": "FILE_VERSION_ONLY",
+      "scope_kind": "FILE_VERSION",
+      "file_version_id": "DEMO_FILE_53_V1",
+      "expected_protected_artifacts": [
+        "DEMO_FILE_53_V1",
+        "DEMO_THUMB_56_SHARED",
+        "DEMO_INDEX_56_SHARED",
+        "DEMO_BACKUP_56_SHARED"
+      ],
+      "includes_future_registered_versions": false,
+      "actual": null
+    }
+  ],
+  "hold_event_descriptors": [
+    {
+      "id": "H56-01",
+      "action": "AUTHORIZED_PROVISIONAL_PLACE",
+      "expected_hold_state": "provisional_active",
+      "expected_purge_blocked": true,
+      "expected_read_grant_added": false,
+      "effective_at": "2027-07-01T00:00:00Z",
+      "recorded_at": "2027-07-01T00:00:00Z",
+      "actual": null
+    },
+    {
+      "id": "H56-02",
+      "action": "DEMO_END_DATE_WITHOUT_RELEASE_DECISION",
+      "expected_hold_state": "provisional_active",
+      "expected_purge_blocked": true,
+      "expected_read_grant_added": false,
+      "effective_at": "2027-07-02T00:00:00Z",
+      "recorded_at": "2027-07-02T00:00:00Z",
+      "actual": null
+    },
+    {
+      "id": "H56-03",
+      "action": "UNAUTHORIZED_OR_SELF_RELEASE_REJECTED",
+      "expected_hold_state": "provisional_active",
+      "expected_purge_blocked": true,
+      "expected_read_grant_added": false,
+      "effective_at": "2027-07-03T00:00:00Z",
+      "recorded_at": "2027-07-03T00:00:00Z",
+      "actual": null
+    },
+    {
+      "id": "H56-04",
+      "action": "PLAN_INDEPENDENT_VERIFIED_RELEASE",
+      "expected_hold_state": "released",
+      "expected_purge_blocked_by_this_hold": false,
+      "expected_read_grant_added": false,
+      "effective_at": "2027-07-05T00:00:00Z",
+      "recorded_at": "2027-07-05T00:00:00Z",
+      "requires_current_authority_and_policy": true,
+      "actual": null
+    }
+  ],
+  "hold_history_queries": [
+    {
+      "id": "BEFORE_RELEASE",
+      "valid_at": "2027-07-03T00:00:00Z",
+      "known_at": "2027-07-03T00:00:00Z",
+      "expected_hold_active": true,
+      "actual": null
+    },
+    {
+      "id": "AFTER_RELEASE",
+      "valid_at": "2027-07-06T00:00:00Z",
+      "known_at": "2027-07-06T00:00:00Z",
+      "expected_hold_active": false,
+      "actual": null
+    },
+    {
+      "id": "PAST_WHEN_KNOWN_LATER",
+      "valid_at": "2027-07-03T00:00:00Z",
+      "known_at": "2027-07-06T00:00:00Z",
+      "expected_hold_active": true,
+      "actual": null
+    }
+  ],
+  "destruction_request_descriptor": {
+    "manifest_reference": {
+      "request_id": "DEMO_DESTRUCTION_56_PRIVATE_V1",
+      "request_revision": 1,
+      "document_id": "DEMO_DOCUMENT_56_PRIVATE",
+      "policy_version": "DEMO_RETENTION_POLICY_56_V1",
+      "target_artifact_ids": [
+        "DEMO_FILE_56_PRIVATE_V1",
+        "DEMO_THUMB_56_PRIVATE",
+        "DEMO_INDEX_56_PRIVATE",
+        "DEMO_EXPORT_56_PRIVATE",
+        "DEMO_BACKUP_56_PRIVATE"
+      ],
+      "scope": "PROPOSED_ALL_INVENTORIED_COPIES",
+      "reason_code": "TEST_PURPOSE_ENDED_56",
+      "evidence_ref": "DEMO_DESTRUCTION_EVIDENCE_56",
+      "source_obligations_revision": 1,
+      "hold_guard_revision": 1,
+      "source_context_id": "DEMO_RETENTION_CONTEXT_56_PRIVATE",
+      "expected_original_file_hash": "77b49082166c44ccd6d752687eba3216b6d5d02c68f7820eb6a607cc3e928c2c"
+    },
+    "expected_manifest_digest": "c3469c7d5f0ff8263d2e9a702057c5c1e371d285b1ff2ed530f4f5e350c6fa05",
+    "actual_created": false,
+    "actual_approved": false,
+    "actual_maker": null,
+    "actual_approver": null,
+    "actual_evidence": null
+  },
+  "destruction_guard_cases": [
+    {
+      "id": "CONDITIONAL_VERIFIED_PLAN_ONLY",
+      "planned_predicates": {
+        "verified_policy_and_duration": true,
+        "anchor_due": true,
+        "current_independent_approval": true,
+        "current_executor_authority": true,
+        "exact_manifest_and_inventory": true,
+        "no_active_or_provisional_hold": true,
+        "all_shared_source_obligations_cleared": true,
+        "backup_scope_verified": true,
+        "guard_revision_current": true,
+        "lease_is_latest": true,
+        "pinned_object_version_hash_matches": true,
+        "storage_hold_race_protocol_proven": true,
+        "audit_outbox_transaction_ready": true,
+        "artifact_scope_registered": true
+      },
+      "expected_demo_eligibility": true,
+      "expected_actual_execution_allowed": false,
+      "actual_executed": false,
+      "actual_files_deleted": 0,
+      "actual": null
+    },
+    {
+      "id": "OFFICIAL_POLICY_TO_VERIFY",
+      "planned_predicates": {
+        "verified_policy_and_duration": false,
+        "anchor_due": true,
+        "current_independent_approval": true,
+        "current_executor_authority": true,
+        "exact_manifest_and_inventory": true,
+        "no_active_or_provisional_hold": true,
+        "all_shared_source_obligations_cleared": true,
+        "backup_scope_verified": true,
+        "guard_revision_current": true,
+        "lease_is_latest": true,
+        "pinned_object_version_hash_matches": true,
+        "storage_hold_race_protocol_proven": true,
+        "audit_outbox_transaction_ready": true,
+        "artifact_scope_registered": true
+      },
+      "expected_demo_eligibility": false,
+      "expected_actual_execution_allowed": false,
+      "actual_executed": false,
+      "actual_files_deleted": 0,
+      "actual": null
+    },
+    {
+      "id": "NOT_DUE",
+      "planned_predicates": {
+        "verified_policy_and_duration": true,
+        "anchor_due": false,
+        "current_independent_approval": true,
+        "current_executor_authority": true,
+        "exact_manifest_and_inventory": true,
+        "no_active_or_provisional_hold": true,
+        "all_shared_source_obligations_cleared": true,
+        "backup_scope_verified": true,
+        "guard_revision_current": true,
+        "lease_is_latest": true,
+        "pinned_object_version_hash_matches": true,
+        "storage_hold_race_protocol_proven": true,
+        "audit_outbox_transaction_ready": true,
+        "artifact_scope_registered": true
+      },
+      "expected_demo_eligibility": false,
+      "expected_actual_execution_allowed": false,
+      "actual_executed": false,
+      "actual_files_deleted": 0,
+      "actual": null
+    },
+    {
+      "id": "SELF_APPROVAL",
+      "planned_predicates": {
+        "verified_policy_and_duration": true,
+        "anchor_due": true,
+        "current_independent_approval": false,
+        "current_executor_authority": true,
+        "exact_manifest_and_inventory": true,
+        "no_active_or_provisional_hold": true,
+        "all_shared_source_obligations_cleared": true,
+        "backup_scope_verified": true,
+        "guard_revision_current": true,
+        "lease_is_latest": true,
+        "pinned_object_version_hash_matches": true,
+        "storage_hold_race_protocol_proven": true,
+        "audit_outbox_transaction_ready": true,
+        "artifact_scope_registered": true
+      },
+      "expected_demo_eligibility": false,
+      "expected_actual_execution_allowed": false,
+      "actual_executed": false,
+      "actual_files_deleted": 0,
+      "actual": null
+    },
+    {
+      "id": "TECH_EXECUTOR_NO_AUTH",
+      "planned_predicates": {
+        "verified_policy_and_duration": true,
+        "anchor_due": true,
+        "current_independent_approval": true,
+        "current_executor_authority": false,
+        "exact_manifest_and_inventory": true,
+        "no_active_or_provisional_hold": true,
+        "all_shared_source_obligations_cleared": true,
+        "backup_scope_verified": true,
+        "guard_revision_current": true,
+        "lease_is_latest": true,
+        "pinned_object_version_hash_matches": true,
+        "storage_hold_race_protocol_proven": true,
+        "audit_outbox_transaction_ready": true,
+        "artifact_scope_registered": true
+      },
+      "expected_demo_eligibility": false,
+      "expected_actual_execution_allowed": false,
+      "actual_executed": false,
+      "actual_files_deleted": 0,
+      "actual": null
+    },
+    {
+      "id": "INVENTORY_CHANGED",
+      "planned_predicates": {
+        "verified_policy_and_duration": true,
+        "anchor_due": true,
+        "current_independent_approval": true,
+        "current_executor_authority": true,
+        "exact_manifest_and_inventory": false,
+        "no_active_or_provisional_hold": true,
+        "all_shared_source_obligations_cleared": true,
+        "backup_scope_verified": true,
+        "guard_revision_current": true,
+        "lease_is_latest": true,
+        "pinned_object_version_hash_matches": true,
+        "storage_hold_race_protocol_proven": true,
+        "audit_outbox_transaction_ready": true,
+        "artifact_scope_registered": true
+      },
+      "expected_demo_eligibility": false,
+      "expected_actual_execution_allowed": false,
+      "actual_executed": false,
+      "actual_files_deleted": 0,
+      "actual": null
+    },
+    {
+      "id": "ACTIVE_OR_PROVISIONAL_HOLD",
+      "planned_predicates": {
+        "verified_policy_and_duration": true,
+        "anchor_due": true,
+        "current_independent_approval": true,
+        "current_executor_authority": true,
+        "exact_manifest_and_inventory": true,
+        "no_active_or_provisional_hold": false,
+        "all_shared_source_obligations_cleared": true,
+        "backup_scope_verified": true,
+        "guard_revision_current": true,
+        "lease_is_latest": true,
+        "pinned_object_version_hash_matches": true,
+        "storage_hold_race_protocol_proven": true,
+        "audit_outbox_transaction_ready": true,
+        "artifact_scope_registered": true
+      },
+      "expected_demo_eligibility": false,
+      "expected_actual_execution_allowed": false,
+      "actual_executed": false,
+      "actual_files_deleted": 0,
+      "actual": null
+    },
+    {
+      "id": "SHARED_SYSTEM_1_4_6_7_5_OBLIGATION",
+      "planned_predicates": {
+        "verified_policy_and_duration": true,
+        "anchor_due": true,
+        "current_independent_approval": true,
+        "current_executor_authority": true,
+        "exact_manifest_and_inventory": true,
+        "no_active_or_provisional_hold": true,
+        "all_shared_source_obligations_cleared": false,
+        "backup_scope_verified": true,
+        "guard_revision_current": true,
+        "lease_is_latest": true,
+        "pinned_object_version_hash_matches": true,
+        "storage_hold_race_protocol_proven": true,
+        "audit_outbox_transaction_ready": true,
+        "artifact_scope_registered": true
+      },
+      "expected_demo_eligibility": false,
+      "expected_actual_execution_allowed": false,
+      "actual_executed": false,
+      "actual_files_deleted": 0,
+      "actual": null
+    },
+    {
+      "id": "BACKUP_UNKNOWN",
+      "planned_predicates": {
+        "verified_policy_and_duration": true,
+        "anchor_due": true,
+        "current_independent_approval": true,
+        "current_executor_authority": true,
+        "exact_manifest_and_inventory": true,
+        "no_active_or_provisional_hold": true,
+        "all_shared_source_obligations_cleared": true,
+        "backup_scope_verified": false,
+        "guard_revision_current": true,
+        "lease_is_latest": true,
+        "pinned_object_version_hash_matches": true,
+        "storage_hold_race_protocol_proven": true,
+        "audit_outbox_transaction_ready": true,
+        "artifact_scope_registered": true
+      },
+      "expected_demo_eligibility": false,
+      "expected_actual_execution_allowed": false,
+      "actual_executed": false,
+      "actual_files_deleted": 0,
+      "actual": null
+    },
+    {
+      "id": "HOLD_REVISION_CHANGED",
+      "planned_predicates": {
+        "verified_policy_and_duration": true,
+        "anchor_due": true,
+        "current_independent_approval": true,
+        "current_executor_authority": true,
+        "exact_manifest_and_inventory": true,
+        "no_active_or_provisional_hold": true,
+        "all_shared_source_obligations_cleared": true,
+        "backup_scope_verified": true,
+        "guard_revision_current": false,
+        "lease_is_latest": true,
+        "pinned_object_version_hash_matches": true,
+        "storage_hold_race_protocol_proven": true,
+        "audit_outbox_transaction_ready": true,
+        "artifact_scope_registered": true
+      },
+      "expected_demo_eligibility": false,
+      "expected_actual_execution_allowed": false,
+      "actual_executed": false,
+      "actual_files_deleted": 0,
+      "actual": null
+    },
+    {
+      "id": "STALE_WORKER_LEASE",
+      "planned_predicates": {
+        "verified_policy_and_duration": true,
+        "anchor_due": true,
+        "current_independent_approval": true,
+        "current_executor_authority": true,
+        "exact_manifest_and_inventory": true,
+        "no_active_or_provisional_hold": true,
+        "all_shared_source_obligations_cleared": true,
+        "backup_scope_verified": true,
+        "guard_revision_current": true,
+        "lease_is_latest": false,
+        "pinned_object_version_hash_matches": true,
+        "storage_hold_race_protocol_proven": true,
+        "audit_outbox_transaction_ready": true,
+        "artifact_scope_registered": true
+      },
+      "expected_demo_eligibility": false,
+      "expected_actual_execution_allowed": false,
+      "actual_executed": false,
+      "actual_files_deleted": 0,
+      "actual": null
+    },
+    {
+      "id": "HASH_OR_OBJECT_VERSION_DRIFT",
+      "planned_predicates": {
+        "verified_policy_and_duration": true,
+        "anchor_due": true,
+        "current_independent_approval": true,
+        "current_executor_authority": true,
+        "exact_manifest_and_inventory": true,
+        "no_active_or_provisional_hold": true,
+        "all_shared_source_obligations_cleared": true,
+        "backup_scope_verified": true,
+        "guard_revision_current": true,
+        "lease_is_latest": true,
+        "pinned_object_version_hash_matches": false,
+        "storage_hold_race_protocol_proven": true,
+        "audit_outbox_transaction_ready": true,
+        "artifact_scope_registered": true
+      },
+      "expected_demo_eligibility": false,
+      "expected_actual_execution_allowed": false,
+      "actual_executed": false,
+      "actual_files_deleted": 0,
+      "actual": null
+    },
+    {
+      "id": "UNPROVEN_EXTERNAL_HOLD_RACE",
+      "planned_predicates": {
+        "verified_policy_and_duration": true,
+        "anchor_due": true,
+        "current_independent_approval": true,
+        "current_executor_authority": true,
+        "exact_manifest_and_inventory": true,
+        "no_active_or_provisional_hold": true,
+        "all_shared_source_obligations_cleared": true,
+        "backup_scope_verified": true,
+        "guard_revision_current": true,
+        "lease_is_latest": true,
+        "pinned_object_version_hash_matches": true,
+        "storage_hold_race_protocol_proven": false,
+        "audit_outbox_transaction_ready": true,
+        "artifact_scope_registered": true
+      },
+      "expected_demo_eligibility": false,
+      "expected_actual_execution_allowed": false,
+      "actual_executed": false,
+      "actual_files_deleted": 0,
+      "actual": null
+    },
+    {
+      "id": "AUDIT_OUTBOX_NOT_ATOMIC",
+      "planned_predicates": {
+        "verified_policy_and_duration": true,
+        "anchor_due": true,
+        "current_independent_approval": true,
+        "current_executor_authority": true,
+        "exact_manifest_and_inventory": true,
+        "no_active_or_provisional_hold": true,
+        "all_shared_source_obligations_cleared": true,
+        "backup_scope_verified": true,
+        "guard_revision_current": true,
+        "lease_is_latest": true,
+        "pinned_object_version_hash_matches": true,
+        "storage_hold_race_protocol_proven": true,
+        "audit_outbox_transaction_ready": false,
+        "artifact_scope_registered": true
+      },
+      "expected_demo_eligibility": false,
+      "expected_actual_execution_allowed": false,
+      "actual_executed": false,
+      "actual_files_deleted": 0,
+      "actual": null
+    },
+    {
+      "id": "UNREGISTERED_ARTIFACT",
+      "planned_predicates": {
+        "verified_policy_and_duration": true,
+        "anchor_due": true,
+        "current_independent_approval": true,
+        "current_executor_authority": true,
+        "exact_manifest_and_inventory": true,
+        "no_active_or_provisional_hold": true,
+        "all_shared_source_obligations_cleared": true,
+        "backup_scope_verified": true,
+        "guard_revision_current": true,
+        "lease_is_latest": true,
+        "pinned_object_version_hash_matches": true,
+        "storage_hold_race_protocol_proven": true,
+        "audit_outbox_transaction_ready": true,
+        "artifact_scope_registered": false
+      },
+      "expected_demo_eligibility": false,
+      "expected_actual_execution_allowed": false,
+      "actual_executed": false,
+      "actual_files_deleted": 0,
+      "actual": null
+    }
+  ],
+  "destruction_reference_events": [
+    {
+      "id": "D56-01",
+      "request_id": "DEMO_DESTRUCTION_56_PRIVATE_V1",
+      "expected_state": "approved",
+      "expected_confirmed_artifact_count": 0,
+      "expected_total_inventory_count": 5,
+      "expected_transaction_audit_events": 1,
+      "expected_audit_rows_deleted": 0,
+      "expected_business_history_rows_deleted": 0,
+      "expected_new_events_on_retry": 1,
+      "expected_tombstone_provenance_present": true,
+      "actual": null
+    },
+    {
+      "id": "D56-02",
+      "request_id": "DEMO_DESTRUCTION_56_PRIVATE_V1",
+      "expected_state": "queued",
+      "expected_confirmed_artifact_count": 0,
+      "expected_total_inventory_count": 5,
+      "expected_transaction_audit_events": 2,
+      "expected_audit_rows_deleted": 0,
+      "expected_business_history_rows_deleted": 0,
+      "expected_new_events_on_retry": 1,
+      "expected_tombstone_provenance_present": true,
+      "actual": null
+    },
+    {
+      "id": "D56-03",
+      "request_id": "DEMO_DESTRUCTION_56_PRIVATE_V1",
+      "expected_state": "partial",
+      "expected_confirmed_artifact_count": 1,
+      "expected_total_inventory_count": 5,
+      "expected_transaction_audit_events": 3,
+      "expected_audit_rows_deleted": 0,
+      "expected_business_history_rows_deleted": 0,
+      "expected_new_events_on_retry": 1,
+      "expected_tombstone_provenance_present": true,
+      "actual": null
+    },
+    {
+      "id": "D56-04",
+      "request_id": "DEMO_DESTRUCTION_56_PRIVATE_V1",
+      "expected_state": "reconciling",
+      "expected_confirmed_artifact_count": 3,
+      "expected_total_inventory_count": 5,
+      "expected_transaction_audit_events": 4,
+      "expected_audit_rows_deleted": 0,
+      "expected_business_history_rows_deleted": 0,
+      "expected_new_events_on_retry": 1,
+      "expected_tombstone_provenance_present": true,
+      "actual": null
+    },
+    {
+      "id": "D56-05",
+      "request_id": "DEMO_DESTRUCTION_56_PRIVATE_V1",
+      "expected_state": "verified_complete",
+      "expected_confirmed_artifact_count": 5,
+      "expected_total_inventory_count": 5,
+      "expected_transaction_audit_events": 5,
+      "expected_audit_rows_deleted": 0,
+      "expected_business_history_rows_deleted": 0,
+      "expected_new_events_on_retry": 1,
+      "expected_tombstone_provenance_present": true,
+      "actual": null
+    },
+    {
+      "id": "D56-06",
+      "request_id": "DEMO_DESTRUCTION_56_PRIVATE_V1",
+      "expected_state": "verified_complete",
+      "expected_confirmed_artifact_count": 5,
+      "expected_total_inventory_count": 5,
+      "expected_transaction_audit_events": 5,
+      "expected_audit_rows_deleted": 0,
+      "expected_business_history_rows_deleted": 0,
+      "expected_new_events_on_retry": 0,
+      "expected_tombstone_provenance_present": true,
+      "actual": null
+    }
+  ],
+  "minimum_destruction_audit_reference": {
+    "event_code": "DEMO_DESTRUCTION_VERIFIED_56",
+    "request_id": "DEMO_DESTRUCTION_56_PRIVATE_V1",
+    "approved_manifest_digest": "c3469c7d5f0ff8263d2e9a702057c5c1e371d285b1ff2ed530f4f5e350c6fa05",
+    "policy_version": "DEMO_RETENTION_POLICY_56_V1",
+    "approved_decision_ref": "DEMO_INDEPENDENT_DECISION_56",
+    "actor_ref": "DEMO_EXECUTOR_56",
+    "server_time": "2027-07-06T00:00:00Z",
+    "reason_code": "TEST_PURPOSE_ENDED_56",
+    "outcome_ref": "DEMO_OUTCOME_56_PRIVATE",
+    "correlation_id": "DEMO_CORRELATION_56",
+    "actual": null
+  },
+  "business_history_reference": {
+    "source_ids": [
+      "DEMO_SOURCE_53_01",
+      "DEMO_SOURCE_53_04",
+      "DEMO_SOURCE_53_06",
+      "DEMO_SOURCE_53_07"
+    ],
+    "amount_decimal": "1000.00",
+    "price_or_budget_history_deleted": false,
+    "record_version_refs_preserved": true,
+    "actual_business_history_exists": false
+  },
+  "provider_failure_descriptors": [
+    {
+      "id": "TIMEOUT_UNKNOWN",
+      "expected_outcome": "RECONCILE_NO_BLIND_RETRY",
+      "expected_mark_verified_complete": false,
+      "expected_actual_storage_requests": 0,
+      "actual": null
+    },
+    {
+      "id": "OLD_LEASE_ALREADY_SENT",
+      "expected_outcome": "INCIDENT_PROTECT_REMAINING",
+      "expected_mark_verified_complete": false,
+      "expected_actual_storage_requests": 0,
+      "actual": null
+    },
+    {
+      "id": "OBJECT_VERSION_DIFFERENT",
+      "expected_outcome": "INTEGRITY_BLOCK",
+      "expected_mark_verified_complete": false,
+      "expected_actual_storage_requests": 0,
+      "actual": null
+    },
+    {
+      "id": "INDEX_OR_BACKUP_PENDING",
+      "expected_outcome": "PARTIAL_KEEP_GATEWAY_DENY",
+      "expected_mark_verified_complete": false,
+      "expected_actual_storage_requests": 0,
+      "actual": null
+    },
+    {
+      "id": "BACKUP_RESTORE",
+      "expected_outcome": "APPLY_TOMBSTONES_HOLDS_CURRENT_POLICY_BEFORE_EXPOSE",
+      "expected_mark_verified_complete": false,
+      "expected_actual_storage_requests": 0,
+      "actual": null
+    }
+  ],
+  "hold_purge_race_plan": {
+    "actual_adapter_capabilities_verified": false,
+    "actual_storage_requests_sent": 0,
+    "requires_native_db_and_provider_proof": true,
+    "requires_allwriter_serialization": true,
+    "orders": [
+      {
+        "id": "HOLD_ACCEPTED_BEFORE_PURGE_AUTH",
+        "expected_deletes_under_hold": 0,
+        "actual": null
+      },
+      {
+        "id": "HOLD_DURING_EXTERNAL_UNKNOWN",
+        "expected_safe_outcome": "BLOCK_UNPROVEN_EXECUTION_OR_INCIDENT_RECONCILE_NOT_FAKE_ROLLBACK",
+        "actual": null
+      }
+    ],
+    "actual": null
+  },
+  "fault_plan": [
+    {
+      "point": "BEFORE_REQUEST_AUDIT_OUTBOX_COMMIT",
+      "actual_injected": false,
+      "actual": null
+    },
+    {
+      "point": "BEFORE_APPROVAL_COMMIT",
+      "actual_injected": false,
+      "actual": null
+    },
+    {
+      "point": "AFTER_APPROVAL_COMMIT_RESPONSE_LOST",
+      "actual_injected": false,
+      "actual": null
+    },
+    {
+      "point": "AFTER_STORAGE_OUTCOME_BEFORE_DB_RECORD",
+      "actual_injected": false,
+      "actual": null
+    },
+    {
+      "point": "BEFORE_HOLD_COMMIT_VS_PURGE",
+      "actual_injected": false,
+      "actual": null
+    },
+    {
+      "point": "DURING_DERIVATIVE_OR_BACKUP_RECONCILIATION",
+      "actual_injected": false,
+      "actual": null
+    }
+  ],
+  "native_proof_plan": {
+    "minimum_connections": 2,
+    "requires_barrier_observer": true,
+    "requires_current_revoke_limited_roles": true,
+    "requires_storage_hold_provider_adapter_proof": true,
+    "actual_executed": false,
+    "actual": null
+  },
+  "criteria": {
+    "56-01": {
+      "cases": [
+        "P56-01",
+        "P56-02",
+        "P56-03",
+        "P56-04",
+        "P56-05",
+        "P56-06",
+        "P56-07",
+        "P56-08",
+        "P56-09",
+        "P56-10",
+        "P56-24"
+      ],
+      "status": "BLOCKED",
+      "actual": null
+    },
+    "56-02": {
+      "cases": [
+        "P56-11",
+        "P56-12",
+        "P56-13",
+        "P56-14",
+        "P56-15",
+        "P56-16",
+        "P56-17",
+        "P56-18",
+        "P56-19",
+        "P56-20",
+        "P56-21",
+        "P56-22",
+        "P56-23"
+      ],
+      "status": "BLOCKED",
+      "actual": null
+    }
+  },
+  "cases": [
+    {
+      "id": "P56-01",
+      "expected": "technicaladmin/no business action/expiredsession/unknownpolicy readและworker deny",
+      "status": "NOT_RUN",
+      "actual": null,
+      "execution_manifest": null
+    },
+    {
+      "id": "P56-02",
+      "expected": "current record-version-file-recipient-context-classification-source intersectionsทุกaction",
+      "status": "NOT_RUN",
+      "actual": null,
+      "execution_manifest": null
+    },
+    {
+      "id": "P56-03",
+      "expected": "fulltext/snippet/highlight/count/facet/autocomplete/indexapiไม่เผยunauthorizedหนังสือ",
+      "status": "NOT_RUN",
+      "actual": null,
+      "execution_manifest": null
+    },
+    {
+      "id": "P56-04",
+      "expected": "thumbnail/EXIF/alt/filename/sourcebytes/HEAD/size/preview headersไม่leakเมื่อdeny",
+      "status": "NOT_RUN",
+      "actual": null,
+      "execution_manifest": null
+    },
+    {
+      "id": "P56-05",
+      "expected": "preview/exportcurrentCLEAN/hash/derivativepurpose ไม่มีactiveหรือunscannedcontent",
+      "status": "NOT_RUN",
+      "actual": null,
+      "execution_manifest": null
+    },
+    {
+      "id": "P56-06",
+      "expected": "private no-store/304/ETag/Range/browser/sharedcache/currentrevoke ไม่คืนstalebody",
+      "status": "NOT_RUN",
+      "actual": null,
+      "execution_manifest": null
+    },
+    {
+      "id": "P56-07",
+      "expected": "export/search/thumbnailworker currentgrant/lease/policyrevokeและfieldallowlist",
+      "status": "NOT_RUN",
+      "actual": null,
+      "execution_manifest": null
+    },
+    {
+      "id": "P56-08",
+      "expected": "source1/4/6/7 linksไม่grant read/metadata/file ทั้งสองทิศ",
+      "status": "NOT_RUN",
+      "actual": null,
+      "execution_manifest": null
+    },
+    {
+      "id": "P56-09",
+      "expected": "controlleddisclosureใหม่มีindependentreview/source-approvedallowlist/redactionderivative ไม่เผยoriginal",
+      "status": "NOT_RUN",
+      "actual": null,
+      "execution_manifest": null
+    },
+    {
+      "id": "P56-10",
+      "expected": "selfapproval/technicalrole/ลดชั้นหรือเพิ่มrecipientsโดยไม่review deny",
+      "status": "NOT_RUN",
+      "actual": null,
+      "execution_manifest": null
+    },
+    {
+      "id": "P56-11",
+      "expected": "policyversion/anchor/calendar/unknownofficialduration block destructiveexecution",
+      "status": "NOT_RUN",
+      "actual": null,
+      "execution_manifest": null
+    },
+    {
+      "id": "P56-12",
+      "expected": "active/provisionalholdครอบrecord/document/file/derivatives/newversionตามscope",
+      "status": "NOT_RUN",
+      "actual": null,
+      "execution_manifest": null
+    },
+    {
+      "id": "P56-13",
+      "expected": "hold releaseมีauthority/evidence/makerchecker/event ไม่autoexpireหรือเพิ่มreadgrant",
+      "status": "NOT_RUN",
+      "actual": null,
+      "execution_manifest": null
+    },
+    {
+      "id": "P56-14",
+      "expected": "requestmanifest/sharedrefs/inventory/candidate revision/returned approval pin ไม่ขยายtarget",
+      "status": "NOT_RUN",
+      "actual": null,
+      "execution_manifest": null
+    },
+    {
+      "id": "P56-15",
+      "expected": "expiredretentionแต่hold/sharedobligation/unknownbackup/policypending ยังไม่ลบ",
+      "status": "NOT_RUN",
+      "actual": null,
+      "execution_manifest": null
+    },
+    {
+      "id": "P56-16",
+      "expected": "native hold-vs-purge/allwriters/providerprotect barrierไม่มีacceptedholdถูกละเมิด",
+      "status": "NOT_RUN",
+      "actual": null,
+      "execution_manifest": null
+    },
+    {
+      "id": "P56-17",
+      "expected": "storagetimeout/stalelease/versionhashdrift/idempotency/perartifact reconcile ไม่ลบlatestหรือfakecomplete",
+      "status": "NOT_RUN",
+      "actual": null,
+      "execution_manifest": null
+    },
+    {
+      "id": "P56-18",
+      "expected": "approveddestroyคงauditdecision/actor/manifest/tombstone/sourcehistory ไม่ลบauditการทำลาย",
+      "status": "NOT_RUN",
+      "actual": null,
+      "execution_manifest": null
+    },
+    {
+      "id": "P56-19",
+      "expected": "index/thumbnail/cache/export/replica/backuppartialรายงานจริง ไม่claimallcopiesgone",
+      "status": "NOT_RUN",
+      "actual": null,
+      "execution_manifest": null
+    },
+    {
+      "id": "P56-20",
+      "expected": "transactionalhistoryแยกPIIfile/minimumaudit/metadataredactionpolicyไม่มีhiddenPIIcopy",
+      "status": "NOT_RUN",
+      "actual": null,
+      "execution_manifest": null
+    },
+    {
+      "id": "P56-21",
+      "expected": "backuprestoreใช้hold/tombstone/currentACLก่อนexpose ไม่คืนdestroyedcontentอัตโนมัติ",
+      "status": "NOT_RUN",
+      "actual": null,
+      "execution_manifest": null
+    },
+    {
+      "id": "P56-22",
+      "expected": "หลักฐานแชร์1/4/6/7และholdของownerอื่นป้องกันdeleteแม้localreferenceinactive",
+      "status": "NOT_RUN",
+      "actual": null,
+      "execution_manifest": null
+    },
+    {
+      "id": "P56-23",
+      "expected": "DBapproval-audit-outbox failpoints/commitresponse/providerpartial/retrycurrentauth/receiptไม่ซ้ำ",
+      "status": "NOT_RUN",
+      "actual": null,
+      "execution_manifest": null
+    },
+    {
+      "id": "P56-24",
+      "expected": "privatehold/disclosure/destruction UIข้อความไทย/keyboard/4sizes/ไม่มีreasonลับในerrorหรือpublictracking",
+      "status": "NOT_RUN",
+      "actual": null,
+      "execution_manifest": null
+    }
+  ],
+  "data_notes": [
+    "ทุกID/เวลา/ราคา/ชื่อ/เนื้อหา/ผลเป็น TEST/DEMO สมมติ ไม่คนจริง ไม่ seed หรืออ้างapprovedpolicy",
+    "official duration=NULL destruction/disclosure disabled ไม่มีไฟล์/hold/approvedrequest/auditการทำลายจริง",
+    "positive conjunction/referenceeventsสมมติว่าผ่านเงื่อนไขทั้งหมดเท่านั้น ไม่เป็นpermissionทำลายหรือproofStorage",
+    "legalhold/sourceobligations/unknownbackup/block ต้องบังคับproviderallwriterprotocolที่พิสูจน์ได้ก่อนpurge ไม่อ้างDBtransaction rollback externaldeleteได้",
+    "shared Document/FileVersion อ้าง53และfrozenrecipient55 ไม่มีcopyไฟล์หรือgrantจากlink/task/admin/hold",
+    "minimal audit/provenanceคงอยู่ไม่เก็บsubject/body/filename/objectkey/PIIเพื่อหลบretention; ไม่มีการลบauditใน56",
+    "ค้น/thumbnail/headers/conditionalresponsesเป็นexpectedDTOตรวจreference ไม่browser/API/cache/securityproof"
+  ]
+}

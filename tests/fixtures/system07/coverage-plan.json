@@ -1,0 +1,1668 @@
+{
+  "version": "0.1",
+  "lesson": 52,
+  "source_commit": "5c52d0d",
+  "received_at": "2026-10-08T07:30:54+07:00",
+  "status": "PLAN_ONLY",
+  "seeded": false,
+  "runtime_implemented": false,
+  "native_tests_executed": false,
+  "actual_exports_generated": false,
+  "inventory_owner_signoff": null,
+  "financial_owner_signoff": null,
+  "actual_run_manifest": null,
+  "prerequisites": [47, 48, 49, 50, 51],
+  "additional_dependencies": [43, 44, 45, 46, 6, 7, 8, 9, 10, 11, 12],
+  "policy": {
+    "id": "DEMO_POLICY_52_V1",
+    "status": "TO_VERIFY",
+    "official_enabled": false,
+    "currency": "THB",
+    "money_scale": 2,
+    "quantity_storage_scale": 6,
+    "piece_scale": 0,
+    "negative_stock_allowed_in_demo": false,
+    "tax_treatment_confirmed": false,
+    "authority_assignments_created": false,
+    "clean_evidence_verified": false,
+    "closed_period_override_allowed": false,
+    "official_depreciation_enabled": false,
+    "depreciation_amount": null,
+    "net_book_value": null
+  },
+  "data_notes": [
+    "TEST/DEMO references only; no real people or organizations",
+    "No initial stock manufactured from projection rows",
+    "Quantities and money are separate ledgers; no comparison of their totals",
+    "Correction branch explicitly conditional on new approval; not a refund algorithm"
+  ],
+  "contexts": {
+    "organization_a": "DEMO_ORG_52_A",
+    "organization_other": "DEMO_ORG_52_OTHER",
+    "fiscal_year": "DEMO_FY_52_2027",
+    "academic_year": "DEMO_AY_52_2027",
+    "budget_line": "DEMO_BUDGET_LINE_52",
+    "warehouse_a": "DEMO_WAREHOUSE_52_A",
+    "warehouse_b_same_org": "DEMO_WAREHOUSE_52_B",
+    "location_a": "DEMO_LOCATION_52_A",
+    "location_b": "DEMO_LOCATION_52_B",
+    "actual_created": false
+  },
+  "actors": [
+    {
+      "ref": "DEMO_ACTOR_52_MAKER",
+      "planned_purpose": "maker",
+      "actual_account_created": false,
+      "actual_grants": []
+    },
+    {
+      "ref": "DEMO_ACTOR_52_REVIEWER",
+      "planned_purpose": "reviewer",
+      "actual_account_created": false,
+      "actual_grants": []
+    },
+    {
+      "ref": "DEMO_ACTOR_52_APPROVER",
+      "planned_purpose": "approver",
+      "actual_account_created": false,
+      "actual_grants": []
+    },
+    {
+      "ref": "DEMO_ACTOR_52_WAREHOUSE_A_ONLY",
+      "planned_purpose": "warehouse_a_only",
+      "actual_account_created": false,
+      "actual_grants": []
+    },
+    {
+      "ref": "DEMO_ACTOR_52_WAREHOUSE_B_ONLY",
+      "planned_purpose": "warehouse_b_only",
+      "actual_account_created": false,
+      "actual_grants": []
+    },
+    {
+      "ref": "DEMO_ACTOR_52_OTHER_ORG",
+      "planned_purpose": "other_org",
+      "actual_account_created": false,
+      "actual_grants": []
+    },
+    {
+      "ref": "DEMO_ACTOR_52_BORROWER",
+      "planned_purpose": "borrower",
+      "actual_account_created": false,
+      "actual_grants": []
+    },
+    {
+      "ref": "DEMO_ACTOR_52_AUDITOR",
+      "planned_purpose": "auditor",
+      "actual_account_created": false,
+      "actual_grants": []
+    },
+    {
+      "ref": "DEMO_ACTOR_52_TECHNICAL_ADMIN",
+      "planned_purpose": "technical_admin",
+      "actual_account_created": false,
+      "actual_grants": []
+    }
+  ],
+  "unit_conversion_cases": [
+    {
+      "id": "BOX_PIECE_52",
+      "from_version": "DEMO_BOX_52_V1",
+      "to_version": "DEMO_PIECE_52_V1",
+      "input_quantity": "2.000000",
+      "factor": "10.000000",
+      "expected_base_quantity": "20.000000",
+      "expected": "EXACT",
+      "actual": null
+    },
+    {
+      "id": "KG_GRAM_52",
+      "from_version": "DEMO_KG_52_V1",
+      "to_version": "DEMO_GRAM_52_V1",
+      "input_quantity": "0.125000",
+      "factor": "1000.000000",
+      "expected_base_quantity": "125.000000",
+      "expected": "EXACT",
+      "actual": null
+    },
+    {
+      "id": "EIGHT_FRACTIONAL_UNITS_52",
+      "from_version": "DEMO_FRACTIONAL_PACK_52_V1",
+      "to_version": "DEMO_KG_52_V1",
+      "input_quantity": "8.000000",
+      "factor": "0.125000",
+      "expected_base_quantity": "1.000000",
+      "expected": "EXACT",
+      "actual": null
+    },
+    {
+      "id": "UNKNOWN_CONVERSION_52",
+      "from_version": "DEMO_UNKNOWN_52",
+      "to_version": "DEMO_PIECE_52_V1",
+      "input_quantity": "1.000000",
+      "factor": null,
+      "expected_base_quantity": null,
+      "expected": "DENY_NO_POST",
+      "actual": null
+    }
+  ],
+  "order_lines": [
+    {
+      "ref": "DEMO_ORDER_LINE_52_M",
+      "kind": "MATERIAL",
+      "ordered_quantity": "10.000000",
+      "ordered_unit_version": "DEMO_BOX_52_V1",
+      "base_quantity": "100.000000",
+      "base_unit_version": "DEMO_PIECE_52_V1",
+      "price_basis": "BASE_UNIT",
+      "price_per_base_unit": "20.00",
+      "amount": "2000.00",
+      "accepted_base_quantity": "50.000000",
+      "accepted_amount": "1000.00",
+      "cancelled_base_quantity": "50.000000",
+      "cancelled_amount": "1000.00"
+    },
+    {
+      "ref": "DEMO_ORDER_LINE_52_A",
+      "kind": "ASSET",
+      "ordered_quantity": "5.000000",
+      "ordered_unit_version": "DEMO_PIECE_52_V1",
+      "base_quantity": "5.000000",
+      "base_unit_version": "DEMO_PIECE_52_V1",
+      "price_basis": "BASE_UNIT",
+      "price_per_base_unit": "2000.00",
+      "amount": "10000.00",
+      "accepted_base_quantity": "2.000000",
+      "accepted_amount": "4000.00",
+      "cancelled_base_quantity": "3.000000",
+      "cancelled_amount": "6000.00"
+    }
+  ],
+  "receipt_descriptors": [
+    {
+      "ref": "DEMO_RECEIPT_52_1",
+      "physical_material_base": "20.000000",
+      "accepted_material_base": "20.000000",
+      "physical_assets": "1.000000",
+      "accepted_assets": "1.000000",
+      "accepted_value": "2400.00",
+      "actual_accepted": false
+    },
+    {
+      "ref": "DEMO_RECEIPT_52_2",
+      "physical_material_base": "30.000000",
+      "accepted_material_base": "30.000000",
+      "physical_assets": "1.000000",
+      "accepted_assets": "1.000000",
+      "accepted_value": "2600.00",
+      "actual_accepted": false
+    }
+  ],
+  "main_chain": [
+    {
+      "id": "S52-01",
+      "action": "APPROVED_ALLOCATION",
+      "source_ref": "DEMO_ALLOCATION_52",
+      "finance_delta": {
+        "allocated": "100000.00",
+        "reserved": "0.00",
+        "unpaid_obligation": "0.00",
+        "paid": "0.00",
+        "certified": "0.00"
+      },
+      "stock_legs": [],
+      "expected_finance": {
+        "allocated": "100000.00",
+        "reserved": "0.00",
+        "unpaid_obligation": "0.00",
+        "paid": "0.00",
+        "certified": "0.00",
+        "available": "100000.00"
+      },
+      "expected_material_balance": {
+        "A": "0.000000",
+        "B": "0.000000"
+      },
+      "expected_registered_assets": 0,
+      "expected_asset_a_state": "NOT_REGISTERED",
+      "accepted_liability_if_observed": null,
+      "actual_posted": false,
+      "actual_approval_ref": null,
+      "actual_evidence_hash": null,
+      "actual_receipt_ref": null,
+      "actual": null
+    },
+    {
+      "id": "S52-02",
+      "action": "APPROVE_PROCUREMENT_RESERVE",
+      "source_ref": "DEMO_REQUEST_52_A",
+      "finance_delta": {
+        "allocated": "0.00",
+        "reserved": "20000.00",
+        "unpaid_obligation": "0.00",
+        "paid": "0.00",
+        "certified": "0.00"
+      },
+      "stock_legs": [],
+      "expected_finance": {
+        "allocated": "100000.00",
+        "reserved": "20000.00",
+        "unpaid_obligation": "0.00",
+        "paid": "0.00",
+        "certified": "0.00",
+        "available": "80000.00"
+      },
+      "expected_material_balance": {
+        "A": "0.000000",
+        "B": "0.000000"
+      },
+      "expected_registered_assets": 0,
+      "expected_asset_a_state": "NOT_REGISTERED",
+      "accepted_liability_if_observed": null,
+      "actual_posted": false,
+      "actual_approval_ref": null,
+      "actual_evidence_hash": null,
+      "actual_receipt_ref": null,
+      "actual": null
+    },
+    {
+      "id": "S52-03",
+      "action": "ISSUE_ORDER_CONVERT_R_TO_U",
+      "source_ref": "DEMO_ORDER_52_A",
+      "finance_delta": {
+        "allocated": "0.00",
+        "reserved": "-12000.00",
+        "unpaid_obligation": "12000.00",
+        "paid": "0.00",
+        "certified": "0.00"
+      },
+      "stock_legs": [],
+      "expected_finance": {
+        "allocated": "100000.00",
+        "reserved": "8000.00",
+        "unpaid_obligation": "12000.00",
+        "paid": "0.00",
+        "certified": "0.00",
+        "available": "80000.00"
+      },
+      "expected_material_balance": {
+        "A": "0.000000",
+        "B": "0.000000"
+      },
+      "expected_registered_assets": 0,
+      "expected_asset_a_state": "NOT_REGISTERED",
+      "accepted_liability_if_observed": null,
+      "actual_posted": false,
+      "actual_approval_ref": null,
+      "actual_evidence_hash": null,
+      "actual_receipt_ref": null,
+      "actual": null
+    },
+    {
+      "id": "S52-04",
+      "action": "ACCEPT_PARTIAL_RECEIPT_1",
+      "source_ref": "DEMO_RECEIPT_52_1",
+      "finance_delta": {
+        "allocated": "0.00",
+        "reserved": "0.00",
+        "unpaid_obligation": "0.00",
+        "paid": "0.00",
+        "certified": "0.00"
+      },
+      "stock_legs": [
+        {
+          "bucket": "A",
+          "quantity_delta": "20.000000",
+          "unit_version": "DEMO_PIECE_52_V1",
+          "lot": null
+        }
+      ],
+      "expected_finance": {
+        "allocated": "100000.00",
+        "reserved": "8000.00",
+        "unpaid_obligation": "12000.00",
+        "paid": "0.00",
+        "certified": "0.00",
+        "available": "80000.00"
+      },
+      "expected_material_balance": {
+        "A": "20.000000",
+        "B": "0.000000"
+      },
+      "expected_registered_assets": 1,
+      "expected_asset_a_state": "AVAILABLE",
+      "accepted_liability_if_observed": "2400.00",
+      "actual_posted": false,
+      "actual_approval_ref": null,
+      "actual_evidence_hash": null,
+      "actual_receipt_ref": null,
+      "actual": null
+    },
+    {
+      "id": "S52-05",
+      "action": "ACCEPT_PARTIAL_RECEIPT_2",
+      "source_ref": "DEMO_RECEIPT_52_2",
+      "finance_delta": {
+        "allocated": "0.00",
+        "reserved": "0.00",
+        "unpaid_obligation": "0.00",
+        "paid": "0.00",
+        "certified": "0.00"
+      },
+      "stock_legs": [
+        {
+          "bucket": "A",
+          "quantity_delta": "30.000000",
+          "unit_version": "DEMO_PIECE_52_V1",
+          "lot": null
+        }
+      ],
+      "expected_finance": {
+        "allocated": "100000.00",
+        "reserved": "8000.00",
+        "unpaid_obligation": "12000.00",
+        "paid": "0.00",
+        "certified": "0.00",
+        "available": "80000.00"
+      },
+      "expected_material_balance": {
+        "A": "50.000000",
+        "B": "0.000000"
+      },
+      "expected_registered_assets": 2,
+      "expected_asset_a_state": "AVAILABLE",
+      "accepted_liability_if_observed": "5000.00",
+      "actual_posted": false,
+      "actual_approval_ref": null,
+      "actual_evidence_hash": null,
+      "actual_receipt_ref": null,
+      "actual": null
+    },
+    {
+      "id": "S52-06",
+      "action": "ISSUE_MATERIAL",
+      "source_ref": "DEMO_ISSUE_52",
+      "finance_delta": {
+        "allocated": "0.00",
+        "reserved": "0.00",
+        "unpaid_obligation": "0.00",
+        "paid": "0.00",
+        "certified": "0.00"
+      },
+      "stock_legs": [
+        {
+          "bucket": "A",
+          "quantity_delta": "-12.000000",
+          "unit_version": "DEMO_PIECE_52_V1",
+          "lot": null
+        }
+      ],
+      "expected_finance": {
+        "allocated": "100000.00",
+        "reserved": "8000.00",
+        "unpaid_obligation": "12000.00",
+        "paid": "0.00",
+        "certified": "0.00",
+        "available": "80000.00"
+      },
+      "expected_material_balance": {
+        "A": "38.000000",
+        "B": "0.000000"
+      },
+      "expected_registered_assets": 2,
+      "expected_asset_a_state": "AVAILABLE",
+      "accepted_liability_if_observed": null,
+      "actual_posted": false,
+      "actual_approval_ref": null,
+      "actual_evidence_hash": null,
+      "actual_receipt_ref": null,
+      "actual": null
+    },
+    {
+      "id": "S52-07",
+      "action": "TRANSFER_CONFIRMED",
+      "source_ref": "DEMO_TRANSFER_52",
+      "finance_delta": {
+        "allocated": "0.00",
+        "reserved": "0.00",
+        "unpaid_obligation": "0.00",
+        "paid": "0.00",
+        "certified": "0.00"
+      },
+      "stock_legs": [
+        {
+          "bucket": "A",
+          "quantity_delta": "-8.000000",
+          "unit_version": "DEMO_PIECE_52_V1",
+          "lot": null
+        },
+        {
+          "bucket": "B",
+          "quantity_delta": "8.000000",
+          "unit_version": "DEMO_PIECE_52_V1",
+          "lot": null
+        }
+      ],
+      "expected_finance": {
+        "allocated": "100000.00",
+        "reserved": "8000.00",
+        "unpaid_obligation": "12000.00",
+        "paid": "0.00",
+        "certified": "0.00",
+        "available": "80000.00"
+      },
+      "expected_material_balance": {
+        "A": "30.000000",
+        "B": "8.000000"
+      },
+      "expected_registered_assets": 2,
+      "expected_asset_a_state": "AVAILABLE",
+      "accepted_liability_if_observed": null,
+      "actual_posted": false,
+      "actual_approval_ref": null,
+      "actual_evidence_hash": null,
+      "actual_receipt_ref": null,
+      "actual": null
+    },
+    {
+      "id": "S52-08",
+      "action": "VERIFY_EXISTING_ASSET_REGISTRATION_NO_NEW_POST",
+      "source_ref": "DEMO_ASSET_52_A",
+      "finance_delta": {
+        "allocated": "0.00",
+        "reserved": "0.00",
+        "unpaid_obligation": "0.00",
+        "paid": "0.00",
+        "certified": "0.00"
+      },
+      "stock_legs": [],
+      "expected_finance": {
+        "allocated": "100000.00",
+        "reserved": "8000.00",
+        "unpaid_obligation": "12000.00",
+        "paid": "0.00",
+        "certified": "0.00",
+        "available": "80000.00"
+      },
+      "expected_material_balance": {
+        "A": "30.000000",
+        "B": "8.000000"
+      },
+      "expected_registered_assets": 2,
+      "expected_asset_a_state": "AVAILABLE",
+      "accepted_liability_if_observed": null,
+      "actual_posted": false,
+      "actual_approval_ref": null,
+      "actual_evidence_hash": null,
+      "actual_receipt_ref": null,
+      "actual": null
+    },
+    {
+      "id": "S52-09",
+      "action": "APPROVE_LOAN_RESERVE_ASSET",
+      "source_ref": "DEMO_LOAN_52",
+      "finance_delta": {
+        "allocated": "0.00",
+        "reserved": "0.00",
+        "unpaid_obligation": "0.00",
+        "paid": "0.00",
+        "certified": "0.00"
+      },
+      "stock_legs": [],
+      "expected_finance": {
+        "allocated": "100000.00",
+        "reserved": "8000.00",
+        "unpaid_obligation": "12000.00",
+        "paid": "0.00",
+        "certified": "0.00",
+        "available": "80000.00"
+      },
+      "expected_material_balance": {
+        "A": "30.000000",
+        "B": "8.000000"
+      },
+      "expected_registered_assets": 2,
+      "expected_asset_a_state": "RESERVED",
+      "accepted_liability_if_observed": null,
+      "actual_posted": false,
+      "actual_approval_ref": null,
+      "actual_evidence_hash": null,
+      "actual_receipt_ref": null,
+      "actual": null
+    },
+    {
+      "id": "S52-10",
+      "action": "LOAN_HANDOVER",
+      "source_ref": "DEMO_LOAN_52",
+      "finance_delta": {
+        "allocated": "0.00",
+        "reserved": "0.00",
+        "unpaid_obligation": "0.00",
+        "paid": "0.00",
+        "certified": "0.00"
+      },
+      "stock_legs": [],
+      "expected_finance": {
+        "allocated": "100000.00",
+        "reserved": "8000.00",
+        "unpaid_obligation": "12000.00",
+        "paid": "0.00",
+        "certified": "0.00",
+        "available": "80000.00"
+      },
+      "expected_material_balance": {
+        "A": "30.000000",
+        "B": "8.000000"
+      },
+      "expected_registered_assets": 2,
+      "expected_asset_a_state": "ON_LOAN",
+      "accepted_liability_if_observed": null,
+      "actual_posted": false,
+      "actual_approval_ref": null,
+      "actual_evidence_hash": null,
+      "actual_receipt_ref": null,
+      "actual": null
+    },
+    {
+      "id": "S52-11",
+      "action": "PHYSICAL_RETURN_PENDING_INSPECTION",
+      "source_ref": "DEMO_RETURN_52",
+      "finance_delta": {
+        "allocated": "0.00",
+        "reserved": "0.00",
+        "unpaid_obligation": "0.00",
+        "paid": "0.00",
+        "certified": "0.00"
+      },
+      "stock_legs": [],
+      "expected_finance": {
+        "allocated": "100000.00",
+        "reserved": "8000.00",
+        "unpaid_obligation": "12000.00",
+        "paid": "0.00",
+        "certified": "0.00",
+        "available": "80000.00"
+      },
+      "expected_material_balance": {
+        "A": "30.000000",
+        "B": "8.000000"
+      },
+      "expected_registered_assets": 2,
+      "expected_asset_a_state": "RETURN_PENDING_INSPECTION",
+      "accepted_liability_if_observed": null,
+      "actual_posted": false,
+      "actual_approval_ref": null,
+      "actual_evidence_hash": null,
+      "actual_receipt_ref": null,
+      "actual": null
+    },
+    {
+      "id": "S52-12",
+      "action": "RETURN_INSPECTION_REQUIRES_MAINTENANCE",
+      "source_ref": "DEMO_RETURN_52",
+      "finance_delta": {
+        "allocated": "0.00",
+        "reserved": "0.00",
+        "unpaid_obligation": "0.00",
+        "paid": "0.00",
+        "certified": "0.00"
+      },
+      "stock_legs": [],
+      "expected_finance": {
+        "allocated": "100000.00",
+        "reserved": "8000.00",
+        "unpaid_obligation": "12000.00",
+        "paid": "0.00",
+        "certified": "0.00",
+        "available": "80000.00"
+      },
+      "expected_material_balance": {
+        "A": "30.000000",
+        "B": "8.000000"
+      },
+      "expected_registered_assets": 2,
+      "expected_asset_a_state": "REPAIR_REQUIRED",
+      "accepted_liability_if_observed": null,
+      "actual_posted": false,
+      "actual_approval_ref": null,
+      "actual_evidence_hash": null,
+      "actual_receipt_ref": null,
+      "actual": null
+    },
+    {
+      "id": "S52-13",
+      "action": "OPEN_MAINTENANCE_ESTIMATE_ONLY",
+      "source_ref": "DEMO_MAINTENANCE_52",
+      "finance_delta": {
+        "allocated": "0.00",
+        "reserved": "0.00",
+        "unpaid_obligation": "0.00",
+        "paid": "0.00",
+        "certified": "0.00"
+      },
+      "stock_legs": [],
+      "expected_finance": {
+        "allocated": "100000.00",
+        "reserved": "8000.00",
+        "unpaid_obligation": "12000.00",
+        "paid": "0.00",
+        "certified": "0.00",
+        "available": "80000.00"
+      },
+      "expected_material_balance": {
+        "A": "30.000000",
+        "B": "8.000000"
+      },
+      "expected_registered_assets": 2,
+      "expected_asset_a_state": "UNDER_MAINTENANCE",
+      "accepted_liability_if_observed": null,
+      "actual_posted": false,
+      "actual_approval_ref": null,
+      "actual_evidence_hash": null,
+      "actual_receipt_ref": null,
+      "actual": null
+    },
+    {
+      "id": "S52-14",
+      "action": "MAINTENANCE_INSPECT_AND_RELEASE_HOLD",
+      "source_ref": "DEMO_MAINTENANCE_52",
+      "finance_delta": {
+        "allocated": "0.00",
+        "reserved": "0.00",
+        "unpaid_obligation": "0.00",
+        "paid": "0.00",
+        "certified": "0.00"
+      },
+      "stock_legs": [],
+      "expected_finance": {
+        "allocated": "100000.00",
+        "reserved": "8000.00",
+        "unpaid_obligation": "12000.00",
+        "paid": "0.00",
+        "certified": "0.00",
+        "available": "80000.00"
+      },
+      "expected_material_balance": {
+        "A": "30.000000",
+        "B": "8.000000"
+      },
+      "expected_registered_assets": 2,
+      "expected_asset_a_state": "AVAILABLE",
+      "accepted_liability_if_observed": null,
+      "actual_posted": false,
+      "actual_approval_ref": null,
+      "actual_evidence_hash": null,
+      "actual_receipt_ref": null,
+      "actual": null
+    },
+    {
+      "id": "S52-15",
+      "action": "CAPTURE_CONTROLLED_COUNT_WINDOW",
+      "source_ref": "DEMO_COUNT_52_A",
+      "finance_delta": {
+        "allocated": "0.00",
+        "reserved": "0.00",
+        "unpaid_obligation": "0.00",
+        "paid": "0.00",
+        "certified": "0.00"
+      },
+      "stock_legs": [],
+      "expected_finance": {
+        "allocated": "100000.00",
+        "reserved": "8000.00",
+        "unpaid_obligation": "12000.00",
+        "paid": "0.00",
+        "certified": "0.00",
+        "available": "80000.00"
+      },
+      "expected_material_balance": {
+        "A": "30.000000",
+        "B": "8.000000"
+      },
+      "expected_registered_assets": 2,
+      "expected_asset_a_state": "AVAILABLE",
+      "accepted_liability_if_observed": null,
+      "actual_posted": false,
+      "actual_approval_ref": null,
+      "actual_evidence_hash": null,
+      "actual_receipt_ref": null,
+      "actual": null
+    },
+    {
+      "id": "S52-16",
+      "action": "APPROVED_STOCKTAKE_ADJUSTMENT",
+      "source_ref": "DEMO_COUNT_52_A",
+      "finance_delta": {
+        "allocated": "0.00",
+        "reserved": "0.00",
+        "unpaid_obligation": "0.00",
+        "paid": "0.00",
+        "certified": "0.00"
+      },
+      "stock_legs": [
+        {
+          "bucket": "A",
+          "quantity_delta": "-1.000000",
+          "unit_version": "DEMO_PIECE_52_V1",
+          "lot": null
+        }
+      ],
+      "expected_finance": {
+        "allocated": "100000.00",
+        "reserved": "8000.00",
+        "unpaid_obligation": "12000.00",
+        "paid": "0.00",
+        "certified": "0.00",
+        "available": "80000.00"
+      },
+      "expected_material_balance": {
+        "A": "29.000000",
+        "B": "8.000000"
+      },
+      "expected_registered_assets": 2,
+      "expected_asset_a_state": "AVAILABLE",
+      "accepted_liability_if_observed": null,
+      "actual_posted": false,
+      "actual_approval_ref": null,
+      "actual_evidence_hash": null,
+      "actual_receipt_ref": null,
+      "actual": null
+    },
+    {
+      "id": "S52-17",
+      "action": "APPROVED_RELEASE_UNUSED_RESERVATION",
+      "source_ref": "DEMO_RELEASE_R_52",
+      "finance_delta": {
+        "allocated": "0.00",
+        "reserved": "-8000.00",
+        "unpaid_obligation": "0.00",
+        "paid": "0.00",
+        "certified": "0.00"
+      },
+      "stock_legs": [],
+      "expected_finance": {
+        "allocated": "100000.00",
+        "reserved": "0.00",
+        "unpaid_obligation": "12000.00",
+        "paid": "0.00",
+        "certified": "0.00",
+        "available": "88000.00"
+      },
+      "expected_material_balance": {
+        "A": "29.000000",
+        "B": "8.000000"
+      },
+      "expected_registered_assets": 2,
+      "expected_asset_a_state": "AVAILABLE",
+      "accepted_liability_if_observed": null,
+      "actual_posted": false,
+      "actual_approval_ref": null,
+      "actual_evidence_hash": null,
+      "actual_receipt_ref": null,
+      "actual": null
+    },
+    {
+      "id": "S52-18",
+      "action": "APPROVED_CANCEL_UNFULFILLED_ORDER",
+      "source_ref": "DEMO_CANCEL_U_52",
+      "finance_delta": {
+        "allocated": "0.00",
+        "reserved": "0.00",
+        "unpaid_obligation": "-7000.00",
+        "paid": "0.00",
+        "certified": "0.00"
+      },
+      "stock_legs": [],
+      "expected_finance": {
+        "allocated": "100000.00",
+        "reserved": "0.00",
+        "unpaid_obligation": "5000.00",
+        "paid": "0.00",
+        "certified": "0.00",
+        "available": "95000.00"
+      },
+      "expected_material_balance": {
+        "A": "29.000000",
+        "B": "8.000000"
+      },
+      "expected_registered_assets": 2,
+      "expected_asset_a_state": "AVAILABLE",
+      "accepted_liability_if_observed": null,
+      "actual_posted": false,
+      "actual_approval_ref": null,
+      "actual_evidence_hash": null,
+      "actual_receipt_ref": null,
+      "actual": null
+    },
+    {
+      "id": "S52-19",
+      "action": "CERTIFY_INVOICE_1",
+      "source_ref": "DEMO_CERTIFY_52_1",
+      "finance_delta": {
+        "allocated": "0.00",
+        "reserved": "0.00",
+        "unpaid_obligation": "0.00",
+        "paid": "0.00",
+        "certified": "2400.00"
+      },
+      "stock_legs": [],
+      "expected_finance": {
+        "allocated": "100000.00",
+        "reserved": "0.00",
+        "unpaid_obligation": "5000.00",
+        "paid": "0.00",
+        "certified": "2400.00",
+        "available": "95000.00"
+      },
+      "expected_material_balance": {
+        "A": "29.000000",
+        "B": "8.000000"
+      },
+      "expected_registered_assets": 2,
+      "expected_asset_a_state": "AVAILABLE",
+      "accepted_liability_if_observed": null,
+      "actual_posted": false,
+      "actual_approval_ref": null,
+      "actual_evidence_hash": null,
+      "actual_receipt_ref": null,
+      "actual": null
+    },
+    {
+      "id": "S52-20",
+      "action": "RECORD_PAYMENT_1",
+      "source_ref": "DEMO_PAYMENT_52_1",
+      "finance_delta": {
+        "allocated": "0.00",
+        "reserved": "0.00",
+        "unpaid_obligation": "-2400.00",
+        "paid": "2400.00",
+        "certified": "-2400.00"
+      },
+      "stock_legs": [],
+      "expected_finance": {
+        "allocated": "100000.00",
+        "reserved": "0.00",
+        "unpaid_obligation": "2600.00",
+        "paid": "2400.00",
+        "certified": "0.00",
+        "available": "95000.00"
+      },
+      "expected_material_balance": {
+        "A": "29.000000",
+        "B": "8.000000"
+      },
+      "expected_registered_assets": 2,
+      "expected_asset_a_state": "AVAILABLE",
+      "accepted_liability_if_observed": null,
+      "actual_posted": false,
+      "actual_approval_ref": null,
+      "actual_evidence_hash": null,
+      "actual_receipt_ref": null,
+      "actual": null
+    },
+    {
+      "id": "S52-21",
+      "action": "CERTIFY_INVOICE_2",
+      "source_ref": "DEMO_CERTIFY_52_2",
+      "finance_delta": {
+        "allocated": "0.00",
+        "reserved": "0.00",
+        "unpaid_obligation": "0.00",
+        "paid": "0.00",
+        "certified": "2600.00"
+      },
+      "stock_legs": [],
+      "expected_finance": {
+        "allocated": "100000.00",
+        "reserved": "0.00",
+        "unpaid_obligation": "2600.00",
+        "paid": "2400.00",
+        "certified": "2600.00",
+        "available": "95000.00"
+      },
+      "expected_material_balance": {
+        "A": "29.000000",
+        "B": "8.000000"
+      },
+      "expected_registered_assets": 2,
+      "expected_asset_a_state": "AVAILABLE",
+      "accepted_liability_if_observed": null,
+      "actual_posted": false,
+      "actual_approval_ref": null,
+      "actual_evidence_hash": null,
+      "actual_receipt_ref": null,
+      "actual": null
+    },
+    {
+      "id": "S52-22",
+      "action": "RECORD_PARTIAL_PAYMENT_2",
+      "source_ref": "DEMO_PAYMENT_52_2",
+      "finance_delta": {
+        "allocated": "0.00",
+        "reserved": "0.00",
+        "unpaid_obligation": "-1000.00",
+        "paid": "1000.00",
+        "certified": "-1000.00"
+      },
+      "stock_legs": [],
+      "expected_finance": {
+        "allocated": "100000.00",
+        "reserved": "0.00",
+        "unpaid_obligation": "1600.00",
+        "paid": "3400.00",
+        "certified": "1600.00",
+        "available": "95000.00"
+      },
+      "expected_material_balance": {
+        "A": "29.000000",
+        "B": "8.000000"
+      },
+      "expected_registered_assets": 2,
+      "expected_asset_a_state": "AVAILABLE",
+      "accepted_liability_if_observed": null,
+      "actual_posted": false,
+      "actual_approval_ref": null,
+      "actual_evidence_hash": null,
+      "actual_receipt_ref": null,
+      "actual": null
+    },
+    {
+      "id": "S52-23",
+      "action": "RECORD_REMAINING_PAYMENT_3",
+      "source_ref": "DEMO_PAYMENT_52_3",
+      "finance_delta": {
+        "allocated": "0.00",
+        "reserved": "0.00",
+        "unpaid_obligation": "-1600.00",
+        "paid": "1600.00",
+        "certified": "-1600.00"
+      },
+      "stock_legs": [],
+      "expected_finance": {
+        "allocated": "100000.00",
+        "reserved": "0.00",
+        "unpaid_obligation": "0.00",
+        "paid": "5000.00",
+        "certified": "0.00",
+        "available": "95000.00"
+      },
+      "expected_material_balance": {
+        "A": "29.000000",
+        "B": "8.000000"
+      },
+      "expected_registered_assets": 2,
+      "expected_asset_a_state": "AVAILABLE",
+      "accepted_liability_if_observed": null,
+      "actual_posted": false,
+      "actual_approval_ref": null,
+      "actual_evidence_hash": null,
+      "actual_receipt_ref": null,
+      "actual": null
+    },
+    {
+      "id": "S52-24",
+      "action": "DISPOSAL_REQUEST_RETURNED_FOR_CORRECTION",
+      "source_ref": "DEMO_DISPOSAL_52",
+      "finance_delta": {
+        "allocated": "0.00",
+        "reserved": "0.00",
+        "unpaid_obligation": "0.00",
+        "paid": "0.00",
+        "certified": "0.00"
+      },
+      "stock_legs": [],
+      "expected_finance": {
+        "allocated": "100000.00",
+        "reserved": "0.00",
+        "unpaid_obligation": "0.00",
+        "paid": "5000.00",
+        "certified": "0.00",
+        "available": "95000.00"
+      },
+      "expected_material_balance": {
+        "A": "29.000000",
+        "B": "8.000000"
+      },
+      "expected_registered_assets": 2,
+      "expected_asset_a_state": "AVAILABLE",
+      "accepted_liability_if_observed": null,
+      "actual_posted": false,
+      "actual_approval_ref": null,
+      "actual_evidence_hash": null,
+      "actual_receipt_ref": null,
+      "actual": null
+    },
+    {
+      "id": "S52-25",
+      "action": "APPROVED_DISPOSAL_PENDING_EXECUTION",
+      "source_ref": "DEMO_DISPOSAL_52",
+      "finance_delta": {
+        "allocated": "0.00",
+        "reserved": "0.00",
+        "unpaid_obligation": "0.00",
+        "paid": "0.00",
+        "certified": "0.00"
+      },
+      "stock_legs": [],
+      "expected_finance": {
+        "allocated": "100000.00",
+        "reserved": "0.00",
+        "unpaid_obligation": "0.00",
+        "paid": "5000.00",
+        "certified": "0.00",
+        "available": "95000.00"
+      },
+      "expected_material_balance": {
+        "A": "29.000000",
+        "B": "8.000000"
+      },
+      "expected_registered_assets": 2,
+      "expected_asset_a_state": "ACTIVE_DISPOSAL_HOLD",
+      "accepted_liability_if_observed": null,
+      "actual_posted": false,
+      "actual_approval_ref": null,
+      "actual_evidence_hash": null,
+      "actual_receipt_ref": null,
+      "actual": null
+    },
+    {
+      "id": "S52-26",
+      "action": "EXECUTION_VERIFIED_PENDING_EFFECTIVE",
+      "source_ref": "DEMO_DISPOSAL_52",
+      "finance_delta": {
+        "allocated": "0.00",
+        "reserved": "0.00",
+        "unpaid_obligation": "0.00",
+        "paid": "0.00",
+        "certified": "0.00"
+      },
+      "stock_legs": [],
+      "expected_finance": {
+        "allocated": "100000.00",
+        "reserved": "0.00",
+        "unpaid_obligation": "0.00",
+        "paid": "5000.00",
+        "certified": "0.00",
+        "available": "95000.00"
+      },
+      "expected_material_balance": {
+        "A": "29.000000",
+        "B": "8.000000"
+      },
+      "expected_registered_assets": 2,
+      "expected_asset_a_state": "ACTIVE_DISPOSAL_HOLD",
+      "accepted_liability_if_observed": null,
+      "actual_posted": false,
+      "actual_approval_ref": null,
+      "actual_evidence_hash": null,
+      "actual_receipt_ref": null,
+      "actual": null
+    },
+    {
+      "id": "S52-27",
+      "action": "DISPOSAL_EFFECTIVE",
+      "source_ref": "DEMO_DISPOSAL_52",
+      "finance_delta": {
+        "allocated": "0.00",
+        "reserved": "0.00",
+        "unpaid_obligation": "0.00",
+        "paid": "0.00",
+        "certified": "0.00"
+      },
+      "stock_legs": [],
+      "expected_finance": {
+        "allocated": "100000.00",
+        "reserved": "0.00",
+        "unpaid_obligation": "0.00",
+        "paid": "5000.00",
+        "certified": "0.00",
+        "available": "95000.00"
+      },
+      "expected_material_balance": {
+        "A": "29.000000",
+        "B": "8.000000"
+      },
+      "expected_registered_assets": 2,
+      "expected_asset_a_state": "DISPOSED",
+      "accepted_liability_if_observed": null,
+      "actual_posted": false,
+      "actual_approval_ref": null,
+      "actual_evidence_hash": null,
+      "actual_receipt_ref": null,
+      "actual": null
+    }
+  ],
+  "count_descriptor": {
+    "source_ref": "DEMO_COUNT_52_A",
+    "snapshot_step": "S52-15",
+    "bucket": "A",
+    "expected_quantity": "30.000000",
+    "counted_quantity": "29.000000",
+    "variance": "-1.000000",
+    "reason": "TEST_COUNT_SHORTAGE_52",
+    "expected_adjustment_step": "S52-16",
+    "policy": "DEMO_POLICY_52_V1",
+    "actual_source_version": null,
+    "actual_approval": null,
+    "actual_posted": false
+  },
+  "asset_lineage": [
+    {
+      "ref": "DEMO_ASSET_52_A",
+      "asset_code": "TEST_ASSET_52_A",
+      "receipt_ref": "DEMO_RECEIPT_52_1",
+      "receipt_line_ref": "DEMO_RECEIPT_52_1_ASSET_LINE",
+      "ordinal": 1,
+      "acquisition_cost": "2000.00",
+      "currency": "THB",
+      "funding_source": "DEMO_FUNDING_52",
+      "fiscal_year": "DEMO_FY_52_2027",
+      "owner_org": "DEMO_ORG_52_A",
+      "original_name_version": "DEMO_ORG_NAME_52_V1",
+      "retained_history_refs": [
+        "DEMO_CUSTODY_52_V1",
+        "DEMO_CUSTODY_52_V2",
+        "DEMO_LOAN_52",
+        "DEMO_RETURN_52",
+        "DEMO_MAINTENANCE_52",
+        "DEMO_DISPOSAL_52"
+      ],
+      "actual_registered": false
+    },
+    {
+      "ref": "DEMO_ASSET_52_B",
+      "asset_code": "TEST_ASSET_52_B",
+      "receipt_ref": "DEMO_RECEIPT_52_2",
+      "receipt_line_ref": "DEMO_RECEIPT_52_2_ASSET_LINE",
+      "ordinal": 1,
+      "acquisition_cost": "2000.00",
+      "currency": "THB",
+      "funding_source": "DEMO_FUNDING_52",
+      "fiscal_year": "DEMO_FY_52_2027",
+      "owner_org": "DEMO_ORG_52_A",
+      "original_name_version": "DEMO_ORG_NAME_52_V1",
+      "retained_history_refs": ["DEMO_CUSTODY_52_B_V1"],
+      "actual_registered": false
+    }
+  ],
+  "maintenance_descriptor": {
+    "ref": "DEMO_MAINTENANCE_52",
+    "estimated_cost": "500.00",
+    "actual_paid": null,
+    "financial_post_created": false,
+    "verified_execution": false
+  },
+  "disposal_descriptor": {
+    "ref": "DEMO_DISPOSAL_52",
+    "execution_reference_date": "2027-07-13",
+    "effective_reference_date": "2027-07-15",
+    "before_effective_expected_registry_status": "ACTIVE",
+    "on_effective_expected_registry_status": "DISPOSED",
+    "actual_verified_execution": false,
+    "actual_approval": null,
+    "actual_evidence_hash": null,
+    "original_asset_deleted": false,
+    "asset_code_reusable": false,
+    "planned_dependency_resolution": {
+      "loan": "RETURNED_AND_INSPECTED",
+      "maintenance": "CLOSED_AND_HOLD_RELEASED",
+      "custody": "APPROVED_END_AT_EFFECTIVE_DATE",
+      "unresolved_claims": 0,
+      "actual_verified": false
+    }
+  },
+  "payment_correction_branch": {
+    "status": "PLAN_ONLY",
+    "source_payment": "DEMO_PAYMENT_52_3",
+    "original_amount": "1600.00",
+    "approved_reopen_required": true,
+    "approved_restore_certification_required": true,
+    "actual_new_approval": null,
+    "not_supplier_return_or_actual_cash_refund": true,
+    "initial_expected": {
+      "allocated": "100000.00",
+      "reserved": "0.00",
+      "unpaid_obligation": "0.00",
+      "paid": "5000.00",
+      "certified": "0.00",
+      "available": "95000.00"
+    },
+    "correction_delta": {
+      "allocated": "0.00",
+      "reserved": "0.00",
+      "unpaid_obligation": "1600.00",
+      "paid": "-1600.00",
+      "certified": "1600.00"
+    },
+    "corrected_expected": {
+      "allocated": "100000.00",
+      "reserved": "0.00",
+      "unpaid_obligation": "1600.00",
+      "paid": "3400.00",
+      "certified": "1600.00",
+      "available": "95000.00"
+    },
+    "repayment_delta": {
+      "allocated": "0.00",
+      "reserved": "0.00",
+      "unpaid_obligation": "-1600.00",
+      "paid": "1600.00",
+      "certified": "-1600.00"
+    },
+    "final_expected": {
+      "allocated": "100000.00",
+      "reserved": "0.00",
+      "unpaid_obligation": "0.00",
+      "paid": "5000.00",
+      "certified": "0.00",
+      "available": "95000.00"
+    },
+    "actual_executed": false
+  },
+  "report_descriptor": {
+    "same_source_manifest_required": true,
+    "expected_materials": {
+      "A": "29.000000",
+      "B": "8.000000",
+      "compatible_unit_total": "37.000000"
+    },
+    "expected_registered_assets": 2,
+    "expected_disposed_assets": 1,
+    "expected_available_assets": 1,
+    "expected_accepted_value": "5000.00",
+    "expected_paid": "5000.00",
+    "equality_of_values_is_incidental_not_general_rule": true,
+    "screen_export_ledger_reconciled": false,
+    "actual_manifest_hash": null,
+    "actual_excel": null,
+    "actual_pdf": null,
+    "read_creates_business_events": false
+  },
+  "native_race_plan": [
+    {
+      "id": "BUDGET_RESERVE_52",
+      "available": "10000.00",
+      "competing_reservations": ["8000.00", "8000.00"],
+      "expected_successes": 1,
+      "expected_remaining": "2000.00",
+      "actual_outcomes": null
+    },
+    {
+      "id": "ISSUE_52",
+      "available": "5.000000",
+      "competing_issue_quantities": ["4.000000", "4.000000"],
+      "expected_successes": 1,
+      "expected_remaining": "1.000000",
+      "actual_outcomes": null
+    },
+    {
+      "id": "LOAN_52",
+      "asset": "DEMO_ASSET_52_A",
+      "competing_claims": 2,
+      "expected_active_claims": 1,
+      "actual_outcomes": null
+    },
+    {
+      "id": "RECEIPT_CANCEL_52",
+      "invariant": "accepted_quantity + cancelled_quantity <= ordered_quantity",
+      "actual_outcomes": null
+    },
+    {
+      "id": "COUNT_WRITER_52",
+      "invariant": "all writers honor gate; stale snapshot cannot post without recount/new approval",
+      "actual_outcomes": null
+    },
+    {
+      "id": "DISPOSAL_LOAN_52",
+      "invariant": "one asset lock; no effective disposal alongside incompatible outstanding claim",
+      "actual_outcomes": null
+    }
+  ],
+  "retry_plan": {
+    "same_key_same_hash": "SAME_RESULT_AFTER_CURRENT_AUTH_CHECK",
+    "same_key_different_hash": "CONFLICT",
+    "new_key_same_business_slot": "NO_SECOND_POST",
+    "revoked_replay": "DENY_NO_PRIVATE_RESULT",
+    "actual_executed": false
+  },
+  "fault_plan": {
+    "native_two_connections_required": true,
+    "barrier_required": true,
+    "failpoints": [
+      "BEFORE_SOURCE_WRITE",
+      "AFTER_FINANCE_BEFORE_INVENTORY",
+      "AFTER_LEDGER_BEFORE_PROJECTION",
+      "BEFORE_RECEIPT_AUDIT_OUTBOX",
+      "BEFORE_COMMIT",
+      "AFTER_COMMIT_BEFORE_RESPONSE",
+      "WORKER_BEFORE_DELIVERY",
+      "WORKER_AFTER_DELIVERY_BEFORE_ACK"
+    ],
+    "precommit_expected": "ALL_RELATED_WRITES_ROLLBACK",
+    "postcommit_expected": "ONE_DURABLE_OPERATION_AUTHORIZED_RETRY",
+    "actual_executed": false
+  },
+  "scope_denial_plan": {
+    "same_org_other_warehouse_without_grant": "DENY",
+    "other_org": "DENY",
+    "borrower_private_price_or_other_person": "DENY_UNLESS_EXPLICIT_FIELD_GRANT",
+    "expired_or_revoked_delegation": "DENY",
+    "technical_or_maker_approval": "DENY",
+    "actual_tested": false
+  },
+  "criteria": {
+    "52-01": {
+      "cases": [
+        "P52-02",
+        "P52-03",
+        "P52-04",
+        "P52-05",
+        "P52-06",
+        "P52-07",
+        "P52-08",
+        "P52-09",
+        "P52-10",
+        "P52-11",
+        "P52-12",
+        "P52-13",
+        "P52-14",
+        "P52-15",
+        "P52-16",
+        "P52-17",
+        "P52-19",
+        "P52-21",
+        "P52-26",
+        "P52-27",
+        "P52-28",
+        "P52-30"
+      ],
+      "status": "BLOCKED",
+      "actual": null
+    },
+    "52-02": {
+      "cases": [
+        "P52-18",
+        "P52-23",
+        "P52-24",
+        "P52-25",
+        "P52-26",
+        "P52-28",
+        "P52-29"
+      ],
+      "status": "BLOCKED",
+      "actual": null
+    }
+  },
+  "cases": [
+    {
+      "id": "P52-01",
+      "steps": "loginเดียว→ขอซื้อ→ส่งกลับ→แก้ revision→ตรวจ→อนุมัติ→จอง",
+      "expected": "requestเดิม/historyครบ maker checker/current requirements/scan; draftหรือไม่อนุมัติไม่จอง",
+      "status": "NOT_RUN",
+      "actual": null,
+      "run_id": null,
+      "proof_manifest": null
+    },
+    {
+      "id": "P52-02",
+      "steps": "จัดสรร100000 จอง20000 ออก order12000",
+      "expected": "R8000/U12000/V80000 การย้าย R→U atomic ไม่ ledger เงินชุดใหม่ retryไม่ซ้ำ สองคำขอจองแข่งไม่เกินงบ",
+      "status": "NOT_RUN",
+      "actual": null,
+      "run_id": null,
+      "proof_manifest": null
+    },
+    {
+      "id": "P52-03",
+      "steps": "order วัสดุ10กล่อง×10ชิ้นราคา20/ชิ้น กับ asset5ชิ้นราคา2000",
+      "expected": "100ชิ้น/2000.00 และ5ชิ้น/10000.00 รวม12000.00 ตรึง conversion/price version ไม่บวกราคาต่อกล่องเป็นต่อชิ้น",
+      "status": "NOT_RUN",
+      "actual": null,
+      "run_id": null,
+      "proof_manifest": null
+    },
+    {
+      "id": "P52-04",
+      "steps": "รับครั้งแรกวัสดุ2กล่องกับasset1 ผ่านตรวจ",
+      "expected": "material20 available/asset registerจาก accepted ordinalหนึ่ง; liability2400.00 Uยัง12000 ไม่จ่าย/ปลดเต็ม order",
+      "status": "NOT_RUN",
+      "actual": null,
+      "run_id": null,
+      "proof_manifest": null
+    },
+    {
+      "id": "P52-05",
+      "steps": "รับครั้งสองวัสดุ3กล่องกับasset1; ส่วนเหลือไม่รับ",
+      "expected": "materialรวม50 asset2 liability5000.00 remaining50ชิ้น/3asset คง order ไม่ fulfilled ทั้งหมด",
+      "status": "NOT_RUN",
+      "actual": null,
+      "run_id": null,
+      "proof_manifest": null
+    },
+    {
+      "id": "P52-06",
+      "steps": "pending/reject/returnก่อนaccepted แล้ว replacement ที่อนุมัติ",
+      "expected": "ไม่มีstock available หรือassetจาก pending/reject ไม่มี OUT ของที่ไม่เคยรับ remaining/received/accepted/replaced แยกตาม policy49",
+      "status": "NOT_RUN",
+      "actual": null,
+      "run_id": null,
+      "proof_manifest": null
+    },
+    {
+      "id": "P52-07",
+      "steps": "รับเกิน order/ตรวจรับเกิน physicalreceipt/accepted+cancelledเกิน ordered",
+      "expected": "serverและnative source guardsปฏิเสธ ไม่มีเงิน stock assetหรือ receipt หลุด orphan",
+      "status": "NOT_RUN",
+      "actual": null,
+      "run_id": null,
+      "proof_manifest": null
+    },
+    {
+      "id": "P52-08",
+      "steps": "inspection retry key/hashเดิม hashต่าง keyใหม่ business slotเดิม",
+      "expected": "post/materialและทะเบียนasset source(receiptline,ordinal)เพียงหนึ่ง ไม่ใช้ transport keyอย่างเดียว currentgrantก่อน replay",
+      "status": "NOT_RUN",
+      "actual": null,
+      "run_id": null,
+      "proof_manifest": null
+    },
+    {
+      "id": "P52-09",
+      "steps": "partial receipt-vs-cancel/native race",
+      "expected": "accepted+cancelledไม่เกิน ordered liabilityคงส่วนรับจริง ยกเลิกไม่คืน P/C หรือรับเพิ่มเงียบ ๆ ผล loserเข้าใจได้",
+      "status": "NOT_RUN",
+      "actual": null,
+      "run_id": null,
+      "proof_manifest": null
+    },
+    {
+      "id": "P52-10",
+      "steps": "ปลด R8000 และยกเลิก unfulfilled U7000 ที่ตรวจแล้ว",
+      "expected": "R0/U5000/V95000 คง accepted liability5000.00 source/reason/approval/evidenceครบ retryไม่ overrelease",
+      "status": "NOT_RUN",
+      "actual": null,
+      "run_id": null,
+      "proof_manifest": null
+    },
+    {
+      "id": "P52-11",
+      "steps": "รับรอง2400/จ่าย2400 รับรอง2600/จ่าย1000/จ่าย1600",
+      "expected": "U/C/P ตาม fixture Cเป็นส่วนของU จ่ายแล้วP5000/V95000 การรับไม่หักซ้ำ maintenance/disposal/reportไม่จ่ายเอง",
+      "status": "NOT_RUN",
+      "actual": null,
+      "run_id": null,
+      "proof_manifest": null
+    },
+    {
+      "id": "P52-12",
+      "steps": "paid/certified/claimขัดกัน แล้วเสนอ return/refund/payment correction",
+      "expected": "deny genericinverse ต้องคำขอ44/หลักฐาน/period/downstreamใหม่ sourceครบ stockreturnไม่เป็นbudget refund; branch correctionสมมติเปิด U/C ตามคำอนุมัติเท่านั้น",
+      "status": "NOT_RUN",
+      "actual": null,
+      "run_id": null,
+      "proof_manifest": null
+    },
+    {
+      "id": "P52-13",
+      "steps": "unit versionเปลี่ยน unknown/incompatible conversion fractional/range/scale",
+      "expected": "oldeventsใช้รุ่นเดิม kg0.125000×8=1.000000 exact ห้ามfloat/NaN/Infinity/scaleเกิน piece ไม่รวมkgกับชิ้น unknowndeny",
+      "status": "NOT_RUN",
+      "actual": null,
+      "run_id": null,
+      "proof_manifest": null
+    },
+    {
+      "id": "P52-14",
+      "steps": "available5 เบิก4พร้อมกันสองรายการ",
+      "expected": "สำเร็จหนึ่ง รายการแพ้ insufficient stock/conflict คงเหลือ1 ทุกledger/projection/receiptตรง ไม่มีnegative/duplicate",
+      "status": "NOT_RUN",
+      "actual": null,
+      "run_id": null,
+      "proof_manifest": null
+    },
+    {
+      "id": "P52-15",
+      "steps": "bucketยังไม่มี row/lot=NULL แล้วรับพร้อมกัน; โอนสองขาพร้อมเบิก",
+      "expected": "unique nullsafeหนึ่งbucket ไม่lock missingrowอย่างเดียว transferสองขา net0 rollbackพร้อมกัน globalorderไม่มีhalftransfer",
+      "status": "NOT_RUN",
+      "actual": null,
+      "run_id": null,
+      "proof_manifest": null
+    },
+    {
+      "id": "P52-16",
+      "steps": "assetหนึ่งชิ้นขอยืมพร้อมกันสองคน/ยืม-vs-maintenance",
+      "expected": "outstanding claim/reservationหนึ่งชุด pending-return/repair/disposedห้ามยืม ไม่ใช้returned_atหรือis_activeปลด guard",
+      "status": "NOT_RUN",
+      "actual": null,
+      "run_id": null,
+      "proof_manifest": null
+    },
+    {
+      "id": "P52-17",
+      "steps": "ยืม→ส่งมอบ→คืน→ตรวจสภาพ→ซ่อม→ตรวจเสร็จ",
+      "expected": "physicalreturnยังไม่availableก่อนinspection/release custody owner borrower locationแยก historyคง และrepair estimateไม่จ่ายงบเอง",
+      "status": "NOT_RUN",
+      "actual": null,
+      "run_id": null,
+      "proof_manifest": null
+    },
+    {
+      "id": "P52-18",
+      "steps": "ย้าย/ลาออกผู้ถือครอง; ค้นอดีต/อนาคต/known_at",
+      "expected": "impactคำขอส่งมอบใหม่มีหลักฐาน ไม่เลือกผู้รับแทน/ลบชื่อเดิม permissionไม่ตามตำแหน่งหรือที่อยู่ snapshotชื่อ/ที่ตั้งเดิมครบ",
+      "status": "NOT_RUN",
+      "actual": null,
+      "run_id": null,
+      "proof_manifest": null
+    },
+    {
+      "id": "P52-19",
+      "steps": "count gate→snapshot expected30 actual29→review→approved delta−1",
+      "expected": "ledgerเพิ่มหนึ่ง A29/B8 ไม่overwrite counted-current; writerทุกทางทำตามgate staleversion/leaseexpiryต้องrecount ไม่autoapprove",
+      "status": "NOT_RUN",
+      "actual": null,
+      "run_id": null,
+      "proof_manifest": null
+    },
+    {
+      "id": "P52-20",
+      "steps": "asset away on loan/missing/unmatched ตรวจนับ",
+      "expected": "ไม่ถือ awayเป็นmissingโดยปริยาย ไม่สร้างasset/expense/disposalอัตโนมัติ observationแยกจากmaterialquantity",
+      "status": "NOT_RUN",
+      "actual": null,
+      "run_id": null,
+      "proof_manifest": null
+    },
+    {
+      "id": "P52-21",
+      "steps": "disposal draft→returned→approvedhold→executionverified→effective",
+      "expected": "approveไม่DISPOSEDก่อนverified/date dependencyครบ loan/repair/custodyclaimsขัดกันdeny uniqueactiveclaim/assetlockร่วมloan ไม่ลบcode/price/funding/history",
+      "status": "NOT_RUN",
+      "actual": null,
+      "run_id": null,
+      "proof_manifest": null
+    },
+    {
+      "id": "P52-22",
+      "steps": "revoke/correct disposal ด้วยคำขอใหม่ ผู้ตรวจและหลักฐาน",
+      "expected": "สืบต้นทางได้ eventผิดยังอยู่ คืนavailabilityเฉพาะ approvedrepair/correctionpolicy ไม่reusecode/restoreสิทธิ์เอง",
+      "status": "NOT_RUN",
+      "actual": null,
+      "run_id": null,
+      "proof_manifest": null
+    },
+    {
+      "id": "P52-23",
+      "steps": "คลัง A only อ่าน/แก้ custodyคลัง B sameorg และorgนอกscope",
+      "expected": "read/list/detail/search/history/export/QR/API/body child IDs/workerทั้งหมดdeny currentfieldpolicy ไม่อนุมานorg grantคือทุกคลัง",
+      "status": "NOT_RUN",
+      "actual": null,
+      "run_id": null,
+      "proof_manifest": null
+    },
+    {
+      "id": "P52-24",
+      "steps": "owner/borrower/auditor/tech/maker/expireddelegation/sessionrevoke",
+      "expected": "borrowerไม่เห็นprice/privateคนอื่นโดยปริยาย ผู้สร้าง/เทคนิคapproveผ่านAPIไม่ได้ revokedretry/export/download/jobไม่เผยผลเดิม",
+      "status": "NOT_RUN",
+      "actual": null,
+      "run_id": null,
+      "proof_manifest": null
+    },
+    {
+      "id": "P52-25",
+      "steps": "pending/failed scan/ACLถูกถอน/file versionใหม่/shared docs",
+      "expected": "approve/preview/download/exportdeny แม้เคยCLEAN hashเดิม ห้ามแสดงPIIราคา/secretในQR/publicHTML/API/cache/static",
+      "status": "NOT_RUN",
+      "actual": null,
+      "run_id": null,
+      "proof_manifest": null
+    },
+    {
+      "id": "P52-26",
+      "steps": "faultpointsข้ามfinance-source-stock-asset-audit-outboxและworkerretry",
+      "expected": "ก่อนcommitทั้งหมดrollback หลังcommitoperationเดิมหนึ่งชุด durablededupe/devsink retry/DL ไม่doublecharge/stock/asset/notifications",
+      "status": "NOT_RUN",
+      "actual": null,
+      "run_id": null,
+      "proof_manifest": null
+    },
+    {
+      "id": "P52-27",
+      "steps": "stockledger→projection→receiptmanifest และfinanceledger→report",
+      "expected": "A29/B8รวม37ชิ้น/asset2คงcodeแม้disposed1; acceptedvalue5000=paid5000ในตัวอย่างเท่านั้น quantities≠money stockadjust/disposeไม่autoexpense",
+      "status": "NOT_RUN",
+      "actual": null,
+      "run_id": null,
+      "proof_manifest": null
+    },
+    {
+      "id": "P52-28",
+      "steps": "screen/page/Excel/HTMLprintPDF asof/namechange/lateevent/projectionlag",
+      "expected": "pinnedmanifest/versions currentACL exactThai/leadingzero/formulainjection/precision totalsตรง lagไม่fresh mismatchไม่silentrepair reportreadไม่posting",
+      "status": "NOT_RUN",
+      "actual": null,
+      "run_id": null,
+      "proof_manifest": null
+    },
+    {
+      "id": "P52-29",
+      "steps": "keyboard 375/768/1024/1440 empty/error/revisionconflict/expiry",
+      "expected": "label/focus/statusภาษาไทย resume/networkretryเข้าใจ ไม่มีgrantจากbrowser validation ฝั่งserverและเวลาจริงยังบังคับ",
+      "status": "NOT_RUN",
+      "actual": null,
+      "run_id": null,
+      "proof_manifest": null
+    },
+    {
+      "id": "P52-30",
+      "steps": "closedperiod/unknownauthority/tax/negativepolicy/depreciation/method/retention",
+      "expected": "ทุกwriterdenyตามpolicy unknown officialปิด depreciation/NBV NULL แยกsoftwareQAจากO06/O07 UAT ไม่อ้างe-GP/NBMS/bank",
+      "status": "NOT_RUN",
+      "actual": null,
+      "run_id": null,
+      "proof_manifest": null
+    }
+  ]
+}

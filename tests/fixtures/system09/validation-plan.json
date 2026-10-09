@@ -1,0 +1,601 @@
+{
+  "version": "0.1",
+  "lesson": 61,
+  "mode": "PLAN_ONLY",
+  "verification": "PROPOSAL_TO_VERIFY",
+  "runtime_status": "NOT_IMPLEMENTED",
+  "prerequisites": {
+    "lesson_60": "BLOCKED",
+    "lesson_36": "BLOCKED",
+    "native_postgresql": "DB_TEST_EXIT_1"
+  },
+  "actual": {
+    "import_batch_ids": [],
+    "import_row_ids": [],
+    "validation_issue_ids": [],
+    "dry_run_report_id": null,
+    "source_file_sha256": null,
+    "export_file_version_id": null,
+    "runtime_report": null
+  },
+  "shared_services": {
+    "identity": "Person/Candidate/identity policy กลาง",
+    "applications": "ระบบ05 read-only canonical business-key lookup",
+    "eligibility": "service36 versioned rules/evidence",
+    "files": "FileVersion/quarantine/scan/currentACL กลาง",
+    "registry": "FormTemplateRegistry ระบบ05",
+    "auth": "current account/action/scope/assignment time/field policy",
+    "writes": "staging/run/issues/audit/outboxเท่านั้น ไม่มีPerson/Enrollment/Application writes"
+  },
+  "model_contract": {
+    "import_batch_unique": "owner account+context+idempotency key; receipt fingerprint",
+    "import_row_unique": [
+      "batch_id",
+      "dry_run_version_no",
+      "sheet_key",
+      "physical_row_number"
+    ],
+    "validation_issue_unique": "run+NOT_NULL_scope_target_key(@batch or bound row)+field+code+NOT_NULL_occurrence_key",
+    "report_unique": ["batch_id", "run_number"],
+    "namespace": "private schema RLS deny by default",
+    "registry_write_grants": "NONE_FOR_DRY_RUN_PRINCIPAL",
+    "migration_status": "NOT_CREATED"
+  },
+  "policies": {
+    "code_version": "DEMO_IMPORT_VALIDATION_CODES_0.1",
+    "batch_organization_binding": "ONE_SELECTED_ORGANIZATION_DEFAULT; aggregate requires pinned policy",
+    "application_key": [
+      "candidate_id",
+      "session_offering_id",
+      "server_registration_slot"
+    ],
+    "duplicate_policy": "VERIFIED_IDENTITY_AND_SHARED_OPPORTUNITY_NOT_NAME",
+    "pending_batch_states": [
+      "VALIDATING",
+      "VALIDATED_WITH_ERRORS",
+      "VALIDATED_WITH_WARNINGS",
+      "VALIDATED_READY"
+    ],
+    "excluded_pending_batch_states": [
+      "FAILED",
+      "VALIDATION_FAILED_INCOMPLETE",
+      "CANCELLED",
+      "SUPERSEDED"
+    ],
+    "warning_ack_waives_errors": false,
+    "dry_run_reserves_seat_or_business_key": false,
+    "ttl_seconds_proposal": 900,
+    "expires_at": "min(checked_at+TTL,next_effective_boundary,assignment_end)",
+    "read_export_download_rechecks_freshness": true,
+    "event_notification_is_not_freshness_authority": true,
+    "xlsx_export": "SERVER_ALLOWLIST_DTO_TYPED_STRINGS_NO_FORMULA_OBJECTS_NO_SOURCE_STYLES_NO_HIDDEN_RAW",
+    "csv_export_enabled": false
+  },
+  "code_catalog": [
+    {
+      "code": "REQUIRED",
+      "severity": "ERROR"
+    },
+    {
+      "code": "CELL_MUST_BE_TEXT",
+      "severity": "ERROR"
+    },
+    {
+      "code": "AMBIGUOUS_DATE",
+      "severity": "ERROR"
+    },
+    {
+      "code": "AMBIGUOUS_YEAR",
+      "severity": "ERROR"
+    },
+    {
+      "code": "SCHEMA_VERSION_MISMATCH",
+      "severity": "ERROR"
+    },
+    {
+      "code": "FORM_NOT_VERIFIED",
+      "severity": "ERROR"
+    },
+    {
+      "code": "CONTEXT_YEAR_MISMATCH",
+      "severity": "ERROR"
+    },
+    {
+      "code": "INVALID_GROUP",
+      "severity": "ERROR"
+    },
+    {
+      "code": "UNKNOWN_ORGANIZATION",
+      "severity": "ERROR"
+    },
+    {
+      "code": "ORG_CONTEXT_MISMATCH",
+      "severity": "ERROR"
+    },
+    {
+      "code": "SCOPE_DENIED",
+      "severity": "ERROR"
+    },
+    {
+      "code": "UNKNOWN_EXAM_CENTER",
+      "severity": "ERROR"
+    },
+    {
+      "code": "CENTER_CONTEXT_MISMATCH",
+      "severity": "ERROR"
+    },
+    {
+      "code": "CENTER_CLOSED",
+      "severity": "ERROR"
+    },
+    {
+      "code": "SESSION_CLOSED",
+      "severity": "ERROR"
+    },
+    {
+      "code": "NOT_OPEN",
+      "severity": "ERROR"
+    },
+    {
+      "code": "CLOSED",
+      "severity": "ERROR"
+    },
+    {
+      "code": "INELIGIBLE",
+      "severity": "ERROR"
+    },
+    {
+      "code": "NOT_READY",
+      "severity": "ERROR"
+    },
+    {
+      "code": "EVIDENCE_REQUIRED",
+      "severity": "ERROR"
+    },
+    {
+      "code": "EVIDENCE_NOT_CLEAN",
+      "severity": "ERROR"
+    },
+    {
+      "code": "EVIDENCE_BINDING_MISMATCH",
+      "severity": "ERROR"
+    },
+    {
+      "code": "EVIDENCE_NOT_VERIFIED",
+      "severity": "ERROR"
+    },
+    {
+      "code": "IDENTITY_INVALID",
+      "severity": "ERROR"
+    },
+    {
+      "code": "IDENTITY_REVIEW_REQUIRED",
+      "severity": "ERROR"
+    },
+    {
+      "code": "DUPLICATE_ROW_ID",
+      "severity": "ERROR"
+    },
+    {
+      "code": "DUPLICATE_IN_FILE",
+      "severity": "ERROR"
+    },
+    {
+      "code": "DUPLICATE_PENDING_BATCH",
+      "severity": "ERROR"
+    },
+    {
+      "code": "DUPLICATE_APPLICATION",
+      "severity": "ERROR"
+    },
+    {
+      "code": "UNMAPPED_REMARK",
+      "severity": "ERROR"
+    },
+    {
+      "code": "ORPHAN_REMARK",
+      "severity": "ERROR"
+    },
+    {
+      "code": "NAME_SIMILAR_NOT_MERGED",
+      "severity": "WARNING"
+    },
+    {
+      "code": "REPORT_STALE",
+      "severity": "ERROR"
+    },
+    {
+      "code": "REPORT_EXPIRED",
+      "severity": "ERROR"
+    },
+    {
+      "code": "VALIDATION_INCOMPLETE",
+      "severity": "ERROR"
+    }
+  ],
+  "coverage_contexts": [
+    ["NAKTHAM", "TRI", "NONE"],
+    ["NAKTHAM", "THO", "NONE"],
+    ["NAKTHAM", "EK", "NONE"],
+    ["DHAMMASTUDY", "TRI", "PRIMARY"],
+    ["DHAMMASTUDY", "THO", "PRIMARY"],
+    ["DHAMMASTUDY", "EK", "PRIMARY"],
+    ["DHAMMASTUDY", "TRI", "SECONDARY"],
+    ["DHAMMASTUDY", "THO", "SECONDARY"],
+    ["DHAMMASTUDY", "EK", "SECONDARY"],
+    ["DHAMMASTUDY", "TRI", "HIGHER"],
+    ["DHAMMASTUDY", "THO", "HIGHER"],
+    ["DHAMMASTUDY", "EK", "HIGHER"]
+  ],
+  "reference_only_payload": {
+    "description": "TEST inline subsetเพื่ออธิบายdigest ไม่ใช่XLSXbytes/fullmachine-inputหรือผลparser",
+    "file_descriptor": {
+      "namespace": "TEST_61",
+      "revision": 1,
+      "kind": "NOT_AN_XLSX_FILE"
+    },
+    "normalized_projection": {
+      "parser_generation": "TEST_GENERATION_1",
+      "rows": [
+        {
+          "sheet": "ผู้สมัคร",
+          "physical_row": 5,
+          "row_id": "000001",
+          "organization_code": "00102",
+          "identity_value": "TEST_LOCAL_000001",
+          "given_name": "ทดสอบก้อง"
+        },
+        {
+          "sheet": "ผู้สมัคร",
+          "physical_row": 6,
+          "row_id": "000002",
+          "organization_code": "TEST_OUT_OF_SCOPE",
+          "identity_value": "TEST_LOCAL_000002",
+          "given_name": "ทดสอบก้อง"
+        },
+        {
+          "sheet": "ผู้สมัคร",
+          "physical_row": 7,
+          "row_id": "000003",
+          "exam_center_code": "TEST_CLOSED_CENTER",
+          "identity_value": "TEST_LOCAL_000003",
+          "given_name": "ทดสอบก้อง"
+        },
+        {
+          "sheet": "ผู้สมัคร",
+          "physical_row": 8,
+          "row_id": "000004",
+          "identity_value": "TEST_VERIFIED_SAME_IDENTITY",
+          "given_name": "ทดสอบก้อง"
+        },
+        {
+          "sheet": "ผู้สมัคร",
+          "physical_row": 9,
+          "row_id": "000005",
+          "identity_value": "TEST_VERIFIED_SAME_IDENTITY",
+          "given_name": "ทดสอบก้อง"
+        },
+        {
+          "sheet": "ผู้สมัคร",
+          "physical_row": 10,
+          "row_id": "000006",
+          "identity_value": "TEST_VERIFIED_DISTINCT_IDENTITY",
+          "given_name": "ทดสอบก้อง",
+          "notes": "=1+1"
+        },
+        {
+          "sheet": "หมายเหตุ",
+          "physical_row": 5,
+          "row_id": "000001",
+          "remark_code": "IDENTITY_WITHOUT_THAI_ID",
+          "evidence_ref": null
+        }
+      ]
+    },
+    "context": {
+      "academic_year_code": "TEST_AY_2569",
+      "organization_code": "00101",
+      "offering": "TEST_NK_TRI_NONE",
+      "template_version": "0.1.0",
+      "machine_schema_version": "0.1.0",
+      "normalization_profile": "TEMPLATE59_CE_ASCII",
+      "eligibility_rule": "DEMO_ELIGIBILITY_V1",
+      "identity_policy": "TEST_IDENTITY_POLICY_1",
+      "evidence_mapping": "DEMO_REMARKS_0.1.0",
+      "visibility_policy": "TEST_VISIBILITY_1"
+    },
+    "facts": {
+      "organization_revision": 1,
+      "hierarchy_revision": 1,
+      "center_session_revision": 1,
+      "identity_revision": 1,
+      "evidence_revision": 1,
+      "application_set_revision": 1,
+      "pending_batch_set_revision": 1
+    },
+    "checked_at": "2026-10-06T01:00:00+07:00",
+    "clock_source": "REFERENCE_FIXTURE_ONLY_NOT_CURRENT_SERVER_CLOCK"
+  },
+  "expected_example_issues": [
+    {
+      "sheet": "ผู้สมัคร",
+      "row": 5,
+      "field": "organization_code",
+      "column": "B",
+      "cell": "B5",
+      "code": "ORG_CONTEXT_MISMATCH",
+      "display_value": "00102"
+    },
+    {
+      "sheet": "ผู้สมัคร",
+      "row": 6,
+      "field": "organization_code",
+      "column": "B",
+      "cell": "B6",
+      "code": "SCOPE_DENIED",
+      "display_value": "ปกปิดตามสิทธิ์"
+    },
+    {
+      "sheet": "ผู้สมัคร",
+      "row": 7,
+      "field": "exam_center_code",
+      "column": "C",
+      "cell": "C7",
+      "code": "CENTER_CLOSED",
+      "display_value": "TEST_CLOSED_CENTER"
+    },
+    {
+      "sheet": "ผู้สมัคร",
+      "row": 8,
+      "field": "identity_value",
+      "column": "J",
+      "cell": "J8",
+      "code": "DUPLICATE_IN_FILE",
+      "display_value": "ปกปิดตามสิทธิ์",
+      "related_own_cell": "J9"
+    },
+    {
+      "sheet": "ผู้สมัคร",
+      "row": 9,
+      "field": "identity_value",
+      "column": "J",
+      "cell": "J9",
+      "code": "DUPLICATE_IN_FILE",
+      "display_value": "ปกปิดตามสิทธิ์",
+      "related_own_cell": "J8"
+    },
+    {
+      "sheet": "ผู้สมัคร",
+      "row": 4,
+      "field": "exam_center_code",
+      "column": "C",
+      "cell": "C4",
+      "code": "SCHEMA_VERSION_MISMATCH",
+      "display_value": null
+    },
+    {
+      "sheet": "หมายเหตุ",
+      "row": 5,
+      "field": "evidence_ref",
+      "column": "D",
+      "cell": "D5",
+      "code": "EVIDENCE_REQUIRED",
+      "display_value": null
+    },
+    {
+      "sheet": "ผู้สมัคร",
+      "row": 10,
+      "field": "given_name",
+      "column": "M",
+      "cell": "M10",
+      "code": "NAME_SIMILAR_NOT_MERGED",
+      "display_value": "ทดสอบก้อง"
+    }
+  ],
+  "stale_reference_vectors": [
+    {
+      "id": "S61-01",
+      "path": ["file_descriptor", "revision"],
+      "replacement": 2,
+      "reason": "file descriptor changed; actualFileVersionmustrevalidate",
+      "changed_reference_sha256": "83b5b8d346101a63d0fc10c6b1e5d300adff0c95809beeffccc941876937cb88"
+    },
+    {
+      "id": "S61-02",
+      "path": ["normalized_projection", "rows", 0, "given_name"],
+      "replacement": "ทดสอบแก้ชื่อ",
+      "reason": "normalized projection changed",
+      "changed_reference_sha256": "b64b9824cc55fbe16c412c7a1a01b570783ec809ee3b97ecfec48a7d2c802470"
+    },
+    {
+      "id": "S61-03",
+      "path": ["context", "eligibility_rule"],
+      "replacement": "DEMO_ELIGIBILITY_V2",
+      "reason": "rule version changed",
+      "changed_reference_sha256": "349ab4735c56507a6cfdad7e079e853f99a66a72309e9d8895b39d687c48cf22"
+    },
+    {
+      "id": "S61-04",
+      "path": ["facts", "center_session_revision"],
+      "replacement": 2,
+      "reason": "center fact changed",
+      "changed_reference_sha256": "0ebc8ef065356f836bb367bdfd47a50de597400d1bf09540acb1e0a8d536da17"
+    },
+    {
+      "id": "S61-05",
+      "path": ["facts", "application_set_revision"],
+      "replacement": 2,
+      "reason": "application duplicate facts changed",
+      "changed_reference_sha256": "3e2bc708a297da3d8710035105c73704d7638e029da0a94d77daebd76a2f4bc9"
+    },
+    {
+      "id": "S61-06",
+      "path": ["facts", "pending_batch_set_revision"],
+      "replacement": 2,
+      "reason": "pending batch facts changed",
+      "changed_reference_sha256": "531eda4c2adbec607f4b3bcdad65351c7867449d545cd2dd11b291d0b5a179f6"
+    },
+    {
+      "id": "S61-07",
+      "path": ["facts", "hierarchy_revision"],
+      "replacement": 2,
+      "reason": "scope hierarchy changed",
+      "changed_reference_sha256": "4f1058aa6e17003d955ecc81c11f5c54ff089eab08142812144043d5ac996a6e"
+    },
+    {
+      "id": "S61-08",
+      "path": ["context", "visibility_policy"],
+      "replacement": "TEST_VISIBILITY_2",
+      "reason": "field policy changed",
+      "changed_reference_sha256": "b35fdef381c477f73540e6cbd63d609769f9dce1c86e2ade839be7263f3ec088"
+    }
+  ],
+  "export_text_vectors": [
+    "=1+1",
+    "+1",
+    "-1",
+    "@SUM(1,1)",
+    "\t=1+1",
+    "\r=1+1",
+    "\n=1+1",
+    "＝1+1",
+    "＋1",
+    "－1",
+    "＠SUM(1,1)",
+    "ข้อความ,=1+1",
+    "ข้อความ\"=1+1",
+    "ทดสอบก้อง",
+    "000001",
+    "{\"formula\":\"1+1\"}"
+  ],
+  "reference_digests": {
+    "profile": "REFERENCE_CANONICAL_JSON_0.1",
+    "algorithm": "SHA-256",
+    "canonicalization": "json.dumps ensure_ascii=False sort_keys=True separators=(comma,colon) UTF8; fixture primitives only no floats",
+    "file_descriptor_sha256": "f18ec129b049332b8f6d24d9071f251c740dd3cf8dd30a2ea9b64a3a45d5ac43",
+    "normalized_projection_sha256": "8f4c8ea174791fde4139734013f11be07e147e01cec8a298e03273efd852181c",
+    "rules_context_sha256": "69a48e0a20839d42ab03c0da2176d1e9340951c4a607ea772e06b5525f2dc124",
+    "fact_revisions_sha256": "158ddda74468284f5021dcf029de4dc49fc589358a57d6c514ea8dc774ad9e4f",
+    "combined_reference_sha256": "e33f9a4071f072737384c4bc27d0c0b78bfa0e151a349a59eacc308b5db152ad",
+    "purpose": "FIXTURE_EXPECTATION_ONLY_NOT_UPLOAD_OR_SERVER_REPORT"
+  },
+  "cases": [
+    {
+      "id": "P61-01",
+      "requirement": "ALL_CONTEXTS_ROWS_NO_REGISTRY_WRITES"
+    },
+    {
+      "id": "P61-02",
+      "requirement": "DB_READ_ONLY_REGISTRY_GUARD"
+    },
+    {
+      "id": "P61-03",
+      "requirement": "CORRECTABLE_REQUIRED_LOCATORS"
+    },
+    {
+      "id": "P61-04",
+      "requirement": "ALL_ROWS_AND_DEPENDENT_CHECKS"
+    },
+    {
+      "id": "P61-05",
+      "requirement": "IN_FILE_DUPLICATES_AND_REMARKS"
+    },
+    {
+      "id": "P61-06",
+      "requirement": "PENDING_BATCH_DUPLICATES_PRIVATE"
+    },
+    {
+      "id": "P61-07",
+      "requirement": "SHARED_APPLICATION_BUSINESS_KEY"
+    },
+    {
+      "id": "P61-08",
+      "requirement": "ALLOWED_MULTI_YEAR_OPPORTUNITIES"
+    },
+    {
+      "id": "P61-09",
+      "requirement": "NO_NAME_BASED_PERSON_MERGE"
+    },
+    {
+      "id": "P61-10",
+      "requirement": "THAI_FOREIGN_NO_THAI_ID_POLICY"
+    },
+    {
+      "id": "P61-11",
+      "requirement": "ACADEMIC_YEAR_GROUP_OFFERING"
+    },
+    {
+      "id": "P61-12",
+      "requirement": "EFFECTIVE_CENTER_SESSION_STATE"
+    },
+    {
+      "id": "P61-13",
+      "requirement": "SERVER_REGISTRATION_WINDOW"
+    },
+    {
+      "id": "P61-14",
+      "requirement": "VERIFIED_ELIGIBILITY_NO_PRACTICE"
+    },
+    {
+      "id": "P61-15",
+      "requirement": "EVIDENCE_SCAN_BINDING_CONTENT"
+    },
+    {
+      "id": "P61-16",
+      "requirement": "CURRENT_ALL_CHANNEL_SCOPE"
+    },
+    {
+      "id": "P61-17",
+      "requirement": "PROTECTED_VALUES_SERVER_DTO"
+    },
+    {
+      "id": "P61-18",
+      "requirement": "FORMULA_INJECTION_EXPORT"
+    },
+    {
+      "id": "P61-19",
+      "requirement": "FILE_NORMALIZED_DIGEST_RECHECK"
+    },
+    {
+      "id": "P61-20",
+      "requirement": "RULE_POLICY_VERSION_STALENESS"
+    },
+    {
+      "id": "P61-21",
+      "requirement": "FACT_STALENESS_EVENT_DELAY"
+    },
+    {
+      "id": "P61-22",
+      "requirement": "EXPIRY_ASSIGNMENT_BOUNDARY"
+    },
+    {
+      "id": "P61-23",
+      "requirement": "RETRY_CAS_LEASE_GENERATION"
+    },
+    {
+      "id": "P61-24",
+      "requirement": "INCOMPLETE_FAILURE_RECOVERY"
+    },
+    {
+      "id": "P61-25",
+      "requirement": "WARNINGS_NOT_APPROVAL"
+    },
+    {
+      "id": "P61-26",
+      "requirement": "PREVIEW_LOCATOR_PAGINATION_ACCESSIBILITY"
+    }
+  ],
+  "case_execution": "ALL_NOT_RUN",
+  "acceptance": {
+    "AC61_01": "BLOCKED_NOT_RUN",
+    "AC61_02": "BLOCKED_NOT_RUN"
+  },
+  "reference_inspection": {
+    "status": "CHECKED_FIXTURE_DIGEST_CONSISTENCY_ONLY",
+    "recorded_at": "2026-10-09T00:52:54.929982+00:00",
+    "mutation_vectors_with_changed_digest": 8,
+    "runtime_validation_report": "NOT_RUN",
+    "xlsx_error_export": "NOT_RUN",
+    "production_canonicalization": "ADR_REQUIRED"
+  }
+}

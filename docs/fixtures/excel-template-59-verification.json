@@ -1,0 +1,121 @@
+{
+  "version": "0.1",
+  "authoring_runtime": {
+    "artifact_tool": "2.8.85",
+    "node": "24.19.0",
+    "primary_bundle": "26.1004.11800",
+    "application_dependency_added": false
+  },
+  "document_checks": {
+    "local_links": 280,
+    "markdown_tables": 205,
+    "status": "PASS",
+    "selected_format_check": "PASS",
+    "git_diff_check": "PASS",
+    "secret_pattern_check": "PASS_WITHIN_MATCHER_SCOPE"
+  },
+  "date": "2026-10-08",
+  "date_timezone": "UTC",
+  "display_date": "2026-10-09",
+  "display_timezone": "Asia/Bangkok",
+  "recorded_at": "2026-10-08T23:49:29.991562+00:00",
+  "scope": "OFFLINE_XLSX_ONLY",
+  "production_generator": "NOT_IMPLEMENTED",
+  "native_postgresql_test": "EXIT_1",
+  "official_guard_runtime": "NOT_RUN",
+  "artifacts": [
+    {
+      "variant": "blank",
+      "path": "outputs/lesson59/TEST_exam_upload_blank.xlsx",
+      "bytes": 10469,
+      "sha256": "453b55d1e6b7a169280e6b69443742ce370e15c471c87b869952343b17e7bf3a",
+      "xml_integrity": "PASS",
+      "thai_exact_match": "NO_APPLICANT_DATA",
+      "leading_zero_string_cells": "PASS",
+      "application_rows": 0,
+      "remark_rows": 0,
+      "offline_schema_issues": [],
+      "formulas_macros_external_links": "NONE",
+      "official_label": "DEMO",
+      "visual_review": "REVIEWED_ALL_3_SHEETS_THAI_LAYOUT",
+      "preview_limitation": "artifact renderer trims zeros from numeric-looking TEXT; actual XML/import/native LibreOffice preserve them"
+    },
+    {
+      "variant": "valid",
+      "path": "outputs/lesson59/TEST_exam_upload_valid.xlsx",
+      "bytes": 11645,
+      "sha256": "82371a4fb71a80d16d97ebcbe3b38802c956556ef92c695bd156158d3e41ecff",
+      "xml_integrity": "PASS",
+      "thai_exact_match": "PASS",
+      "leading_zero_string_cells": "PASS",
+      "application_rows": 12,
+      "remark_rows": 4,
+      "offline_schema_issues": [],
+      "formulas_macros_external_links": "NONE",
+      "official_label": "DEMO",
+      "visual_review": "REVIEWED_ALL_3_SHEETS_THAI_LAYOUT",
+      "preview_limitation": "artifact renderer trims zeros from numeric-looking TEXT; actual XML/import/native LibreOffice preserve them"
+    },
+    {
+      "variant": "invalid",
+      "path": "outputs/lesson59/TEST_exam_upload_invalid.xlsx",
+      "bytes": 11826,
+      "sha256": "41fb005dfb683bb1d0d09c8893ab12baa18523dcd2e5af1b1c511170c060d0e8",
+      "xml_integrity": "PASS",
+      "thai_exact_match": "PASS",
+      "leading_zero_string_cells": "PASS",
+      "application_rows": 12,
+      "remark_rows": 4,
+      "offline_schema_issues": [
+        ["ผู้สมัคร", 5, "given_name", "REQUIRED"],
+        ["ผู้สมัคร", 6, "organization_code", "UNKNOWN_ORGANIZATION"],
+        ["ผู้สมัคร", 7, "identity_value", "CELL_MUST_BE_TEXT"],
+        ["ผู้สมัคร", 8, "birth_date", "AMBIGUOUS_DATE"],
+        ["ผู้สมัคร", 9, "stage", "INVALID_GROUP"],
+        ["ผู้สมัคร", 10, "row_id", "DUPLICATE_ROW_ID"],
+        ["ผู้สมัคร", 11, "academic_year_code", "CONTEXT_YEAR_MISMATCH"],
+        ["หมายเหตุ", 5, "evidence_ref", "EVIDENCE_REQUIRED"],
+        ["หมายเหตุ", 6, "remark_code", "UNMAPPED_REMARK"],
+        ["หมายเหตุ", 7, "row_id", "ORPHAN_REMARK"]
+      ],
+      "formulas_macros_external_links": "NONE",
+      "official_label": "DEMO",
+      "visual_review": "REVIEWED_ALL_3_SHEETS_THAI_LAYOUT",
+      "preview_limitation": "artifact renderer trims zeros from numeric-looking TEXT; actual XML/import/native LibreOffice preserve them"
+    }
+  ],
+  "blank_fill_save_reopen": "PASS",
+  "native_libreoffice": {
+    "version": "LibreOfficeDev 26.8.0.0.alpha0",
+    "opened_files": 3,
+    "valid_text_checks": "PASS Thai name and leading zeros",
+    "valid_first_page_visual": "PASS label and leading zeros",
+    "desktop_human_uat": "NOT_RUN"
+  },
+  "artifact_tool_roundtrip": [
+    {
+      "variant": "blank",
+      "file": "outputs/lesson59/TEST_exam_upload_blank.xlsx",
+      "applicant_rows": 0,
+      "remark_rows": 0,
+      "roundtrip": "PASS",
+      "official": false
+    },
+    {
+      "variant": "valid",
+      "file": "outputs/lesson59/TEST_exam_upload_valid.xlsx",
+      "applicant_rows": 12,
+      "remark_rows": 4,
+      "roundtrip": "PASS",
+      "official": false
+    },
+    {
+      "variant": "invalid",
+      "file": "outputs/lesson59/TEST_exam_upload_invalid.xlsx",
+      "applicant_rows": 12,
+      "remark_rows": 4,
+      "roundtrip": "PASS",
+      "official": false
+    }
+  ]
+}

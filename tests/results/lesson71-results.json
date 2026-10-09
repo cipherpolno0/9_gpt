@@ -1,0 +1,196 @@
+{
+  "evidence_version": "0.1",
+  "lesson": 71,
+  "recorded_at": "2026-10-09T15:18:44.172706+00:00",
+  "status": "BLOCKED",
+  "source_commit": "27cb3c055be88d5b238986d93a66b1d23405aaf2",
+  "execution_scope": "local existing workspace foundation only; no remote CI staging or restore",
+  "application_version": "0.6.0",
+  "schema_version": "0.6.0",
+  "lockfile_version": "9.0",
+  "migration_count": 1,
+  "migration_name": "20261003130000_core_foundation",
+  "migration_sha256": "04a149fcd349f0ac3f1b5929cfcf571f8b0880541e84a40ad929054b67d72756",
+  "clean_checkout": {
+    "commit": "27cb3c055be88d5b238986d93a66b1d23405aaf2",
+    "node_modules_before": false,
+    "env_file_before": false,
+    "build_before": false,
+    "remote_network_used": false,
+    "isolated_baseline_checkout": true,
+    "clone_timestamp_utc": "2026-10-09T15:06:12.259336+00:00",
+    "offline_install": {
+      "command": "corepack pnpm install --frozen-lockfile --offline",
+      "status": "FAIL",
+      "exit_code": 1,
+      "reason_code": "ERR_PNPM_NO_OFFLINE_META",
+      "package": "@alloc/quick-lru",
+      "supply_chain_policy_bypassed": false
+    },
+    "online_install": {
+      "status": "TIMEOUT",
+      "exit_code": null,
+      "duration_seconds": 55.071,
+      "command": "corepack pnpm install --frozen-lockfile",
+      "log_published": false
+    },
+    "env_copied": false,
+    "foundation_checks_after_install": "NOT_RUN",
+    "staging_deployment": "NOT_RUN"
+  },
+  "existing_workspace_checks": {
+    "unit": {
+      "command": "corepack pnpm test",
+      "status": "PASS",
+      "exit_code": 0,
+      "duration_seconds": 2.752
+    },
+    "lint": {
+      "command": "corepack pnpm lint",
+      "status": "PASS",
+      "exit_code": 0,
+      "duration_seconds": 6.732
+    },
+    "schema": {
+      "command": "corepack pnpm db:validate",
+      "status": "PASS",
+      "exit_code": 0,
+      "duration_seconds": 4.647
+    },
+    "secret_scan": {
+      "command": "corepack pnpm secrets:check",
+      "status": "PASS",
+      "exit_code": 0,
+      "duration_seconds": 2.23
+    },
+    "typecheck": {
+      "command": "corepack pnpm typecheck",
+      "status": "PASS",
+      "exit_code": 0,
+      "duration_seconds": 10.443
+    },
+    "sql_wasm": {
+      "command": "corepack pnpm db:test:sql",
+      "status": "PASS",
+      "exit_code": 0,
+      "duration_seconds": 5.804
+    },
+    "build": {
+      "command": "corepack pnpm build",
+      "status": "PASS",
+      "exit_code": 0,
+      "duration_seconds": 10.696
+    },
+    "starter_smoke": {
+      "command": "corepack pnpm smoke",
+      "status": "PASS",
+      "exit_code": 0,
+      "duration_seconds": 1.827,
+      "checks_passed": 27
+    },
+    "native_core": {
+      "command": "corepack pnpm db:test",
+      "status": "FAIL",
+      "exit_code": 1,
+      "duration_seconds": 1.59
+    },
+    "worker_readiness": {
+      "command": "corepack pnpm worker:check",
+      "status": "FAIL",
+      "exit_code": 1,
+      "duration_seconds": 1.089
+    }
+  },
+  "read_only_environment_probes": {
+    "tools": {
+      "docker": false,
+      "postgres": false,
+      "pg_dump": false,
+      "pg_restore": false,
+      "psql": false,
+      "redis-cli": false
+    },
+    "docker_socket_available": false,
+    "loopback": {
+      "5432": 111,
+      "5546": 111,
+      "6379": 111
+    },
+    "clean_checkout_lockfile_unchanged": true,
+    "clean_checkout_tracked_diff_empty": true
+  },
+  "config_review": {
+    "yaml_parse": "PASS",
+    "manual_trigger": "PASS",
+    "token_permissions": "contents:read",
+    "action_refs_full_sha_shape": "PASS",
+    "github_actionlint": "NOT_RUN",
+    "upstream_checkout_setup_node_pin_provenance": "PENDING_REVERIFY",
+    "container_digest_pin": "NOT_DONE",
+    "environment_json": "PASS",
+    "active_workflow_installed": false,
+    "environment_activation_allowed": false,
+    "ci_run": "NOT_RUN"
+  },
+  "acceptance": [
+    {
+      "id": "AC71-01",
+      "status": "BLOCKED",
+      "reason": "clean install unproven; no staging, identity/private storage/business modules; native core and worker readiness failed"
+    },
+    {
+      "id": "AC71-02",
+      "status": "NOT_RUN_BLOCKED",
+      "reason": "no coherent DB/file/key/identity backup or isolated restore target available"
+    }
+  ],
+  "restore_drill": {
+    "backup_id": null,
+    "consistent_cutoff_at": null,
+    "started_at": null,
+    "verified_at": null,
+    "database_rows_checked": null,
+    "files_checked": null,
+    "accounts_checked": null,
+    "budget_reconciled": false,
+    "stock_reconciled": false,
+    "results_reconciled": false,
+    "outbox_recovery_tested": false,
+    "proposed_rpo_seconds": 86400,
+    "proposed_rto_seconds": 14400,
+    "owner_approval": null,
+    "measured_rpo_seconds": null,
+    "measured_rto_seconds": null
+  },
+  "not_run": [
+    "GitHub Actions runner execution",
+    "native business concurrency",
+    "all nine systems staging smoke",
+    "HTTPS login admin scoped positive flow",
+    "private file upload scan ACL smoke",
+    "worker outbox processing/recovery",
+    "DB/file/identity backup and isolated restore",
+    "monitoring alert delivery",
+    "rollback migration drill",
+    "RPO RTO measurement",
+    "full historical formatting",
+    "new dependency advisory scan"
+  ],
+  "real_data_used": false,
+  "production_secret_values_read_or_published": false,
+  "deployment_performed": false,
+  "external_messages_sent": false,
+  "next_lesson": 72,
+  "next_lesson_status": "NOT_STARTED",
+  "deliverable_verification": {
+    "local_markdown_links_checked": 1141,
+    "missing_links": 0,
+    "new_yaml_json_markdown_prettier": "PASS",
+    "new_status_sections_prettier": "PASS",
+    "whole_historical_format_check": "NOT_RUN",
+    "final_supported_pattern_secret_scan": "PASS",
+    "diff_whitespace_check": "PASS",
+    "existing_tracked_runtime_changed": false,
+    "schema_migration_unchanged": true
+  }
+}

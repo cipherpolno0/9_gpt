@@ -1,0 +1,137 @@
+# Proposal 0.1: NOT active. Promote to .github/workflows only after review.
+# Foundation PASS does not mean staging, business acceptance, or restore PASS.
+name: Foundation checks (proposal)
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: foundation-${{ github.ref }}
+  cancel-in-progress: true
+env:
+  NEXT_TELEMETRY_DISABLED: "1"
+jobs:
+  foundation:
+    if: vars.CH71_FOUNDATION_CI_ENABLED == 'true'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
+          fetch-depth: 0
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: "24.19.0"
+      - name: Enable package manager declared in package.json
+        run: corepack enable
+      - id: install
+        run: corepack pnpm install --frozen-lockfile
+      - id: lint
+        run: corepack pnpm lint
+      - id: typecheck
+        run: corepack pnpm typecheck
+      - id: unit
+        run: corepack pnpm test
+      - id: schema
+        run: corepack pnpm db:validate
+      - id: migration_source
+        name: Supplemental SQL checks (not native PostgreSQL acceptance)
+        run: corepack pnpm db:test:sql
+      - id: secrets
+        name: Supported-pattern scan (coverage limits in SECURITY_REVIEW.md)
+        run: corepack pnpm secrets:check
+      - id: build
+        run: corepack pnpm build
+      - id: smoke
+        name: Starter HTTP smoke (not nine-system smoke)
+        run: corepack pnpm smoke
+      - name: Allowlisted evidence metadata only
+        if: always()
+        env:
+          EVIDENCE_SHA: ${{ github.sha }}
+          EVIDENCE_RUN: ${{ github.run_id }}
+          INSTALL: ${{ steps.install.outcome }}
+          LINT: ${{ steps.lint.outcome }}
+          TYPECHECK: ${{ steps.typecheck.outcome }}
+          UNIT: ${{ steps.unit.outcome }}
+          SCHEMA: ${{ steps.schema.outcome }}
+          MIGRATION_SOURCE: ${{ steps.migration_source.outcome }}
+          SECRETS: ${{ steps.secrets.outcome }}
+          BUILD: ${{ steps.build.outcome }}
+          SMOKE: ${{ steps.smoke.outcome }}
+        run: |
+          node --input-type=module <<'JS'
+          import { mkdirSync, writeFileSync } from 'node:fs';
+          const keys = ['INSTALL','LINT','TYPECHECK','UNIT','SCHEMA','MIGRATION_SOURCE','SECRETS','BUILD','SMOKE'];
+          const checks = Object.fromEntries(keys.map(k => [k, process.env[k] || 'NOT_RUN']));
+          mkdirSync('ci-evidence', { recursive: true });
+          writeFileSync('ci-evidence/foundation.json', JSON.stringify({
+            evidence_version: '0.1', sha: process.env.EVIDENCE_SHA, run: process.env.EVIDENCE_RUN,
+            checks, business_staging: 'NOT_RUN', restore_drill: 'NOT_RUN'
+          }, null, 2) + '\n');
+          JS
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: foundation-metadata
+          path: ci-evidence/foundation.json
+          if-no-files-found: error
+          include-hidden-files: false
+          retention-days: 7
+  native_core:
+    # Separate protected environment, ephemeral synthetic DB; never production.
+    # Review child-process log masking and action pins before enabling.
+    if: vars.CH71_NATIVE_CI_ENABLED == 'true'
+    needs: foundation
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    environment: synthetic-ci
+    services:
+      postgres:
+        image: postgres:18.6-bookworm
+        env:
+          POSTGRES_USER: ci_migrator
+          POSTGRES_PASSWORD: ${{ secrets.CI_PG_PASSWORD }}
+          POSTGRES_DB: postgres
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U ci_migrator -d postgres"
+          --health-interval 5s --health-timeout 3s --health-retries 20
+      redis:
+        image: redis:8.10.2-alpine
+        ports:
+          - 6379:6379
+        options: >-
+          --health-cmd "redis-cli ping"
+          --health-interval 5s --health-timeout 3s --health-retries 20
+    env:
+      APP_ENV: local
+      CH06_TEST_DATABASE_URL: ${{ secrets.CI_TEST_DATABASE_URL }}
+      DATABASE_URL: ${{ secrets.CI_TEST_DATABASE_URL }}
+      REDIS_URL: redis://127.0.0.1:6379
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: "24.19.0"
+      - run: corepack enable
+      - run: corepack pnpm install --frozen-lockfile
+      - name: Native core migration and worker connection (no business jobs)
+        # Discard raw child stdout/stderr; do not upload credentials or DB logs.
+        run: |
+          if corepack pnpm db:test >/dev/null 2>&1; then
+            echo 'Native core migration/tests: PASS'
+          else
+            echo 'Native core migration/tests: FAIL; inspect protected diagnostics'
+            exit 1
+          fi
+          if corepack pnpm worker:check >/dev/null 2>&1; then
+            echo 'Worker DB/Redis connection: PASS; business handlers NOT_RUN'
+          else
+            echo 'Worker DB/Redis connection: FAIL'
+            exit 1
+          fi

@@ -1,0 +1,1853 @@
+{
+  "version": "0.1",
+  "lesson": 54,
+  "source_commit": "0585b6c",
+  "received_at": "2026-10-08T10:22:46+07:00",
+  "status": "PLAN_ONLY",
+  "seeded": false,
+  "runtime_implemented": false,
+  "native_tests_executed": false,
+  "browser_tests_executed": false,
+  "actual_preview_generated": false,
+  "actual_pdf_generated": false,
+  "actual_sanitizer_implemented": false,
+  "actual_messages_sent": 0,
+  "actual_approved_snapshots": 0,
+  "owner_signoff": null,
+  "actual_execution_manifest": null,
+  "prerequisite": 53,
+  "dependencies": [7, 8, 10, 11],
+  "policy": {
+    "id": "DEMO_CORRESPONDENCE_POLICY_54_V1",
+    "status": "TO_VERIFY",
+    "official_template_verified": false,
+    "official_output_enabled": false,
+    "official_signing_enabled": false,
+    "demo_watermark": "TEST — ตัวอย่างทดลอง ยังไม่ใช่หนังสือทางการ",
+    "register_number_required_in_demo": false,
+    "postapproval_material_edit_requires_hold": true,
+    "recipient_name_only_selection_allowed": false,
+    "max_ast_depth": 16,
+    "max_ast_nodes": 2000,
+    "max_body_codepoints": 50000,
+    "max_subject_codepoints": 300,
+    "max_recipients": 100,
+    "max_attachments": 20,
+    "limits_are_confirmed_official": false,
+    "raw_html_transport_supported": false,
+    "body_links_images_enabled": false
+  },
+  "root": {
+    "id": "DEMO_CORRESPONDENCE_54_A",
+    "owner_organization_id": "DEMO_ORG_53_A",
+    "register_type_id": "DEMO_OUT",
+    "actual_created": false,
+    "actual_register_number": null
+  },
+  "record_versions": [
+    {
+      "id": "DEMO_RECORD_54_V1",
+      "parent_correspondence_id": "DEMO_CORRESPONDENCE_54_A",
+      "version_no": 1,
+      "supersedes": null,
+      "review_cycle": 1,
+      "submitted_manifest": {
+        "correspondence_id": "DEMO_CORRESPONDENCE_54_A",
+        "record_version_id": "DEMO_RECORD_54_V1",
+        "version_no": 1,
+        "subject": "TEST_ร่างหนังสือตัวอย่างรุ่น_1",
+        "body_ast": {
+          "type": "DOC",
+          "children": [
+            {
+              "type": "PARAGRAPH",
+              "children": [
+                {
+                  "type": "TEXT",
+                  "text": "TEST_ข้อความสมมติสำหรับตรวจร่าง ไม่ใช่หนังสือจริง",
+                  "marks": []
+                }
+              ]
+            }
+          ]
+        },
+        "body_ast_digest": "d780f44914c6dd457042321c8ab1ac4fd56327ac1e86de49cc95fef1d68974b4",
+        "signer": {
+          "person_id": "DEMO_PERSON_54_SIGNER",
+          "organization_id": "DEMO_ORG_53_A",
+          "context_id": "DEMO_SIGNER_CONTEXT_54_V1",
+          "name_snapshot": "TEST_ผู้ลงนามสมมติ"
+        },
+        "recipients_in_render_order": [
+          {
+            "target_kind": "PERSON",
+            "person_id": "DEMO_PERSON_53_A",
+            "organization_id": "DEMO_ORG_53_A",
+            "context_id": "DEMO_RECIPIENT_CONTEXT_54_A",
+            "name_snapshot": "TEST_ผู้รับชื่อเหมือน",
+            "org_snapshot": "TEST_หน่วยสมมติ_A"
+          },
+          {
+            "target_kind": "PERSON",
+            "person_id": "DEMO_PERSON_53_B",
+            "organization_id": "DEMO_ORG_53_B",
+            "context_id": "DEMO_RECIPIENT_CONTEXT_54_B",
+            "name_snapshot": "TEST_ผู้รับชื่อเหมือน",
+            "org_snapshot": "TEST_หน่วยสมมติ_B"
+          }
+        ],
+        "recipient_set_digest": "abfb631e65ce207187198086562b6c1432ae20811d4d20741a8b9bac6d64c1f8",
+        "attachments": [
+          {
+            "purpose": "PRIMARY",
+            "document_id": "DEMO_DOCUMENT_53_SHARED",
+            "file_version_id": "DEMO_FILE_53_V1",
+            "expected_synthetic_byte_hash": "9a694a6cdd72c50bd63c1755d3c2d649c0ddb629788f09c1f632a67f5908711c"
+          }
+        ],
+        "template_version": "DEMO_TEMPLATE_54_V1",
+        "font_version": "@fontsource/sarabun@5.3.0",
+        "layout_version": "DEMO_LAYOUT_A4_54_V1",
+        "content_policy_version": "DEMO_AST_POLICY_54_V1",
+        "ast_schema_version": "DEMO_AST_SCHEMA_54_V1",
+        "priority": "DEMO_NORMAL",
+        "confidentiality": "DEMO_RESTRICTED",
+        "review_due_date": "2027-07-15",
+        "calendar_version": "DEMO_CALENDAR_54_V1",
+        "rendered_letter_date": "2027-07-01",
+        "timezone": "Asia/Bangkok",
+        "permission_plan_version": "DEMO_SHARE_PLAN_54_V1",
+        "source_refs": []
+      },
+      "expected_canonical_digest": "cde65793cd8daa70c3d171ff5f2b9763eefac57a94ea2076c130d10102d6134c",
+      "expected_preview_manifest_digest": "6cfb316eb923e5bd2294ce56bafdda0234f51cc09517b7d35863064019528a43",
+      "actual_saved": false,
+      "actual_sealed": false,
+      "actual_preview_verified": false,
+      "actual_approval": null,
+      "actual_file_clean_scan": null,
+      "preview_manifest_reference": {
+        "record_canonical_digest": "cde65793cd8daa70c3d171ff5f2b9763eefac57a94ea2076c130d10102d6134c",
+        "template_version": "DEMO_TEMPLATE_54_V1",
+        "font_version": "@fontsource/sarabun@5.3.0",
+        "layout_version": "DEMO_LAYOUT_A4_54_V1",
+        "content_policy_version": "DEMO_AST_POLICY_54_V1"
+      }
+    },
+    {
+      "id": "DEMO_RECORD_54_V2",
+      "parent_correspondence_id": "DEMO_CORRESPONDENCE_54_A",
+      "version_no": 2,
+      "supersedes": "DEMO_RECORD_54_V1",
+      "review_cycle": 2,
+      "submitted_manifest": {
+        "correspondence_id": "DEMO_CORRESPONDENCE_54_A",
+        "record_version_id": "DEMO_RECORD_54_V2",
+        "version_no": 2,
+        "subject": "TEST_ร่างหนังสือตัวอย่างรุ่น_2",
+        "body_ast": {
+          "type": "DOC",
+          "children": [
+            {
+              "type": "PARAGRAPH",
+              "children": [
+                {
+                  "type": "TEXT",
+                  "text": "TEST_ข้อความสมมติสำหรับตรวจร่าง ไม่ใช่หนังสือจริง",
+                  "marks": []
+                }
+              ]
+            },
+            {
+              "type": "PARAGRAPH",
+              "children": [
+                {
+                  "type": "TEXT",
+                  "text": "TEST_แก้ตามความเห็นผู้ตรวจ",
+                  "marks": []
+                }
+              ]
+            }
+          ]
+        },
+        "body_ast_digest": "590436141dddb7db1864a9345448982e7558f790b462577027534a7a644ab69b",
+        "signer": {
+          "person_id": "DEMO_PERSON_54_SIGNER",
+          "organization_id": "DEMO_ORG_53_A",
+          "context_id": "DEMO_SIGNER_CONTEXT_54_V1",
+          "name_snapshot": "TEST_ผู้ลงนามสมมติ"
+        },
+        "recipients_in_render_order": [
+          {
+            "target_kind": "PERSON",
+            "person_id": "DEMO_PERSON_53_A",
+            "organization_id": "DEMO_ORG_53_A",
+            "context_id": "DEMO_RECIPIENT_CONTEXT_54_A",
+            "name_snapshot": "TEST_ผู้รับชื่อเหมือน",
+            "org_snapshot": "TEST_หน่วยสมมติ_A"
+          },
+          {
+            "target_kind": "PERSON",
+            "person_id": "DEMO_PERSON_53_B",
+            "organization_id": "DEMO_ORG_53_B",
+            "context_id": "DEMO_RECIPIENT_CONTEXT_54_B",
+            "name_snapshot": "TEST_ผู้รับชื่อเหมือน",
+            "org_snapshot": "TEST_หน่วยสมมติ_B"
+          }
+        ],
+        "recipient_set_digest": "abfb631e65ce207187198086562b6c1432ae20811d4d20741a8b9bac6d64c1f8",
+        "attachments": [
+          {
+            "purpose": "PRIMARY",
+            "document_id": "DEMO_DOCUMENT_53_SHARED",
+            "file_version_id": "DEMO_FILE_53_V1",
+            "expected_synthetic_byte_hash": "9a694a6cdd72c50bd63c1755d3c2d649c0ddb629788f09c1f632a67f5908711c"
+          }
+        ],
+        "template_version": "DEMO_TEMPLATE_54_V1",
+        "font_version": "@fontsource/sarabun@5.3.0",
+        "layout_version": "DEMO_LAYOUT_A4_54_V1",
+        "content_policy_version": "DEMO_AST_POLICY_54_V1",
+        "ast_schema_version": "DEMO_AST_SCHEMA_54_V1",
+        "priority": "DEMO_NORMAL",
+        "confidentiality": "DEMO_RESTRICTED",
+        "review_due_date": "2027-07-15",
+        "calendar_version": "DEMO_CALENDAR_54_V1",
+        "rendered_letter_date": "2027-07-01",
+        "timezone": "Asia/Bangkok",
+        "permission_plan_version": "DEMO_SHARE_PLAN_54_V1",
+        "source_refs": []
+      },
+      "expected_canonical_digest": "d1fc1e2f63e054a0ad367d6924c4b66a14ccd367e4fb4df0dc613f48e4269726",
+      "expected_preview_manifest_digest": "3982d7e8489ec350c413758da31b348615b10449cf221579000e15222c395dfa",
+      "actual_saved": false,
+      "actual_sealed": false,
+      "actual_preview_verified": false,
+      "actual_approval": null,
+      "actual_file_clean_scan": null,
+      "preview_manifest_reference": {
+        "record_canonical_digest": "d1fc1e2f63e054a0ad367d6924c4b66a14ccd367e4fb4df0dc613f48e4269726",
+        "template_version": "DEMO_TEMPLATE_54_V1",
+        "font_version": "@fontsource/sarabun@5.3.0",
+        "layout_version": "DEMO_LAYOUT_A4_54_V1",
+        "content_policy_version": "DEMO_AST_POLICY_54_V1"
+      }
+    },
+    {
+      "id": "DEMO_RECORD_54_V3",
+      "parent_correspondence_id": "DEMO_CORRESPONDENCE_54_A",
+      "version_no": 3,
+      "supersedes": "DEMO_RECORD_54_V2",
+      "review_cycle": 3,
+      "submitted_manifest": {
+        "correspondence_id": "DEMO_CORRESPONDENCE_54_A",
+        "record_version_id": "DEMO_RECORD_54_V3",
+        "version_no": 3,
+        "subject": "TEST_ร่างหนังสือตัวอย่างรุ่น_3",
+        "body_ast": {
+          "type": "DOC",
+          "children": [
+            {
+              "type": "PARAGRAPH",
+              "children": [
+                {
+                  "type": "TEXT",
+                  "text": "TEST_ข้อความสมมติสำหรับตรวจร่าง ไม่ใช่หนังสือจริง",
+                  "marks": []
+                }
+              ]
+            },
+            {
+              "type": "PARAGRAPH",
+              "children": [
+                {
+                  "type": "TEXT",
+                  "text": "TEST_แก้ตามความเห็นผู้ตรวจ",
+                  "marks": []
+                }
+              ]
+            },
+            {
+              "type": "PARAGRAPH",
+              "children": [
+                {
+                  "type": "TEXT",
+                  "text": "TEST_แก้สาระสำคัญหลังอนุมัติ ต้องตรวจใหม่",
+                  "marks": []
+                }
+              ]
+            }
+          ]
+        },
+        "body_ast_digest": "69f2833ae153d6918c4351f4012d6a5e51d3c8c87122a0c5913063c8d4e5531c",
+        "signer": {
+          "person_id": "DEMO_PERSON_54_SIGNER",
+          "organization_id": "DEMO_ORG_53_A",
+          "context_id": "DEMO_SIGNER_CONTEXT_54_V1",
+          "name_snapshot": "TEST_ผู้ลงนามสมมติ"
+        },
+        "recipients_in_render_order": [
+          {
+            "target_kind": "PERSON",
+            "person_id": "DEMO_PERSON_53_A",
+            "organization_id": "DEMO_ORG_53_A",
+            "context_id": "DEMO_RECIPIENT_CONTEXT_54_A",
+            "name_snapshot": "TEST_ผู้รับชื่อเหมือน",
+            "org_snapshot": "TEST_หน่วยสมมติ_A"
+          }
+        ],
+        "recipient_set_digest": "6631ed5cb6823f34445ac2360006aa23ff32c19296f73c39f8f63e051f9fd20b",
+        "attachments": [
+          {
+            "purpose": "PRIMARY",
+            "document_id": "DEMO_DOCUMENT_53_SHARED",
+            "file_version_id": "DEMO_FILE_53_V2",
+            "expected_synthetic_byte_hash": "779b7fb55f7769dd0992e0c144b68acf850eda2bc990672def6c300d18eef6fc"
+          }
+        ],
+        "template_version": "DEMO_TEMPLATE_54_V1",
+        "font_version": "@fontsource/sarabun@5.3.0",
+        "layout_version": "DEMO_LAYOUT_A4_54_V1",
+        "content_policy_version": "DEMO_AST_POLICY_54_V1",
+        "ast_schema_version": "DEMO_AST_SCHEMA_54_V1",
+        "priority": "DEMO_NORMAL",
+        "confidentiality": "DEMO_RESTRICTED",
+        "review_due_date": "2027-07-15",
+        "calendar_version": "DEMO_CALENDAR_54_V1",
+        "rendered_letter_date": "2027-07-01",
+        "timezone": "Asia/Bangkok",
+        "permission_plan_version": "DEMO_SHARE_PLAN_54_V1",
+        "source_refs": []
+      },
+      "expected_canonical_digest": "799ae6f88dcbf040d348da37c5113d873b50a07957b8f45beb9a94d8bb6b5d65",
+      "expected_preview_manifest_digest": "ab0fdb8a2ac8db710ea1d6625679c65ba872a9f71eab3b1e417e53c7497fbfe2",
+      "actual_saved": false,
+      "actual_sealed": false,
+      "actual_preview_verified": false,
+      "actual_approval": null,
+      "actual_file_clean_scan": null,
+      "preview_manifest_reference": {
+        "record_canonical_digest": "799ae6f88dcbf040d348da37c5113d873b50a07957b8f45beb9a94d8bb6b5d65",
+        "template_version": "DEMO_TEMPLATE_54_V1",
+        "font_version": "@fontsource/sarabun@5.3.0",
+        "layout_version": "DEMO_LAYOUT_A4_54_V1",
+        "content_policy_version": "DEMO_AST_POLICY_54_V1"
+      }
+    }
+  ],
+  "review_chain": [
+    {
+      "id": "S54-01",
+      "action": "SAVE_DRAFT_V1",
+      "correspondence_id": "DEMO_CORRESPONDENCE_54_A",
+      "record_version_id": "DEMO_RECORD_54_V1",
+      "review_cycle": 1,
+      "expected_root_revision": 1,
+      "expected_status": "draft",
+      "expected_active_approved_version": null,
+      "expected_dispatch_hold": true,
+      "historical_decisions": [],
+      "expected_register_numbers_added": 0,
+      "expected_sent_count": 0,
+      "actual_executed": false,
+      "actual_receipt": null,
+      "actual_decision": null,
+      "actual": null
+    },
+    {
+      "id": "S54-02",
+      "action": "SUBMIT_V1",
+      "correspondence_id": "DEMO_CORRESPONDENCE_54_A",
+      "record_version_id": "DEMO_RECORD_54_V1",
+      "review_cycle": 1,
+      "expected_root_revision": 2,
+      "expected_status": "submitted",
+      "expected_active_approved_version": null,
+      "expected_dispatch_hold": true,
+      "historical_decisions": [],
+      "expected_register_numbers_added": 0,
+      "expected_sent_count": 0,
+      "actual_executed": false,
+      "actual_receipt": null,
+      "actual_decision": null,
+      "actual": null
+    },
+    {
+      "id": "S54-03",
+      "action": "REVIEW_V1",
+      "correspondence_id": "DEMO_CORRESPONDENCE_54_A",
+      "record_version_id": "DEMO_RECORD_54_V1",
+      "review_cycle": 1,
+      "expected_root_revision": 3,
+      "expected_status": "reviewing",
+      "expected_active_approved_version": null,
+      "expected_dispatch_hold": true,
+      "historical_decisions": [],
+      "expected_register_numbers_added": 0,
+      "expected_sent_count": 0,
+      "actual_executed": false,
+      "actual_receipt": null,
+      "actual_decision": null,
+      "actual": null
+    },
+    {
+      "id": "S54-04",
+      "action": "RETURN_V1",
+      "correspondence_id": "DEMO_CORRESPONDENCE_54_A",
+      "record_version_id": "DEMO_RECORD_54_V1",
+      "review_cycle": 1,
+      "expected_root_revision": 4,
+      "expected_status": "returned",
+      "expected_active_approved_version": null,
+      "expected_dispatch_hold": true,
+      "historical_decisions": ["DEMO_DECISION_54_CYCLE_1"],
+      "expected_register_numbers_added": 0,
+      "expected_sent_count": 0,
+      "actual_executed": false,
+      "actual_receipt": null,
+      "actual_decision": null,
+      "actual": null
+    },
+    {
+      "id": "S54-05",
+      "action": "OPEN_CORRECTION_V2",
+      "correspondence_id": "DEMO_CORRESPONDENCE_54_A",
+      "record_version_id": "DEMO_RECORD_54_V2",
+      "review_cycle": 2,
+      "expected_root_revision": 5,
+      "expected_status": "draft",
+      "expected_active_approved_version": null,
+      "expected_dispatch_hold": true,
+      "historical_decisions": ["DEMO_DECISION_54_CYCLE_1"],
+      "expected_register_numbers_added": 0,
+      "expected_sent_count": 0,
+      "actual_executed": false,
+      "actual_receipt": null,
+      "actual_decision": null,
+      "actual": null
+    },
+    {
+      "id": "S54-06",
+      "action": "SUBMIT_V2",
+      "correspondence_id": "DEMO_CORRESPONDENCE_54_A",
+      "record_version_id": "DEMO_RECORD_54_V2",
+      "review_cycle": 2,
+      "expected_root_revision": 6,
+      "expected_status": "submitted",
+      "expected_active_approved_version": null,
+      "expected_dispatch_hold": true,
+      "historical_decisions": ["DEMO_DECISION_54_CYCLE_1"],
+      "expected_register_numbers_added": 0,
+      "expected_sent_count": 0,
+      "actual_executed": false,
+      "actual_receipt": null,
+      "actual_decision": null,
+      "actual": null
+    },
+    {
+      "id": "S54-07",
+      "action": "REVIEW_V2",
+      "correspondence_id": "DEMO_CORRESPONDENCE_54_A",
+      "record_version_id": "DEMO_RECORD_54_V2",
+      "review_cycle": 2,
+      "expected_root_revision": 7,
+      "expected_status": "reviewing",
+      "expected_active_approved_version": null,
+      "expected_dispatch_hold": true,
+      "historical_decisions": ["DEMO_DECISION_54_CYCLE_1"],
+      "expected_register_numbers_added": 0,
+      "expected_sent_count": 0,
+      "actual_executed": false,
+      "actual_receipt": null,
+      "actual_decision": null,
+      "actual": null
+    },
+    {
+      "id": "S54-08",
+      "action": "APPROVE_V2",
+      "correspondence_id": "DEMO_CORRESPONDENCE_54_A",
+      "record_version_id": "DEMO_RECORD_54_V2",
+      "review_cycle": 2,
+      "expected_root_revision": 8,
+      "expected_status": "approved",
+      "expected_active_approved_version": "DEMO_RECORD_54_V2",
+      "expected_dispatch_hold": false,
+      "historical_decisions": [
+        "DEMO_DECISION_54_CYCLE_1",
+        "DEMO_DECISION_54_CYCLE_2"
+      ],
+      "expected_register_numbers_added": 0,
+      "expected_sent_count": 0,
+      "actual_executed": false,
+      "actual_receipt": null,
+      "actual_decision": null,
+      "actual": null
+    },
+    {
+      "id": "S54-09",
+      "action": "OPEN_MATERIAL_AMENDMENT_V3",
+      "correspondence_id": "DEMO_CORRESPONDENCE_54_A",
+      "record_version_id": "DEMO_RECORD_54_V3",
+      "review_cycle": 3,
+      "expected_root_revision": 9,
+      "expected_status": "draft",
+      "expected_active_approved_version": null,
+      "expected_dispatch_hold": true,
+      "historical_decisions": [
+        "DEMO_DECISION_54_CYCLE_1",
+        "DEMO_DECISION_54_CYCLE_2"
+      ],
+      "expected_register_numbers_added": 0,
+      "expected_sent_count": 0,
+      "actual_executed": false,
+      "actual_receipt": null,
+      "actual_decision": null,
+      "actual": null
+    },
+    {
+      "id": "S54-10",
+      "action": "SUBMIT_V3",
+      "correspondence_id": "DEMO_CORRESPONDENCE_54_A",
+      "record_version_id": "DEMO_RECORD_54_V3",
+      "review_cycle": 3,
+      "expected_root_revision": 10,
+      "expected_status": "submitted",
+      "expected_active_approved_version": null,
+      "expected_dispatch_hold": true,
+      "historical_decisions": [
+        "DEMO_DECISION_54_CYCLE_1",
+        "DEMO_DECISION_54_CYCLE_2"
+      ],
+      "expected_register_numbers_added": 0,
+      "expected_sent_count": 0,
+      "actual_executed": false,
+      "actual_receipt": null,
+      "actual_decision": null,
+      "actual": null
+    },
+    {
+      "id": "S54-11",
+      "action": "REVIEW_V3",
+      "correspondence_id": "DEMO_CORRESPONDENCE_54_A",
+      "record_version_id": "DEMO_RECORD_54_V3",
+      "review_cycle": 3,
+      "expected_root_revision": 11,
+      "expected_status": "reviewing",
+      "expected_active_approved_version": null,
+      "expected_dispatch_hold": true,
+      "historical_decisions": [
+        "DEMO_DECISION_54_CYCLE_1",
+        "DEMO_DECISION_54_CYCLE_2"
+      ],
+      "expected_register_numbers_added": 0,
+      "expected_sent_count": 0,
+      "actual_executed": false,
+      "actual_receipt": null,
+      "actual_decision": null,
+      "actual": null
+    },
+    {
+      "id": "S54-12",
+      "action": "APPROVE_V3",
+      "correspondence_id": "DEMO_CORRESPONDENCE_54_A",
+      "record_version_id": "DEMO_RECORD_54_V3",
+      "review_cycle": 3,
+      "expected_root_revision": 12,
+      "expected_status": "approved",
+      "expected_active_approved_version": "DEMO_RECORD_54_V3",
+      "expected_dispatch_hold": false,
+      "historical_decisions": [
+        "DEMO_DECISION_54_CYCLE_1",
+        "DEMO_DECISION_54_CYCLE_2",
+        "DEMO_DECISION_54_CYCLE_3"
+      ],
+      "expected_register_numbers_added": 0,
+      "expected_sent_count": 0,
+      "actual_executed": false,
+      "actual_receipt": null,
+      "actual_decision": null,
+      "actual": null
+    }
+  ],
+  "candidate_recipients": [
+    {
+      "person_id": "DEMO_PERSON_53_A",
+      "organization_id": "DEMO_ORG_53_A",
+      "context_id": "DEMO_RECIPIENT_CONTEXT_54_A",
+      "name": "TEST_ผู้รับชื่อเหมือน",
+      "display_role": "TEST_บริบท_A",
+      "actual_identity_verified": false
+    },
+    {
+      "person_id": "DEMO_PERSON_53_B",
+      "organization_id": "DEMO_ORG_53_B",
+      "context_id": "DEMO_RECIPIENT_CONTEXT_54_B",
+      "name": "TEST_ผู้รับชื่อเหมือน",
+      "display_role": "TEST_บริบท_B",
+      "actual_identity_verified": false
+    },
+    {
+      "person_id": "DEMO_PERSON_53_A",
+      "organization_id": "DEMO_ORG_53_B",
+      "context_id": "DEMO_RECIPIENT_CONTEXT_54_A_ALT",
+      "name": "TEST_ผู้รับชื่อเหมือน",
+      "display_role": "TEST_บริบท_ALT",
+      "actual_identity_verified": false
+    }
+  ],
+  "recipient_selection_cases": [
+    {
+      "id": "NAME_ONLY",
+      "input": {
+        "name": "TEST_ผู้รับชื่อเหมือน"
+      },
+      "expected": "REQUIRE_ID_AND_CONTEXT",
+      "actual": null
+    },
+    {
+      "id": "PERSON_ID_WITHOUT_CONTEXT",
+      "input": {
+        "person_id": "DEMO_PERSON_53_A"
+      },
+      "expected": "REQUIRE_ID_AND_CONTEXT",
+      "actual": null
+    },
+    {
+      "id": "CHOOSE_PERSON_A_ORG_A",
+      "input": {
+        "person_id": "DEMO_PERSON_53_A",
+        "organization_id": "DEMO_ORG_53_A",
+        "context_id": "DEMO_RECIPIENT_CONTEXT_54_A"
+      },
+      "expected": "EXPLICIT_IDENTITY_MATCH",
+      "expected_person": "DEMO_PERSON_53_A",
+      "actual": null
+    },
+    {
+      "id": "CHOOSE_SAME_NAME_PERSON_B",
+      "input": {
+        "person_id": "DEMO_PERSON_53_B",
+        "organization_id": "DEMO_ORG_53_B",
+        "context_id": "DEMO_RECIPIENT_CONTEXT_54_B"
+      },
+      "expected": "EXPLICIT_IDENTITY_MATCH",
+      "expected_person": "DEMO_PERSON_53_B",
+      "actual": null
+    },
+    {
+      "id": "FORGED_CONTEXT",
+      "input": {
+        "person_id": "DEMO_PERSON_53_A",
+        "organization_id": "DEMO_ORG_53_B",
+        "context_id": "DEMO_RECIPIENT_CONTEXT_54_B"
+      },
+      "expected": "DENY_NO_MATCH",
+      "actual": null
+    },
+    {
+      "id": "SAME_PERSON_OTHER_AFFILIATION",
+      "input": {
+        "person_id": "DEMO_PERSON_53_A",
+        "organization_id": "DEMO_ORG_53_B",
+        "context_id": "DEMO_RECIPIENT_CONTEXT_54_A_ALT"
+      },
+      "expected": "EXPLICIT_IDENTITY_MATCH",
+      "expected_person": "DEMO_PERSON_53_A",
+      "actual": null
+    }
+  ],
+  "maker_checker_cases": [
+    {
+      "id": "ROOT_MAKER",
+      "planned_approve_grant": true,
+      "planned_is_root_maker": true,
+      "planned_is_material_author": false,
+      "planned_verified_identity_distinct": true,
+      "planned_assignment_current": true,
+      "expected_maker_checker_allowed": false,
+      "actual": null
+    },
+    {
+      "id": "CURRENT_VERSION_AUTHOR",
+      "planned_approve_grant": true,
+      "planned_is_root_maker": false,
+      "planned_is_material_author": true,
+      "planned_verified_identity_distinct": true,
+      "planned_assignment_current": true,
+      "expected_maker_checker_allowed": false,
+      "actual": null
+    },
+    {
+      "id": "VERIFIED_SAME_PERSON_ALIAS",
+      "planned_approve_grant": true,
+      "planned_is_root_maker": false,
+      "planned_is_material_author": false,
+      "planned_verified_identity_distinct": false,
+      "planned_assignment_current": true,
+      "expected_maker_checker_allowed": false,
+      "actual": null
+    },
+    {
+      "id": "REVIEWER_WITHOUT_APPROVE_GRANT",
+      "planned_approve_grant": false,
+      "planned_is_root_maker": false,
+      "planned_is_material_author": false,
+      "planned_verified_identity_distinct": true,
+      "planned_assignment_current": true,
+      "expected_maker_checker_allowed": false,
+      "actual": null
+    },
+    {
+      "id": "SIGNER_WITHOUT_APPROVE_GRANT",
+      "planned_approve_grant": false,
+      "planned_is_root_maker": false,
+      "planned_is_material_author": false,
+      "planned_verified_identity_distinct": true,
+      "planned_assignment_current": true,
+      "expected_maker_checker_allowed": false,
+      "actual": null
+    },
+    {
+      "id": "TECHNICAL_WITHOUT_BUSINESS_GRANT",
+      "planned_approve_grant": false,
+      "planned_is_root_maker": false,
+      "planned_is_material_author": false,
+      "planned_verified_identity_distinct": true,
+      "planned_assignment_current": true,
+      "expected_maker_checker_allowed": false,
+      "actual": null
+    },
+    {
+      "id": "INDEPENDENT_CURRENT_APPROVER",
+      "planned_approve_grant": true,
+      "planned_is_root_maker": false,
+      "planned_is_material_author": false,
+      "planned_verified_identity_distinct": true,
+      "planned_assignment_current": true,
+      "expected_maker_checker_allowed": true,
+      "actual": null
+    },
+    {
+      "id": "EXPIRED_DELEGATION",
+      "planned_approve_grant": true,
+      "planned_is_root_maker": false,
+      "planned_is_material_author": false,
+      "planned_verified_identity_distinct": true,
+      "planned_assignment_current": false,
+      "expected_maker_checker_allowed": false,
+      "actual": null
+    }
+  ],
+  "approved_dispatch_gate_cases": [
+    {
+      "id": "EXACT_APPROVED_V2",
+      "planned_predicates": {
+        "current_sender_scope": true,
+        "root_revision_matches": true,
+        "active_approved_permit": true,
+        "requested_record_version_matches": true,
+        "canonical_digest_matches": true,
+        "recipient_set_matches": true,
+        "attachment_bindings_match": true,
+        "template_font_layout_match": true,
+        "independent_approval_provenance": true,
+        "approval_valid_under_policy": true,
+        "current_record_source_acl": true,
+        "current_file_acl": true,
+        "current_clean_scan": true,
+        "file_byte_integrity": true,
+        "current_content_policy_compatible": true,
+        "explicit_recipient_selection": true,
+        "candidate_ast_validated": true,
+        "no_unapproved_request_fields": true,
+        "approved_artifact_binding_if_required": true
+      },
+      "expected_authorized_manifest": true,
+      "expected_primary_file_if_authorized": "DEMO_FILE_53_V1",
+      "expected_sent_count": 0,
+      "actual_gate_executed": false,
+      "actual": null,
+      "purpose_mode": "DEMO_MANIFEST_VALIDATION_ONLY",
+      "expected_official_send_allowed": false
+    },
+    {
+      "id": "MATERIAL_AMENDMENT_V3_HOLD",
+      "planned_predicates": {
+        "current_sender_scope": true,
+        "root_revision_matches": true,
+        "active_approved_permit": false,
+        "requested_record_version_matches": true,
+        "canonical_digest_matches": true,
+        "recipient_set_matches": true,
+        "attachment_bindings_match": true,
+        "template_font_layout_match": true,
+        "independent_approval_provenance": true,
+        "approval_valid_under_policy": true,
+        "current_record_source_acl": true,
+        "current_file_acl": true,
+        "current_clean_scan": true,
+        "file_byte_integrity": true,
+        "current_content_policy_compatible": true,
+        "explicit_recipient_selection": true,
+        "candidate_ast_validated": true,
+        "no_unapproved_request_fields": true,
+        "approved_artifact_binding_if_required": true
+      },
+      "expected_authorized_manifest": false,
+      "expected_primary_file_if_authorized": null,
+      "expected_sent_count": 0,
+      "actual_gate_executed": false,
+      "actual": null,
+      "purpose_mode": "DEMO_MANIFEST_VALIDATION_ONLY",
+      "expected_official_send_allowed": false
+    },
+    {
+      "id": "FORGED_VERSION_V3_WITH_V2_APPROVAL",
+      "planned_predicates": {
+        "current_sender_scope": true,
+        "root_revision_matches": true,
+        "active_approved_permit": true,
+        "requested_record_version_matches": false,
+        "canonical_digest_matches": false,
+        "recipient_set_matches": true,
+        "attachment_bindings_match": true,
+        "template_font_layout_match": true,
+        "independent_approval_provenance": true,
+        "approval_valid_under_policy": true,
+        "current_record_source_acl": true,
+        "current_file_acl": true,
+        "current_clean_scan": true,
+        "file_byte_integrity": true,
+        "current_content_policy_compatible": true,
+        "explicit_recipient_selection": true,
+        "candidate_ast_validated": true,
+        "no_unapproved_request_fields": true,
+        "approved_artifact_binding_if_required": true
+      },
+      "expected_authorized_manifest": false,
+      "expected_primary_file_if_authorized": null,
+      "expected_sent_count": 0,
+      "actual_gate_executed": false,
+      "actual": null,
+      "purpose_mode": "DEMO_MANIFEST_VALIDATION_ONLY",
+      "expected_official_send_allowed": false
+    },
+    {
+      "id": "BODY_CHANGED",
+      "planned_predicates": {
+        "current_sender_scope": true,
+        "root_revision_matches": true,
+        "active_approved_permit": true,
+        "requested_record_version_matches": true,
+        "canonical_digest_matches": false,
+        "recipient_set_matches": true,
+        "attachment_bindings_match": true,
+        "template_font_layout_match": true,
+        "independent_approval_provenance": true,
+        "approval_valid_under_policy": true,
+        "current_record_source_acl": true,
+        "current_file_acl": true,
+        "current_clean_scan": true,
+        "file_byte_integrity": true,
+        "current_content_policy_compatible": true,
+        "explicit_recipient_selection": true,
+        "candidate_ast_validated": true,
+        "no_unapproved_request_fields": true,
+        "approved_artifact_binding_if_required": true
+      },
+      "expected_authorized_manifest": false,
+      "expected_primary_file_if_authorized": null,
+      "expected_sent_count": 0,
+      "actual_gate_executed": false,
+      "actual": null,
+      "purpose_mode": "DEMO_MANIFEST_VALIDATION_ONLY",
+      "expected_official_send_allowed": false
+    },
+    {
+      "id": "RECIPIENT_REPLACED",
+      "planned_predicates": {
+        "current_sender_scope": true,
+        "root_revision_matches": true,
+        "active_approved_permit": true,
+        "requested_record_version_matches": true,
+        "canonical_digest_matches": false,
+        "recipient_set_matches": false,
+        "attachment_bindings_match": true,
+        "template_font_layout_match": true,
+        "independent_approval_provenance": true,
+        "approval_valid_under_policy": true,
+        "current_record_source_acl": true,
+        "current_file_acl": true,
+        "current_clean_scan": true,
+        "file_byte_integrity": true,
+        "current_content_policy_compatible": true,
+        "explicit_recipient_selection": true,
+        "candidate_ast_validated": true,
+        "no_unapproved_request_fields": true,
+        "approved_artifact_binding_if_required": true
+      },
+      "expected_authorized_manifest": false,
+      "expected_primary_file_if_authorized": null,
+      "expected_sent_count": 0,
+      "actual_gate_executed": false,
+      "actual": null,
+      "purpose_mode": "DEMO_MANIFEST_VALIDATION_ONLY",
+      "expected_official_send_allowed": false
+    },
+    {
+      "id": "ATTACHMENT_LATEST_V2_SUBSTITUTED",
+      "planned_predicates": {
+        "current_sender_scope": true,
+        "root_revision_matches": true,
+        "active_approved_permit": true,
+        "requested_record_version_matches": true,
+        "canonical_digest_matches": false,
+        "recipient_set_matches": true,
+        "attachment_bindings_match": false,
+        "template_font_layout_match": true,
+        "independent_approval_provenance": true,
+        "approval_valid_under_policy": true,
+        "current_record_source_acl": true,
+        "current_file_acl": true,
+        "current_clean_scan": true,
+        "file_byte_integrity": true,
+        "current_content_policy_compatible": true,
+        "explicit_recipient_selection": true,
+        "candidate_ast_validated": true,
+        "no_unapproved_request_fields": true,
+        "approved_artifact_binding_if_required": true
+      },
+      "expected_authorized_manifest": false,
+      "expected_primary_file_if_authorized": null,
+      "expected_sent_count": 0,
+      "actual_gate_executed": false,
+      "actual": null,
+      "purpose_mode": "DEMO_MANIFEST_VALIDATION_ONLY",
+      "expected_official_send_allowed": false
+    },
+    {
+      "id": "TEMPLATE_OVERRIDE",
+      "planned_predicates": {
+        "current_sender_scope": true,
+        "root_revision_matches": true,
+        "active_approved_permit": true,
+        "requested_record_version_matches": true,
+        "canonical_digest_matches": true,
+        "recipient_set_matches": true,
+        "attachment_bindings_match": true,
+        "template_font_layout_match": false,
+        "independent_approval_provenance": true,
+        "approval_valid_under_policy": true,
+        "current_record_source_acl": true,
+        "current_file_acl": true,
+        "current_clean_scan": true,
+        "file_byte_integrity": true,
+        "current_content_policy_compatible": true,
+        "explicit_recipient_selection": true,
+        "candidate_ast_validated": true,
+        "no_unapproved_request_fields": true,
+        "approved_artifact_binding_if_required": true
+      },
+      "expected_authorized_manifest": false,
+      "expected_primary_file_if_authorized": null,
+      "expected_sent_count": 0,
+      "actual_gate_executed": false,
+      "actual": null,
+      "purpose_mode": "DEMO_MANIFEST_VALIDATION_ONLY",
+      "expected_official_send_allowed": false
+    },
+    {
+      "id": "LATEST_V2_NOT_REFERENCED_V1_STILL_PINNED",
+      "planned_predicates": {
+        "current_sender_scope": true,
+        "root_revision_matches": true,
+        "active_approved_permit": true,
+        "requested_record_version_matches": true,
+        "canonical_digest_matches": true,
+        "recipient_set_matches": true,
+        "attachment_bindings_match": true,
+        "template_font_layout_match": true,
+        "independent_approval_provenance": true,
+        "approval_valid_under_policy": true,
+        "current_record_source_acl": true,
+        "current_file_acl": true,
+        "current_clean_scan": true,
+        "file_byte_integrity": true,
+        "current_content_policy_compatible": true,
+        "explicit_recipient_selection": true,
+        "candidate_ast_validated": true,
+        "no_unapproved_request_fields": true,
+        "approved_artifact_binding_if_required": true
+      },
+      "expected_authorized_manifest": true,
+      "expected_primary_file_if_authorized": "DEMO_FILE_53_V1",
+      "expected_sent_count": 0,
+      "actual_gate_executed": false,
+      "actual": null,
+      "purpose_mode": "DEMO_MANIFEST_VALIDATION_ONLY",
+      "expected_official_send_allowed": false
+    },
+    {
+      "id": "SAME_FILE_ID_BYTE_DRIFT",
+      "planned_predicates": {
+        "current_sender_scope": true,
+        "root_revision_matches": true,
+        "active_approved_permit": true,
+        "requested_record_version_matches": true,
+        "canonical_digest_matches": true,
+        "recipient_set_matches": true,
+        "attachment_bindings_match": true,
+        "template_font_layout_match": true,
+        "independent_approval_provenance": true,
+        "approval_valid_under_policy": true,
+        "current_record_source_acl": true,
+        "current_file_acl": true,
+        "current_clean_scan": true,
+        "file_byte_integrity": false,
+        "current_content_policy_compatible": true,
+        "explicit_recipient_selection": true,
+        "candidate_ast_validated": true,
+        "no_unapproved_request_fields": true,
+        "approved_artifact_binding_if_required": true
+      },
+      "expected_authorized_manifest": false,
+      "expected_primary_file_if_authorized": null,
+      "expected_sent_count": 0,
+      "actual_gate_executed": false,
+      "actual": null,
+      "purpose_mode": "DEMO_MANIFEST_VALIDATION_ONLY",
+      "expected_official_send_allowed": false
+    },
+    {
+      "id": "SCAN_RECALL",
+      "planned_predicates": {
+        "current_sender_scope": true,
+        "root_revision_matches": true,
+        "active_approved_permit": true,
+        "requested_record_version_matches": true,
+        "canonical_digest_matches": true,
+        "recipient_set_matches": true,
+        "attachment_bindings_match": true,
+        "template_font_layout_match": true,
+        "independent_approval_provenance": true,
+        "approval_valid_under_policy": true,
+        "current_record_source_acl": true,
+        "current_file_acl": true,
+        "current_clean_scan": false,
+        "file_byte_integrity": true,
+        "current_content_policy_compatible": true,
+        "explicit_recipient_selection": true,
+        "candidate_ast_validated": true,
+        "no_unapproved_request_fields": true,
+        "approved_artifact_binding_if_required": true
+      },
+      "expected_authorized_manifest": false,
+      "expected_primary_file_if_authorized": null,
+      "expected_sent_count": 0,
+      "actual_gate_executed": false,
+      "actual": null,
+      "purpose_mode": "DEMO_MANIFEST_VALIDATION_ONLY",
+      "expected_official_send_allowed": false
+    },
+    {
+      "id": "ACL_REVOKED",
+      "planned_predicates": {
+        "current_sender_scope": true,
+        "root_revision_matches": true,
+        "active_approved_permit": true,
+        "requested_record_version_matches": true,
+        "canonical_digest_matches": true,
+        "recipient_set_matches": true,
+        "attachment_bindings_match": true,
+        "template_font_layout_match": true,
+        "independent_approval_provenance": true,
+        "approval_valid_under_policy": true,
+        "current_record_source_acl": true,
+        "current_file_acl": false,
+        "current_clean_scan": true,
+        "file_byte_integrity": true,
+        "current_content_policy_compatible": true,
+        "explicit_recipient_selection": true,
+        "candidate_ast_validated": true,
+        "no_unapproved_request_fields": true,
+        "approved_artifact_binding_if_required": true
+      },
+      "expected_authorized_manifest": false,
+      "expected_primary_file_if_authorized": null,
+      "expected_sent_count": 0,
+      "actual_gate_executed": false,
+      "actual": null,
+      "purpose_mode": "DEMO_MANIFEST_VALIDATION_ONLY",
+      "expected_official_send_allowed": false
+    },
+    {
+      "id": "SENDER_GRANT_EXPIRED",
+      "planned_predicates": {
+        "current_sender_scope": false,
+        "root_revision_matches": true,
+        "active_approved_permit": true,
+        "requested_record_version_matches": true,
+        "canonical_digest_matches": true,
+        "recipient_set_matches": true,
+        "attachment_bindings_match": true,
+        "template_font_layout_match": true,
+        "independent_approval_provenance": true,
+        "approval_valid_under_policy": true,
+        "current_record_source_acl": true,
+        "current_file_acl": true,
+        "current_clean_scan": true,
+        "file_byte_integrity": true,
+        "current_content_policy_compatible": true,
+        "explicit_recipient_selection": true,
+        "candidate_ast_validated": true,
+        "no_unapproved_request_fields": true,
+        "approved_artifact_binding_if_required": true
+      },
+      "expected_authorized_manifest": false,
+      "expected_primary_file_if_authorized": null,
+      "expected_sent_count": 0,
+      "actual_gate_executed": false,
+      "actual": null,
+      "purpose_mode": "DEMO_MANIFEST_VALIDATION_ONLY",
+      "expected_official_send_allowed": false
+    },
+    {
+      "id": "ROOT_REVISION_CHANGED",
+      "planned_predicates": {
+        "current_sender_scope": true,
+        "root_revision_matches": false,
+        "active_approved_permit": true,
+        "requested_record_version_matches": true,
+        "canonical_digest_matches": true,
+        "recipient_set_matches": true,
+        "attachment_bindings_match": true,
+        "template_font_layout_match": true,
+        "independent_approval_provenance": true,
+        "approval_valid_under_policy": true,
+        "current_record_source_acl": true,
+        "current_file_acl": true,
+        "current_clean_scan": true,
+        "file_byte_integrity": true,
+        "current_content_policy_compatible": true,
+        "explicit_recipient_selection": true,
+        "candidate_ast_validated": true,
+        "no_unapproved_request_fields": true,
+        "approved_artifact_binding_if_required": true
+      },
+      "expected_authorized_manifest": false,
+      "expected_primary_file_if_authorized": null,
+      "expected_sent_count": 0,
+      "actual_gate_executed": false,
+      "actual": null,
+      "purpose_mode": "DEMO_MANIFEST_VALIDATION_ONLY",
+      "expected_official_send_allowed": false
+    },
+    {
+      "id": "SECURITY_POLICY_BLOCKS_OLD_RENDER",
+      "planned_predicates": {
+        "current_sender_scope": true,
+        "root_revision_matches": true,
+        "active_approved_permit": true,
+        "requested_record_version_matches": true,
+        "canonical_digest_matches": true,
+        "recipient_set_matches": true,
+        "attachment_bindings_match": true,
+        "template_font_layout_match": true,
+        "independent_approval_provenance": true,
+        "approval_valid_under_policy": true,
+        "current_record_source_acl": true,
+        "current_file_acl": true,
+        "current_clean_scan": true,
+        "file_byte_integrity": true,
+        "current_content_policy_compatible": false,
+        "explicit_recipient_selection": true,
+        "candidate_ast_validated": true,
+        "no_unapproved_request_fields": true,
+        "approved_artifact_binding_if_required": true
+      },
+      "expected_authorized_manifest": false,
+      "expected_primary_file_if_authorized": null,
+      "expected_sent_count": 0,
+      "actual_gate_executed": false,
+      "actual": null,
+      "purpose_mode": "DEMO_MANIFEST_VALIDATION_ONLY",
+      "expected_official_send_allowed": false
+    },
+    {
+      "id": "SELF_APPROVAL_PROVENANCE",
+      "planned_predicates": {
+        "current_sender_scope": true,
+        "root_revision_matches": true,
+        "active_approved_permit": true,
+        "requested_record_version_matches": true,
+        "canonical_digest_matches": true,
+        "recipient_set_matches": true,
+        "attachment_bindings_match": true,
+        "template_font_layout_match": true,
+        "independent_approval_provenance": false,
+        "approval_valid_under_policy": true,
+        "current_record_source_acl": true,
+        "current_file_acl": true,
+        "current_clean_scan": true,
+        "file_byte_integrity": true,
+        "current_content_policy_compatible": true,
+        "explicit_recipient_selection": true,
+        "candidate_ast_validated": true,
+        "no_unapproved_request_fields": true,
+        "approved_artifact_binding_if_required": true
+      },
+      "expected_authorized_manifest": false,
+      "expected_primary_file_if_authorized": null,
+      "expected_sent_count": 0,
+      "actual_gate_executed": false,
+      "actual": null,
+      "purpose_mode": "DEMO_MANIFEST_VALIDATION_ONLY",
+      "expected_official_send_allowed": false
+    },
+    {
+      "id": "NAME_ONLY_SELECTION",
+      "planned_predicates": {
+        "current_sender_scope": true,
+        "root_revision_matches": true,
+        "active_approved_permit": true,
+        "requested_record_version_matches": true,
+        "canonical_digest_matches": true,
+        "recipient_set_matches": true,
+        "attachment_bindings_match": true,
+        "template_font_layout_match": true,
+        "independent_approval_provenance": true,
+        "approval_valid_under_policy": true,
+        "current_record_source_acl": true,
+        "current_file_acl": true,
+        "current_clean_scan": true,
+        "file_byte_integrity": true,
+        "current_content_policy_compatible": true,
+        "explicit_recipient_selection": false,
+        "candidate_ast_validated": true,
+        "no_unapproved_request_fields": true,
+        "approved_artifact_binding_if_required": true
+      },
+      "expected_authorized_manifest": false,
+      "expected_primary_file_if_authorized": null,
+      "expected_sent_count": 0,
+      "actual_gate_executed": false,
+      "actual": null,
+      "purpose_mode": "DEMO_MANIFEST_VALIDATION_ONLY",
+      "expected_official_send_allowed": false
+    },
+    {
+      "id": "INVALID_AST_AT_GATE",
+      "planned_predicates": {
+        "current_sender_scope": true,
+        "root_revision_matches": true,
+        "active_approved_permit": true,
+        "requested_record_version_matches": true,
+        "canonical_digest_matches": true,
+        "recipient_set_matches": true,
+        "attachment_bindings_match": true,
+        "template_font_layout_match": true,
+        "independent_approval_provenance": true,
+        "approval_valid_under_policy": true,
+        "current_record_source_acl": true,
+        "current_file_acl": true,
+        "current_clean_scan": true,
+        "file_byte_integrity": true,
+        "current_content_policy_compatible": true,
+        "explicit_recipient_selection": true,
+        "candidate_ast_validated": false,
+        "no_unapproved_request_fields": true,
+        "approved_artifact_binding_if_required": true
+      },
+      "expected_authorized_manifest": false,
+      "expected_primary_file_if_authorized": null,
+      "expected_sent_count": 0,
+      "actual_gate_executed": false,
+      "actual": null,
+      "purpose_mode": "DEMO_MANIFEST_VALIDATION_ONLY",
+      "expected_official_send_allowed": false
+    },
+    {
+      "id": "UNAPPROVED_REQUEST_BODY_FIELDS",
+      "planned_predicates": {
+        "current_sender_scope": true,
+        "root_revision_matches": true,
+        "active_approved_permit": true,
+        "requested_record_version_matches": true,
+        "canonical_digest_matches": true,
+        "recipient_set_matches": true,
+        "attachment_bindings_match": true,
+        "template_font_layout_match": true,
+        "independent_approval_provenance": true,
+        "approval_valid_under_policy": true,
+        "current_record_source_acl": true,
+        "current_file_acl": true,
+        "current_clean_scan": true,
+        "file_byte_integrity": true,
+        "current_content_policy_compatible": true,
+        "explicit_recipient_selection": true,
+        "candidate_ast_validated": true,
+        "no_unapproved_request_fields": false,
+        "approved_artifact_binding_if_required": true
+      },
+      "expected_authorized_manifest": false,
+      "expected_primary_file_if_authorized": null,
+      "expected_sent_count": 0,
+      "actual_gate_executed": false,
+      "actual": null,
+      "purpose_mode": "DEMO_MANIFEST_VALIDATION_ONLY",
+      "expected_official_send_allowed": false
+    },
+    {
+      "id": "UNVERIFIED_NEW_PDF_ARTIFACT",
+      "planned_predicates": {
+        "current_sender_scope": true,
+        "root_revision_matches": true,
+        "active_approved_permit": true,
+        "requested_record_version_matches": true,
+        "canonical_digest_matches": true,
+        "recipient_set_matches": true,
+        "attachment_bindings_match": true,
+        "template_font_layout_match": true,
+        "independent_approval_provenance": true,
+        "approval_valid_under_policy": true,
+        "current_record_source_acl": true,
+        "current_file_acl": true,
+        "current_clean_scan": true,
+        "file_byte_integrity": true,
+        "current_content_policy_compatible": true,
+        "explicit_recipient_selection": true,
+        "candidate_ast_validated": true,
+        "no_unapproved_request_fields": true,
+        "approved_artifact_binding_if_required": false
+      },
+      "expected_authorized_manifest": false,
+      "expected_primary_file_if_authorized": null,
+      "expected_sent_count": 0,
+      "actual_gate_executed": false,
+      "actual": null,
+      "purpose_mode": "DEMO_MANIFEST_VALIDATION_ONLY",
+      "expected_official_send_allowed": false
+    }
+  ],
+  "xss_corpus": [
+    {
+      "id": "X54-01",
+      "mode": "RAW_HTML",
+      "input": {
+        "raw_html": "<script>window.TEST_SENTINEL_54=1</script>"
+      },
+      "expected": "REJECT_RAW_HTML",
+      "actual": null,
+      "browser_executed": false
+    },
+    {
+      "id": "X54-02",
+      "mode": "RAW_HTML",
+      "input": {
+        "raw_html": "<img src=x onerror=\"window.TEST_SENTINEL_54=1\">"
+      },
+      "expected": "REJECT_RAW_HTML",
+      "actual": null,
+      "browser_executed": false
+    },
+    {
+      "id": "X54-03",
+      "mode": "RAW_HTML",
+      "input": {
+        "raw_html": "<svg><a href=\"javascript:window.TEST_SENTINEL_54=1\">TEST</a></svg>"
+      },
+      "expected": "REJECT_RAW_HTML",
+      "actual": null,
+      "browser_executed": false
+    },
+    {
+      "id": "X54-04",
+      "mode": "RAW_HTML",
+      "input": {
+        "raw_html": "<math><mtext><img src=x onerror=\"window.TEST_SENTINEL_54=1\"></mtext></math>"
+      },
+      "expected": "REJECT_RAW_HTML",
+      "actual": null,
+      "browser_executed": false
+    },
+    {
+      "id": "X54-05",
+      "mode": "AST",
+      "input": {
+        "type": "DOC",
+        "children": [
+          {
+            "type": "HTML_NODE",
+            "html": "<script>TEST</script>"
+          }
+        ]
+      },
+      "expected": "REJECT_AST",
+      "actual": null,
+      "browser_executed": false
+    },
+    {
+      "id": "X54-06",
+      "mode": "AST",
+      "input": {
+        "type": "DOC",
+        "children": [
+          {
+            "type": "PARAGRAPH",
+            "children": [],
+            "onclick": "TEST()"
+          }
+        ]
+      },
+      "expected": "REJECT_AST",
+      "actual": null,
+      "browser_executed": false
+    },
+    {
+      "id": "X54-07",
+      "mode": "AST",
+      "input": {
+        "type": "DOC",
+        "children": [
+          {
+            "type": "LINK",
+            "href": "java\nscript:TEST()",
+            "children": []
+          }
+        ]
+      },
+      "expected": "REJECT_AST",
+      "actual": null,
+      "browser_executed": false
+    },
+    {
+      "id": "X54-08",
+      "mode": "AST",
+      "input": {
+        "type": "DOC",
+        "children": [
+          {
+            "type": "LINK",
+            "href": "data:text/html,<script>TEST</script>",
+            "children": []
+          }
+        ]
+      },
+      "expected": "REJECT_AST",
+      "actual": null,
+      "browser_executed": false
+    },
+    {
+      "id": "X54-09",
+      "mode": "AST",
+      "input": {
+        "type": "DOC",
+        "children": [
+          {
+            "type": "PARAGRAPH",
+            "style": "background:url(https://example.invalid/TEST)",
+            "children": []
+          }
+        ]
+      },
+      "expected": "REJECT_AST",
+      "actual": null,
+      "browser_executed": false
+    },
+    {
+      "id": "X54-10",
+      "mode": "AST",
+      "input": {
+        "type": "DOC",
+        "children": [],
+        "__proto__": {
+          "TEST": "PROTOTYPE_SENTINEL"
+        }
+      },
+      "expected": "REJECT_AST",
+      "actual": null,
+      "browser_executed": false
+    },
+    {
+      "id": "X54-11",
+      "mode": "AST",
+      "input": {
+        "type": "DOC",
+        "children": [
+          {
+            "type": "TEXT",
+            "text": "TEST",
+            "marks": [],
+            "constructor": "TEST"
+          }
+        ]
+      },
+      "expected": "REJECT_AST",
+      "actual": null,
+      "browser_executed": false
+    },
+    {
+      "id": "X54-12",
+      "mode": "AST",
+      "input": {
+        "type": "DOC",
+        "children": [
+          {
+            "type": "PARAGRAPH",
+            "children": [
+              {
+                "type": "TEXT",
+                "text": "<script>window.TEST_SENTINEL_54=1</script> & TEST_ภาษาไทย",
+                "marks": []
+              }
+            ]
+          }
+        ]
+      },
+      "expected": "ACCEPT_AS_LITERAL_TEXT_NOT_HTML",
+      "actual": null,
+      "browser_executed": false,
+      "expected_html_text_encoding_reference": "&lt;script&gt;window.TEST_SENTINEL_54=1&lt;/script&gt; &amp; TEST_ภาษาไทย"
+    },
+    {
+      "id": "X54-13",
+      "mode": "GENERATED_LIMIT_DESCRIPTOR",
+      "input": {
+        "text_repeat_char": "A",
+        "text_repeat_count": 50001
+      },
+      "expected": "REJECT_LIMIT",
+      "actual": null,
+      "browser_executed": false
+    },
+    {
+      "id": "X54-14",
+      "mode": "GENERATED_LIMIT_DESCRIPTOR",
+      "input": {
+        "nested_valid_list_depth": 18
+      },
+      "expected": "REJECT_LIMIT",
+      "actual": null,
+      "browser_executed": false
+    },
+    {
+      "id": "X54-15",
+      "mode": "RAW_HTML",
+      "input": {
+        "raw_html": "{{TEST_TEMPLATE_EXPRESSION}}<iframe src=\"https://example.invalid/TEST\"></iframe>"
+      },
+      "expected": "REJECT_RAW_HTML",
+      "actual": null,
+      "browser_executed": false
+    },
+    {
+      "id": "X54-16",
+      "mode": "AST",
+      "input": {
+        "type": "DOC",
+        "children": [
+          {
+            "type": "TEXT",
+            "text": "TEST",
+            "marks": ["BOLD"],
+            "raw_html": "<script>TEST</script>"
+          }
+        ]
+      },
+      "expected": "REJECT_AST",
+      "actual": null,
+      "browser_executed": false
+    }
+  ],
+  "pdf_boundary_cases": [
+    {
+      "id": "DEMO_UNKNOWN_OFFICIAL_TEMPLATE",
+      "expected": "OFFICIAL_DENY_DEMO_WATERMARK_ONLY",
+      "actual": null
+    },
+    {
+      "id": "UNVERIFIED_CLIENT_PDF_UPLOAD",
+      "expected": "NO_AUTOMATIC_BIND_TO_HTML_APPROVAL",
+      "actual": null
+    },
+    {
+      "id": "FONT_OR_LAYOUT_RENDER_CHANGED",
+      "expected": "HOLD_OR_NEW_REVIEW",
+      "actual": null
+    },
+    {
+      "id": "PDF_SAVED_FROM_BROWSER",
+      "expected": "NOT_BYTE_IDENTITY_OR_DIGITAL_SIGNATURE_PROOF",
+      "actual": null
+    }
+  ],
+  "material_fields": [
+    "subject",
+    "body_ast",
+    "signer",
+    "recipients",
+    "attachments",
+    "template",
+    "font",
+    "layout",
+    "content_policy",
+    "review_due",
+    "priority",
+    "confidentiality",
+    "permission_plan",
+    "substantive_source_refs",
+    "ast_schema",
+    "calendar",
+    "rendered_letter_date",
+    "timezone"
+  ],
+  "fault_plan": {
+    "failpoints": [
+      "AFTER_DRAFT_WRITE",
+      "AFTER_SUBMIT_SEAL",
+      "AFTER_DECISION_BEFORE_SNAPSHOT",
+      "AFTER_APPROVED_SNAPSHOT_BEFORE_OUTBOX",
+      "AFTER_DISPATCH_HOLD_BEFORE_NEW_VERSION",
+      "BEFORE_COMMIT",
+      "AFTER_COMMIT_BEFORE_RESPONSE"
+    ],
+    "precommit_expected": "ROOT_VERSION_DECISION_SNAPSHOT_PERMIT_RECEIPT_AUDIT_OUTBOX_ATOMIC_ROLLBACK",
+    "postcommit_expected": "CURRENT_AUTHORIZED_RETRY_SAME_OPERATION_NO_DUPLICATE",
+    "actual_injected": false
+  },
+  "native_race_plan": {
+    "connections": 2,
+    "barrier_required": true,
+    "observer_required": true,
+    "expected_approval_decision_sets": 1,
+    "expected_second_approver_result": "CONFLICT",
+    "actual_outcomes": null
+  },
+  "criteria": {
+    "54-01": {
+      "cases": [
+        "P54-03",
+        "P54-04",
+        "P54-05",
+        "P54-06",
+        "P54-07",
+        "P54-08",
+        "P54-09",
+        "P54-14",
+        "P54-16",
+        "P54-17",
+        "P54-18",
+        "P54-20"
+      ],
+      "status": "BLOCKED",
+      "actual": null
+    },
+    "54-02": {
+      "cases": [
+        "P54-10",
+        "P54-11",
+        "P54-12",
+        "P54-13",
+        "P54-14",
+        "P54-17",
+        "P54-19"
+      ],
+      "status": "BLOCKED",
+      "actual": null
+    }
+  },
+  "cases": [
+    {
+      "id": "P54-01",
+      "expected": "draftsave/resume/autosave-old-revision/สองคนแก้/requirementsserver/currentauth",
+      "status": "NOT_RUN",
+      "actual": null,
+      "execution_manifest": null
+    },
+    {
+      "id": "P54-02",
+      "expected": "subject/body/signer/recipient/file/reviewdueครบ/ไม่ครบทั้ง4registertypes",
+      "status": "NOT_RUN",
+      "actual": null,
+      "execution_manifest": null
+    },
+    {
+      "id": "P54-03",
+      "expected": "submit→review→returned→candidateใหม่→review→approve rootเดิม/historyครบ",
+      "status": "NOT_RUN",
+      "actual": null,
+      "execution_manifest": null
+    },
+    {
+      "id": "P54-04",
+      "expected": "maker/rootcreator/สาระสำคัญeditor/verifiedsamePerson/tech-role APIapprove deny",
+      "status": "NOT_RUN",
+      "actual": null,
+      "execution_manifest": null
+    },
+    {
+      "id": "P54-05",
+      "expected": "approversสองnativeconnections/CASหนึ่งdecision/snapshot/outboxธุรกรรมเดียว",
+      "status": "NOT_RUN",
+      "actual": null,
+      "execution_manifest": null
+    },
+    {
+      "id": "P54-06",
+      "expected": "previewedmanifest/approvalsnapshot/templatefont/attachments/recipientsethashตรง",
+      "status": "NOT_RUN",
+      "actual": null,
+      "execution_manifest": null
+    },
+    {
+      "id": "P54-07",
+      "expected": "editทุกmaterialfieldหลังapproval holdactivepermit/cycleใหม่ olddecisionคงอยู่",
+      "status": "NOT_RUN",
+      "actual": null,
+      "execution_manifest": null
+    },
+    {
+      "id": "P54-08",
+      "expected": "crafteddispatch requestV2/body/recipient/file/templateใหม่หรือoldrootrevision deny",
+      "status": "NOT_RUN",
+      "actual": null,
+      "execution_manifest": null
+    },
+    {
+      "id": "P54-09",
+      "expected": "FileVersionIDเดิมbytesเปลี่ยน/documentlatestV2ไม่autouseV2/scanrecall deny",
+      "status": "NOT_RUN",
+      "actual": null,
+      "execution_manifest": null
+    },
+    {
+      "id": "P54-10",
+      "expected": "recipientsชื่อเหมือน/หนึ่งPersonหลายcontext/forgedIDs/ambiguousname/currentgrants",
+      "status": "NOT_RUN",
+      "actual": null,
+      "execution_manifest": null
+    },
+    {
+      "id": "P54-11",
+      "expected": "HTML/script/event/SVG/MathML/JS-URL/style/unknownASTnode/attrs/JSONprototypeinput",
+      "status": "NOT_RUN",
+      "actual": null,
+      "execution_manifest": null
+    },
+    {
+      "id": "P54-12",
+      "expected": "safeASTtextที่มีscript-looking text renderเป็นliteralไม่execute ทุกscreen/print/error",
+      "status": "NOT_RUN",
+      "actual": null,
+      "execution_manifest": null
+    },
+    {
+      "id": "P54-13",
+      "expected": "paste/server import malformed/oversize/deepAST/renderer policyversionเปลี่ยน",
+      "status": "NOT_RUN",
+      "actual": null,
+      "execution_manifest": null
+    },
+    {
+      "id": "P54-14",
+      "expected": "attachmentscurrentCLEAN/ACL/hash/privatepreview ไม่มีactiveembed/remotecontentfetch",
+      "status": "NOT_RUN",
+      "actual": null,
+      "execution_manifest": null
+    },
+    {
+      "id": "P54-15",
+      "expected": "DEMOtemplate watermark/officialunknown deny Sarabun/A4/fontsloaded/privatePDFprint",
+      "status": "NOT_RUN",
+      "actual": null,
+      "execution_manifest": null
+    },
+    {
+      "id": "P54-16",
+      "expected": "samepreviewmanifest screen/print/export exactThai/longtext/pagination/version/revoke",
+      "status": "NOT_RUN",
+      "actual": null,
+      "execution_manifest": null
+    },
+    {
+      "id": "P54-17",
+      "expected": "crossorg record-source-fileACL fieldpolicy/HTMLcache/static/search/worker/CSRFdeny",
+      "status": "NOT_RUN",
+      "actual": null,
+      "execution_manifest": null
+    },
+    {
+      "id": "P54-18",
+      "expected": "failpointdraft/submit/approval/hold/snapshot/receipt/auditoutbox precommitrollback postcommitretry",
+      "status": "NOT_RUN",
+      "actual": null,
+      "execution_manifest": null
+    },
+    {
+      "id": "P54-19",
+      "expected": "keyboard/Thai labels/focus/conflict/emptystate 375/768/1024/1440",
+      "status": "NOT_RUN",
+      "actual": null,
+      "execution_manifest": null
+    },
+    {
+      "id": "P54-20",
+      "expected": "preview/GET/PDF/notificationไม่send/ack/signature/register grant คำอนุมัติไม่signedofficial",
+      "status": "NOT_RUN",
+      "actual": null,
+      "execution_manifest": null
+    }
+  ],
+  "data_notes": [
+    "All actors/IDs/decisions/gate inputs are planned synthetic references, not existing grants, approvals or uploaded bytes",
+    "V1/V2 attachments reuse hypothetical FileVersion IDs from fixture53; changing Document.latest alone does not replace an approved reference",
+    "Reference AST/escaping/hash/predicate checks cannot prove browser script execution prevention, server sanitizer safety or dispatch behavior",
+    "Workflow decisions remain history after material edit; no SENT/ACK/SIGNED or official output in this plan"
+  ],
+  "decision_descriptors": [
+    {
+      "id": "DEMO_DECISION_54_CYCLE_1",
+      "kind": "RETURN",
+      "record_version_id": "DEMO_RECORD_54_V1",
+      "review_cycle": 1,
+      "expected_candidate_digest": "cde65793cd8daa70c3d171ff5f2b9763eefac57a94ea2076c130d10102d6134c",
+      "reason_code": "TEST_RETURN_REQUIRED_DETAILS_54",
+      "actual_created": false,
+      "actual_actor": null,
+      "actual_evidence": null
+    },
+    {
+      "id": "DEMO_DECISION_54_CYCLE_2",
+      "kind": "APPROVE",
+      "record_version_id": "DEMO_RECORD_54_V2",
+      "review_cycle": 2,
+      "expected_candidate_digest": "d1fc1e2f63e054a0ad367d6924c4b66a14ccd367e4fb4df0dc613f48e4269726",
+      "reason_code": "TEST_APPROVE_DEMO_SNAPSHOT_54",
+      "actual_created": false,
+      "actual_actor": null,
+      "actual_evidence": null
+    },
+    {
+      "id": "DEMO_DECISION_54_CYCLE_3",
+      "kind": "APPROVE",
+      "record_version_id": "DEMO_RECORD_54_V3",
+      "review_cycle": 3,
+      "expected_candidate_digest": "799ae6f88dcbf040d348da37c5113d873b50a07957b8f45beb9a94d8bb6b5d65",
+      "reason_code": "TEST_APPROVE_DEMO_SNAPSHOT_54",
+      "actual_created": false,
+      "actual_actor": null,
+      "actual_evidence": null
+    }
+  ],
+  "digest_reference_spec": {
+    "status": "REFERENCE_ONLY_NOT_PRODUCTION_CANONICALIZATION",
+    "serialization": "Python json.dumps ensure_ascii=False sort_keys=True separators comma-colon UTF-8 SHA256; ASCII schema keys and fixture primitive values only",
+    "recipient_sort_keys": [
+      "target_kind",
+      "person_id",
+      "organization_id",
+      "context_id"
+    ],
+    "production_protocol": "TO VERIFY ADR for interoperable canonicalization, schema and Unicode normalization before implementation"
+  }
+}

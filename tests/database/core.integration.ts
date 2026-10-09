@@ -52,7 +52,8 @@ async function snapshot() {
     // Names come from trusted migration catalog, limited identifiers.
     assert.match(tablename, /^[a-z_]+$/);
     const rows = await pool.query(
-      `SELECT to_jsonb(t) AS data FROM private."${tablename}" t ORDER BY id`,
+      // Snapshot every column deterministically, including tables whose key is a hash.
+      `SELECT to_jsonb(t) AS data FROM private."${tablename}" t ORDER BY data`,
     );
     result[tablename] = rows.rows.map((r) => r.data);
   }
@@ -64,6 +65,7 @@ test("PostgreSQL core06 — migration/seed/constraints/RLS", async (t) => {
     await t.test(
       "seedสองครั้งและพร้อมกันไม่ซ้ำ ไม่เขียนทับและไม่เพิ่มauditซ้ำ",
       async () => {
+        const auditBefore = await prisma.auditLog.count();
         await seedSyntheticData(prisma);
         const first = await snapshot();
         await seedSyntheticData(prisma);
@@ -76,7 +78,7 @@ test("PostgreSQL core06 — migration/seed/constraints/RLS", async (t) => {
         assert.equal(await prisma.organization.count(), 2);
         assert.equal(await prisma.academicYear.count(), 2);
         assert.equal(await prisma.fiscalYear.count(), 2);
-        assert.equal(await prisma.auditLog.count(), 41);
+        assert.equal(await prisma.auditLog.count(), auditBefore + 41);
       },
     );
     await t.test(
@@ -244,13 +246,13 @@ test("PostgreSQL core06 — migration/seed/constraints/RLS", async (t) => {
       },
     );
     await t.test(
-      "RLSครบ19ตาราง; limited roleแม้grant/ปลอมcontextก็อ่านแก้ไม่ได้",
+      "RLSครบ35ตาราง; limited roleแม้grant/ปลอมcontextก็อ่านแก้ไม่ได้",
       async () => {
         await transaction(async (c) => {
           const flags = await c.query(
             "SELECT c.relname,c.relrowsecurity,c.relforcerowsecurity FROM pg_class c JOIN pg_namespace n ON n.oid=c.relnamespace WHERE n.nspname='private' AND c.relkind='r'",
           );
-          assert.equal(flags.rowCount, 19);
+          assert.equal(flags.rowCount, 35);
           for (const row of flags.rows)
             assert.ok(row.relrowsecurity && row.relforcerowsecurity);
           await c.query(

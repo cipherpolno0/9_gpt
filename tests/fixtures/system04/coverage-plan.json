@@ -1,0 +1,239 @@
+{
+  "version": "0.1",
+  "sourceCommit": "9a13448",
+  "kind": "PLAN_ONLY",
+  "seeded": false,
+  "executionStatus": "NOT_RUN",
+  "notice": "ข้อมูลสมมติสำหรับวางแผนทดสอบ ไม่ใช่ seed บัญชี ใบสมัคร หรือกฎทางการ",
+  "centralBindingsRequired": true,
+  "authorityStatus": "TO_VERIFY",
+  "actors": [
+    "DEMO34_REQUESTER_A",
+    "DEMO34_REVIEWER_A",
+    "DEMO34_APPROVER_A1",
+    "DEMO34_APPROVER_A2",
+    "DEMO34_STAFF_B",
+    "DEMO34_DELEGATE_A",
+    "DEMO34_AUDITOR_A",
+    "DEMO34_TECH_ADMIN"
+  ],
+  "branches": {
+    "A": [
+      "draft",
+      "submitted",
+      "reviewing",
+      "returned",
+      "submitted",
+      "reviewing",
+      "approved",
+      "effective"
+    ],
+    "B": ["draft", "submitted", "reviewing", "rejected"],
+    "C": ["draft", "cancelled"]
+  },
+  "requiredNonemptyManifests": [
+    "applications",
+    "document_file_versions",
+    "position_assignment_history",
+    "status_events_after_effect",
+    "address_snapshots"
+  ],
+  "impactFixturePlan": {
+    "applicationRefs": ["DEMO34_APPLICATION_A1", "DEMO34_APPLICATION_A2"],
+    "outsideContextApplicationRef": "DEMO34_APPLICATION_OTHER_YEAR_TYPE",
+    "personRef": "DEMO34_PERSON_SHARED",
+    "pendingDutyRef": "DEMO34_PENDING_DUTY",
+    "unrelatedDutyRef": "DEMO34_UNRELATED_DUTY",
+    "sourceOrderFileRef": "DEMO34_SOURCE_ORDER_FILE_V1",
+    "correctionOrderFileRef": "DEMO34_CORRECTION_ORDER_FILE_V1",
+    "oldAddressRef": "DEMO34_ADDRESS_VERSION_OLD",
+    "newAddressRef": "DEMO34_ADDRESS_VERSION_NEW",
+    "valuesAreReferencesOnly": true
+  },
+  "recoveryIntents": {
+    "AMEND": "Proposal / TO VERIFY",
+    "REVOKE": "Proposal / TO VERIFY"
+  },
+  "coverage": [
+    {
+      "coverageRef": "C30-01",
+      "fixtureRef": "DEMO34_CASE_01",
+      "operationLabel": "จัดตั้ง",
+      "targetTypeLabel": "สำนักเรียน",
+      "examTypeLabel": null,
+      "typeContextRequired": false,
+      "ruleStatus": "TO_VERIFY",
+      "seeded": false,
+      "lifecycle": {
+        "draft": "NOT_RUN",
+        "returned": "NOT_RUN",
+        "approved": "NOT_RUN",
+        "rejected": "NOT_RUN",
+        "cancelled": "NOT_RUN",
+        "effective": "NOT_RUN"
+      }
+    },
+    {
+      "coverageRef": "C30-02",
+      "fixtureRef": "DEMO34_CASE_02",
+      "operationLabel": "ยุบ",
+      "targetTypeLabel": "สำนักเรียน",
+      "examTypeLabel": null,
+      "typeContextRequired": false,
+      "ruleStatus": "TO_VERIFY",
+      "seeded": false,
+      "lifecycle": {
+        "draft": "NOT_RUN",
+        "returned": "NOT_RUN",
+        "approved": "NOT_RUN",
+        "rejected": "NOT_RUN",
+        "cancelled": "NOT_RUN",
+        "effective": "NOT_RUN"
+      }
+    },
+    {
+      "coverageRef": "C30-03",
+      "fixtureRef": "DEMO34_CASE_03",
+      "operationLabel": "จัดตั้ง",
+      "targetTypeLabel": "สำนักศาสนศึกษา",
+      "examTypeLabel": null,
+      "typeContextRequired": false,
+      "ruleStatus": "TO_VERIFY",
+      "seeded": false,
+      "lifecycle": {
+        "draft": "NOT_RUN",
+        "returned": "NOT_RUN",
+        "approved": "NOT_RUN",
+        "rejected": "NOT_RUN",
+        "cancelled": "NOT_RUN",
+        "effective": "NOT_RUN"
+      }
+    },
+    {
+      "coverageRef": "C30-04",
+      "fixtureRef": "DEMO34_CASE_04",
+      "operationLabel": "ยุบ",
+      "targetTypeLabel": "สำนักศาสนศึกษา",
+      "examTypeLabel": null,
+      "typeContextRequired": false,
+      "ruleStatus": "TO_VERIFY",
+      "seeded": false,
+      "lifecycle": {
+        "draft": "NOT_RUN",
+        "returned": "NOT_RUN",
+        "approved": "NOT_RUN",
+        "rejected": "NOT_RUN",
+        "cancelled": "NOT_RUN",
+        "effective": "NOT_RUN"
+      }
+    },
+    {
+      "coverageRef": "C30-05",
+      "fixtureRef": "DEMO34_CASE_05",
+      "operationLabel": "เปิด",
+      "targetTypeLabel": "สนามสอบ",
+      "examTypeLabel": "นักธรรม",
+      "typeContextRequired": true,
+      "ruleStatus": "TO_VERIFY",
+      "seeded": false,
+      "lifecycle": {
+        "draft": "NOT_RUN",
+        "returned": "NOT_RUN",
+        "approved": "NOT_RUN",
+        "rejected": "NOT_RUN",
+        "cancelled": "NOT_RUN",
+        "effective": "NOT_RUN"
+      }
+    },
+    {
+      "coverageRef": "C30-06",
+      "fixtureRef": "DEMO34_CASE_06",
+      "operationLabel": "ปิด",
+      "targetTypeLabel": "สนามสอบ",
+      "examTypeLabel": "นักธรรม",
+      "typeContextRequired": true,
+      "ruleStatus": "TO_VERIFY",
+      "seeded": false,
+      "lifecycle": {
+        "draft": "NOT_RUN",
+        "returned": "NOT_RUN",
+        "approved": "NOT_RUN",
+        "rejected": "NOT_RUN",
+        "cancelled": "NOT_RUN",
+        "effective": "NOT_RUN"
+      }
+    },
+    {
+      "coverageRef": "C30-07",
+      "fixtureRef": "DEMO34_CASE_07",
+      "operationLabel": "ย้าย",
+      "targetTypeLabel": "สนามสอบ",
+      "examTypeLabel": "นักธรรม",
+      "typeContextRequired": true,
+      "ruleStatus": "TO_VERIFY",
+      "seeded": false,
+      "lifecycle": {
+        "draft": "NOT_RUN",
+        "returned": "NOT_RUN",
+        "approved": "NOT_RUN",
+        "rejected": "NOT_RUN",
+        "cancelled": "NOT_RUN",
+        "effective": "NOT_RUN"
+      }
+    },
+    {
+      "coverageRef": "C30-08",
+      "fixtureRef": "DEMO34_CASE_08",
+      "operationLabel": "เปิด",
+      "targetTypeLabel": "สนามสอบ",
+      "examTypeLabel": "ธรรมศึกษา",
+      "typeContextRequired": true,
+      "ruleStatus": "TO_VERIFY",
+      "seeded": false,
+      "lifecycle": {
+        "draft": "NOT_RUN",
+        "returned": "NOT_RUN",
+        "approved": "NOT_RUN",
+        "rejected": "NOT_RUN",
+        "cancelled": "NOT_RUN",
+        "effective": "NOT_RUN"
+      }
+    },
+    {
+      "coverageRef": "C30-09",
+      "fixtureRef": "DEMO34_CASE_09",
+      "operationLabel": "ปิด",
+      "targetTypeLabel": "สนามสอบ",
+      "examTypeLabel": "ธรรมศึกษา",
+      "typeContextRequired": true,
+      "ruleStatus": "TO_VERIFY",
+      "seeded": false,
+      "lifecycle": {
+        "draft": "NOT_RUN",
+        "returned": "NOT_RUN",
+        "approved": "NOT_RUN",
+        "rejected": "NOT_RUN",
+        "cancelled": "NOT_RUN",
+        "effective": "NOT_RUN"
+      }
+    },
+    {
+      "coverageRef": "C30-10",
+      "fixtureRef": "DEMO34_CASE_10",
+      "operationLabel": "ย้าย",
+      "targetTypeLabel": "สนามสอบ",
+      "examTypeLabel": "ธรรมศึกษา",
+      "typeContextRequired": true,
+      "ruleStatus": "TO_VERIFY",
+      "seeded": false,
+      "lifecycle": {
+        "draft": "NOT_RUN",
+        "returned": "NOT_RUN",
+        "approved": "NOT_RUN",
+        "rejected": "NOT_RUN",
+        "cancelled": "NOT_RUN",
+        "effective": "NOT_RUN"
+      }
+    }
+  ]
+}

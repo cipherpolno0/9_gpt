@@ -1,0 +1,1131 @@
+{
+  "fixture_version": "0.1",
+  "lesson": 58,
+  "mode": "PLAN_ONLY",
+  "source_commit": "bc3796e",
+  "received_at": "2026-10-08T23:42:15+07:00",
+  "classification": "SYNTHETIC_TEST_DATA_NOT_OFFICIAL",
+  "schema_version": "0.6.0",
+  "prerequisites": {
+    "53": "BLOCKED",
+    "54": "BLOCKED",
+    "55": "BLOCKED",
+    "56": "BLOCKED",
+    "57": "BLOCKED"
+  },
+  "actual_execution": {
+    "e2e_runs": 0,
+    "file_versions": 0,
+    "storage_uploads": 0,
+    "source_decisions": 0,
+    "eoffice_decisions": 0,
+    "deliveries": 0,
+    "acknowledgements": 0,
+    "case_closures": 0,
+    "hold_placements": 0,
+    "destructions": 0,
+    "provider_calls": 0
+  },
+  "baseline_checks_run": {
+    "root_unit_tests": {
+      "status": "PASS",
+      "passed": 17,
+      "failed": 0,
+      "scope": "EXISTING_CORE_NOT_SYSTEM08"
+    },
+    "native_db_test": {
+      "status": "FAILED",
+      "exit_code": 1,
+      "scope": "CORE_DATABASE_NOT_P58_RUNNER"
+    }
+  },
+  "policy": {
+    "official_status": "TO_VERIFY",
+    "retention_duration_days": null,
+    "owner_signoff_ref": null,
+    "destructive_execution_enabled": false,
+    "signing_configuration": "SIGNING_NOT_CONFIGURED",
+    "actual_signatures": 0
+  },
+  "files": [
+    {
+      "file_version_ref": "TEST_01_MOVE_FILE_V1",
+      "document_ref": "TEST_01_MOVE_DOC",
+      "version_no": 1,
+      "synthetic_utf8": "คำสั่งย้ายทดลอง TEST_01_MOVE รุ่น1 ข้อมูลสมมติ ไม่เป็นเอกสารทางการ\n",
+      "byte_length": 165,
+      "sha256": "c0b3fd2e3ad2843b4057991583a72d864bdcd297cbba9f9ca82bd57912b7ac72",
+      "media_type": "text/plain",
+      "data_classification": "SYNTHETIC_ONLY",
+      "actual_file_version_ref": null,
+      "actual_storage_ref": null,
+      "actual_scan_result": null
+    },
+    {
+      "file_version_ref": "TEST_01_MOVE_FILE_V2",
+      "document_ref": "TEST_01_MOVE_DOC",
+      "version_no": 2,
+      "synthetic_utf8": "คำสั่งย้ายทดลอง TEST_01_MOVE รุ่น2 ข้อมูลสมมติ ไม่เป็นเอกสารทางการ\n",
+      "byte_length": 165,
+      "sha256": "a3efaa00b6eee134f68e7c29fa61a5221f727bc3c8a46f289390fe1809c937ec",
+      "media_type": "text/plain",
+      "data_classification": "SYNTHETIC_ONLY",
+      "actual_file_version_ref": null,
+      "actual_storage_ref": null,
+      "actual_scan_result": null
+    },
+    {
+      "file_version_ref": "TEST_04_OPEN_CENTER_FILE_V1",
+      "document_ref": "TEST_04_OPEN_CENTER_DOC",
+      "version_no": 1,
+      "synthetic_utf8": "คำสั่งเปิดสนามทดลอง TEST_04_OPEN_CENTER รุ่น1 ข้อมูลสมมติ ไม่เป็นเอกสารทางการ\n",
+      "byte_length": 184,
+      "sha256": "ec95a0a1eb467ad9f6bb1de4d968c5b05cad2dea50ca34bbdfb5cc81febb3932",
+      "media_type": "text/plain",
+      "data_classification": "SYNTHETIC_ONLY",
+      "actual_file_version_ref": null,
+      "actual_storage_ref": null,
+      "actual_scan_result": null
+    },
+    {
+      "file_version_ref": "TEST_04_OPEN_CENTER_FILE_V2",
+      "document_ref": "TEST_04_OPEN_CENTER_DOC",
+      "version_no": 2,
+      "synthetic_utf8": "คำสั่งเปิดสนามทดลอง TEST_04_OPEN_CENTER รุ่น2 ข้อมูลสมมติ ไม่เป็นเอกสารทางการ\n",
+      "byte_length": 184,
+      "sha256": "9d9e5d1ddc378c72e15eaa6c655bd106e5e30694706ab97713c23a1fbca85565",
+      "media_type": "text/plain",
+      "data_classification": "SYNTHETIC_ONLY",
+      "actual_file_version_ref": null,
+      "actual_storage_ref": null,
+      "actual_scan_result": null
+    },
+    {
+      "file_version_ref": "TEST_06_BUDGET_APPROVAL_FILE_V1",
+      "document_ref": "TEST_06_BUDGET_APPROVAL_DOC",
+      "version_no": 1,
+      "synthetic_utf8": "ใบอนุมัติงบทดลอง TEST_06_BUDGET_APPROVAL รุ่น1 ข้อมูลสมมติ ไม่เป็นเอกสารทางการ\n",
+      "byte_length": 179,
+      "sha256": "bf3f41b3ee1fee5e2465f0bdfed306b1032423a3a891dbc60d619fbb98c7e2dd",
+      "media_type": "text/plain",
+      "data_classification": "SYNTHETIC_ONLY",
+      "actual_file_version_ref": null,
+      "actual_storage_ref": null,
+      "actual_scan_result": null
+    },
+    {
+      "file_version_ref": "TEST_06_BUDGET_APPROVAL_FILE_V2",
+      "document_ref": "TEST_06_BUDGET_APPROVAL_DOC",
+      "version_no": 2,
+      "synthetic_utf8": "ใบอนุมัติงบทดลอง TEST_06_BUDGET_APPROVAL รุ่น2 ข้อมูลสมมติ ไม่เป็นเอกสารทางการ\n",
+      "byte_length": 179,
+      "sha256": "7b1894ae2ece662bb99b2939d2debcad538148664c7f6d73426e3d9f5fffa87b",
+      "media_type": "text/plain",
+      "data_classification": "SYNTHETIC_ONLY",
+      "actual_file_version_ref": null,
+      "actual_storage_ref": null,
+      "actual_scan_result": null
+    },
+    {
+      "file_version_ref": "TEST_07_GOODS_RECEIPT_FILE_V1",
+      "document_ref": "TEST_07_GOODS_RECEIPT_DOC",
+      "version_no": 1,
+      "synthetic_utf8": "เอกสารรับพัสดุทดลอง TEST_07_GOODS_RECEIPT รุ่น1 ข้อมูลสมมติ ไม่เป็นเอกสารทางการ\n",
+      "byte_length": 186,
+      "sha256": "9f80f681958e64bf8e21d2cf0313704bff4550cca8946443bcc9268cf88ccbc4",
+      "media_type": "text/plain",
+      "data_classification": "SYNTHETIC_ONLY",
+      "actual_file_version_ref": null,
+      "actual_storage_ref": null,
+      "actual_scan_result": null
+    },
+    {
+      "file_version_ref": "TEST_07_GOODS_RECEIPT_FILE_V2",
+      "document_ref": "TEST_07_GOODS_RECEIPT_DOC",
+      "version_no": 2,
+      "synthetic_utf8": "เอกสารรับพัสดุทดลอง TEST_07_GOODS_RECEIPT รุ่น2 ข้อมูลสมมติ ไม่เป็นเอกสารทางการ\n",
+      "byte_length": 186,
+      "sha256": "41524e1283f534bb4df527cf6fa725b2581887ee69f7078e203c1b2b976abd3f",
+      "media_type": "text/plain",
+      "data_classification": "SYNTHETIC_ONLY",
+      "actual_file_version_ref": null,
+      "actual_storage_ref": null,
+      "actual_scan_result": null
+    }
+  ],
+  "cross_system_examples": [
+    {
+      "example_ref": "TEST_01_MOVE",
+      "source_module": "01",
+      "kind": "MOVE",
+      "source_ref": "TEST_01_MOVE_SOURCE",
+      "versions": [
+        {
+          "source_version_ref": "TEST_01_MOVE_SOURCE_V1",
+          "source_decision_ref": "TEST_01_MOVE_SOURCE_DECISION_V1",
+          "eoffice_record_version_ref": "TEST_01_MOVE_RECORD_V1",
+          "eoffice_decision_ref": "TEST_01_MOVE_REVIEW_DECISION_V1",
+          "approval_evidence_ref": "TEST_01_MOVE_EVIDENCE_V1",
+          "document_ref": "TEST_01_MOVE_DOC",
+          "source_file_version_ref": "TEST_01_MOVE_FILE_V1",
+          "eoffice_file_version_ref": "TEST_01_MOVE_FILE_V1",
+          "approved_input_hash": "c0b3fd2e3ad2843b4057991583a72d864bdcd297cbba9f9ca82bd57912b7ac72",
+          "effective_at": "2026-10-08T21:45:00+07:00",
+          "recorded_at": "2026-10-08T14:30:00Z",
+          "snapshot_title": "คำสั่งย้ายทดลอง รุ่น1",
+          "correction_of": null,
+          "supersedes_source_decision_ref": null,
+          "correction_reason": null,
+          "correction_document_ref": null,
+          "actual_source_version_ref": null,
+          "actual_source_decision_ref": null,
+          "actual_eoffice_record_version_ref": null,
+          "actual_eoffice_decision_ref": null,
+          "actual_approval_evidence_ref": null
+        },
+        {
+          "source_version_ref": "TEST_01_MOVE_SOURCE_V2",
+          "source_decision_ref": "TEST_01_MOVE_SOURCE_DECISION_V2",
+          "eoffice_record_version_ref": "TEST_01_MOVE_RECORD_V2",
+          "eoffice_decision_ref": "TEST_01_MOVE_REVIEW_DECISION_V2",
+          "approval_evidence_ref": "TEST_01_MOVE_EVIDENCE_V2",
+          "document_ref": "TEST_01_MOVE_DOC",
+          "source_file_version_ref": "TEST_01_MOVE_FILE_V2",
+          "eoffice_file_version_ref": "TEST_01_MOVE_FILE_V2",
+          "approved_input_hash": "a3efaa00b6eee134f68e7c29fa61a5221f727bc3c8a46f289390fe1809c937ec",
+          "effective_at": "2026-10-08T21:45:00+07:00",
+          "recorded_at": "2026-10-08T15:30:00Z",
+          "snapshot_title": "คำสั่งย้ายทดลอง รุ่น2",
+          "correction_of": "TEST_01_MOVE_RECORD_V1",
+          "supersedes_source_decision_ref": "TEST_01_MOVE_SOURCE_DECISION_V1",
+          "correction_reason": "แก้ข้อความสมมติ เปิดคำขอตรวจใหม่",
+          "correction_document_ref": "TEST_01_MOVE_CORRECTION_V1",
+          "actual_source_version_ref": null,
+          "actual_source_decision_ref": null,
+          "actual_eoffice_record_version_ref": null,
+          "actual_eoffice_decision_ref": null,
+          "actual_approval_evidence_ref": null
+        }
+      ],
+      "no_implicit_source_effects": [
+        "REGISTER",
+        "OPEN_REPORT",
+        "SEND",
+        "ACK",
+        "ASSIGN",
+        "CLOSE"
+      ],
+      "expected_source_event_delta_from_eoffice": 0,
+      "actual_source_event_delta": null,
+      "source_detail_ref": "TEST_01_MOVE_ACTIVATION",
+      "official_status": "PROPOSAL_NOT_OFFICIAL",
+      "owner_organization_ref": "TEST_ORG_A"
+    },
+    {
+      "example_ref": "TEST_04_OPEN_CENTER",
+      "source_module": "04",
+      "kind": "OPEN_CENTER",
+      "source_ref": "TEST_04_OPEN_CENTER_SOURCE",
+      "versions": [
+        {
+          "source_version_ref": "TEST_04_OPEN_CENTER_SOURCE_V1",
+          "source_decision_ref": "TEST_04_OPEN_CENTER_SOURCE_DECISION_V1",
+          "eoffice_record_version_ref": "TEST_04_OPEN_CENTER_RECORD_V1",
+          "eoffice_decision_ref": "TEST_04_OPEN_CENTER_REVIEW_DECISION_V1",
+          "approval_evidence_ref": "TEST_04_OPEN_CENTER_EVIDENCE_V1",
+          "document_ref": "TEST_04_OPEN_CENTER_DOC",
+          "source_file_version_ref": "TEST_04_OPEN_CENTER_FILE_V1",
+          "eoffice_file_version_ref": "TEST_04_OPEN_CENTER_FILE_V1",
+          "approved_input_hash": "ec95a0a1eb467ad9f6bb1de4d968c5b05cad2dea50ca34bbdfb5cc81febb3932",
+          "effective_at": "2026-10-10T00:00:00+07:00",
+          "recorded_at": "2026-10-08T14:30:00Z",
+          "snapshot_title": "คำสั่งเปิดสนามทดลอง รุ่น1",
+          "correction_of": null,
+          "supersedes_source_decision_ref": null,
+          "correction_reason": null,
+          "correction_document_ref": null,
+          "actual_source_version_ref": null,
+          "actual_source_decision_ref": null,
+          "actual_eoffice_record_version_ref": null,
+          "actual_eoffice_decision_ref": null,
+          "actual_approval_evidence_ref": null
+        },
+        {
+          "source_version_ref": "TEST_04_OPEN_CENTER_SOURCE_V2",
+          "source_decision_ref": "TEST_04_OPEN_CENTER_SOURCE_DECISION_V2",
+          "eoffice_record_version_ref": "TEST_04_OPEN_CENTER_RECORD_V2",
+          "eoffice_decision_ref": "TEST_04_OPEN_CENTER_REVIEW_DECISION_V2",
+          "approval_evidence_ref": "TEST_04_OPEN_CENTER_EVIDENCE_V2",
+          "document_ref": "TEST_04_OPEN_CENTER_DOC",
+          "source_file_version_ref": "TEST_04_OPEN_CENTER_FILE_V2",
+          "eoffice_file_version_ref": "TEST_04_OPEN_CENTER_FILE_V2",
+          "approved_input_hash": "9d9e5d1ddc378c72e15eaa6c655bd106e5e30694706ab97713c23a1fbca85565",
+          "effective_at": "2026-10-10T00:00:00+07:00",
+          "recorded_at": "2026-10-08T15:30:00Z",
+          "snapshot_title": "คำสั่งเปิดสนามทดลอง รุ่น2",
+          "correction_of": "TEST_04_OPEN_CENTER_RECORD_V1",
+          "supersedes_source_decision_ref": "TEST_04_OPEN_CENTER_SOURCE_DECISION_V1",
+          "correction_reason": "แก้ข้อความสมมติ เปิดคำขอตรวจใหม่",
+          "correction_document_ref": "TEST_04_OPEN_CENTER_CORRECTION_V1",
+          "actual_source_version_ref": null,
+          "actual_source_decision_ref": null,
+          "actual_eoffice_record_version_ref": null,
+          "actual_eoffice_decision_ref": null,
+          "actual_approval_evidence_ref": null
+        }
+      ],
+      "no_implicit_source_effects": [
+        "REGISTER",
+        "OPEN_REPORT",
+        "SEND",
+        "ACK",
+        "ASSIGN",
+        "CLOSE"
+      ],
+      "expected_source_event_delta_from_eoffice": 0,
+      "actual_source_event_delta": null,
+      "source_detail_ref": "TEST_04_OPEN_CENTER_ACTIVATION",
+      "official_status": "PROPOSAL_NOT_OFFICIAL",
+      "owner_organization_ref": "TEST_ORG_B"
+    },
+    {
+      "example_ref": "TEST_06_BUDGET_APPROVAL",
+      "source_module": "06",
+      "kind": "BUDGET_APPROVAL",
+      "source_ref": "TEST_06_BUDGET_APPROVAL_SOURCE",
+      "versions": [
+        {
+          "source_version_ref": "TEST_06_BUDGET_APPROVAL_SOURCE_V1",
+          "source_decision_ref": "TEST_06_BUDGET_APPROVAL_SOURCE_DECISION_V1",
+          "eoffice_record_version_ref": "TEST_06_BUDGET_APPROVAL_RECORD_V1",
+          "eoffice_decision_ref": "TEST_06_BUDGET_APPROVAL_REVIEW_DECISION_V1",
+          "approval_evidence_ref": "TEST_06_BUDGET_APPROVAL_EVIDENCE_V1",
+          "document_ref": "TEST_06_BUDGET_APPROVAL_DOC",
+          "source_file_version_ref": "TEST_06_BUDGET_APPROVAL_FILE_V1",
+          "eoffice_file_version_ref": "TEST_06_BUDGET_APPROVAL_FILE_V1",
+          "approved_input_hash": "bf3f41b3ee1fee5e2465f0bdfed306b1032423a3a891dbc60d619fbb98c7e2dd",
+          "effective_at": "2026-10-08T21:45:00+07:00",
+          "recorded_at": "2026-10-08T14:30:00Z",
+          "snapshot_title": "ใบอนุมัติงบทดลอง รุ่น1",
+          "correction_of": null,
+          "supersedes_source_decision_ref": null,
+          "correction_reason": null,
+          "correction_document_ref": null,
+          "actual_source_version_ref": null,
+          "actual_source_decision_ref": null,
+          "actual_eoffice_record_version_ref": null,
+          "actual_eoffice_decision_ref": null,
+          "actual_approval_evidence_ref": null
+        },
+        {
+          "source_version_ref": "TEST_06_BUDGET_APPROVAL_SOURCE_V2",
+          "source_decision_ref": "TEST_06_BUDGET_APPROVAL_SOURCE_DECISION_V2",
+          "eoffice_record_version_ref": "TEST_06_BUDGET_APPROVAL_RECORD_V2",
+          "eoffice_decision_ref": "TEST_06_BUDGET_APPROVAL_REVIEW_DECISION_V2",
+          "approval_evidence_ref": "TEST_06_BUDGET_APPROVAL_EVIDENCE_V2",
+          "document_ref": "TEST_06_BUDGET_APPROVAL_DOC",
+          "source_file_version_ref": "TEST_06_BUDGET_APPROVAL_FILE_V2",
+          "eoffice_file_version_ref": "TEST_06_BUDGET_APPROVAL_FILE_V2",
+          "approved_input_hash": "7b1894ae2ece662bb99b2939d2debcad538148664c7f6d73426e3d9f5fffa87b",
+          "effective_at": "2026-10-08T21:45:00+07:00",
+          "recorded_at": "2026-10-08T15:30:00Z",
+          "snapshot_title": "ใบอนุมัติงบทดลอง รุ่น2",
+          "correction_of": "TEST_06_BUDGET_APPROVAL_RECORD_V1",
+          "supersedes_source_decision_ref": "TEST_06_BUDGET_APPROVAL_SOURCE_DECISION_V1",
+          "correction_reason": "แก้ข้อความสมมติ เปิดคำขอตรวจใหม่",
+          "correction_document_ref": "TEST_06_BUDGET_APPROVAL_CORRECTION_V1",
+          "actual_source_version_ref": null,
+          "actual_source_decision_ref": null,
+          "actual_eoffice_record_version_ref": null,
+          "actual_eoffice_decision_ref": null,
+          "actual_approval_evidence_ref": null
+        }
+      ],
+      "no_implicit_source_effects": [
+        "REGISTER",
+        "OPEN_REPORT",
+        "SEND",
+        "ACK",
+        "ASSIGN",
+        "CLOSE"
+      ],
+      "expected_source_event_delta_from_eoffice": 0,
+      "actual_source_event_delta": null,
+      "source_detail_ref": "TEST_06_BUDGET_APPROVAL_LEDGER_EVENT",
+      "official_status": "PROPOSAL_NOT_OFFICIAL",
+      "owner_organization_ref": "TEST_ORG_A"
+    },
+    {
+      "example_ref": "TEST_07_GOODS_RECEIPT",
+      "source_module": "07",
+      "kind": "GOODS_RECEIPT",
+      "source_ref": "TEST_07_GOODS_RECEIPT_SOURCE",
+      "versions": [
+        {
+          "source_version_ref": "TEST_07_GOODS_RECEIPT_SOURCE_V1",
+          "source_decision_ref": "TEST_07_GOODS_RECEIPT_SOURCE_DECISION_V1",
+          "eoffice_record_version_ref": "TEST_07_GOODS_RECEIPT_RECORD_V1",
+          "eoffice_decision_ref": "TEST_07_GOODS_RECEIPT_REVIEW_DECISION_V1",
+          "approval_evidence_ref": "TEST_07_GOODS_RECEIPT_EVIDENCE_V1",
+          "document_ref": "TEST_07_GOODS_RECEIPT_DOC",
+          "source_file_version_ref": "TEST_07_GOODS_RECEIPT_FILE_V1",
+          "eoffice_file_version_ref": "TEST_07_GOODS_RECEIPT_FILE_V1",
+          "approved_input_hash": "9f80f681958e64bf8e21d2cf0313704bff4550cca8946443bcc9268cf88ccbc4",
+          "effective_at": "2026-10-08T21:45:00+07:00",
+          "recorded_at": "2026-10-08T14:30:00Z",
+          "snapshot_title": "เอกสารรับพัสดุทดลอง รุ่น1",
+          "correction_of": null,
+          "supersedes_source_decision_ref": null,
+          "correction_reason": null,
+          "correction_document_ref": null,
+          "actual_source_version_ref": null,
+          "actual_source_decision_ref": null,
+          "actual_eoffice_record_version_ref": null,
+          "actual_eoffice_decision_ref": null,
+          "actual_approval_evidence_ref": null
+        },
+        {
+          "source_version_ref": "TEST_07_GOODS_RECEIPT_SOURCE_V2",
+          "source_decision_ref": "TEST_07_GOODS_RECEIPT_SOURCE_DECISION_V2",
+          "eoffice_record_version_ref": "TEST_07_GOODS_RECEIPT_RECORD_V2",
+          "eoffice_decision_ref": "TEST_07_GOODS_RECEIPT_REVIEW_DECISION_V2",
+          "approval_evidence_ref": "TEST_07_GOODS_RECEIPT_EVIDENCE_V2",
+          "document_ref": "TEST_07_GOODS_RECEIPT_DOC",
+          "source_file_version_ref": "TEST_07_GOODS_RECEIPT_FILE_V2",
+          "eoffice_file_version_ref": "TEST_07_GOODS_RECEIPT_FILE_V2",
+          "approved_input_hash": "41524e1283f534bb4df527cf6fa725b2581887ee69f7078e203c1b2b976abd3f",
+          "effective_at": "2026-10-08T21:45:00+07:00",
+          "recorded_at": "2026-10-08T15:30:00Z",
+          "snapshot_title": "เอกสารรับพัสดุทดลอง รุ่น2",
+          "correction_of": "TEST_07_GOODS_RECEIPT_RECORD_V1",
+          "supersedes_source_decision_ref": "TEST_07_GOODS_RECEIPT_SOURCE_DECISION_V1",
+          "correction_reason": "แก้ข้อความสมมติ เปิดคำขอตรวจใหม่",
+          "correction_document_ref": "TEST_07_GOODS_RECEIPT_CORRECTION_V1",
+          "actual_source_version_ref": null,
+          "actual_source_decision_ref": null,
+          "actual_eoffice_record_version_ref": null,
+          "actual_eoffice_decision_ref": null,
+          "actual_approval_evidence_ref": null
+        }
+      ],
+      "no_implicit_source_effects": [
+        "REGISTER",
+        "OPEN_REPORT",
+        "SEND",
+        "ACK",
+        "ASSIGN",
+        "CLOSE"
+      ],
+      "expected_source_event_delta_from_eoffice": 0,
+      "actual_source_event_delta": null,
+      "source_detail_ref": "TEST_07_GOODS_RECEIPT_INSPECTION",
+      "official_status": "PROPOSAL_NOT_OFFICIAL",
+      "owner_organization_ref": "TEST_ORG_A"
+    }
+  ],
+  "central_actual_refs": null,
+  "role_assignments": [
+    {
+      "assignment_ref": "TEST_ASSIGN_A",
+      "account_ref": "TEST_ACCOUNT_MULTI",
+      "person_ref": "TEST_PERSON_MULTI",
+      "organization_ref": "TEST_ORG_A",
+      "context_ref": "TEST_CONTEXT_A",
+      "starts_at": "2026-10-01T00:00:00Z",
+      "ends_at": "2026-11-01T00:00:00Z",
+      "actual_assignment_ref": null
+    },
+    {
+      "assignment_ref": "TEST_ASSIGN_B",
+      "account_ref": "TEST_ACCOUNT_MULTI",
+      "person_ref": "TEST_PERSON_MULTI",
+      "organization_ref": "TEST_ORG_B",
+      "context_ref": "TEST_CONTEXT_B",
+      "starts_at": "2026-10-01T00:00:00Z",
+      "ends_at": "2026-10-08T15:00:00Z",
+      "actual_assignment_ref": null
+    }
+  ],
+  "acl_reference": {
+    "actions": [
+      "read",
+      "search",
+      "preview",
+      "download",
+      "export",
+      "print",
+      "thumbnail",
+      "fulltext",
+      "metadata",
+      "acknowledge",
+      "worker_delivery",
+      "worker_export"
+    ],
+    "scope_is_not_derived_from_address_or_technical_role": true,
+    "matrices": [
+      {
+        "scenario": "BEFORE_B_END",
+        "server_at": "2026-10-08T14:55:00Z",
+        "other_required_guards_assumed_true_for_reference_only": true,
+        "expected": {
+          "read": {
+            "TEST_CONTEXT_A": "ALLOW_CONDITIONAL",
+            "TEST_CONTEXT_B": "ALLOW_CONDITIONAL"
+          },
+          "search": {
+            "TEST_CONTEXT_A": "ALLOW_CONDITIONAL",
+            "TEST_CONTEXT_B": "ALLOW_CONDITIONAL"
+          },
+          "preview": {
+            "TEST_CONTEXT_A": "ALLOW_CONDITIONAL",
+            "TEST_CONTEXT_B": "ALLOW_CONDITIONAL"
+          },
+          "download": {
+            "TEST_CONTEXT_A": "ALLOW_CONDITIONAL",
+            "TEST_CONTEXT_B": "ALLOW_CONDITIONAL"
+          },
+          "export": {
+            "TEST_CONTEXT_A": "ALLOW_CONDITIONAL",
+            "TEST_CONTEXT_B": "ALLOW_CONDITIONAL"
+          },
+          "print": {
+            "TEST_CONTEXT_A": "ALLOW_CONDITIONAL",
+            "TEST_CONTEXT_B": "ALLOW_CONDITIONAL"
+          },
+          "thumbnail": {
+            "TEST_CONTEXT_A": "ALLOW_CONDITIONAL",
+            "TEST_CONTEXT_B": "ALLOW_CONDITIONAL"
+          },
+          "fulltext": {
+            "TEST_CONTEXT_A": "ALLOW_CONDITIONAL",
+            "TEST_CONTEXT_B": "ALLOW_CONDITIONAL"
+          },
+          "metadata": {
+            "TEST_CONTEXT_A": "ALLOW_CONDITIONAL",
+            "TEST_CONTEXT_B": "ALLOW_CONDITIONAL"
+          },
+          "acknowledge": {
+            "TEST_CONTEXT_A": "ALLOW_CONDITIONAL",
+            "TEST_CONTEXT_B": "ALLOW_CONDITIONAL"
+          },
+          "worker_delivery": {
+            "TEST_CONTEXT_A": "ALLOW_CONDITIONAL",
+            "TEST_CONTEXT_B": "ALLOW_CONDITIONAL"
+          },
+          "worker_export": {
+            "TEST_CONTEXT_A": "ALLOW_CONDITIONAL",
+            "TEST_CONTEXT_B": "ALLOW_CONDITIONAL"
+          }
+        },
+        "actual": null
+      },
+      {
+        "scenario": "AT_B_END",
+        "server_at": "2026-10-08T15:00:00Z",
+        "other_required_guards_assumed_true_for_reference_only": true,
+        "expected": {
+          "read": {
+            "TEST_CONTEXT_A": "ALLOW_CONDITIONAL",
+            "TEST_CONTEXT_B": "DENY"
+          },
+          "search": {
+            "TEST_CONTEXT_A": "ALLOW_CONDITIONAL",
+            "TEST_CONTEXT_B": "DENY"
+          },
+          "preview": {
+            "TEST_CONTEXT_A": "ALLOW_CONDITIONAL",
+            "TEST_CONTEXT_B": "DENY"
+          },
+          "download": {
+            "TEST_CONTEXT_A": "ALLOW_CONDITIONAL",
+            "TEST_CONTEXT_B": "DENY"
+          },
+          "export": {
+            "TEST_CONTEXT_A": "ALLOW_CONDITIONAL",
+            "TEST_CONTEXT_B": "DENY"
+          },
+          "print": {
+            "TEST_CONTEXT_A": "ALLOW_CONDITIONAL",
+            "TEST_CONTEXT_B": "DENY"
+          },
+          "thumbnail": {
+            "TEST_CONTEXT_A": "ALLOW_CONDITIONAL",
+            "TEST_CONTEXT_B": "DENY"
+          },
+          "fulltext": {
+            "TEST_CONTEXT_A": "ALLOW_CONDITIONAL",
+            "TEST_CONTEXT_B": "DENY"
+          },
+          "metadata": {
+            "TEST_CONTEXT_A": "ALLOW_CONDITIONAL",
+            "TEST_CONTEXT_B": "DENY"
+          },
+          "acknowledge": {
+            "TEST_CONTEXT_A": "ALLOW_CONDITIONAL",
+            "TEST_CONTEXT_B": "DENY"
+          },
+          "worker_delivery": {
+            "TEST_CONTEXT_A": "ALLOW_CONDITIONAL",
+            "TEST_CONTEXT_B": "DENY"
+          },
+          "worker_export": {
+            "TEST_CONTEXT_A": "ALLOW_CONDITIONAL",
+            "TEST_CONTEXT_B": "DENY"
+          }
+        },
+        "actual": null
+      },
+      {
+        "scenario": "AFTER_B_END",
+        "server_at": "2026-10-08T15:05:00Z",
+        "other_required_guards_assumed_true_for_reference_only": true,
+        "expected": {
+          "read": {
+            "TEST_CONTEXT_A": "ALLOW_CONDITIONAL",
+            "TEST_CONTEXT_B": "DENY"
+          },
+          "search": {
+            "TEST_CONTEXT_A": "ALLOW_CONDITIONAL",
+            "TEST_CONTEXT_B": "DENY"
+          },
+          "preview": {
+            "TEST_CONTEXT_A": "ALLOW_CONDITIONAL",
+            "TEST_CONTEXT_B": "DENY"
+          },
+          "download": {
+            "TEST_CONTEXT_A": "ALLOW_CONDITIONAL",
+            "TEST_CONTEXT_B": "DENY"
+          },
+          "export": {
+            "TEST_CONTEXT_A": "ALLOW_CONDITIONAL",
+            "TEST_CONTEXT_B": "DENY"
+          },
+          "print": {
+            "TEST_CONTEXT_A": "ALLOW_CONDITIONAL",
+            "TEST_CONTEXT_B": "DENY"
+          },
+          "thumbnail": {
+            "TEST_CONTEXT_A": "ALLOW_CONDITIONAL",
+            "TEST_CONTEXT_B": "DENY"
+          },
+          "fulltext": {
+            "TEST_CONTEXT_A": "ALLOW_CONDITIONAL",
+            "TEST_CONTEXT_B": "DENY"
+          },
+          "metadata": {
+            "TEST_CONTEXT_A": "ALLOW_CONDITIONAL",
+            "TEST_CONTEXT_B": "DENY"
+          },
+          "acknowledge": {
+            "TEST_CONTEXT_A": "ALLOW_CONDITIONAL",
+            "TEST_CONTEXT_B": "DENY"
+          },
+          "worker_delivery": {
+            "TEST_CONTEXT_A": "ALLOW_CONDITIONAL",
+            "TEST_CONTEXT_B": "DENY"
+          },
+          "worker_export": {
+            "TEST_CONTEXT_A": "ALLOW_CONDITIONAL",
+            "TEST_CONTEXT_B": "DENY"
+          }
+        },
+        "actual": null
+      }
+    ],
+    "explicit_history_grant": {
+      "grant_ref": "TEST_NEW_HISTORY_READ",
+      "account_ref": "TEST_ACCOUNT_MULTI",
+      "record_ref": "TEST_ROLE_B_RECORD",
+      "context_ref": "TEST_HISTORY_AUDIT_CONTEXT",
+      "purpose": "DEMO_REVIEW_HISTORY",
+      "starts_at": "2026-10-08T15:30:00Z",
+      "ends_at": "2026-10-09T15:30:00Z",
+      "allowed_actions": ["read", "download"],
+      "requires_new_authorization_and_all_source_file_guards": true,
+      "restores_expired_assignment_B": false,
+      "expected_approve_allowed": false,
+      "actual": null
+    },
+    "receipt_is_read_grant": false,
+    "old_delivery_is_read_grant": false,
+    "link_is_read_grant": false,
+    "technical_admin_is_read_grant": false,
+    "downloaded_copy_recall_claim": false
+  },
+  "recipient_reference": {
+    "send_at": "2026-10-08T14:50:00Z",
+    "inputs": [
+      {
+        "person_ref": "TEST_PERSON_MULTI",
+        "organization_ref": "TEST_ORG_A",
+        "context_ref": "TEST_CONTEXT_A",
+        "origin": "DIRECT"
+      },
+      {
+        "person_ref": "TEST_PERSON_MULTI",
+        "organization_ref": "TEST_ORG_A",
+        "context_ref": "TEST_CONTEXT_A",
+        "origin": "GROUP_V1"
+      },
+      {
+        "person_ref": "TEST_PERSON_MULTI",
+        "organization_ref": "TEST_ORG_B",
+        "context_ref": "TEST_CONTEXT_B",
+        "origin": "DIRECT"
+      },
+      {
+        "person_ref": "TEST_PERSON_PEER",
+        "organization_ref": "TEST_ORG_A",
+        "context_ref": "TEST_CONTEXT_A",
+        "origin": "DIRECT"
+      },
+      {
+        "person_ref": "TEST_PERSON_PEER",
+        "organization_ref": "TEST_ORG_A",
+        "context_ref": "TEST_CONTEXT_A",
+        "origin": "GROUP_V1"
+      }
+    ],
+    "expected_endpoints": [
+      {
+        "person_ref": "TEST_PERSON_MULTI",
+        "organization_ref": "TEST_ORG_A",
+        "context_ref": "TEST_CONTEXT_A",
+        "endpoint_ref": "TEST_EP_1",
+        "origins": ["DIRECT", "GROUP_V1"]
+      },
+      {
+        "person_ref": "TEST_PERSON_MULTI",
+        "organization_ref": "TEST_ORG_B",
+        "context_ref": "TEST_CONTEXT_B",
+        "endpoint_ref": "TEST_EP_2",
+        "origins": ["DIRECT"]
+      },
+      {
+        "person_ref": "TEST_PERSON_PEER",
+        "organization_ref": "TEST_ORG_A",
+        "context_ref": "TEST_CONTEXT_A",
+        "endpoint_ref": "TEST_EP_3",
+        "origins": ["DIRECT", "GROUP_V1"]
+      }
+    ],
+    "later_group_member": {
+      "person_ref": "TEST_PERSON_LATE",
+      "organization_ref": "TEST_ORG_A",
+      "context_ref": "TEST_CONTEXT_A",
+      "origin": "GROUP_V2"
+    },
+    "later_member_has_old_delivery": false,
+    "actual_snapshot_ref": null,
+    "ack_A_expected": {
+      "TEST_EP_1": 1,
+      "TEST_EP_2": 0,
+      "TEST_EP_3": 0
+    },
+    "actual": null
+  },
+  "retry_reference": {
+    "first_routing_delta": 1,
+    "first_delivery_delta": 3,
+    "same_command_retry_routing_delta": 0,
+    "same_effect_retry_delivery_delta": 0,
+    "same_ack_retry_receipt_delta": 0,
+    "same_key_different_input_expected": "IDEMPOTENCY_CONFLICT",
+    "actual": null
+  },
+  "close_reference": {
+    "all_conditions_demo": {
+      "current_close_authority": true,
+      "all_required_tasks_completed": true,
+      "required_recipient_outcomes_resolved": true,
+      "closure_policy_confirmed_for_demo": true,
+      "supporting_evidence_clean": true,
+      "revision_matches": true
+    },
+    "expected_conditional_close_allowed": true,
+    "blocked_when_any_required_condition_false": true,
+    "close_implies_hold_release": false,
+    "close_implies_file_delete": false,
+    "close_implies_source_posting": false,
+    "close_implies_public_visibility": false,
+    "official_close_enabled": false,
+    "actual": null
+  },
+  "faults": [
+    {
+      "point": "BEFORE_ROUTING_COMMIT",
+      "expected": "ROLLBACK_ALL_DB_WRITES",
+      "actual": null
+    },
+    {
+      "point": "AFTER_ROUTING_COMMIT_BEFORE_WORKER",
+      "expected": "DURABLE_OUTBOX_PENDING",
+      "actual": null
+    },
+    {
+      "point": "AFTER_DELIVERY_COMMIT_BEFORE_JOB_RECEIPT",
+      "expected": "RECONCILE_SAME_EFFECT_NO_NEW_DELIVERY",
+      "actual": null
+    },
+    {
+      "point": "STALE_WORKER_LEASE",
+      "expected": "FENCE_DENY",
+      "actual": null
+    },
+    {
+      "point": "ROLE_B_REVOKED_BEFORE_ACCESS",
+      "expected": "CURRENT_ACL_DENY_KEEP_HISTORY",
+      "actual": null
+    },
+    {
+      "point": "UNKNOWN_EXTERNAL_SEND_RESULT",
+      "expected": "MANUAL_OR_CONFIRMED_PROVIDER_RECONCILE_NO_BLIND_RESEND",
+      "actual": null
+    },
+    {
+      "point": "HELD_FILE_PURGE_REQUEST",
+      "expected": "BLOCK_DESTRUCTIVE_EXECUTION_KEEP_AUDIT",
+      "actual": null
+    }
+  ],
+  "cases": [
+    {
+      "case_id": "P58-01",
+      "steps": "ผู้สร้างร่าง เลือกcentralPerson/Org/FileVersion บันทึก/reload และผู้แก้สองคนใช้revisionเดียว",
+      "expected": "ร่างเดิมไม่ซ้ำ ผู้แพ้conflict โหลดรุ่นใหม่ ไม่เก็บsecretหรือbodyลับในlocalStorage",
+      "status": "NOT_RUN",
+      "actual": null
+    },
+    {
+      "case_id": "P58-02",
+      "steps": "ส่งตรวจ ส่งกลับพร้อมเหตุผล แก้และส่งใหม่ในเรื่องเดิม",
+      "expected": "reviewcycle/revisions/เหตุผลครบ คำตัดสินเดิมยังอยู่ ไม่สร้างCorrespondenceซ้ำ",
+      "status": "NOT_RUN",
+      "actual": null
+    },
+    {
+      "case_id": "P58-03",
+      "steps": "creator/technicaladmin/out-of-scope/expireddelegateส่งapproveAPI แล้วผู้มีอำนาจคนอื่นตัดสิน",
+      "expected": "denyตามcurrentrole/scope/time/makerchecker; approverอ่านexactmanifestแล้วdecision+evidence+audit+outboxatomic",
+      "status": "NOT_RUN",
+      "actual": null
+    },
+    {
+      "case_id": "P58-04",
+      "steps": "สองconnectionแข่งออกเลขnamespaceเดียว retryและVOIDเลขที่ออก",
+      "expected": "uniqueorg-registerperiod-type-number หนึ่งเลขต่อoperation ไม่reuseVOID countersไม่client-derived/ไม่resetจากretry",
+      "status": "NOT_RUN",
+      "actual": null
+    },
+    {
+      "case_id": "P58-05",
+      "steps": "ทะเบียนรับ ส่ง ภายใน เวียน และเปลี่ยนpriority/class/registerperiodคนละปีงบ/การศึกษา",
+      "expected": "typedconfig/fieldrequirements/steporderตามpolicy ประเภท/ด่วน/ลับ/ปีไม่สับสน policyไม่ยืนยันปิดofficialformat",
+      "status": "NOT_RUN",
+      "actual": null
+    },
+    {
+      "case_id": "P58-06",
+      "steps": "ส่งdirect+groupซ้ำcontextเดียว/คนเดียวสองcontext เพิ่มgroupmemberทีหลัง",
+      "expected": "dedupendpointเดียวเก็บorigins contextต่างแยก snapshotผู้รับคงเดิม newmemberไม่มีoldbookgrant",
+      "status": "NOT_RUN",
+      "actual": null
+    },
+    {
+      "case_id": "P58-07",
+      "steps": "queued-worker-delivered เปิดnotificationและpreviewแต่ไม่กดรับทราบ",
+      "expected": "queued≠delivered≠acknowledged notificationseenไม่receipt ไม่autoassign/complete/close",
+      "status": "NOT_RUN",
+      "actual": null
+    },
+    {
+      "case_id": "P58-08",
+      "steps": "ผู้รับรับทราบcontextA retry และพยายามรับแทนB/peer/ปลอมclienttime",
+      "expected": "receiptหนึ่งชุดต่อendpoint/version/methodตามpolicy currentself-context/serverclock ไม่ackอีกหน้าที่",
+      "status": "NOT_RUN",
+      "actual": null
+    },
+    {
+      "case_id": "P58-09",
+      "steps": "มอบหมายผู้มีtaskสิทธิ์แต่ไม่มีsecretfile grant แล้วตรวจเพิ่มสิทธิ์ตามworkflow",
+      "expected": "pending_accessไม่subject/body/file leak activateเมื่อcurrentrecord/source/file/class/CLEANครบ ไม่grantจากtask",
+      "status": "NOT_RUN",
+      "actual": null
+    },
+    {
+      "case_id": "P58-10",
+      "steps": "completedงานแรก ขณะอีกงานค้างแล้วขอปิดเรื่อง",
+      "expected": "siblingยังค้าง closureconditiondemo block ปิดได้เฉพาะผู้มีcloseaction+เหตุผล+หลักฐานเมื่อเงื่อนไขครบ",
+      "status": "NOT_RUN",
+      "actual": null
+    },
+    {
+      "case_id": "P58-11",
+      "steps": "explicitclose แล้วค้นhistory/reopen-correctionตามpolicy",
+      "expected": "closeeventคงเลข/receipt/files/คำตัดสิน/hold ไม่public/VOID/harddelete/ใหม่sourcepostingจากGET",
+      "status": "NOT_RUN",
+      "actual": null
+    },
+    {
+      "case_id": "P58-12",
+      "steps": "ค้น/list/count/fulltext/snippet/thumbnail/HEAD-Range-304/preview/download/export/print/worker",
+      "expected": "authorizeก่อนcount/metadataทุกchannel ไม่รั่วPII/class/sourceprivate cacheไม่bypasscurrentgrant",
+      "status": "NOT_RUN",
+      "actual": null
+    },
+    {
+      "case_id": "P58-13",
+      "steps": "บัญชีเดียวหน้าที่A+Bช่วงยังใช้ได้ อ่านหนังสือแต่ละcontext",
+      "expected": "currentpolicyครบทั้งสองจึงอ่านตามactionที่มี แต่Bไม่เกิดจากA; context/receiptsแยกไม่ต้องloginใหม่",
+      "status": "NOT_RUN",
+      "actual": null
+    },
+    {
+      "case_id": "P58-14",
+      "steps": "ตรงวันสิ้นสุดBและหลังสิ้นสุด ยังมีAactive แล้วลองread/export/ack/workerของB",
+      "expected": "half-openintervaldenyBทุกช่องทาง ไม่ใช้recipient/history/receiptเก่าเป็นgrant Aยังใช้ได้ตามscopeเดิม",
+      "status": "NOT_RUN",
+      "actual": null
+    },
+    {
+      "case_id": "P58-15",
+      "steps": "หลังพ้นBขอexplicit historical readใหม่ที่policyอนุญาต จากผู้มีอำนาจอิสระ",
+      "expected": "เฉพาะaction/purpose/time/record-source-fileที่อนุมัติใหม่อ่านได้ ไม่คืนroleBหรือapprove/editโดยปริยาย",
+      "status": "NOT_RUN",
+      "actual": null
+    },
+    {
+      "case_id": "P58-16",
+      "steps": "revoke session/grant/class/scanก่อนretry/download/export/workerและใช้oldlink",
+      "expected": "currentdenyทุกaccesspathตามที่ควบคุมจริง directStorageไม่bypass ไม่มีreceiptresponseลับจากretry ห้ามอ้างเรียกคืนdownloadedcopyได้",
+      "status": "NOT_RUN",
+      "actual": null
+    },
+    {
+      "case_id": "P58-17",
+      "steps": "faultก่อนcommit/หลังcommit/workerส่งถึงก่อนackprocessing/leaseเก่ากลับมา และretry",
+      "expected": "DBatomic decision-routing-audit-outbox; durableeffectdedup/fencing ไม่delivery/receiptซ้ำ partialต่อendpoint ไม่มีfakeexternalrollback",
+      "status": "NOT_RUN",
+      "actual": null
+    },
+    {
+      "case_id": "P58-18",
+      "steps": "เปลี่ยนbody/files/recipients/templateหลังapprove และแก้bytesV1หลังตรึง",
+      "expected": "holdpermit VERSION_MISMATCH/newversion+review คงolddecision/hash/artifact ห้ามส่งlatestV2เป็นapprovedV1",
+      "status": "NOT_RUN",
+      "actual": null
+    },
+    {
+      "case_id": "P58-19",
+      "steps": "techonly/otherorg/assignee/linkedsourceพยายามอ่านsecretrecordหรือprivateattachment",
+      "expected": "denyไม่รั่วเรื่อง/filename/EXIF/OCR/rawindex source1/4/6/7linkไม่grant technicalroleไม่อ่านทุกเรื่อง",
+      "status": "NOT_RUN",
+      "actual": null
+    },
+    {
+      "case_id": "P58-20",
+      "steps": "retentionครบกำหนดทดลอง แต่officialduration/authorityยังTO_VERIFY",
+      "expected": "เสนอรายการตรวจเฉพาะpolicyที่รับรอง ไม่purgeอัตโนมัติ ไม่เอาDEMOdaysเป็นกฎหมาย",
+      "status": "NOT_RUN",
+      "actual": null
+    },
+    {
+      "case_id": "P58-21",
+      "steps": "legalholdกับsharedfile/derivative/newversion แล้วลองclose/destruction/releaseไม่มีอำนาจ",
+      "expected": "holdclosureรักษาหลักฐาน closeไม่release noactiveholdpurge auditไม่ถูกลบ raceต้องStorageprotocolจริงมิฉะนั้นexecutiondisabled",
+      "status": "NOT_RUN",
+      "actual": null
+    },
+    {
+      "case_id": "P58-22",
+      "steps": "ขอdisclosure/redactionแล้วดูoutputและhiddenlayers/metadata/cache",
+      "expected": "reviewedfieldpurpose/newderivative/CLEAN/sourceauthorization ไม่CSSmaskหรือoverwriteheldoriginal ไม่publicfromclose/signature",
+      "status": "NOT_RUN",
+      "actual": null
+    },
+    {
+      "case_id": "P58-23",
+      "steps": "source1คำสั่งย้าย→สารบรรณ→send→ack→ค้นย้อนหลัง",
+      "expected": "actualFK sourceversion/decision/effective-recorded/recordmanifest/fileV1/hashเดียว ไม่เปลี่ยนPerson/สิทธิ์จากส่งหรืออ่าน",
+      "status": "NOT_RUN",
+      "actual": null
+    },
+    {
+      "case_id": "P58-24",
+      "steps": "source4คำสั่งเปิดสนามวันอนาคต→สารบรรณ→send→historyasof",
+      "expected": "approvedsourceversion/activation/decision/fileV1สัมพันธ์จริง ไม่เปิดสนามก่อนวันมีผลจากregister/ack",
+      "status": "NOT_RUN",
+      "actual": null
+    },
+    {
+      "case_id": "P58-25",
+      "steps": "source6ใบอนุมัติงบ→สารบรรณ→retry/close/search",
+      "expected": "actualledger-event/decision/evidence/fileV1pinning counts/ยอดsourceคงเดิม ไม่allocate/reserve/postจากอ่านหรือส่ง",
+      "status": "NOT_RUN",
+      "actual": null
+    },
+    {
+      "case_id": "P58-26",
+      "steps": "source7เอกสารรับพัสดุ/inspection→สารบรรณ→assign/close",
+      "expected": "actualorder/receipt/inspection/decision/fileV1pinning รับของไม่จ่ายเงิน/เพิ่มstockซ้ำจากe-officeaction",
+      "status": "NOT_RUN",
+      "actual": null
+    },
+    {
+      "case_id": "P58-27",
+      "steps": "แก้sourceexamplesทั้ง4เป็นV2แล้วอ่านเรื่องเก่าภายใต้currentACL",
+      "expected": "V1+oldsource/e-officedecisions/hashยังคง newcycle/V2/correctionreason-sourceevidenceย้อนถึงต้นเรื่องได้ ไม่copyไฟล์ต่อmodule",
+      "status": "NOT_RUN",
+      "actual": null
+    },
+    {
+      "case_id": "P58-28",
+      "steps": "internalapproval/image/hash/unconfiguredproviderในUI/API/exportกับงานส่ง",
+      "expected": "SIGNING_NOT_CONFIGUREDไม่มีprovidercall/officialbadge artifact/profileactualvalidationจำเป็น ไม่fakecert/trustedtimestamp",
+      "status": "NOT_RUN",
+      "actual": null
+    },
+    {
+      "case_id": "P58-29",
+      "steps": "oldname/newname/ย้อนหลัง/lateoutbox/bodyThai/ปีทะเบียนสองปีและprojectionlag",
+      "expected": "snapshotnames/file/decision/เวลาeffective-recordedคงเดิม authorizedreportreconcile routing/receipt/task/closeevent ไม่สร้างธุรกรรมจากreport",
+      "status": "NOT_RUN",
+      "actual": null
+    },
+    {
+      "case_id": "P58-30",
+      "steps": "keyboard375/768/1024/1440 namecollision/XSS/quarantine/empty-error/conflict/slowresume",
+      "expected": "ไทยlabel/focus/status/inputvalidationserver exactIDsไม่ใช้ชื่ออย่างเดียว scriptไม่ทำงาน scanไม่ผ่านใช้ไม่ได้ ownerpolicyUATแยกsoftwareQA",
+      "status": "NOT_RUN",
+      "actual": null
+    }
+  ],
+  "acceptance": {
+    "58-01": {
+      "case_ids": [
+        "P58-06",
+        "P58-08",
+        "P58-09",
+        "P58-12",
+        "P58-13",
+        "P58-14",
+        "P58-15",
+        "P58-16",
+        "P58-19"
+      ],
+      "status": "BLOCKED_NOT_RUN",
+      "actual": null
+    },
+    "58-02": {
+      "case_ids": [
+        "P58-18",
+        "P58-21",
+        "P58-23",
+        "P58-24",
+        "P58-25",
+        "P58-26",
+        "P58-27",
+        "P58-28",
+        "P58-29"
+      ],
+      "status": "BLOCKED_NOT_RUN",
+      "actual": null
+    }
+  },
+  "software_signoff": null,
+  "official_records_signoff": null,
+  "actors": [
+    {
+      "account_ref": "TEST_ACCOUNT_MAKER",
+      "person_ref": "TEST_PERSON_MAKER",
+      "person_code": "TEST_PERSON_CODE_MAKER",
+      "mock_display_name": "ผู้ปฏิบัติงานทดสอบ MAKER",
+      "actual_account_ref": null,
+      "actual_person_ref": null
+    },
+    {
+      "account_ref": "TEST_ACCOUNT_REVIEWER",
+      "person_ref": "TEST_PERSON_REVIEWER",
+      "person_code": "TEST_PERSON_CODE_REVIEWER",
+      "mock_display_name": "ผู้ปฏิบัติงานทดสอบ REVIEWER",
+      "actual_account_ref": null,
+      "actual_person_ref": null
+    },
+    {
+      "account_ref": "TEST_ACCOUNT_APPROVER",
+      "person_ref": "TEST_PERSON_APPROVER",
+      "person_code": "TEST_PERSON_CODE_APPROVER",
+      "mock_display_name": "ผู้ปฏิบัติงานทดสอบ APPROVER",
+      "actual_account_ref": null,
+      "actual_person_ref": null
+    },
+    {
+      "account_ref": "TEST_ACCOUNT_MULTI",
+      "person_ref": "TEST_PERSON_MULTI",
+      "person_code": "TEST_PERSON_CODE_MULTI",
+      "mock_display_name": "ผู้รับทดสอบชื่อซ้ำ",
+      "actual_account_ref": null,
+      "actual_person_ref": null
+    },
+    {
+      "account_ref": "TEST_ACCOUNT_PEER",
+      "person_ref": "TEST_PERSON_PEER",
+      "person_code": "TEST_PERSON_CODE_PEER",
+      "mock_display_name": "ผู้รับทดสอบชื่อซ้ำ",
+      "actual_account_ref": null,
+      "actual_person_ref": null
+    },
+    {
+      "account_ref": "TEST_ACCOUNT_TECH_ONLY",
+      "person_ref": "TEST_PERSON_TECH_ONLY",
+      "person_code": "TEST_PERSON_CODE_TECH_ONLY",
+      "mock_display_name": "ผู้ปฏิบัติงานทดสอบ TECH_ONLY",
+      "actual_account_ref": null,
+      "actual_person_ref": null
+    },
+    {
+      "account_ref": "TEST_ACCOUNT_OUTSIDE",
+      "person_ref": "TEST_PERSON_OUTSIDE",
+      "person_code": "TEST_PERSON_CODE_OUTSIDE",
+      "mock_display_name": "ผู้ปฏิบัติงานทดสอบ OUTSIDE",
+      "actual_account_ref": null,
+      "actual_person_ref": null
+    },
+    {
+      "account_ref": "TEST_ACCOUNT_LATE",
+      "person_ref": "TEST_PERSON_LATE",
+      "person_code": "TEST_PERSON_CODE_LATE",
+      "mock_display_name": "ผู้ปฏิบัติงานทดสอบ LATE",
+      "actual_account_ref": null,
+      "actual_person_ref": null
+    }
+  ],
+  "maker_checker_reference": {
+    "maker_account_ref": "TEST_ACCOUNT_MAKER",
+    "reviewer_account_ref": "TEST_ACCOUNT_REVIEWER",
+    "approver_account_ref": "TEST_ACCOUNT_APPROVER",
+    "creator_approval_expected": "DENY",
+    "technical_only_approval_expected": "DENY",
+    "actual": null
+  },
+  "role_bound_records": [
+    {
+      "record_ref": "TEST_ROLE_A_RECORD",
+      "context_ref": "TEST_CONTEXT_A",
+      "organization_ref": "TEST_ORG_A",
+      "source_example_ref": "TEST_01_MOVE",
+      "file_version_ref": "TEST_01_MOVE_FILE_V1",
+      "confidentiality": "DEMO_RESTRICTED",
+      "actual_record_ref": null
+    },
+    {
+      "record_ref": "TEST_ROLE_B_RECORD",
+      "context_ref": "TEST_CONTEXT_B",
+      "organization_ref": "TEST_ORG_B",
+      "source_example_ref": "TEST_04_OPEN_CENTER",
+      "file_version_ref": "TEST_04_OPEN_CENTER_FILE_V1",
+      "confidentiality": "DEMO_RESTRICTED",
+      "actual_record_ref": null
+    }
+  ]
+}

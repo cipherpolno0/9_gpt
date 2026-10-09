@@ -1,0 +1,99 @@
+{
+  "version": "0.1",
+  "lesson": 68,
+  "baseline": "8ea0c36",
+  "run_date": "2026-10-09",
+  "timezone": "Asia/Bangkok",
+  "status": "BLOCKED_NO_UAT_SIGNOFF",
+  "checks": [
+    {
+      "command": "corepack pnpm db:test",
+      "exit_code": 1,
+      "status": "FAILED_SETUP",
+      "native_cases_started": 0
+    },
+    {
+      "command": "corepack pnpm worker:check",
+      "exit_code": 1,
+      "status": "FAILED_READINESS",
+      "business_worker_cases_started": 0
+    },
+    {
+      "command": "corepack pnpm build",
+      "exit_code": 0,
+      "status": "PASS_STARTER_ONLY",
+      "next_version": "16.3.8",
+      "routes": ["/", "/_not-found", "/app/[[...path]]"]
+    },
+    {
+      "command": "corepack pnpm smoke",
+      "exit_code": 0,
+      "status": "PASS_HTTP_STARTER_ONLY",
+      "http_check_count": 27,
+      "browser_e2e": false,
+      "screenshot_count": 0
+    }
+  ],
+  "playwright_inventory": {
+    "library_environment_available": true,
+    "library_version": "1.62.1",
+    "declared_in_project_dependencies": false,
+    "playwright_test_installed": false,
+    "project_config_present": false,
+    "project_e2e_script_present": false,
+    "bundled_chromium_executable_present": false,
+    "system_browser_path_presence": {
+      "chromium": false,
+      "chromium-browser": false,
+      "google-chrome": false,
+      "google-chrome-stable": false
+    },
+    "browser_launch_attempted": false
+  },
+  "environment_probe": {
+    "docker_in_path": false,
+    "postgres_in_path": false,
+    "docker_socket": false,
+    "loopback_connect_ex": { "5432": 111, "5546": 111 },
+    "database_created": false,
+    "database_reset": false
+  },
+  "source_inventory": {
+    "models": 19,
+    "migrations": 1,
+    "migration_sha256": "04a149fcd349f0ac3f1b5929cfcf571f8b0880541e84a40ad929054b67d72756",
+    "business_modules": "README_ONLY",
+    "current_auth": "NOT_IMPLEMENTED_WORKSPACE_403_ONLY",
+    "file_version": "NOT_IMPLEMENTED",
+    "business_worker": "NOT_IMPLEMENTED"
+  },
+  "actual": {
+    "business_e2e_run_count": 0,
+    "browser_screenshot_count": 0,
+    "network_recovery_runs": 0,
+    "worker_recovery_runs": 0,
+    "uat_sessions": 0,
+    "tester_refs": [],
+    "signatures": [],
+    "approved_cases": []
+  },
+  "acceptance": { "AC68-01": "BLOCKED_NOT_RUN", "AC68-02": "PENDING_UNSIGNED" },
+  "limitations": "Starter HTTP smoke is not Playwright or business E2E; environment library is not a configured locked test harness; no screenshot or human signoff was fabricated.",
+  "next_lesson69": "NOT_STARTED",
+  "document_verification": {
+    "status": "PASS_DOCUMENTS_ONLY",
+    "planned_e2e_not_run": 18,
+    "pending_unsigned_uat_scripts": 11,
+    "planned_screenshot_checkpoints": 33,
+    "actual_screenshots": 0,
+    "actual_signatures": 0,
+    "local_links": 367,
+    "new_tables": 5,
+    "tested_source_unchanged": true,
+    "prettier_new_files": "PASS_5_FILES",
+    "prettier_lesson68_sections": "PASS_4_SECTIONS",
+    "historical_full_documents": "PRE_EXISTING_WARN",
+    "secrets_check_exit": 0,
+    "git_diff_check_exit": 0
+  }
+}

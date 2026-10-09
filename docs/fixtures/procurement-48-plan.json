@@ -1,0 +1,627 @@
+{
+  "version": "0.1",
+  "lesson": 48,
+  "received_at": "2026-10-07T22:59:07+07:00",
+  "source_commit": "c6697cb",
+  "status": "PLAN_ONLY",
+  "prerequisites": [
+    {
+      "lesson": 47,
+      "status": "BLOCKED"
+    },
+    {
+      "lesson": 43,
+      "status": "BLOCKED"
+    }
+  ],
+  "seeded": false,
+  "runtime_implemented": false,
+  "actual_orders_created": false,
+  "actual_reservations_or_obligations_posted": false,
+  "actual_receipts_created": false,
+  "external_egp_nbms_bank_integration": false,
+  "policy": {
+    "ref": "DEMO_PROCUREMENT_POLICY_48",
+    "status": "TO_VERIFY",
+    "currency": "THB",
+    "money_scale_proposed": 2,
+    "authority_bands": [],
+    "actual_approved_policy": null,
+    "tax_rates": null,
+    "withholding_rates": null,
+    "official_enabled": false,
+    "multiple_orders_verified": false,
+    "demo_reference_charges": "0.00",
+    "charges_note": "0เป็นข้อตั้งของarithmeticfixtureเท่านั้น ไม่ใช่อัตราภาษี/ค่าธรรมเนียมทางการ"
+  },
+  "notes": [
+    "ข้อมูลทุกชื่อและรหัสเป็นสมมติ ไม่ใส่บัตร เบอร์ ที่อยู่ผู้ขายหรือบัญชีธนาคารจริง",
+    "ทุกproof/receipt/decision/evidence refเป็นdescriptor ไม่FK/คำอนุมัติหรือเอกสารที่CLEANจริง",
+    "partial fulfilment adapterที่ยังไม่implementและpayment44เป็นdependency reference ไม่executeหรือพัฒนาบทถัดไป",
+    "approvedrevisionใหม่ต้องamendmentเชื่อมreservationเดิม ไม่จองเต็มก้อนใหม่",
+    "การรับของไม่postmoney; cancellationไม่restoreP/C/acceptedliabilityเอง"
+  ],
+  "context": {
+    "organization_ref": "DEMO_ORG_48_A",
+    "project_ref": "DEMO_PROJECT_48_A",
+    "budget_line_ref": "DEMO_LINE_48_A",
+    "fiscal_year_ref": "DEMO_FY_2027",
+    "academic_year_ref": "DEMO_AY_2027",
+    "funding_source_ref": "DEMO_FUND_48_A",
+    "currency": "THB",
+    "period_state_reference": "OPEN",
+    "period_policy_verified": false
+  },
+  "purchase_request_descriptor": {
+    "ref": "DEMO_REQUEST_48_A",
+    "kind": "PURCHASE",
+    "revision": 1,
+    "item_ref": "DEMO_ITEM_47_DEVICE",
+    "quantity": "10",
+    "unit_ref": "DEMO_UNIT_47_PIECE",
+    "unit_version_ref": "DEMO_UV_47_PIECE_1",
+    "quantity_scale": 0,
+    "estimated_unit_price": "2000.00",
+    "estimated_base_amount": "20000.00",
+    "demo_total_amount": "20000.00",
+    "actual_approved": false,
+    "reason": "เหตุผลขอซื้อสมมติสำหรับตรวจการเชื่อมงบ",
+    "evidence_ref": "DEMO_EVIDENCE_48_REQUIRED"
+  },
+  "service_request_descriptor": {
+    "ref": "DEMO_REQUEST_48_SERVICE",
+    "kind": "SERVICE",
+    "revision": 1,
+    "item_ref": null,
+    "service_spec_version_ref": "DEMO_SERVICE_SPEC_48_V1",
+    "unit_ref": "DEMO_WORK_HOUR_48",
+    "unit_version_ref": "DEMO_WORK_HOUR_48_V1",
+    "quantity_scale": 2,
+    "quantity": "2.50",
+    "estimated_unit_price": "30.10",
+    "expected_base_amount": "75.25",
+    "service_scope": "งานบริการสมมติ ไม่สร้างstockหรือasset",
+    "actual_approved": false
+  },
+  "supplier_descriptor": {
+    "ref": "DEMO_SUPPLIER_48_A",
+    "supplier_code": "DEMO_SUPPLIER_48_A",
+    "business_identity_namespace": "DEMO",
+    "business_reference": "DEMO_ENTITY_48_A",
+    "actual_verified": false,
+    "actual_created": false,
+    "contact_ref": null,
+    "address_version_ref": null,
+    "tax_identity_status": "TO_VERIFY"
+  },
+  "supplier_version_descriptors": [
+    {
+      "ref": "DEMO_SUPPLIER_48_V1",
+      "display_name": "ผู้ขายสมมติ รุ่นชื่อเดิม",
+      "effective_from": "2027-04-01",
+      "recorded_at": "2027-04-01T02:00:00Z",
+      "evidence_ref": "DEMO_EVIDENCE_48_REQUIRED",
+      "actual_verified": false
+    },
+    {
+      "ref": "DEMO_SUPPLIER_48_V2",
+      "display_name": "ผู้ขายสมมติ รุ่นชื่อใหม่",
+      "effective_from": "2027-05-01",
+      "recorded_at": "2027-04-20T02:00:00Z",
+      "evidence_ref": "DEMO_EVIDENCE_48_REQUIRED",
+      "actual_verified": false
+    }
+  ],
+  "order_descriptor": {
+    "ref": "DEMO_ORDER_48_A",
+    "root_request_ref": "DEMO_REQUEST_48_A",
+    "approved_request_revision": 1,
+    "server_order_slot_ref": "DEMO_SLOT_48_APPROVED",
+    "supplier_version_ref": "DEMO_SUPPLIER_48_V1",
+    "supplier_name_snapshot": "ผู้ขายสมมติ รุ่นชื่อเดิม",
+    "ordered_quantity": "6",
+    "unit_ref": "DEMO_UNIT_47_PIECE",
+    "unit_price": "2000.00",
+    "demo_contract_amount": "12000.00",
+    "reservation_ref": "DEMO_RESERVATION_48_A",
+    "obligation_ref": "DEMO_OBLIGATION_48_A",
+    "actual_issued": false
+  },
+  "bucket_order": [
+    "allocated",
+    "reserved",
+    "unpaid_obligation",
+    "paid",
+    "certified"
+  ],
+  "available_formula": "allocated - reserved - unpaid_obligation - paid",
+  "opening": {
+    "allocated": "0.00",
+    "reserved": "0.00",
+    "unpaid_obligation": "0.00",
+    "paid": "0.00",
+    "certified": "0.00",
+    "available": "0.00"
+  },
+  "reference_steps": [
+    {
+      "ref": "DEMO_STEP_48_01",
+      "type": "BUDGET_ALLOCATED_BEFORE_PROCUREMENT",
+      "delta": {
+        "allocated": "100000.00",
+        "reserved": "0.00",
+        "unpaid_obligation": "0.00",
+        "paid": "0.00",
+        "certified": "0.00"
+      },
+      "expected": {
+        "allocated": "100000.00",
+        "reserved": "0.00",
+        "unpaid_obligation": "0.00",
+        "paid": "0.00",
+        "certified": "0.00",
+        "available": "100000.00"
+      },
+      "would_post_financial_event": true,
+      "actual_posted": false,
+      "source_request_ref": "DEMO_REQUEST_48_A",
+      "receipt_binding_ref": "DEMO_RECEIPT_48_01",
+      "approved_decision_ref": "DEMO_DECISION_48_REQUIRED",
+      "actual_approved_decision": null,
+      "evidence_ref": "DEMO_EVIDENCE_48_REQUIRED",
+      "operation_contract_owner": "SYSTEM_06_ALLOCATION_CONTRACT_42",
+      "shared_budget_service_contract": 43
+    },
+    {
+      "ref": "DEMO_STEP_48_02",
+      "type": "APPROVE_AND_RESERVE",
+      "delta": {
+        "allocated": "0.00",
+        "reserved": "20000.00",
+        "unpaid_obligation": "0.00",
+        "paid": "0.00",
+        "certified": "0.00"
+      },
+      "expected": {
+        "allocated": "100000.00",
+        "reserved": "20000.00",
+        "unpaid_obligation": "0.00",
+        "paid": "0.00",
+        "certified": "0.00",
+        "available": "80000.00"
+      },
+      "would_post_financial_event": true,
+      "actual_posted": false,
+      "source_request_ref": "DEMO_REQUEST_48_A",
+      "receipt_binding_ref": "DEMO_RECEIPT_48_02",
+      "approved_decision_ref": "DEMO_DECISION_48_REQUIRED",
+      "actual_approved_decision": null,
+      "evidence_ref": "DEMO_EVIDENCE_48_REQUIRED",
+      "operation_contract_owner": "SYSTEM_07_PROCUREMENT_CONTRACT_48",
+      "shared_budget_service_contract": 43
+    },
+    {
+      "ref": "DEMO_STEP_48_03",
+      "type": "ISSUE_ORDER_COMMIT_RESERVATION",
+      "delta": {
+        "allocated": "0.00",
+        "reserved": "-12000.00",
+        "unpaid_obligation": "12000.00",
+        "paid": "0.00",
+        "certified": "0.00"
+      },
+      "expected": {
+        "allocated": "100000.00",
+        "reserved": "8000.00",
+        "unpaid_obligation": "12000.00",
+        "paid": "0.00",
+        "certified": "0.00",
+        "available": "80000.00"
+      },
+      "would_post_financial_event": true,
+      "actual_posted": false,
+      "source_request_ref": "DEMO_REQUEST_48_A",
+      "receipt_binding_ref": "DEMO_RECEIPT_48_03",
+      "approved_decision_ref": "DEMO_DECISION_48_REQUIRED",
+      "actual_approved_decision": null,
+      "evidence_ref": "DEMO_EVIDENCE_48_REQUIRED",
+      "operation_contract_owner": "SYSTEM_07_PROCUREMENT_CONTRACT_48",
+      "shared_budget_service_contract": 43
+    },
+    {
+      "ref": "DEMO_STEP_48_04",
+      "type": "PARTIAL_FULFILMENT_ADAPTER_REFERENCE_ONLY",
+      "delta": {
+        "allocated": "0.00",
+        "reserved": "0.00",
+        "unpaid_obligation": "0.00",
+        "paid": "0.00",
+        "certified": "0.00"
+      },
+      "expected": {
+        "allocated": "100000.00",
+        "reserved": "8000.00",
+        "unpaid_obligation": "12000.00",
+        "paid": "0.00",
+        "certified": "0.00",
+        "available": "80000.00"
+      },
+      "would_post_financial_event": false,
+      "actual_posted": false,
+      "source_request_ref": "DEMO_REQUEST_48_A",
+      "receipt_binding_ref": null,
+      "approved_decision_ref": null,
+      "actual_approved_decision": null,
+      "evidence_ref": "DEMO_EVIDENCE_48_REQUIRED",
+      "accepted_quantity": "2",
+      "protected_accepted_liability": "4000.00",
+      "actual_goods_receipt_created": false,
+      "operation_contract_owner": "SYSTEM_07_FULFILMENT_SERVICE_PENDING",
+      "shared_budget_service_contract": null
+    },
+    {
+      "ref": "DEMO_STEP_48_05",
+      "type": "APPROVED_RELEASE_UNUSED_REQUEST_RESERVATION",
+      "delta": {
+        "allocated": "0.00",
+        "reserved": "-8000.00",
+        "unpaid_obligation": "0.00",
+        "paid": "0.00",
+        "certified": "0.00"
+      },
+      "expected": {
+        "allocated": "100000.00",
+        "reserved": "0.00",
+        "unpaid_obligation": "12000.00",
+        "paid": "0.00",
+        "certified": "0.00",
+        "available": "88000.00"
+      },
+      "would_post_financial_event": true,
+      "actual_posted": false,
+      "source_request_ref": "DEMO_REQUEST_48_A",
+      "receipt_binding_ref": "DEMO_RECEIPT_48_05",
+      "approved_decision_ref": "DEMO_DECISION_48_REQUIRED",
+      "actual_approved_decision": null,
+      "evidence_ref": "DEMO_EVIDENCE_48_REQUIRED",
+      "operation_contract_owner": "SYSTEM_07_PROCUREMENT_CONTRACT_48",
+      "shared_budget_service_contract": 43
+    },
+    {
+      "ref": "DEMO_STEP_48_06",
+      "type": "APPROVED_CANCEL_UNFULFILLED_OBLIGATION",
+      "delta": {
+        "allocated": "0.00",
+        "reserved": "0.00",
+        "unpaid_obligation": "-8000.00",
+        "paid": "0.00",
+        "certified": "0.00"
+      },
+      "expected": {
+        "allocated": "100000.00",
+        "reserved": "0.00",
+        "unpaid_obligation": "4000.00",
+        "paid": "0.00",
+        "certified": "0.00",
+        "available": "96000.00"
+      },
+      "would_post_financial_event": true,
+      "actual_posted": false,
+      "source_request_ref": "DEMO_REQUEST_48_A",
+      "receipt_binding_ref": "DEMO_RECEIPT_48_06",
+      "approved_decision_ref": "DEMO_DECISION_48_REQUIRED",
+      "actual_approved_decision": null,
+      "evidence_ref": "DEMO_EVIDENCE_48_REQUIRED",
+      "cancelled_quantity": "4",
+      "protected_liability_after": "4000.00",
+      "operation_contract_owner": "SYSTEM_07_PROCUREMENT_CONTRACT_48",
+      "shared_budget_service_contract": 43
+    },
+    {
+      "ref": "DEMO_STEP_48_07",
+      "type": "CERTIFY_LIABILITY_VIA_44_LATER",
+      "delta": {
+        "allocated": "0.00",
+        "reserved": "0.00",
+        "unpaid_obligation": "0.00",
+        "paid": "0.00",
+        "certified": "4000.00"
+      },
+      "expected": {
+        "allocated": "100000.00",
+        "reserved": "0.00",
+        "unpaid_obligation": "4000.00",
+        "paid": "0.00",
+        "certified": "4000.00",
+        "available": "96000.00"
+      },
+      "would_post_financial_event": true,
+      "actual_posted": false,
+      "source_request_ref": "DEMO_REQUEST_48_A",
+      "receipt_binding_ref": "DEMO_RECEIPT_48_07",
+      "approved_decision_ref": "DEMO_DECISION_48_REQUIRED",
+      "actual_approved_decision": null,
+      "evidence_ref": "DEMO_EVIDENCE_48_REQUIRED",
+      "operation_contract_owner": "SYSTEM_06_DISBURSEMENT_CONTRACT_44",
+      "shared_budget_service_contract": 43
+    },
+    {
+      "ref": "DEMO_STEP_48_08",
+      "type": "RECORD_PAYMENT_VIA_44_LATER",
+      "delta": {
+        "allocated": "0.00",
+        "reserved": "0.00",
+        "unpaid_obligation": "-4000.00",
+        "paid": "4000.00",
+        "certified": "-4000.00"
+      },
+      "expected": {
+        "allocated": "100000.00",
+        "reserved": "0.00",
+        "unpaid_obligation": "0.00",
+        "paid": "4000.00",
+        "certified": "0.00",
+        "available": "96000.00"
+      },
+      "would_post_financial_event": true,
+      "actual_posted": false,
+      "source_request_ref": "DEMO_REQUEST_48_A",
+      "receipt_binding_ref": "DEMO_RECEIPT_48_08",
+      "approved_decision_ref": "DEMO_DECISION_48_REQUIRED",
+      "actual_approved_decision": null,
+      "evidence_ref": "DEMO_EVIDENCE_48_REQUIRED",
+      "operation_contract_owner": "SYSTEM_06_DISBURSEMENT_CONTRACT_44",
+      "shared_budget_service_contract": 43
+    }
+  ],
+  "cancel_before_approval": {
+    "ledger_delta": {
+      "allocated": "0.00",
+      "reserved": "0.00",
+      "unpaid_obligation": "0.00",
+      "paid": "0.00",
+      "certified": "0.00"
+    },
+    "expected_financial_event_count": 0,
+    "status": "NOT_RUN"
+  },
+  "cancel_reserved_without_order": {
+    "opening": {
+      "allocated": "100000.00",
+      "reserved": "20000.00",
+      "unpaid_obligation": "0.00",
+      "paid": "0.00",
+      "certified": "0.00",
+      "available": "80000.00"
+    },
+    "delta": {
+      "allocated": "0.00",
+      "reserved": "-20000.00",
+      "unpaid_obligation": "0.00",
+      "paid": "0.00",
+      "certified": "0.00"
+    },
+    "expected": {
+      "allocated": "100000.00",
+      "reserved": "0.00",
+      "unpaid_obligation": "0.00",
+      "paid": "0.00",
+      "certified": "0.00",
+      "available": "100000.00"
+    },
+    "status": "NOT_RUN"
+  },
+  "cancellation_guard_plans": [
+    {
+      "id": "CANCEL_MORE_THAN_UNCONSUMED_R",
+      "amount": "20000.00",
+      "remaining_r": "8000.00",
+      "expected": "DENY"
+    },
+    {
+      "id": "CANCEL_ACCEPTED_LIABILITY",
+      "requested_cancel_u": "12000.00",
+      "unpaid_u": "12000.00",
+      "protected_accepted_u": "4000.00",
+      "certified_c": "0.00",
+      "expected": "DENY"
+    },
+    {
+      "id": "CANCEL_CERTIFIED_CONFLICT",
+      "requested_cancel_u": "8000.00",
+      "unpaid_u": "12000.00",
+      "protected_accepted_u": "4000.00",
+      "certified_c": "6000.00",
+      "expected": "DENY_UNTIL_APPROVED_CERTIFICATION_RESOLUTION"
+    },
+    {
+      "id": "PAID_CANCELLATION_NOT_REFUND",
+      "paid": "4000.00",
+      "automatic_delta_paid": "0.00",
+      "expected": "KEEP_PAID_AND_REQUIRE_44_IF_REFUND"
+    },
+    {
+      "id": "PRECISION_LOSS_WITH_UNKNOWN_ROUNDING",
+      "quantity": "0.333333",
+      "unit_price": "1.00",
+      "money_scale": 2,
+      "expected": "DENY_OFFICIAL"
+    },
+    {
+      "id": "CLOSED_PERIOD",
+      "period_state": "CLOSED",
+      "expected": "DENY_UNTIL_APPROVED_REOPEN_OR_ADJUSTMENT"
+    }
+  ],
+  "retry_native_plan": {
+    "status": "NOT_RUN",
+    "root_request_ref": "DEMO_REQUEST_48_A",
+    "stable_reservation_binding_ref": "DEMO_RESERVATION_48_A",
+    "approved_revision_2_requires": "approveddeltaamendment not fullreserve",
+    "same_key_same_hash": "same result only with current authorization",
+    "same_key_new_hash": "CONFLICT",
+    "new_key_same_order_slot": "DB_UNIQUE_OR_SERVICE_DENY",
+    "expected_one_reservation_and_obligation_per_canonical_binding": true
+  },
+  "fault_native_plan": {
+    "status": "NOT_RUN",
+    "failpoints": [
+      "after_decision_before_reservation",
+      "after_reservation_before_request_link",
+      "after_order_before_obligation",
+      "after_ledger_before_projection",
+      "after_receipt_audit_before_outbox",
+      "before_commit",
+      "after_commit_before_response",
+      "after_worker_delivery_before_ack"
+    ],
+    "rollback_set": [
+      "request_or_amendment_decision",
+      "order_and_lines",
+      "reservation_or_obligation",
+      "budget_events_projection",
+      "budget_link",
+      "operation_receipt",
+      "audit",
+      "outbox"
+    ],
+    "after_commit_behavior": "replay receipt with current grants; durable inbox/dev sink dedupe"
+  },
+  "criteria": {
+    "48-01": [
+      "P48-01",
+      "P48-02",
+      "P48-03",
+      "P48-04",
+      "P48-05",
+      "P48-06",
+      "P48-12",
+      "P48-13",
+      "P48-16"
+    ],
+    "48-02": [
+      "P48-03",
+      "P48-04",
+      "P48-05",
+      "P48-06",
+      "P48-07",
+      "P48-08",
+      "P48-09",
+      "P48-10",
+      "P48-11",
+      "P48-14",
+      "P48-15",
+      "P48-18"
+    ]
+  },
+  "cases": [
+    {
+      "id": "P48-01",
+      "expected": "purchase/service draft-submit-return-correction/serverrequirements/units/item-spec-XOR",
+      "status": "NOT_RUN",
+      "actual": null
+    },
+    {
+      "id": "P48-02",
+      "expected": "unapproved/inactiveplan/unknownpolicy/insufficientbudgetไม่มีOrderหรือapprovalreservedหลงเหลือ",
+      "status": "NOT_RUN",
+      "actual": null
+    },
+    {
+      "id": "P48-03",
+      "expected": "approve+reserveatomicและconcurrentrequestsไม่overspend",
+      "status": "NOT_RUN",
+      "actual": null
+    },
+    {
+      "id": "P48-04",
+      "expected": "issuedOrderย้ายR→U samecontext ไม่มีdoublecount partialremainingถูกต้อง",
+      "status": "NOT_RUN",
+      "actual": null
+    },
+    {
+      "id": "P48-05",
+      "expected": "ราคาสูงกว่าจอง/amendment/approvedqty/cumulativeorderguards ไม่เพิ่มงบเอง",
+      "status": "NOT_RUN",
+      "actual": null
+    },
+    {
+      "id": "P48-06",
+      "expected": "exactqty×price/range/scale/tax/fees/rounding/unknowncurrencyและserviceacceptancepolicy",
+      "status": "NOT_RUN",
+      "actual": null
+    },
+    {
+      "id": "P48-07",
+      "expected": "samekeyhashretry/hashconflict/newkeysamebusinessslotdeny/nativeunique/rootrevisionbinding",
+      "status": "NOT_RUN",
+      "actual": null
+    },
+    {
+      "id": "P48-08",
+      "expected": "canceldraftไม่มีevent cancelreserveคืนRเฉพาะremainingหนึ่งครั้ง",
+      "status": "NOT_RUN",
+      "actual": null
+    },
+    {
+      "id": "P48-09",
+      "expected": "partialOrderปลดRunusedและUcancelable คงacceptedliability/history/cancelledqty",
+      "status": "NOT_RUN",
+      "actual": null
+    },
+    {
+      "id": "P48-10",
+      "expected": "paid/certified/claims/receivedgoods/dependencyไม่inverseคืนทั้งก้อน refundต้อง44",
+      "status": "NOT_RUN",
+      "actual": null
+    },
+    {
+      "id": "P48-11",
+      "expected": "cancellationconcurrentissue/receipt/payment/fullboundedretry ไม่มีoverrelease",
+      "status": "NOT_RUN",
+      "actual": null
+    },
+    {
+      "id": "P48-12",
+      "expected": "makerchecker/delegation/time/amount/techdenyและcurrentrevocationAPI/worker",
+      "status": "NOT_RUN",
+      "actual": null
+    },
+    {
+      "id": "P48-13",
+      "expected": "targetorg/project/line/supplier/childFK/เอกสารข้ามscope/scanpending/privateHTMLcache/exportdeny",
+      "status": "NOT_RUN",
+      "actual": null
+    },
+    {
+      "id": "P48-14",
+      "expected": "failpointbetweenrequest/ledger/link/order/obligation/receipt/audit/outbox rollback",
+      "status": "NOT_RUN",
+      "actual": null
+    },
+    {
+      "id": "P48-15",
+      "expected": "commitresponseหาย/workerrestart/dedupe/deadletter/reconcileไม่สูญเหตุการณ์",
+      "status": "NOT_RUN",
+      "actual": null
+    },
+    {
+      "id": "P48-16",
+      "expected": "periodclosedและofficialtax/procurement/authorityTO VERIFY/e-GPยังไม่verifieddeny",
+      "status": "NOT_RUN",
+      "actual": null
+    },
+    {
+      "id": "P48-17",
+      "expected": "actualThaiUI/keyboard/4viewports/SupplierVersion/oldorder snapshot/readonlyletterlinks",
+      "status": "NOT_RUN",
+      "actual": null
+    },
+    {
+      "id": "P48-18",
+      "expected": "legacyrevision/amendment/cancellationhistoricalsourceและcurrentmoneyinvariants ไม่มีโพสต์จากGET",
+      "status": "NOT_RUN",
+      "actual": null
+    }
+  ]
+}

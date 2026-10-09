@@ -1,45 +1,46 @@
-import { Button } from "@/shared/components/ui/button";
-
+import Link from "next/link";
+import { SiteShell, PageIntro } from "@/shared/components/site-shell";
+import { publicNavigation } from "@/shared/navigation";
 export default function Home() {
   return (
-    <>
-      <header className="border-b border-border bg-white px-5 py-6">
-        <div className="mx-auto max-w-4xl font-semibold">
-          กองบริหารทะเบียนและวัดผล
+    <SiteShell>
+      <section className="rounded-2xl border border-border bg-white p-6 sm:p-10">
+        <PageIntro title="ศูนย์ข้อมูลคณะสงฆ์และการศึกษา">
+          <p>บริการทะเบียน การศึกษา และงานบริหารผ่านเว็บไซต์เดียว</p>
+        </PageIntro>
+        <div className="flex flex-wrap gap-3">
+          <Link
+            href="/login"
+            className="rounded-lg bg-primary px-6 py-3 text-white"
+          >
+            เข้าสู่พื้นที่ทำงาน
+          </Link>
+          <Link
+            href="/contact"
+            className="rounded-lg border border-border px-6 py-3"
+          >
+            ติดต่อเจ้าหน้าที่
+          </Link>
         </div>
-      </header>
-      <main
-        id="main-content"
-        tabIndex={-1}
-        className="mx-auto max-w-4xl px-5 py-14"
+      </section>
+      <section
+        aria-label="บริการสาธารณะ"
+        className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3"
       >
-        <p className="mb-3 font-semibold text-primary">
-          ศูนย์ข้อมูลคณะสงฆ์และการศึกษา
-        </p>
-        <h1 className="max-w-3xl text-3xl leading-relaxed font-semibold sm:text-4xl">
-          เว็บไซต์กองบริหารทะเบียนและวัดผล
-        </h1>
-        <p className="mt-5 max-w-2xl text-lg leading-relaxed text-muted-foreground">
-          เว็บไซต์อยู่ระหว่างจัดเตรียมบริการสำหรับงานการศึกษาและการปกครองคณะสงฆ์
-          ข้อมูลการเปิดใช้งานจะประกาศที่นี่
-        </p>
-        <section
-          id="announcements"
-          aria-labelledby="announcements-title"
-          className="mt-10 rounded-xl border border-border bg-white p-6"
-        >
-          <h2 id="announcements-title" className="text-xl font-semibold">
-            ข่าวประกาศ
-          </h2>
-          <p className="mt-3 text-muted-foreground">ยังไม่มีประกาศ</p>
-        </section>
-        <Button asChild className="mt-6">
-          <a href="#announcements">ดูข่าวประกาศ</a>
-        </Button>
-      </main>
-      <footer className="border-t border-border px-5 py-6 text-center text-sm text-muted-foreground">
-        เว็บไซต์กองบริหารทะเบียนและวัดผล
-      </footer>
-    </>
+        {publicNavigation.slice(1).map(([href, label]) => (
+          <Link
+            key={href}
+            href={href}
+            className="rounded-xl border border-border bg-white p-6 hover:border-primary"
+          >
+            <h2 className="text-xl font-semibold">{label}</h2>
+            <p className="mt-3 text-sm text-muted-foreground">เปิดบริการ →</p>
+          </Link>
+        ))}
+      </section>
+      <p className="mt-8 leading-8 text-muted-foreground">
+        ข้อมูลที่ยังไม่ได้รับอนุมัติให้เผยแพร่จะไม่แสดงในหน้าสาธารณะ
+      </p>
+    </SiteShell>
   );
 }

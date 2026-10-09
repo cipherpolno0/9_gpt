@@ -1,0 +1,1040 @@
+{
+  "version": "0.1",
+  "lesson": 46,
+  "source_commit": "eed9af6",
+  "received_at": "2026-10-07T22:24:30+07:00",
+  "status": "PLAN_ONLY",
+  "seeded": false,
+  "runtime_implemented": false,
+  "native_tests_executed": false,
+  "actual_exports_generated": false,
+  "financial_owner_signoff": null,
+  "prerequisites": [
+    {
+      "lesson": 41,
+      "status": "BLOCKED"
+    },
+    {
+      "lesson": 42,
+      "status": "BLOCKED"
+    },
+    {
+      "lesson": 43,
+      "status": "BLOCKED"
+    },
+    {
+      "lesson": 44,
+      "status": "BLOCKED"
+    },
+    {
+      "lesson": 45,
+      "status": "BLOCKED"
+    }
+  ],
+  "policy": {
+    "ref": "DEMO_POLICY_46",
+    "status": "TO_VERIFY",
+    "currency": "THB",
+    "scale": 2,
+    "official_enabled": false,
+    "authority_bands": [],
+    "actual_approved_decision": null,
+    "actual_clean_evidence": null,
+    "carry_forward_enabled": false,
+    "bank_nbms_egp_integration": false
+  },
+  "data_notes": [
+    "ทุกชื่อและรหัสเป็นสมมติ ไม่ใส่บัตร เบอร์ ที่อยู่หรือข้อมูลผู้ขายจริง",
+    "delta และ expected เป็น reference oracle ไม่ใช่ผลจาก ledger ของแอป",
+    "DEMO decision/evidence/receipt refs ไม่เป็นหลักฐานที่อนุมัติแล้วหรือ UUID/FK จริง",
+    "correction ที่เปิดคืน C ต้องมีคำอนุมัติ reopen voucher และนโยบายจริงก่อนใช้ ไม่ใช่ refund",
+    "positive plan ไม่ให้ business grant หรือปิด official gate แทนส่วนกลาง",
+    "จำนวนเงินคำขอปกติเป็นบวก; negative input ไม่ใช่ signed negative delta ที่อนุญาตเฉพาะประเภทเหตุการณ์และคำอนุมัติ"
+  ],
+  "contexts": [
+    {
+      "ref": "DEMO_CONTEXT_46_A_2026",
+      "organization_ref": "DEMO_ORG_46_A",
+      "fiscal_year_ref": "DEMO_FY_2026",
+      "academic_year_ref": "DEMO_AY_2027",
+      "project_ref": "DEMO_PROJECT_EXAM_46",
+      "source_ref": "DEMO_SOURCE_46_A",
+      "currency": "THB",
+      "seeded": false
+    },
+    {
+      "ref": "DEMO_CONTEXT_46_A_2027",
+      "organization_ref": "DEMO_ORG_46_A",
+      "fiscal_year_ref": "DEMO_FY_2027",
+      "academic_year_ref": "DEMO_AY_2027",
+      "project_ref": "DEMO_PROJECT_EXAM_46",
+      "source_ref": "DEMO_SOURCE_46_A",
+      "currency": "THB",
+      "seeded": false
+    },
+    {
+      "ref": "DEMO_CONTEXT_46_B_2026",
+      "organization_ref": "DEMO_ORG_46_B",
+      "fiscal_year_ref": "DEMO_FY_2026",
+      "academic_year_ref": "DEMO_AY_2027",
+      "project_ref": "DEMO_PROJECT_EXAM_46",
+      "source_ref": "DEMO_SOURCE_46_A",
+      "currency": "THB",
+      "seeded": false
+    },
+    {
+      "ref": "DEMO_CONTEXT_46_B_2027",
+      "organization_ref": "DEMO_ORG_46_B",
+      "fiscal_year_ref": "DEMO_FY_2027",
+      "academic_year_ref": "DEMO_AY_2027",
+      "project_ref": "DEMO_PROJECT_EXAM_46",
+      "source_ref": "DEMO_SOURCE_46_A",
+      "currency": "THB",
+      "seeded": false
+    }
+  ],
+  "actors": [
+    {
+      "ref": "DEMO_ACTOR_46_MAKER",
+      "account_created": false,
+      "actual_grants_created": false
+    },
+    {
+      "ref": "DEMO_ACTOR_46_REVIEWER",
+      "account_created": false,
+      "actual_grants_created": false
+    },
+    {
+      "ref": "DEMO_ACTOR_46_APPROVER",
+      "account_created": false,
+      "actual_grants_created": false
+    },
+    {
+      "ref": "DEMO_ACTOR_46_SECOND_APPROVER",
+      "account_created": false,
+      "actual_grants_created": false
+    },
+    {
+      "ref": "DEMO_ACTOR_46_AUDITOR",
+      "account_created": false,
+      "actual_grants_created": false
+    },
+    {
+      "ref": "DEMO_ACTOR_46_TECH_ADMIN",
+      "account_created": false,
+      "actual_grants_created": false
+    },
+    {
+      "ref": "DEMO_ACTOR_46_ORG_B",
+      "account_created": false,
+      "actual_grants_created": false
+    }
+  ],
+  "bucket_order": [
+    "allocated",
+    "reserved",
+    "unpaid_obligation",
+    "paid",
+    "certified"
+  ],
+  "available_formula": "allocated - reserved - unpaid_obligation - paid",
+  "certified_is_subset_of_unpaid_obligation": true,
+  "main_chain": {
+    "context_ref": "DEMO_CONTEXT_46_A_2027",
+    "line_ref": "DEMO_LINE_46_A",
+    "opening": {
+      "allocated": "0.00",
+      "reserved": "0.00",
+      "unpaid_obligation": "0.00",
+      "paid": "0.00",
+      "certified": "0.00",
+      "available": "0.00"
+    },
+    "steps": [
+      {
+        "event_ref": "DEMO_EVENT_46_01",
+        "type": "ALLOCATE",
+        "effective_on": "2027-04-01",
+        "recorded_at": "2027-04-01T02:00:00Z",
+        "line_ref": "DEMO_LINE_46_A",
+        "delta": {
+          "allocated": "100000.00",
+          "reserved": "0.00",
+          "unpaid_obligation": "0.00",
+          "paid": "0.00",
+          "certified": "0.00"
+        },
+        "expected": {
+          "allocated": "100000.00",
+          "reserved": "0.00",
+          "unpaid_obligation": "0.00",
+          "paid": "0.00",
+          "certified": "0.00",
+          "available": "100000.00"
+        },
+        "evidence_ref": "DEMO_EVIDENCE_46_REQUIRED",
+        "decision_ref": "DEMO_DECISION_46_REQUIRED",
+        "receipt_group_ref": "DEMO_RECEIPT_46_01",
+        "original_event_ref": null,
+        "actual_posted": false
+      },
+      {
+        "event_ref": "DEMO_EVENT_46_02",
+        "type": "RESERVE",
+        "effective_on": "2027-04-02",
+        "recorded_at": "2027-04-02T02:00:00Z",
+        "line_ref": "DEMO_LINE_46_A",
+        "delta": {
+          "allocated": "0.00",
+          "reserved": "20000.00",
+          "unpaid_obligation": "0.00",
+          "paid": "0.00",
+          "certified": "0.00"
+        },
+        "expected": {
+          "allocated": "100000.00",
+          "reserved": "20000.00",
+          "unpaid_obligation": "0.00",
+          "paid": "0.00",
+          "certified": "0.00",
+          "available": "80000.00"
+        },
+        "evidence_ref": "DEMO_EVIDENCE_46_REQUIRED",
+        "decision_ref": "DEMO_DECISION_46_REQUIRED",
+        "receipt_group_ref": "DEMO_RECEIPT_46_02",
+        "original_event_ref": null,
+        "actual_posted": false
+      },
+      {
+        "event_ref": "DEMO_EVENT_46_03",
+        "type": "COMMIT_RESERVATION",
+        "effective_on": "2027-04-03",
+        "recorded_at": "2027-04-03T02:00:00Z",
+        "line_ref": "DEMO_LINE_46_A",
+        "delta": {
+          "allocated": "0.00",
+          "reserved": "-20000.00",
+          "unpaid_obligation": "20000.00",
+          "paid": "0.00",
+          "certified": "0.00"
+        },
+        "expected": {
+          "allocated": "100000.00",
+          "reserved": "0.00",
+          "unpaid_obligation": "20000.00",
+          "paid": "0.00",
+          "certified": "0.00",
+          "available": "80000.00"
+        },
+        "evidence_ref": "DEMO_EVIDENCE_46_REQUIRED",
+        "decision_ref": "DEMO_DECISION_46_REQUIRED",
+        "receipt_group_ref": "DEMO_RECEIPT_46_03",
+        "original_event_ref": null,
+        "actual_posted": false
+      },
+      {
+        "event_ref": "DEMO_EVENT_46_04",
+        "type": "CERTIFY",
+        "effective_on": "2027-04-04",
+        "recorded_at": "2027-04-04T02:00:00Z",
+        "line_ref": "DEMO_LINE_46_A",
+        "delta": {
+          "allocated": "0.00",
+          "reserved": "0.00",
+          "unpaid_obligation": "0.00",
+          "paid": "0.00",
+          "certified": "5000.00"
+        },
+        "expected": {
+          "allocated": "100000.00",
+          "reserved": "0.00",
+          "unpaid_obligation": "20000.00",
+          "paid": "0.00",
+          "certified": "5000.00",
+          "available": "80000.00"
+        },
+        "evidence_ref": "DEMO_EVIDENCE_46_REQUIRED",
+        "decision_ref": "DEMO_DECISION_46_REQUIRED",
+        "receipt_group_ref": "DEMO_RECEIPT_46_04",
+        "original_event_ref": null,
+        "actual_posted": false
+      },
+      {
+        "event_ref": "DEMO_EVENT_46_05",
+        "type": "RECORD_PAYMENT",
+        "effective_on": "2027-04-05",
+        "recorded_at": "2027-04-05T02:00:00Z",
+        "line_ref": "DEMO_LINE_46_A",
+        "delta": {
+          "allocated": "0.00",
+          "reserved": "0.00",
+          "unpaid_obligation": "-5000.00",
+          "paid": "5000.00",
+          "certified": "-5000.00"
+        },
+        "expected": {
+          "allocated": "100000.00",
+          "reserved": "0.00",
+          "unpaid_obligation": "15000.00",
+          "paid": "5000.00",
+          "certified": "0.00",
+          "available": "80000.00"
+        },
+        "evidence_ref": "DEMO_EVIDENCE_46_REQUIRED",
+        "decision_ref": "DEMO_DECISION_46_REQUIRED",
+        "receipt_group_ref": "DEMO_RECEIPT_46_05",
+        "original_event_ref": null,
+        "actual_posted": false
+      },
+      {
+        "event_ref": "DEMO_EVENT_46_06",
+        "type": "CANCEL_UNPAID_OBLIGATION",
+        "effective_on": "2027-04-06",
+        "recorded_at": "2027-04-06T02:00:00Z",
+        "line_ref": "DEMO_LINE_46_A",
+        "delta": {
+          "allocated": "0.00",
+          "reserved": "0.00",
+          "unpaid_obligation": "-10000.00",
+          "paid": "0.00",
+          "certified": "0.00"
+        },
+        "expected": {
+          "allocated": "100000.00",
+          "reserved": "0.00",
+          "unpaid_obligation": "5000.00",
+          "paid": "5000.00",
+          "certified": "0.00",
+          "available": "90000.00"
+        },
+        "evidence_ref": "DEMO_EVIDENCE_46_REQUIRED",
+        "decision_ref": "DEMO_DECISION_46_REQUIRED",
+        "receipt_group_ref": "DEMO_RECEIPT_46_06",
+        "original_event_ref": null,
+        "actual_posted": false
+      },
+      {
+        "event_ref": "DEMO_EVENT_46_07",
+        "type": "TRANSFER_OUT",
+        "effective_on": "2027-04-07",
+        "recorded_at": "2027-04-07T02:00:00Z",
+        "line_ref": "DEMO_LINE_46_A",
+        "delta": {
+          "allocated": "-10000.00",
+          "reserved": "0.00",
+          "unpaid_obligation": "0.00",
+          "paid": "0.00",
+          "certified": "0.00"
+        },
+        "expected": {
+          "allocated": "90000.00",
+          "reserved": "0.00",
+          "unpaid_obligation": "5000.00",
+          "paid": "5000.00",
+          "certified": "0.00",
+          "available": "80000.00"
+        },
+        "evidence_ref": "DEMO_EVIDENCE_46_REQUIRED",
+        "decision_ref": "DEMO_DECISION_46_REQUIRED",
+        "receipt_group_ref": "DEMO_TRANSFER_RECEIPT_46",
+        "original_event_ref": null,
+        "actual_posted": false
+      },
+      {
+        "event_ref": "DEMO_EVENT_46_08",
+        "type": "REVERSE_TRANSFER_OUT",
+        "effective_on": "2027-04-08",
+        "recorded_at": "2027-04-08T02:00:00Z",
+        "line_ref": "DEMO_LINE_46_A",
+        "delta": {
+          "allocated": "10000.00",
+          "reserved": "0.00",
+          "unpaid_obligation": "0.00",
+          "paid": "0.00",
+          "certified": "0.00"
+        },
+        "expected": {
+          "allocated": "100000.00",
+          "reserved": "0.00",
+          "unpaid_obligation": "5000.00",
+          "paid": "5000.00",
+          "certified": "0.00",
+          "available": "90000.00"
+        },
+        "evidence_ref": "DEMO_EVIDENCE_46_REQUIRED",
+        "decision_ref": "DEMO_DECISION_46_REQUIRED",
+        "receipt_group_ref": "DEMO_REVERSE_TRANSFER_RECEIPT_46",
+        "original_event_ref": "DEMO_EVENT_46_07",
+        "actual_posted": false
+      },
+      {
+        "event_ref": "DEMO_EVENT_46_09",
+        "type": "CORRECT_PAYMENT_WITH_APPROVED_REOPEN",
+        "effective_on": "2027-04-09",
+        "recorded_at": "2027-04-09T02:00:00Z",
+        "line_ref": "DEMO_LINE_46_A",
+        "delta": {
+          "allocated": "0.00",
+          "reserved": "0.00",
+          "unpaid_obligation": "5000.00",
+          "paid": "-5000.00",
+          "certified": "5000.00"
+        },
+        "expected": {
+          "allocated": "100000.00",
+          "reserved": "0.00",
+          "unpaid_obligation": "10000.00",
+          "paid": "0.00",
+          "certified": "5000.00",
+          "available": "90000.00"
+        },
+        "evidence_ref": "DEMO_EVIDENCE_46_REQUIRED",
+        "decision_ref": "DEMO_DECISION_46_REQUIRED",
+        "receipt_group_ref": "DEMO_RECEIPT_46_09",
+        "original_event_ref": "DEMO_EVENT_46_05",
+        "actual_posted": false,
+        "requires_approved_voucher_reopen": true
+      },
+      {
+        "event_ref": "DEMO_EVENT_46_10",
+        "type": "CANCEL_CERTIFICATION",
+        "effective_on": "2027-04-10",
+        "recorded_at": "2027-04-10T02:00:00Z",
+        "line_ref": "DEMO_LINE_46_A",
+        "delta": {
+          "allocated": "0.00",
+          "reserved": "0.00",
+          "unpaid_obligation": "0.00",
+          "paid": "0.00",
+          "certified": "-5000.00"
+        },
+        "expected": {
+          "allocated": "100000.00",
+          "reserved": "0.00",
+          "unpaid_obligation": "10000.00",
+          "paid": "0.00",
+          "certified": "0.00",
+          "available": "90000.00"
+        },
+        "evidence_ref": "DEMO_EVIDENCE_46_REQUIRED",
+        "decision_ref": "DEMO_DECISION_46_REQUIRED",
+        "receipt_group_ref": "DEMO_RECEIPT_46_10",
+        "original_event_ref": null,
+        "actual_posted": false
+      },
+      {
+        "event_ref": "DEMO_EVENT_46_11",
+        "type": "CANCEL_UNPAID_OBLIGATION",
+        "effective_on": "2027-04-11",
+        "recorded_at": "2027-04-11T02:00:00Z",
+        "line_ref": "DEMO_LINE_46_A",
+        "delta": {
+          "allocated": "0.00",
+          "reserved": "0.00",
+          "unpaid_obligation": "-10000.00",
+          "paid": "0.00",
+          "certified": "0.00"
+        },
+        "expected": {
+          "allocated": "100000.00",
+          "reserved": "0.00",
+          "unpaid_obligation": "0.00",
+          "paid": "0.00",
+          "certified": "0.00",
+          "available": "100000.00"
+        },
+        "evidence_ref": "DEMO_EVIDENCE_46_REQUIRED",
+        "decision_ref": "DEMO_DECISION_46_REQUIRED",
+        "receipt_group_ref": "DEMO_RECEIPT_46_11",
+        "original_event_ref": null,
+        "actual_posted": false
+      }
+    ]
+  },
+  "transfer_partner_chain": {
+    "context_ref": "DEMO_CONTEXT_46_A_2027",
+    "line_ref": "DEMO_LINE_46_B",
+    "opening": {
+      "allocated": "0.00",
+      "reserved": "0.00",
+      "unpaid_obligation": "0.00",
+      "paid": "0.00",
+      "certified": "0.00",
+      "available": "0.00"
+    },
+    "steps": [
+      {
+        "event_ref": "DEMO_PARTNER_46_OPEN",
+        "type": "ALLOCATE",
+        "line_ref": "DEMO_LINE_46_B",
+        "delta": {
+          "allocated": "20000.00",
+          "reserved": "0.00",
+          "unpaid_obligation": "0.00",
+          "paid": "0.00",
+          "certified": "0.00"
+        },
+        "expected": {
+          "allocated": "20000.00",
+          "reserved": "0.00",
+          "unpaid_obligation": "0.00",
+          "paid": "0.00",
+          "certified": "0.00",
+          "available": "20000.00"
+        },
+        "receipt_group_ref": "DEMO_RECEIPT_46_PARTNER_OPEN",
+        "actual_posted": false,
+        "effective_on": "2027-04-01",
+        "recorded_at": "2027-04-01T02:00:00Z",
+        "evidence_ref": "DEMO_EVIDENCE_46_REQUIRED",
+        "decision_ref": "DEMO_DECISION_46_REQUIRED"
+      },
+      {
+        "event_ref": "DEMO_PARTNER_46_TRANSFER",
+        "type": "TRANSFER_IN",
+        "line_ref": "DEMO_LINE_46_B",
+        "delta": {
+          "allocated": "10000.00",
+          "reserved": "0.00",
+          "unpaid_obligation": "0.00",
+          "paid": "0.00",
+          "certified": "0.00"
+        },
+        "expected": {
+          "allocated": "30000.00",
+          "reserved": "0.00",
+          "unpaid_obligation": "0.00",
+          "paid": "0.00",
+          "certified": "0.00",
+          "available": "30000.00"
+        },
+        "receipt_group_ref": "DEMO_TRANSFER_RECEIPT_46",
+        "paired_event_ref": "DEMO_EVENT_46_07",
+        "actual_posted": false,
+        "effective_on": "2027-04-07",
+        "recorded_at": "2027-04-07T02:00:00Z",
+        "evidence_ref": "DEMO_EVIDENCE_46_REQUIRED",
+        "decision_ref": "DEMO_DECISION_46_REQUIRED"
+      },
+      {
+        "event_ref": "DEMO_PARTNER_46_REVERSE",
+        "type": "REVERSE_TRANSFER_IN",
+        "line_ref": "DEMO_LINE_46_B",
+        "delta": {
+          "allocated": "-10000.00",
+          "reserved": "0.00",
+          "unpaid_obligation": "0.00",
+          "paid": "0.00",
+          "certified": "0.00"
+        },
+        "expected": {
+          "allocated": "20000.00",
+          "reserved": "0.00",
+          "unpaid_obligation": "0.00",
+          "paid": "0.00",
+          "certified": "0.00",
+          "available": "20000.00"
+        },
+        "receipt_group_ref": "DEMO_REVERSE_TRANSFER_RECEIPT_46",
+        "paired_event_ref": "DEMO_EVENT_46_08",
+        "original_event_ref": "DEMO_PARTNER_46_TRANSFER",
+        "actual_posted": false,
+        "effective_on": "2027-04-08",
+        "recorded_at": "2027-04-08T02:00:00Z",
+        "evidence_ref": "DEMO_EVIDENCE_46_REQUIRED",
+        "decision_ref": "DEMO_DECISION_46_REQUIRED"
+      }
+    ]
+  },
+  "release_chain": {
+    "opening": {
+      "allocated": "0.00",
+      "reserved": "0.00",
+      "unpaid_obligation": "0.00",
+      "paid": "0.00",
+      "certified": "0.00",
+      "available": "0.00"
+    },
+    "steps": [
+      {
+        "type": "ALLOCATE",
+        "delta": {
+          "allocated": "10000.00",
+          "reserved": "0.00",
+          "unpaid_obligation": "0.00",
+          "paid": "0.00",
+          "certified": "0.00"
+        },
+        "expected": {
+          "allocated": "10000.00",
+          "reserved": "0.00",
+          "unpaid_obligation": "0.00",
+          "paid": "0.00",
+          "certified": "0.00",
+          "available": "10000.00"
+        },
+        "actual_posted": false,
+        "event_ref": "DEMO_EVENT_46_RELEASE_01",
+        "effective_on": "2027-04-12",
+        "recorded_at": "2027-04-12T02:00:00Z",
+        "line_ref": "DEMO_LINE_46_RELEASE",
+        "evidence_ref": "DEMO_EVIDENCE_46_REQUIRED",
+        "decision_ref": "DEMO_DECISION_46_REQUIRED",
+        "receipt_group_ref": "DEMO_RECEIPT_46_RELEASE_01"
+      },
+      {
+        "type": "RESERVE",
+        "delta": {
+          "allocated": "0.00",
+          "reserved": "3000.00",
+          "unpaid_obligation": "0.00",
+          "paid": "0.00",
+          "certified": "0.00"
+        },
+        "expected": {
+          "allocated": "10000.00",
+          "reserved": "3000.00",
+          "unpaid_obligation": "0.00",
+          "paid": "0.00",
+          "certified": "0.00",
+          "available": "7000.00"
+        },
+        "actual_posted": false,
+        "event_ref": "DEMO_EVENT_46_RELEASE_02",
+        "effective_on": "2027-04-13",
+        "recorded_at": "2027-04-13T02:00:00Z",
+        "line_ref": "DEMO_LINE_46_RELEASE",
+        "evidence_ref": "DEMO_EVIDENCE_46_REQUIRED",
+        "decision_ref": "DEMO_DECISION_46_REQUIRED",
+        "receipt_group_ref": "DEMO_RECEIPT_46_RELEASE_02"
+      },
+      {
+        "type": "RELEASE_RESERVATION",
+        "delta": {
+          "allocated": "0.00",
+          "reserved": "-1000.00",
+          "unpaid_obligation": "0.00",
+          "paid": "0.00",
+          "certified": "0.00"
+        },
+        "expected": {
+          "allocated": "10000.00",
+          "reserved": "2000.00",
+          "unpaid_obligation": "0.00",
+          "paid": "0.00",
+          "certified": "0.00",
+          "available": "8000.00"
+        },
+        "actual_posted": false,
+        "event_ref": "DEMO_EVENT_46_RELEASE_03",
+        "effective_on": "2027-04-14",
+        "recorded_at": "2027-04-14T02:00:00Z",
+        "line_ref": "DEMO_LINE_46_RELEASE",
+        "evidence_ref": "DEMO_EVIDENCE_46_REQUIRED",
+        "decision_ref": "DEMO_DECISION_46_REQUIRED",
+        "receipt_group_ref": "DEMO_RECEIPT_46_RELEASE_03"
+      },
+      {
+        "type": "RELEASE_RESERVATION",
+        "delta": {
+          "allocated": "0.00",
+          "reserved": "-2000.00",
+          "unpaid_obligation": "0.00",
+          "paid": "0.00",
+          "certified": "0.00"
+        },
+        "expected": {
+          "allocated": "10000.00",
+          "reserved": "0.00",
+          "unpaid_obligation": "0.00",
+          "paid": "0.00",
+          "certified": "0.00",
+          "available": "10000.00"
+        },
+        "actual_posted": false,
+        "event_ref": "DEMO_EVENT_46_RELEASE_04",
+        "effective_on": "2027-04-15",
+        "recorded_at": "2027-04-15T02:00:00Z",
+        "line_ref": "DEMO_LINE_46_RELEASE",
+        "evidence_ref": "DEMO_EVIDENCE_46_REQUIRED",
+        "decision_ref": "DEMO_DECISION_46_REQUIRED",
+        "receipt_group_ref": "DEMO_RECEIPT_46_RELEASE_04"
+      }
+    ],
+    "context_ref": "DEMO_CONTEXT_46_A_2027",
+    "line_ref": "DEMO_LINE_46_RELEASE"
+  },
+  "decimal_chain": {
+    "opening": {
+      "allocated": "0.00",
+      "reserved": "0.00",
+      "unpaid_obligation": "0.00",
+      "paid": "0.00",
+      "certified": "0.00",
+      "available": "0.00"
+    },
+    "steps": [
+      {
+        "type": "ALLOCATE",
+        "delta": {
+          "allocated": "0.30",
+          "reserved": "0.00",
+          "unpaid_obligation": "0.00",
+          "paid": "0.00",
+          "certified": "0.00"
+        },
+        "expected": {
+          "allocated": "0.30",
+          "reserved": "0.00",
+          "unpaid_obligation": "0.00",
+          "paid": "0.00",
+          "certified": "0.00",
+          "available": "0.30"
+        },
+        "actual_posted": false,
+        "event_ref": "DEMO_EVENT_46_DECIMAL_01",
+        "effective_on": "2027-04-16",
+        "recorded_at": "2027-04-16T02:00:00Z",
+        "line_ref": "DEMO_LINE_46_DECIMAL",
+        "evidence_ref": "DEMO_EVIDENCE_46_REQUIRED",
+        "decision_ref": "DEMO_DECISION_46_REQUIRED",
+        "receipt_group_ref": "DEMO_RECEIPT_46_DECIMAL_01"
+      },
+      {
+        "type": "RESERVE",
+        "delta": {
+          "allocated": "0.00",
+          "reserved": "0.10",
+          "unpaid_obligation": "0.00",
+          "paid": "0.00",
+          "certified": "0.00"
+        },
+        "expected": {
+          "allocated": "0.30",
+          "reserved": "0.10",
+          "unpaid_obligation": "0.00",
+          "paid": "0.00",
+          "certified": "0.00",
+          "available": "0.20"
+        },
+        "actual_posted": false,
+        "event_ref": "DEMO_EVENT_46_DECIMAL_02",
+        "effective_on": "2027-04-17",
+        "recorded_at": "2027-04-17T02:00:00Z",
+        "line_ref": "DEMO_LINE_46_DECIMAL",
+        "evidence_ref": "DEMO_EVIDENCE_46_REQUIRED",
+        "decision_ref": "DEMO_DECISION_46_REQUIRED",
+        "receipt_group_ref": "DEMO_RECEIPT_46_DECIMAL_02"
+      },
+      {
+        "type": "RESERVE",
+        "delta": {
+          "allocated": "0.00",
+          "reserved": "0.20",
+          "unpaid_obligation": "0.00",
+          "paid": "0.00",
+          "certified": "0.00"
+        },
+        "expected": {
+          "allocated": "0.30",
+          "reserved": "0.30",
+          "unpaid_obligation": "0.00",
+          "paid": "0.00",
+          "certified": "0.00",
+          "available": "0.00"
+        },
+        "actual_posted": false,
+        "event_ref": "DEMO_EVENT_46_DECIMAL_03",
+        "effective_on": "2027-04-18",
+        "recorded_at": "2027-04-18T02:00:00Z",
+        "line_ref": "DEMO_LINE_46_DECIMAL",
+        "evidence_ref": "DEMO_EVIDENCE_46_REQUIRED",
+        "decision_ref": "DEMO_DECISION_46_REQUIRED",
+        "receipt_group_ref": "DEMO_RECEIPT_46_DECIMAL_03"
+      }
+    ],
+    "context_ref": "DEMO_CONTEXT_46_A_2027",
+    "line_ref": "DEMO_LINE_46_DECIMAL"
+  },
+  "native_race_plan": {
+    "status": "NOT_RUN",
+    "available_start": "100000.00",
+    "requests": ["80000.00", "60000.00"],
+    "connection_count": 2,
+    "barrier_required": true,
+    "expected_success_count": 1,
+    "allowed_remaining": ["20000.00", "40000.00"],
+    "fixed_winner": null,
+    "retry_budget": "bounded; actual max/SQLSTATE policy must be recorded"
+  },
+  "rollback_plan": {
+    "status": "NOT_RUN",
+    "failpoints": [
+      "before_ledger",
+      "after_ledger_before_projection",
+      "after_projection_before_outbox",
+      "before_commit"
+    ],
+    "must_rollback_together": [
+      "business_resource",
+      "ledger",
+      "projection",
+      "receipt",
+      "audit",
+      "outbox"
+    ],
+    "commit_before_response_retry": "same receipt and events only after current authorization",
+    "worker_restart_points": ["before_claim", "after_delivery_before_ack"],
+    "delivery_semantics": "durable inbox/dev sink dedupe; no unsupported exactly-once claim for external recipients"
+  },
+  "criteria": {
+    "46-01": [
+      "P46-02",
+      "P46-03",
+      "P46-04",
+      "P46-05",
+      "P46-06",
+      "P46-07",
+      "P46-08",
+      "P46-09",
+      "P46-10",
+      "P46-15",
+      "P46-16",
+      "P46-18",
+      "P46-19",
+      "P46-20",
+      "P46-21",
+      "P46-22",
+      "P46-23",
+      "P46-24",
+      "P46-28"
+    ],
+    "46-02": ["P46-11", "P46-26"]
+  },
+  "cases": [
+    {
+      "id": "P46-01",
+      "steps": "ร่างแผน→ส่ง→ส่งกลับ→แก้→ตรวจ→อนุมัติ→โพสต์จัดสรร",
+      "expected": "revision/historyเดิมครบ แผนไม่อนุมัติจองไม่ได้ รายได้คาดการณ์ไม่เป็น A; maker/reviewer/approverแยก",
+      "status": "NOT_RUN",
+      "actual": null,
+      "execution_manifest_ref": null
+    },
+    {
+      "id": "P46-02",
+      "steps": "จัดสรร100000→จอง20000→ผูกพัน→รับรอง5000→จ่าย5000",
+      "expected": "R→U และ U→P/C atomic; U15000/P5000/V80000 ledger/ต้นเรื่อง/projectionตรง",
+      "status": "NOT_RUN",
+      "actual": null,
+      "execution_manifest_ref": null
+    },
+    {
+      "id": "P46-03",
+      "steps": "จอง3000→ปลด1000→ปลด2000 แล้วretry/ปลดเกิน",
+      "expected": "remainingและVถูกต้อง replayครั้งเดียว เกินremainingdeny ไม่ปลดเงินที่convertแล้ว",
+      "status": "NOT_RUN",
+      "actual": null,
+      "execution_manifest_ref": null
+    },
+    {
+      "id": "P46-04",
+      "steps": "จ่ายบางส่วนแล้วปลดภาระที่เหลือบางส่วน",
+      "expected": "ปลดเฉพาะ unpaid ที่อนุมัติ C/claimsไม่ขัดกัน Pคงเดิม ไม่reverseทั้งก้อน",
+      "status": "NOT_RUN",
+      "actual": null,
+      "execution_manifest_ref": null
+    },
+    {
+      "id": "P46-05",
+      "steps": "โอน10000สองlines→กลับโอน→ลองโอนข้ามsourceที่ไม่อนุญาต",
+      "expected": "deltaสองlegs/receipt/audit/outboxatomic ผลรวมAคงเดิม lineageต้นทางครบ unknownrestrictionsdeny",
+      "status": "NOT_RUN",
+      "actual": null,
+      "execution_manifest_ref": null
+    },
+    {
+      "id": "P46-06",
+      "steps": "0.30จอง0.10+0.20; scale/range/currency/negative/NaN",
+      "expected": "V0.00 canonicalstrings/NUMERICexact ปฏิเสธscaleก่อนcast ไม่sumcurrencyผสม",
+      "status": "NOT_RUN",
+      "actual": null,
+      "execution_manifest_ref": null
+    },
+    {
+      "id": "P46-07",
+      "steps": "connectionsสองชุดจอง80000กับ60000จาก100000พร้อมกัน",
+      "expected": "สำเร็จเพียงหนึ่ง ไม่กำหนดผู้ชนะ V20000หรือ40000; event/receipt/outboxของผู้แพ้ไม่มี",
+      "status": "NOT_RUN",
+      "actual": null,
+      "execution_manifest_ref": null
+    },
+    {
+      "id": "P46-08",
+      "steps": "โอนสวนทางพร้อมกันและโอนรวมเกินavailable",
+      "expected": "global lockorder/full boundedretry ไม่มีpartiallegs/ติดลบ/duplicateหรือretryไม่จบ",
+      "status": "NOT_RUN",
+      "actual": null,
+      "execution_manifest_ref": null
+    },
+    {
+      "id": "P46-09",
+      "steps": "convertจองเดียวซ้ำพร้อมกัน และpayจากvoucherเดียวเกินremaining",
+      "expected": "sourceremaining/cumulativeinvoice/C/Uguards ไม่มีdouble counting ยอดรวมไม่เกินต้นเรื่อง",
+      "status": "NOT_RUN",
+      "actual": null,
+      "execution_manifest_ref": null
+    },
+    {
+      "id": "P46-10",
+      "steps": "key/hashเดิมretry; keyเดิมhashใหม่; keyใหม่paymentrefเดิม",
+      "expected": "คืนผลเดิมเฉพาะcurrentreadได้ hashconflictและbusinessduplicateปฏิเสธ uniqueพิสูจน์จริง",
+      "status": "NOT_RUN",
+      "actual": null,
+      "execution_manifest_ref": null
+    },
+    {
+      "id": "P46-11",
+      "steps": "maker/techadmin/reviewerพยายามอนุมัติ; วงเงินขอบเขตและหลายงวด",
+      "expected": "สามคนแยก currentamountbasis/cumulative/officialverifiedsource; ไม่splitเพื่อหลบวงเงิน",
+      "status": "NOT_RUN",
+      "actual": null,
+      "execution_manifest_ref": null
+    },
+    {
+      "id": "P46-12",
+      "steps": "ก่อน/หลังช่วงdelegation หมดsession ระงับบัญชี ถอนสิทธิ์ระหว่างAPI/job/retry",
+      "expected": "currentDAL/worker denyทันทีตามprotocol ไม่ใช้grant snapshotจากenqueueหรือซ่อนเมนูอย่างเดียว",
+      "status": "NOT_RUN",
+      "actual": null,
+      "execution_manifest_ref": null
+    },
+    {
+      "id": "P46-13",
+      "steps": "เปลี่ยนURL/body/queryเป็นorgB; list/count/export/objectkey",
+      "expected": "scope/fieldpolicyทุกboundary ไม่เผยยอด/invoice/หลักฐาน/จำนวนรายการนอกscope",
+      "status": "NOT_RUN",
+      "actual": null,
+      "execution_manifest_ref": null
+    },
+    {
+      "id": "P46-14",
+      "steps": "ปลอมextension/MIME เกินขนาด quarantine/scanpending/infected; dirtyfileversionใหม่",
+      "expected": "ไม่preview/download/approve/closeด้วยหลักฐานไม่ผ่าน currentfileACL ตรวจซ้ำตามaction",
+      "status": "NOT_RUN",
+      "actual": null,
+      "execution_manifest_ref": null
+    },
+    {
+      "id": "P46-15",
+      "steps": "failpointก่อน/หลังledger/projection/outboxและก่อนcommit",
+      "expected": "rollbackต้นเรื่อง/event/projection/receipt/audit/outboxทั้งหมด ไม่มี eventที่ขาดoutboxหรือphantomnotification",
+      "status": "NOT_RUN",
+      "actual": null,
+      "execution_manifest_ref": null
+    },
+    {
+      "id": "P46-16",
+      "steps": "commitสำเร็จแต่responseหาย แล้วretryและrevokeก่อนretry",
+      "expected": "มีevent/receipt/audit/outboxชุดเดียว คืนเดิมเมื่อcurrentgrantยังมี ไม่โพสต์ใหม่",
+      "status": "NOT_RUN",
+      "actual": null,
+      "execution_manifest_ref": null
+    },
+    {
+      "id": "P46-17",
+      "steps": "workerหยุดก่อนclaim/หลังdeliveryก่อนACK แล้วresume/retry/deadletter",
+      "expected": "committedoutboxไม่หาย durable inbox/sink dedupe; poison boundedretry/deadletterไม่rollbackเงิน; ไม่อ้างexactly-onceปลายทางที่ไม่มีidempotency",
+      "status": "NOT_RUN",
+      "actual": null,
+      "execution_manifest_ref": null
+    },
+    {
+      "id": "P46-18",
+      "steps": "projectionlagและmismatch แล้วcontrolledrebuild",
+      "expected": "ledger replayเทียบmanifest/watermarkเดียว lagไม่เป็นfresh mismatchไม่closeหรือsilentrepair oldeventsคงเดิม",
+      "status": "NOT_RUN",
+      "actual": null,
+      "execution_manifest_ref": null
+    },
+    {
+      "id": "P46-19",
+      "steps": "หน้ารายงาน/Excel/privateHTMLprintPDFทุกbucketและรายการค้าง",
+      "expected": "reportversion/manifest/filter/namepolicyเดียว totals/decimal/Thai/A4ตรง downloadตรวจcurrentACL",
+      "status": "NOT_RUN",
+      "actual": null,
+      "execution_manifest_ref": null
+    },
+    {
+      "id": "P46-20",
+      "steps": "FYสองปี/AYเดียว oldname→rename futureevent/latecorrection",
+      "expected": "FYไม่รวมจากAYlabel sealedmanifestคงเดิม restatementใหม่มีเหตุผล วันไทยถูกต้อง",
+      "status": "NOT_RUN",
+      "actual": null,
+      "execution_manifest_ref": null
+    },
+    {
+      "id": "P46-21",
+      "steps": "close-vs-postingสองconnection; closedbackdate/import/reversal/job",
+      "expected": "writerก่อนcloseถูกรวมหรือconflict writerหลังclosedenyทุกทาง ไม่มีhalfcloseหรือmanifestไม่ตรง",
+      "status": "NOT_RUN",
+      "actual": null,
+      "execution_manifest_ref": null
+    },
+    {
+      "id": "P46-22",
+      "steps": "close/reopen/adjustmentretryและแก้รุ่นที่reviewแล้ว",
+      "expected": "คำอนุมัติใหม่/sealedhash/currentauthority oldclose/report/eventไม่แก้ carryunknowndeny",
+      "status": "NOT_RUN",
+      "actual": null,
+      "execution_manifest_ref": null
+    },
+    {
+      "id": "P46-23",
+      "steps": "paymentcorrectionมี/ไม่มีapprovedreopen; actualrefund/dependencyunknown",
+      "expected": "originalhistory/evidenceอยู่ครบ ไม่restoreU/Cหรือคืนสิทธิ์เอง ไม่genericinverse/downstreamล้าง",
+      "status": "NOT_RUN",
+      "actual": null,
+      "execution_manifest_ref": null
+    },
+    {
+      "id": "P46-24",
+      "steps": "restrictedruntime/directSQLลองข้ามRPC/RLS/FK/unique/closedguard",
+      "expected": "databaseและDALdenyจริง rollback; migrationroleไม่อ้างเป็นสิทธิ์ธุรกิจ limitedactorตรวจด้วยcontextจริง",
+      "status": "NOT_RUN",
+      "actual": null,
+      "execution_manifest_ref": null
+    },
+    {
+      "id": "P46-25",
+      "steps": "keyboard/form/table/status 375/768/1024/1440 และprivateHTML/cache/static",
+      "expected": "labels/focus/revisionerrors/empty statesเข้าใจได้ privateเงิน/หลักฐานไม่ออกpublic/search/preview/assets/cache",
+      "status": "NOT_RUN",
+      "actual": null,
+      "execution_manifest_ref": null
+    },
+    {
+      "id": "P46-26",
+      "steps": "officialpolicyTO VERIFY/unknownauthority/carry/แบบ และไม่มีexternalAPI",
+      "expected": "officialdenyแม้DEMOมีตัวอย่าง QAไม่certifyระเบียบ; NBMS/bank/e-GPไม่มีclaim/integration",
+      "status": "NOT_RUN",
+      "actual": null,
+      "execution_manifest_ref": null
+    },
+    {
+      "id": "P46-27",
+      "steps": "เปิดreportและauthorizedprocurement/letterlinksเมื่อพร้อม",
+      "expected": "ไม่มีreserve/payment/stock/dispatchtransactionจากread; targetscopedeny โมดูลไม่พร้อมแสดงสถานะ",
+      "status": "NOT_RUN",
+      "actual": null,
+      "execution_manifest_ref": null
+    },
+    {
+      "id": "P46-28",
+      "steps": "ย้อนยอดทุกstepและreportถึงsourceevidence+decision+receipt/hash",
+      "expected": "approvedimmutableversions/effective-recorded/provenance/compositeFKครบ เจ้าหน้าที่นอกscopeไม่อ่านlineage; missingevidencefailclosed",
+      "status": "NOT_RUN",
+      "actual": null,
+      "execution_manifest_ref": null
+    }
+  ]
+}

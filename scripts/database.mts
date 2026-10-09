@@ -69,11 +69,17 @@ async function main() {
         const migrations = await pool.query(
           "SELECT migration_name,finished_at FROM public._prisma_migrations",
         );
+        const supported = [
+          "20261003130000_core_foundation",
+          "20261009170000_portal_access",
+          "20261009190000_documents_workflow",
+        ];
         if (
-          migrations.rowCount !== 1 ||
-          migrations.rows[0].migration_name !==
-            "20261003130000_core_foundation" ||
-          !migrations.rows[0].finished_at
+          !migrations.rowCount ||
+          migrations.rowCount > supported.length ||
+          migrations.rows.some(
+            (r) => !supported.includes(r.migration_name) || !r.finished_at,
+          )
         )
           throw new Error("รุ่นฐานทดสอบไม่ตรง");
       }
@@ -101,7 +107,15 @@ async function main() {
     });
     execFileSync(
       process.execPath,
-      ["--import", "tsx", "--test", "tests/database/core.integration.ts"],
+      [
+        "--import",
+        "tsx",
+        "--test",
+        "--test-concurrency=1",
+        "tests/database/core.integration.ts",
+        "tests/database/portal.integration.ts",
+        "tests/database/workflow.integration.ts",
+      ],
       {
         env: { ...env, CH06_TEST_DATABASE_URL: connectionString },
         stdio: "inherit",

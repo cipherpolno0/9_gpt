@@ -1,0 +1,333 @@
+{
+  "document_version": "0.1",
+  "lesson": 45,
+  "source_commit": "6d56b87",
+  "received_on": "2026-10-07",
+  "status": "PLAN_ONLY",
+  "seeded": false,
+  "runtime_loaded": false,
+  "official_allowed": false,
+  "actual_exports_generated": false,
+  "policy": {
+    "code": "DEMO_REPORT_CLOSE_45",
+    "version": 1,
+    "verification_status": "TO_VERIFY",
+    "currency": "THB",
+    "authority_bands": [],
+    "approved_close_decision_id": null,
+    "source_evidence_file_version_id": null,
+    "official_double_entry_trial_balance_available": false,
+    "automatic_carry_forward_allowed": false,
+    "closed_period_posting_allowed": false
+  },
+  "context": {
+    "organization_ref": "DEMO_ORG_BUDGET_45_A",
+    "line_ref": "DEMO_LINE_FY2027_45",
+    "fiscal_year_ref": "DEMO_FY_2027",
+    "academic_year_project_ref": "DEMO_AY_2027",
+    "project_ref": "DEMO_PROJECT_EXAM_2027",
+    "funding_source_ref": "DEMO_FUNDING_45_A",
+    "as_of_on": "2027-04-05",
+    "period_start_on": "2027-04-01",
+    "period_end_on_exclusive": "2027-05-01",
+    "actor_refs_are_runtime_accounts": false
+  },
+  "bucket_order": ["A", "R", "U", "P", "C"],
+  "available_formula": "A-R-U-P",
+  "opening_buckets": ["0.00", "0.00", "0.00", "0.00", "0.00"],
+  "reference_events": [
+    {
+      "id": "DEMO_EVENT_45_ALLOC",
+      "line_sequence": 1,
+      "kind": "ALLOCATION",
+      "effective_on": "2027-04-01",
+      "delta": ["100000.00", "0.00", "0.00", "0.00", "0.00"]
+    },
+    {
+      "id": "DEMO_EVENT_45_RESERVE",
+      "line_sequence": 2,
+      "kind": "RESERVE",
+      "effective_on": "2027-04-02",
+      "delta": ["0.00", "20000.00", "0.00", "0.00", "0.00"]
+    },
+    {
+      "id": "DEMO_EVENT_45_COMMIT",
+      "line_sequence": 3,
+      "kind": "COMMIT_RESERVATION",
+      "effective_on": "2027-04-03",
+      "delta": ["0.00", "-20000.00", "20000.00", "0.00", "0.00"]
+    },
+    {
+      "id": "DEMO_EVENT_45_CERTIFY",
+      "line_sequence": 4,
+      "kind": "CERTIFY_DISBURSEMENT",
+      "effective_on": "2027-04-04",
+      "delta": ["0.00", "0.00", "0.00", "0.00", "5000.00"]
+    },
+    {
+      "id": "DEMO_EVENT_45_PAY",
+      "line_sequence": 5,
+      "kind": "PAYMENT_RECORD",
+      "effective_on": "2027-04-05",
+      "delta": ["0.00", "0.00", "-5000.00", "5000.00", "-5000.00"]
+    }
+  ],
+  "expected_reference_rows": [
+    {
+      "as_of_on": "2027-04-01",
+      "buckets": ["100000.00", "0.00", "0.00", "0.00", "0.00"],
+      "available": "100000.00"
+    },
+    {
+      "as_of_on": "2027-04-02",
+      "buckets": ["100000.00", "20000.00", "0.00", "0.00", "0.00"],
+      "available": "80000.00"
+    },
+    {
+      "as_of_on": "2027-04-03",
+      "buckets": ["100000.00", "0.00", "20000.00", "0.00", "0.00"],
+      "available": "80000.00"
+    },
+    {
+      "as_of_on": "2027-04-04",
+      "buckets": ["100000.00", "0.00", "20000.00", "0.00", "5000.00"],
+      "available": "80000.00"
+    },
+    {
+      "as_of_on": "2027-04-05",
+      "buckets": ["100000.00", "0.00", "15000.00", "5000.00", "0.00"],
+      "available": "80000.00"
+    }
+  ],
+  "organization_name_reference_versions": [
+    {
+      "ref": "DEMO_ORG_NAME_45_V1",
+      "label": "หน่วยงานสมมติทดสอบรายงาน รุ่นชื่อเดิม",
+      "valid_from_on": "2026-01-01",
+      "valid_to_on_exclusive": "2027-05-01"
+    },
+    {
+      "ref": "DEMO_ORG_NAME_45_V2",
+      "label": "หน่วยงานสมมติทดสอบรายงาน รุ่นชื่อใหม่",
+      "valid_from_on": "2027-05-01",
+      "valid_to_on_exclusive": null
+    }
+  ],
+  "sealed_report_reference": {
+    "id": "DEMO_REPORT_45_V1",
+    "version": 1,
+    "effective_as_of_on": "2027-04-05",
+    "generated_at": "2027-04-06T09:00:00+07:00",
+    "name_version_ref": "DEMO_ORG_NAME_45_V1",
+    "event_manifest": [
+      "DEMO_EVENT_45_ALLOC",
+      "DEMO_EVENT_45_RESERVE",
+      "DEMO_EVENT_45_COMMIT",
+      "DEMO_EVENT_45_CERTIFY",
+      "DEMO_EVENT_45_PAY"
+    ],
+    "expected_buckets": ["100000.00", "0.00", "15000.00", "5000.00", "0.00"],
+    "expected_available": "80000.00",
+    "screen_excel_print_pdf_expected_to_share_manifest": true,
+    "actual_sealed_report_exists": false
+  },
+  "late_correction_reference": {
+    "id": "DEMO_EVENT_45_CORRECT_PAY",
+    "line_sequence": 6,
+    "effective_on": "2027-04-05",
+    "recorded_at": "2027-04-10T09:00:00+07:00",
+    "delta": ["0.00", "0.00", "5000.00", "-5000.00", "5000.00"],
+    "original_event_ref": "DEMO_EVENT_45_PAY",
+    "requires_approved_correction_and_voucher_reopen": true,
+    "if_period_closed_requires_approved_reopen_or_adjustment": true,
+    "actual_approval_present": false,
+    "new_report_version_expected_buckets": [
+      "100000.00",
+      "0.00",
+      "20000.00",
+      "0.00",
+      "5000.00"
+    ],
+    "new_report_version_expected_available": "80000.00",
+    "old_report_manifest_must_remain_unchanged": true
+  },
+  "projection_reference_scenarios": [
+    {
+      "mode": "LAG",
+      "processed_line_sequence": 4,
+      "committed_line_sequence": 5,
+      "projection_buckets": [
+        "100000.00",
+        "0.00",
+        "20000.00",
+        "0.00",
+        "5000.00"
+      ],
+      "can_close": false
+    },
+    {
+      "mode": "MISMATCH",
+      "processed_line_sequence": 5,
+      "committed_line_sequence": 5,
+      "projection_buckets": [
+        "100000.00",
+        "0.00",
+        "15000.00",
+        "4999.99",
+        "0.00"
+      ],
+      "can_close": false
+    },
+    {
+      "mode": "MATCHED",
+      "processed_line_sequence": 5,
+      "committed_line_sequence": 5,
+      "projection_buckets": [
+        "100000.00",
+        "0.00",
+        "15000.00",
+        "5000.00",
+        "0.00"
+      ],
+      "reconciliation_only_satisfied": true,
+      "official_close_allowed": false
+    }
+  ],
+  "multi_fiscal_year_reference": {
+    "academic_year_project_ref": "DEMO_AY_2027",
+    "rows": [
+      {
+        "fiscal_year_ref": "DEMO_FY_2026",
+        "line_ref": "DEMO_LINE_FY2026_45",
+        "A": "30000.00",
+        "R": "5000.00",
+        "U": "0.00",
+        "P": "0.00",
+        "C": "0.00",
+        "available": "25000.00"
+      },
+      {
+        "fiscal_year_ref": "DEMO_FY_2027",
+        "line_ref": "DEMO_LINE_FY2027_45",
+        "A": "100000.00",
+        "R": "0.00",
+        "U": "15000.00",
+        "P": "5000.00",
+        "C": "0.00",
+        "available": "80000.00"
+      }
+    ],
+    "expected_grouped_A": "130000.00",
+    "expected_grouped_available": "105000.00",
+    "fiscal_years_must_remain_visible": true
+  },
+  "period_close_reference_plan": {
+    "requested_status": "CLOSED",
+    "sealed_report_ref": "DEMO_REPORT_45_V1",
+    "actual_close_exists": false,
+    "new_posting_after_closed_expected": "DENY_UNTIL_APPROVED_REOPEN_OR_ADJUSTMENT",
+    "late_posting_during_review_expected": "CONFLICT_REVIEW_MANIFEST_CHANGED",
+    "opening_buckets": ["0.00", "0.00", "0.00", "0.00", "0.00"],
+    "movement_buckets": ["100000.00", "0.00", "15000.00", "5000.00", "0.00"],
+    "closing_buckets": ["100000.00", "0.00", "15000.00", "5000.00", "0.00"],
+    "outstanding_disposition_verified": false,
+    "policy_verified": false,
+    "native_execution": "NOT_RUN"
+  },
+  "acceptance_cases": [
+    {
+      "id": "P45-01",
+      "case": "native ledger replay all key status buckets A/R/U/P/C/V and request states separate",
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "P45-02",
+      "case": "projection watermark lag and same-watermark mismatch block certified reports/close",
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "P45-03",
+      "case": "subresource/invoice/voucher balances and reversals reconcile exact no double counting",
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "P45-04",
+      "case": "screen/pagination/grand totals Excel private print PDF same manifest/string values",
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "P45-05",
+      "case": "FY/project AY/source/org/currency grouping no duplicated many-to-many join",
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "P45-06",
+      "case": "effective dates Bangkok cutoff future events and recorded history scoped snapshot",
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "P45-07",
+      "case": "trial system opening plus movement equals closing, no official double-entry claim",
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "P45-08",
+      "case": "current organization rename cannot overwrite old report pinned name/version",
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "P45-09",
+      "case": "late approved correction creates restated report preserving old event manifest",
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "P45-10",
+      "case": "native close versus posting barrier stale hash conflict or post-close deny",
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "P45-11",
+      "case": "closed backdated writes/reversal/import/API/worker all require verified reopen/adjustment",
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "P45-12",
+      "case": "close/reopen retry one state event/close version atomic receipt/audit/outbox",
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "P45-13",
+      "case": "maker checker/technical role/expired delegation/unknown carry/policy evidence close deny",
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "P45-14",
+      "case": "current scope revocation affects report/export job/private file download despite sealed snapshot",
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "P45-15",
+      "case": "report navigation to procurement/correspondence is authorized read without business postings",
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "P45-16",
+      "case": "immutable historical names/policies/manifests lineage private cache/static/export Thai formatting",
+      "status": "NOT_RUN"
+    }
+  ],
+  "acceptance_mapping": {
+    "45-01": [
+      "P45-01",
+      "P45-02",
+      "P45-03",
+      "P45-04",
+      "P45-05",
+      "P45-06",
+      "P45-07",
+      "P45-11",
+      "P45-15"
+    ],
+    "45-02": ["P45-08", "P45-09", "P45-14", "P45-16"]
+  }
+}

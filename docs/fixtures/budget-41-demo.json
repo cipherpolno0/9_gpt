@@ -1,0 +1,324 @@
+{
+  "document_version": "0.1",
+  "lesson": 41,
+  "source_commit": "061673a",
+  "created_on": "2026-10-05",
+  "status": "PLAN_ONLY",
+  "budget_examples_seeded": false,
+  "notes": [
+    "ตัวอย่างสมมติ ไม่มีบุคคลจริง เลขบัตร เบอร์ ที่อยู่ หรือบัญชีธนาคาร",
+    "FY/AYrefsและช่วงตรงกับcore seed definition ไม่ยืนยันว่ามีข้อมูลในnativeDB",
+    "หมวด แหล่งเงิน authority currency rounding/calendarยังTO_VERIFY โหมดจริงปิด",
+    "เงินรับส่งเป็นcanonical strings การบวกใช้exactinteger/decimal ไม่JSNumber",
+    "ไม่มีPrisma budgetmodels/migration/configloader/approveddecision/runtime moneyserviceสร้างในบท41",
+    "configที่เปลี่ยนscale/currencyต้องschema/domainreview ไม่reinterpretยอดเก่า"
+  ],
+  "policy": {
+    "policy_code": "DEMO_BUDGET_POLICY_41",
+    "version": 1,
+    "mode": "DEMO",
+    "approval_status": "TO_VERIFY",
+    "official_allowed": false,
+    "currency_code": "THB",
+    "fractional_digits": 2,
+    "storage_precision": 20,
+    "storage_scale": 2,
+    "canonical_pattern": "^(0|[1-9][0-9]{0,17})\\.[0-9]{2}$",
+    "minimum_amount": "0.00",
+    "maximum_amount": "999999999999999999.99",
+    "arithmetic_representation": "VALIDATED_INTEGER_SATANG_WITHOUT_NUMBER_CAST",
+    "rounding": {
+      "mode": "HALF_EVEN",
+      "stage": "EXPLICIT_DEMO_CALCULATION_ONLY",
+      "input_excess_scale": "REJECT",
+      "verified": false
+    },
+    "category_ref": "DEMO_BUDGET_CATEGORY_EXAM",
+    "source_ref": "DEMO_FUNDING_SOURCE_41",
+    "organization_ref": "DEMO_ORGANIZATION_BUDGET_41",
+    "cost_center_ref": "DEMO_COST_CENTER_41",
+    "authority_bands": [],
+    "source_evidence_ref": null,
+    "approved_decision_ref": null,
+    "runtime_loaded": false
+  },
+  "models_contract": [
+    "FiscalYear",
+    "FundingSource",
+    "BudgetPlan",
+    "Project",
+    "CostCenter",
+    "BudgetLine",
+    "AllocationVersion",
+    "ProjectAcademicYear"
+  ],
+  "academic_year": {
+    "ref": "DEMO_AY_2027",
+    "label_year_ce": 2027,
+    "starts_on": "2027-02-01",
+    "ends_on": "2028-02-01"
+  },
+  "fiscal_years": [
+    {
+      "ref": "DEMO_FY_2026",
+      "label_year_ce": 2026,
+      "starts_on": "2026-04-01",
+      "ends_on": "2027-04-01"
+    },
+    {
+      "ref": "DEMO_FY_2027",
+      "label_year_ce": 2027,
+      "starts_on": "2027-04-01",
+      "ends_on": "2028-04-01"
+    }
+  ],
+  "project": {
+    "ref": "DEMO_PROJECT_EXAM_2027",
+    "starts_on": "2027-02-01",
+    "ends_on": "2028-02-01",
+    "academic_year_ref": "DEMO_AY_2027"
+  },
+  "budget_lines": [
+    {
+      "ref": "DEMO_BUDGET_LINE_41_FY2026",
+      "plan_ref": "DEMO_BUDGET_PLAN_41_FY2026",
+      "fiscal_year_ref": "DEMO_FY_2026",
+      "project_ref": "DEMO_PROJECT_EXAM_2027",
+      "currency_code": "THB",
+      "starts_on": "2027-02-01",
+      "ends_on": "2027-04-01",
+      "authorized_amount": "10000.10",
+      "allocation_version_no": 1,
+      "effective_status": "NOT_RUN"
+    },
+    {
+      "ref": "DEMO_BUDGET_LINE_41_FY2027",
+      "plan_ref": "DEMO_BUDGET_PLAN_41_FY2027",
+      "fiscal_year_ref": "DEMO_FY_2027",
+      "project_ref": "DEMO_PROJECT_EXAM_2027",
+      "currency_code": "THB",
+      "starts_on": "2027-04-01",
+      "ends_on": "2028-02-01",
+      "authorized_amount": "20000.20",
+      "allocation_version_no": 1,
+      "effective_status": "NOT_RUN"
+    }
+  ],
+  "expected_project_total": {
+    "amount": "30000.30",
+    "currency_code": "THB",
+    "status": "REFERENCE_ONLY"
+  },
+  "sum_cases": [
+    {
+      "ref": "M41-01",
+      "operands": ["0.10", "0.20"],
+      "expected": "0.30"
+    },
+    {
+      "ref": "M41-02",
+      "operands": ["10000.10", "20000.20"],
+      "expected": "30000.30"
+    },
+    {
+      "ref": "M41-03",
+      "operands": ["900719925474099.91", "0.09"],
+      "expected": "900719925474100.00"
+    },
+    {
+      "ref": "M41-04",
+      "repeat_amount": "0.01",
+      "repeat_count": 100,
+      "expected": "1.00"
+    },
+    {
+      "ref": "M41-05",
+      "operands": ["999999999999999999.99", "0.00"],
+      "expected": "999999999999999999.99"
+    }
+  ],
+  "overflow_cases": [
+    {
+      "ref": "M41-06",
+      "operands": ["999999999999999999.99", "0.01"],
+      "expected_status": "REJECT_BEFORE_STORAGE"
+    }
+  ],
+  "invalid_inputs": [
+    {
+      "ref": "X41-01",
+      "value": "10.001",
+      "expected_status": "REJECT_BEFORE_CAST"
+    },
+    {
+      "ref": "X41-02",
+      "value": "NaN",
+      "expected_status": "REJECT_BEFORE_CAST"
+    },
+    {
+      "ref": "X41-03",
+      "value": "Infinity",
+      "expected_status": "REJECT_BEFORE_CAST"
+    },
+    {
+      "ref": "X41-04",
+      "value": "1e3",
+      "expected_status": "REJECT_BEFORE_CAST"
+    },
+    {
+      "ref": "X41-05",
+      "value": "-1.00",
+      "expected_status": "REJECT_BEFORE_CAST"
+    },
+    {
+      "ref": "X41-06",
+      "value": "-0.00",
+      "expected_status": "REJECT_BEFORE_CAST"
+    },
+    {
+      "ref": "X41-07",
+      "value": "+1.00",
+      "expected_status": "REJECT_BEFORE_CAST"
+    },
+    {
+      "ref": "X41-08",
+      "value": "1,000.00",
+      "expected_status": "REJECT_BEFORE_CAST"
+    },
+    {
+      "ref": "X41-09",
+      "value": "01.00",
+      "expected_status": "REJECT_BEFORE_CAST"
+    },
+    {
+      "ref": "X41-10",
+      "value": " 1.00 ",
+      "expected_status": "REJECT_BEFORE_CAST"
+    },
+    {
+      "ref": "X41-11",
+      "value": "",
+      "expected_status": "REJECT_BEFORE_CAST"
+    },
+    {
+      "ref": "X41-12",
+      "value": "9999999999999999999.00",
+      "expected_status": "REJECT_BEFORE_CAST"
+    },
+    {
+      "ref": "X41-13",
+      "value": "1",
+      "expected_status": "REJECT_BEFORE_CAST"
+    },
+    {
+      "ref": "X41-14",
+      "value": 1,
+      "expected_status": "REJECT_NUMBER_PAYLOAD"
+    }
+  ],
+  "rounding_reference_cases": [
+    {
+      "ref": "R41-01",
+      "input": "1.005",
+      "expected": "1.00",
+      "mode": "HALF_EVEN",
+      "official_allowed": false
+    },
+    {
+      "ref": "R41-02",
+      "input": "1.015",
+      "expected": "1.02",
+      "mode": "HALF_EVEN",
+      "official_allowed": false
+    },
+    {
+      "ref": "R41-03",
+      "input": "1.995",
+      "expected": "2.00",
+      "mode": "HALF_EVEN",
+      "official_allowed": false
+    }
+  ],
+  "version_reference": {
+    "old_authorized_amount": "100.00",
+    "new_authorized_amount": "120.00",
+    "expected_effective_amount": "120.00",
+    "expected_delta": "20.00",
+    "must_not_sum_versions": true,
+    "status": "NOT_RUN"
+  },
+  "native_acceptance_cases": [
+    {
+      "ref": "P41-01",
+      "status": "NOT_RUN"
+    },
+    {
+      "ref": "P41-02",
+      "status": "NOT_RUN"
+    },
+    {
+      "ref": "P41-03",
+      "status": "NOT_RUN"
+    },
+    {
+      "ref": "P41-04",
+      "status": "NOT_RUN"
+    },
+    {
+      "ref": "P41-05",
+      "status": "NOT_RUN"
+    },
+    {
+      "ref": "P41-06",
+      "status": "NOT_RUN"
+    },
+    {
+      "ref": "P41-07",
+      "status": "NOT_RUN"
+    },
+    {
+      "ref": "P41-08",
+      "status": "NOT_RUN"
+    },
+    {
+      "ref": "P41-09",
+      "status": "NOT_RUN"
+    },
+    {
+      "ref": "P41-10",
+      "status": "NOT_RUN"
+    },
+    {
+      "ref": "P41-11",
+      "status": "NOT_RUN"
+    },
+    {
+      "ref": "P41-12",
+      "status": "NOT_RUN"
+    },
+    {
+      "ref": "P41-13",
+      "status": "NOT_RUN"
+    },
+    {
+      "ref": "P41-14",
+      "status": "NOT_RUN"
+    },
+    {
+      "ref": "P41-15",
+      "status": "NOT_RUN"
+    },
+    {
+      "ref": "P41-16",
+      "status": "NOT_RUN"
+    },
+    {
+      "ref": "P41-17",
+      "status": "NOT_RUN"
+    },
+    {
+      "ref": "P41-18",
+      "status": "NOT_RUN"
+    }
+  ]
+}

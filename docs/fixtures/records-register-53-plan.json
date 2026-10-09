@@ -1,0 +1,1486 @@
+{
+  "version": "0.1",
+  "lesson": 53,
+  "source_commit": "243c234",
+  "received_at": "2026-10-08T07:50:04+07:00",
+  "status": "PLAN_ONLY",
+  "seeded": false,
+  "runtime_implemented": false,
+  "native_tests_executed": false,
+  "actual_numbers_issued": 0,
+  "actual_file_sharing_verified": false,
+  "actual_approvals": null,
+  "official_policy_verified": false,
+  "owner_signoff": null,
+  "actual_execution_manifest": null,
+  "prerequisite": 52,
+  "policy": {
+    "id": "DEMO_REGISTER_POLICY_53_V1",
+    "status": "TO_VERIFY",
+    "official_number_issuance_enabled": false,
+    "actual_authorities_created": false,
+    "register_year_is_fiscal_or_academic_year": false,
+    "timezone": "Asia/Bangkok",
+    "start_number": "1",
+    "basic_display_minimum_width": 4,
+    "namespace_includes_formatter_version": false,
+    "namespace_includes_policy_version": false,
+    "precommit_number_reservation_enabled": false,
+    "counter_decrement_on_void_allowed": false,
+    "void_reassignment_allowed": false,
+    "actual_number_format_confirmed": false,
+    "priority_and_confidentiality_separate": true
+  },
+  "register_types": [
+    {
+      "id": "DEMO_IN",
+      "purpose": "RECEIVED",
+      "status": "TO_VERIFY",
+      "actual_created": false
+    },
+    {
+      "id": "DEMO_OUT",
+      "purpose": "SENT",
+      "status": "TO_VERIFY",
+      "actual_created": false
+    },
+    {
+      "id": "DEMO_INTERNAL",
+      "purpose": "INTERNAL",
+      "status": "TO_VERIFY",
+      "actual_created": false
+    },
+    {
+      "id": "DEMO_CIRCULAR",
+      "purpose": "CIRCULAR",
+      "status": "TO_VERIFY",
+      "actual_created": false
+    }
+  ],
+  "register_periods": [
+    {
+      "id": "DEMO_PERIOD_53_2026",
+      "year_label_ce": "2026",
+      "starts_on": "2026-01-01",
+      "ends_before": "2027-01-01",
+      "timezone": "Asia/Bangkok",
+      "status": "TO_VERIFY",
+      "actual_created": false
+    },
+    {
+      "id": "DEMO_PERIOD_53_2027",
+      "year_label_ce": "2027",
+      "starts_on": "2027-01-01",
+      "ends_before": "2028-01-01",
+      "timezone": "Asia/Bangkok",
+      "status": "TO_VERIFY",
+      "actual_created": false
+    },
+    {
+      "id": "DEMO_PERIOD_53_2028",
+      "year_label_ce": "2028",
+      "starts_on": "2028-01-01",
+      "ends_before": "2029-01-01",
+      "timezone": "Asia/Bangkok",
+      "status": "TO_VERIFY",
+      "actual_created": false
+    }
+  ],
+  "counter_namespaces": [
+    {
+      "id": "DEMO_NAMESPACE_53_1",
+      "organization_id": "DEMO_ORG_53_A",
+      "register_type_id": "DEMO_IN",
+      "register_period_id": "DEMO_PERIOD_53_2027",
+      "start_number": "1",
+      "expected_next_number": "4",
+      "actual_created": false,
+      "actual_next_number": null
+    },
+    {
+      "id": "DEMO_NAMESPACE_53_2",
+      "organization_id": "DEMO_ORG_53_A",
+      "register_type_id": "DEMO_OUT",
+      "register_period_id": "DEMO_PERIOD_53_2027",
+      "start_number": "1",
+      "expected_next_number": "3",
+      "actual_created": false,
+      "actual_next_number": null
+    },
+    {
+      "id": "DEMO_NAMESPACE_53_3",
+      "organization_id": "DEMO_ORG_53_A",
+      "register_type_id": "DEMO_INTERNAL",
+      "register_period_id": "DEMO_PERIOD_53_2027",
+      "start_number": "1",
+      "expected_next_number": "2",
+      "actual_created": false,
+      "actual_next_number": null
+    },
+    {
+      "id": "DEMO_NAMESPACE_53_4",
+      "organization_id": "DEMO_ORG_53_A",
+      "register_type_id": "DEMO_CIRCULAR",
+      "register_period_id": "DEMO_PERIOD_53_2027",
+      "start_number": "1",
+      "expected_next_number": "2",
+      "actual_created": false,
+      "actual_next_number": null
+    },
+    {
+      "id": "DEMO_NAMESPACE_53_5",
+      "organization_id": "DEMO_ORG_53_B",
+      "register_type_id": "DEMO_IN",
+      "register_period_id": "DEMO_PERIOD_53_2027",
+      "start_number": "1",
+      "expected_next_number": "2",
+      "actual_created": false,
+      "actual_next_number": null
+    },
+    {
+      "id": "DEMO_NAMESPACE_53_6",
+      "organization_id": "DEMO_ORG_53_A",
+      "register_type_id": "DEMO_IN",
+      "register_period_id": "DEMO_PERIOD_53_2028",
+      "start_number": "1",
+      "expected_next_number": "2",
+      "actual_created": false,
+      "actual_next_number": null
+    }
+  ],
+  "number_records": [
+    {
+      "id": "DEMO_NUMBER_53_1",
+      "namespace_id": "DEMO_NAMESPACE_53_1",
+      "correspondence_id": "DEMO_CORRESPONDENCE_53_1",
+      "ordinal": "1",
+      "formatted_snapshot": "TEST_OA_2027_IN_0001",
+      "organization_code_snapshot": "OA",
+      "register_type_code_snapshot": "IN",
+      "period_label_snapshot": "2027",
+      "formatter_version": "DEMO_FORMAT_53_V1",
+      "policy_version": "DEMO_REGISTER_POLICY_53_V1",
+      "expected_status": "ISSUED",
+      "issued_effective_on": "2027-07-01",
+      "issued_recorded_at": "2027-07-01T03:00:00Z",
+      "actual_issued": false,
+      "actual_approval": null,
+      "actual_evidence_hash": null
+    },
+    {
+      "id": "DEMO_NUMBER_53_2",
+      "namespace_id": "DEMO_NAMESPACE_53_1",
+      "correspondence_id": "DEMO_CORRESPONDENCE_53_2",
+      "ordinal": "2",
+      "formatted_snapshot": "TEST_OA_2027_IN_0002",
+      "organization_code_snapshot": "OA",
+      "register_type_code_snapshot": "IN",
+      "period_label_snapshot": "2027",
+      "formatter_version": "DEMO_FORMAT_53_V1",
+      "policy_version": "DEMO_REGISTER_POLICY_53_V1",
+      "expected_status": "VOID",
+      "issued_effective_on": "2027-07-02",
+      "issued_recorded_at": "2027-07-02T03:00:00Z",
+      "actual_issued": false,
+      "actual_approval": null,
+      "actual_evidence_hash": null
+    },
+    {
+      "id": "DEMO_NUMBER_53_3",
+      "namespace_id": "DEMO_NAMESPACE_53_1",
+      "correspondence_id": "DEMO_CORRESPONDENCE_53_3",
+      "ordinal": "3",
+      "formatted_snapshot": "TEST_OA_2027_IN_0003",
+      "organization_code_snapshot": "OA",
+      "register_type_code_snapshot": "IN",
+      "period_label_snapshot": "2027",
+      "formatter_version": "DEMO_FORMAT_53_V1",
+      "policy_version": "DEMO_REGISTER_POLICY_53_V1",
+      "expected_status": "ISSUED",
+      "issued_effective_on": "2027-07-04",
+      "issued_recorded_at": "2027-07-04T03:00:00Z",
+      "actual_issued": false,
+      "actual_approval": null,
+      "actual_evidence_hash": null
+    },
+    {
+      "id": "DEMO_NUMBER_53_4",
+      "namespace_id": "DEMO_NAMESPACE_53_2",
+      "correspondence_id": "DEMO_CORRESPONDENCE_53_4",
+      "ordinal": "1",
+      "formatted_snapshot": "TEST_OA_2027_OUT_0001",
+      "organization_code_snapshot": "OA",
+      "register_type_code_snapshot": "OUT",
+      "period_label_snapshot": "2027",
+      "formatter_version": "DEMO_FORMAT_53_V1",
+      "policy_version": "DEMO_REGISTER_POLICY_53_V1",
+      "expected_status": "ISSUED",
+      "issued_effective_on": "2027-07-01",
+      "issued_recorded_at": "2027-07-01T03:00:00Z",
+      "actual_issued": false,
+      "actual_approval": null,
+      "actual_evidence_hash": null
+    },
+    {
+      "id": "DEMO_NUMBER_53_5",
+      "namespace_id": "DEMO_NAMESPACE_53_2",
+      "correspondence_id": "DEMO_CORRESPONDENCE_53_5",
+      "ordinal": "2",
+      "formatted_snapshot": "TEST_OA_2027_OUT_0002_V2",
+      "organization_code_snapshot": "OA",
+      "register_type_code_snapshot": "OUT",
+      "period_label_snapshot": "2027",
+      "formatter_version": "DEMO_FORMAT_53_V2",
+      "policy_version": "DEMO_REGISTER_POLICY_53_V2",
+      "expected_status": "ISSUED",
+      "issued_effective_on": "2027-07-02",
+      "issued_recorded_at": "2027-07-02T03:00:00Z",
+      "actual_issued": false,
+      "actual_approval": null,
+      "actual_evidence_hash": null
+    },
+    {
+      "id": "DEMO_NUMBER_53_6",
+      "namespace_id": "DEMO_NAMESPACE_53_3",
+      "correspondence_id": "DEMO_CORRESPONDENCE_53_6",
+      "ordinal": "1",
+      "formatted_snapshot": "TEST_OA_2027_INTERNAL_0001",
+      "organization_code_snapshot": "OA",
+      "register_type_code_snapshot": "INTERNAL",
+      "period_label_snapshot": "2027",
+      "formatter_version": "DEMO_FORMAT_53_V1",
+      "policy_version": "DEMO_REGISTER_POLICY_53_V1",
+      "expected_status": "ISSUED",
+      "issued_effective_on": "2027-07-01",
+      "issued_recorded_at": "2027-07-01T03:00:00Z",
+      "actual_issued": false,
+      "actual_approval": null,
+      "actual_evidence_hash": null
+    },
+    {
+      "id": "DEMO_NUMBER_53_7",
+      "namespace_id": "DEMO_NAMESPACE_53_4",
+      "correspondence_id": "DEMO_CORRESPONDENCE_53_7",
+      "ordinal": "1",
+      "formatted_snapshot": "TEST_OA_2027_CIRCULAR_0001",
+      "organization_code_snapshot": "OA",
+      "register_type_code_snapshot": "CIRCULAR",
+      "period_label_snapshot": "2027",
+      "formatter_version": "DEMO_FORMAT_53_V1",
+      "policy_version": "DEMO_REGISTER_POLICY_53_V1",
+      "expected_status": "ISSUED",
+      "issued_effective_on": "2027-07-01",
+      "issued_recorded_at": "2027-07-01T03:00:00Z",
+      "actual_issued": false,
+      "actual_approval": null,
+      "actual_evidence_hash": null
+    },
+    {
+      "id": "DEMO_NUMBER_53_8",
+      "namespace_id": "DEMO_NAMESPACE_53_5",
+      "correspondence_id": "DEMO_CORRESPONDENCE_53_8",
+      "ordinal": "1",
+      "formatted_snapshot": "TEST_OB_2027_IN_0001",
+      "organization_code_snapshot": "OB",
+      "register_type_code_snapshot": "IN",
+      "period_label_snapshot": "2027",
+      "formatter_version": "DEMO_FORMAT_53_V1",
+      "policy_version": "DEMO_REGISTER_POLICY_53_V1",
+      "expected_status": "ISSUED",
+      "issued_effective_on": "2027-07-01",
+      "issued_recorded_at": "2027-07-01T03:00:00Z",
+      "actual_issued": false,
+      "actual_approval": null,
+      "actual_evidence_hash": null
+    },
+    {
+      "id": "DEMO_NUMBER_53_9",
+      "namespace_id": "DEMO_NAMESPACE_53_6",
+      "correspondence_id": "DEMO_CORRESPONDENCE_53_9",
+      "ordinal": "1",
+      "formatted_snapshot": "TEST_OA_2028_IN_0001",
+      "organization_code_snapshot": "OA",
+      "register_type_code_snapshot": "IN",
+      "period_label_snapshot": "2028",
+      "formatter_version": "DEMO_FORMAT_53_V1",
+      "policy_version": "DEMO_REGISTER_POLICY_53_V1",
+      "expected_status": "ISSUED",
+      "issued_effective_on": "2028-07-01",
+      "issued_recorded_at": "2028-07-01T03:00:00Z",
+      "actual_issued": false,
+      "actual_approval": null,
+      "actual_evidence_hash": null
+    }
+  ],
+  "number_events": [
+    {
+      "id": "DEMO_NUMBER_EVENT_53_1",
+      "number_id": "DEMO_NUMBER_53_1",
+      "kind": "ISSUED",
+      "expected_ordinal": "1",
+      "expected_next_after": "2",
+      "reason_code": "TEST_REGISTER_53",
+      "actual_posted": false,
+      "actual_actor": null,
+      "actual_receipt": null,
+      "effective_on": "2027-07-01",
+      "recorded_at": "2027-07-01T03:00:00Z"
+    },
+    {
+      "id": "DEMO_NUMBER_EVENT_53_2",
+      "number_id": "DEMO_NUMBER_53_2",
+      "kind": "ISSUED",
+      "expected_ordinal": "2",
+      "expected_next_after": "3",
+      "reason_code": "TEST_REGISTER_53",
+      "actual_posted": false,
+      "actual_actor": null,
+      "actual_receipt": null,
+      "effective_on": "2027-07-02",
+      "recorded_at": "2027-07-02T03:00:00Z"
+    },
+    {
+      "id": "DEMO_NUMBER_EVENT_53_3",
+      "number_id": "DEMO_NUMBER_53_2",
+      "kind": "VOID",
+      "expected_ordinal": "2",
+      "expected_next_after": "3",
+      "reason_code": "TEST_CANCEL_WRONG_RECORD_53",
+      "evidence_ref": "DEMO_EVIDENCE_53_VOID",
+      "effective_on": "2027-07-03",
+      "recorded_at": "2027-07-03T04:00:00Z",
+      "actual_posted": false,
+      "actual_actor": null,
+      "actual_receipt": null
+    },
+    {
+      "id": "DEMO_NUMBER_EVENT_53_4",
+      "number_id": "DEMO_NUMBER_53_3",
+      "kind": "ISSUED",
+      "expected_ordinal": "3",
+      "expected_next_after": "4",
+      "reason_code": "TEST_REGISTER_53",
+      "actual_posted": false,
+      "actual_actor": null,
+      "actual_receipt": null,
+      "effective_on": "2027-07-04",
+      "recorded_at": "2027-07-04T03:00:00Z"
+    },
+    {
+      "id": "DEMO_NUMBER_EVENT_53_5",
+      "number_id": "DEMO_NUMBER_53_4",
+      "kind": "ISSUED",
+      "expected_ordinal": "1",
+      "expected_next_after": "2",
+      "reason_code": "TEST_REGISTER_53",
+      "actual_posted": false,
+      "actual_actor": null,
+      "actual_receipt": null,
+      "effective_on": "2027-07-01",
+      "recorded_at": "2027-07-01T03:00:00Z"
+    },
+    {
+      "id": "DEMO_NUMBER_EVENT_53_6",
+      "number_id": "DEMO_NUMBER_53_5",
+      "kind": "ISSUED",
+      "expected_ordinal": "2",
+      "expected_next_after": "3",
+      "reason_code": "TEST_REGISTER_53",
+      "actual_posted": false,
+      "actual_actor": null,
+      "actual_receipt": null,
+      "effective_on": "2027-07-02",
+      "recorded_at": "2027-07-02T03:00:00Z"
+    },
+    {
+      "id": "DEMO_NUMBER_EVENT_53_7",
+      "number_id": "DEMO_NUMBER_53_6",
+      "kind": "ISSUED",
+      "expected_ordinal": "1",
+      "expected_next_after": "2",
+      "reason_code": "TEST_REGISTER_53",
+      "actual_posted": false,
+      "actual_actor": null,
+      "actual_receipt": null,
+      "effective_on": "2027-07-01",
+      "recorded_at": "2027-07-01T03:00:00Z"
+    },
+    {
+      "id": "DEMO_NUMBER_EVENT_53_8",
+      "number_id": "DEMO_NUMBER_53_7",
+      "kind": "ISSUED",
+      "expected_ordinal": "1",
+      "expected_next_after": "2",
+      "reason_code": "TEST_REGISTER_53",
+      "actual_posted": false,
+      "actual_actor": null,
+      "actual_receipt": null,
+      "effective_on": "2027-07-01",
+      "recorded_at": "2027-07-01T03:00:00Z"
+    },
+    {
+      "id": "DEMO_NUMBER_EVENT_53_9",
+      "number_id": "DEMO_NUMBER_53_8",
+      "kind": "ISSUED",
+      "expected_ordinal": "1",
+      "expected_next_after": "2",
+      "reason_code": "TEST_REGISTER_53",
+      "actual_posted": false,
+      "actual_actor": null,
+      "actual_receipt": null,
+      "effective_on": "2027-07-01",
+      "recorded_at": "2027-07-01T03:00:00Z"
+    },
+    {
+      "id": "DEMO_NUMBER_EVENT_53_10",
+      "number_id": "DEMO_NUMBER_53_9",
+      "kind": "ISSUED",
+      "expected_ordinal": "1",
+      "expected_next_after": "2",
+      "reason_code": "TEST_REGISTER_53",
+      "actual_posted": false,
+      "actual_actor": null,
+      "actual_receipt": null,
+      "effective_on": "2028-07-01",
+      "recorded_at": "2028-07-01T03:00:00Z"
+    }
+  ],
+  "record_versions": [
+    {
+      "id": "DEMO_RECORD_VERSION_53_V1",
+      "correspondence_id": "DEMO_CORRESPONDENCE_53_1",
+      "version_no": 1,
+      "supersedes": null,
+      "register_number_id": "DEMO_NUMBER_53_1",
+      "subject_snapshot": "TEST_หนังสือสมมติรุ่น_1",
+      "priority_code": "DEMO_NORMAL",
+      "priority_namespace": "OFFICE_PRIORITY",
+      "confidentiality_code": "DEMO_RESTRICTED",
+      "confidentiality_namespace": "OFFICE_CONFIDENTIALITY",
+      "primary_document_id": "DEMO_DOCUMENT_53_SHARED",
+      "primary_file_version_id": "DEMO_FILE_53_V1",
+      "expected_file_sha256": "9a694a6cdd72c50bd63c1755d3c2d649c0ddb629788f09c1f632a67f5908711c",
+      "effective_on": "2027-07-01",
+      "recorded_at": "2027-07-01T03:00:00Z",
+      "registered_immutable_expected": true,
+      "actual_registered": false,
+      "synthetic_record_digest_input": {
+        "metadata": {
+          "correspondence_id": "DEMO_CORRESPONDENCE_53_1",
+          "version_no": 1,
+          "subject_snapshot": "TEST_หนังสือสมมติรุ่น_1",
+          "priority_code": "DEMO_NORMAL",
+          "priority_namespace": "OFFICE_PRIORITY",
+          "confidentiality_code": "DEMO_RESTRICTED",
+          "confidentiality_namespace": "OFFICE_CONFIDENTIALITY",
+          "effective_on": "2027-07-01",
+          "register_number_id": "DEMO_NUMBER_53_1"
+        },
+        "files": [
+          {
+            "document_id": "DEMO_DOCUMENT_53_SHARED",
+            "file_version_id": "DEMO_FILE_53_V1",
+            "purpose": "PRIMARY",
+            "expected_synthetic_sha256": "9a694a6cdd72c50bd63c1755d3c2d649c0ddb629788f09c1f632a67f5908711c"
+          }
+        ],
+        "recipients": [
+          {
+            "id": "DEMO_RECIPIENT_53_1",
+            "record_version": "DEMO_RECORD_VERSION_53_V1",
+            "target_kind": "PERSON",
+            "person_id": "DEMO_PERSON_53_A",
+            "organization_id": "DEMO_ORG_53_A",
+            "name_snapshot": "TEST_ผู้รับชื่อเหมือน"
+          },
+          {
+            "id": "DEMO_RECIPIENT_53_2",
+            "record_version": "DEMO_RECORD_VERSION_53_V1",
+            "target_kind": "PERSON",
+            "person_id": "DEMO_PERSON_53_B",
+            "organization_id": "DEMO_ORG_53_B",
+            "name_snapshot": "TEST_ผู้รับชื่อเหมือน"
+          },
+          {
+            "id": "DEMO_RECIPIENT_53_3",
+            "record_version": "DEMO_RECORD_VERSION_53_V1",
+            "target_kind": "ORGANIZATION",
+            "person_id": null,
+            "organization_id": "DEMO_ORG_53_B",
+            "name_snapshot": "TEST_หน่วยงานรับหนังสือ"
+          }
+        ],
+        "due_dates": [
+          {
+            "ref": "DEMO_DUE_53_DATE",
+            "record_version_id": "DEMO_RECORD_VERSION_53_V1",
+            "mode": "DATE",
+            "date": "2027-07-15",
+            "due_at": null,
+            "timezone": "Asia/Bangkok",
+            "calendar_version": "DEMO_CALENDAR_53_V1",
+            "target": "ROOT",
+            "purpose": "TEST_FOLLOWUP_53"
+          }
+        ],
+        "source_refs": [
+          "DEMO_SOURCE_LINK_53_01",
+          "DEMO_SOURCE_LINK_53_04",
+          "DEMO_SOURCE_LINK_53_06",
+          "DEMO_SOURCE_LINK_53_07",
+          "DEMO_SOURCE_LINK_53_05"
+        ]
+      },
+      "expected_synthetic_record_digest": "be8ebc681f0fd2e79370ff4358ead7c36c22ef19f6d3d0ad89b1191593c8e43b",
+      "actual_registered_digest": null
+    },
+    {
+      "id": "DEMO_RECORD_VERSION_53_V2",
+      "correspondence_id": "DEMO_CORRESPONDENCE_53_1",
+      "version_no": 2,
+      "supersedes": "DEMO_RECORD_VERSION_53_V1",
+      "register_number_id": "DEMO_NUMBER_53_1",
+      "subject_snapshot": "TEST_หนังสือสมมติรุ่น_2",
+      "priority_code": "DEMO_RUSH",
+      "priority_namespace": "OFFICE_PRIORITY",
+      "confidentiality_code": "DEMO_RESTRICTED",
+      "confidentiality_namespace": "OFFICE_CONFIDENTIALITY",
+      "primary_document_id": "DEMO_DOCUMENT_53_SHARED",
+      "primary_file_version_id": "DEMO_FILE_53_V2",
+      "expected_file_sha256": "779b7fb55f7769dd0992e0c144b68acf850eda2bc990672def6c300d18eef6fc",
+      "effective_on": "2027-07-04",
+      "recorded_at": "2027-07-03T03:00:00Z",
+      "registered_immutable_expected": true,
+      "actual_registered": false,
+      "synthetic_record_digest_input": {
+        "metadata": {
+          "correspondence_id": "DEMO_CORRESPONDENCE_53_1",
+          "version_no": 2,
+          "subject_snapshot": "TEST_หนังสือสมมติรุ่น_2",
+          "priority_code": "DEMO_RUSH",
+          "priority_namespace": "OFFICE_PRIORITY",
+          "confidentiality_code": "DEMO_RESTRICTED",
+          "confidentiality_namespace": "OFFICE_CONFIDENTIALITY",
+          "effective_on": "2027-07-04",
+          "register_number_id": "DEMO_NUMBER_53_1"
+        },
+        "files": [
+          {
+            "document_id": "DEMO_DOCUMENT_53_SHARED",
+            "file_version_id": "DEMO_FILE_53_V2",
+            "purpose": "PRIMARY",
+            "expected_synthetic_sha256": "779b7fb55f7769dd0992e0c144b68acf850eda2bc990672def6c300d18eef6fc"
+          },
+          {
+            "document_id": "DEMO_DOCUMENT_53_SHARED",
+            "file_version_id": "DEMO_FILE_53_V1",
+            "purpose": "ATTACHMENT",
+            "expected_synthetic_sha256": "9a694a6cdd72c50bd63c1755d3c2d649c0ddb629788f09c1f632a67f5908711c"
+          }
+        ],
+        "recipients": [
+          {
+            "id": "DEMO_RECIPIENT_53_1_V2",
+            "record_version": "DEMO_RECORD_VERSION_53_V2",
+            "target_kind": "PERSON",
+            "person_id": "DEMO_PERSON_53_A",
+            "organization_id": "DEMO_ORG_53_A",
+            "name_snapshot": "TEST_ผู้รับชื่อเหมือน"
+          },
+          {
+            "id": "DEMO_RECIPIENT_53_2_V2",
+            "record_version": "DEMO_RECORD_VERSION_53_V2",
+            "target_kind": "PERSON",
+            "person_id": "DEMO_PERSON_53_B",
+            "organization_id": "DEMO_ORG_53_B",
+            "name_snapshot": "TEST_ผู้รับชื่อเหมือน"
+          },
+          {
+            "id": "DEMO_RECIPIENT_53_3_V2",
+            "record_version": "DEMO_RECORD_VERSION_53_V2",
+            "target_kind": "ORGANIZATION",
+            "person_id": null,
+            "organization_id": "DEMO_ORG_53_B",
+            "name_snapshot": "TEST_หน่วยงานรับหนังสือ"
+          }
+        ],
+        "due_dates": [
+          {
+            "ref": "DEMO_DUE_53_TIMESTAMP",
+            "record_version_id": "DEMO_RECORD_VERSION_53_V2",
+            "mode": "TIMESTAMP",
+            "date": null,
+            "due_at": "2027-07-15T03:00:00Z",
+            "timezone": "Asia/Bangkok",
+            "calendar_version": "DEMO_CALENDAR_53_V1",
+            "target": "ROOT",
+            "purpose": "TEST_FOLLOWUP_53",
+            "explicit_revision_reason": "TEST_EXPLICIT_REVISED_DEADLINE_53"
+          }
+        ],
+        "source_refs": []
+      },
+      "expected_synthetic_record_digest": "09c8eebd359d2d682c6dc243bb37e70e2bc9f05d63c28c5f21ea87d91c7140c5",
+      "actual_registered_digest": null
+    }
+  ],
+  "shared_document_versions": [
+    {
+      "document_id": "DEMO_DOCUMENT_53_SHARED",
+      "file_version_id": "DEMO_FILE_53_V1",
+      "version_no": 1,
+      "synthetic_content": "TEST_RECORD_53_CONTENT_V1",
+      "expected_synthetic_sha256": "9a694a6cdd72c50bd63c1755d3c2d649c0ddb629788f09c1f632a67f5908711c",
+      "actual_file_uploaded": false,
+      "actual_clean_scan_verified": false,
+      "actual_hash": null
+    },
+    {
+      "document_id": "DEMO_DOCUMENT_53_SHARED",
+      "file_version_id": "DEMO_FILE_53_V2",
+      "version_no": 2,
+      "synthetic_content": "TEST_RECORD_53_CONTENT_V2",
+      "expected_synthetic_sha256": "779b7fb55f7769dd0992e0c144b68acf850eda2bc990672def6c300d18eef6fc",
+      "actual_file_uploaded": false,
+      "actual_clean_scan_verified": false,
+      "actual_hash": null
+    }
+  ],
+  "business_references": [
+    {
+      "id": "DEMO_SOURCE_LINK_53_01",
+      "module": "01",
+      "source_kind": "PersonChangeRequest",
+      "source_id": "DEMO_SOURCE_53_01",
+      "source_version": "DEMO_SOURCE_VERSION_53_V1",
+      "record_version_id": "DEMO_RECORD_VERSION_53_V1",
+      "document_id": "DEMO_DOCUMENT_53_SHARED",
+      "file_version_id": "DEMO_FILE_53_V1",
+      "expected_file_hash": "9a694a6cdd72c50bd63c1755d3c2d649c0ddb629788f09c1f632a67f5908711c",
+      "actual_source_created": false,
+      "actual_grant_created": false,
+      "copies_created": 0
+    },
+    {
+      "id": "DEMO_SOURCE_LINK_53_04",
+      "module": "04",
+      "source_kind": "OrganizationChangeRequest",
+      "source_id": "DEMO_SOURCE_53_04",
+      "source_version": "DEMO_SOURCE_VERSION_53_V1",
+      "record_version_id": "DEMO_RECORD_VERSION_53_V1",
+      "document_id": "DEMO_DOCUMENT_53_SHARED",
+      "file_version_id": "DEMO_FILE_53_V1",
+      "expected_file_hash": "9a694a6cdd72c50bd63c1755d3c2d649c0ddb629788f09c1f632a67f5908711c",
+      "actual_source_created": false,
+      "actual_grant_created": false,
+      "copies_created": 0
+    },
+    {
+      "id": "DEMO_SOURCE_LINK_53_06",
+      "module": "06",
+      "source_kind": "BudgetLedgerEvent",
+      "source_id": "DEMO_SOURCE_53_06",
+      "source_version": "DEMO_SOURCE_VERSION_53_V1",
+      "record_version_id": "DEMO_RECORD_VERSION_53_V1",
+      "document_id": "DEMO_DOCUMENT_53_SHARED",
+      "file_version_id": "DEMO_FILE_53_V1",
+      "expected_file_hash": "9a694a6cdd72c50bd63c1755d3c2d649c0ddb629788f09c1f632a67f5908711c",
+      "actual_source_created": false,
+      "actual_grant_created": false,
+      "copies_created": 0
+    },
+    {
+      "id": "DEMO_SOURCE_LINK_53_07",
+      "module": "07",
+      "source_kind": "ProcurementRequest",
+      "source_id": "DEMO_SOURCE_53_07",
+      "source_version": "DEMO_SOURCE_VERSION_53_V1",
+      "record_version_id": "DEMO_RECORD_VERSION_53_V1",
+      "document_id": "DEMO_DOCUMENT_53_SHARED",
+      "file_version_id": "DEMO_FILE_53_V1",
+      "expected_file_hash": "9a694a6cdd72c50bd63c1755d3c2d649c0ddb629788f09c1f632a67f5908711c",
+      "actual_source_created": false,
+      "actual_grant_created": false,
+      "copies_created": 0
+    },
+    {
+      "id": "DEMO_SOURCE_LINK_53_05",
+      "module": "05",
+      "source_kind": "Application",
+      "source_id": "DEMO_SOURCE_53_05",
+      "source_version": "DEMO_SOURCE_VERSION_53_V1",
+      "record_version_id": "DEMO_RECORD_VERSION_53_V1",
+      "document_id": "DEMO_DOCUMENT_53_SHARED",
+      "file_version_id": "DEMO_FILE_53_V1",
+      "expected_file_hash": "9a694a6cdd72c50bd63c1755d3c2d649c0ddb629788f09c1f632a67f5908711c",
+      "actual_source_created": false,
+      "actual_grant_created": false,
+      "copies_created": 0
+    }
+  ],
+  "recipients": [
+    {
+      "id": "DEMO_RECIPIENT_53_1",
+      "record_version": "DEMO_RECORD_VERSION_53_V1",
+      "target_kind": "PERSON",
+      "person_id": "DEMO_PERSON_53_A",
+      "organization_id": "DEMO_ORG_53_A",
+      "name_snapshot": "TEST_ผู้รับชื่อเหมือน",
+      "account_person_link_verified": false,
+      "recipient_implies_grant": false
+    },
+    {
+      "id": "DEMO_RECIPIENT_53_2",
+      "record_version": "DEMO_RECORD_VERSION_53_V1",
+      "target_kind": "PERSON",
+      "person_id": "DEMO_PERSON_53_B",
+      "organization_id": "DEMO_ORG_53_B",
+      "name_snapshot": "TEST_ผู้รับชื่อเหมือน",
+      "account_person_link_verified": false,
+      "recipient_implies_grant": false
+    },
+    {
+      "id": "DEMO_RECIPIENT_53_3",
+      "record_version": "DEMO_RECORD_VERSION_53_V1",
+      "target_kind": "ORGANIZATION",
+      "person_id": null,
+      "organization_id": "DEMO_ORG_53_B",
+      "name_snapshot": "TEST_หน่วยงานรับหนังสือ",
+      "account_person_link_verified": false,
+      "recipient_implies_grant": false
+    },
+    {
+      "id": "DEMO_RECIPIENT_53_1_V2",
+      "record_version": "DEMO_RECORD_VERSION_53_V2",
+      "target_kind": "PERSON",
+      "person_id": "DEMO_PERSON_53_A",
+      "organization_id": "DEMO_ORG_53_A",
+      "name_snapshot": "TEST_ผู้รับชื่อเหมือน",
+      "account_person_link_verified": false,
+      "recipient_implies_grant": false
+    },
+    {
+      "id": "DEMO_RECIPIENT_53_2_V2",
+      "record_version": "DEMO_RECORD_VERSION_53_V2",
+      "target_kind": "PERSON",
+      "person_id": "DEMO_PERSON_53_B",
+      "organization_id": "DEMO_ORG_53_B",
+      "name_snapshot": "TEST_ผู้รับชื่อเหมือน",
+      "account_person_link_verified": false,
+      "recipient_implies_grant": false
+    },
+    {
+      "id": "DEMO_RECIPIENT_53_3_V2",
+      "record_version": "DEMO_RECORD_VERSION_53_V2",
+      "target_kind": "ORGANIZATION",
+      "person_id": null,
+      "organization_id": "DEMO_ORG_53_B",
+      "name_snapshot": "TEST_หน่วยงานรับหนังสือ",
+      "account_person_link_verified": false,
+      "recipient_implies_grant": false
+    }
+  ],
+  "due_date_descriptors": [
+    {
+      "ref": "DEMO_DUE_53_DATE",
+      "mode": "DATE",
+      "date": "2027-07-15",
+      "due_at": null,
+      "timezone": "Asia/Bangkok",
+      "calendar_version": "DEMO_CALENDAR_53_V1",
+      "actual_created": false,
+      "record_version_id": "DEMO_RECORD_VERSION_53_V1",
+      "target": "ROOT",
+      "purpose": "TEST_FOLLOWUP_53"
+    },
+    {
+      "ref": "DEMO_DUE_53_TIMESTAMP",
+      "mode": "TIMESTAMP",
+      "date": null,
+      "due_at": "2027-07-15T03:00:00Z",
+      "timezone": "Asia/Bangkok",
+      "calendar_version": "DEMO_CALENDAR_53_V1",
+      "actual_created": false,
+      "record_version_id": "DEMO_RECORD_VERSION_53_V2",
+      "target": "ROOT",
+      "purpose": "TEST_FOLLOWUP_53",
+      "explicit_revision_reason": "TEST_EXPLICIT_REVISED_DEADLINE_53"
+    }
+  ],
+  "period_boundary_cases": [
+    {
+      "server_instant": "2026-12-31T16:59:59Z",
+      "expected_local_date": "2026-12-31",
+      "expected_period": "DEMO_PERIOD_53_2026",
+      "actual_executed": false
+    },
+    {
+      "server_instant": "2026-12-31T17:00:00Z",
+      "expected_local_date": "2027-01-01",
+      "expected_period": "DEMO_PERIOD_53_2027",
+      "actual_executed": false
+    }
+  ],
+  "history_queries": [
+    {
+      "as_of": "2027-07-01",
+      "known_at": "2027-07-01T05:00:00Z",
+      "expected_version": "DEMO_RECORD_VERSION_53_V1",
+      "expected_file": "DEMO_FILE_53_V1",
+      "actual": null
+    },
+    {
+      "as_of": "2027-07-04",
+      "known_at": "2027-07-02T05:00:00Z",
+      "expected_version": "DEMO_RECORD_VERSION_53_V1",
+      "expected_file": "DEMO_FILE_53_V1",
+      "actual": null
+    },
+    {
+      "as_of": "2027-07-03",
+      "known_at": "2027-07-05T05:00:00Z",
+      "expected_version": "DEMO_RECORD_VERSION_53_V1",
+      "expected_file": "DEMO_FILE_53_V1",
+      "actual": null
+    },
+    {
+      "as_of": "2027-07-04",
+      "known_at": "2027-07-05T05:00:00Z",
+      "expected_version": "DEMO_RECORD_VERSION_53_V2",
+      "expected_file": "DEMO_FILE_53_V2",
+      "actual": null
+    }
+  ],
+  "access_matrix": [
+    {
+      "id": "AUTHORIZED",
+      "planned_inputs": {
+        "current_account_active": true,
+        "view_action": true,
+        "scope_valid": true,
+        "assignment_current": true,
+        "record_acl": true,
+        "version_acl": true,
+        "confidentiality_clearance": true,
+        "file_acl": true,
+        "current_clean_scan": true,
+        "file_hash_binding": true,
+        "record_download_action": true,
+        "document_download_action": true,
+        "source_action_scope": true
+      },
+      "expected_record_metadata_read": true,
+      "expected_file_preview": true,
+      "expected_file_download": true,
+      "expected_source_summary": true,
+      "actual_tested": false,
+      "actual": null
+    },
+    {
+      "id": "FILE_ONLY_NO_RECORD",
+      "planned_inputs": {
+        "current_account_active": true,
+        "view_action": true,
+        "scope_valid": true,
+        "assignment_current": true,
+        "record_acl": false,
+        "version_acl": true,
+        "confidentiality_clearance": true,
+        "file_acl": true,
+        "current_clean_scan": true,
+        "file_hash_binding": true,
+        "record_download_action": true,
+        "document_download_action": true,
+        "source_action_scope": true
+      },
+      "expected_record_metadata_read": false,
+      "expected_file_preview": false,
+      "expected_file_download": false,
+      "expected_source_summary": false,
+      "actual_tested": false,
+      "actual": null
+    },
+    {
+      "id": "RECORD_ONLY_NO_FILE",
+      "planned_inputs": {
+        "current_account_active": true,
+        "view_action": true,
+        "scope_valid": true,
+        "assignment_current": true,
+        "record_acl": true,
+        "version_acl": true,
+        "confidentiality_clearance": true,
+        "file_acl": false,
+        "current_clean_scan": true,
+        "file_hash_binding": true,
+        "record_download_action": true,
+        "document_download_action": true,
+        "source_action_scope": true
+      },
+      "expected_record_metadata_read": true,
+      "expected_file_preview": false,
+      "expected_file_download": false,
+      "expected_source_summary": true,
+      "actual_tested": false,
+      "actual": null
+    },
+    {
+      "id": "VIEW_WITHOUT_DOWNLOAD",
+      "planned_inputs": {
+        "current_account_active": true,
+        "view_action": true,
+        "scope_valid": true,
+        "assignment_current": true,
+        "record_acl": true,
+        "version_acl": true,
+        "confidentiality_clearance": true,
+        "file_acl": true,
+        "current_clean_scan": true,
+        "file_hash_binding": true,
+        "record_download_action": false,
+        "document_download_action": false,
+        "source_action_scope": true
+      },
+      "expected_record_metadata_read": true,
+      "expected_file_preview": true,
+      "expected_file_download": false,
+      "expected_source_summary": true,
+      "actual_tested": false,
+      "actual": null
+    },
+    {
+      "id": "OTHER_ORG_NO_SPECIFIC_SCOPE",
+      "planned_inputs": {
+        "current_account_active": true,
+        "view_action": true,
+        "scope_valid": false,
+        "assignment_current": true,
+        "record_acl": true,
+        "version_acl": true,
+        "confidentiality_clearance": true,
+        "file_acl": true,
+        "current_clean_scan": true,
+        "file_hash_binding": true,
+        "record_download_action": true,
+        "document_download_action": true,
+        "source_action_scope": true
+      },
+      "expected_record_metadata_read": false,
+      "expected_file_preview": false,
+      "expected_file_download": false,
+      "expected_source_summary": false,
+      "actual_tested": false,
+      "actual": null
+    },
+    {
+      "id": "RECIPIENT_SNAPSHOT_IS_NOT_ACL",
+      "planned_inputs": {
+        "current_account_active": true,
+        "view_action": true,
+        "scope_valid": true,
+        "assignment_current": true,
+        "record_acl": false,
+        "version_acl": true,
+        "confidentiality_clearance": true,
+        "file_acl": true,
+        "current_clean_scan": true,
+        "file_hash_binding": true,
+        "record_download_action": true,
+        "document_download_action": true,
+        "source_action_scope": true
+      },
+      "expected_record_metadata_read": false,
+      "expected_file_preview": false,
+      "expected_file_download": false,
+      "expected_source_summary": false,
+      "actual_tested": false,
+      "actual": null
+    },
+    {
+      "id": "EXPLICIT_RECIPIENT_RECORD_SCOPE",
+      "planned_inputs": {
+        "current_account_active": true,
+        "view_action": true,
+        "scope_valid": true,
+        "assignment_current": true,
+        "record_acl": true,
+        "version_acl": true,
+        "confidentiality_clearance": true,
+        "file_acl": true,
+        "current_clean_scan": true,
+        "file_hash_binding": true,
+        "record_download_action": true,
+        "document_download_action": true,
+        "source_action_scope": false
+      },
+      "expected_record_metadata_read": true,
+      "expected_file_preview": true,
+      "expected_file_download": true,
+      "expected_source_summary": false,
+      "actual_tested": false,
+      "actual": null
+    },
+    {
+      "id": "PRIORITY_RUSH_NO_RECORD_GRANT",
+      "planned_inputs": {
+        "current_account_active": true,
+        "view_action": true,
+        "scope_valid": true,
+        "assignment_current": true,
+        "record_acl": false,
+        "version_acl": true,
+        "confidentiality_clearance": true,
+        "file_acl": true,
+        "current_clean_scan": true,
+        "file_hash_binding": true,
+        "record_download_action": true,
+        "document_download_action": true,
+        "source_action_scope": true
+      },
+      "expected_record_metadata_read": false,
+      "expected_file_preview": false,
+      "expected_file_download": false,
+      "expected_source_summary": false,
+      "actual_tested": false,
+      "actual": null
+    },
+    {
+      "id": "SESSION_REVOKED",
+      "planned_inputs": {
+        "current_account_active": false,
+        "view_action": true,
+        "scope_valid": true,
+        "assignment_current": true,
+        "record_acl": true,
+        "version_acl": true,
+        "confidentiality_clearance": true,
+        "file_acl": true,
+        "current_clean_scan": true,
+        "file_hash_binding": true,
+        "record_download_action": true,
+        "document_download_action": true,
+        "source_action_scope": true
+      },
+      "expected_record_metadata_read": false,
+      "expected_file_preview": false,
+      "expected_file_download": false,
+      "expected_source_summary": false,
+      "actual_tested": false,
+      "actual": null
+    },
+    {
+      "id": "CLASSIFICATION_RAISED",
+      "planned_inputs": {
+        "current_account_active": true,
+        "view_action": true,
+        "scope_valid": true,
+        "assignment_current": true,
+        "record_acl": true,
+        "version_acl": true,
+        "confidentiality_clearance": false,
+        "file_acl": true,
+        "current_clean_scan": true,
+        "file_hash_binding": true,
+        "record_download_action": true,
+        "document_download_action": true,
+        "source_action_scope": true
+      },
+      "expected_record_metadata_read": false,
+      "expected_file_preview": false,
+      "expected_file_download": false,
+      "expected_source_summary": false,
+      "actual_tested": false,
+      "actual": null
+    },
+    {
+      "id": "SCAN_PENDING",
+      "planned_inputs": {
+        "current_account_active": true,
+        "view_action": true,
+        "scope_valid": true,
+        "assignment_current": true,
+        "record_acl": true,
+        "version_acl": true,
+        "confidentiality_clearance": true,
+        "file_acl": true,
+        "current_clean_scan": false,
+        "file_hash_binding": true,
+        "record_download_action": true,
+        "document_download_action": true,
+        "source_action_scope": true
+      },
+      "expected_record_metadata_read": true,
+      "expected_file_preview": false,
+      "expected_file_download": false,
+      "expected_source_summary": true,
+      "actual_tested": false,
+      "actual": null
+    },
+    {
+      "id": "TECHNICAL_ROLE_NO_BUSINESS_GRANT",
+      "planned_inputs": {
+        "current_account_active": true,
+        "view_action": false,
+        "scope_valid": true,
+        "assignment_current": true,
+        "record_acl": true,
+        "version_acl": true,
+        "confidentiality_clearance": true,
+        "file_acl": true,
+        "current_clean_scan": true,
+        "file_hash_binding": true,
+        "record_download_action": true,
+        "document_download_action": true,
+        "source_action_scope": true
+      },
+      "expected_record_metadata_read": false,
+      "expected_file_preview": false,
+      "expected_file_download": false,
+      "expected_source_summary": false,
+      "actual_tested": false,
+      "actual": null
+    },
+    {
+      "id": "FILE_VERSION_MISMATCH",
+      "planned_inputs": {
+        "current_account_active": true,
+        "view_action": true,
+        "scope_valid": true,
+        "assignment_current": true,
+        "record_acl": true,
+        "version_acl": true,
+        "confidentiality_clearance": true,
+        "file_acl": true,
+        "current_clean_scan": true,
+        "file_hash_binding": false,
+        "record_download_action": true,
+        "document_download_action": true,
+        "source_action_scope": true
+      },
+      "expected_record_metadata_read": true,
+      "expected_file_preview": false,
+      "expected_file_download": false,
+      "expected_source_summary": true,
+      "actual_tested": false,
+      "actual": null
+    },
+    {
+      "id": "DELEGATION_EXPIRED",
+      "planned_inputs": {
+        "current_account_active": true,
+        "view_action": true,
+        "scope_valid": true,
+        "assignment_current": false,
+        "record_acl": true,
+        "version_acl": true,
+        "confidentiality_clearance": true,
+        "file_acl": true,
+        "current_clean_scan": true,
+        "file_hash_binding": true,
+        "record_download_action": true,
+        "document_download_action": true,
+        "source_action_scope": true
+      },
+      "expected_record_metadata_read": false,
+      "expected_file_preview": false,
+      "expected_file_download": false,
+      "expected_source_summary": false,
+      "actual_tested": false,
+      "actual": null
+    }
+  ],
+  "retry_plan": {
+    "source_record": "DEMO_CORRESPONDENCE_53_1",
+    "same_key_same_hash": "RETURN_NUMBER_1_AFTER_CURRENT_AUTH",
+    "same_key_different_hash": "CONFLICT",
+    "new_key_same_business_record": "NO_SECOND_NUMBER",
+    "void_retry": "NO_SECOND_VOID_EVENT",
+    "revoked_retry": "DENY_NO_PRIVATE_RESULT",
+    "actual_executed": false
+  },
+  "rollback_plan": {
+    "namespace": "DEMO_NAMESPACE_53_1",
+    "expected_before_next": "4",
+    "uncommitted_candidate_ordinal": "4",
+    "expected_after_next": "4",
+    "expected_committed_registers_added": 0,
+    "candidate_is_cancelled_issued_number": false,
+    "failpoints": [
+      "AFTER_COUNTER_INCREMENT",
+      "AFTER_REGISTER_INSERT",
+      "AFTER_VERSION_SEAL",
+      "BEFORE_OPERATION_RECEIPT_AUDIT_OUTBOX",
+      "BEFORE_COMMIT",
+      "AFTER_COMMIT_BEFORE_RESPONSE",
+      "WORKER_AFTER_DELIVERY_BEFORE_ACK"
+    ],
+    "actual_injected": false
+  },
+  "integer_boundary_cases": [
+    {
+      "id": "BEYOND_JS_SAFE_INTEGER",
+      "input_ordinal": "9007199254740993",
+      "expected_json_dto": "9007199254740993",
+      "expected_type": "STRING",
+      "actual_executed": false
+    },
+    {
+      "id": "NEXT_NUMBER_AT_BIGINT_MAX",
+      "input_next_number": "9223372036854775807",
+      "expected": "DENY_NO_WRAP_OR_INCREMENT",
+      "actual_executed": false
+    }
+  ],
+  "native_race_plan": [
+    {
+      "id": "EXISTING_COUNTER_TWO_REGISTRATIONS",
+      "independent_case_dataset": true,
+      "initial_next": "4",
+      "expected_ordinals": ["4", "5"],
+      "expected_next": "6",
+      "expected_counter_rows": 1,
+      "actual_outcomes": null
+    },
+    {
+      "id": "FIRST_COUNTER_CREATION_RACE",
+      "independent_case_dataset": true,
+      "counter_initially_exists": false,
+      "expected_ordinals": ["1", "2"],
+      "expected_next": "3",
+      "expected_counter_rows": 1,
+      "actual_outcomes": null
+    },
+    {
+      "id": "REVISION_VOID_REVOKE_PERIOD_FILE_ACL",
+      "independent_case_dataset": true,
+      "expected": "ATOMIC_COMMIT_OR_AUTHORIZED_CONFLICT_NO_PARTIAL_OR_PRIVATE_REPLAY",
+      "actual_outcomes": null
+    }
+  ],
+  "criteria": {
+    "53-01": {
+      "cases": [
+        "P53-02",
+        "P53-03",
+        "P53-04",
+        "P53-05",
+        "P53-06",
+        "P53-07",
+        "P53-08",
+        "P53-09",
+        "P53-10",
+        "P53-11",
+        "P53-19",
+        "P53-20"
+      ],
+      "status": "BLOCKED",
+      "actual": null
+    },
+    "53-02": {
+      "cases": [
+        "P53-12",
+        "P53-13",
+        "P53-14",
+        "P53-15",
+        "P53-16",
+        "P53-17",
+        "P53-18",
+        "P53-20"
+      ],
+      "status": "BLOCKED",
+      "actual": null
+    }
+  },
+  "cases": [
+    {
+      "id": "P53-01",
+      "expected": "ทั้ง4typeสร้างdraft/revise/registerได้ fields/requirements/priority/confidentialityแยก",
+      "status": "NOT_RUN",
+      "actual": null,
+      "run_manifest": null
+    },
+    {
+      "id": "P53-02",
+      "expected": "native2connections/barrierออกเลขnamespaceเดียว 2เลขต่างกันหนึ่งcounterถูกต้อง",
+      "status": "NOT_RUN",
+      "actual": null,
+      "run_manifest": null
+    },
+    {
+      "id": "P53-03",
+      "expected": "raceแรกเริ่มcounterไม่มีrow ได้หนึ่งnamespace/2ordinals ไม่missingrowlockหลอก",
+      "status": "NOT_RUN",
+      "actual": null,
+      "run_manifest": null
+    },
+    {
+      "id": "P53-04",
+      "expected": "org/period/typeต่างกันอนุญาตordinalเดียวกัน policy/formatterเปลี่ยนไม่reset",
+      "status": "NOT_RUN",
+      "actual": null,
+      "run_manifest": null
+    },
+    {
+      "id": "P53-05",
+      "expected": "retrycommitresponseหาย/keyhashต่าง/newkeybusinesssame ได้ผลเดิมหรือconflictไม่มีเลขใหม่",
+      "status": "NOT_RUN",
+      "actual": null,
+      "run_manifest": null
+    },
+    {
+      "id": "P53-06",
+      "expected": "VOID/retryVOID/แก้เหตุผลด้วยeventใหม่ nextไม่ลด/codeไม่reuse/historyครบ",
+      "status": "NOT_RUN",
+      "actual": null,
+      "run_manifest": null
+    },
+    {
+      "id": "P53-07",
+      "expected": "failpointcounter/register/version/receipt/audit/outboxก่อนcommitrollbackครบ",
+      "status": "NOT_RUN",
+      "actual": null,
+      "run_manifest": null
+    },
+    {
+      "id": "P53-08",
+      "expected": "register-vs-revision/void/revoke/periodclose/fileACL race globalorder/currentguards",
+      "status": "NOT_RUN",
+      "actual": null,
+      "run_manifest": null
+    },
+    {
+      "id": "P53-09",
+      "expected": "directlimitedSQL/RLS/compositeFK/unique/positive/overflow/softinactive bypassdeny",
+      "status": "NOT_RUN",
+      "actual": null,
+      "run_manifest": null
+    },
+    {
+      "id": "P53-10",
+      "expected": "unknownofficialformat/calendar/authority/closedperiod/clienttime/backdatedyear deny",
+      "status": "NOT_RUN",
+      "actual": null,
+      "run_manifest": null
+    },
+    {
+      "id": "P53-11",
+      "expected": "BigIntDTO/Thaiเลขdisplay/namechange/asof/known_at/future/correctionรักษาสnapshot",
+      "status": "NOT_RUN",
+      "actual": null,
+      "run_manifest": null
+    },
+    {
+      "id": "P53-12",
+      "expected": "หนังสือรับส่งภายในเวียน5ระบบอ้างDocument/FileVersionเดิมไม่มีfilecopy",
+      "status": "NOT_RUN",
+      "actual": null,
+      "run_manifest": null
+    },
+    {
+      "id": "P53-13",
+      "expected": "newFileVersionไม่เปลี่ยนregisteredattachmentsเดิม compositeid/hash/CLEANcurrentACLตรวจจริง",
+      "status": "NOT_RUN",
+      "actual": null,
+      "run_manifest": null
+    },
+    {
+      "id": "P53-14",
+      "expected": "source/record/version/fileaction ACL intersectionไม่union grantจากlink/recipientไม่automatic",
+      "status": "NOT_RUN",
+      "actual": null,
+      "run_manifest": null
+    },
+    {
+      "id": "P53-15",
+      "expected": "crossorg/nativeStorage/fulltext/search/detail/preview/export/print/worker revokeddeny",
+      "status": "NOT_RUN",
+      "actual": null,
+      "run_manifest": null
+    },
+    {
+      "id": "P53-16",
+      "expected": "ผู้รับชื่อเหมือน/Person-org XOR/snapshot/currentaccountverifiedlink/ACLrosterprivacy",
+      "status": "NOT_RUN",
+      "actual": null,
+      "run_manifest": null
+    },
+    {
+      "id": "P53-17",
+      "expected": "เปลี่ยนpriorityไม่เปลี่ยนconfidentiality/ACL duecalendar serverไม่grantจากbrowser",
+      "status": "NOT_RUN",
+      "actual": null,
+      "run_manifest": null
+    },
+    {
+      "id": "P53-18",
+      "expected": "filepending/mimewrong/scanfailed/ACLถอน/policyใหม่ denyไม่เผย objectkey/signedURL",
+      "status": "NOT_RUN",
+      "actual": null,
+      "run_manifest": null
+    },
+    {
+      "id": "P53-19",
+      "expected": "outboxretry/workerACK/DL/devsinkหนึ่งeffectไม่มีเลขหรือหนังสือเพิ่ม",
+      "status": "NOT_RUN",
+      "actual": null,
+      "run_manifest": null
+    },
+    {
+      "id": "P53-20",
+      "expected": "GET/report/link/notificationไม่มีcounter/ack/send/signature/post; auditลดข้อมูล/ownerUAT",
+      "status": "NOT_RUN",
+      "actual": null,
+      "run_manifest": null
+    }
+  ],
+  "number_history_queries": [
+    {
+      "number_id": "DEMO_NUMBER_53_2",
+      "as_of": "2027-07-02",
+      "known_at": "2027-07-03T05:00:00Z",
+      "expected_status": "ISSUED",
+      "actual": null
+    },
+    {
+      "number_id": "DEMO_NUMBER_53_2",
+      "as_of": "2027-07-03",
+      "known_at": "2027-07-03T05:00:00Z",
+      "expected_status": "VOID",
+      "actual": null
+    }
+  ],
+  "record_file_references": [
+    {
+      "record_version_id": "DEMO_RECORD_VERSION_53_V1",
+      "document_id": "DEMO_DOCUMENT_53_SHARED",
+      "file_version_id": "DEMO_FILE_53_V1",
+      "purpose": "PRIMARY",
+      "ordinal": 1,
+      "actual_created": false
+    },
+    {
+      "record_version_id": "DEMO_RECORD_VERSION_53_V2",
+      "document_id": "DEMO_DOCUMENT_53_SHARED",
+      "file_version_id": "DEMO_FILE_53_V2",
+      "purpose": "PRIMARY",
+      "ordinal": 1,
+      "actual_created": false
+    },
+    {
+      "record_version_id": "DEMO_RECORD_VERSION_53_V2",
+      "document_id": "DEMO_DOCUMENT_53_SHARED",
+      "file_version_id": "DEMO_FILE_53_V1",
+      "purpose": "ATTACHMENT",
+      "ordinal": 2,
+      "actual_created": false
+    }
+  ],
+  "counter_next_field_max": "9223372036854775807",
+  "counter_max_allocatable_ordinal_without_exhausted_state": "9223372036854775806",
+  "data_notes": [
+    "Synthetic expectations only; all actual numbers, ACL grants, uploads, CLEAN scans and official approvals absent",
+    "Policy or formatter revision does not change namespace identity or reset ordinal",
+    "Rollback candidate is uncommitted; VOID applies only to committed issued number",
+    "Current access inputs in access_matrix are planned predicates, not existing grants"
+  ]
+}

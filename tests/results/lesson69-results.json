@@ -1,0 +1,1125 @@
+{
+  "version": "0.1",
+  "baseline_commit": "fc22ce8",
+  "started_at": "2026-10-09T14:23:04.324Z",
+  "finished_at": "2026-10-09T14:23:06.858Z",
+  "scope": "LOOPBACK_STARTER_DIAGNOSTIC_ONLY",
+  "status": "PARTIAL_NOT_BUSINESS_ACCEPTANCE",
+  "command": "node --input-type=module (ephemeral read-only probe; protocol in PERFORMANCE_BASELINE.md)",
+  "machine": {
+    "os": "Linux",
+    "kernel": "6.18.44",
+    "architecture": "x64",
+    "logical_cpus": 9,
+    "cpu_max": "800000 100000",
+    "memory_max_bytes": "8589934592",
+    "host_total_memory_bytes": 10475843584,
+    "node": "v24.19.0",
+    "load_generator_and_server_same_container": true
+  },
+  "http": {
+    "url": "http://127.0.0.1:3119/",
+    "protocol": "HTTP",
+    "method": "GET",
+    "workload": "closed_loop_without_think_time",
+    "concurrency": 4,
+    "measured_requests": 120,
+    "warmup_requests": 10,
+    "readiness_requests_excluded": true,
+    "timeout_ms": 3000,
+    "duration_ms": 579.385002,
+    "p50_ms": 19.1330439999997,
+    "p95_ms": 27.182203999999956,
+    "max_ms": 34.835859999999684,
+    "unexpected_status_or_transport_errors": 0,
+    "error_rate": 0,
+    "cache_headers": ["s-maxage=31536000"],
+    "html_bytes": [10184],
+    "client_samples": [
+      {
+        "id": 0,
+        "status": 200,
+        "ms": 20.322302000000036,
+        "bytes": 10184,
+        "cache": "s-maxage=31536000"
+      },
+      {
+        "id": 1,
+        "status": 200,
+        "ms": 20.694815000000062,
+        "bytes": 10184,
+        "cache": "s-maxage=31536000"
+      },
+      {
+        "id": 2,
+        "status": 200,
+        "ms": 21.76275600000008,
+        "bytes": 10184,
+        "cache": "s-maxage=31536000"
+      },
+      {
+        "id": 3,
+        "status": 200,
+        "ms": 23.060739000000012,
+        "bytes": 10184,
+        "cache": "s-maxage=31536000"
+      },
+      {
+        "id": 4,
+        "status": 200,
+        "ms": 18.65723899999989,
+        "bytes": 10184,
+        "cache": "s-maxage=31536000"
+      },
+      {
+        "id": 5,
+        "status": 200,
+        "ms": 19.707836999999927,
+        "bytes": 10184,
+        "cache": "s-maxage=31536000"
+      },
+      {
+        "id": 6,
+        "status": 200,
+        "ms": 18.248833999999988,
+        "bytes": 10184,
+        "cache": "s-maxage=31536000"
+      },
+      {
+        "id": 7,
+        "status": 200,
+        "ms": 17.350212000000056,
+        "bytes": 10184,
+        "cache": "s-maxage=31536000"
+      },
+      {
+        "id": 8,
+        "status": 200,
+        "ms": 12.07247099999995,
+        "bytes": 10184,
+        "cache": "s-maxage=31536000"
+      },
+      {
+        "id": 9,
+        "status": 200,
+        "ms": 12.172859000000017,
+        "bytes": 10184,
+        "cache": "s-maxage=31536000"
+      },
+      {
+        "id": 10,
+        "status": 200,
+        "ms": 12.496069000000034,
+        "bytes": 10184,
+        "cache": "s-maxage=31536000"
+      },
+      {
+        "id": 11,
+        "status": 200,
+        "ms": 13.09104000000002,
+        "bytes": 10184,
+        "cache": "s-maxage=31536000"
+      },
+      {
+        "id": 12,
+        "status": 200,
+        "ms": 19.126899999999978,
+        "bytes": 10184,
+        "cache": "s-maxage=31536000"
+      },
+      {
+        "id": 13,
+        "status": 200,
+        "ms": 18.742250000000013,
+        "bytes": 10184,
+        "cache": "s-maxage=31536000"
+      },
+      {
+        "id": 14,
+        "status": 200,
+        "ms": 18.442905999999994,
+        "bytes": 10184,
+        "cache": "s-maxage=31536000"
+      },
+      {
+        "id": 15,
+        "status": 200,
+        "ms": 18.36787500000014,
+        "bytes": 10184,
+        "cache": "s-maxage=31536000"
+      },
+      {
+        "id": 17,
+        "status": 200,
+        "ms": 22.719043000000056,
+        "bytes": 10184,
+        "cache": "s-maxage=31536000"
+      },
+      {
+        "id": 18,
+        "status": 200,
+        "ms": 22.63945600000011,
+        "bytes": 10184,
+        "cache": "s-maxage=31536000"
+      },
+      {
+        "id": 16,
+        "status": 200,
+        "ms": 26.230166999999938,
+        "bytes": 10184,
+        "cache": "s-maxage=31536000"
+      },
+      {
+        "id": 19,
+        "status": 200,
+        "ms": 27.182203999999956,
+        "bytes": 10184,
+        "cache": "s-maxage=31536000"
+      },
+      {
+        "id": 20,
+        "status": 200,
+        "ms": 21.173567999999932,
+        "bytes": 10184,
+        "cache": "s-maxage=31536000"
+      },
+      {
+        "id": 21,
+        "status": 200,
+        "ms": 21.932968999999957,
+        "bytes": 10184,
+        "cache": "s-maxage=31536000"
+      },
+      {
+        "id": 22,
+        "status": 200,
+        "ms": 23.097573999999895,
+        "bytes": 10184,
+        "cache": "s-maxage=31536000"
+      },
+      {
+        "id": 23,
+        "status": 200,
+        "ms": 18.15054800000007,
+        "bytes": 10184,
+        "cache": "s-maxage=31536000"
+      },
+      {
+        "id": 24,
+        "status": 200,
+        "ms": 19.898228000000017,
+        "bytes": 10184,
+        "cache": "s-maxage=31536000"
+      },
+      {
+        "id": 25,
+        "status": 200,
+        "ms": 18.828348000000005,
+        "bytes": 10184,
+        "cache": "s-maxage=31536000"
+      },
+      {
+        "id": 27,
+        "status": 200,
+        "ms": 16.168245999999954,
+        "bytes": 10184,
+        "cache": "s-maxage=31536000"
+      },
+      {
+        "id": 26,
+        "status": 200,
+        "ms": 17.71769200000017,
+        "bytes": 10184,
+        "cache": "s-maxage=31536000"
+      },
+      {
+        "id": 28,
+        "status": 200,
+        "ms": 19.747479999999996,
+        "bytes": 10184,
+        "cache": "s-maxage=31536000"
+      },
+      {
+        "id": 29,
+        "status": 200,
+        "ms": 19.402158999999983,
+        "bytes": 10184,
+        "cache": "s-maxage=31536000"
+      },
+      {
+        "id": 30,
+        "status": 200,
+        "ms": 19.586690999999973,
+        "bytes": 10184,
+        "cache": "s-maxage=31536000"
+      },
+      {
+        "id": 31,
+        "status": 200,
+        "ms": 21.669217000000117,
+        "bytes": 10184,
+        "cache": "s-maxage=31536000"
+      },
+      {
+        "id": 32,
+        "status": 200,
+        "ms": 20.89797899999985,
+        "bytes": 10184,
+        "cache": "s-maxage=31536000"
+      },
+      {
+        "id": 33,
+        "status": 200,
+        "ms": 21.554703000000018,
+        "bytes": 10184,
+        "cache": "s-maxage=31536000"
+      },
+      {
+        "id": 34,
+        "status": 200,
+        "ms": 21.91366599999992,
+        "bytes": 10184,
+        "cache": "s-maxage=31536000"
+      },
+      {
+        "id": 35,
+        "status": 200,
+        "ms": 19.647387999999864,
+        "bytes": 10184,
+        "cache": "s-maxage=31536000"
+      },
+      {
+        "id": 36,
+        "status": 200,
+        "ms": 13.31065499999977,
+        "bytes": 10184,
+        "cache": "s-maxage=31536000"
+      },
+      {
+        "id": 37,
+        "status": 200,
+        "ms": 13.25433299999986,
+        "bytes": 10184,
+        "cache": "s-maxage=31536000"
+      },
+      {
+        "id": 38,
+        "status": 200,
+        "ms": 13.091310000000249,
+        "bytes": 10184,
+        "cache": "s-maxage=31536000"
+      },
+      {
+        "id": 39,
+        "status": 200,
+        "ms": 13.38630699999976,
+        "bytes": 10184,
+        "cache": "s-maxage=31536000"
+      },
+      {
+        "id": 40,
+        "status": 200,
+        "ms": 17.02430000000004,
+        "bytes": 10184,
+        "cache": "s-maxage=31536000"
+      },
+      {
+        "id": 41,
+        "status": 200,
+        "ms": 16.745736999999735,
+        "bytes": 10184,
+        "cache": "s-maxage=31536000"
+      },
+      {
+        "id": 43,
+        "status": 200,
+        "ms": 16.378401999999824,
+        "bytes": 10184,
+        "cache": "s-maxage=31536000"
+      },
+      {
+        "id": 42,
+        "status": 200,
+        "ms": 17.218095999999605,
+        "bytes": 10184,
+        "cache": "s-maxage=31536000"
+      },
+      {
+        "id": 45,
+        "status": 200,
+        "ms": 23.87826499999983,
+        "bytes": 10184,
+        "cache": "s-maxage=31536000"
+      },
+      {
+        "id": 47,
+        "status": 200,
+        "ms": 24.671700999999757,
+        "bytes": 10184,
+        "cache": "s-maxage=31536000"
+      },
+      {
+        "id": 46,
+        "status": 200,
+        "ms": 25.384258000000045,
+        "bytes": 10184,
+        "cache": "s-maxage=31536000"
+      },
+      {
+        "id": 44,
+        "status": 200,
+        "ms": 27.22717899999998,
+        "bytes": 10184,
+        "cache": "s-maxage=31536000"
+      },
+      {
+        "id": 48,
+        "status": 200,
+        "ms": 25.065466000000015,
+        "bytes": 10184,
+        "cache": "s-maxage=31536000"
+      },
+      {
+        "id": 49,
+        "status": 200,
+        "ms": 24.34681099999989,
+        "bytes": 10184,
+        "cache": "s-maxage=31536000"
+      },
+      {
+        "id": 50,
+        "status": 200,
+        "ms": 25.03198599999996,
+        "bytes": 10184,
+        "cache": "s-maxage=31536000"
+      },
+      {
+        "id": 51,
+        "status": 200,
+        "ms": 25.067529000000377,
+        "bytes": 10184,
+        "cache": "s-maxage=31536000"
+      },
+      {
+        "id": 52,
+        "status": 200,
+        "ms": 15.148799000000054,
+        "bytes": 10184,
+        "cache": "s-maxage=31536000"
+      },
+      {
+        "id": 54,
+        "status": 200,
+        "ms": 14.106686000000082,
+        "bytes": 10184,
+        "cache": "s-maxage=31536000"
+      },
+      {
+        "id": 55,
+        "status": 200,
+        "ms": 14.114828000000216,
+        "bytes": 10184,
+        "cache": "s-maxage=31536000"
+      },
+      {
+        "id": 53,
+        "status": 200,
+        "ms": 16.237884000000122,
+        "bytes": 10184,
+        "cache": "s-maxage=31536000"
+      },
+      {
+        "id": 56,
+        "status": 200,
+        "ms": 15.146496999999727,
+        "bytes": 10184,
+        "cache": "s-maxage=31536000"
+      },
+      {
+        "id": 57,
+        "status": 200,
+        "ms": 15.158233999999993,
+        "bytes": 10184,
+        "cache": "s-maxage=31536000"
+      },
+      {
+        "id": 59,
+        "status": 200,
+        "ms": 14.409564000000046,
+        "bytes": 10184,
+        "cache": "s-maxage=31536000"
+      },
+      {
+        "id": 58,
+        "status": 200,
+        "ms": 19.630561999999827,
+        "bytes": 10184,
+        "cache": "s-maxage=31536000"
+      },
+      {
+        "id": 60,
+        "status": 200,
+        "ms": 20.26872800000001,
+        "bytes": 10184,
+        "cache": "s-maxage=31536000"
+      },
+      {
+        "id": 61,
+        "status": 200,
+        "ms": 20.533179999999902,
+        "bytes": 10184,
+        "cache": "s-maxage=31536000"
+      },
+      {
+        "id": 62,
+        "status": 200,
+        "ms": 20.462564999999813,
+        "bytes": 10184,
+        "cache": "s-maxage=31536000"
+      },
+      {
+        "id": 63,
+        "status": 200,
+        "ms": 16.932794000000285,
+        "bytes": 10184,
+        "cache": "s-maxage=31536000"
+      },
+      {
+        "id": 66,
+        "status": 200,
+        "ms": 22.98332500000015,
+        "bytes": 10184,
+        "cache": "s-maxage=31536000"
+      },
+      {
+        "id": 64,
+        "status": 200,
+        "ms": 24.94812600000023,
+        "bytes": 10184,
+        "cache": "s-maxage=31536000"
+      },
+      {
+        "id": 67,
+        "status": 200,
+        "ms": 23.179415000000063,
+        "bytes": 10184,
+        "cache": "s-maxage=31536000"
+      },
+      {
+        "id": 65,
+        "status": 200,
+        "ms": 24.940185000000383,
+        "bytes": 10184,
+        "cache": "s-maxage=31536000"
+      },
+      {
+        "id": 69,
+        "status": 200,
+        "ms": 17.700266000000283,
+        "bytes": 10184,
+        "cache": "s-maxage=31536000"
+      },
+      {
+        "id": 70,
+        "status": 200,
+        "ms": 18.34668499999998,
+        "bytes": 10184,
+        "cache": "s-maxage=31536000"
+      },
+      {
+        "id": 68,
+        "status": 200,
+        "ms": 19.919245000000046,
+        "bytes": 10184,
+        "cache": "s-maxage=31536000"
+      },
+      {
+        "id": 71,
+        "status": 200,
+        "ms": 19.07861899999989,
+        "bytes": 10184,
+        "cache": "s-maxage=31536000"
+      },
+      {
+        "id": 73,
+        "status": 200,
+        "ms": 25.592165999999906,
+        "bytes": 10184,
+        "cache": "s-maxage=31536000"
+      },
+      {
+        "id": 74,
+        "status": 200,
+        "ms": 26.96881600000006,
+        "bytes": 10184,
+        "cache": "s-maxage=31536000"
+      },
+      {
+        "id": 72,
+        "status": 200,
+        "ms": 30.332202000000052,
+        "bytes": 10184,
+        "cache": "s-maxage=31536000"
+      },
+      {
+        "id": 75,
+        "status": 200,
+        "ms": 34.835859999999684,
+        "bytes": 10184,
+        "cache": "s-maxage=31536000"
+      },
+      {
+        "id": 76,
+        "status": 200,
+        "ms": 15.242032999999992,
+        "bytes": 10184,
+        "cache": "s-maxage=31536000"
+      },
+      {
+        "id": 77,
+        "status": 200,
+        "ms": 18.93203100000028,
+        "bytes": 10184,
+        "cache": "s-maxage=31536000"
+      },
+      {
+        "id": 78,
+        "status": 200,
+        "ms": 19.817633999999998,
+        "bytes": 10184,
+        "cache": "s-maxage=31536000"
+      },
+      {
+        "id": 79,
+        "status": 200,
+        "ms": 13.163058000000092,
+        "bytes": 10184,
+        "cache": "s-maxage=31536000"
+      },
+      {
+        "id": 80,
+        "status": 200,
+        "ms": 10.366672999999992,
+        "bytes": 10184,
+        "cache": "s-maxage=31536000"
+      },
+      {
+        "id": 81,
+        "status": 200,
+        "ms": 12.747251000000233,
+        "bytes": 10184,
+        "cache": "s-maxage=31536000"
+      },
+      {
+        "id": 82,
+        "status": 200,
+        "ms": 10.401554999999917,
+        "bytes": 10184,
+        "cache": "s-maxage=31536000"
+      },
+      {
+        "id": 83,
+        "status": 200,
+        "ms": 10.517096000000038,
+        "bytes": 10184,
+        "cache": "s-maxage=31536000"
+      },
+      {
+        "id": 84,
+        "status": 200,
+        "ms": 11.025620000000345,
+        "bytes": 10184,
+        "cache": "s-maxage=31536000"
+      },
+      {
+        "id": 85,
+        "status": 200,
+        "ms": 9.513319000000138,
+        "bytes": 10184,
+        "cache": "s-maxage=31536000"
+      },
+      {
+        "id": 86,
+        "status": 200,
+        "ms": 9.84854600000017,
+        "bytes": 10184,
+        "cache": "s-maxage=31536000"
+      },
+      {
+        "id": 87,
+        "status": 200,
+        "ms": 9.653766999999789,
+        "bytes": 10184,
+        "cache": "s-maxage=31536000"
+      },
+      {
+        "id": 88,
+        "status": 200,
+        "ms": 8.130389999999807,
+        "bytes": 10184,
+        "cache": "s-maxage=31536000"
+      },
+      {
+        "id": 90,
+        "status": 200,
+        "ms": 18.430983000000197,
+        "bytes": 10184,
+        "cache": "s-maxage=31536000"
+      },
+      {
+        "id": 92,
+        "status": 200,
+        "ms": 17.984542000000147,
+        "bytes": 10184,
+        "cache": "s-maxage=31536000"
+      },
+      {
+        "id": 91,
+        "status": 200,
+        "ms": 19.1330439999997,
+        "bytes": 10184,
+        "cache": "s-maxage=31536000"
+      },
+      {
+        "id": 89,
+        "status": 200,
+        "ms": 20.1973509999998,
+        "bytes": 10184,
+        "cache": "s-maxage=31536000"
+      },
+      {
+        "id": 93,
+        "status": 200,
+        "ms": 16.372253999999884,
+        "bytes": 10184,
+        "cache": "s-maxage=31536000"
+      },
+      {
+        "id": 94,
+        "status": 200,
+        "ms": 16.80154399999992,
+        "bytes": 10184,
+        "cache": "s-maxage=31536000"
+      },
+      {
+        "id": 95,
+        "status": 200,
+        "ms": 17.233233000000382,
+        "bytes": 10184,
+        "cache": "s-maxage=31536000"
+      },
+      {
+        "id": 96,
+        "status": 200,
+        "ms": 19.237633999999616,
+        "bytes": 10184,
+        "cache": "s-maxage=31536000"
+      },
+      {
+        "id": 97,
+        "status": 200,
+        "ms": 17.157232000000022,
+        "bytes": 10184,
+        "cache": "s-maxage=31536000"
+      },
+      {
+        "id": 98,
+        "status": 200,
+        "ms": 16.817141999999876,
+        "bytes": 10184,
+        "cache": "s-maxage=31536000"
+      },
+      {
+        "id": 99,
+        "status": 200,
+        "ms": 14.661399000000074,
+        "bytes": 10184,
+        "cache": "s-maxage=31536000"
+      },
+      {
+        "id": 100,
+        "status": 200,
+        "ms": 14.526518000000124,
+        "bytes": 10184,
+        "cache": "s-maxage=31536000"
+      },
+      {
+        "id": 101,
+        "status": 200,
+        "ms": 21.50130500000023,
+        "bytes": 10184,
+        "cache": "s-maxage=31536000"
+      },
+      {
+        "id": 103,
+        "status": 200,
+        "ms": 22.402018999999655,
+        "bytes": 10184,
+        "cache": "s-maxage=31536000"
+      },
+      {
+        "id": 102,
+        "status": 200,
+        "ms": 23.563580999999886,
+        "bytes": 10184,
+        "cache": "s-maxage=31536000"
+      },
+      {
+        "id": 104,
+        "status": 200,
+        "ms": 23.222465000000284,
+        "bytes": 10184,
+        "cache": "s-maxage=31536000"
+      },
+      {
+        "id": 106,
+        "status": 200,
+        "ms": 19.380445999999665,
+        "bytes": 10184,
+        "cache": "s-maxage=31536000"
+      },
+      {
+        "id": 105,
+        "status": 200,
+        "ms": 21.4150410000002,
+        "bytes": 10184,
+        "cache": "s-maxage=31536000"
+      },
+      {
+        "id": 107,
+        "status": 200,
+        "ms": 20.44338099999959,
+        "bytes": 10184,
+        "cache": "s-maxage=31536000"
+      },
+      {
+        "id": 108,
+        "status": 200,
+        "ms": 27.649379999999837,
+        "bytes": 10184,
+        "cache": "s-maxage=31536000"
+      },
+      {
+        "id": 109,
+        "status": 200,
+        "ms": 27.38208399999985,
+        "bytes": 10184,
+        "cache": "s-maxage=31536000"
+      },
+      {
+        "id": 111,
+        "status": 200,
+        "ms": 26.1482860000001,
+        "bytes": 10184,
+        "cache": "s-maxage=31536000"
+      },
+      {
+        "id": 112,
+        "status": 200,
+        "ms": 18.718185000000176,
+        "bytes": 10184,
+        "cache": "s-maxage=31536000"
+      },
+      {
+        "id": 110,
+        "status": 200,
+        "ms": 28.55401099999972,
+        "bytes": 10184,
+        "cache": "s-maxage=31536000"
+      },
+      {
+        "id": 113,
+        "status": 200,
+        "ms": 19.21611299999995,
+        "bytes": 10184,
+        "cache": "s-maxage=31536000"
+      },
+      {
+        "id": 114,
+        "status": 200,
+        "ms": 20.494497000000138,
+        "bytes": 10184,
+        "cache": "s-maxage=31536000"
+      },
+      {
+        "id": 116,
+        "status": 200,
+        "ms": 20.085531000000174,
+        "bytes": 10184,
+        "cache": "s-maxage=31536000"
+      },
+      {
+        "id": 115,
+        "status": 200,
+        "ms": 21.177670000000035,
+        "bytes": 10184,
+        "cache": "s-maxage=31536000"
+      },
+      {
+        "id": 117,
+        "status": 200,
+        "ms": 11.649333999999726,
+        "bytes": 10184,
+        "cache": "s-maxage=31536000"
+      },
+      {
+        "id": 118,
+        "status": 200,
+        "ms": 10.369747000000189,
+        "bytes": 10184,
+        "cache": "s-maxage=31536000"
+      },
+      {
+        "id": 119,
+        "status": 200,
+        "ms": 10.144905000000108,
+        "bytes": 10184,
+        "cache": "s-maxage=31536000"
+      }
+    ],
+    "includes_body_read": true,
+    "includes_tls_cdn_browser_js": false,
+    "queue_depth_measured": false,
+    "database_used": false
+  },
+  "starter_process_rss": {
+    "sample_count": 0,
+    "min_bytes": null,
+    "max_observed_bytes": null,
+    "pid_role": "spawned next start only; not process-tree/worker/generator",
+    "peak_claim": false,
+    "xlsx_worker_memory_measured": false,
+    "status": "NOT_MEASURED",
+    "reason": "No /proc VmRSS samples could be read during this probe"
+  },
+  "bootstrap_denial": {
+    "requests": 21,
+    "all_403_no_store": true,
+    "checks": [
+      { "path": "/app", "method": "GET", "status": 403, "cache": "no-store" },
+      { "path": "/app", "method": "POST", "status": 403, "cache": "no-store" },
+      { "path": "/app", "method": "PUT", "status": 403, "cache": "no-store" },
+      { "path": "/app", "method": "PATCH", "status": 403, "cache": "no-store" },
+      {
+        "path": "/app",
+        "method": "DELETE",
+        "status": 403,
+        "cache": "no-store"
+      },
+      {
+        "path": "/app",
+        "method": "OPTIONS",
+        "status": 403,
+        "cache": "no-store"
+      },
+      { "path": "/app", "method": "HEAD", "status": 403, "cache": "no-store" },
+      {
+        "path": "/app/admin",
+        "method": "GET",
+        "status": 403,
+        "cache": "no-store"
+      },
+      {
+        "path": "/app/admin",
+        "method": "POST",
+        "status": 403,
+        "cache": "no-store"
+      },
+      {
+        "path": "/app/admin",
+        "method": "PUT",
+        "status": 403,
+        "cache": "no-store"
+      },
+      {
+        "path": "/app/admin",
+        "method": "PATCH",
+        "status": 403,
+        "cache": "no-store"
+      },
+      {
+        "path": "/app/admin",
+        "method": "DELETE",
+        "status": 403,
+        "cache": "no-store"
+      },
+      {
+        "path": "/app/admin",
+        "method": "OPTIONS",
+        "status": 403,
+        "cache": "no-store"
+      },
+      {
+        "path": "/app/admin",
+        "method": "HEAD",
+        "status": 403,
+        "cache": "no-store"
+      },
+      {
+        "path": "/app/exams/imports",
+        "method": "GET",
+        "status": 403,
+        "cache": "no-store"
+      },
+      {
+        "path": "/app/exams/imports",
+        "method": "POST",
+        "status": 403,
+        "cache": "no-store"
+      },
+      {
+        "path": "/app/exams/imports",
+        "method": "PUT",
+        "status": 403,
+        "cache": "no-store"
+      },
+      {
+        "path": "/app/exams/imports",
+        "method": "PATCH",
+        "status": 403,
+        "cache": "no-store"
+      },
+      {
+        "path": "/app/exams/imports",
+        "method": "DELETE",
+        "status": 403,
+        "cache": "no-store"
+      },
+      {
+        "path": "/app/exams/imports",
+        "method": "OPTIONS",
+        "status": 403,
+        "cache": "no-store"
+      },
+      {
+        "path": "/app/exams/imports",
+        "method": "HEAD",
+        "status": 403,
+        "cache": "no-store"
+      }
+    ],
+    "private_authenticated_cache_isolation": "NOT_RUN",
+    "positive_authorized_responses": 0
+  },
+  "source_html_structure": {
+    "lang_th": true,
+    "h1_count": 1,
+    "main_count": 1,
+    "skip_target_declared": true,
+    "thai_text_present": true,
+    "keyboard_operated": false,
+    "screen_reader_operated": false,
+    "axe_run": false,
+    "rendered_mobile_checked": false
+  },
+  "declared_color_contrast": [
+    {
+      "name": "body",
+      "foreground": "#0f172a",
+      "background": "#f8fafc",
+      "ratio": 17.062933971317335,
+      "threshold": 4.5,
+      "passes_numeric_threshold": true,
+      "scope": "STATIC_DECLARED_OPAQUE_COLORS_ONLY"
+    },
+    {
+      "name": "primary_text",
+      "foreground": "#1e3a8a",
+      "background": "#f8fafc",
+      "ratio": 9.899858341578378,
+      "threshold": 4.5,
+      "passes_numeric_threshold": true,
+      "scope": "STATIC_DECLARED_OPAQUE_COLORS_ONLY"
+    },
+    {
+      "name": "muted_page",
+      "foreground": "#475569",
+      "background": "#f8fafc",
+      "ratio": 7.242510935504382,
+      "threshold": 4.5,
+      "passes_numeric_threshold": true,
+      "scope": "STATIC_DECLARED_OPAQUE_COLORS_ONLY"
+    },
+    {
+      "name": "muted_card",
+      "foreground": "#475569",
+      "background": "#ffffff",
+      "ratio": 7.577663953533317,
+      "threshold": 4.5,
+      "passes_numeric_threshold": true,
+      "scope": "STATIC_DECLARED_OPAQUE_COLORS_ONLY"
+    },
+    {
+      "name": "button_text",
+      "foreground": "#ffffff",
+      "background": "#1e3a8a",
+      "ratio": 10.357982247884618,
+      "threshold": 4.5,
+      "passes_numeric_threshold": true,
+      "scope": "STATIC_DECLARED_OPAQUE_COLORS_ONLY"
+    }
+  ],
+  "browser_e2e_runs": 0,
+  "actual_screenshots": 0,
+  "official_rules_certified": false,
+  "lesson": 69,
+  "overall_status": "BLOCKED_NO_BUSINESS_LOAD_OR_BROWSER_ACCEPTANCE",
+  "dependency_observations": {
+    "core_models": 19,
+    "migration_count": 1,
+    "migration_sha256": "04a149fcd349f0ac3f1b5929cfcf571f8b0880541e84a40ad929054b67d72756",
+    "loopback_postgres_connect_ex": { "5432": 111, "5546": 111 },
+    "playwright_environment_library": "1.62.1",
+    "playwright_test_installed": false,
+    "axe_core_installed": false,
+    "default_chromium_executable_exists": false,
+    "browser_launch_attempted": false,
+    "production_changed": false
+  },
+  "versions": {
+    "application_schema": "0.6.0",
+    "next": "16.3.8",
+    "prisma": "7.10.0",
+    "pnpm": "11.28.2",
+    "lockfile": "9",
+    "new_docs_plans_results": "0.1"
+  },
+  "not_run": [
+    "business_load_profiles_P69-01_to_04",
+    "native_PostgreSQL_query_plans",
+    "pagination_N_plus_1_pooling",
+    "authenticated_A_B_private_cache_isolation",
+    "XLSX_limits_worker_memory",
+    "queue_crash_recovery",
+    "keyboard",
+    "screen_reader",
+    "axe",
+    "mobile_rendering",
+    "PDF_Excel_exports",
+    "media_captions",
+    "human_UAT_signoff"
+  ],
+  "acceptance": {
+    "AC69_01": "PARTIAL_STARTER_NUMBERS_ONLY",
+    "AC69_02": "BLOCKED_NOT_RUN"
+  },
+  "next_lesson_70": "NOT_STARTED",
+  "document_verification": {
+    "status": "PASS_DOCUMENTS_ONLY",
+    "timing_samples_checked": 120,
+    "bootstrap_denial_headers_checked": 21,
+    "planned_profiles_not_run": 4,
+    "planned_business_cases_not_run": 10,
+    "accessibility_review_cases": 9,
+    "local_links_checked": 374,
+    "source_files_unchanged": 40,
+    "prior_tracked_test_files_unchanged": 45,
+    "migration_sha256_unchanged": true,
+    "prettier_new_files": "PASS_5_FILES",
+    "prettier_new_status_sections": "PASS_4_SECTIONS",
+    "historical_full_document_format_check": "NOT_RUN",
+    "secrets_check_exit": 0,
+    "git_diff_cached_check_exit": 0,
+    "business_acceptance": false
+  }
+}

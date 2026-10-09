@@ -1,0 +1,311 @@
+{
+  "version": "0.1",
+  "lesson": 69,
+  "status": "PLAN_ONLY",
+  "baseline_commit": "fc22ce8",
+  "prerequisite_68": "BLOCKED",
+  "official_output_enabled": false,
+  "new_business_executable_scripts": 0,
+  "profiles": [
+    {
+      "id": "P69-01",
+      "name": "released_exam_search",
+      "synthetic_dataset": {
+        "released_demo_rows": 200000,
+        "academic_years": 5,
+        "exam_groups": 12,
+        "actual_rows_created": 0
+      },
+      "load": {
+        "model": "closed_loop",
+        "virtual_users": 50,
+        "ramp_s": 60,
+        "warmup_s": 120,
+        "steady_s": 600,
+        "think_time_s": 2
+      },
+      "targets": {
+        "successful_search_p95_ms": 2000,
+        "unexpected_error_rate_less_than": 0.01,
+        "unpublished_leaks": 0
+      },
+      "status": "PROPOSAL_NOT_RUN",
+      "owner_confirmed": false,
+      "actual_run_refs": [],
+      "target_status": "PROPOSAL_TO_VERIFY"
+    },
+    {
+      "id": "P69-02",
+      "name": "excel_multi_organization",
+      "synthetic_dataset": {
+        "organizations": 10,
+        "files": 10,
+        "max_rows_per_file": 2000,
+        "total_rows_max": 20000,
+        "actual_files_created": 0
+      },
+      "load": {
+        "concurrent_uploads": 10,
+        "parser_children_per_runner": 1,
+        "repeat_after_drain": true
+      },
+      "targets": {
+        "upload_ack_p95_ms": 2000,
+        "job_deadline_ms": 15000,
+        "invalid_commits": 0,
+        "memory_limit_is_proven": false
+      },
+      "status": "PROPOSAL_NOT_RUN",
+      "owner_confirmed": false,
+      "actual_run_refs": [],
+      "target_status": "PROPOSAL_TO_VERIFY"
+    },
+    {
+      "id": "P69-03",
+      "name": "learning_pre_lesson_post",
+      "synthetic_dataset": {
+        "learners": 100,
+        "learning_groups": 9,
+        "questions_per_attempt": 20,
+        "actual_learners_created": 0
+      },
+      "load": {
+        "model": "closed_loop",
+        "virtual_users": 100,
+        "ramp_s": 60,
+        "steady_s": 600,
+        "answer_save_interval_s": 30,
+        "submit_separate_phase": true
+      },
+      "targets": {
+        "save_p95_ms": 2000,
+        "unexpected_error_rate_less_than": 0.01,
+        "lost_answers": 0,
+        "peer_or_key_leaks": 0
+      },
+      "status": "PROPOSAL_NOT_RUN",
+      "owner_confirmed": false,
+      "actual_run_refs": [],
+      "target_status": "PROPOSAL_TO_VERIFY"
+    },
+    {
+      "id": "P69-04",
+      "name": "approved_record_delivery",
+      "synthetic_dataset": {
+        "senders": 20,
+        "records": 20,
+        "recipients_per_record": 20,
+        "expected_receipts": 400,
+        "actual_records_created": 0
+      },
+      "load": {
+        "submission_window_s": 60,
+        "observe_min_s": 600,
+        "crash_recovery_separate_run": true
+      },
+      "targets": {
+        "enqueue_p95_ms": 2000,
+        "oldest_pending_age_s_max": 60,
+        "post_recovery_drain_s_max": 300,
+        "duplicate_receipts": 0
+      },
+      "status": "PROPOSAL_NOT_RUN",
+      "owner_confirmed": false,
+      "actual_run_refs": [],
+      "target_status": "PROPOSAL_TO_VERIFY"
+    }
+  ],
+  "proposed_staging": {
+    "status": "NOT_PROVISIONED",
+    "app": {
+      "instances": 1,
+      "vcpu": 2,
+      "memory_gib": 2
+    },
+    "postgres": {
+      "instances": 1,
+      "vcpu": 2,
+      "memory_gib": 4
+    },
+    "worker_runner": {
+      "instances": 1,
+      "vcpu": 2,
+      "memory_gib": 1
+    },
+    "load_generator": {
+      "instances": 1,
+      "vcpu": 2,
+      "memory_gib": 2,
+      "separate_host": true
+    },
+    "same_region": true,
+    "connection_pool_size": null,
+    "db_version": null,
+    "storage": null,
+    "replicas": 1,
+    "owner_confirmed": false
+  },
+  "xlsx_limits": {
+    "source": "tests/fixtures/system09/parsing-plan.json",
+    "version": "DEMO_XLSX_PARSING_LIMITS_0.1",
+    "status": "PROPOSAL_NOT_ENFORCED",
+    "production_enabled": false,
+    "upload_bytes": 10485760,
+    "zip_entries": 256,
+    "actual_expanded_bytes_total": 41943040,
+    "actual_expanded_bytes_per_entry": 8388608,
+    "actual_expansion_ratio_per_entry": 100,
+    "input_data_rows_total_including_remarks": 2000,
+    "max_physical_row_index_all_sheets": 4096,
+    "max_column_index_all_sheets": 64,
+    "cell_nodes_total_all_sheets": 50000,
+    "string_code_points": 4096,
+    "shared_strings": 50000,
+    "style_records": 1024,
+    "xml_depth": 32,
+    "preflight_deadline_ms": 5000,
+    "parse_deadline_ms": 10000,
+    "job_deadline_ms": 15000,
+    "child_container_hard_memory_bytes": 268435456,
+    "v8_old_heap_mib": 128,
+    "output_ipc_bytes": 8388608,
+    "scratch_bytes": 67108864,
+    "concurrent_children_per_isolated_runner": 1,
+    "infra_retries_max": 2,
+    "invalid_file_retries": 0,
+    "account_org_rate_and_queue_quota": "TO_VERIFY",
+    "registry_stricter_limits_also_required": true,
+    "ratio_denominator": "max(1, compressed_bytes_per_entry)",
+    "fail_closed_if_isolation_not_verified": true
+  },
+  "test_policy": {
+    "test_data_only": true,
+    "synthetic_prefix": "TEST_",
+    "central_person_organization_application_documents_only": true,
+    "mock_success_allowed": false,
+    "client_scope_bypass_allowed": false,
+    "official_rules_certification_claim": false,
+    "gate_before_business_load": "lesson68 passed + approved runtime plan",
+    "repeat_acceptance_runs_min": 3,
+    "stop_on": [
+      "invariant_failure",
+      "private_leak",
+      "OOM",
+      "dependency_not_ready"
+    ],
+    "safety_bounds_owner_review_required": true
+  },
+  "cases": [
+    {
+      "id": "P69-01",
+      "status": "NOT_RUN",
+      "actual_evidence_refs": []
+    },
+    {
+      "id": "P69-02",
+      "status": "NOT_RUN",
+      "actual_evidence_refs": []
+    },
+    {
+      "id": "P69-03",
+      "status": "NOT_RUN",
+      "actual_evidence_refs": []
+    },
+    {
+      "id": "P69-04",
+      "status": "NOT_RUN",
+      "actual_evidence_refs": []
+    },
+    {
+      "id": "P69-05",
+      "status": "NOT_RUN",
+      "actual_evidence_refs": []
+    },
+    {
+      "id": "P69-06",
+      "status": "NOT_RUN",
+      "actual_evidence_refs": []
+    },
+    {
+      "id": "P69-07",
+      "status": "NOT_RUN",
+      "actual_evidence_refs": []
+    },
+    {
+      "id": "P69-08",
+      "status": "NOT_RUN",
+      "actual_evidence_refs": []
+    },
+    {
+      "id": "P69-09",
+      "status": "NOT_RUN",
+      "actual_evidence_refs": []
+    },
+    {
+      "id": "P69-10",
+      "status": "NOT_RUN",
+      "actual_evidence_refs": []
+    }
+  ],
+  "accessibility_cases": [
+    {
+      "id": "A69-01",
+      "status": "PARTIAL_SOURCE_REVIEW",
+      "human_signoff": null
+    },
+    {
+      "id": "A69-02",
+      "status": "NOT_RUN",
+      "human_signoff": null
+    },
+    {
+      "id": "A69-03",
+      "status": "NOT_RUN",
+      "human_signoff": null
+    },
+    {
+      "id": "A69-04",
+      "status": "NOT_RUN",
+      "human_signoff": null
+    },
+    {
+      "id": "A69-05",
+      "status": "NOT_RUN",
+      "human_signoff": null
+    },
+    {
+      "id": "A69-06",
+      "status": "NOT_RUN",
+      "human_signoff": null
+    },
+    {
+      "id": "A69-07",
+      "status": "NO_CONTENT_TO_TEST",
+      "human_signoff": null
+    },
+    {
+      "id": "A69-08",
+      "status": "NOT_RUN",
+      "human_signoff": null
+    },
+    {
+      "id": "A69-09",
+      "status": "NOT_RUN",
+      "human_signoff": null
+    }
+  ],
+  "actual": {
+    "business_load_runs": [],
+    "query_plans": [],
+    "cache_A_B_evidence": [],
+    "worker_memory_samples": [],
+    "xlsx_boundary_runs": [],
+    "screenshots": [],
+    "human_acceptors": []
+  },
+  "acceptance": {
+    "AC69_01": "PARTIAL_STARTER_NUMBERS_ONLY",
+    "AC69_02": "BLOCKED_NOT_RUN"
+  },
+  "next_lesson_70": "NOT_STARTED"
+}

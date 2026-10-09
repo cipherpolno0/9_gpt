@@ -78,3 +78,11 @@ service credential ใช้เฉพาะขอบเขตงานที่�
 อธิบายผลที่ผู้ใช้ทำได้และแนวคิดใหม่ด้วยภาษาง่าย สร้างไฟล์จริงในโครงการเดิม ไม่ใช้จุดไข่ปลาแทนส่วนสำคัญ ตรวจตามเกณฑ์ของบท แยกผลตรวจเอกสารกับการทดสอบระบบจริง อัปเดต PROGRESS ให้มี schema/migrations/versions/policies/คำสั่งและผลตรวจ/ข้อจำกัด/บทถัดไป คำสั่งที่ไม่มีในโครงการไม่อ้างว่ารันแล้ว
 
 บท 01 จบด้วยเอกสารและ Git เท่านั้น ไม่มีหน้าเว็บ ฐานข้อมูล RLS migration หรือ deploy จริง บท 02 รอผู้ใช้ส่งพรอมป์ต์ จึงยังไม่กำหนดขอบเขตจากการเดา
+
+## ข้อกำหนดเพิ่มเติมจากบท05 — เครื่องมือพัฒนา
+
+ผู้ใช้สั่งPrisma PostgreSQL pnpm DockerComposeRedisและworkerในrepositoryเดียว และอนุมัติแผนบท05วันที่3 ตุลาคม2569 ส่วนเพิ่มเติมนี้ใช้เหนือข้อเสนอเดิมที่บอกว่ายังไม่เลือกเครื่องมือในบท01 ไม่เปลี่ยนSupabaseAuth/Storage/RLSหรือVercelปลายทาง
+
+ใช้รุ่นstableที่ล็อกในpackage.json/pnpm-lock.yamlและ[ADR001](docs/ADR/001-stack.md) ตัวอย่างบทถัดไปต้องตามAPI/pathรุ่นเดียวกัน Prisma7URLในprisma.config.ts generatedclientpath+PrismaPg adapter ไม่ใช้ตัวอย่างรุ่น6ปน Tailwind4PostCSSและpnpm11allowBuildsตามADR ยังไม่มีmodels/migration/RLSจริงในบท05 PostgreSQLComposeไม่ใช่Supabasestackและไม่มีauth.users
+
+การใช้Prismaไม่อนุญาตข้ามRLS; ต้องแยกmigrationroleจากruntime limitedroleและrequestcontextในบทที่เกี่ยวข้อง กฎทางการ/นโยบายยังTO VERIFY บท05ไม่สร้าง128modelsหรือbusinessservicesล่วงหน้า ผลDockerจริงต้องดูDOCKER-05ในPROGRESSก่อนพึ่งบริการ

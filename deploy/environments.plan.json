@@ -1,0 +1,112 @@
+{
+  "version": "0.1",
+  "status": "PROPOSAL_NOT_PROVISIONED",
+  "application_version": "0.6.0",
+  "activation_allowed": false,
+  "portal_count": 1,
+  "module_count": 9,
+  "environments": {
+    "dev": {
+      "status": "LOCAL_FOUNDATION_ONLY",
+      "config": "../compose.yaml",
+      "real_data_allowed": false
+    },
+    "staging": {
+      "status": "NOT_PROVISIONED",
+      "hostname": null,
+      "provider_project_ref": null,
+      "real_data_allowed": false
+    },
+    "production": {
+      "status": "NOT_PROVISIONED",
+      "hostname": null,
+      "provider_project_ref": null,
+      "real_data_allowed": false
+    }
+  },
+  "services": [
+    {
+      "name": "web",
+      "provider": "Vercel",
+      "status": "CONFIRMED_STACK_NOT_DEPLOYED",
+      "health": "public liveness plus protected readiness",
+      "secret_refs": ["WEB_DATABASE_URL", "AUTH_PUBLIC_CONFIG"]
+    },
+    {
+      "name": "worker",
+      "provider": null,
+      "status": "TO_VERIFY_HOST_AND_RUNTIME",
+      "health": "DB Redis storage auth plus lag retry DLQ",
+      "secret_refs": [
+        "WORKER_DATABASE_URL",
+        "WORKER_REDIS_URL",
+        "WORKER_STORAGE_CREDENTIAL"
+      ]
+    },
+    {
+      "name": "database",
+      "provider": "Supabase PostgreSQL",
+      "status": "CONFIRMED_STACK_NOT_PROVISIONED",
+      "health": "TLS SELECT 1 using scoped role",
+      "secret_refs": ["MIGRATOR_DATABASE_URL", "BACKUP_DATABASE_CREDENTIAL"]
+    },
+    {
+      "name": "redis",
+      "provider": null,
+      "status": "TO_VERIFY_PROVIDER",
+      "health": "TLS authenticated PING",
+      "secret_refs": ["WORKER_REDIS_URL"]
+    },
+    {
+      "name": "private_object_storage",
+      "provider": "Supabase Storage",
+      "status": "CONFIRMED_STACK_NOT_PROVISIONED",
+      "health": "isolated canary read write version checksum delete",
+      "secret_refs": ["STORAGE_BACKUP_CREDENTIAL", "STORAGE_KEY_REFERENCE"]
+    },
+    {
+      "name": "identity",
+      "provider": "Supabase Auth",
+      "status": "CONFIRMED_STACK_OIDC_CONFIGURATION_TO_VERIFY",
+      "health": "isolated login revoke and deny tests",
+      "secret_refs": ["OIDC_CLIENT_ID", "OIDC_CLIENT_SECRET_REFERENCE"]
+    }
+  ],
+  "separation": [
+    "distinct provider projects DB Redis namespaces buckets keys OIDC clients",
+    "same central Person Organization Document Application registry per environment",
+    "no production backup or credentials in public CI artifacts"
+  ],
+  "release_gates": [
+    "lesson70 accepted for affected feature",
+    "action and container provenance plus advisory review",
+    "clean staging smoke with nine systems",
+    "native PostgreSQL concurrency and RLS acceptance",
+    "consistent DB file auth key restore drill",
+    "appointed owner approval"
+  ],
+  "backup": {
+    "status": "NOT_CONFIGURED",
+    "manifest_required": [
+      "backup_id",
+      "source_environment",
+      "source_commit",
+      "schema_migration_checksums",
+      "consistent_cutoff_at",
+      "database_dump_checksum",
+      "object_versions_and_checksums",
+      "file_metadata_acl_scan_state",
+      "identity_backup_reference",
+      "encryption_key_references",
+      "outbox_watermark",
+      "restore_verification_reference"
+    ],
+    "restore_target_environment": "isolated-drill",
+    "outbound_delivery_enabled": false,
+    "proposed_rpo_seconds": 86400,
+    "proposed_rto_seconds": 14400,
+    "owner_approval": null,
+    "measured_rpo_seconds": null,
+    "measured_rto_seconds": null
+  }
+}

@@ -1,0 +1,610 @@
+{
+  "version": "0.1",
+  "lesson": 51,
+  "received_at": "2026-10-08T05:52:59+07:00",
+  "source_commit": "8a70eda",
+  "status": "PLAN_ONLY",
+  "prerequisite50": "BLOCKED",
+  "seeded": false,
+  "runtime_implemented": false,
+  "native_transactions_tested": false,
+  "actual_stocktakes_disposals_reports_created": false,
+  "actual_excel_pdf_created": false,
+  "notes": [
+    "DEMO/TESTทั้งหมดเป็นข้อมูลสมมติ ไม่เป็นFK/คำอนุมัติ/หลักฐานCLEANจริง",
+    "ลำดับbucketเป็นreferenceของpostingprotocol ไม่เป็นsequenceที่ได้จากnativecommit",
+    "snapshot/cutoff/disposalfutureเป็นแผนตัวอย่าง ไม่ใช่jobหรือAPIที่executeแล้ว"
+  ],
+  "policy": {
+    "ref": "DEMO_STOCKTAKE_DISPOSAL_POLICY_51",
+    "status": "TO_VERIFY",
+    "count_strategy_reference": "CONTROLLED_WINDOW_THEN_CAS_OR_RECOUNT",
+    "actual_verified": false,
+    "official_enabled": false,
+    "actual_clean_file_version": null,
+    "authority_bands": [],
+    "bridge_adapter_implemented": false,
+    "disposal_method": null,
+    "retention_policy_verified": false
+  },
+  "buckets": [
+    {
+      "ref": "DEMO_BUCKET_51_A",
+      "organization_ref": "DEMO_ORG_49_A",
+      "warehouse_ref": "DEMO_WAREHOUSE_49_A",
+      "location_ref": "DEMO_LOCATION_49_A",
+      "item_ref": "DEMO_ITEM_47_PAPER",
+      "unit_version_ref": "DEMO_UV_47_PIECE_1",
+      "quantity_scale": 0,
+      "lot_ref": null,
+      "opening_quantity": "0",
+      "actual_created": false
+    },
+    {
+      "ref": "DEMO_BUCKET_51_B",
+      "organization_ref": "DEMO_ORG_49_A",
+      "warehouse_ref": "DEMO_WAREHOUSE_49_B",
+      "location_ref": "DEMO_LOCATION_49_B",
+      "item_ref": "DEMO_ITEM_47_PAPER",
+      "unit_version_ref": "DEMO_UV_47_PIECE_1",
+      "quantity_scale": 0,
+      "lot_ref": null,
+      "opening_quantity": "0",
+      "actual_created": false
+    }
+  ],
+  "ledger_event_descriptors": [
+    {
+      "ref": "DEMO_MOVE_51_01",
+      "kind": "RECEIPT",
+      "effective_on": "2027-07-01",
+      "recorded_at": "2027-07-01T02:00:00Z",
+      "legs": [
+        {
+          "bucket_ref": "DEMO_BUCKET_51_A",
+          "quantity_delta": "10",
+          "bucket_commit_ordinal_reference": 1
+        }
+      ],
+      "stocktake_line_ref": null,
+      "actual_posted": false
+    },
+    {
+      "ref": "DEMO_MOVE_51_02",
+      "kind": "ISSUE",
+      "effective_on": "2027-07-02",
+      "recorded_at": "2027-07-02T02:00:00Z",
+      "legs": [
+        {
+          "bucket_ref": "DEMO_BUCKET_51_A",
+          "quantity_delta": "-2",
+          "bucket_commit_ordinal_reference": 2
+        }
+      ],
+      "stocktake_line_ref": null,
+      "actual_posted": false
+    },
+    {
+      "ref": "DEMO_MOVE_51_03",
+      "kind": "TRANSFER",
+      "effective_on": "2027-07-03",
+      "recorded_at": "2027-07-03T02:00:00Z",
+      "legs": [
+        {
+          "bucket_ref": "DEMO_BUCKET_51_A",
+          "quantity_delta": "-1",
+          "bucket_commit_ordinal_reference": 3
+        },
+        {
+          "bucket_ref": "DEMO_BUCKET_51_B",
+          "quantity_delta": "1",
+          "bucket_commit_ordinal_reference": 1
+        }
+      ],
+      "stocktake_line_ref": null,
+      "actual_posted": false
+    },
+    {
+      "ref": "DEMO_MOVE_51_04",
+      "kind": "APPROVED_STOCKTAKE_ADJUSTMENT",
+      "effective_on": "2027-07-05",
+      "recorded_at": "2027-07-05T02:00:00Z",
+      "legs": [
+        {
+          "bucket_ref": "DEMO_BUCKET_51_A",
+          "quantity_delta": "-1",
+          "bucket_commit_ordinal_reference": 4
+        }
+      ],
+      "stocktake_line_ref": "DEMO_COUNT_51_A",
+      "actual_posted": false
+    },
+    {
+      "ref": "DEMO_MOVE_51_05",
+      "kind": "RECEIPT",
+      "effective_on": "2027-07-06",
+      "recorded_at": "2027-07-06T02:00:00Z",
+      "legs": [
+        {
+          "bucket_ref": "DEMO_BUCKET_51_B",
+          "quantity_delta": "3",
+          "bucket_commit_ordinal_reference": 2
+        }
+      ],
+      "stocktake_line_ref": null,
+      "actual_posted": false
+    },
+    {
+      "ref": "DEMO_MOVE_51_06",
+      "kind": "APPROVED_STOCKTAKE_ADJUSTMENT",
+      "effective_on": "2027-07-08",
+      "recorded_at": "2027-07-08T02:00:00Z",
+      "legs": [
+        {
+          "bucket_ref": "DEMO_BUCKET_51_B",
+          "quantity_delta": "1",
+          "bucket_commit_ordinal_reference": 3
+        }
+      ],
+      "stocktake_line_ref": "DEMO_COUNT_51_B",
+      "actual_posted": false
+    }
+  ],
+  "stocktake_line_descriptors": [
+    {
+      "ref": "DEMO_COUNT_51_A",
+      "bucket_ref": "DEMO_BUCKET_51_A",
+      "cutoff_event_refs": [
+        "DEMO_MOVE_51_01",
+        "DEMO_MOVE_51_02",
+        "DEMO_MOVE_51_03"
+      ],
+      "expected": "7",
+      "counted": "6",
+      "variance": "-1",
+      "reason": "TEST_นับขาดหนึ่งชิ้น ต้องตรวจหลักฐานและผู้รับรอง",
+      "snapshot_bucket_version": 3,
+      "apply_expected_version": 3,
+      "adjustment_ref": "DEMO_MOVE_51_04",
+      "actual_decision_ref": null,
+      "actual_adjusted": false
+    },
+    {
+      "ref": "DEMO_COUNT_51_B",
+      "bucket_ref": "DEMO_BUCKET_51_B",
+      "cutoff_event_refs": [
+        "DEMO_MOVE_51_01",
+        "DEMO_MOVE_51_02",
+        "DEMO_MOVE_51_03",
+        "DEMO_MOVE_51_04",
+        "DEMO_MOVE_51_05"
+      ],
+      "expected": "4",
+      "counted": "5",
+      "variance": "1",
+      "reason": "TEST_นับเกินหนึ่งชิ้น ต้องสอบทานที่มาผ่านผู้ตรวจ",
+      "snapshot_bucket_version": 2,
+      "apply_expected_version": 2,
+      "adjustment_ref": "DEMO_MOVE_51_06",
+      "actual_decision_ref": null,
+      "actual_adjusted": false
+    }
+  ],
+  "stale_count_guard": {
+    "stocktake_line_ref": "DEMO_COUNT_51_A",
+    "snapshot_expected": "7",
+    "snapshot_counted": "6",
+    "approved_delta_reference": "-1",
+    "expected_version": 3,
+    "current_version_reference": 4,
+    "current_quantity_reference": "6",
+    "expected": "CONFLICT_RECOUNT_OR_NEW_REVIEW",
+    "actual": null
+  },
+  "fractional_count_reference": {
+    "unit_scale": 6,
+    "expected": "0.500000",
+    "counted": "0.499000",
+    "variance": "-0.001000",
+    "actual_adjusted": false
+  },
+  "asset_presence_reference": {
+    "asset_ref": "DEMO_ASSET_50_A",
+    "valid_at": "2027-06-04T12:00:00+07:00",
+    "expected_physical_place_ref": "DEMO_PLACE_50_BORROWER",
+    "loan_ref": "DEMO_LOAN_50_A",
+    "classification": "EXPECTED_AWAY_ON_LOAN",
+    "automatically_missing": false,
+    "automatically_disposed": false,
+    "actual_scanned": false
+  },
+  "retained_asset_lineage": {
+    "asset_ref": "DEMO_ASSET_50_A",
+    "asset_code": "TEST_ASSET_50_A",
+    "acquired_on": "2027-01-01",
+    "acquisition_cost": "25000.00",
+    "currency": "THB",
+    "funding_source_ref": "DEMO_FUNDING_47_A",
+    "fiscal_year_ref": "DEMO_FY_2027",
+    "source_receipt_line_ref": "DEMO_ASSET_RECEIPT_47_A",
+    "source_asset_ordinal": 1,
+    "owner_org_ref": "DEMO_ORG_50_A",
+    "custody_version_refs": [
+      "DEMO_ASSIGN_50_A_V2",
+      "DEMO_ASSIGN_50_B_V2",
+      "DEMO_ASSIGN_50_C_V1"
+    ],
+    "loan_history_refs": ["DEMO_LOAN_50_A"],
+    "maintenance_history_refs": ["DEMO_MAINTENANCE_50_A"],
+    "evidence_refs": ["DEMO_EVIDENCE_47_REQUIRED", "DEMO_EVIDENCE_50_REQUIRED"],
+    "actual_registered": false
+  },
+  "disposal_event_descriptors": [
+    {
+      "ref": "DEMO_DISPOSAL_EVENT_51_01",
+      "stage": "DRAFT",
+      "effective_on": "2027-07-10",
+      "recorded_at": "2027-07-10T02:00:00Z",
+      "expected_register_status": "ACTIVE",
+      "blocks_new_loan_reference": false,
+      "actual_posted": false
+    },
+    {
+      "ref": "DEMO_DISPOSAL_EVENT_51_02",
+      "stage": "SUBMITTED",
+      "effective_on": "2027-07-11",
+      "recorded_at": "2027-07-11T02:00:00Z",
+      "expected_register_status": "ACTIVE",
+      "blocks_new_loan_reference": false,
+      "actual_posted": false
+    },
+    {
+      "ref": "DEMO_DISPOSAL_EVENT_51_03",
+      "stage": "APPROVED_PENDING_EXECUTION",
+      "effective_on": "2027-07-12",
+      "recorded_at": "2027-07-12T02:00:00Z",
+      "expected_register_status": "ACTIVE",
+      "blocks_new_loan_reference": true,
+      "actual_posted": false
+    },
+    {
+      "ref": "DEMO_DISPOSAL_EVENT_51_04",
+      "stage": "EXECUTION_VERIFIED_PENDING_EFFECTIVE",
+      "effective_on": "2027-07-13",
+      "recorded_at": "2027-07-13T02:00:00Z",
+      "expected_register_status": "ACTIVE",
+      "blocks_new_loan_reference": true,
+      "actual_posted": false
+    },
+    {
+      "ref": "DEMO_DISPOSAL_EVENT_51_05",
+      "stage": "EFFECTIVE",
+      "effective_on": "2027-07-15",
+      "recorded_at": "2027-07-13T02:00:00Z",
+      "expected_register_status": "DISPOSED",
+      "blocks_new_loan_reference": true,
+      "actual_posted": false
+    }
+  ],
+  "disposal_execution_reference": {
+    "request_ref": "DEMO_DISPOSAL_REQUEST_51_A",
+    "asset_ref": "DEMO_ASSET_50_A",
+    "approved_request_revision": 1,
+    "actual_execution_date_reference": "2027-07-13",
+    "effective_on": "2027-07-15",
+    "required_evidence_ref": "DEMO_DISPOSAL_EXECUTION_EVIDENCE_REQUIRED",
+    "actual_verified_execution": false,
+    "actual_authority_verified": false,
+    "actual_decision_ref": null,
+    "actual_budget_posted": false,
+    "retained_lineage_ref": "retained_asset_lineage"
+  },
+  "disposal_asof_queries": [
+    {
+      "valid_on": "2027-07-11",
+      "known_at": "2027-07-11T05:00:00Z",
+      "expected_status": "ACTIVE",
+      "expected_stage": "SUBMITTED",
+      "actual_query_executed": false
+    },
+    {
+      "valid_on": "2027-07-14",
+      "known_at": "2027-07-14T05:00:00Z",
+      "expected_status": "ACTIVE",
+      "expected_stage": "EXECUTION_VERIFIED_PENDING_EFFECTIVE",
+      "actual_query_executed": false
+    },
+    {
+      "valid_on": "2027-07-15",
+      "known_at": "2027-07-15T05:00:00Z",
+      "expected_status": "DISPOSED",
+      "expected_stage": "EFFECTIVE",
+      "actual_query_executed": false
+    },
+    {
+      "valid_on": "2027-07-16",
+      "known_at": "2027-07-16T05:00:00Z",
+      "expected_status": "DISPOSED",
+      "expected_stage": "EFFECTIVE",
+      "actual_query_executed": false
+    }
+  ],
+  "deny_disposal_guards": [
+    {
+      "condition": "ACTIVE_LOAN",
+      "expected": "BLOCK_EFFECTIVE_DISPOSAL",
+      "actual": null
+    },
+    {
+      "condition": "APPROVED_RESERVED_LOAN",
+      "expected": "BLOCK_EFFECTIVE_DISPOSAL",
+      "actual": null
+    },
+    {
+      "condition": "RETURN_PENDING_INSPECTION",
+      "expected": "BLOCK_EFFECTIVE_DISPOSAL",
+      "actual": null
+    },
+    {
+      "condition": "ACTIVE_MAINTENANCE",
+      "expected": "BLOCK_EFFECTIVE_DISPOSAL",
+      "actual": null
+    },
+    {
+      "condition": "UNRESOLVED_BLOCKING_CLAIM",
+      "expected": "BLOCK_EFFECTIVE_DISPOSAL",
+      "actual": null
+    },
+    {
+      "condition": "PENDING_CUSTODY_HANDOVER",
+      "expected": "BLOCK_EFFECTIVE_DISPOSAL",
+      "actual": null
+    },
+    {
+      "condition": "MISSING_OR_UNVERIFIED_EXECUTION",
+      "expected": "BLOCK_EFFECTIVE_DISPOSAL",
+      "actual": null
+    },
+    {
+      "condition": "DIRTY_OR_UNAUTHORIZED_EVIDENCE",
+      "expected": "BLOCK_EFFECTIVE_DISPOSAL",
+      "actual": null
+    },
+    {
+      "condition": "UNKNOWN_AUTHORITY_OR_METHOD",
+      "expected": "BLOCK_EFFECTIVE_DISPOSAL",
+      "actual": null
+    },
+    {
+      "condition": "SOURCE_VERSION_CHANGED",
+      "expected": "BLOCK_EFFECTIVE_DISPOSAL",
+      "actual": null
+    }
+  ],
+  "material_report_reference": [
+    {
+      "bucket_ref": "DEMO_BUCKET_51_A",
+      "opening": "0",
+      "receipt_in": "10",
+      "transfer_in": "0",
+      "positive_adjustment": "0",
+      "issue_out": "2",
+      "return_out": "0",
+      "transfer_out": "1",
+      "negative_adjustment": "1",
+      "closing": "6"
+    },
+    {
+      "bucket_ref": "DEMO_BUCKET_51_B",
+      "opening": "0",
+      "receipt_in": "3",
+      "transfer_in": "1",
+      "positive_adjustment": "1",
+      "issue_out": "0",
+      "return_out": "0",
+      "transfer_out": "0",
+      "negative_adjustment": "0",
+      "closing": "5"
+    }
+  ],
+  "report_capture_reference": {
+    "valid_on": "2027-07-08",
+    "known_at": "2027-07-08T05:00:00Z",
+    "event_refs": [
+      "DEMO_MOVE_51_01",
+      "DEMO_MOVE_51_02",
+      "DEMO_MOVE_51_03",
+      "DEMO_MOVE_51_04",
+      "DEMO_MOVE_51_05",
+      "DEMO_MOVE_51_06"
+    ],
+    "expected_bucket_closing": {
+      "DEMO_BUCKET_51_A": "6",
+      "DEMO_BUCKET_51_B": "5"
+    },
+    "actual_manifest_hash": null,
+    "actual_screen_export_reconciled": false,
+    "export_fields_require_current_scope": true,
+    "get_creates_business_events": false
+  },
+  "depreciation_gate": {
+    "status": "NOT_CALCULATED_TO_VERIFY",
+    "official_depreciation_enabled": false,
+    "method": null,
+    "useful_life": null,
+    "residual_value": null,
+    "rounding_policy": null,
+    "actual_finance_approval_ref": null,
+    "depreciation_amount": null,
+    "net_book_value": null,
+    "actual_financial_post_created": false
+  },
+  "native_test_plan": {
+    "status": "NOT_RUN",
+    "connection_count": 2,
+    "barrier_phase": "BEFORE_COMMON_GATE_OR_ASSET_LOCK",
+    "fault_points": [
+      "before_source_commit",
+      "between_event_projection_receipt_audit_outbox",
+      "after_commit_before_response",
+      "worker_delivery_before_ack"
+    ],
+    "fixed_winner": null,
+    "actual_execution_manifest_ref": null
+  },
+  "criteria": {
+    "51-01": [
+      "P51-01",
+      "P51-02",
+      "P51-03",
+      "P51-04",
+      "P51-05",
+      "P51-06",
+      "P51-11",
+      "P51-14",
+      "P51-15",
+      "P51-16",
+      "P51-18"
+    ],
+    "51-02": [
+      "P51-07",
+      "P51-08",
+      "P51-09",
+      "P51-10",
+      "P51-11",
+      "P51-12",
+      "P51-13",
+      "P51-14",
+      "P51-17",
+      "P51-18"
+    ]
+  },
+  "cases": [
+    {
+      "id": "P51-01",
+      "expected": "capturestocktake/count window/gate/sourcewatermarks; expected/count/reason/unit/lot/finiteqtyแยก ไม่overwritebalance",
+      "status": "NOT_RUN",
+      "actual": null,
+      "execution_manifest_ref": null
+    },
+    {
+      "id": "P51-02",
+      "expected": "gateแข่งรับ/เบิก/โอน/return/import/adjust; writerทุกช่องทาง รวมmissingnullablebucketไม่หลุดgate",
+      "status": "NOT_RUN",
+      "actual": null,
+      "execution_manifest_ref": null
+    },
+    {
+      "id": "P51-03",
+      "expected": "countversion/sourceเปลี่ยนหลังreleaseหรือleaseผิด rejectstale/recount ไม่ใช้count-currentdeltaจากsnapshotเก่า",
+      "status": "NOT_RUN",
+      "actual": null,
+      "execution_manifest_ref": null
+    },
+    {
+      "id": "P51-04",
+      "expected": "makerchecker/currentauthority/CLEANevidence/approvehash/CAS/uniqueoperation/retry/newkey/zero-varianceไม่duplicateadjust",
+      "status": "NOT_RUN",
+      "actual": null,
+      "execution_manifest_ref": null
+    },
+    {
+      "id": "P51-05",
+      "expected": "materialdifferenceapprovedใหม่→movement→projection; nonnegative/exactscale/units และต้นทางเดิมไม่แก้ทับ",
+      "status": "NOT_RUN",
+      "actual": null,
+      "execution_manifest_ref": null
+    },
+    {
+      "id": "P51-06",
+      "expected": "assetpresence/away-on-loan/wronglocation/missing/unmatched ไม่autodispose/register/charge/ลดmaterial stock; scope-safe scan",
+      "status": "NOT_RUN",
+      "actual": null,
+      "execution_manifest_ref": null
+    },
+    {
+      "id": "P51-07",
+      "expected": "disposaldraft/returned/rejected/cancelledไม่DISPOSED approvedholdไม่เท่ากับexecution/effective",
+      "status": "NOT_RUN",
+      "actual": null,
+      "execution_manifest_ref": null
+    },
+    {
+      "id": "P51-08",
+      "expected": "activeLoan/repair/return/claim/custodydependencies กับdispose-vs-loanแข่งassetlockเดียว ไม่ลบงานค้าง",
+      "status": "NOT_RUN",
+      "actual": null,
+      "execution_manifest_ref": null
+    },
+    {
+      "id": "P51-09",
+      "expected": "approval+verifiedexecution+CLEAN/date/sourceversionครบจึงdisposed future/asof/lateworkerถูกต้อง",
+      "status": "NOT_RUN",
+      "actual": null,
+      "execution_manifest_ref": null
+    },
+    {
+      "id": "P51-10",
+      "expected": "disposal/recovery/correction/retry/สองคำขอจำหน่ายแข่งคงassetcode/cost/funding/receipt/loan/repair/custody/evidence หนึ่งactiveclaim ไม่reuseหรือdelete",
+      "status": "NOT_RUN",
+      "actual": null,
+      "execution_manifest_ref": null
+    },
+    {
+      "id": "P51-11",
+      "expected": "stock/asset/source/projection/watermarks/reportmanifestreconcile screen/page/grandtotal/Excel/PDFตรงทุกunit/context",
+      "status": "NOT_RUN",
+      "actual": null,
+      "execution_manifest_ref": null
+    },
+    {
+      "id": "P51-12",
+      "expected": "oldnames/place/cost/source/policyvalid-knownhistoryไม่latestjoin; reportอ่านอย่างเดียวไม่postเงินหรือstock",
+      "status": "NOT_RUN",
+      "actual": null,
+      "execution_manifest_ref": null
+    },
+    {
+      "id": "P51-13",
+      "expected": "report/export/download/file/job/URL/QRข้ามscope/fields deny privateHTML/API/cache ไม่มีPII/price/evidencepublic",
+      "status": "NOT_RUN",
+      "actual": null,
+      "execution_manifest_ref": null
+    },
+    {
+      "id": "P51-14",
+      "expected": "revoke/suspend/delegation/maker/techdenyทุกservice/API/directlimitedSQL/worker/fileversionACL",
+      "status": "NOT_RUN",
+      "actual": null,
+      "execution_manifest_ref": null
+    },
+    {
+      "id": "P51-15",
+      "expected": "failpoints gate/adjust/disposal/event/projection/receipt/audit/outboxก่อนcommit rollback; หลังcommitresponseหาย/workerACK dedupe",
+      "status": "NOT_RUN",
+      "actual": null,
+      "execution_manifest_ref": null
+    },
+    {
+      "id": "P51-16",
+      "expected": "ThaiExceltext/formulainjection/exactqty-money/leadingzero/SarabunA4/keyboard4viewports/privateexport workload",
+      "status": "NOT_RUN",
+      "actual": null,
+      "execution_manifest_ref": null
+    },
+    {
+      "id": "P51-17",
+      "expected": "unknowndepreciation/method/life/residual/rounding/cost/state/authority/closedperioddeny ไม่มีofficialamount/NBVหรือfinancialpostปลอม",
+      "status": "NOT_RUN",
+      "actual": null,
+      "execution_manifest_ref": null
+    },
+    {
+      "id": "P51-18",
+      "expected": "nativeinventoryhistory/export/faultmanifestและownerUATแยกsoftwarePASSจากพัสดุ/บัญชีpolicyที่verifiedจริง",
+      "status": "NOT_RUN",
+      "actual": null,
+      "execution_manifest_ref": null
+    }
+  ]
+}

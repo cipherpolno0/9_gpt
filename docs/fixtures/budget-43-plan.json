@@ -1,0 +1,274 @@
+{
+  "document_version": "0.1",
+  "lesson": 43,
+  "source_commit": "cffecc4",
+  "created_on": "2026-10-05",
+  "status": "PLAN_ONLY",
+  "seeded": false,
+  "runtime_loaded": false,
+  "official_allowed": false,
+  "policy": {
+    "code": "DEMO_BUDGET_SPENDING_43",
+    "version": 1,
+    "verification_status": "TO_VERIFY",
+    "currency": "THB",
+    "amount_transport": "CANONICAL_STRING",
+    "money_storage_proposal": "NUMERIC(20,2)",
+    "retry_max_attempts_proposal": 3,
+    "authority_bands": [],
+    "approved_decision_id": null,
+    "evidence_file_version_id": null,
+    "reversal_mode_proposal": "FULL_ONCE_WITH_APPROVED_DEPENDENCY_CHECK",
+    "future_spend_posting_allowed": false,
+    "bank_transfer_enabled": false
+  },
+  "context": {
+    "organization_ref": "DEMO_ORG_BUDGET_43_A",
+    "outside_scope_organization_ref": "DEMO_ORG_BUDGET_43_B",
+    "fiscal_year_ref": "DEMO_FY_2027",
+    "line_ref": "DEMO_BUDGET_LINE_43",
+    "reservation_ref": "DEMO_RESERVATION_43",
+    "obligation_ref": "DEMO_OBLIGATION_43",
+    "voucher_ref": "DEMO_VOUCHER_43",
+    "actor_refs_are_runtime_accounts": false,
+    "effective_on": "2027-04-01"
+  },
+  "bucket_order": ["A", "R", "U", "P", "C"],
+  "bucket_meanings": {
+    "A": "allocated_net",
+    "R": "reserved_open",
+    "U": "obligated_unpaid",
+    "P": "spent_recorded_net",
+    "C": "certified_unpaid_subset_of_U"
+  },
+  "available_formula": "A-R-U-P",
+  "reference_flow": [
+    {
+      "id": "DEMO_EVENT_43_ALLOCATE",
+      "kind": "ALLOCATION",
+      "amount": "100000.00",
+      "delta": ["100000.00", "0.00", "0.00", "0.00", "0.00"],
+      "expected_buckets": ["100000.00", "0.00", "0.00", "0.00", "0.00"],
+      "expected_available": "100000.00"
+    },
+    {
+      "id": "DEMO_EVENT_43_RESERVE",
+      "kind": "RESERVE",
+      "amount": "20000.00",
+      "delta": ["0.00", "20000.00", "0.00", "0.00", "0.00"],
+      "expected_buckets": ["100000.00", "20000.00", "0.00", "0.00", "0.00"],
+      "expected_available": "80000.00"
+    },
+    {
+      "id": "DEMO_EVENT_43_COMMIT",
+      "kind": "COMMIT_RESERVATION",
+      "amount": "20000.00",
+      "delta": ["0.00", "-20000.00", "20000.00", "0.00", "0.00"],
+      "expected_buckets": ["100000.00", "0.00", "20000.00", "0.00", "0.00"],
+      "expected_available": "80000.00"
+    },
+    {
+      "id": "DEMO_EVENT_43_CERTIFY",
+      "kind": "CERTIFY_DISBURSEMENT",
+      "amount": "5000.00",
+      "delta": ["0.00", "0.00", "0.00", "0.00", "5000.00"],
+      "expected_buckets": ["100000.00", "0.00", "20000.00", "0.00", "5000.00"],
+      "expected_available": "80000.00"
+    },
+    {
+      "id": "DEMO_EVENT_43_PAY",
+      "kind": "PAYMENT_RECORD",
+      "amount": "5000.00",
+      "delta": ["0.00", "0.00", "-5000.00", "5000.00", "-5000.00"],
+      "expected_buckets": ["100000.00", "0.00", "15000.00", "5000.00", "0.00"],
+      "expected_available": "80000.00"
+    }
+  ],
+  "release_reference": {
+    "starting_buckets": ["100000.00", "5000.00", "0.00", "0.00", "0.00"],
+    "own_reserved_remaining": "5000.00",
+    "amount": "2000.00",
+    "kind": "RELEASE_RESERVATION",
+    "delta": ["0.00", "-2000.00", "0.00", "0.00", "0.00"],
+    "expected_buckets": ["100000.00", "3000.00", "0.00", "0.00", "0.00"],
+    "expected_available": "97000.00"
+  },
+  "partial_reference": {
+    "starting_buckets": ["100000.00", "20000.00", "0.00", "0.00", "0.00"],
+    "steps": [
+      {
+        "kind": "COMMIT_RESERVATION",
+        "amount": "12000.00",
+        "delta": ["0.00", "-12000.00", "12000.00", "0.00", "0.00"]
+      },
+      {
+        "kind": "RELEASE_RESERVATION",
+        "amount": "8000.00",
+        "delta": ["0.00", "-8000.00", "0.00", "0.00", "0.00"]
+      },
+      {
+        "kind": "CERTIFY_DISBURSEMENT",
+        "amount": "5000.00",
+        "delta": ["0.00", "0.00", "0.00", "0.00", "5000.00"]
+      },
+      {
+        "kind": "PAYMENT_RECORD",
+        "amount": "2000.00",
+        "delta": ["0.00", "0.00", "-2000.00", "2000.00", "-2000.00"]
+      },
+      {
+        "kind": "PAYMENT_RECORD",
+        "amount": "3000.00",
+        "delta": ["0.00", "0.00", "-3000.00", "3000.00", "-3000.00"]
+      }
+    ],
+    "expected_buckets": ["100000.00", "0.00", "7000.00", "5000.00", "0.00"],
+    "expected_available": "88000.00"
+  },
+  "reversal_reference": {
+    "kind": "REVERSAL",
+    "original_event_ref": "DEMO_EVENT_43_PAY",
+    "mode": "FULL",
+    "starting_buckets": ["100000.00", "0.00", "15000.00", "5000.00", "0.00"],
+    "delta": ["0.00", "0.00", "5000.00", "-5000.00", "5000.00"],
+    "expected_buckets": ["100000.00", "0.00", "20000.00", "0.00", "5000.00"],
+    "expected_available": "80000.00",
+    "requires_new_approved_correction_and_voucher_reopen": true,
+    "actual_approval_present": false,
+    "bank_refund_executed": false,
+    "native_execution": "NOT_RUN"
+  },
+  "negative_reference_checks": [
+    {
+      "case": "release cannot consume another reservation",
+      "own_remaining": "4000.00",
+      "aggregate_R": "10000.00",
+      "amount": "5000.00",
+      "expected": "REJECT_OWN_REMAINING"
+    },
+    {
+      "case": "certification subset cannot exceed unpaid obligation",
+      "U": "20000.00",
+      "C": "5000.00",
+      "amount": "16000.00",
+      "expected": "REJECT_CERTIFIED_LIMIT"
+    },
+    {
+      "case": "payment cannot exceed own certified voucher",
+      "own_certified_remaining": "5000.00",
+      "U": "20000.00",
+      "amount": "6000.00",
+      "expected": "REJECT_VOUCHER_LIMIT"
+    },
+    {
+      "case": "reversing consumed reservation requires downstream recovery",
+      "own_remaining": "0.00",
+      "amount": "20000.00",
+      "expected": "REJECT_DEPENDENT_EVENTS"
+    }
+  ],
+  "concurrent_reservation_plan": {
+    "starting_available": "100000.00",
+    "amounts": ["60000.00", "60000.00"],
+    "expected_successes": 1,
+    "expected_rejections": 1,
+    "expected_final_R": "60000.00",
+    "expected_available": "40000.00",
+    "native_execution": "NOT_RUN"
+  },
+  "acceptance_cases": [
+    {
+      "id": "P43-01",
+      "case": "native full allocate/reserve/commit/certify/pay example keeps available80000",
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "P43-02",
+      "case": "partial conversion/release affects only own remaining; cannot consume other source",
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "P43-03",
+      "case": "certification remains subset of unpaid; parallel vouchers cannot over-certify",
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "P43-04",
+      "case": "partial payment moves U to P and reduces own voucher C atomically",
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "P43-05",
+      "case": "unapproved/unposted/future allocation/unknown usage cannot reserve or post",
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "P43-06",
+      "case": "two native connections reserve60000 each against100000, only one succeeds",
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "P43-07",
+      "case": "native commit-vs-release/certify-vs-payment/reversal contention respects own remaining",
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "P43-08",
+      "case": "retry/key hash mismatch/business payment duplicate/concurrent request one event",
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "P43-09",
+      "case": "forced failure between bucket updates rolls back event balance receipt audit outbox",
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "P43-10",
+      "case": "deadlock/serialization bounded whole-transaction retry same key; no denial retry",
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "P43-11",
+      "case": "URL body query source voucher line export direct SQL outside scope denied",
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "P43-12",
+      "case": "current account/delegation/revocation affects API receipt replay and queued job",
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "P43-13",
+      "case": "maker checker/period/source restriction/unclean or revoked evidence/TO VERIFY official deny",
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "P43-14",
+      "case": "approved correction full reversal once preserves original evidence; dependencies deny",
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "P43-15",
+      "case": "ledger-to-projection and subresource sums reconcile, no C double deduction",
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "P43-16",
+      "case": "effective/recorded history Bangkok dates exact string money private report/export",
+      "status": "NOT_RUN"
+    }
+  ],
+  "acceptance_mapping": {
+    "43-01": [
+      "P43-01",
+      "P43-02",
+      "P43-03",
+      "P43-04",
+      "P43-05",
+      "P43-14",
+      "P43-15",
+      "P43-16"
+    ],
+    "43-02": ["P43-06", "P43-07", "P43-08", "P43-09", "P43-10", "P43-15"]
+  }
+}
