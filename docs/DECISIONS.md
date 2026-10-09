@@ -1,6 +1,6 @@
 # รายการตัดสินใจ — เว็บไซต์กองบริหารทะเบียนและวัดผล
 
-ต่อยอด portal | รุ่นเอกสาร 1.51 | 9 ตุลาคม 2569 (2026-10-09)
+ต่อยอด portal | รุ่นเอกสาร 1.52 | 9 ตุลาคม 2569 (2026-10-09)
 
 Confirmed คือข้อกำหนดที่ผู้ใช้ให้ ไม่ใช่คำวินิจฉัยทางการ Proposal คือข้อเสนอที่รอผู้รับผิดชอบพิจารณา TO VERIFY คือยังไม่พอให้ตัดสินหรือใช้งานจริง ผู้ใช้อนุมัติแผนบท07แล้ว แต่ไม่ได้ยืนยันกฎทางการหรือแต่งตั้งเจ้าของงานจริงใน Q005
 
@@ -776,3 +776,12 @@ mainล่าสุดb306f96ลบเอกสารระดับราก78�
 ไม่ส่ง.envจริง/credentials, node_modules, .next, Prisma generated client, build cache, ZIPdeliverablesที่สร้างซ้ำได้ และต้นฉบับuploadที่มีเอกสารหลักอยู่แล้วผ่าน.gitignore ใช้secrets:checkและdiffcheckผ่าน JSONผลCIและSHA256migrationทั้ง3ตรง รอบนี้ไม่แก้runtime/schemaและไม่อ้างผลCIเดิมว่าเป็นUATprovider
 
 ผล git push origin HEAD:refs/heads/codex/portal-foundation-20261009: exit128 could not read Username for https://github.com ไม่มีHTTPS credentialในเครื่อง ใช้ GitHub connectorที่ผู้ใช้เลือกเผยแพร่Git blobs/tree/commit/refด้วยexpected-head leaseแทน ไม่ขอหรือพิมพ์token และต้องตรวจremote treeตรงกับlocalก่อนสรุปว่าเผยแพร่แล้ว
+
+
+## CI หลังเผยแพร่และแก้ registry limit
+
+Commit290fbc7ถูกเผยแพร่ครบแล้ว ตรวจtree6cad2f5803eb45504b246cdb7f8728e784f6f3e6ตรงlocal และworkingtreecleanรวม371trackedfiles ไม่มีไฟล์sourceค้าง CI run37995237432 job114039469662 failedก่อนcheckout: Docker Hubตอบtoomanyrequests unauthenticated pull rate limitและtokenrequesttimeout จึงไม่ได้รันทดสอบรอบนี้ ไม่เปลี่ยนหลักฐาน PASS32/32ที่ผูกsource5938b960ในrun37981290444
+
+แก้CIใช้ public.ecr.aws/docker/library/postgres:18.6-bookworm จากDocker Official ImagesบนAmazonECR PublicโดยคงPostgreSQL18.6จริง healthchecks/locks/RLS/ข้อบังคับ/การทดสอบเดิมทั้งหมด ไม่มีSQLiteหรือskiptests ไม่เพิ่มregistrycredentials app/schema0.8.0 migrations3ไม่เปลี่ยน ผลCIหลังแก้ต้องตรวจจริงตามpublication_ciในshared-workflow-results.json ไม่กรอกPASSก่อนรัน
+
+แหล่งตรวจmirror: https://gallery.ecr.aws/docker/library/postgres และ https://docs.aws.amazon.com/AmazonECR/latest/public/docker-pull-ecr-image.html ขั้นต่อไปยืนยันCIแล้วแก้providerDB/deploymentตามblockerเดิม UATownerและall9NO_GOยังค้าง

@@ -1,5 +1,5 @@
 {
-  "version": "0.2",
+  "version": "0.3",
   "date": "2026-10-09",
   "app_schema_version": "0.8.0",
   "models": 35,
@@ -131,5 +131,15 @@
     "owner UAT not signed",
     "native concurrency requires real PostgreSQL; not WASM"
   ],
-  "source_commit": "5938b96091726a5528d0f60457ab4ebffddfbb33"
+  "source_commit": "5938b96091726a5528d0f60457ab4ebffddfbb33",
+  "publication_ci": {
+    "commit": "290fbc7c8ecff5e8f77ee0742db30e3a94bd1802",
+    "run_id": 37995237432,
+    "job_id": 114039469662,
+    "status": "FAILED_INFRASTRUCTURE_BEFORE_CHECKOUT",
+    "tests_executed": false,
+    "cause": "Docker Hub unauthenticated image pull rate limit and token request timeout",
+    "remediation": "Use Docker Official PostgreSQL 18.6 bookworm mirror on public.ecr.aws",
+    "remediation_ci": "PENDING_RUN"
+  }
 }
