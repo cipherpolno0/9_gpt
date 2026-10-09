@@ -1,5 +1,5 @@
 {
-  "version": "0.3",
+  "version": "0.4",
   "date": "2026-10-09",
   "app_schema_version": "0.8.0",
   "models": 35,
@@ -140,6 +140,23 @@
     "tests_executed": false,
     "cause": "Docker Hub unauthenticated image pull rate limit and token request timeout",
     "remediation": "Use Docker Official PostgreSQL 18.6 bookworm mirror on public.ecr.aws",
-    "remediation_ci": "PENDING_RUN"
+    "remediation_ci": "PASS",
+    "remediation_run": {
+      "source_commit": "4f2b39668899aff461173444b0379dc77fe41b78",
+      "run_id": 37995727585,
+      "job_id": 114041175363,
+      "url": "https://github.com/cipherpolno0/9_gpt/actions/runs/37995727585",
+      "conclusion": "success",
+      "unit_tests": 27,
+      "unit_passed": 27,
+      "native_tests": 32,
+      "native_passed": 32,
+      "failed": 0,
+      "http_checks": 35,
+      "build": "PASS",
+      "image": "public.ecr.aws/docker/library/postgres:18.6-bookworm",
+      "migrations": 3,
+      "timestamp_utc": "2026-10-09T21:50:34Z"
+    }
   }
 }
