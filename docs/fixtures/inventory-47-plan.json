@@ -1,0 +1,642 @@
+{
+  "version": "0.1",
+  "lesson": 47,
+  "source_commit": "5db4f45",
+  "received_at": "2026-10-07T22:44:37+07:00",
+  "status": "PLAN_ONLY",
+  "prerequisite46": "BLOCKED",
+  "seeded": false,
+  "runtime_implemented": false,
+  "native_constraints_tested": false,
+  "official_registry_enabled": false,
+  "policy": {
+    "ref": "DEMO_CLASSIFICATION_47",
+    "status": "TO_VERIFY",
+    "acquisition_price_threshold": null,
+    "quantity_scale_max_proposed": 6,
+    "money_scale_proposed": 2,
+    "rounding_policy_verified": false,
+    "authority_verified": false,
+    "actual_clean_file_version": null
+  },
+  "notes": [
+    "ทุกชื่อ/รหัสเป็นสมมติ ไม่มีบัตร เบอร์ ที่อยู่ หรือราคาของจริง",
+    "UUIDเป็นdeterministic synthetic descriptor ไม่ใช่assetที่สร้างแล้วหรือtoken",
+    "quantity descriptors ไม่เป็นmovement/opening stock และการgroupไม่เป็นรายงานจากระบบ",
+    "DEMOหน่วย/category/rates/history/evidence/source refsยังไม่ได้รับรองหรือสร้าง FK",
+    "หน่วยไม่compatible/ไม่มีruleให้แยกแสดง ไม่sumrawmixedunitsหรือปัดจำนวนเอง"
+  ],
+  "units": [
+    {
+      "ref": "DEMO_UNIT_47_PIECE",
+      "version_ref": "DEMO_UV_47_PIECE_1",
+      "label": "ชิ้นสมมติ",
+      "dimension": "COUNT",
+      "quantity_scale": 0,
+      "is_discrete": true
+    },
+    {
+      "ref": "DEMO_UNIT_47_BOX",
+      "version_ref": "DEMO_UV_47_BOX_1",
+      "label": "กล่องสมมติ",
+      "dimension": "PACKAGING",
+      "quantity_scale": 0,
+      "is_discrete": true
+    },
+    {
+      "ref": "DEMO_UNIT_47_KG",
+      "version_ref": "DEMO_UV_47_KG_1",
+      "label": "กิโลกรัมสมมติ",
+      "dimension": "MASS",
+      "quantity_scale": 6,
+      "is_discrete": false
+    },
+    {
+      "ref": "DEMO_UNIT_47_G",
+      "version_ref": "DEMO_UV_47_G_1",
+      "label": "กรัมสมมติ",
+      "dimension": "MASS",
+      "quantity_scale": 3,
+      "is_discrete": false
+    }
+  ],
+  "items": [
+    {
+      "ref": "DEMO_ITEM_47_PAPER",
+      "code": "DEMO_PAPER_47",
+      "name": "กระดาษสมมติสำหรับทดลอง",
+      "kind": "MATERIAL_CONSUMABLE",
+      "base_unit_ref": "DEMO_UNIT_47_PIECE",
+      "base_unit_version_ref": "DEMO_UV_47_PIECE_1"
+    },
+    {
+      "ref": "DEMO_ITEM_47_BOLT",
+      "code": "DEMO_BOLT_47",
+      "name": "นอตสมมติสำหรับทดลอง",
+      "kind": "MATERIAL_CONSUMABLE",
+      "base_unit_ref": "DEMO_UNIT_47_PIECE",
+      "base_unit_version_ref": "DEMO_UV_47_PIECE_1"
+    },
+    {
+      "ref": "DEMO_ITEM_47_POWDER",
+      "code": "DEMO_POWDER_47",
+      "name": "วัสดุผงสมมติสำหรับทดลอง",
+      "kind": "MATERIAL_CONSUMABLE",
+      "base_unit_ref": "DEMO_UNIT_47_KG",
+      "base_unit_version_ref": "DEMO_UV_47_KG_1"
+    },
+    {
+      "ref": "DEMO_ITEM_47_DEVICE",
+      "code": "DEMO_DEVICE_47",
+      "name": "อุปกรณ์สมมติสำหรับทะเบียนรายชิ้น",
+      "kind": "ASSET_SERIALIZED",
+      "base_unit_ref": "DEMO_UNIT_47_PIECE",
+      "category_ref": "DEMO_CATEGORY_47_DEVICE_V1",
+      "base_unit_version_ref": "DEMO_UV_47_PIECE_1"
+    }
+  ],
+  "warehouses": [
+    {
+      "ref": "DEMO_WAREHOUSE_47_A1",
+      "organization_ref": "DEMO_ORG_47_A",
+      "code": "DEMO_W01",
+      "label": "คลังสมมติAหนึ่ง"
+    },
+    {
+      "ref": "DEMO_WAREHOUSE_47_A2",
+      "organization_ref": "DEMO_ORG_47_A",
+      "code": "DEMO_W02",
+      "label": "คลังสมมติAสอง"
+    },
+    {
+      "ref": "DEMO_WAREHOUSE_47_B1",
+      "organization_ref": "DEMO_ORG_47_B",
+      "code": "DEMO_W01",
+      "label": "คลังสมมติBหนึ่ง"
+    }
+  ],
+  "stock_locations": [
+    {
+      "ref": "DEMO_LOCATION_47_A1",
+      "warehouse_ref": "DEMO_WAREHOUSE_47_A1",
+      "code": "DEMO_S01",
+      "label": "จุดเก็บสมมติA1"
+    },
+    {
+      "ref": "DEMO_LOCATION_47_A2",
+      "warehouse_ref": "DEMO_WAREHOUSE_47_A2",
+      "code": "DEMO_S01",
+      "label": "จุดเก็บสมมติA2"
+    },
+    {
+      "ref": "DEMO_LOCATION_47_B1",
+      "warehouse_ref": "DEMO_WAREHOUSE_47_B1",
+      "code": "DEMO_S01",
+      "label": "จุดเก็บสมมติB1"
+    }
+  ],
+  "conversion_versions": [
+    {
+      "ref": "DEMO_PACK_PAPER_V1",
+      "item_ref": "DEMO_ITEM_47_PAPER",
+      "package_variant_ref": "DEMO_PACK_PAPER",
+      "from_unit_ref": "DEMO_UNIT_47_BOX",
+      "to_unit_ref": "DEMO_UNIT_47_PIECE",
+      "numerator": "12",
+      "denominator": "1",
+      "effective_from": "2027-04-01",
+      "effective_to": "2027-05-01",
+      "recorded_at": "2027-04-01T02:00:00Z",
+      "evidence_ref": "DEMO_EVIDENCE_47_REQUIRED",
+      "status": "TO_VERIFY",
+      "actual_verified": false,
+      "from_unit_version_ref": "DEMO_UV_47_BOX_1",
+      "to_unit_version_ref": "DEMO_UV_47_PIECE_1"
+    },
+    {
+      "ref": "DEMO_PACK_PAPER_V2",
+      "item_ref": "DEMO_ITEM_47_PAPER",
+      "package_variant_ref": "DEMO_PACK_PAPER",
+      "from_unit_ref": "DEMO_UNIT_47_BOX",
+      "to_unit_ref": "DEMO_UNIT_47_PIECE",
+      "numerator": "10",
+      "denominator": "1",
+      "effective_from": "2027-05-01",
+      "effective_to": null,
+      "recorded_at": "2027-04-01T02:00:00Z",
+      "evidence_ref": "DEMO_EVIDENCE_47_REQUIRED",
+      "status": "TO_VERIFY",
+      "actual_verified": false,
+      "from_unit_version_ref": "DEMO_UV_47_BOX_1",
+      "to_unit_version_ref": "DEMO_UV_47_PIECE_1"
+    },
+    {
+      "ref": "DEMO_PACK_BOLT_V1",
+      "item_ref": "DEMO_ITEM_47_BOLT",
+      "package_variant_ref": "DEMO_PACK_BOLT",
+      "from_unit_ref": "DEMO_UNIT_47_BOX",
+      "to_unit_ref": "DEMO_UNIT_47_PIECE",
+      "numerator": "6",
+      "denominator": "1",
+      "effective_from": "2027-04-01",
+      "effective_to": null,
+      "recorded_at": "2027-04-01T02:00:00Z",
+      "evidence_ref": "DEMO_EVIDENCE_47_REQUIRED",
+      "status": "TO_VERIFY",
+      "actual_verified": false,
+      "from_unit_version_ref": "DEMO_UV_47_BOX_1",
+      "to_unit_version_ref": "DEMO_UV_47_PIECE_1"
+    },
+    {
+      "ref": "DEMO_MASS_POWDER_V1",
+      "item_ref": "DEMO_ITEM_47_POWDER",
+      "package_variant_ref": "DEMO_MASS_POWDER",
+      "from_unit_ref": "DEMO_UNIT_47_KG",
+      "to_unit_ref": "DEMO_UNIT_47_G",
+      "numerator": "1000",
+      "denominator": "1",
+      "effective_from": "2027-04-01",
+      "effective_to": null,
+      "recorded_at": "2027-04-01T02:00:00Z",
+      "evidence_ref": "DEMO_EVIDENCE_47_REQUIRED",
+      "status": "TO_VERIFY",
+      "actual_verified": false,
+      "from_unit_version_ref": "DEMO_UV_47_KG_1",
+      "to_unit_version_ref": "DEMO_UV_47_G_1"
+    }
+  ],
+  "quantity_descriptors": [
+    {
+      "ref": "DEMO_Q47_PAPER_A1",
+      "item_ref": "DEMO_ITEM_47_PAPER",
+      "warehouse_ref": "DEMO_WAREHOUSE_47_A1",
+      "unit_ref": "DEMO_UNIT_47_PIECE",
+      "quantity": "12",
+      "actual_stock_posted": false,
+      "unit_version_ref": "DEMO_UV_47_PIECE_1"
+    },
+    {
+      "ref": "DEMO_Q47_PAPER_A2",
+      "item_ref": "DEMO_ITEM_47_PAPER",
+      "warehouse_ref": "DEMO_WAREHOUSE_47_A2",
+      "unit_ref": "DEMO_UNIT_47_BOX",
+      "quantity": "2",
+      "conversion_ref": "DEMO_PACK_PAPER_V1",
+      "target_unit_ref": "DEMO_UNIT_47_PIECE",
+      "expected_converted_quantity": "24",
+      "snapshot_effective_on": "2027-04-15",
+      "actual_stock_posted": false,
+      "unit_version_ref": "DEMO_UV_47_BOX_1",
+      "target_unit_version_ref": "DEMO_UV_47_PIECE_1"
+    },
+    {
+      "ref": "DEMO_Q47_BOLT_A1",
+      "item_ref": "DEMO_ITEM_47_BOLT",
+      "warehouse_ref": "DEMO_WAREHOUSE_47_A1",
+      "unit_ref": "DEMO_UNIT_47_BOX",
+      "quantity": "3",
+      "conversion_ref": "DEMO_PACK_BOLT_V1",
+      "target_unit_ref": "DEMO_UNIT_47_PIECE",
+      "expected_converted_quantity": "18",
+      "snapshot_effective_on": "2027-04-15",
+      "actual_stock_posted": false,
+      "unit_version_ref": "DEMO_UV_47_BOX_1",
+      "target_unit_version_ref": "DEMO_UV_47_PIECE_1"
+    },
+    {
+      "ref": "DEMO_Q47_POWDER_A2",
+      "item_ref": "DEMO_ITEM_47_POWDER",
+      "warehouse_ref": "DEMO_WAREHOUSE_47_A2",
+      "unit_ref": "DEMO_UNIT_47_KG",
+      "quantity": "1.250000",
+      "conversion_ref": "DEMO_MASS_POWDER_V1",
+      "target_unit_ref": "DEMO_UNIT_47_G",
+      "expected_converted_quantity": "1250.000",
+      "snapshot_effective_on": "2027-04-15",
+      "actual_stock_posted": false,
+      "unit_version_ref": "DEMO_UV_47_KG_1",
+      "target_unit_version_ref": "DEMO_UV_47_G_1"
+    }
+  ],
+  "expected_raw_groups": [
+    {
+      "item_ref": "DEMO_ITEM_47_PAPER",
+      "warehouse_ref": "DEMO_WAREHOUSE_47_A1",
+      "unit_ref": "DEMO_UNIT_47_PIECE",
+      "quantity": "12"
+    },
+    {
+      "item_ref": "DEMO_ITEM_47_PAPER",
+      "warehouse_ref": "DEMO_WAREHOUSE_47_A2",
+      "unit_ref": "DEMO_UNIT_47_BOX",
+      "quantity": "2"
+    },
+    {
+      "item_ref": "DEMO_ITEM_47_BOLT",
+      "warehouse_ref": "DEMO_WAREHOUSE_47_A1",
+      "unit_ref": "DEMO_UNIT_47_BOX",
+      "quantity": "3"
+    },
+    {
+      "item_ref": "DEMO_ITEM_47_POWDER",
+      "warehouse_ref": "DEMO_WAREHOUSE_47_A2",
+      "unit_ref": "DEMO_UNIT_47_KG",
+      "quantity": "1.250000"
+    }
+  ],
+  "expected_converted_paper_total": {
+    "target_unit_ref": "DEMO_UNIT_47_PIECE",
+    "quantity": "36",
+    "pinned_conversion_ref": "DEMO_PACK_PAPER_V1",
+    "official_or_actual_report": false
+  },
+  "asset_descriptors": [
+    {
+      "ref": "DEMO_ASSET_47_0001",
+      "id": "8b27b786-0273-501f-9351-1489205eccf5",
+      "asset_code": "DEMO_ASSET_47_0001",
+      "item_ref": "DEMO_ITEM_47_DEVICE",
+      "organization_ref": "DEMO_ORG_47_A",
+      "quantity": "1",
+      "unit_ref": "DEMO_UNIT_47_PIECE",
+      "serial_number": null,
+      "actual_registered": false,
+      "source_kind": "DEMO_LEGACY_PROPOSAL",
+      "source_evidence_ref": "DEMO_EVIDENCE_47_REQUIRED",
+      "actual_approved_decision": null,
+      "unit_version_ref": "DEMO_UV_47_PIECE_1"
+    },
+    {
+      "ref": "DEMO_ASSET_47_0002",
+      "id": "6f082d9f-668c-577c-8bd2-f213365d28cf",
+      "asset_code": "DEMO_ASSET_47_0002",
+      "item_ref": "DEMO_ITEM_47_DEVICE",
+      "organization_ref": "DEMO_ORG_47_B",
+      "quantity": "1",
+      "unit_ref": "DEMO_UNIT_47_PIECE",
+      "serial_number": "DEMO_SERIAL_47_B2",
+      "actual_registered": false,
+      "source_kind": "DEMO_LEGACY_PROPOSAL",
+      "source_evidence_ref": "DEMO_EVIDENCE_47_REQUIRED",
+      "actual_approved_decision": null,
+      "unit_version_ref": "DEMO_UV_47_PIECE_1"
+    }
+  ],
+  "asset_version_descriptors": [
+    {
+      "ref": "DEMO_AV47_A_V1",
+      "asset_ref": "DEMO_ASSET_47_0001",
+      "effective_from": "2027-04-01",
+      "effective_to": "2027-05-01",
+      "recorded_at": "2027-04-01T02:00:00Z",
+      "superseded_at": "2027-04-25T02:00:00Z",
+      "warehouse_ref": "DEMO_WAREHOUSE_47_A1",
+      "location_ref": "DEMO_LOCATION_47_A1",
+      "custodian_person_ref": "DEMO_PERSON_47_A",
+      "cost_state": "KNOWN",
+      "acquisition_cost": "1000.25",
+      "currency": "THB",
+      "replaces_ref": null,
+      "acquired_on": "2027-04-01",
+      "fiscal_year_ref": "DEMO_FY_2027",
+      "funding_source_ref": "DEMO_SOURCE_47_REQUIRED",
+      "evidence_ref": "DEMO_EVIDENCE_47_REQUIRED",
+      "actual_approved_decision": null,
+      "actual_applied": false,
+      "asset_status_code": "DEMO_IN_USE",
+      "owner_organization_ref": "DEMO_ORG_47_A"
+    },
+    {
+      "ref": "DEMO_AV47_A_V2",
+      "asset_ref": "DEMO_ASSET_47_0001",
+      "effective_from": "2027-05-01",
+      "effective_to": null,
+      "recorded_at": "2027-04-20T02:00:00Z",
+      "superseded_at": "2027-04-25T02:00:00Z",
+      "warehouse_ref": "DEMO_WAREHOUSE_47_A2",
+      "location_ref": "DEMO_LOCATION_47_A2",
+      "custodian_person_ref": "DEMO_PERSON_47_B",
+      "cost_state": "KNOWN",
+      "acquisition_cost": "1000.25",
+      "currency": "THB",
+      "replaces_ref": null,
+      "acquired_on": "2027-04-01",
+      "fiscal_year_ref": "DEMO_FY_2027",
+      "funding_source_ref": "DEMO_SOURCE_47_REQUIRED",
+      "evidence_ref": "DEMO_EVIDENCE_47_REQUIRED",
+      "actual_approved_decision": null,
+      "actual_applied": false,
+      "asset_status_code": "DEMO_IN_USE",
+      "owner_organization_ref": "DEMO_ORG_47_A"
+    },
+    {
+      "ref": "DEMO_AV47_A_V1_CORRECTION",
+      "asset_ref": "DEMO_ASSET_47_0001",
+      "effective_from": "2027-04-01",
+      "effective_to": "2027-05-01",
+      "recorded_at": "2027-04-25T02:00:00Z",
+      "superseded_at": null,
+      "warehouse_ref": "DEMO_WAREHOUSE_47_A1",
+      "location_ref": "DEMO_LOCATION_47_A1",
+      "custodian_person_ref": "DEMO_PERSON_47_A",
+      "cost_state": "KNOWN",
+      "acquisition_cost": "1000.30",
+      "currency": "THB",
+      "replaces_ref": "DEMO_AV47_A_V1",
+      "correction_reason": "เหตุผลสมมติสำหรับตรวจการเก็บรุ่นต้นทุน",
+      "acquired_on": "2027-04-01",
+      "fiscal_year_ref": "DEMO_FY_2027",
+      "funding_source_ref": "DEMO_SOURCE_47_REQUIRED",
+      "evidence_ref": "DEMO_EVIDENCE_47_REQUIRED",
+      "actual_approved_decision": null,
+      "actual_applied": false,
+      "asset_status_code": "DEMO_IN_USE",
+      "owner_organization_ref": "DEMO_ORG_47_A"
+    },
+    {
+      "ref": "DEMO_AV47_B_V1",
+      "asset_ref": "DEMO_ASSET_47_0002",
+      "effective_from": "2027-04-01",
+      "effective_to": null,
+      "recorded_at": "2027-04-01T02:00:00Z",
+      "superseded_at": null,
+      "warehouse_ref": "DEMO_WAREHOUSE_47_B1",
+      "location_ref": "DEMO_LOCATION_47_B1",
+      "custodian_person_ref": null,
+      "cost_state": "UNKNOWN",
+      "acquisition_cost": null,
+      "unknown_cost_reason": "ยังไม่ได้รับหลักฐานราคาสมมติ",
+      "currency": "THB",
+      "replaces_ref": null,
+      "acquired_on": "2027-04-01",
+      "fiscal_year_ref": "DEMO_FY_2027",
+      "funding_source_ref": "DEMO_SOURCE_47_REQUIRED",
+      "evidence_ref": "DEMO_EVIDENCE_47_REQUIRED",
+      "actual_approved_decision": null,
+      "actual_applied": false,
+      "asset_status_code": "DEMO_IN_USE",
+      "owner_organization_ref": "DEMO_ORG_47_B"
+    },
+    {
+      "ref": "DEMO_AV47_A_V2_CORRECTION",
+      "asset_ref": "DEMO_ASSET_47_0001",
+      "effective_from": "2027-05-01",
+      "effective_to": null,
+      "recorded_at": "2027-04-25T02:00:00Z",
+      "superseded_at": null,
+      "warehouse_ref": "DEMO_WAREHOUSE_47_A2",
+      "location_ref": "DEMO_LOCATION_47_A2",
+      "custodian_person_ref": "DEMO_PERSON_47_B",
+      "cost_state": "KNOWN",
+      "acquisition_cost": "1000.30",
+      "currency": "THB",
+      "replaces_ref": "DEMO_AV47_A_V2",
+      "acquired_on": "2027-04-01",
+      "fiscal_year_ref": "DEMO_FY_2027",
+      "funding_source_ref": "DEMO_SOURCE_47_REQUIRED",
+      "evidence_ref": "DEMO_EVIDENCE_47_REQUIRED",
+      "actual_approved_decision": null,
+      "actual_applied": false,
+      "asset_status_code": "DEMO_IN_USE",
+      "correction_reason": "แก้ต้นทุนสมมติในรุ่นอนาคตพร้อมรุ่นปัจจุบัน โดยคงต้นเรื่องเดิม",
+      "owner_organization_ref": "DEMO_ORG_47_A"
+    }
+  ],
+  "history_query_plan": [
+    {
+      "asset_ref": "DEMO_ASSET_47_0001",
+      "valid_at": "2027-04-24",
+      "known_at": "2027-04-24T12:00:00Z",
+      "expected_version_ref": "DEMO_AV47_A_V1"
+    },
+    {
+      "asset_ref": "DEMO_ASSET_47_0001",
+      "valid_at": "2027-05-01",
+      "known_at": "2027-04-24T12:00:00Z",
+      "expected_version_ref": "DEMO_AV47_A_V2"
+    },
+    {
+      "asset_ref": "DEMO_ASSET_47_0001",
+      "valid_at": "2027-04-24",
+      "known_at": "2027-04-26T12:00:00Z",
+      "expected_version_ref": "DEMO_AV47_A_V1_CORRECTION"
+    },
+    {
+      "asset_ref": "DEMO_ASSET_47_0001",
+      "valid_at": "2027-03-31",
+      "known_at": "2027-04-26T12:00:00Z",
+      "expected_version_ref": null
+    },
+    {
+      "asset_ref": "DEMO_ASSET_47_0001",
+      "valid_at": "2027-05-01",
+      "known_at": "2027-04-26T12:00:00Z",
+      "expected_version_ref": "DEMO_AV47_A_V2_CORRECTION"
+    }
+  ],
+  "qr_pointer_plan": [
+    {
+      "asset_ref": "DEMO_ASSET_47_0001",
+      "resource_uuid": "8b27b786-0273-501f-9351-1489205eccf5",
+      "pointer_path": "/app/inventory/assets/8b27b786-0273-501f-9351-1489205eccf5",
+      "origin_configured": false,
+      "actual_payload_url": null,
+      "actual_image_generated": false,
+      "actual_decode_test_run": false,
+      "grants_access": false
+    },
+    {
+      "asset_ref": "DEMO_ASSET_47_0002",
+      "resource_uuid": "6f082d9f-668c-577c-8bd2-f213365d28cf",
+      "pointer_path": "/app/inventory/assets/6f082d9f-668c-577c-8bd2-f213365d28cf",
+      "origin_configured": false,
+      "actual_payload_url": null,
+      "actual_image_generated": false,
+      "actual_decode_test_run": false,
+      "grants_access": false
+    }
+  ],
+  "invalid_plan": [
+    {
+      "id": "FRACTIONAL_DISCRETE",
+      "quantity": "0.5",
+      "unit_ref": "DEMO_UNIT_47_PIECE",
+      "expected": "DENY"
+    },
+    {
+      "id": "ZERO_DENOMINATOR",
+      "numerator": "1",
+      "denominator": "0",
+      "expected": "DENY"
+    },
+    {
+      "id": "NO_ITEM_RULE",
+      "item_ref": "DEMO_ITEM_47_DEVICE",
+      "from_unit_ref": "DEMO_UNIT_47_BOX",
+      "expected": "UNAVAILABLE_OR_DENY"
+    },
+    {
+      "id": "PRECISION_LOSS",
+      "numerator": "1",
+      "denominator": "3",
+      "target_scale": 0,
+      "expected": "DENY"
+    },
+    {
+      "id": "DUPLICATE_ASSET_CODE",
+      "attempted_code": "DEMO_ASSET_47_0001",
+      "expected": "DB_UNIQUE_DENY_NOT_YET_TESTED"
+    }
+  ],
+  "criteria": {
+    "47-01": [
+      "P47-01",
+      "P47-02",
+      "P47-03",
+      "P47-04",
+      "P47-05",
+      "P47-06",
+      "P47-07",
+      "P47-08"
+    ],
+    "47-02": ["P47-09", "P47-10", "P47-11", "P47-12", "P47-13", "P47-16"]
+  },
+  "cases": [
+    {
+      "id": "P47-01",
+      "expected": "itemกลางเดียวหลายคลัง/location groupedตามunit; ไม่มีmovementแสดงunavailable",
+      "status": "NOT_RUN",
+      "actual": null
+    },
+    {
+      "id": "P47-02",
+      "expected": "item/UOM/warehouse/location/category/FK-context/typeguards และไม่สร้างOrganization/Personซ้ำ",
+      "status": "NOT_RUN",
+      "actual": null
+    },
+    {
+      "id": "P47-03",
+      "expected": "quantityexact/scale/discrete/finite/ratio และmoneyexact/known-unknownไม่มีfloat",
+      "status": "NOT_RUN",
+      "actual": null
+    },
+    {
+      "id": "P47-04",
+      "expected": "item-package-specificconversionที่มีรุ่น แยกdimension/units ไม่มีruledeny ไม่latestทับsnapshot",
+      "status": "NOT_RUN",
+      "actual": null
+    },
+    {
+      "id": "P47-05",
+      "expected": "assetcodeuniqueรวมinactive/nativeconcurrentregister และsource_receipt+ordinalidentity",
+      "status": "NOT_RUN",
+      "actual": null
+    },
+    {
+      "id": "P47-06",
+      "expected": "samekey/hashretry/newhashconflict/CAS/evidence/audit/outboxatomic",
+      "status": "NOT_RUN",
+      "actual": null
+    },
+    {
+      "id": "P47-07",
+      "expected": "assetunitจำนวนเต็ม serialoptional/nofakezero cost sourceunknownไม่official",
+      "status": "NOT_RUN",
+      "actual": null
+    },
+    {
+      "id": "P47-08",
+      "expected": "current/history/future/correctionvalid-at-known-at/custody-policyและoldnamesตามversion",
+      "status": "NOT_RUN",
+      "actual": null
+    },
+    {
+      "id": "P47-09",
+      "expected": "QRpayloadไม่มีPII/price/token/objectkey; generatordecodeได้ URLbarcodebindingตรงasset",
+      "status": "NOT_RUN",
+      "actual": null
+    },
+    {
+      "id": "P47-10",
+      "expected": "ไม่มีsession/noauthorityสแกนแล้วอ่านdetailsไม่ได้ ไม่เปิดHTML/API/preview/cache/static",
+      "status": "NOT_RUN",
+      "actual": null
+    },
+    {
+      "id": "P47-11",
+      "expected": "asset_id/warehouse/org/contextข้ามscopeผ่านURL/body/query/export/job/downloaddeny",
+      "status": "NOT_RUN",
+      "actual": null
+    },
+    {
+      "id": "P47-12",
+      "expected": "revoke/suspend/expiry/delegation/currentgrantระหว่างread/job/printและafterlogin",
+      "status": "NOT_RUN",
+      "actual": null
+    },
+    {
+      "id": "P47-13",
+      "expected": "privatefiledirty/CLEANversion/scan/ACL/newversionและmakerchecker/techdeny",
+      "status": "NOT_RUN",
+      "actual": null
+    },
+    {
+      "id": "P47-14",
+      "expected": "textlink/barcodekeyboard/labels/focus/empty/error/status/4viewportsไทย",
+      "status": "NOT_RUN",
+      "actual": null
+    },
+    {
+      "id": "P47-15",
+      "expected": "unknownclassification/costthreshold/currency/custody/officialcodes/authoritydeny ไม่เดาค่าเสื่อม",
+      "status": "NOT_RUN",
+      "actual": null
+    },
+    {
+      "id": "P47-16",
+      "expected": "registration/GET/QRprint/readไม่มีpayment/reservation/stock/roleassignmentใหม่และevidencehistoryไม่หาย",
+      "status": "NOT_RUN",
+      "actual": null
+    }
+  ]
+}

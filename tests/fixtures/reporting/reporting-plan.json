@@ -1,0 +1,288 @@
+{
+  "version": "0.1",
+  "lesson": 66,
+  "baseline": "1793fed",
+  "status": "PLAN_ONLY",
+  "execution": "ALL_NOT_RUN",
+  "runtime": "NOT_IMPLEMENTED",
+  "data_mode": "DEMO_ONLY",
+  "handler_enabled": false,
+  "prerequisite65": "BLOCKED",
+  "metrics_plan": [
+    {
+      "metric_id": "M66-01",
+      "owner": "central-workflow",
+      "grain": "task_id",
+      "aggregation": "COUNT_DISTINCT",
+      "definition_status": "PROPOSAL",
+      "actual_source_ids": []
+    },
+    {
+      "metric_id": "M66-02",
+      "owner": "requests04",
+      "grain": "request_id",
+      "aggregation": "COUNT_DISTINCT",
+      "definition_status": "PROPOSAL",
+      "actual_source_ids": []
+    },
+    {
+      "metric_id": "M66-03",
+      "owner": "people01",
+      "grain": "person_id",
+      "aggregation": "COUNT_DISTINCT",
+      "definition_status": "PROPOSAL",
+      "actual_source_ids": []
+    },
+    {
+      "metric_id": "M66-04",
+      "owner": "people01",
+      "grain": "assignment_id",
+      "aggregation": "COUNT_DISTINCT",
+      "definition_status": "PROPOSAL",
+      "actual_source_ids": []
+    },
+    {
+      "metric_id": "M66-05",
+      "owner": "organizations02",
+      "grain": "organization_id",
+      "aggregation": "COUNT_DISTINCT",
+      "definition_status": "PROPOSAL",
+      "actual_source_ids": []
+    },
+    {
+      "metric_id": "M66-06",
+      "owner": "organizations02",
+      "grain": "exam_center_id",
+      "aggregation": "COUNT_DISTINCT",
+      "definition_status": "PROPOSAL",
+      "actual_source_ids": []
+    },
+    {
+      "metric_id": "M66-07",
+      "owner": "organizations02",
+      "grain": "center_session_id",
+      "aggregation": "COUNT_DISTINCT",
+      "definition_status": "PROPOSAL",
+      "actual_source_ids": []
+    },
+    {
+      "metric_id": "M66-08",
+      "owner": "exams05",
+      "grain": "person_id",
+      "aggregation": "COUNT_DISTINCT",
+      "definition_status": "PROPOSAL",
+      "actual_source_ids": []
+    },
+    {
+      "metric_id": "M66-09",
+      "owner": "exams05",
+      "grain": "enrollment_id",
+      "aggregation": "COUNT_DISTINCT",
+      "definition_status": "PROPOSAL",
+      "actual_source_ids": []
+    },
+    {
+      "metric_id": "M66-10",
+      "owner": "exams05",
+      "grain": "application_id",
+      "aggregation": "COUNT_DISTINCT",
+      "definition_status": "PROPOSAL",
+      "actual_source_ids": []
+    },
+    {
+      "metric_id": "M66-11",
+      "owner": "exams05",
+      "grain": "candidate.person_id",
+      "aggregation": "COUNT_DISTINCT",
+      "definition_status": "PROPOSAL",
+      "actual_source_ids": []
+    },
+    {
+      "metric_id": "M66-12",
+      "owner": "exams05",
+      "grain": "result_id_certified_version",
+      "aggregation": "COUNT_DISTINCT",
+      "definition_status": "PROPOSAL",
+      "actual_source_ids": []
+    },
+    {
+      "metric_id": "M66-13",
+      "owner": "exams05",
+      "grain": "released_result_id",
+      "aggregation": "COUNT_DISTINCT",
+      "definition_status": "PROPOSAL",
+      "actual_source_ids": []
+    },
+    {
+      "metric_id": "M66-14",
+      "owner": "learning03",
+      "grain": "person_id",
+      "aggregation": "COUNT_DISTINCT",
+      "definition_status": "PROPOSAL",
+      "actual_source_ids": []
+    },
+    {
+      "metric_id": "M66-15",
+      "owner": "learning03",
+      "grain": "attempt_id",
+      "aggregation": "COUNT_DISTINCT",
+      "definition_status": "PROPOSAL",
+      "actual_source_ids": []
+    },
+    {
+      "metric_id": "M66-16",
+      "owner": "budget06",
+      "grain": "budget_line_id_currency_fiscal_year_id",
+      "aggregation": "EXACT_BALANCE_FORMULA",
+      "definition_status": "PROPOSAL",
+      "actual_source_ids": []
+    },
+    {
+      "metric_id": "M66-17",
+      "owner": "inventory07",
+      "grain": "item_id_location_id_unit_id",
+      "aggregation": "EXACT_SIGNED_STOCK_SUM",
+      "definition_status": "PROPOSAL",
+      "actual_source_ids": []
+    },
+    {
+      "metric_id": "M66-18",
+      "owner": "inventory07",
+      "grain": "asset_id",
+      "aggregation": "COUNT_DISTINCT",
+      "definition_status": "PROPOSAL",
+      "actual_source_ids": []
+    },
+    {
+      "metric_id": "M66-19",
+      "owner": "correspondence08",
+      "grain": "correspondence_id",
+      "aggregation": "COUNT_DISTINCT",
+      "definition_status": "PROPOSAL",
+      "actual_source_ids": []
+    },
+    {
+      "metric_id": "M66-20",
+      "owner": "correspondence08",
+      "grain": "delivery_receipt_id",
+      "aggregation": "COUNT_DISTINCT_BY_STATE",
+      "definition_status": "PROPOSAL",
+      "actual_source_ids": []
+    },
+    {
+      "metric_id": "M66-21",
+      "owner": "imports09",
+      "grain": "import_batch_id",
+      "aggregation": "COUNT_DISTINCT",
+      "definition_status": "PROPOSAL",
+      "actual_source_ids": []
+    }
+  ],
+  "reference_membership": {
+    "persons": ["TEST_P001", "TEST_P002", "TEST_P003"],
+    "assignments": [
+      {
+        "assignment": "TEST_AS_A1",
+        "person": "TEST_P001",
+        "scope": "TEST_AREA_A"
+      },
+      {
+        "assignment": "TEST_AS_A2",
+        "person": "TEST_P001",
+        "scope": "TEST_AREA_A"
+      },
+      {
+        "assignment": "TEST_AS_B1",
+        "person": "TEST_P001",
+        "scope": "TEST_AREA_B"
+      },
+      {
+        "assignment": "TEST_AS_A3",
+        "person": "TEST_P002",
+        "scope": "TEST_AREA_A"
+      },
+      {
+        "assignment": "TEST_AS_B2",
+        "person": "TEST_P003",
+        "scope": "TEST_AREA_B"
+      }
+    ],
+    "expected_offline": {
+      "area_a_people": 2,
+      "area_a_assignments": 3,
+      "area_b_people": 2,
+      "area_b_assignments": 2,
+      "union_people": 3,
+      "union_assignments": 5,
+      "wrong_sum_of_area_people": 4
+    },
+    "authority_status": "REFERENCE_LABELS_NOT_SERVER_GRANTS",
+    "actual_person_ids": [],
+    "actual_assignment_ids": []
+  },
+  "privacy_plan": {
+    "scope_before_match_count_facet_snippet": true,
+    "match_unreadable_fields": false,
+    "technical_admin_reads_all_business": false,
+    "small_group_policy_version": null,
+    "minimum_distinct_contributors": null,
+    "aggregate_when_policy_missing": "SUPPRESSED_WITHOUT_TRUE_COUNT",
+    "body_snippet_enabled": false,
+    "private_thumbnail_enabled": false,
+    "private_cache_policy": "NO_STORE",
+    "log_raw_term": false
+  },
+  "report_plan": {
+    "screen_export_same_manifest": true,
+    "current_authority_check_on_build_and_download": true,
+    "permission_narrowing": "DENY_AND_CREATE_NEW_AUTHORIZED_MANIFEST",
+    "permission_expansion": "DO_NOT_EXPAND_OLD_MANIFEST",
+    "historical_name_source": "SEALED_SNAPSHOT_OR_CENTRAL_NAME_VERSION",
+    "academic_year_distinct_from_fiscal_year": true,
+    "money_and_quantity": "EXACT_DECIMAL_STRINGS",
+    "count_wire_type": "EXACT_INTEGER_STRING",
+    "missing_source_value": null,
+    "denominator_zero": "NOT_COMPUTABLE",
+    "source_write_from_read": false,
+    "actual_report_manifest": null,
+    "actual_export_file_version": null
+  },
+  "case_ids": [
+    "P66-01",
+    "P66-02",
+    "P66-03",
+    "P66-04",
+    "P66-05",
+    "P66-06",
+    "P66-07",
+    "P66-08",
+    "P66-09",
+    "P66-10",
+    "P66-11",
+    "P66-12",
+    "P66-13",
+    "P66-14",
+    "P66-15",
+    "P66-16",
+    "P66-17",
+    "P66-18",
+    "P66-19",
+    "P66-20",
+    "P66-21",
+    "P66-22"
+  ],
+  "actual": {
+    "source_ids": [],
+    "report_manifest_ids": [],
+    "grant_ids": [],
+    "policy_ids": [],
+    "file_version_ids": [],
+    "event_receipt_ids": [],
+    "browser_report": null,
+    "native_database_report": null
+  },
+  "acceptance": {
+    "AC66-01": "BLOCKED_NOT_RUN",
+    "AC66-02": "BLOCKED_NOT_RUN"
+  }
+}

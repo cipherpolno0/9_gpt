@@ -1,0 +1,261 @@
+{
+  "version": "0.1",
+  "lesson": 60,
+  "mode": "PLAN_ONLY",
+  "verification": "PROPOSAL_TO_VERIFY",
+  "runtime_status": "NOT_IMPLEMENTED",
+  "prerequisites": {
+    "lesson_59": "BLOCKED_PARTIAL",
+    "lesson_10": "BLOCKED",
+    "native_postgresql": "DB_TEST_EXIT_1"
+  },
+  "shared_services": {
+    "files": "central Document/FileVersion/quarantine/scan/ACL",
+    "authorization": "current account/action/scope/assignment time",
+    "registry": "FormTemplateRegistry ระบบ 05",
+    "queue": "shared import_batch/outbox/lease/fencing",
+    "application_write": "NONE_IN_LESSON_60"
+  },
+  "actual": {
+    "file_version_ids": [],
+    "import_batch_ids": [],
+    "worker_job_ids": [],
+    "application_ids": [],
+    "security_test_report": null,
+    "load_test_report": null,
+    "normalization_runtime_report": null
+  },
+  "trusted_sample_baseline": "docs/fixtures/excel-parsing-60-baseline.json",
+  "limits": {
+    "version": "DEMO_XLSX_PARSING_LIMITS_0.1",
+    "status": "PROPOSAL_NOT_ENFORCED",
+    "production_enabled": false,
+    "upload_bytes": 10485760,
+    "zip_entries": 256,
+    "actual_expanded_bytes_total": 41943040,
+    "actual_expanded_bytes_per_entry": 8388608,
+    "actual_expansion_ratio_per_entry": 100,
+    "input_data_rows_total_including_remarks": 2000,
+    "max_physical_row_index_all_sheets": 4096,
+    "max_column_index_all_sheets": 64,
+    "cell_nodes_total_all_sheets": 50000,
+    "string_code_points": 4096,
+    "shared_strings": 50000,
+    "style_records": 1024,
+    "xml_depth": 32,
+    "preflight_deadline_ms": 5000,
+    "parse_deadline_ms": 10000,
+    "job_deadline_ms": 15000,
+    "child_container_hard_memory_bytes": 268435456,
+    "v8_old_heap_mib": 128,
+    "output_ipc_bytes": 8388608,
+    "scratch_bytes": 67108864,
+    "concurrent_children_per_isolated_runner": 1,
+    "infra_retries_max": 2,
+    "invalid_file_retries": 0,
+    "account_org_rate_and_queue_quota": "TO_VERIFY",
+    "registry_stricter_limits_also_required": true,
+    "ratio_denominator": "max(1, compressed_bytes_per_entry)",
+    "fail_closed_if_isolation_not_verified": true
+  },
+  "template_59_binding": {
+    "template_code": "DEMO_EXAM_UPLOAD",
+    "template_version": "0.1.0",
+    "machine_schema_version": "0.1.0",
+    "source": "docs/fixtures/excel-template-59-plan.json",
+    "date_protocol": "ASCII ISO Gregorian YYYY-MM-DD TEXT",
+    "thai_digit_date_enabled": false,
+    "be_date_enabled": false,
+    "applicant_rows_limit": 20,
+    "input_rows_per_sheet_limit": 20,
+    "header_row": 4,
+    "first_data_row": 5,
+    "sheet_names": ["ผู้สมัคร", "หมายเหตุ", "วิธีกรอก"],
+    "cell_formula": "REJECT",
+    "validation_dropdown": "EXACT_REGISTRY_LITERAL_LIST_ONLY_NO_EVALUATION"
+  },
+  "normalization": {
+    "version": "DEMO_IMPORT_NORMALIZATION_0.1",
+    "status": "PROPOSAL_NOT_ENFORCED",
+    "text": "NFC_ONLY_PRESERVE_THAI_MARKS_AND_RAW",
+    "identifier": "OPAQUE_TEXT_NO_PADDING_NO_GLOBAL_DIGIT_TRANSLITERATION",
+    "date_profiles": [
+      {
+        "id": "DEMO_NEW_SCHEMA_BE_THAI_0.1",
+        "requires_new_machine_schema": true,
+        "era": "BE",
+        "calendar_after_conversion": "GREGORIAN_STRICT",
+        "source_digits": "THAI_ONLY",
+        "pattern": "YYYY-MM-DD",
+        "year_conversion": "subtract_exactly_543_after_explicit_schema_era",
+        "mixed_digit_scripts": "REJECT"
+      },
+      {
+        "id": "DEMO_NEW_SCHEMA_CE_THAI_0.1",
+        "requires_new_machine_schema": true,
+        "era": "CE",
+        "calendar_after_conversion": "GREGORIAN_STRICT",
+        "source_digits": "THAI_ONLY",
+        "pattern": "YYYY-MM-DD",
+        "year_conversion": "NONE",
+        "mixed_digit_scripts": "REJECT"
+      }
+    ],
+    "vectors": [
+      {
+        "id": "N60-01",
+        "field": "given_name",
+        "raw": "ทดสอบก้อง",
+        "profile": "NFC_ONLY",
+        "expected": "ทดสอบก้อง",
+        "expected_issue": null
+      },
+      {
+        "id": "N60-02",
+        "field": "given_name",
+        "raw": "ทดสอบ Café",
+        "profile": "NFC_ONLY",
+        "expected": "ทดสอบ Café",
+        "expected_issue": null
+      },
+      {
+        "id": "N60-03",
+        "field": "identity_value",
+        "raw": "000001",
+        "cell_type": "str",
+        "profile": "OPAQUE_TEXT",
+        "expected": "000001",
+        "expected_issue": null
+      },
+      {
+        "id": "N60-04",
+        "field": "identity_value",
+        "raw": 1,
+        "cell_type": "n",
+        "profile": "OPAQUE_TEXT",
+        "expected": null,
+        "expected_issue": "CELL_MUST_BE_TEXT"
+      },
+      {
+        "id": "N60-05",
+        "field": "birth_date",
+        "raw": "๒๕๖๓-๐๒-๒๙",
+        "profile": "DEMO_NEW_SCHEMA_BE_THAI_0.1",
+        "expected": "2020-02-29",
+        "expected_issue": null
+      },
+      {
+        "id": "N60-06",
+        "field": "birth_date",
+        "raw": "๒๕๖๒-๐๒-๒๙",
+        "profile": "DEMO_NEW_SCHEMA_BE_THAI_0.1",
+        "expected": null,
+        "expected_issue": "INVALID_DATE"
+      },
+      {
+        "id": "N60-07",
+        "field": "birth_date",
+        "raw": "๒๐๒๐-๐๒-๒๙",
+        "profile": "DEMO_NEW_SCHEMA_CE_THAI_0.1",
+        "expected": "2020-02-29",
+        "expected_issue": null
+      },
+      {
+        "id": "N60-08",
+        "field": "birth_date",
+        "raw": "๒๕6๓-๐๒-๒๙",
+        "profile": "DEMO_NEW_SCHEMA_BE_THAI_0.1",
+        "expected": null,
+        "expected_issue": "MIXED_DIGIT_SCRIPT"
+      },
+      {
+        "id": "N60-09",
+        "field": "previous_qualification_year",
+        "raw": "2569",
+        "profile": "ERA_UNSPECIFIED",
+        "expected": null,
+        "expected_issue": "AMBIGUOUS_YEAR"
+      },
+      {
+        "id": "N60-10",
+        "field": "birth_date",
+        "raw": "02/01/2569",
+        "profile": "TEMPLATE_59_0.1.0",
+        "expected": null,
+        "expected_issue": "AMBIGUOUS_DATE"
+      },
+      {
+        "id": "N60-11",
+        "field": "birth_date",
+        "raw": "๒๕๖๓-๐๒-๒๙",
+        "profile": "TEMPLATE_59_0.1.0",
+        "expected": null,
+        "expected_issue": "DATE_PROTOCOL_MISMATCH"
+      },
+      {
+        "id": "N60-12",
+        "field": "birth_date",
+        "raw": 43890,
+        "cell_type": "n",
+        "profile": "TEMPLATE_59_0.1.0",
+        "expected": null,
+        "expected_issue": "DATE_PROTOCOL_MISMATCH"
+      },
+      {
+        "id": "N60-13",
+        "field": "academic_year_code",
+        "raw": "TEST_AY_2568",
+        "selected": "TEST_AY_2569",
+        "profile": "OPAQUE_CENTRAL_CONTEXT",
+        "expected": null,
+        "expected_issue": "CONTEXT_YEAR_MISMATCH"
+      },
+      {
+        "id": "N60-14",
+        "field": "birth_date",
+        "raw": "2020-02-29",
+        "profile": "TEMPLATE_59_0.1.0",
+        "expected": "2020-02-29",
+        "expected_issue": null
+      }
+    ],
+    "runtime_execution": "NOT_RUN"
+  },
+  "cases": [
+    { "id": "P60-01", "requirement": "UPLOAD_CONTEXT_STAGING_ONLY" },
+    { "id": "P60-02", "requirement": "EXTENSION_MIME_MAGIC" },
+    { "id": "P60-03", "requirement": "STREAM_UPLOAD_BYTES" },
+    { "id": "P60-04", "requirement": "ACTUAL_ZIP_EXPANSION" },
+    { "id": "P60-05", "requirement": "ZIP_STRUCTURE_FEATURES" },
+    { "id": "P60-06", "requirement": "ZIP_PART_PATHS" },
+    { "id": "P60-07", "requirement": "ENCRYPTION_REJECT" },
+    { "id": "P60-08", "requirement": "MACRO_ACTIVE_REJECT" },
+    { "id": "P60-09", "requirement": "CELL_FORMULA_REJECT" },
+    { "id": "P60-10", "requirement": "EXTERNAL_NETWORK_REJECT" },
+    { "id": "P60-11", "requirement": "LITERAL_VALIDATION_ALLOWLIST" },
+    { "id": "P60-12", "requirement": "XML_TEXT_DICTIONARY_LIMITS" },
+    { "id": "P60-13", "requirement": "CELL_ROW_COLUMN_LIMITS" },
+    { "id": "P60-14", "requirement": "DATA_ROW_AND_REGISTRY_LIMITS" },
+    { "id": "P60-15", "requirement": "HARD_RESOURCE_ISOLATION" },
+    { "id": "P60-16", "requirement": "NO_YEAR_DATE_GUESS" },
+    { "id": "P60-17", "requirement": "EXPLICIT_VERSIONED_BE_THAI_PROFILE" },
+    { "id": "P60-18", "requirement": "NFC_LEADING_ZERO_TYPED_VALUES" },
+    { "id": "P60-19", "requirement": "SHEET_HEADER_PHYSICAL_ROW" },
+    { "id": "P60-20", "requirement": "NO_SERIAL_DATE_GUESS" },
+    { "id": "P60-21", "requirement": "CROSS_SCOPE_DENY" },
+    { "id": "P60-22", "requirement": "SCAN_HASH_VERSION_PIN" },
+    { "id": "P60-23", "requirement": "CURRENT_WORKER_OWNER_AUTHORITY" },
+    { "id": "P60-24", "requirement": "IDEMPOTENT_FINALIZE_QUEUE" },
+    { "id": "P60-25", "requirement": "STAGING_ATOMIC_VISIBILITY_RECOVERY" },
+    { "id": "P60-26", "requirement": "QUOTA_OUTPUT_SCRATCH_LIMITS" },
+    { "id": "P60-27", "requirement": "PROTECTED_RAW_NORMALIZED_NO_CACHE_LEAK" },
+    { "id": "P60-28", "requirement": "OFFICIAL_UNVERIFIED_GUARD" },
+    { "id": "P60-29", "requirement": "ISSUES_REMARK_NO_APPROVAL" },
+    { "id": "P60-30", "requirement": "RESUME_CANCEL_RECOVERY_ACCESSIBILITY" }
+  ],
+  "case_execution": "ALL_NOT_RUN",
+  "acceptance": {
+    "AC60_01": "BLOCKED_NOT_RUN",
+    "AC60_02": "BLOCKED_NOT_RUN"
+  }
+}

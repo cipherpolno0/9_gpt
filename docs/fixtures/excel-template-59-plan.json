@@ -1,0 +1,157 @@
+{
+  "registry_owner": "FormTemplateRegistry (ระบบ 05 กลาง)",
+  "template_code": "DEMO_EXAM_UPLOAD",
+  "version": "0.1.0",
+  "machine_schema_version": "0.1.0",
+  "mode": "DEMO",
+  "verification_status": "TO_VERIFY",
+  "official_form_reference": null,
+  "official_issuance_enabled": false,
+  "runtime_status": "NOT_IMPLEMENTED",
+  "label": "แบบทดลอง — ข้อมูลสมมติ ไม่ใช่แบบทางการ",
+  "source": "พรอมป์ต์บท 59 และ FORM_TEMPLATE_REGISTRY รุ่น 0.3; ไม่ได้รับไฟล์ทางการ",
+  "schema": {
+    "header_row": 4,
+    "first_data_row": 5,
+    "reserved_input_rows": 20,
+    "demo_row_limit": 20,
+    "date_protocol": "ISO Gregorian YYYY-MM-DD TEXT; ไม่รับ Excel serial หรือวันที่กำกวม",
+    "cell_type": "TEXT",
+    "application_sheet": "ผู้สมัคร",
+    "remarks_sheet": "หมายเหตุ",
+    "metadata_sheet": "วิธีกรอก",
+    "unknown_columns": "REJECT",
+    "formula_cells": "REJECT",
+    "application_columns": [
+      ["row_id", "รหัสแถวในไฟล์ เช่น 000001", true],
+      ["organization_code", "รหัสสำนัก/สถานศึกษากลาง เช่น 00101", true],
+      ["exam_center_code", "รหัสสนามกลาง เช่น 00001", true],
+      [
+        "academic_year_code",
+        "รหัสปีการศึกษา เช่น TEST_AY_2569 ไม่ใช่ปีงบ",
+        true
+      ],
+      ["exam_session_code", "รหัสรอบสอบกลาง เช่น TEST_SESSION_NK_TRI", true],
+      ["exam_type", "NAKTHAM หรือ DHAMMASTUDY", true],
+      ["level", "TRI / THO / EK", true],
+      [
+        "stage",
+        "NONE สำหรับนักธรรม; PRIMARY / SECONDARY / HIGHER สำหรับธรรมศึกษา",
+        true
+      ],
+      [
+        "identity_type",
+        "LOCAL_EVIDENCE หรือ PASSPORT ในชุดทดลอง; ไม่บังคับบัตรไทย",
+        true
+      ],
+      [
+        "identity_value",
+        "เลขหลักฐานสมมติเป็น text เช่น 000001; ไม่สร้างตัวตนจากชื่อ",
+        true
+      ],
+      [
+        "person_category",
+        "MONASTIC หรือ LAY ในชุดทดลอง ไม่ใช่เงื่อนไขคุณสมบัติทางการ",
+        true
+      ],
+      ["prefix", "คำนำหน้าตามหลักฐาน; ไม่เดา", false],
+      ["given_name", "ชื่อสมมติภาษาไทย", true],
+      ["family_name", "นามสกุลตามหลักฐาน; อาจว่างได้ในชุดทดลอง", false],
+      ["former_given_name", "ชื่อเดิม ถ้ามี", false],
+      ["former_family_name", "นามสกุลเดิม ถ้ามี", false],
+      ["birth_date", "ถ้าระบุใช้ข้อความ YYYY-MM-DD ค.ศ. เท่านั้น", false],
+      [
+        "previous_qualification_code",
+        "รหัสประโยค/คุณวุฒิเดิมถ้ามี; ไม่อนุมานสิทธิ์เลื่อนระดับ",
+        false
+      ],
+      [
+        "previous_qualification_year",
+        "ปีตามหลักฐาน ระบุระบบปีใน mapping ที่รับรองก่อนใช้จริง",
+        false
+      ],
+      [
+        "identity_evidence_ref",
+        "reference เอกสารกลาง ไม่ใช่ path ไฟล์หรือ URL ลับ",
+        true
+      ],
+      ["notes", "คำบรรยาย ไม่ใช่สถานะหรือคำสั่งอนุมัติ", false]
+    ],
+    "remark_columns": [
+      ["row_id", "อ้างรหัสแถวผู้สมัคร", true],
+      ["remark_code", "รหัสจาก mapping รุ่นที่ pin", true],
+      ["evidence_type", "ชนิดหลักฐานจาก mapping", true],
+      [
+        "evidence_ref",
+        "reference เอกสารกลาง; ต้องตรวจ scan และ ACL ในระบบจริง",
+        true
+      ],
+      ["detail", "คำบรรยาย ไม่ทำให้อนุมัติ", false]
+    ]
+  },
+  "mock_context": {
+    "organization_codes": ["00101", "00102"],
+    "exam_center_codes": ["00001", "00002"],
+    "academic_year_code": "TEST_AY_2569"
+  },
+  "groups": [
+    ["NAKTHAM", "TRI", "NONE"],
+    ["NAKTHAM", "THO", "NONE"],
+    ["NAKTHAM", "EK", "NONE"],
+    ["DHAMMASTUDY", "TRI", "PRIMARY"],
+    ["DHAMMASTUDY", "THO", "PRIMARY"],
+    ["DHAMMASTUDY", "EK", "PRIMARY"],
+    ["DHAMMASTUDY", "TRI", "SECONDARY"],
+    ["DHAMMASTUDY", "THO", "SECONDARY"],
+    ["DHAMMASTUDY", "EK", "SECONDARY"],
+    ["DHAMMASTUDY", "TRI", "HIGHER"],
+    ["DHAMMASTUDY", "THO", "HIGHER"],
+    ["DHAMMASTUDY", "EK", "HIGHER"]
+  ],
+  "remark_mapping": {
+    "version": "DEMO_REMARKS_0.1.0",
+    "verification_status": "TO_VERIFY",
+    "scope": "DEMO ทั้ง 12 กลุ่ม ไม่ใช่กฎคุณสมบัติทางการ",
+    "items": [
+      ["FORMER_GIVEN_NAME", "NAME_CHANGE"],
+      ["FORMER_FAMILY_NAME", "NAME_CHANGE"],
+      ["PREVIOUS_QUALIFICATION", "PRIOR_PASS"],
+      ["IDENTITY_WITHOUT_THAI_ID", "IDENTITY_PROOF"]
+    ],
+    "free_text_effect": "NONE",
+    "automatic_approval": false
+  },
+  "samples": {
+    "blank": "outputs/lesson59/TEST_exam_upload_blank.xlsx",
+    "valid": "outputs/lesson59/TEST_exam_upload_valid.xlsx",
+    "invalid": "outputs/lesson59/TEST_exam_upload_invalid.xlsx"
+  },
+  "expected_invalid_issues": [
+    ["ผู้สมัคร", 5, "given_name", "REQUIRED"],
+    ["ผู้สมัคร", 6, "organization_code", "UNKNOWN_ORGANIZATION"],
+    ["ผู้สมัคร", 7, "identity_value", "CELL_MUST_BE_TEXT"],
+    ["ผู้สมัคร", 8, "birth_date", "AMBIGUOUS_DATE"],
+    ["ผู้สมัคร", 9, "stage", "INVALID_GROUP"],
+    ["ผู้สมัคร", 10, "row_id", "DUPLICATE_ROW_ID"],
+    ["ผู้สมัคร", 11, "academic_year_code", "CONTEXT_YEAR_MISMATCH"],
+    ["หมายเหตุ", 5, "evidence_ref", "EVIDENCE_REQUIRED"],
+    ["หมายเหตุ", 6, "remark_code", "UNMAPPED_REMARK"],
+    ["หมายเหตุ", 7, "row_id", "ORPHAN_REMARK"]
+  ],
+  "security_contract": {
+    "download": "current account/action/area/delegation/field visibility; deny by default",
+    "upload": "central Document quarantine/MIME/ZIP limits/scan/ACL; reject macros/encryption/formulas/external links",
+    "commit": "ระบบ 05 application service เท่านั้น; recheck current scope/eligibility/evidence; transaction/idempotency/unique business key",
+    "client_metadata": "untrusted; server resolves template registry version and selected context",
+    "initial_state": "DRAFT ไม่ใช่ APPROVED ไม่ออกที่นั่งหรือผลสอบ"
+  },
+  "actual_registry_id": null,
+  "actual_official_source_file_version_id": null,
+  "actual_application_ids": [],
+  "acceptance": {
+    "local_xlsx_roundtrip": "PASS_OFFLINE_ONLY",
+    "web_download_acl": "NOT_RUN",
+    "official_guard_runtime": "NOT_RUN",
+    "staging_and_commit": "NOT_RUN"
+  }
+}

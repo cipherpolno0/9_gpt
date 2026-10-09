@@ -1,0 +1,142 @@
+{
+  "version": "0.1",
+  "lesson": 72,
+  "recorded_at": "2026-10-09T16:32:23.514150+00:00",
+  "source_commit": "cef51f855918331dc6e010b33a30c126a76b67ad",
+  "status": "BLOCKED_NO_GO",
+  "prerequisite71": {
+    "result_ref": "tests/results/lesson71-results.json",
+    "status": "BLOCKED",
+    "acceptance": [
+      {
+        "id": "AC71-01",
+        "status": "BLOCKED",
+        "reason": "clean install unproven; no staging, identity/private storage/business modules; native core and worker readiness failed"
+      },
+      {
+        "id": "AC71-02",
+        "status": "NOT_RUN_BLOCKED",
+        "reason": "no coherent DB/file/key/identity backup or isolated restore target available"
+      }
+    ],
+    "prior_results_not_rerun": true
+  },
+  "actual_checks": {
+    "unit": {
+      "command": "corepack pnpm test",
+      "started_at": "2026-10-09T16:31:29.882373+00:00",
+      "status": "PASS",
+      "exit_code": 0,
+      "duration_seconds": 21.967,
+      "scope": "existing local workspace; starter/core only",
+      "tests": 17,
+      "pass": 17,
+      "fail": 0,
+      "skipped": 0
+    },
+    "starter_smoke": {
+      "command": "corepack pnpm smoke",
+      "started_at": "2026-10-09T16:31:29.882803+00:00",
+      "status": "PASS",
+      "exit_code": 0,
+      "duration_seconds": 22.311,
+      "scope": "existing local workspace; starter/core only",
+      "checks_passed": 27
+    }
+  },
+  "read_only_environment_probe": {
+    "tools": {
+      "docker": false,
+      "postgres": false,
+      "pg_dump": false,
+      "pg_restore": false,
+      "psql": false,
+      "redis-cli": false
+    },
+    "docker_socket_available": false,
+    "loopback": {
+      "5432": 111,
+      "5546": 111,
+      "6379": 111
+    }
+  },
+  "implementation_inventory": {
+    "prisma_model_count": 19,
+    "business_modules": 9,
+    "business_code_files_in_module_dirs": 0,
+    "workspace_route": "src/app/app/[[...path]]/route.ts",
+    "workspace_behavior": "deny bootstrap not business portal",
+    "contact_auth_business_menu_implemented": false,
+    "schema_version": "0.6.0",
+    "migration_count": 1,
+    "migration_sha256": "04a149fcd349f0ac3f1b5929cfcf571f8b0880541e84a40ad929054b67d72756"
+  },
+  "document_plan_counts": {
+    "system_rows": 9,
+    "requirement_chains": 35,
+    "unsigned_release_gates": 10,
+    "proposed_freeze_criteria": 7,
+    "open_backlog_rows": 10,
+    "review_offsets_calendar_days": [7, 30]
+  },
+  "actual_release": {
+    "deployment_authorization_ref": null,
+    "environment": null,
+    "pilot_organizations": [],
+    "real_data_used": false,
+    "t0": null,
+    "actual_training_refs": [],
+    "uat_signatures": [],
+    "handover_signature": null,
+    "monitoring_alert_test_ref": null,
+    "backup_restore_drill_ref": null,
+    "seven_day_review_ref": null,
+    "thirty_day_review_ref": null
+  },
+  "acceptance": [
+    {
+      "id": "AC72-01",
+      "status": "PARTIAL_DOCUMENT_TRACEABILITY_BLOCKED",
+      "reason": "35 requirements and nine system document chains mapped; business implementations executable tests UAT and signed handover missing"
+    },
+    {
+      "id": "AC72-02",
+      "status": "BLOCKED_NOT_PROVEN",
+      "reason": "no working shared-account/menu/contact portal; starter HTTP denial is not positive shared workflow proof"
+    }
+  ],
+  "not_run": [
+    "clean install retry",
+    "new build (smoke reused build71 with unchanged runtime)",
+    "lint typecheck schema WASM suite rerun (no runtime changes)",
+    "native PostgreSQL and worker business tests",
+    "Playwright business E2E and UAT sessions",
+    "staging smoke all nine systems",
+    "training and on-call/monitoring delivery",
+    "DB file identity restore and rollback drill",
+    "pilot production deployment and real-data use",
+    "7 and 30 day actual review",
+    "new dependency advisory audit",
+    "whole historical formatting"
+  ],
+  "no_deployment_or_external_messages": true,
+  "next_lesson": null,
+  "next_action": "resolve and re-accept blockers for 70 71 72; no later lesson inferred",
+  "deliverable_verification": {
+    "checked_at": "2026-10-09T16:36:14.493322+00:00",
+    "requirements_match_existing_35": "PASS",
+    "nine_systems_and_unsigned_UAT": "PASS",
+    "ten_gates_seven_freeze_ten_backlogs": "PASS",
+    "no_forged_authorization_deadline_pilot_T0_or_handover": "PASS",
+    "local_markdown_links_checked": 1229,
+    "missing_links": 0,
+    "migration_checksum_unchanged": "PASS",
+    "existing_tracked_runtime_changes": 0,
+    "business_acceptance": "BLOCKED",
+    "new_six_files_prettier": "PASS",
+    "new_four_status_sections_prettier": "PASS",
+    "supported_pattern_secret_scan": "PASS",
+    "diff_whitespace_check": "PASS",
+    "whole_historical_formatting": "NOT_RUN"
+  }
+}

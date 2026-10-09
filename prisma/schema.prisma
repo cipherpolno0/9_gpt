@@ -150,6 +150,8 @@ model Organization {
   organizationNameHistoryByOrganizationId OrganizationNameHistory[] @relation("OrganizationNameHistory_organizationId")
   addressVersionByOrganizationId          AddressVersion[]          @relation("AddressVersion_organizationId")
   organizationContactByOrganizationId     OrganizationContact[]     @relation("OrganizationContact_organizationId")
+  portalAssignments                       RoleAssignment[]
+  portalAffiliations                      PersonAffiliation[]
 
   @@index([organizationTypeId])
   @@index([mergedIntoOrganizationId])
@@ -181,6 +183,7 @@ model Document {
   organizationNameHistoryByEvidenceDocumentId OrganizationNameHistory[] @relation("OrganizationNameHistory_evidenceDocumentId")
   addressVersionByEvidenceDocumentId          AddressVersion[]          @relation("AddressVersion_evidenceDocumentId")
   organizationContactByEvidenceDocumentId     OrganizationContact[]     @relation("OrganizationContact_evidenceDocumentId")
+  portalAffiliations                          PersonAffiliation[]
 
   @@index([ownerOrganizationId])
   @@map("document")
@@ -236,6 +239,8 @@ model Person {
   personPrivateByPersonId     PersonPrivate?      @relation("PersonPrivate_personId")
   personNameHistoryByPersonId PersonNameHistory[] @relation("PersonNameHistory_personId")
   personContactByPersonId     PersonContact[]     @relation("PersonContact_personId")
+  portalAccount               UserAccount?
+  portalAffiliations          PersonAffiliation[]
 
   @@index([mergedIntoPersonId])
   @@map("person")
@@ -501,5 +506,89 @@ model AuditLog {
   @@index([targetKind, targetId, recordedAt])
   @@index([serviceActorId, recordedAt])
   @@map("audit_logs")
+  @@schema("private")
+}
+
+// Portal access v0.7.0; credentials stay in the shared Supabase Auth provider.
+model UserAccount {
+  id            String              @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  authUserId    String              @unique @map("auth_user_id") @db.Uuid
+  personId      String?             @unique @map("person_id") @db.Uuid
+  isActive      Boolean             @default(true) @map("is_active")
+  requireMfa    Boolean             @default(true) @map("require_mfa")
+  revokedBefore DateTime            @default(dbgenerated("'-infinity'::timestamptz")) @map("revoked_before") @db.Timestamptz(6)
+  createdAt     DateTime            @default(now()) @map("created_at") @db.Timestamptz(6)
+  person        Person?             @relation(fields: [personId], references: [id], onDelete: Restrict, onUpdate: NoAction)
+  assignments   RoleAssignment[]
+  sessions      PortalSession[]
+  accessEvents  PortalAccessEvent[]
+
+  @@map("user_account")
+  @@schema("private")
+}
+
+model RoleAssignment {
+  id             String        @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  accountId      String        @map("account_id") @db.Uuid
+  organizationId String?       @map("organization_id") @db.Uuid
+  roleCode       String        @map("role_code")
+  actions        String[]
+  startsAt       DateTime      @map("starts_at") @db.Timestamptz(6)
+  endsAt         DateTime      @map("ends_at") @db.Timestamptz(6)
+  revokedAt      DateTime?     @map("revoked_at") @db.Timestamptz(6)
+  account        UserAccount   @relation(fields: [accountId], references: [id], onDelete: Restrict, onUpdate: NoAction)
+  organization   Organization? @relation(fields: [organizationId], references: [id], onDelete: Restrict, onUpdate: NoAction)
+
+  @@index([accountId, organizationId, startsAt, endsAt], map: "role_assignment_lookup")
+  @@map("role_assignment")
+  @@schema("private")
+}
+
+model PortalSession {
+  tokenHash String      @id @map("token_hash")
+  accountId String      @map("account_id") @db.Uuid
+  createdAt DateTime    @default(now()) @map("created_at") @db.Timestamptz(6)
+  expiresAt DateTime    @map("expires_at") @db.Timestamptz(6)
+  revokedAt DateTime?   @map("revoked_at") @db.Timestamptz(6)
+  account   UserAccount @relation(fields: [accountId], references: [id], onDelete: Restrict, onUpdate: NoAction)
+
+  @@map("portal_session")
+  @@schema("private")
+}
+
+model PersonAffiliation {
+  id                 String       @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  personId           String       @map("person_id") @db.Uuid
+  organizationId     String       @map("organization_id") @db.Uuid
+  effectiveFrom      DateTime     @map("effective_from") @db.Date
+  effectiveTo        DateTime?    @map("effective_to") @db.Date
+  recordedAt         DateTime     @default(now()) @map("recorded_at") @db.Timestamptz(6)
+  evidenceDocumentId String       @map("evidence_document_id") @db.Uuid
+  person             Person       @relation(fields: [personId], references: [id], onDelete: Restrict, onUpdate: NoAction)
+  organization       Organization @relation(fields: [organizationId], references: [id], onDelete: Restrict, onUpdate: NoAction)
+  evidenceDocument   Document     @relation(fields: [evidenceDocumentId], references: [id], onDelete: Restrict, onUpdate: NoAction)
+
+  @@unique([personId, organizationId, effectiveFrom])
+  @@map("person_affiliation")
+  @@schema("private")
+}
+
+model PortalAuthLimit {
+  keyHash     String   @id @map("key_hash")
+  windowStart DateTime @map("window_start") @db.Timestamptz(6)
+  attempts    Int
+
+  @@map("portal_auth_limit")
+  @@schema("private")
+}
+
+model PortalAccessEvent {
+  id         String      @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  accountId  String      @map("account_id") @db.Uuid
+  eventType  String      @map("event_type")
+  occurredAt DateTime    @default(now()) @map("occurred_at") @db.Timestamptz(6)
+  account    UserAccount @relation(fields: [accountId], references: [id], onDelete: Restrict, onUpdate: NoAction)
+
+  @@map("portal_access_event")
   @@schema("private")
 }

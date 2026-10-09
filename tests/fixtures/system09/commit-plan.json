@@ -1,0 +1,138 @@
+{
+  "version": "0.1",
+  "lesson": 62,
+  "status": "PLAN_ONLY",
+  "execution": "ALL_NOT_RUN",
+  "data_mode": "DEMO_ONLY",
+  "runtime": "NOT_IMPLEMENTED",
+  "prerequisites": { "61": "BLOCKED", "37": "BLOCKED" },
+  "commit_profile": {
+    "commit_enabled": false,
+    "tested_commit_profile": null,
+    "measured_max_rows": null,
+    "measured_duration_ms": null,
+    "measured_memory_bytes": null,
+    "measurement_status": "NOT_MEASURED",
+    "blueprint_proposed_max_rows": 2000,
+    "template59_proposed_max_rows": 20,
+    "chunked_commit": "NOT_SUPPORTED"
+  },
+  "actual_evidence": {
+    "application_ids": [],
+    "person_ids": [],
+    "commit_receipt_ids": [],
+    "commit_summary_id": null,
+    "source_file_checksum": null,
+    "manifest_digest": null,
+    "database_transaction_id": null,
+    "outbox_event_ids": [],
+    "runtime_report": null
+  },
+  "logical_delta": {
+    "central_application_key": [
+      "candidate_id",
+      "session_offering_id",
+      "registration_slot"
+    ],
+    "central_candidate_key": ["person_id"],
+    "central_identity_locator": "OWNER_CONFIRMED_IDENTITY_POLICY_REQUIRED",
+    "batch_summary_key": ["import_batch_id"],
+    "row_receipt_keys": [
+      ["import_row_id"],
+      ["import_batch_id", "application_id"]
+    ],
+    "key_payload_changed": "IDEMPOTENCY_CONFLICT",
+    "default_application_state": "draft",
+    "creates_enrollment": false,
+    "approves_application": false,
+    "allocates_seat": false,
+    "produces_official_score": false,
+    "production_canonicalization": "ADR_REQUIRED"
+  },
+  "state_proposal": ["validated", "committing", "committed", "failed"],
+  "retry_proposal": {
+    "max_attempts_including_first": 3,
+    "whole_transaction": true,
+    "revalidate_current_facts_each_attempt": true,
+    "receipt_replay_requires_current_read_acl": true,
+    "committed_replay_reopens_registration": false,
+    "lease_expiry_proves_rollback": false
+  },
+  "scenario_labels_not_registry_ids": {
+    "batch": "TEST_62_BATCH",
+    "rows": ["TEST_62_ROW_1", "TEST_62_ROW_2", "TEST_62_ROW_3"],
+    "identities": [
+      "TEST_62_VERIFIED_EXISTING",
+      "TEST_62_VERIFIED_NEW_A",
+      "TEST_62_VERIFIED_NEW_B"
+    ],
+    "preconditions": "CURRENT_SCOPE_OPEN_CENTER_ELIGIBLE_VERIFIED_EVIDENCE_FRESH_REPORT_REQUIRED",
+    "expected_if_implemented_and_successful": {
+      "applications_created": 3,
+      "persons_created": 2,
+      "persons_existing": 1,
+      "row_receipts": 3,
+      "batch_summaries": 1,
+      "actual_application_references_required": true
+    },
+    "expected_if_transaction_rolled_back": {
+      "new_persons": 0,
+      "new_candidates": 0,
+      "new_applications": 0,
+      "new_application_snapshots": 0,
+      "new_row_receipts": 0,
+      "new_success_summaries": 0,
+      "new_success_outbox_events": 0,
+      "failure_or_dispatch_metadata_may_exist": true
+    }
+  },
+  "failpoints_plan": [
+    "CONFIRMATION_DISPATCH_OUTBOX_INSERT",
+    "AFTER_NEW_PERSON_CREATE",
+    "AFTER_APPLICATION_ROW_2",
+    "BEFORE_ROW_RECEIPTS",
+    "SUCCESS_SUMMARY_INSERT",
+    "SUCCESS_OUTBOX_INSERT",
+    "AFTER_DB_COMMIT_BEFORE_ACK",
+    "LEASE_EXPIRED_WORKER_RESUMES"
+  ],
+  "current_fact_mutations_plan": [
+    "AUTHORITY_REVOKED",
+    "DELEGATION_EXPIRED",
+    "REGISTRATION_WINDOW_CLOSED",
+    "YEAR_OR_OFFERING_CHANGED",
+    "CENTER_CLOSED",
+    "PERSON_LIFECYCLE_CHANGED",
+    "ELIGIBILITY_POLICY_CHANGED",
+    "EVIDENCE_SCAN_OR_ACL_CHANGED",
+    "SOURCE_FILE_OR_NORMALIZED_MANIFEST_CHANGED",
+    "APPLICATION_DUPLICATE_INSERTED"
+  ],
+  "case_ids": [
+    "P62-01",
+    "P62-02",
+    "P62-03",
+    "P62-04",
+    "P62-05",
+    "P62-06",
+    "P62-07",
+    "P62-08",
+    "P62-09",
+    "P62-10",
+    "P62-11",
+    "P62-12",
+    "P62-13",
+    "P62-14",
+    "P62-15",
+    "P62-16",
+    "P62-17",
+    "P62-18",
+    "P62-19",
+    "P62-20",
+    "P62-21",
+    "P62-22",
+    "P62-23",
+    "P62-24"
+  ],
+  "acceptance": { "AC62-01": "BLOCKED_NOT_RUN", "AC62-02": "BLOCKED_NOT_RUN" }
+}

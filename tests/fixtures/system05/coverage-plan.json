@@ -1,0 +1,838 @@
+{
+  "document_version": "0.1",
+  "lesson": 40,
+  "source_commit": "37a30c0",
+  "created_on": "2026-10-05",
+  "timezone": "Asia/Bangkok",
+  "status": "PLAN_ONLY",
+  "execution_status": "NOT_RUN",
+  "seeded": false,
+  "official_issuance_allowed": false,
+  "data_mode": "DEMO",
+  "notes": [
+    "รหัสทั้งหมดเป็นscenario references ไม่ใช่Person/Candidate/บัญชี/ผลสอบที่สร้างแล้ว",
+    "ข้อมูลสมมติเท่านั้น ไม่มีเลขบัตร เบอร์โทร ที่อยู่ หรือพิกัดจริง",
+    "THAI_REFERENCE_PRESENTเป็นเงื่อนไขที่ต้องกำหนดsafe identityfixtureadapter/หลักฐานที่รับรองก่อนexecute ไม่ใช่verified flag",
+    "คนเดียวใช้Person/Candidate refเดิมในสองปี ชื่อsnapshotสมมติเปลี่ยนปีถัดไป",
+    "12กลุ่ม x 2ปี x 2เงื่อนไขตัวตน = 48runs ทั้งหมดNOT_RUN ไม่มีrunnerอ่านไฟล์นี้เป็นE2E",
+    "codebindings/eligibility/grading/forms/authority/publicationยังTO_VERIFYไม่ผลิตOFFICIAL",
+    "ต้องimplementation/currentAuthDAL/RLS/files/workflow/outbox35–39ก่อนรัน ไม่ใช้mockALLOWหรือskippedPASS"
+  ],
+  "prerequisites": [
+    {
+      "lesson": 35,
+      "status": "BLOCKED"
+    },
+    {
+      "lesson": 36,
+      "status": "BLOCKED"
+    },
+    {
+      "lesson": 37,
+      "status": "BLOCKED"
+    },
+    {
+      "lesson": 38,
+      "status": "BLOCKED"
+    },
+    {
+      "lesson": 39,
+      "status": "BLOCKED"
+    }
+  ],
+  "groups": [
+    {
+      "group_id": "G40-01",
+      "exam_type_label": "นักธรรม",
+      "stage_label": null,
+      "level_label": "ตรี",
+      "code_binding_status": "TO_VERIFY"
+    },
+    {
+      "group_id": "G40-02",
+      "exam_type_label": "นักธรรม",
+      "stage_label": null,
+      "level_label": "โท",
+      "code_binding_status": "TO_VERIFY"
+    },
+    {
+      "group_id": "G40-03",
+      "exam_type_label": "นักธรรม",
+      "stage_label": null,
+      "level_label": "เอก",
+      "code_binding_status": "TO_VERIFY"
+    },
+    {
+      "group_id": "G40-04",
+      "exam_type_label": "ธรรมศึกษา",
+      "stage_label": "ประถม",
+      "level_label": "ตรี",
+      "code_binding_status": "TO_VERIFY"
+    },
+    {
+      "group_id": "G40-05",
+      "exam_type_label": "ธรรมศึกษา",
+      "stage_label": "ประถม",
+      "level_label": "โท",
+      "code_binding_status": "TO_VERIFY"
+    },
+    {
+      "group_id": "G40-06",
+      "exam_type_label": "ธรรมศึกษา",
+      "stage_label": "ประถม",
+      "level_label": "เอก",
+      "code_binding_status": "TO_VERIFY"
+    },
+    {
+      "group_id": "G40-07",
+      "exam_type_label": "ธรรมศึกษา",
+      "stage_label": "มัธยม",
+      "level_label": "ตรี",
+      "code_binding_status": "TO_VERIFY"
+    },
+    {
+      "group_id": "G40-08",
+      "exam_type_label": "ธรรมศึกษา",
+      "stage_label": "มัธยม",
+      "level_label": "โท",
+      "code_binding_status": "TO_VERIFY"
+    },
+    {
+      "group_id": "G40-09",
+      "exam_type_label": "ธรรมศึกษา",
+      "stage_label": "มัธยม",
+      "level_label": "เอก",
+      "code_binding_status": "TO_VERIFY"
+    },
+    {
+      "group_id": "G40-10",
+      "exam_type_label": "ธรรมศึกษา",
+      "stage_label": "อุดม",
+      "level_label": "ตรี",
+      "code_binding_status": "TO_VERIFY"
+    },
+    {
+      "group_id": "G40-11",
+      "exam_type_label": "ธรรมศึกษา",
+      "stage_label": "อุดม",
+      "level_label": "โท",
+      "code_binding_status": "TO_VERIFY"
+    },
+    {
+      "group_id": "G40-12",
+      "exam_type_label": "ธรรมศึกษา",
+      "stage_label": "อุดม",
+      "level_label": "เอก",
+      "code_binding_status": "TO_VERIFY"
+    }
+  ],
+  "academic_years": [
+    {
+      "year_ref": "DEMO-AY-2025",
+      "standard_year": 2025,
+      "display_year_be": 2568
+    },
+    {
+      "year_ref": "DEMO-AY-2026",
+      "standard_year": 2026,
+      "display_year_be": 2569
+    }
+  ],
+  "identity_scenarios": [
+    {
+      "identity_scenario": "THAI_REFERENCE_PRESENT",
+      "identity_ref_suffix": "TH",
+      "raw_identifier_included": false,
+      "evidence_policy_status": "TO_VERIFY"
+    },
+    {
+      "identity_scenario": "NO_THAI_REFERENCE",
+      "identity_ref_suffix": "ALT",
+      "raw_identifier_included": false,
+      "evidence_policy_status": "TO_VERIFY"
+    }
+  ],
+  "flow_steps": [
+    {
+      "step": "login",
+      "status": "NOT_RUN"
+    },
+    {
+      "step": "enrollment",
+      "status": "NOT_RUN"
+    },
+    {
+      "step": "application",
+      "status": "NOT_RUN"
+    },
+    {
+      "step": "eligibility",
+      "status": "NOT_RUN"
+    },
+    {
+      "step": "approval",
+      "status": "NOT_RUN"
+    },
+    {
+      "step": "seat_allocation",
+      "status": "NOT_RUN"
+    },
+    {
+      "step": "score_staging",
+      "status": "NOT_RUN"
+    },
+    {
+      "step": "second_checker",
+      "status": "NOT_RUN"
+    },
+    {
+      "step": "certification",
+      "status": "NOT_RUN"
+    },
+    {
+      "step": "publication",
+      "status": "NOT_RUN"
+    },
+    {
+      "step": "annual_search",
+      "status": "NOT_RUN"
+    }
+  ],
+  "case_refs": [
+    "P40-01",
+    "P40-02",
+    "P40-03",
+    "P40-04",
+    "P40-05",
+    "P40-06",
+    "P40-07",
+    "P40-08",
+    "P40-09",
+    "P40-10",
+    "P40-11",
+    "P40-12",
+    "P40-13",
+    "P40-14",
+    "P40-15",
+    "P40-16",
+    "P40-17",
+    "P40-18",
+    "P40-19",
+    "P40-20",
+    "P40-21",
+    "P40-22",
+    "P40-23",
+    "P40-24",
+    "P40-25",
+    "P40-26"
+  ],
+  "template_codes": ["ศ.1", "ศ.2", "ศ.3", "ศ.4", "ศ.5", "ศ.6", "ศ.8"],
+  "template_status": "TO_VERIFY",
+  "planned_native_concurrency": {
+    "remaining_capacity": 2,
+    "approval_attempts": 3,
+    "use_two_connections_and_barrier": true,
+    "status": "NOT_RUN"
+  },
+  "lineage_requirements": [
+    "Person",
+    "Candidate",
+    "Application",
+    "ApplicationSnapshot",
+    "AcademicYear",
+    "ExamSession",
+    "SeatAllocation",
+    "ScoreBatch",
+    "ScoreSourceFileHash",
+    "AcceptedSubjectScore",
+    "GradingRuleVersion",
+    "CertifiedManifest",
+    "ApplicationApprovalDecision",
+    "CertificationDecision",
+    "ResultRelease",
+    "PublicationApprovalDecision",
+    "AmendmentLineage",
+    "AuditEvent",
+    "OutboxReceipt"
+  ],
+  "cases_specification": "../../system05/ACCEPTANCE_CASES.md",
+  "uat_document": "../../../docs/UAT_SYSTEM_05.md",
+  "scenarios": [
+    {
+      "run_id": "RUN40-G40-01-2025-TH",
+      "group_id": "G40-01",
+      "academic_year_ref": "DEMO-AY-2025",
+      "identity_scenario": "THAI_REFERENCE_PRESENT",
+      "person_ref": "DEMO-P40-G40-01-TH",
+      "candidate_ref": "DEMO-C40-G40-01-TH",
+      "application_ref": "DEMO-APP40-G40-01-2025-TH",
+      "display_name_snapshot_plan": "บุคคลสมมติ G40-01 TH ชื่อเดิม",
+      "status": "NOT_RUN",
+      "seeded": false
+    },
+    {
+      "run_id": "RUN40-G40-01-2025-ALT",
+      "group_id": "G40-01",
+      "academic_year_ref": "DEMO-AY-2025",
+      "identity_scenario": "NO_THAI_REFERENCE",
+      "person_ref": "DEMO-P40-G40-01-ALT",
+      "candidate_ref": "DEMO-C40-G40-01-ALT",
+      "application_ref": "DEMO-APP40-G40-01-2025-ALT",
+      "display_name_snapshot_plan": "บุคคลสมมติ G40-01 ALT ชื่อเดิม",
+      "status": "NOT_RUN",
+      "seeded": false
+    },
+    {
+      "run_id": "RUN40-G40-01-2026-TH",
+      "group_id": "G40-01",
+      "academic_year_ref": "DEMO-AY-2026",
+      "identity_scenario": "THAI_REFERENCE_PRESENT",
+      "person_ref": "DEMO-P40-G40-01-TH",
+      "candidate_ref": "DEMO-C40-G40-01-TH",
+      "application_ref": "DEMO-APP40-G40-01-2026-TH",
+      "display_name_snapshot_plan": "บุคคลสมมติ G40-01 TH ชื่อใหม่",
+      "status": "NOT_RUN",
+      "seeded": false
+    },
+    {
+      "run_id": "RUN40-G40-01-2026-ALT",
+      "group_id": "G40-01",
+      "academic_year_ref": "DEMO-AY-2026",
+      "identity_scenario": "NO_THAI_REFERENCE",
+      "person_ref": "DEMO-P40-G40-01-ALT",
+      "candidate_ref": "DEMO-C40-G40-01-ALT",
+      "application_ref": "DEMO-APP40-G40-01-2026-ALT",
+      "display_name_snapshot_plan": "บุคคลสมมติ G40-01 ALT ชื่อใหม่",
+      "status": "NOT_RUN",
+      "seeded": false
+    },
+    {
+      "run_id": "RUN40-G40-02-2025-TH",
+      "group_id": "G40-02",
+      "academic_year_ref": "DEMO-AY-2025",
+      "identity_scenario": "THAI_REFERENCE_PRESENT",
+      "person_ref": "DEMO-P40-G40-02-TH",
+      "candidate_ref": "DEMO-C40-G40-02-TH",
+      "application_ref": "DEMO-APP40-G40-02-2025-TH",
+      "display_name_snapshot_plan": "บุคคลสมมติ G40-02 TH ชื่อเดิม",
+      "status": "NOT_RUN",
+      "seeded": false
+    },
+    {
+      "run_id": "RUN40-G40-02-2025-ALT",
+      "group_id": "G40-02",
+      "academic_year_ref": "DEMO-AY-2025",
+      "identity_scenario": "NO_THAI_REFERENCE",
+      "person_ref": "DEMO-P40-G40-02-ALT",
+      "candidate_ref": "DEMO-C40-G40-02-ALT",
+      "application_ref": "DEMO-APP40-G40-02-2025-ALT",
+      "display_name_snapshot_plan": "บุคคลสมมติ G40-02 ALT ชื่อเดิม",
+      "status": "NOT_RUN",
+      "seeded": false
+    },
+    {
+      "run_id": "RUN40-G40-02-2026-TH",
+      "group_id": "G40-02",
+      "academic_year_ref": "DEMO-AY-2026",
+      "identity_scenario": "THAI_REFERENCE_PRESENT",
+      "person_ref": "DEMO-P40-G40-02-TH",
+      "candidate_ref": "DEMO-C40-G40-02-TH",
+      "application_ref": "DEMO-APP40-G40-02-2026-TH",
+      "display_name_snapshot_plan": "บุคคลสมมติ G40-02 TH ชื่อใหม่",
+      "status": "NOT_RUN",
+      "seeded": false
+    },
+    {
+      "run_id": "RUN40-G40-02-2026-ALT",
+      "group_id": "G40-02",
+      "academic_year_ref": "DEMO-AY-2026",
+      "identity_scenario": "NO_THAI_REFERENCE",
+      "person_ref": "DEMO-P40-G40-02-ALT",
+      "candidate_ref": "DEMO-C40-G40-02-ALT",
+      "application_ref": "DEMO-APP40-G40-02-2026-ALT",
+      "display_name_snapshot_plan": "บุคคลสมมติ G40-02 ALT ชื่อใหม่",
+      "status": "NOT_RUN",
+      "seeded": false
+    },
+    {
+      "run_id": "RUN40-G40-03-2025-TH",
+      "group_id": "G40-03",
+      "academic_year_ref": "DEMO-AY-2025",
+      "identity_scenario": "THAI_REFERENCE_PRESENT",
+      "person_ref": "DEMO-P40-G40-03-TH",
+      "candidate_ref": "DEMO-C40-G40-03-TH",
+      "application_ref": "DEMO-APP40-G40-03-2025-TH",
+      "display_name_snapshot_plan": "บุคคลสมมติ G40-03 TH ชื่อเดิม",
+      "status": "NOT_RUN",
+      "seeded": false
+    },
+    {
+      "run_id": "RUN40-G40-03-2025-ALT",
+      "group_id": "G40-03",
+      "academic_year_ref": "DEMO-AY-2025",
+      "identity_scenario": "NO_THAI_REFERENCE",
+      "person_ref": "DEMO-P40-G40-03-ALT",
+      "candidate_ref": "DEMO-C40-G40-03-ALT",
+      "application_ref": "DEMO-APP40-G40-03-2025-ALT",
+      "display_name_snapshot_plan": "บุคคลสมมติ G40-03 ALT ชื่อเดิม",
+      "status": "NOT_RUN",
+      "seeded": false
+    },
+    {
+      "run_id": "RUN40-G40-03-2026-TH",
+      "group_id": "G40-03",
+      "academic_year_ref": "DEMO-AY-2026",
+      "identity_scenario": "THAI_REFERENCE_PRESENT",
+      "person_ref": "DEMO-P40-G40-03-TH",
+      "candidate_ref": "DEMO-C40-G40-03-TH",
+      "application_ref": "DEMO-APP40-G40-03-2026-TH",
+      "display_name_snapshot_plan": "บุคคลสมมติ G40-03 TH ชื่อใหม่",
+      "status": "NOT_RUN",
+      "seeded": false
+    },
+    {
+      "run_id": "RUN40-G40-03-2026-ALT",
+      "group_id": "G40-03",
+      "academic_year_ref": "DEMO-AY-2026",
+      "identity_scenario": "NO_THAI_REFERENCE",
+      "person_ref": "DEMO-P40-G40-03-ALT",
+      "candidate_ref": "DEMO-C40-G40-03-ALT",
+      "application_ref": "DEMO-APP40-G40-03-2026-ALT",
+      "display_name_snapshot_plan": "บุคคลสมมติ G40-03 ALT ชื่อใหม่",
+      "status": "NOT_RUN",
+      "seeded": false
+    },
+    {
+      "run_id": "RUN40-G40-04-2025-TH",
+      "group_id": "G40-04",
+      "academic_year_ref": "DEMO-AY-2025",
+      "identity_scenario": "THAI_REFERENCE_PRESENT",
+      "person_ref": "DEMO-P40-G40-04-TH",
+      "candidate_ref": "DEMO-C40-G40-04-TH",
+      "application_ref": "DEMO-APP40-G40-04-2025-TH",
+      "display_name_snapshot_plan": "บุคคลสมมติ G40-04 TH ชื่อเดิม",
+      "status": "NOT_RUN",
+      "seeded": false
+    },
+    {
+      "run_id": "RUN40-G40-04-2025-ALT",
+      "group_id": "G40-04",
+      "academic_year_ref": "DEMO-AY-2025",
+      "identity_scenario": "NO_THAI_REFERENCE",
+      "person_ref": "DEMO-P40-G40-04-ALT",
+      "candidate_ref": "DEMO-C40-G40-04-ALT",
+      "application_ref": "DEMO-APP40-G40-04-2025-ALT",
+      "display_name_snapshot_plan": "บุคคลสมมติ G40-04 ALT ชื่อเดิม",
+      "status": "NOT_RUN",
+      "seeded": false
+    },
+    {
+      "run_id": "RUN40-G40-04-2026-TH",
+      "group_id": "G40-04",
+      "academic_year_ref": "DEMO-AY-2026",
+      "identity_scenario": "THAI_REFERENCE_PRESENT",
+      "person_ref": "DEMO-P40-G40-04-TH",
+      "candidate_ref": "DEMO-C40-G40-04-TH",
+      "application_ref": "DEMO-APP40-G40-04-2026-TH",
+      "display_name_snapshot_plan": "บุคคลสมมติ G40-04 TH ชื่อใหม่",
+      "status": "NOT_RUN",
+      "seeded": false
+    },
+    {
+      "run_id": "RUN40-G40-04-2026-ALT",
+      "group_id": "G40-04",
+      "academic_year_ref": "DEMO-AY-2026",
+      "identity_scenario": "NO_THAI_REFERENCE",
+      "person_ref": "DEMO-P40-G40-04-ALT",
+      "candidate_ref": "DEMO-C40-G40-04-ALT",
+      "application_ref": "DEMO-APP40-G40-04-2026-ALT",
+      "display_name_snapshot_plan": "บุคคลสมมติ G40-04 ALT ชื่อใหม่",
+      "status": "NOT_RUN",
+      "seeded": false
+    },
+    {
+      "run_id": "RUN40-G40-05-2025-TH",
+      "group_id": "G40-05",
+      "academic_year_ref": "DEMO-AY-2025",
+      "identity_scenario": "THAI_REFERENCE_PRESENT",
+      "person_ref": "DEMO-P40-G40-05-TH",
+      "candidate_ref": "DEMO-C40-G40-05-TH",
+      "application_ref": "DEMO-APP40-G40-05-2025-TH",
+      "display_name_snapshot_plan": "บุคคลสมมติ G40-05 TH ชื่อเดิม",
+      "status": "NOT_RUN",
+      "seeded": false
+    },
+    {
+      "run_id": "RUN40-G40-05-2025-ALT",
+      "group_id": "G40-05",
+      "academic_year_ref": "DEMO-AY-2025",
+      "identity_scenario": "NO_THAI_REFERENCE",
+      "person_ref": "DEMO-P40-G40-05-ALT",
+      "candidate_ref": "DEMO-C40-G40-05-ALT",
+      "application_ref": "DEMO-APP40-G40-05-2025-ALT",
+      "display_name_snapshot_plan": "บุคคลสมมติ G40-05 ALT ชื่อเดิม",
+      "status": "NOT_RUN",
+      "seeded": false
+    },
+    {
+      "run_id": "RUN40-G40-05-2026-TH",
+      "group_id": "G40-05",
+      "academic_year_ref": "DEMO-AY-2026",
+      "identity_scenario": "THAI_REFERENCE_PRESENT",
+      "person_ref": "DEMO-P40-G40-05-TH",
+      "candidate_ref": "DEMO-C40-G40-05-TH",
+      "application_ref": "DEMO-APP40-G40-05-2026-TH",
+      "display_name_snapshot_plan": "บุคคลสมมติ G40-05 TH ชื่อใหม่",
+      "status": "NOT_RUN",
+      "seeded": false
+    },
+    {
+      "run_id": "RUN40-G40-05-2026-ALT",
+      "group_id": "G40-05",
+      "academic_year_ref": "DEMO-AY-2026",
+      "identity_scenario": "NO_THAI_REFERENCE",
+      "person_ref": "DEMO-P40-G40-05-ALT",
+      "candidate_ref": "DEMO-C40-G40-05-ALT",
+      "application_ref": "DEMO-APP40-G40-05-2026-ALT",
+      "display_name_snapshot_plan": "บุคคลสมมติ G40-05 ALT ชื่อใหม่",
+      "status": "NOT_RUN",
+      "seeded": false
+    },
+    {
+      "run_id": "RUN40-G40-06-2025-TH",
+      "group_id": "G40-06",
+      "academic_year_ref": "DEMO-AY-2025",
+      "identity_scenario": "THAI_REFERENCE_PRESENT",
+      "person_ref": "DEMO-P40-G40-06-TH",
+      "candidate_ref": "DEMO-C40-G40-06-TH",
+      "application_ref": "DEMO-APP40-G40-06-2025-TH",
+      "display_name_snapshot_plan": "บุคคลสมมติ G40-06 TH ชื่อเดิม",
+      "status": "NOT_RUN",
+      "seeded": false
+    },
+    {
+      "run_id": "RUN40-G40-06-2025-ALT",
+      "group_id": "G40-06",
+      "academic_year_ref": "DEMO-AY-2025",
+      "identity_scenario": "NO_THAI_REFERENCE",
+      "person_ref": "DEMO-P40-G40-06-ALT",
+      "candidate_ref": "DEMO-C40-G40-06-ALT",
+      "application_ref": "DEMO-APP40-G40-06-2025-ALT",
+      "display_name_snapshot_plan": "บุคคลสมมติ G40-06 ALT ชื่อเดิม",
+      "status": "NOT_RUN",
+      "seeded": false
+    },
+    {
+      "run_id": "RUN40-G40-06-2026-TH",
+      "group_id": "G40-06",
+      "academic_year_ref": "DEMO-AY-2026",
+      "identity_scenario": "THAI_REFERENCE_PRESENT",
+      "person_ref": "DEMO-P40-G40-06-TH",
+      "candidate_ref": "DEMO-C40-G40-06-TH",
+      "application_ref": "DEMO-APP40-G40-06-2026-TH",
+      "display_name_snapshot_plan": "บุคคลสมมติ G40-06 TH ชื่อใหม่",
+      "status": "NOT_RUN",
+      "seeded": false
+    },
+    {
+      "run_id": "RUN40-G40-06-2026-ALT",
+      "group_id": "G40-06",
+      "academic_year_ref": "DEMO-AY-2026",
+      "identity_scenario": "NO_THAI_REFERENCE",
+      "person_ref": "DEMO-P40-G40-06-ALT",
+      "candidate_ref": "DEMO-C40-G40-06-ALT",
+      "application_ref": "DEMO-APP40-G40-06-2026-ALT",
+      "display_name_snapshot_plan": "บุคคลสมมติ G40-06 ALT ชื่อใหม่",
+      "status": "NOT_RUN",
+      "seeded": false
+    },
+    {
+      "run_id": "RUN40-G40-07-2025-TH",
+      "group_id": "G40-07",
+      "academic_year_ref": "DEMO-AY-2025",
+      "identity_scenario": "THAI_REFERENCE_PRESENT",
+      "person_ref": "DEMO-P40-G40-07-TH",
+      "candidate_ref": "DEMO-C40-G40-07-TH",
+      "application_ref": "DEMO-APP40-G40-07-2025-TH",
+      "display_name_snapshot_plan": "บุคคลสมมติ G40-07 TH ชื่อเดิม",
+      "status": "NOT_RUN",
+      "seeded": false
+    },
+    {
+      "run_id": "RUN40-G40-07-2025-ALT",
+      "group_id": "G40-07",
+      "academic_year_ref": "DEMO-AY-2025",
+      "identity_scenario": "NO_THAI_REFERENCE",
+      "person_ref": "DEMO-P40-G40-07-ALT",
+      "candidate_ref": "DEMO-C40-G40-07-ALT",
+      "application_ref": "DEMO-APP40-G40-07-2025-ALT",
+      "display_name_snapshot_plan": "บุคคลสมมติ G40-07 ALT ชื่อเดิม",
+      "status": "NOT_RUN",
+      "seeded": false
+    },
+    {
+      "run_id": "RUN40-G40-07-2026-TH",
+      "group_id": "G40-07",
+      "academic_year_ref": "DEMO-AY-2026",
+      "identity_scenario": "THAI_REFERENCE_PRESENT",
+      "person_ref": "DEMO-P40-G40-07-TH",
+      "candidate_ref": "DEMO-C40-G40-07-TH",
+      "application_ref": "DEMO-APP40-G40-07-2026-TH",
+      "display_name_snapshot_plan": "บุคคลสมมติ G40-07 TH ชื่อใหม่",
+      "status": "NOT_RUN",
+      "seeded": false
+    },
+    {
+      "run_id": "RUN40-G40-07-2026-ALT",
+      "group_id": "G40-07",
+      "academic_year_ref": "DEMO-AY-2026",
+      "identity_scenario": "NO_THAI_REFERENCE",
+      "person_ref": "DEMO-P40-G40-07-ALT",
+      "candidate_ref": "DEMO-C40-G40-07-ALT",
+      "application_ref": "DEMO-APP40-G40-07-2026-ALT",
+      "display_name_snapshot_plan": "บุคคลสมมติ G40-07 ALT ชื่อใหม่",
+      "status": "NOT_RUN",
+      "seeded": false
+    },
+    {
+      "run_id": "RUN40-G40-08-2025-TH",
+      "group_id": "G40-08",
+      "academic_year_ref": "DEMO-AY-2025",
+      "identity_scenario": "THAI_REFERENCE_PRESENT",
+      "person_ref": "DEMO-P40-G40-08-TH",
+      "candidate_ref": "DEMO-C40-G40-08-TH",
+      "application_ref": "DEMO-APP40-G40-08-2025-TH",
+      "display_name_snapshot_plan": "บุคคลสมมติ G40-08 TH ชื่อเดิม",
+      "status": "NOT_RUN",
+      "seeded": false
+    },
+    {
+      "run_id": "RUN40-G40-08-2025-ALT",
+      "group_id": "G40-08",
+      "academic_year_ref": "DEMO-AY-2025",
+      "identity_scenario": "NO_THAI_REFERENCE",
+      "person_ref": "DEMO-P40-G40-08-ALT",
+      "candidate_ref": "DEMO-C40-G40-08-ALT",
+      "application_ref": "DEMO-APP40-G40-08-2025-ALT",
+      "display_name_snapshot_plan": "บุคคลสมมติ G40-08 ALT ชื่อเดิม",
+      "status": "NOT_RUN",
+      "seeded": false
+    },
+    {
+      "run_id": "RUN40-G40-08-2026-TH",
+      "group_id": "G40-08",
+      "academic_year_ref": "DEMO-AY-2026",
+      "identity_scenario": "THAI_REFERENCE_PRESENT",
+      "person_ref": "DEMO-P40-G40-08-TH",
+      "candidate_ref": "DEMO-C40-G40-08-TH",
+      "application_ref": "DEMO-APP40-G40-08-2026-TH",
+      "display_name_snapshot_plan": "บุคคลสมมติ G40-08 TH ชื่อใหม่",
+      "status": "NOT_RUN",
+      "seeded": false
+    },
+    {
+      "run_id": "RUN40-G40-08-2026-ALT",
+      "group_id": "G40-08",
+      "academic_year_ref": "DEMO-AY-2026",
+      "identity_scenario": "NO_THAI_REFERENCE",
+      "person_ref": "DEMO-P40-G40-08-ALT",
+      "candidate_ref": "DEMO-C40-G40-08-ALT",
+      "application_ref": "DEMO-APP40-G40-08-2026-ALT",
+      "display_name_snapshot_plan": "บุคคลสมมติ G40-08 ALT ชื่อใหม่",
+      "status": "NOT_RUN",
+      "seeded": false
+    },
+    {
+      "run_id": "RUN40-G40-09-2025-TH",
+      "group_id": "G40-09",
+      "academic_year_ref": "DEMO-AY-2025",
+      "identity_scenario": "THAI_REFERENCE_PRESENT",
+      "person_ref": "DEMO-P40-G40-09-TH",
+      "candidate_ref": "DEMO-C40-G40-09-TH",
+      "application_ref": "DEMO-APP40-G40-09-2025-TH",
+      "display_name_snapshot_plan": "บุคคลสมมติ G40-09 TH ชื่อเดิม",
+      "status": "NOT_RUN",
+      "seeded": false
+    },
+    {
+      "run_id": "RUN40-G40-09-2025-ALT",
+      "group_id": "G40-09",
+      "academic_year_ref": "DEMO-AY-2025",
+      "identity_scenario": "NO_THAI_REFERENCE",
+      "person_ref": "DEMO-P40-G40-09-ALT",
+      "candidate_ref": "DEMO-C40-G40-09-ALT",
+      "application_ref": "DEMO-APP40-G40-09-2025-ALT",
+      "display_name_snapshot_plan": "บุคคลสมมติ G40-09 ALT ชื่อเดิม",
+      "status": "NOT_RUN",
+      "seeded": false
+    },
+    {
+      "run_id": "RUN40-G40-09-2026-TH",
+      "group_id": "G40-09",
+      "academic_year_ref": "DEMO-AY-2026",
+      "identity_scenario": "THAI_REFERENCE_PRESENT",
+      "person_ref": "DEMO-P40-G40-09-TH",
+      "candidate_ref": "DEMO-C40-G40-09-TH",
+      "application_ref": "DEMO-APP40-G40-09-2026-TH",
+      "display_name_snapshot_plan": "บุคคลสมมติ G40-09 TH ชื่อใหม่",
+      "status": "NOT_RUN",
+      "seeded": false
+    },
+    {
+      "run_id": "RUN40-G40-09-2026-ALT",
+      "group_id": "G40-09",
+      "academic_year_ref": "DEMO-AY-2026",
+      "identity_scenario": "NO_THAI_REFERENCE",
+      "person_ref": "DEMO-P40-G40-09-ALT",
+      "candidate_ref": "DEMO-C40-G40-09-ALT",
+      "application_ref": "DEMO-APP40-G40-09-2026-ALT",
+      "display_name_snapshot_plan": "บุคคลสมมติ G40-09 ALT ชื่อใหม่",
+      "status": "NOT_RUN",
+      "seeded": false
+    },
+    {
+      "run_id": "RUN40-G40-10-2025-TH",
+      "group_id": "G40-10",
+      "academic_year_ref": "DEMO-AY-2025",
+      "identity_scenario": "THAI_REFERENCE_PRESENT",
+      "person_ref": "DEMO-P40-G40-10-TH",
+      "candidate_ref": "DEMO-C40-G40-10-TH",
+      "application_ref": "DEMO-APP40-G40-10-2025-TH",
+      "display_name_snapshot_plan": "บุคคลสมมติ G40-10 TH ชื่อเดิม",
+      "status": "NOT_RUN",
+      "seeded": false
+    },
+    {
+      "run_id": "RUN40-G40-10-2025-ALT",
+      "group_id": "G40-10",
+      "academic_year_ref": "DEMO-AY-2025",
+      "identity_scenario": "NO_THAI_REFERENCE",
+      "person_ref": "DEMO-P40-G40-10-ALT",
+      "candidate_ref": "DEMO-C40-G40-10-ALT",
+      "application_ref": "DEMO-APP40-G40-10-2025-ALT",
+      "display_name_snapshot_plan": "บุคคลสมมติ G40-10 ALT ชื่อเดิม",
+      "status": "NOT_RUN",
+      "seeded": false
+    },
+    {
+      "run_id": "RUN40-G40-10-2026-TH",
+      "group_id": "G40-10",
+      "academic_year_ref": "DEMO-AY-2026",
+      "identity_scenario": "THAI_REFERENCE_PRESENT",
+      "person_ref": "DEMO-P40-G40-10-TH",
+      "candidate_ref": "DEMO-C40-G40-10-TH",
+      "application_ref": "DEMO-APP40-G40-10-2026-TH",
+      "display_name_snapshot_plan": "บุคคลสมมติ G40-10 TH ชื่อใหม่",
+      "status": "NOT_RUN",
+      "seeded": false
+    },
+    {
+      "run_id": "RUN40-G40-10-2026-ALT",
+      "group_id": "G40-10",
+      "academic_year_ref": "DEMO-AY-2026",
+      "identity_scenario": "NO_THAI_REFERENCE",
+      "person_ref": "DEMO-P40-G40-10-ALT",
+      "candidate_ref": "DEMO-C40-G40-10-ALT",
+      "application_ref": "DEMO-APP40-G40-10-2026-ALT",
+      "display_name_snapshot_plan": "บุคคลสมมติ G40-10 ALT ชื่อใหม่",
+      "status": "NOT_RUN",
+      "seeded": false
+    },
+    {
+      "run_id": "RUN40-G40-11-2025-TH",
+      "group_id": "G40-11",
+      "academic_year_ref": "DEMO-AY-2025",
+      "identity_scenario": "THAI_REFERENCE_PRESENT",
+      "person_ref": "DEMO-P40-G40-11-TH",
+      "candidate_ref": "DEMO-C40-G40-11-TH",
+      "application_ref": "DEMO-APP40-G40-11-2025-TH",
+      "display_name_snapshot_plan": "บุคคลสมมติ G40-11 TH ชื่อเดิม",
+      "status": "NOT_RUN",
+      "seeded": false
+    },
+    {
+      "run_id": "RUN40-G40-11-2025-ALT",
+      "group_id": "G40-11",
+      "academic_year_ref": "DEMO-AY-2025",
+      "identity_scenario": "NO_THAI_REFERENCE",
+      "person_ref": "DEMO-P40-G40-11-ALT",
+      "candidate_ref": "DEMO-C40-G40-11-ALT",
+      "application_ref": "DEMO-APP40-G40-11-2025-ALT",
+      "display_name_snapshot_plan": "บุคคลสมมติ G40-11 ALT ชื่อเดิม",
+      "status": "NOT_RUN",
+      "seeded": false
+    },
+    {
+      "run_id": "RUN40-G40-11-2026-TH",
+      "group_id": "G40-11",
+      "academic_year_ref": "DEMO-AY-2026",
+      "identity_scenario": "THAI_REFERENCE_PRESENT",
+      "person_ref": "DEMO-P40-G40-11-TH",
+      "candidate_ref": "DEMO-C40-G40-11-TH",
+      "application_ref": "DEMO-APP40-G40-11-2026-TH",
+      "display_name_snapshot_plan": "บุคคลสมมติ G40-11 TH ชื่อใหม่",
+      "status": "NOT_RUN",
+      "seeded": false
+    },
+    {
+      "run_id": "RUN40-G40-11-2026-ALT",
+      "group_id": "G40-11",
+      "academic_year_ref": "DEMO-AY-2026",
+      "identity_scenario": "NO_THAI_REFERENCE",
+      "person_ref": "DEMO-P40-G40-11-ALT",
+      "candidate_ref": "DEMO-C40-G40-11-ALT",
+      "application_ref": "DEMO-APP40-G40-11-2026-ALT",
+      "display_name_snapshot_plan": "บุคคลสมมติ G40-11 ALT ชื่อใหม่",
+      "status": "NOT_RUN",
+      "seeded": false
+    },
+    {
+      "run_id": "RUN40-G40-12-2025-TH",
+      "group_id": "G40-12",
+      "academic_year_ref": "DEMO-AY-2025",
+      "identity_scenario": "THAI_REFERENCE_PRESENT",
+      "person_ref": "DEMO-P40-G40-12-TH",
+      "candidate_ref": "DEMO-C40-G40-12-TH",
+      "application_ref": "DEMO-APP40-G40-12-2025-TH",
+      "display_name_snapshot_plan": "บุคคลสมมติ G40-12 TH ชื่อเดิม",
+      "status": "NOT_RUN",
+      "seeded": false
+    },
+    {
+      "run_id": "RUN40-G40-12-2025-ALT",
+      "group_id": "G40-12",
+      "academic_year_ref": "DEMO-AY-2025",
+      "identity_scenario": "NO_THAI_REFERENCE",
+      "person_ref": "DEMO-P40-G40-12-ALT",
+      "candidate_ref": "DEMO-C40-G40-12-ALT",
+      "application_ref": "DEMO-APP40-G40-12-2025-ALT",
+      "display_name_snapshot_plan": "บุคคลสมมติ G40-12 ALT ชื่อเดิม",
+      "status": "NOT_RUN",
+      "seeded": false
+    },
+    {
+      "run_id": "RUN40-G40-12-2026-TH",
+      "group_id": "G40-12",
+      "academic_year_ref": "DEMO-AY-2026",
+      "identity_scenario": "THAI_REFERENCE_PRESENT",
+      "person_ref": "DEMO-P40-G40-12-TH",
+      "candidate_ref": "DEMO-C40-G40-12-TH",
+      "application_ref": "DEMO-APP40-G40-12-2026-TH",
+      "display_name_snapshot_plan": "บุคคลสมมติ G40-12 TH ชื่อใหม่",
+      "status": "NOT_RUN",
+      "seeded": false
+    },
+    {
+      "run_id": "RUN40-G40-12-2026-ALT",
+      "group_id": "G40-12",
+      "academic_year_ref": "DEMO-AY-2026",
+      "identity_scenario": "NO_THAI_REFERENCE",
+      "person_ref": "DEMO-P40-G40-12-ALT",
+      "candidate_ref": "DEMO-C40-G40-12-ALT",
+      "application_ref": "DEMO-APP40-G40-12-2026-ALT",
+      "display_name_snapshot_plan": "บุคคลสมมติ G40-12 ALT ชื่อใหม่",
+      "status": "NOT_RUN",
+      "seeded": false
+    }
+  ]
+}

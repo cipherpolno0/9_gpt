@@ -1,0 +1,301 @@
+{
+  "fixture_version": "0.1",
+  "data_label": "DEMO_OFFLINE_PLAN_NOT_STAGED",
+  "assessment_clock": "2026-10-04T00:00:00Z",
+  "scope_plan_ref": "DEMO_IMPORT_REVIEW_SCOPE_A",
+  "country_postal_profile_ref": "DEMO_PROFILE_NOT_OFFICIAL",
+  "geography_plan": [
+    {
+      "ref": "DEMO_GEO_A_PROVINCE",
+      "kind": "PROVINCE",
+      "parent_ref": null,
+      "label_th": "DEMO พื้นที่ A PROVINCE ไม่ใช่พื้นที่จริง"
+    },
+    {
+      "ref": "DEMO_GEO_A_DISTRICT",
+      "kind": "DISTRICT",
+      "parent_ref": "DEMO_GEO_A_PROVINCE",
+      "label_th": "DEMO พื้นที่ A DISTRICT ไม่ใช่พื้นที่จริง"
+    },
+    {
+      "ref": "DEMO_GEO_A_SUBDISTRICT",
+      "kind": "SUBDISTRICT",
+      "parent_ref": "DEMO_GEO_A_DISTRICT",
+      "label_th": "DEMO พื้นที่ A SUBDISTRICT ไม่ใช่พื้นที่จริง"
+    },
+    {
+      "ref": "DEMO_GEO_B_PROVINCE",
+      "kind": "PROVINCE",
+      "parent_ref": null,
+      "label_th": "DEMO พื้นที่ B PROVINCE ไม่ใช่พื้นที่จริง"
+    },
+    {
+      "ref": "DEMO_GEO_B_DISTRICT",
+      "kind": "DISTRICT",
+      "parent_ref": "DEMO_GEO_B_PROVINCE",
+      "label_th": "DEMO พื้นที่ B DISTRICT ไม่ใช่พื้นที่จริง"
+    },
+    {
+      "ref": "DEMO_GEO_B_SUBDISTRICT",
+      "kind": "SUBDISTRICT",
+      "parent_ref": "DEMO_GEO_B_DISTRICT",
+      "label_th": "DEMO พื้นที่ B SUBDISTRICT ไม่ใช่พื้นที่จริง"
+    }
+  ],
+  "existing_registry_plan": [
+    {
+      "ref": "DEMO_EXISTING_ORG_01",
+      "internal_code": "DEMO_ORG_CODE_01",
+      "display_name_th": "DEMO วัดตัวอย่าง A",
+      "revision_ref": "DEMO_EXISTING_ORG_REV_01",
+      "area_ref": "DEMO_AREA_A"
+    }
+  ],
+  "legacy_rows": [
+    {
+      "source_row_ref": "DEMO_LEGACY_ROW_01",
+      "source_namespace": "DEMO_LEGACY_REGISTRY",
+      "external_code": "DEMO_EXTERNAL_01",
+      "internal_code_proposal": "DEMO_ORG_CODE_01",
+      "organization_type_ref": "DEMO_ORG_TYPE_TEMPLE",
+      "display_name_th": "DEMO วัดตัวอย่าง A รุ่นเสนอใหม่",
+      "area_ref": "DEMO_AREA_A",
+      "province_ref": "DEMO_GEO_A_PROVINCE",
+      "district_ref": "DEMO_GEO_A_DISTRICT",
+      "subdistrict_ref": "DEMO_GEO_A_SUBDISTRICT",
+      "physical_address_text": "DEMO ที่อยู่สำนักงาน 01 ไม่ใช่สถานที่จริง",
+      "mailing_address_text": "DEMO ที่อยู่จัดส่ง 01 ไม่ใช่สถานที่จริง",
+      "postal_code_proposal": "DEMO_POSTAL_A",
+      "latitude": null,
+      "longitude": null,
+      "relations_proposal": [],
+      "contacts_proposal": [],
+      "center_session_plan": null,
+      "source_label": "DEMO_SOURCE_NOT_VERIFIED_NOT_IMPORTED",
+      "candidate_target_ref": "DEMO_EXISTING_ORG_01"
+    },
+    {
+      "source_row_ref": "DEMO_LEGACY_ROW_02",
+      "source_namespace": "DEMO_LEGACY_REGISTRY",
+      "external_code": "DEMO_EXTERNAL_02",
+      "internal_code_proposal": "DEMO_ORG_CODE_02",
+      "organization_type_ref": "DEMO_ORG_TYPE_STUDY_BUREAU",
+      "display_name_th": "DEMO หน่วยงานสมมติ 02",
+      "area_ref": "DEMO_AREA_A",
+      "province_ref": "DEMO_GEO_A_PROVINCE",
+      "district_ref": "DEMO_GEO_A_DISTRICT",
+      "subdistrict_ref": "DEMO_GEO_A_SUBDISTRICT",
+      "physical_address_text": "DEMO ที่อยู่สำนักงาน 02 ไม่ใช่สถานที่จริง",
+      "mailing_address_text": "DEMO ที่อยู่จัดส่ง 02 ไม่ใช่สถานที่จริง",
+      "postal_code_proposal": "DEMO_POSTAL_A",
+      "latitude": null,
+      "longitude": null,
+      "relations_proposal": [],
+      "contacts_proposal": [],
+      "center_session_plan": null,
+      "source_label": "DEMO_SOURCE_NOT_VERIFIED_NOT_IMPORTED",
+      "shared_host_source_row_ref": "DEMO_LEGACY_ROW_01"
+    },
+    {
+      "source_row_ref": "DEMO_LEGACY_ROW_03",
+      "source_namespace": "DEMO_LEGACY_REGISTRY",
+      "external_code": "DEMO_EXTERNAL_03",
+      "internal_code_proposal": "DEMO_ORG_CODE_03",
+      "organization_type_ref": "DEMO_ORG_TYPE_RELIGIOUS_STUDY_UNIT",
+      "display_name_th": "DEMO หน่วยงานสมมติ 03",
+      "area_ref": "DEMO_AREA_A",
+      "province_ref": "DEMO_GEO_A_PROVINCE",
+      "district_ref": "DEMO_GEO_A_DISTRICT",
+      "subdistrict_ref": "DEMO_GEO_A_SUBDISTRICT",
+      "physical_address_text": "DEMO ที่อยู่สำนักงาน 03 ไม่ใช่สถานที่จริง",
+      "mailing_address_text": null,
+      "postal_code_proposal": "DEMO_POSTAL_A",
+      "latitude": null,
+      "longitude": null,
+      "relations_proposal": [],
+      "contacts_proposal": [
+        {
+          "kind": "EMAIL",
+          "purpose": "WORK",
+          "value": "demo-office-03@example.invalid",
+          "review_due_at": "2026-02-01T00:00:00Z",
+          "verification_status": "DEMO_UNVERIFIED"
+        }
+      ],
+      "center_session_plan": {
+        "ref": "DEMO_CENTER_SESSION_A",
+        "required_duties_in_demo_rule": [
+          "DEMO_EXAM_DUTY_CHAIR",
+          "DEMO_EXAM_DUTY_RECIPIENT"
+        ],
+        "appointment_refs": [],
+        "assessment_effective_date": "2026-10-04"
+      },
+      "source_label": "DEMO_SOURCE_NOT_VERIFIED_NOT_IMPORTED",
+      "requires_mailing_for_demo_dispatch": true
+    },
+    {
+      "source_row_ref": "DEMO_LEGACY_ROW_04",
+      "source_namespace": "DEMO_LEGACY_REGISTRY",
+      "external_code": "DEMO_EXTERNAL_04",
+      "internal_code_proposal": "DEMO_ORG_CODE_04",
+      "organization_type_ref": "DEMO_ORG_TYPE_ORGANIZATION",
+      "display_name_th": "DEMO หน่วยงานสมมติ 04",
+      "area_ref": "DEMO_AREA_A",
+      "province_ref": "DEMO_GEO_A_PROVINCE",
+      "district_ref": "DEMO_GEO_B_DISTRICT",
+      "subdistrict_ref": "DEMO_GEO_B_SUBDISTRICT",
+      "physical_address_text": "DEMO ที่อยู่สำนักงาน 04 ไม่ใช่สถานที่จริง",
+      "mailing_address_text": "DEMO ที่อยู่จัดส่ง 04 ไม่ใช่สถานที่จริง",
+      "postal_code_proposal": "DEMO_POSTAL_A",
+      "latitude": null,
+      "longitude": null,
+      "relations_proposal": [],
+      "contacts_proposal": [],
+      "center_session_plan": null,
+      "source_label": "DEMO_SOURCE_NOT_VERIFIED_NOT_IMPORTED"
+    },
+    {
+      "source_row_ref": "DEMO_LEGACY_ROW_05",
+      "source_namespace": "DEMO_LEGACY_REGISTRY",
+      "external_code": "DEMO_EXTERNAL_05",
+      "internal_code_proposal": "DEMO_ORG_CODE_05",
+      "organization_type_ref": "DEMO_ORG_TYPE_EDUCATIONAL_INSTITUTION",
+      "display_name_th": "DEMO หน่วยงานสมมติ 05",
+      "area_ref": "DEMO_AREA_A",
+      "province_ref": "DEMO_GEO_A_PROVINCE",
+      "district_ref": "DEMO_GEO_A_DISTRICT",
+      "subdistrict_ref": "DEMO_GEO_A_SUBDISTRICT",
+      "physical_address_text": "DEMO ที่อยู่สำนักงาน 05 ไม่ใช่สถานที่จริง",
+      "mailing_address_text": "DEMO ที่อยู่จัดส่ง 05 ไม่ใช่สถานที่จริง",
+      "postal_code_proposal": "DEMO_UNKNOWN_POSTAL",
+      "latitude": null,
+      "longitude": null,
+      "relations_proposal": [],
+      "contacts_proposal": [],
+      "center_session_plan": null,
+      "source_label": "DEMO_SOURCE_NOT_VERIFIED_NOT_IMPORTED"
+    },
+    {
+      "source_row_ref": "DEMO_LEGACY_ROW_06",
+      "source_namespace": "DEMO_LEGACY_REGISTRY",
+      "external_code": "DEMO_EXTERNAL_06",
+      "internal_code_proposal": "DEMO_ORG_CODE_01",
+      "organization_type_ref": "DEMO_ORG_TYPE_TEMPLE",
+      "display_name_th": "DEMO หน่วยงานสมมติ 06",
+      "area_ref": "DEMO_AREA_A",
+      "province_ref": "DEMO_GEO_A_PROVINCE",
+      "district_ref": "DEMO_GEO_A_DISTRICT",
+      "subdistrict_ref": "DEMO_GEO_A_SUBDISTRICT",
+      "physical_address_text": "DEMO ที่อยู่สำนักงาน 06 ไม่ใช่สถานที่จริง",
+      "mailing_address_text": "DEMO ที่อยู่จัดส่ง 06 ไม่ใช่สถานที่จริง",
+      "postal_code_proposal": "DEMO_POSTAL_A",
+      "latitude": null,
+      "longitude": null,
+      "relations_proposal": [],
+      "contacts_proposal": [],
+      "center_session_plan": null,
+      "source_label": "DEMO_SOURCE_NOT_VERIFIED_NOT_IMPORTED"
+    },
+    {
+      "source_row_ref": "DEMO_LEGACY_ROW_07",
+      "source_namespace": "DEMO_LEGACY_REGISTRY",
+      "external_code": "DEMO_EXTERNAL_07",
+      "internal_code_proposal": "DEMO_ORG_CODE_07",
+      "organization_type_ref": "DEMO_ORG_TYPE_TEMPLE",
+      "display_name_th": "DEMO วัดตัวอย่าง A",
+      "area_ref": "DEMO_AREA_A",
+      "province_ref": "DEMO_GEO_A_PROVINCE",
+      "district_ref": "DEMO_GEO_A_DISTRICT",
+      "subdistrict_ref": "DEMO_GEO_A_SUBDISTRICT",
+      "physical_address_text": "DEMO ที่อยู่สำนักงาน 07 ไม่ใช่สถานที่จริง",
+      "mailing_address_text": "DEMO ที่อยู่จัดส่ง 07 ไม่ใช่สถานที่จริง",
+      "postal_code_proposal": "DEMO_POSTAL_A",
+      "latitude": null,
+      "longitude": null,
+      "relations_proposal": [],
+      "contacts_proposal": [],
+      "center_session_plan": null,
+      "source_label": "DEMO_SOURCE_NOT_VERIFIED_NOT_IMPORTED"
+    },
+    {
+      "source_row_ref": "DEMO_LEGACY_ROW_08",
+      "source_namespace": "DEMO_LEGACY_REGISTRY",
+      "external_code": "DEMO_EXTERNAL_08",
+      "internal_code_proposal": "DEMO_ORG_CODE_08",
+      "organization_type_ref": "DEMO_ORG_TYPE_RELIGIOUS_STUDY_UNIT",
+      "display_name_th": "DEMO หน่วยงานสมมติ 08",
+      "area_ref": "DEMO_AREA_A",
+      "province_ref": "DEMO_GEO_A_PROVINCE",
+      "district_ref": "DEMO_GEO_A_DISTRICT",
+      "subdistrict_ref": "DEMO_GEO_A_SUBDISTRICT",
+      "physical_address_text": "DEMO ที่อยู่สำนักงาน 08 ไม่ใช่สถานที่จริง",
+      "mailing_address_text": "DEMO ที่อยู่จัดส่ง 08 ไม่ใช่สถานที่จริง",
+      "postal_code_proposal": "DEMO_POSTAL_A",
+      "latitude": null,
+      "longitude": null,
+      "relations_proposal": [
+        {
+          "parent_source_row_ref": "DEMO_LEGACY_ROW_09",
+          "chain_ref": "DEMO_GOVERNANCE_CHAIN_A",
+          "effective_from": "2026-01-01",
+          "effective_to": null
+        }
+      ],
+      "contacts_proposal": [],
+      "center_session_plan": null,
+      "source_label": "DEMO_SOURCE_NOT_VERIFIED_NOT_IMPORTED"
+    },
+    {
+      "source_row_ref": "DEMO_LEGACY_ROW_09",
+      "source_namespace": "DEMO_LEGACY_REGISTRY",
+      "external_code": "DEMO_EXTERNAL_09",
+      "internal_code_proposal": "DEMO_ORG_CODE_09",
+      "organization_type_ref": "DEMO_ORG_TYPE_ORGANIZATION",
+      "display_name_th": "DEMO หน่วยงานสมมติ 09",
+      "area_ref": "DEMO_AREA_A",
+      "province_ref": "DEMO_GEO_A_PROVINCE",
+      "district_ref": "DEMO_GEO_A_DISTRICT",
+      "subdistrict_ref": "DEMO_GEO_A_SUBDISTRICT",
+      "physical_address_text": "DEMO ที่อยู่สำนักงาน 09 ไม่ใช่สถานที่จริง",
+      "mailing_address_text": "DEMO ที่อยู่จัดส่ง 09 ไม่ใช่สถานที่จริง",
+      "postal_code_proposal": "DEMO_POSTAL_A",
+      "latitude": null,
+      "longitude": null,
+      "relations_proposal": [
+        {
+          "parent_source_row_ref": "DEMO_LEGACY_ROW_08",
+          "chain_ref": "DEMO_GOVERNANCE_CHAIN_A",
+          "effective_from": "2026-01-01",
+          "effective_to": null
+        }
+      ],
+      "contacts_proposal": [],
+      "center_session_plan": null,
+      "source_label": "DEMO_SOURCE_NOT_VERIFIED_NOT_IMPORTED"
+    },
+    {
+      "source_row_ref": "DEMO_LEGACY_ROW_10",
+      "source_namespace": "DEMO_LEGACY_REGISTRY",
+      "external_code": "DEMO_EXTERNAL_10",
+      "internal_code_proposal": "DEMO_ORG_CODE_10",
+      "organization_type_ref": "DEMO_ORG_TYPE_EDUCATIONAL_INSTITUTION",
+      "display_name_th": "DEMO หน่วยงานสมมติ 10",
+      "area_ref": "DEMO_AREA_B",
+      "province_ref": "DEMO_GEO_B_PROVINCE",
+      "district_ref": "DEMO_GEO_B_DISTRICT",
+      "subdistrict_ref": "DEMO_GEO_B_SUBDISTRICT",
+      "physical_address_text": "DEMO ที่อยู่สำนักงาน 10 ไม่ใช่สถานที่จริง",
+      "mailing_address_text": "DEMO ที่อยู่จัดส่ง 10 ไม่ใช่สถานที่จริง",
+      "postal_code_proposal": "DEMO_POSTAL_A",
+      "latitude": null,
+      "longitude": null,
+      "relations_proposal": [],
+      "contacts_proposal": [],
+      "center_session_plan": null,
+      "source_label": "DEMO_SOURCE_NOT_VERIFIED_NOT_IMPORTED",
+      "private_contact_canary": "DEMO_PRIVATE_CONTACT_NEVER_PUBLIC",
+      "public_visibility_requested": true
+    }
+  ]
+}

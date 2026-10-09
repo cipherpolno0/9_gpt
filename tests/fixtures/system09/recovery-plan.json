@@ -1,0 +1,152 @@
+{
+  "version": "0.1",
+  "lesson": 63,
+  "status": "PLAN_ONLY",
+  "execution": "ALL_NOT_RUN",
+  "runtime": "NOT_IMPLEMENTED",
+  "data_mode": "DEMO_ONLY",
+  "prerequisites": { "62": "BLOCKED" },
+  "actual_evidence": {
+    "batch_ids": [],
+    "application_ids": [],
+    "commit_receipt_ids": [],
+    "amendment_request_ids": [],
+    "decision_ids": [],
+    "seat_ids": [],
+    "score_batch_ids": [],
+    "release_ids": [],
+    "source_file_checksum": null,
+    "runtime_report": null
+  },
+  "monitoring_proposal": {
+    "current_scope_before_count_search_page": true,
+    "creator_keeps_access_after_assignment_ends": false,
+    "technical_admin_is_reader": false,
+    "queue_ack_means_committed": false,
+    "checked_rows_100_percent_means_committed": false,
+    "default_page_size": 50,
+    "maximum_page_size": 100,
+    "csv_export_enabled": false,
+    "private_cache": "no-store",
+    "job_payload_fields": [
+      "command_reference",
+      "generation",
+      "correlation_reference"
+    ]
+  },
+  "lineage_proposal": {
+    "parent_and_root_immutable": true,
+    "self_parent_or_cycle_allowed": false,
+    "cross_scope_parent_allowed": false,
+    "match_by_name_allowed": false,
+    "diff_kinds": ["ADDED", "MODIFIED", "REMOVED", "UNCHANGED", "UNRESOLVED"],
+    "removed_row_auto_withdraws": false,
+    "approved_application_auto_overwrite": false,
+    "mixed_create_and_amend_execution_enabled": false
+  },
+  "recovery_proposal": {
+    "import_commit_status_after_compensation": "committed",
+    "original_receipt_counts_mutable": false,
+    "workflow_before_registry_mutation": true,
+    "maker_checker_required": true,
+    "current_impact_before_apply": true,
+    "unknown_impact_means_zero": false,
+    "whole_batch_multi_module_atomicity_claim": false,
+    "successful_commands_retry": "REPLAY_RECEIPT_ONLY",
+    "unfinished_commands_retry": "CURRENT_AUTHORITY_IMPACT_AND_VERSION_REQUIRED",
+    "recovery_states": [
+      "PROPOSED",
+      "REVIEWING",
+      "RETURNED",
+      "APPROVED_PENDING",
+      "APPLYING",
+      "PARTIALLY_APPLIED",
+      "COMPLETED",
+      "REJECTED",
+      "CANCELLED",
+      "NEEDS_REVIEW"
+    ],
+    "delete_person": false,
+    "delete_candidate": false,
+    "delete_enrollment": false,
+    "delete_application": false,
+    "delete_seat": false,
+    "delete_score": false,
+    "delete_release": false,
+    "delete_original_receipt": false
+  },
+  "impact_routes_plan": [
+    {
+      "label": "TEST_63_DRAFT_NO_DOWNSTREAM",
+      "route": "WORKFLOW_THEN_APPLICATION05_WITHDRAWAL"
+    },
+    {
+      "label": "TEST_63_APPROVED_NO_SEAT",
+      "route": "APPLICATION05_APPROVED_AMENDMENT"
+    },
+    {
+      "label": "TEST_63_HAS_SEAT",
+      "route": "APPLICATION05_AND_SEAT37_AMENDMENT"
+    },
+    {
+      "label": "TEST_63_HAS_SCORE",
+      "route": "APPLICATION05_AND_SCORE38_CORRECTION"
+    },
+    {
+      "label": "TEST_63_HAS_RELEASE",
+      "route": "APPLICATION05_AND_RESULT39_RELEASE_RECOVERY"
+    },
+    { "label": "TEST_63_UNKNOWN_IMPACT", "route": "NOT_READY_NO_MUTATION" }
+  ],
+  "retention_proposal": {
+    "policy_namespace": "EXAM_IMPORT_RETENTION",
+    "source_file_days": null,
+    "staging_days": null,
+    "error_report_days": null,
+    "transaction_evidence_days": null,
+    "policy_status": "TO_VERIFY",
+    "destruction_enabled": false,
+    "legal_hold_blocks_destruction": true,
+    "legal_hold_grants_read_access": false,
+    "recheck_hold_and_shared_references_at_worker": true,
+    "destruction_audit_retained": true,
+    "purge_cascades_business_records": false
+  },
+  "failure_labels_plan": [
+    "NETWORK_LOST_AFTER_COMMIT",
+    "OLD_WORKER_RESUMES_AFTER_LEASE_EXPIRY",
+    "IMPACT_ADAPTER_NOT_READY",
+    "SEAT_CREATED_AFTER_REVIEW",
+    "SCORE_CERTIFIED_AFTER_REVIEW",
+    "RELEASE_PUBLISHED_AFTER_REVIEW",
+    "COMPENSATION_COMMAND_2_FAILS_AFTER_COMMAND_1_COMMITS",
+    "LEGAL_HOLD_CREATED_AFTER_DESTRUCTION_APPROVAL",
+    "SHARED_FILE_VERSION_REFERENCED_BY_ANOTHER_SYSTEM",
+    "OBJECT_STORAGE_DELETE_FAILED"
+  ],
+  "case_ids": [
+    "P63-01",
+    "P63-02",
+    "P63-03",
+    "P63-04",
+    "P63-05",
+    "P63-06",
+    "P63-07",
+    "P63-08",
+    "P63-09",
+    "P63-10",
+    "P63-11",
+    "P63-12",
+    "P63-13",
+    "P63-14",
+    "P63-15",
+    "P63-16",
+    "P63-17",
+    "P63-18",
+    "P63-19",
+    "P63-20",
+    "P63-21",
+    "P63-22"
+  ],
+  "acceptance": { "AC63-01": "BLOCKED_NOT_RUN", "AC63-02": "BLOCKED_NOT_RUN" }
+}

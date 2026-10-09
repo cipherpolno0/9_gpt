@@ -76,26 +76,68 @@ try {
   assert.ok(fontUrl);
   assert.equal((await fetch(fontUrl)).status, 200);
   passed++;
-  for (const path of ["/app", "/app/admin", "/app/exams/imports"]) {
-    for (const method of [
-      "GET",
-      "POST",
-      "PUT",
-      "PATCH",
-      "DELETE",
-      "OPTIONS",
-      "HEAD",
-    ]) {
-      const r = await fetch(base + path, { method });
-      assert.equal(r.status, 403);
-      assert.equal(r.headers.get("cache-control"), "no-store");
-      passed++;
-    }
+  for (const path of [
+    "/registry",
+    "/exams",
+    "/learn",
+    "/downloads",
+    "/contact",
+    "/requests/track",
+    "/login",
+  ]) {
+    const r = await fetch(base + path);
+    assert.equal(r.status, 200);
+    assert.match(await r.text(), /lang="th"/);
+    passed++;
   }
+  for (const path of [
+    "/app",
+    "/app/admin",
+    "/app/people",
+    "/app/organizations",
+    "/app/exams/imports",
+  ]) {
+    const r = await fetch(base + path, { redirect: "manual" });
+    assert.equal(r.status, 307);
+    assert.equal(new URL(r.headers.get("location"), base).pathname, "/login");
+    assert.match(r.headers.get("cache-control"), /no-store/);
+    passed++;
+  }
+  for (const path of [
+    "/api/people",
+    "/api/organizations",
+    "/api/exams/imports",
+  ]) {
+    const r = await fetch(base + path);
+    assert.equal(r.status, 401);
+    assert.match(r.headers.get("cache-control"), /no-store/);
+    assert.doesNotMatch(await r.text(), /DEMO_PERSON_|DATABASE_URL|token/);
+    passed++;
+  }
+  for (const path of ["/api/auth/login", "/api/auth/logout"]) {
+    const r = await fetch(base + path, {
+      method: "POST",
+      redirect: "manual",
+      headers: {
+        origin: "https://other.example.invalid",
+        "content-type": "application/x-www-form-urlencoded",
+      },
+      body: "email=synthetic%40example.invalid&password=synthetic",
+    });
+    assert.equal(r.status, 403);
+    passed++;
+  }
+  const health = await fetch(base + "/api/health");
+  assert.deepEqual(await health.json(), { status: "ok", service: "web" });
+  passed++;
+  const guide = await fetch(base + "/guides/getting-started.txt");
+  assert.equal(guide.status, 200);
+  assert.match(await guide.text(), /คู่มือเริ่มต้น/);
+  passed++;
   assert.equal((await fetch(base + "/missing-chapter05-page")).status, 404);
   passed++;
   console.log(
-    `ตรวจHTTPหน้าแรก/CSS/ฟอนต์/403ทุกmethod/404ผ่าน ${passed} รายการ`,
+    `ตรวจHTTPเมนูสาธารณะ/ฟอนต์/redirect/401/CSRF/404ผ่าน ${passed} รายการ`,
   );
 } catch {
   console.error(

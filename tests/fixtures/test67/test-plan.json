@@ -1,0 +1,283 @@
+{
+  "version": "0.1",
+  "lesson": 67,
+  "baseline": "ac22bdd",
+  "status": "PLAN_ONLY",
+  "prerequisite66": "BLOCKED",
+  "data_mode": "DEMO_ONLY",
+  "new_executable_tests": 0,
+  "authorization_families": [
+    {
+      "system": "01",
+      "case_families": [
+        "N67-S01-R",
+        "N67-S01-M",
+        "N67-S01-E",
+        "N67-S01-F",
+        "N67-S01-W",
+        "N67-S01-J"
+      ],
+      "execution": "NOT_RUN",
+      "actual_resource_ids": [],
+      "actual_grant_ids": []
+    },
+    {
+      "system": "02",
+      "case_families": [
+        "N67-S02-R",
+        "N67-S02-M",
+        "N67-S02-E",
+        "N67-S02-F",
+        "N67-S02-W",
+        "N67-S02-J"
+      ],
+      "execution": "NOT_RUN",
+      "actual_resource_ids": [],
+      "actual_grant_ids": []
+    },
+    {
+      "system": "03",
+      "case_families": [
+        "N67-S03-R",
+        "N67-S03-M",
+        "N67-S03-E",
+        "N67-S03-F",
+        "N67-S03-W",
+        "N67-S03-J"
+      ],
+      "execution": "NOT_RUN",
+      "actual_resource_ids": [],
+      "actual_grant_ids": []
+    },
+    {
+      "system": "04",
+      "case_families": [
+        "N67-S04-R",
+        "N67-S04-M",
+        "N67-S04-E",
+        "N67-S04-F",
+        "N67-S04-W",
+        "N67-S04-J"
+      ],
+      "execution": "NOT_RUN",
+      "actual_resource_ids": [],
+      "actual_grant_ids": []
+    },
+    {
+      "system": "05",
+      "case_families": [
+        "N67-S05-R",
+        "N67-S05-M",
+        "N67-S05-E",
+        "N67-S05-F",
+        "N67-S05-W",
+        "N67-S05-J"
+      ],
+      "execution": "NOT_RUN",
+      "actual_resource_ids": [],
+      "actual_grant_ids": []
+    },
+    {
+      "system": "06",
+      "case_families": [
+        "N67-S06-R",
+        "N67-S06-M",
+        "N67-S06-E",
+        "N67-S06-F",
+        "N67-S06-W",
+        "N67-S06-J"
+      ],
+      "execution": "NOT_RUN",
+      "actual_resource_ids": [],
+      "actual_grant_ids": []
+    },
+    {
+      "system": "07",
+      "case_families": [
+        "N67-S07-R",
+        "N67-S07-M",
+        "N67-S07-E",
+        "N67-S07-F",
+        "N67-S07-W",
+        "N67-S07-J"
+      ],
+      "execution": "NOT_RUN",
+      "actual_resource_ids": [],
+      "actual_grant_ids": []
+    },
+    {
+      "system": "08",
+      "case_families": [
+        "N67-S08-R",
+        "N67-S08-M",
+        "N67-S08-E",
+        "N67-S08-F",
+        "N67-S08-W",
+        "N67-S08-J"
+      ],
+      "execution": "NOT_RUN",
+      "actual_resource_ids": [],
+      "actual_grant_ids": []
+    },
+    {
+      "system": "09",
+      "case_families": [
+        "N67-S09-R",
+        "N67-S09-M",
+        "N67-S09-E",
+        "N67-S09-F",
+        "N67-S09-W",
+        "N67-S09-J"
+      ],
+      "execution": "NOT_RUN",
+      "actual_resource_ids": [],
+      "actual_grant_ids": []
+    }
+  ],
+  "common_variants": ["V01", "V02", "V03", "V04", "V05", "V06", "V07"],
+  "variant_applicability": "HTTP_401_FOR_PRIVATE_HTTP_ONLY; MAKER_FOR_APPROVAL; WORKER_INTERNAL_DENIED",
+  "unit_specs": [
+    {
+      "case_id": "U67-01",
+      "execution": "NOT_RUN"
+    },
+    {
+      "case_id": "U67-02",
+      "execution": "NOT_RUN"
+    },
+    {
+      "case_id": "U67-03",
+      "execution": "NOT_RUN"
+    },
+    {
+      "case_id": "U67-04",
+      "execution": "NOT_RUN"
+    },
+    {
+      "case_id": "U67-05",
+      "execution": "EXISTING_DATE_TESTS_PASS_SERVICE_NOT_RUN"
+    },
+    {
+      "case_id": "U67-06",
+      "execution": "NOT_RUN"
+    }
+  ],
+  "native_service_specs": [
+    {
+      "case_id": "D67-01",
+      "execution": "NOT_RUN"
+    },
+    {
+      "case_id": "D67-02",
+      "execution": "NOT_RUN"
+    },
+    {
+      "case_id": "D67-03",
+      "execution": "NOT_RUN"
+    },
+    {
+      "case_id": "D67-04",
+      "execution": "NOT_RUN"
+    },
+    {
+      "case_id": "D67-05",
+      "execution": "NOT_RUN"
+    },
+    {
+      "case_id": "D67-06",
+      "execution": "NOT_RUN"
+    },
+    {
+      "case_id": "D67-07",
+      "execution": "NOT_RUN"
+    },
+    {
+      "case_id": "D67-08",
+      "execution": "NOT_RUN"
+    },
+    {
+      "case_id": "D67-09",
+      "execution": "NOT_RUN"
+    },
+    {
+      "case_id": "D67-10",
+      "execution": "NOT_RUN"
+    },
+    {
+      "case_id": "D67-11",
+      "execution": "NOT_RUN"
+    },
+    {
+      "case_id": "D67-12",
+      "execution": "NOT_RUN"
+    }
+  ],
+  "isolation_plan": {
+    "backend_required": "NATIVE_POSTGRESQL_SERVER",
+    "uses_sqlite": false,
+    "wasm_is_supplementary_only": true,
+    "proposed_database_prefix": "sangha_ch67_test_",
+    "prefix_enabled_in_existing_runner": false,
+    "actual_created_database": null,
+    "clock_t0": "2026-10-09T03:00:00Z",
+    "clock_source": "TRUSTED_TEST_ONLY_SERVER_ADAPTER_PENDING_ADR",
+    "client_time_override_allowed": false,
+    "recorded_time": "REAL_DATABASE_TIME_SEPARATE_FROM_BUSINESS_EFFECTIVE_TIME",
+    "concurrency_connections_minimum": 2,
+    "barriers_required": true,
+    "sleep_proves_concurrency": false,
+    "cleanup_guard_enabled": false,
+    "tested_batch_limits": null
+  },
+  "independent_oracles": {
+    "seats": {
+      "capacity": 1,
+      "eligible_applications": 2,
+      "successful_allocations": 1
+    },
+    "budget_race": {
+      "allocated": "100000.00",
+      "requests": ["70000.00", "50000.00"],
+      "successful_requests": 1
+    },
+    "budget_transition": {
+      "allocated": "100000.00",
+      "reserved": "20000.00",
+      "committed": "20000.00",
+      "paid": "5000.00",
+      "expected_available": "80000.00",
+      "expected_unpaid_commitment": "15000.00"
+    },
+    "stock_race": {
+      "initial": "5",
+      "requests": ["4", "3"],
+      "successful_requests": 1,
+      "possible_remaining": ["1", "2"]
+    },
+    "transfer": {
+      "source_before": "5",
+      "destination_before": "2",
+      "quantity": "3",
+      "source_after": "2",
+      "destination_after": "5",
+      "conserved_total": "7"
+    }
+  },
+  "actual": {
+    "native_database_ids": [],
+    "person_ids": [],
+    "application_ids": [],
+    "seat_receipts": [],
+    "ledger_receipts": [],
+    "stock_movements": [],
+    "import_receipts": [],
+    "file_version_ids": [],
+    "outbox_event_ids": [],
+    "authorization_report": null,
+    "concurrency_report": null
+  },
+  "acceptance": {
+    "AC67-01": "BLOCKED_NOT_RUN",
+    "AC67-02": "TRUTHFUL_REPORTING_ONLY_BUSINESS_SUITE_NOT_IMPLEMENTED"
+  }
+}

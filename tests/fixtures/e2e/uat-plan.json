@@ -1,0 +1,411 @@
+{
+  "version": "0.1",
+  "lesson": 68,
+  "baseline": "8ea0c36",
+  "status": "PLAN_ONLY",
+  "prerequisite67": "BLOCKED",
+  "data_mode": "DEMO_ONLY",
+  "new_executable_tests": 0,
+  "core_flow_ids": ["E68-01", "E68-02", "E68-03"],
+  "case_ids": [
+    "E68-01",
+    "E68-02",
+    "E68-03",
+    "R68-01",
+    "R68-02",
+    "R68-03",
+    "R68-04",
+    "R68-05",
+    "R68-06",
+    "L68-01",
+    "L68-02",
+    "L68-03",
+    "N68-01",
+    "N68-02",
+    "N68-03",
+    "A68-01",
+    "A68-02",
+    "A68-03"
+  ],
+  "case_execution": "ALL_NOT_RUN",
+  "recovery_pairing": {
+    "E68-01": ["R68-01", "R68-02"],
+    "E68-02": ["R68-03", "R68-04"],
+    "E68-03": ["R68-05", "R68-06"]
+  },
+  "exam_combinations_plan": [
+    {
+      "exam_type": "นักธรรม",
+      "stage": null,
+      "level": "ตรี",
+      "status": "PLAN_ONLY",
+      "actual_report_ref": null
+    },
+    {
+      "exam_type": "นักธรรม",
+      "stage": null,
+      "level": "โท",
+      "status": "PLAN_ONLY",
+      "actual_report_ref": null
+    },
+    {
+      "exam_type": "นักธรรม",
+      "stage": null,
+      "level": "เอก",
+      "status": "PLAN_ONLY",
+      "actual_report_ref": null
+    },
+    {
+      "exam_type": "ธรรมศึกษา",
+      "stage": "ประถม",
+      "level": "ตรี",
+      "status": "PLAN_ONLY",
+      "actual_report_ref": null
+    },
+    {
+      "exam_type": "ธรรมศึกษา",
+      "stage": "ประถม",
+      "level": "โท",
+      "status": "PLAN_ONLY",
+      "actual_report_ref": null
+    },
+    {
+      "exam_type": "ธรรมศึกษา",
+      "stage": "ประถม",
+      "level": "เอก",
+      "status": "PLAN_ONLY",
+      "actual_report_ref": null
+    },
+    {
+      "exam_type": "ธรรมศึกษา",
+      "stage": "มัธยม",
+      "level": "ตรี",
+      "status": "PLAN_ONLY",
+      "actual_report_ref": null
+    },
+    {
+      "exam_type": "ธรรมศึกษา",
+      "stage": "มัธยม",
+      "level": "โท",
+      "status": "PLAN_ONLY",
+      "actual_report_ref": null
+    },
+    {
+      "exam_type": "ธรรมศึกษา",
+      "stage": "มัธยม",
+      "level": "เอก",
+      "status": "PLAN_ONLY",
+      "actual_report_ref": null
+    },
+    {
+      "exam_type": "ธรรมศึกษา",
+      "stage": "อุดม",
+      "level": "ตรี",
+      "status": "PLAN_ONLY",
+      "actual_report_ref": null
+    },
+    {
+      "exam_type": "ธรรมศึกษา",
+      "stage": "อุดม",
+      "level": "โท",
+      "status": "PLAN_ONLY",
+      "actual_report_ref": null
+    },
+    {
+      "exam_type": "ธรรมศึกษา",
+      "stage": "อุดม",
+      "level": "เอก",
+      "status": "PLAN_ONLY",
+      "actual_report_ref": null
+    }
+  ],
+  "learning_groups_plan": [
+    {
+      "stage": "ประถม",
+      "level": "ตรี",
+      "status": "NOT_RUN",
+      "actual_attempt_refs": []
+    },
+    {
+      "stage": "ประถม",
+      "level": "โท",
+      "status": "NOT_RUN",
+      "actual_attempt_refs": []
+    },
+    {
+      "stage": "ประถม",
+      "level": "เอก",
+      "status": "NOT_RUN",
+      "actual_attempt_refs": []
+    },
+    {
+      "stage": "มัธยม",
+      "level": "ตรี",
+      "status": "NOT_RUN",
+      "actual_attempt_refs": []
+    },
+    {
+      "stage": "มัธยม",
+      "level": "โท",
+      "status": "NOT_RUN",
+      "actual_attempt_refs": []
+    },
+    {
+      "stage": "มัธยม",
+      "level": "เอก",
+      "status": "NOT_RUN",
+      "actual_attempt_refs": []
+    },
+    {
+      "stage": "อุดม",
+      "level": "ตรี",
+      "status": "NOT_RUN",
+      "actual_attempt_refs": []
+    },
+    {
+      "stage": "อุดม",
+      "level": "โท",
+      "status": "NOT_RUN",
+      "actual_attempt_refs": []
+    },
+    {
+      "stage": "อุดม",
+      "level": "เอก",
+      "status": "NOT_RUN",
+      "actual_attempt_refs": []
+    }
+  ],
+  "learning_practice_enters_official_result": false,
+  "uat_scripts": [
+    {
+      "uat_id": "U68-01",
+      "proposed_role": "O01",
+      "role_is_confirmed_official_assignment": false,
+      "execution": "BLOCKED_NOT_RUN",
+      "signoff": "PENDING",
+      "checkpoint_labels": [
+        "person-review",
+        "effective-history",
+        "access-denied"
+      ],
+      "actual_tester_ref": null,
+      "actual_acceptor_ref": null,
+      "authority_evidence_ref": null,
+      "decided_at": null,
+      "signature_ref": null,
+      "actual_screenshot_refs": []
+    },
+    {
+      "uat_id": "U68-02",
+      "proposed_role": "O02",
+      "role_is_confirmed_official_assignment": false,
+      "execution": "BLOCKED_NOT_RUN",
+      "signoff": "PENDING",
+      "checkpoint_labels": ["center-session", "appointment-review", "impact"],
+      "actual_tester_ref": null,
+      "actual_acceptor_ref": null,
+      "authority_evidence_ref": null,
+      "decided_at": null,
+      "signature_ref": null,
+      "actual_screenshot_refs": []
+    },
+    {
+      "uat_id": "U68-03",
+      "proposed_role": "O03",
+      "role_is_confirmed_official_assignment": false,
+      "execution": "BLOCKED_NOT_RUN",
+      "signoff": "PENDING",
+      "checkpoint_labels": [
+        "question-review",
+        "learner-assignment",
+        "rubric-queue"
+      ],
+      "actual_tester_ref": null,
+      "actual_acceptor_ref": null,
+      "authority_evidence_ref": null,
+      "decided_at": null,
+      "signature_ref": null,
+      "actual_screenshot_refs": []
+    },
+    {
+      "uat_id": "U68-04",
+      "proposed_role": "O04",
+      "role_is_confirmed_official_assignment": false,
+      "execution": "BLOCKED_NOT_RUN",
+      "signoff": "PENDING",
+      "checkpoint_labels": [
+        "request-before-after",
+        "returned-correction",
+        "decision"
+      ],
+      "actual_tester_ref": null,
+      "actual_acceptor_ref": null,
+      "authority_evidence_ref": null,
+      "decided_at": null,
+      "signature_ref": null,
+      "actual_screenshot_refs": []
+    },
+    {
+      "uat_id": "U68-05",
+      "proposed_role": "O05",
+      "role_is_confirmed_official_assignment": false,
+      "execution": "BLOCKED_NOT_RUN",
+      "signoff": "PENDING",
+      "checkpoint_labels": ["roster-seat", "score-review", "release-search"],
+      "actual_tester_ref": null,
+      "actual_acceptor_ref": null,
+      "authority_evidence_ref": null,
+      "decided_at": null,
+      "signature_ref": null,
+      "actual_screenshot_refs": []
+    },
+    {
+      "uat_id": "U68-06",
+      "proposed_role": "O06",
+      "role_is_confirmed_official_assignment": false,
+      "execution": "BLOCKED_NOT_RUN",
+      "signoff": "PENDING",
+      "checkpoint_labels": [
+        "budget-approval",
+        "balance-ledger",
+        "payment-receipt"
+      ],
+      "actual_tester_ref": null,
+      "actual_acceptor_ref": null,
+      "authority_evidence_ref": null,
+      "decided_at": null,
+      "signature_ref": null,
+      "actual_screenshot_refs": []
+    },
+    {
+      "uat_id": "U68-07",
+      "proposed_role": "O07",
+      "role_is_confirmed_official_assignment": false,
+      "execution": "BLOCKED_NOT_RUN",
+      "signoff": "PENDING",
+      "checkpoint_labels": [
+        "partial-receipt",
+        "custody-return",
+        "stocktake-difference"
+      ],
+      "actual_tester_ref": null,
+      "actual_acceptor_ref": null,
+      "authority_evidence_ref": null,
+      "decided_at": null,
+      "signature_ref": null,
+      "actual_screenshot_refs": []
+    },
+    {
+      "uat_id": "U68-08",
+      "proposed_role": "O08",
+      "role_is_confirmed_official_assignment": false,
+      "execution": "BLOCKED_NOT_RUN",
+      "signoff": "PENDING",
+      "checkpoint_labels": [
+        "recipient-confirm",
+        "delivery-history",
+        "hold-status"
+      ],
+      "actual_tester_ref": null,
+      "actual_acceptor_ref": null,
+      "authority_evidence_ref": null,
+      "decided_at": null,
+      "signature_ref": null,
+      "actual_screenshot_refs": []
+    },
+    {
+      "uat_id": "U68-09",
+      "proposed_role": "O09",
+      "role_is_confirmed_official_assignment": false,
+      "execution": "BLOCKED_NOT_RUN",
+      "signoff": "PENDING",
+      "checkpoint_labels": [
+        "row-errors",
+        "corrected-preview",
+        "actual-app-links"
+      ],
+      "actual_tester_ref": null,
+      "actual_acceptor_ref": null,
+      "authority_evidence_ref": null,
+      "decided_at": null,
+      "signature_ref": null,
+      "actual_screenshot_refs": []
+    },
+    {
+      "uat_id": "U68-10",
+      "proposed_role": "LEARNER",
+      "role_is_confirmed_official_assignment": false,
+      "execution": "BLOCKED_NOT_RUN",
+      "signoff": "PENDING",
+      "checkpoint_labels": [
+        "pretest-resume",
+        "lesson-completion",
+        "own-result"
+      ],
+      "actual_tester_ref": null,
+      "actual_acceptor_ref": null,
+      "authority_evidence_ref": null,
+      "decided_at": null,
+      "signature_ref": null,
+      "actual_screenshot_refs": []
+    },
+    {
+      "uat_id": "U68-11",
+      "proposed_role": "PUBLIC",
+      "role_is_confirmed_official_assignment": false,
+      "execution": "BLOCKED_NOT_RUN",
+      "signoff": "PENDING",
+      "checkpoint_labels": [
+        "public-filter",
+        "published-demo-result",
+        "withdrawn-no-result"
+      ],
+      "actual_tester_ref": null,
+      "actual_acceptor_ref": null,
+      "authority_evidence_ref": null,
+      "decided_at": null,
+      "signature_ref": null,
+      "actual_screenshot_refs": []
+    }
+  ],
+  "official_publication_enabled": false,
+  "official_rule_form_authority_status": "TO_VERIFY_NOT_CONFIRMED",
+  "screenshot_policy": {
+    "real_data_allowed": false,
+    "generated_mockup_counts_as_evidence": false,
+    "authenticated_raw_trace_har_storage_state_commit_allowed": false,
+    "private_evidence_store_required": true,
+    "actual_capture_count": 0,
+    "actual_reviewers": [],
+    "capture_metadata_contains_credentials": false
+  },
+  "harness_plan": {
+    "native_postgresql_required": true,
+    "current_authorization_required": true,
+    "shared_central_registries": true,
+    "mock_success_api_allowed": false,
+    "client_state_unlock_allowed": false,
+    "client_clock_authoritative": false,
+    "worker_fault_hooks": "TEST_ONLY_PENDING_APPROVAL",
+    "actual_database_ref": null,
+    "actual_account_refs": [],
+    "actual_file_version_refs": [],
+    "actual_correlation_refs": []
+  },
+  "actual": {
+    "e2e_runs": [],
+    "source_ids": [],
+    "application_ids": [],
+    "decision_refs": [],
+    "event_receipts": [],
+    "screenshots": [],
+    "traces": [],
+    "human_testers": [],
+    "signoffs": []
+  },
+  "acceptance": {
+    "AC68-01": "BLOCKED_NOT_RUN",
+    "AC68-02": "PENDING_UNSIGNED_NO_AUTOMATIC_SIGNOFF"
+  },
+  "next_lesson69": "NOT_STARTED"
+}

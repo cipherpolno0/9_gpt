@@ -1,0 +1,49 @@
+name: Portal foundation checks
+on:
+  push:
+    branches: ["codex/portal-foundation-20261009"]
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: portal-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  check:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    services:
+      postgres:
+        image: postgres:18-bookworm
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_DB: postgres
+          # Ephemeral isolated runner + synthetic DB only. Never deploy this setting.
+          POSTGRES_HOST_AUTH_METHOD: trust
+        ports: ["5432:5432"]
+        options: >-
+          --health-cmd "pg_isready -U postgres -d postgres"
+          --health-interval 5s --health-timeout 3s --health-retries 20
+    env:
+      NEXT_TELEMETRY_DISABLED: "1"
+      APP_ENV: test
+      CH06_TEST_DATABASE_URL: postgresql://postgres@127.0.0.1:5432/sangha_ch06_test
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: "24.19.0"
+      - run: corepack enable
+      - run: corepack pnpm install --frozen-lockfile
+      - run: corepack pnpm lint
+      - run: corepack pnpm typecheck
+      - run: corepack pnpm test
+      - run: corepack pnpm db:validate
+      - run: corepack pnpm secrets:check
+      - name: Native PostgreSQL migrations, constraints and portal RLS
+        run: corepack pnpm db:test
+      - run: corepack pnpm build
+      - run: corepack pnpm smoke

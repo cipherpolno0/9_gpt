@@ -244,13 +244,13 @@ test("PostgreSQL core06 — migration/seed/constraints/RLS", async (t) => {
       },
     );
     await t.test(
-      "RLSครบ19ตาราง; limited roleแม้grant/ปลอมcontextก็อ่านแก้ไม่ได้",
+      "RLSครบ25ตาราง; limited roleแม้grant/ปลอมcontextก็อ่านแก้ไม่ได้",
       async () => {
         await transaction(async (c) => {
           const flags = await c.query(
             "SELECT c.relname,c.relrowsecurity,c.relforcerowsecurity FROM pg_class c JOIN pg_namespace n ON n.oid=c.relnamespace WHERE n.nspname='private' AND c.relkind='r'",
           );
-          assert.equal(flags.rowCount, 19);
+          assert.equal(flags.rowCount, 25);
           for (const row of flags.rows)
             assert.ok(row.relrowsecurity && row.relforcerowsecurity);
           await c.query(

@@ -1,0 +1,1731 @@
+{
+  "version": "0.1",
+  "lesson": 55,
+  "source_commit": "968bb59",
+  "received_at": "2026-10-08T20:59:42+07:00",
+  "status": "PLAN_ONLY",
+  "seeded": false,
+  "runtime_implemented": false,
+  "native_tests_executed": false,
+  "browser_tests_executed": false,
+  "actual_books_created": 0,
+  "actual_dispatches": 0,
+  "actual_portal_deliveries": 0,
+  "actual_human_receipts": 0,
+  "actual_tasks": 0,
+  "actual_reminders": 0,
+  "actual_external_messages_sent": 0,
+  "actual_email_provider_configured": false,
+  "owner_signoff": null,
+  "actual_execution_manifest": null,
+  "prerequisite": {
+    "lesson": 54,
+    "status": "BLOCKED"
+  },
+  "dependencies": [
+    "07/08 current Auth/DAL/grants",
+    "10 FileVersion/current ACL/CLEAN",
+    "11 shared workflow/operation receipt/audit/outbox/notification",
+    "53 Correspondence/RecordVersion/register",
+    "54 immutable approved snapshot/active permit",
+    "DB-06/Q027 native PostgreSQL"
+  ],
+  "digest_reference_spec": {
+    "status": "REFERENCE_ONLY",
+    "method": "Python sorted-key JSON ensure_ascii=False separators comma-colon UTF-8 SHA256; fixture only, production canonicalization ADR required"
+  },
+  "policy": {
+    "id": "DEMO_DELIVERY_POLICY_55_V1",
+    "status": "TO_VERIFY",
+    "official_delivery_enabled": false,
+    "email_enabled": false,
+    "provider_verified": false,
+    "channel_authority_verified": false,
+    "representative_ack_enabled": false,
+    "offline_ack_enabled": false,
+    "seen_counts_as_ack": false,
+    "assignment_counts_as_ack": false,
+    "completion_counts_as_ack": false,
+    "new_member_old_access": false,
+    "assignment_auto_file_grant": false,
+    "all_group_members_auto_recipients": false,
+    "time_source": "SERVER",
+    "timezone": "Asia/Bangkok",
+    "resolver_version": "DEMO_RESOLVER_55_V1",
+    "retention_confirmed": false,
+    "reminder_policy_confirmed": false
+  },
+  "approved_input_descriptor": {
+    "base_54_record_version_id": "DEMO_RECORD_54_V2",
+    "base_54_expected_digest": "d1fc1e2f63e054a0ad367d6924c4b66a14ccd367e4fb4df0dc613f48e4269726",
+    "base_54_group_plan_approved": false,
+    "requires_new_review_54": true,
+    "proposed_record_version_id": "DEMO_RECORD_55_GROUP_PLAN_V4",
+    "proposed_version_no": 4,
+    "proposed_supersedes": "DEMO_RECORD_54_V3",
+    "candidate_manifest_reference": {
+      "correspondence_id": "DEMO_CORRESPONDENCE_54_A",
+      "record_version_id": "DEMO_RECORD_55_GROUP_PLAN_V4",
+      "version_no": 4,
+      "subject": "TEST_ร่างหนังสือตัวอย่างรุ่น_2",
+      "body_ast": {
+        "type": "DOC",
+        "children": [
+          {
+            "type": "PARAGRAPH",
+            "children": [
+              {
+                "type": "TEXT",
+                "text": "TEST_ข้อความสมมติสำหรับตรวจร่าง ไม่ใช่หนังสือจริง",
+                "marks": []
+              }
+            ]
+          },
+          {
+            "type": "PARAGRAPH",
+            "children": [
+              {
+                "type": "TEXT",
+                "text": "TEST_แก้ตามความเห็นผู้ตรวจ",
+                "marks": []
+              }
+            ]
+          }
+        ]
+      },
+      "body_ast_digest": "590436141dddb7db1864a9345448982e7558f790b462577027534a7a644ab69b",
+      "signer": {
+        "person_id": "DEMO_PERSON_54_SIGNER",
+        "organization_id": "DEMO_ORG_53_A",
+        "context_id": "DEMO_SIGNER_CONTEXT_54_V1",
+        "name_snapshot": "TEST_ผู้ลงนามสมมติ"
+      },
+      "recipients_in_render_order": [
+        {
+          "id": "DEMO_RECIPIENT_INTENT_55_DIRECT_A",
+          "target_kind": "PERSON",
+          "person_id": "DEMO_PERSON_53_A",
+          "organization_id": "DEMO_ORG_53_A",
+          "context_id": "DEMO_CONTEXT_55_A",
+          "name_snapshot": "TEST_ผู้รับชื่อเหมือน"
+        },
+        {
+          "id": "DEMO_RECIPIENT_INTENT_55_GROUP_A",
+          "target_kind": "ORGANIZATION",
+          "person_id": null,
+          "organization_id": "DEMO_ORG_53_A",
+          "context_id": "DEMO_MAILROOM_GROUP_55_A",
+          "name_snapshot": "TEST_กลุ่มผู้รับงานสารบรรณสมมติ",
+          "resolver_plan_version": "DEMO_RESOLVER_55_V1"
+        }
+      ],
+      "recipient_set_digest": "e3787c5fa599e67aa3ea12cea55e18879834567ea0eddcd8050348c1e79e1f1f",
+      "attachments": [
+        {
+          "purpose": "PRIMARY",
+          "document_id": "DEMO_DOCUMENT_53_SHARED",
+          "file_version_id": "DEMO_FILE_53_V1",
+          "expected_synthetic_byte_hash": "9a694a6cdd72c50bd63c1755d3c2d649c0ddb629788f09c1f632a67f5908711c"
+        }
+      ],
+      "template_version": "DEMO_TEMPLATE_54_V1",
+      "font_version": "@fontsource/sarabun@5.3.0",
+      "layout_version": "DEMO_LAYOUT_A4_54_V1",
+      "content_policy_version": "DEMO_AST_POLICY_54_V1",
+      "ast_schema_version": "DEMO_AST_SCHEMA_54_V1",
+      "priority": "DEMO_NORMAL",
+      "confidentiality": "DEMO_RESTRICTED",
+      "review_due_date": "2027-07-15",
+      "calendar_version": "DEMO_CALENDAR_54_V1",
+      "rendered_letter_date": "2027-07-01",
+      "timezone": "Asia/Bangkok",
+      "permission_plan_version": "DEMO_SHARE_PLAN_54_V1",
+      "source_refs": [],
+      "recipient_resolver_plan_version": "DEMO_RESOLVER_55_V1"
+    },
+    "expected_candidate_digest": "63f03ce99452d98fbc5c10c310688d028d7086318f6f6f81680a01fcc343974c",
+    "proposed_approved_snapshot_id": "DEMO_APPROVED_SNAPSHOT_55_V4",
+    "actual_created": false,
+    "actual_approved": false,
+    "actual_approval_actor": null,
+    "actual_file_clean": null
+  },
+  "routing_intent": {
+    "id": "DEMO_ROUTING_55_A",
+    "correspondence_id": "DEMO_CORRESPONDENCE_54_A",
+    "record_version_id": "DEMO_RECORD_55_GROUP_PLAN_V4",
+    "approved_snapshot_id": "DEMO_APPROVED_SNAPSHOT_55_V4",
+    "intent_revision": 1,
+    "sender_account_id": "DEMO_ACCOUNT_55_SENDER",
+    "accepted_at": "2027-07-01T09:00:00Z",
+    "resolver_plan_version": "DEMO_RESOLVER_55_V1",
+    "confirmed_recipient_digest": "b1495812fb2f7c1846d34b8ef3b594065672aceb24bbea0ac7c338de7847766e",
+    "expected_record_digest": "63f03ce99452d98fbc5c10c310688d028d7086318f6f6f81680a01fcc343974c",
+    "expected_primary_file_id": "DEMO_FILE_53_V1",
+    "expected_books_added": 0,
+    "expected_register_numbers_added": 0,
+    "actual_created": false,
+    "actual_operation_receipt": null,
+    "actual_queued": false
+  },
+  "recipient_intents": [
+    {
+      "id": "DEMO_RECIPIENT_INTENT_55_DIRECT_A",
+      "target_kind": "PERSON",
+      "person_id": "DEMO_PERSON_53_A",
+      "organization_id": "DEMO_ORG_53_A",
+      "context_id": "DEMO_CONTEXT_55_A",
+      "name_snapshot": "TEST_ผู้รับชื่อเหมือน"
+    },
+    {
+      "id": "DEMO_RECIPIENT_INTENT_55_GROUP_A",
+      "target_kind": "ORGANIZATION",
+      "person_id": null,
+      "organization_id": "DEMO_ORG_53_A",
+      "context_id": "DEMO_MAILROOM_GROUP_55_A",
+      "name_snapshot": "TEST_กลุ่มผู้รับงานสารบรรณสมมติ",
+      "resolver_plan_version": "DEMO_RESOLVER_55_V1"
+    }
+  ],
+  "membership_history": [
+    {
+      "account_id": "DEMO_ACCOUNT_55_A",
+      "person_id": "DEMO_PERSON_53_A",
+      "organization_id": "DEMO_ORG_53_A",
+      "context_id": "DEMO_CONTEXT_55_A",
+      "name_snapshot": "TEST_ผู้รับชื่อเหมือน",
+      "valid_from": "2027-06-01T00:00:00Z",
+      "valid_until": null,
+      "recorded_at": "2027-06-01T00:00:00Z",
+      "membership_revision": 1,
+      "actual_exists": false,
+      "actual_verified": false
+    },
+    {
+      "account_id": "DEMO_ACCOUNT_55_B",
+      "person_id": "DEMO_PERSON_55_B",
+      "organization_id": "DEMO_ORG_53_A",
+      "context_id": "DEMO_CONTEXT_55_B",
+      "name_snapshot": "TEST_ผู้รับชื่อเหมือน",
+      "valid_from": "2027-06-01T00:00:00Z",
+      "valid_until": "2027-07-03T00:00:00Z",
+      "recorded_at": "2027-06-01T00:00:00Z",
+      "membership_revision": 1,
+      "actual_exists": false,
+      "actual_verified": false
+    },
+    {
+      "account_id": "DEMO_ACCOUNT_55_C",
+      "person_id": "DEMO_PERSON_55_C",
+      "organization_id": "DEMO_ORG_53_A",
+      "context_id": "DEMO_CONTEXT_55_C",
+      "name_snapshot": "TEST_ผู้รับเพิ่มเติม_C",
+      "valid_from": "2027-07-02T00:00:00Z",
+      "valid_until": null,
+      "recorded_at": "2027-07-02T00:00:00Z",
+      "membership_revision": 1,
+      "actual_exists": false,
+      "actual_verified": false
+    },
+    {
+      "account_id": "DEMO_ACCOUNT_55_D",
+      "person_id": "DEMO_PERSON_55_D",
+      "organization_id": "DEMO_ORG_53_A",
+      "context_id": "DEMO_CONTEXT_55_D",
+      "name_snapshot": "TEST_ผู้รับเพิ่มเติม_D",
+      "valid_from": "2027-06-30T00:00:00Z",
+      "valid_until": null,
+      "recorded_at": "2027-07-02T00:00:00Z",
+      "membership_revision": 1,
+      "actual_exists": false,
+      "actual_verified": false
+    }
+  ],
+  "expected_send_snapshot": [
+    {
+      "account_id": "DEMO_ACCOUNT_55_A",
+      "person_id": "DEMO_PERSON_53_A",
+      "organization_id": "DEMO_ORG_53_A",
+      "context_id": "DEMO_CONTEXT_55_A",
+      "name_snapshot": "TEST_ผู้รับชื่อเหมือน",
+      "valid_from": "2027-06-01T00:00:00Z",
+      "valid_until": null,
+      "recorded_at": "2027-06-01T00:00:00Z",
+      "membership_revision": 1,
+      "id": "DEMO_RESOLVED_55_A",
+      "routing_id": "DEMO_ROUTING_55_A",
+      "origin_intent_ids": [
+        "DEMO_RECIPIENT_INTENT_55_GROUP_A",
+        "DEMO_RECIPIENT_INTENT_55_DIRECT_A"
+      ]
+    },
+    {
+      "account_id": "DEMO_ACCOUNT_55_B",
+      "person_id": "DEMO_PERSON_55_B",
+      "organization_id": "DEMO_ORG_53_A",
+      "context_id": "DEMO_CONTEXT_55_B",
+      "name_snapshot": "TEST_ผู้รับชื่อเหมือน",
+      "valid_from": "2027-06-01T00:00:00Z",
+      "valid_until": "2027-07-03T00:00:00Z",
+      "recorded_at": "2027-06-01T00:00:00Z",
+      "membership_revision": 1,
+      "id": "DEMO_RESOLVED_55_B",
+      "routing_id": "DEMO_ROUTING_55_A",
+      "origin_intent_ids": ["DEMO_RECIPIENT_INTENT_55_GROUP_A"]
+    }
+  ],
+  "expected_send_snapshot_digest": "b1495812fb2f7c1846d34b8ef3b594065672aceb24bbea0ac7c338de7847766e",
+  "actual_send_snapshot": null,
+  "snapshot_queries": [
+    {
+      "id": "ASOF_SEND_KNOWN_SEND",
+      "valid_at": "2027-07-01T09:00:00Z",
+      "known_at": "2027-07-01T09:00:00Z",
+      "expected_accounts": ["DEMO_ACCOUNT_55_A", "DEMO_ACCOUNT_55_B"],
+      "actual": null
+    },
+    {
+      "id": "LATER_CURRENT_GROUP",
+      "valid_at": "2027-07-02T09:00:00Z",
+      "known_at": "2027-07-02T09:00:00Z",
+      "expected_accounts": [
+        "DEMO_ACCOUNT_55_A",
+        "DEMO_ACCOUNT_55_B",
+        "DEMO_ACCOUNT_55_C",
+        "DEMO_ACCOUNT_55_D"
+      ],
+      "expected_old_snapshot_accounts": [
+        "DEMO_ACCOUNT_55_A",
+        "DEMO_ACCOUNT_55_B"
+      ],
+      "actual": null
+    },
+    {
+      "id": "BACKDATED_KNOWN_LATER",
+      "valid_at": "2027-07-01T09:00:00Z",
+      "known_at": "2027-07-02T09:00:00Z",
+      "expected_accounts": [
+        "DEMO_ACCOUNT_55_A",
+        "DEMO_ACCOUNT_55_B",
+        "DEMO_ACCOUNT_55_D"
+      ],
+      "expected_old_snapshot_accounts": [
+        "DEMO_ACCOUNT_55_A",
+        "DEMO_ACCOUNT_55_B"
+      ],
+      "actual": null
+    },
+    {
+      "id": "MEMBER_B_ENDED",
+      "valid_at": "2027-07-03T09:00:00Z",
+      "known_at": "2027-07-03T09:00:00Z",
+      "expected_accounts": [
+        "DEMO_ACCOUNT_55_A",
+        "DEMO_ACCOUNT_55_C",
+        "DEMO_ACCOUNT_55_D"
+      ],
+      "expected_old_snapshot_accounts": [
+        "DEMO_ACCOUNT_55_A",
+        "DEMO_ACCOUNT_55_B"
+      ],
+      "actual": null
+    }
+  ],
+  "normalization_descriptors": [
+    {
+      "origin": "DIRECT_A",
+      "account_id": "DEMO_ACCOUNT_55_A",
+      "context_id": "DEMO_CONTEXT_55_A"
+    },
+    {
+      "origin": "GROUP_A_MEMBER_A",
+      "account_id": "DEMO_ACCOUNT_55_A",
+      "context_id": "DEMO_CONTEXT_55_A"
+    },
+    {
+      "origin": "GROUP_A_MEMBER_B",
+      "account_id": "DEMO_ACCOUNT_55_B",
+      "context_id": "DEMO_CONTEXT_55_B"
+    },
+    {
+      "origin": "SAME_ACCOUNT_DIFFERENT_CONTEXT",
+      "account_id": "DEMO_ACCOUNT_55_A",
+      "context_id": "DEMO_CONTEXT_55_A_ALT"
+    }
+  ],
+  "expected_normalized_endpoint_count": 3,
+  "enqueue_guard_cases": [
+    {
+      "id": "EXACT_NEW_APPROVED_PLAN",
+      "planned_predicates": {
+        "approved_snapshot_current": true,
+        "active_approved_permit": true,
+        "root_revision_matches": true,
+        "record_digest_matches": true,
+        "pinned_files_hash_matches": true,
+        "current_sender_authority": true,
+        "current_record_source_acl": true,
+        "current_file_acl": true,
+        "current_clean_scan": true,
+        "resolver_plan_in_approved_intent": true,
+        "current_membership_revision_matches_confirmation": true,
+        "resolved_account_identity_verified": true,
+        "recipient_context_eligible": true,
+        "channel_policy_allowed": true,
+        "current_endpoint_record_source_file_acl": true
+      },
+      "expected_demo_manifest_allowed": true,
+      "expected_official_send_allowed": false,
+      "actual_executed": false,
+      "actual": null
+    },
+    {
+      "id": "OLD_54_PLAN_HAS_NO_GROUP_AUTH",
+      "planned_predicates": {
+        "approved_snapshot_current": true,
+        "active_approved_permit": true,
+        "root_revision_matches": true,
+        "record_digest_matches": true,
+        "pinned_files_hash_matches": true,
+        "current_sender_authority": true,
+        "current_record_source_acl": true,
+        "current_file_acl": true,
+        "current_clean_scan": true,
+        "resolver_plan_in_approved_intent": false,
+        "current_membership_revision_matches_confirmation": true,
+        "resolved_account_identity_verified": true,
+        "recipient_context_eligible": true,
+        "channel_policy_allowed": true,
+        "current_endpoint_record_source_file_acl": true
+      },
+      "expected_demo_manifest_allowed": false,
+      "expected_official_send_allowed": false,
+      "actual_executed": false,
+      "actual": null
+    },
+    {
+      "id": "APPROVAL_HOLD_AFTER_EDIT",
+      "planned_predicates": {
+        "approved_snapshot_current": true,
+        "active_approved_permit": false,
+        "root_revision_matches": true,
+        "record_digest_matches": true,
+        "pinned_files_hash_matches": true,
+        "current_sender_authority": true,
+        "current_record_source_acl": true,
+        "current_file_acl": true,
+        "current_clean_scan": true,
+        "resolver_plan_in_approved_intent": true,
+        "current_membership_revision_matches_confirmation": true,
+        "resolved_account_identity_verified": true,
+        "recipient_context_eligible": true,
+        "channel_policy_allowed": true,
+        "current_endpoint_record_source_file_acl": true
+      },
+      "expected_demo_manifest_allowed": false,
+      "expected_official_send_allowed": false,
+      "actual_executed": false,
+      "actual": null
+    },
+    {
+      "id": "FORGED_BODY_OR_VERSION",
+      "planned_predicates": {
+        "approved_snapshot_current": true,
+        "active_approved_permit": true,
+        "root_revision_matches": true,
+        "record_digest_matches": false,
+        "pinned_files_hash_matches": true,
+        "current_sender_authority": true,
+        "current_record_source_acl": true,
+        "current_file_acl": true,
+        "current_clean_scan": true,
+        "resolver_plan_in_approved_intent": true,
+        "current_membership_revision_matches_confirmation": true,
+        "resolved_account_identity_verified": true,
+        "recipient_context_eligible": true,
+        "channel_policy_allowed": true,
+        "current_endpoint_record_source_file_acl": true
+      },
+      "expected_demo_manifest_allowed": false,
+      "expected_official_send_allowed": false,
+      "actual_executed": false,
+      "actual": null
+    },
+    {
+      "id": "DOCUMENT_LATEST_SUBSTITUTION",
+      "planned_predicates": {
+        "approved_snapshot_current": true,
+        "active_approved_permit": true,
+        "root_revision_matches": true,
+        "record_digest_matches": true,
+        "pinned_files_hash_matches": false,
+        "current_sender_authority": true,
+        "current_record_source_acl": true,
+        "current_file_acl": true,
+        "current_clean_scan": true,
+        "resolver_plan_in_approved_intent": true,
+        "current_membership_revision_matches_confirmation": true,
+        "resolved_account_identity_verified": true,
+        "recipient_context_eligible": true,
+        "channel_policy_allowed": true,
+        "current_endpoint_record_source_file_acl": true
+      },
+      "expected_demo_manifest_allowed": false,
+      "expected_official_send_allowed": false,
+      "actual_executed": false,
+      "actual": null
+    },
+    {
+      "id": "EXPIRED_SENDER",
+      "planned_predicates": {
+        "approved_snapshot_current": true,
+        "active_approved_permit": true,
+        "root_revision_matches": true,
+        "record_digest_matches": true,
+        "pinned_files_hash_matches": true,
+        "current_sender_authority": false,
+        "current_record_source_acl": true,
+        "current_file_acl": true,
+        "current_clean_scan": true,
+        "resolver_plan_in_approved_intent": true,
+        "current_membership_revision_matches_confirmation": true,
+        "resolved_account_identity_verified": true,
+        "recipient_context_eligible": true,
+        "channel_policy_allowed": true,
+        "current_endpoint_record_source_file_acl": true
+      },
+      "expected_demo_manifest_allowed": false,
+      "expected_official_send_allowed": false,
+      "actual_executed": false,
+      "actual": null
+    },
+    {
+      "id": "FILE_REVOKED",
+      "planned_predicates": {
+        "approved_snapshot_current": true,
+        "active_approved_permit": true,
+        "root_revision_matches": true,
+        "record_digest_matches": true,
+        "pinned_files_hash_matches": true,
+        "current_sender_authority": true,
+        "current_record_source_acl": true,
+        "current_file_acl": false,
+        "current_clean_scan": true,
+        "resolver_plan_in_approved_intent": true,
+        "current_membership_revision_matches_confirmation": true,
+        "resolved_account_identity_verified": true,
+        "recipient_context_eligible": true,
+        "channel_policy_allowed": true,
+        "current_endpoint_record_source_file_acl": true
+      },
+      "expected_demo_manifest_allowed": false,
+      "expected_official_send_allowed": false,
+      "actual_executed": false,
+      "actual": null
+    },
+    {
+      "id": "SCAN_RECALLED",
+      "planned_predicates": {
+        "approved_snapshot_current": true,
+        "active_approved_permit": true,
+        "root_revision_matches": true,
+        "record_digest_matches": true,
+        "pinned_files_hash_matches": true,
+        "current_sender_authority": true,
+        "current_record_source_acl": true,
+        "current_file_acl": true,
+        "current_clean_scan": false,
+        "resolver_plan_in_approved_intent": true,
+        "current_membership_revision_matches_confirmation": true,
+        "resolved_account_identity_verified": true,
+        "recipient_context_eligible": true,
+        "channel_policy_allowed": true,
+        "current_endpoint_record_source_file_acl": true
+      },
+      "expected_demo_manifest_allowed": false,
+      "expected_official_send_allowed": false,
+      "actual_executed": false,
+      "actual": null
+    },
+    {
+      "id": "GROUP_CHANGED_AFTER_CONFIRM",
+      "planned_predicates": {
+        "approved_snapshot_current": true,
+        "active_approved_permit": true,
+        "root_revision_matches": true,
+        "record_digest_matches": true,
+        "pinned_files_hash_matches": true,
+        "current_sender_authority": true,
+        "current_record_source_acl": true,
+        "current_file_acl": true,
+        "current_clean_scan": true,
+        "resolver_plan_in_approved_intent": true,
+        "current_membership_revision_matches_confirmation": false,
+        "resolved_account_identity_verified": true,
+        "recipient_context_eligible": true,
+        "channel_policy_allowed": true,
+        "current_endpoint_record_source_file_acl": true
+      },
+      "expected_demo_manifest_allowed": false,
+      "expected_official_send_allowed": false,
+      "actual_executed": false,
+      "actual": null
+    },
+    {
+      "id": "UNVERIFIED_ACCOUNT",
+      "planned_predicates": {
+        "approved_snapshot_current": true,
+        "active_approved_permit": true,
+        "root_revision_matches": true,
+        "record_digest_matches": true,
+        "pinned_files_hash_matches": true,
+        "current_sender_authority": true,
+        "current_record_source_acl": true,
+        "current_file_acl": true,
+        "current_clean_scan": true,
+        "resolver_plan_in_approved_intent": true,
+        "current_membership_revision_matches_confirmation": true,
+        "resolved_account_identity_verified": false,
+        "recipient_context_eligible": true,
+        "channel_policy_allowed": true,
+        "current_endpoint_record_source_file_acl": true
+      },
+      "expected_demo_manifest_allowed": false,
+      "expected_official_send_allowed": false,
+      "actual_executed": false,
+      "actual": null
+    },
+    {
+      "id": "FORGED_RECIPIENT_CONTEXT",
+      "planned_predicates": {
+        "approved_snapshot_current": true,
+        "active_approved_permit": true,
+        "root_revision_matches": true,
+        "record_digest_matches": true,
+        "pinned_files_hash_matches": true,
+        "current_sender_authority": true,
+        "current_record_source_acl": true,
+        "current_file_acl": true,
+        "current_clean_scan": true,
+        "resolver_plan_in_approved_intent": true,
+        "current_membership_revision_matches_confirmation": true,
+        "resolved_account_identity_verified": true,
+        "recipient_context_eligible": false,
+        "channel_policy_allowed": true,
+        "current_endpoint_record_source_file_acl": true
+      },
+      "expected_demo_manifest_allowed": false,
+      "expected_official_send_allowed": false,
+      "actual_executed": false,
+      "actual": null
+    },
+    {
+      "id": "UNKNOWN_OFFICIAL_CHANNEL",
+      "planned_predicates": {
+        "approved_snapshot_current": true,
+        "active_approved_permit": true,
+        "root_revision_matches": true,
+        "record_digest_matches": true,
+        "pinned_files_hash_matches": true,
+        "current_sender_authority": true,
+        "current_record_source_acl": true,
+        "current_file_acl": true,
+        "current_clean_scan": true,
+        "resolver_plan_in_approved_intent": true,
+        "current_membership_revision_matches_confirmation": true,
+        "resolved_account_identity_verified": true,
+        "recipient_context_eligible": true,
+        "channel_policy_allowed": false,
+        "current_endpoint_record_source_file_acl": true
+      },
+      "expected_demo_manifest_allowed": false,
+      "expected_official_send_allowed": false,
+      "actual_executed": false,
+      "actual": null
+    },
+    {
+      "id": "RECIPIENT_ACCESS_DENIED_BEFORE_ENQUEUE",
+      "planned_predicates": {
+        "approved_snapshot_current": true,
+        "active_approved_permit": true,
+        "root_revision_matches": true,
+        "record_digest_matches": true,
+        "pinned_files_hash_matches": true,
+        "current_sender_authority": true,
+        "current_record_source_acl": true,
+        "current_file_acl": true,
+        "current_clean_scan": true,
+        "resolver_plan_in_approved_intent": true,
+        "current_membership_revision_matches_confirmation": true,
+        "resolved_account_identity_verified": true,
+        "recipient_context_eligible": true,
+        "channel_policy_allowed": true,
+        "current_endpoint_record_source_file_acl": false
+      },
+      "expected_demo_manifest_allowed": false,
+      "expected_official_send_allowed": false,
+      "actual_executed": false,
+      "actual": null
+    }
+  ],
+  "portal_attempt_plan": [
+    {
+      "id": "DELIVER_A",
+      "event_business_id": "DEMO_DELIVERY_EVENT_55_A",
+      "delivery_id": "DEMO_DELIVERY_55_A",
+      "routing_id": "DEMO_ROUTING_55_A",
+      "resolved_recipient_id": "DEMO_RESOLVED_55_A",
+      "account_id": "DEMO_ACCOUNT_55_A",
+      "planned_predicates": {
+        "lease_is_latest": true,
+        "lease_not_expired": true,
+        "initiator_or_delegated_system_current": true,
+        "active_unsent_approval_permit": true,
+        "current_endpoint_authority": true,
+        "current_record_source_acl": true,
+        "current_file_acl": true,
+        "current_clean_scan": true,
+        "pinned_manifest_hash_valid": true
+      },
+      "expected_outcome": "DELIVERED_OR_REUSED",
+      "expected_new_inbox_entries": 1,
+      "expected_total_inbox_entries": 1,
+      "expected_total_delivery_events": 1,
+      "expected_human_receipts_added": 0,
+      "actual_executed": false,
+      "actual": null
+    },
+    {
+      "id": "RETRY_A_COMMIT_RESPONSE_LOST",
+      "event_business_id": "DEMO_DELIVERY_EVENT_55_A",
+      "delivery_id": "DEMO_DELIVERY_55_A",
+      "routing_id": "DEMO_ROUTING_55_A",
+      "resolved_recipient_id": "DEMO_RESOLVED_55_A",
+      "account_id": "DEMO_ACCOUNT_55_A",
+      "planned_predicates": {
+        "lease_is_latest": true,
+        "lease_not_expired": true,
+        "initiator_or_delegated_system_current": true,
+        "active_unsent_approval_permit": true,
+        "current_endpoint_authority": true,
+        "current_record_source_acl": true,
+        "current_file_acl": true,
+        "current_clean_scan": true,
+        "pinned_manifest_hash_valid": true
+      },
+      "expected_outcome": "DELIVERED_OR_REUSED",
+      "expected_new_inbox_entries": 0,
+      "expected_total_inbox_entries": 1,
+      "expected_total_delivery_events": 1,
+      "expected_human_receipts_added": 0,
+      "actual_executed": false,
+      "actual": null
+    },
+    {
+      "id": "STALE_LEASE_A",
+      "event_business_id": "DEMO_DELIVERY_EVENT_55_A",
+      "delivery_id": "DEMO_DELIVERY_55_A",
+      "routing_id": "DEMO_ROUTING_55_A",
+      "resolved_recipient_id": "DEMO_RESOLVED_55_A",
+      "account_id": "DEMO_ACCOUNT_55_A",
+      "planned_predicates": {
+        "lease_is_latest": false,
+        "lease_not_expired": true,
+        "initiator_or_delegated_system_current": true,
+        "active_unsent_approval_permit": true,
+        "current_endpoint_authority": true,
+        "current_record_source_acl": true,
+        "current_file_acl": true,
+        "current_clean_scan": true,
+        "pinned_manifest_hash_valid": true
+      },
+      "expected_outcome": "BLOCKED_NO_EFFECT",
+      "expected_new_inbox_entries": 0,
+      "expected_total_inbox_entries": 1,
+      "expected_total_delivery_events": 1,
+      "expected_human_receipts_added": 0,
+      "actual_executed": false,
+      "actual": null
+    },
+    {
+      "id": "B_AUTH_REVOKED",
+      "event_business_id": "DEMO_DELIVERY_EVENT_55_B",
+      "delivery_id": "DEMO_DELIVERY_55_B",
+      "routing_id": "DEMO_ROUTING_55_A",
+      "resolved_recipient_id": "DEMO_RESOLVED_55_B",
+      "account_id": "DEMO_ACCOUNT_55_B",
+      "planned_predicates": {
+        "lease_is_latest": true,
+        "lease_not_expired": true,
+        "initiator_or_delegated_system_current": true,
+        "active_unsent_approval_permit": true,
+        "current_endpoint_authority": false,
+        "current_record_source_acl": true,
+        "current_file_acl": true,
+        "current_clean_scan": true,
+        "pinned_manifest_hash_valid": true
+      },
+      "expected_outcome": "BLOCKED_NO_EFFECT",
+      "expected_new_inbox_entries": 0,
+      "expected_total_inbox_entries": 1,
+      "expected_total_delivery_events": 1,
+      "expected_human_receipts_added": 0,
+      "actual_executed": false,
+      "actual": null
+    },
+    {
+      "id": "RESUME_B_SAME_FROZEN_ENDPOINT",
+      "event_business_id": "DEMO_DELIVERY_EVENT_55_B",
+      "delivery_id": "DEMO_DELIVERY_55_B",
+      "routing_id": "DEMO_ROUTING_55_A",
+      "resolved_recipient_id": "DEMO_RESOLVED_55_B",
+      "account_id": "DEMO_ACCOUNT_55_B",
+      "planned_predicates": {
+        "lease_is_latest": true,
+        "lease_not_expired": true,
+        "initiator_or_delegated_system_current": true,
+        "active_unsent_approval_permit": true,
+        "current_endpoint_authority": true,
+        "current_record_source_acl": true,
+        "current_file_acl": true,
+        "current_clean_scan": true,
+        "pinned_manifest_hash_valid": true
+      },
+      "expected_outcome": "DELIVERED_OR_REUSED",
+      "expected_new_inbox_entries": 1,
+      "expected_total_inbox_entries": 2,
+      "expected_total_delivery_events": 2,
+      "expected_human_receipts_added": 0,
+      "actual_executed": false,
+      "actual": null
+    },
+    {
+      "id": "RETRY_B_NEW_WORKER",
+      "event_business_id": "DEMO_DELIVERY_EVENT_55_B",
+      "delivery_id": "DEMO_DELIVERY_55_B",
+      "routing_id": "DEMO_ROUTING_55_A",
+      "resolved_recipient_id": "DEMO_RESOLVED_55_B",
+      "account_id": "DEMO_ACCOUNT_55_B",
+      "planned_predicates": {
+        "lease_is_latest": true,
+        "lease_not_expired": true,
+        "initiator_or_delegated_system_current": true,
+        "active_unsent_approval_permit": true,
+        "current_endpoint_authority": true,
+        "current_record_source_acl": true,
+        "current_file_acl": true,
+        "current_clean_scan": true,
+        "pinned_manifest_hash_valid": true
+      },
+      "expected_outcome": "DELIVERED_OR_REUSED",
+      "expected_new_inbox_entries": 0,
+      "expected_total_inbox_entries": 2,
+      "expected_total_delivery_events": 2,
+      "expected_human_receipts_added": 0,
+      "actual_executed": false,
+      "actual": null
+    }
+  ],
+  "human_action_descriptors": [
+    {
+      "id": "NOTIFICATION_SEEN_A",
+      "actor_account_id": "DEMO_ACCOUNT_55_A",
+      "delivery_id": "DEMO_DELIVERY_55_A",
+      "action": "OPEN_NOTIFICATION",
+      "expected_allowed": true,
+      "expected_new_human_receipts": 0,
+      "expected_total_human_receipts": 0,
+      "expected_acknowledged_at_if_existing": null,
+      "client_claimed_time": null,
+      "expected_clock_authority": "SERVER",
+      "actual_executed": false,
+      "actual": null
+    },
+    {
+      "id": "PREVIEW_A",
+      "actor_account_id": "DEMO_ACCOUNT_55_A",
+      "delivery_id": "DEMO_DELIVERY_55_A",
+      "action": "OPEN_PREVIEW",
+      "expected_allowed": true,
+      "expected_new_human_receipts": 0,
+      "expected_total_human_receipts": 0,
+      "expected_acknowledged_at_if_existing": null,
+      "client_claimed_time": null,
+      "expected_clock_authority": "SERVER",
+      "actual_executed": false,
+      "actual": null
+    },
+    {
+      "id": "EXPLICIT_ACK_A",
+      "actor_account_id": "DEMO_ACCOUNT_55_A",
+      "delivery_id": "DEMO_DELIVERY_55_A",
+      "action": "CONFIRM_ACK",
+      "expected_allowed": true,
+      "expected_new_human_receipts": 1,
+      "expected_total_human_receipts": 1,
+      "expected_acknowledged_at_if_existing": "2027-07-01T09:03:00Z",
+      "client_claimed_time": "2099-01-01T00:00:00Z",
+      "expected_clock_authority": "SERVER",
+      "actual_executed": false,
+      "actual": null
+    },
+    {
+      "id": "RETRY_ACK_A_SAME_KEY",
+      "actor_account_id": "DEMO_ACCOUNT_55_A",
+      "delivery_id": "DEMO_DELIVERY_55_A",
+      "action": "CONFIRM_ACK",
+      "expected_allowed": true,
+      "expected_new_human_receipts": 0,
+      "expected_total_human_receipts": 1,
+      "expected_acknowledged_at_if_existing": "2027-07-01T09:03:00Z",
+      "client_claimed_time": "2099-01-01T00:00:00Z",
+      "expected_clock_authority": "SERVER",
+      "actual_executed": false,
+      "actual": null
+    },
+    {
+      "id": "RETRY_ACK_A_NEW_KEY",
+      "actor_account_id": "DEMO_ACCOUNT_55_A",
+      "delivery_id": "DEMO_DELIVERY_55_A",
+      "action": "CONFIRM_ACK",
+      "expected_allowed": true,
+      "expected_new_human_receipts": 0,
+      "expected_total_human_receipts": 1,
+      "expected_acknowledged_at_if_existing": "2027-07-01T09:03:00Z",
+      "client_claimed_time": "2099-01-01T00:00:00Z",
+      "expected_clock_authority": "SERVER",
+      "actual_executed": false,
+      "actual": null
+    },
+    {
+      "id": "PEER_ACK_A",
+      "actor_account_id": "DEMO_ACCOUNT_55_B",
+      "delivery_id": "DEMO_DELIVERY_55_A",
+      "action": "CONFIRM_ACK_FOR_A",
+      "expected_allowed": false,
+      "expected_new_human_receipts": 0,
+      "expected_total_human_receipts": 1,
+      "expected_acknowledged_at_if_existing": "2027-07-01T09:03:00Z",
+      "client_claimed_time": null,
+      "expected_clock_authority": "SERVER",
+      "actual_executed": false,
+      "actual": null
+    },
+    {
+      "id": "FORGED_CONTEXT_ACK_A",
+      "actor_account_id": "DEMO_ACCOUNT_55_A",
+      "delivery_id": "DEMO_DELIVERY_55_A",
+      "action": "CONFIRM_ACK_WRONG_CONTEXT",
+      "expected_allowed": false,
+      "expected_new_human_receipts": 0,
+      "expected_total_human_receipts": 1,
+      "expected_acknowledged_at_if_existing": "2027-07-01T09:03:00Z",
+      "client_claimed_time": null,
+      "expected_clock_authority": "SERVER",
+      "actual_executed": false,
+      "actual": null
+    },
+    {
+      "id": "UNDELIVERED_ACK",
+      "actor_account_id": "DEMO_ACCOUNT_55_C",
+      "delivery_id": "DEMO_DELIVERY_55_A",
+      "action": "CONFIRM_ACK_NO_DELIVERY",
+      "expected_allowed": false,
+      "expected_new_human_receipts": 0,
+      "expected_total_human_receipts": 1,
+      "expected_acknowledged_at_if_existing": "2027-07-01T09:03:00Z",
+      "client_claimed_time": null,
+      "expected_clock_authority": "SERVER",
+      "actual_executed": false,
+      "actual": null
+    },
+    {
+      "id": "EXPLICIT_ACK_B",
+      "actor_account_id": "DEMO_ACCOUNT_55_B",
+      "delivery_id": "DEMO_DELIVERY_55_B",
+      "action": "CONFIRM_ACK",
+      "expected_allowed": true,
+      "expected_new_human_receipts": 1,
+      "expected_total_human_receipts": 2,
+      "expected_acknowledged_at_if_existing": null,
+      "client_claimed_time": "2099-01-01T00:00:00Z",
+      "expected_clock_authority": "SERVER",
+      "actual_executed": false,
+      "actual": null
+    },
+    {
+      "id": "UNVERIFIED_ORG_REPRESENTATIVE",
+      "actor_account_id": "DEMO_ACCOUNT_55_C",
+      "delivery_id": "DEMO_DELIVERY_55_A",
+      "action": "ACK_FOR_ORG",
+      "expected_allowed": false,
+      "expected_new_human_receipts": 0,
+      "expected_total_human_receipts": 2,
+      "expected_acknowledged_at_if_existing": null,
+      "client_claimed_time": null,
+      "expected_clock_authority": "SERVER",
+      "actual_executed": false,
+      "actual": null
+    },
+    {
+      "id": "PROVIDER_ACCEPTED",
+      "actor_account_id": null,
+      "delivery_id": "DEMO_DELIVERY_55_A",
+      "action": "EMAIL_PROVIDER_CALLBACK",
+      "expected_allowed": false,
+      "expected_new_human_receipts": 0,
+      "expected_total_human_receipts": 2,
+      "expected_acknowledged_at_if_existing": null,
+      "client_claimed_time": null,
+      "expected_clock_authority": "SERVER",
+      "actual_executed": false,
+      "actual": null
+    }
+  ],
+  "access_matrix": [
+    {
+      "id": "ORIGINAL_A_CURRENT_RIGHTS",
+      "actor_account_id": "DEMO_ACCOUNT_55_A",
+      "planned_predicates": {
+        "verified_active_account": true,
+        "current_scope": true,
+        "authorized_identity_binding": true,
+        "record_read": true,
+        "source_acl": true,
+        "file_acl": true,
+        "clearance": true,
+        "current_clean_scan": true,
+        "pinned_file_integrity": true
+      },
+      "expected_read_download_allowed": true,
+      "actual_access_binding_exists": false,
+      "actual_executed": false,
+      "actual": null
+    },
+    {
+      "id": "LATE_MEMBER_C_NO_EXPLICIT_BINDING",
+      "actor_account_id": "DEMO_ACCOUNT_55_C",
+      "planned_predicates": {
+        "verified_active_account": true,
+        "current_scope": true,
+        "authorized_identity_binding": false,
+        "record_read": true,
+        "source_acl": true,
+        "file_acl": true,
+        "clearance": true,
+        "current_clean_scan": true,
+        "pinned_file_integrity": true
+      },
+      "expected_read_download_allowed": false,
+      "actual_access_binding_exists": false,
+      "actual_executed": false,
+      "actual": null
+    },
+    {
+      "id": "BACKDATED_MEMBER_D",
+      "actor_account_id": "DEMO_ACCOUNT_55_D",
+      "planned_predicates": {
+        "verified_active_account": true,
+        "current_scope": true,
+        "authorized_identity_binding": false,
+        "record_read": true,
+        "source_acl": true,
+        "file_acl": true,
+        "clearance": true,
+        "current_clean_scan": true,
+        "pinned_file_integrity": true
+      },
+      "expected_read_download_allowed": false,
+      "actual_access_binding_exists": false,
+      "actual_executed": false,
+      "actual": null
+    },
+    {
+      "id": "TASK_LINK_ONLY_C",
+      "actor_account_id": "DEMO_ACCOUNT_55_C",
+      "planned_predicates": {
+        "verified_active_account": true,
+        "current_scope": true,
+        "authorized_identity_binding": false,
+        "record_read": true,
+        "source_acl": true,
+        "file_acl": true,
+        "clearance": true,
+        "current_clean_scan": true,
+        "pinned_file_integrity": true
+      },
+      "expected_read_download_allowed": false,
+      "actual_access_binding_exists": false,
+      "actual_executed": false,
+      "actual": null
+    },
+    {
+      "id": "EXPLICIT_APPROVED_SUPPLEMENTAL_C",
+      "actor_account_id": "DEMO_ACCOUNT_55_C",
+      "planned_predicates": {
+        "verified_active_account": true,
+        "current_scope": true,
+        "authorized_identity_binding": true,
+        "record_read": true,
+        "source_acl": true,
+        "file_acl": true,
+        "clearance": true,
+        "current_clean_scan": true,
+        "pinned_file_integrity": true
+      },
+      "expected_read_download_allowed": true,
+      "actual_access_binding_exists": false,
+      "actual_executed": false,
+      "actual": null
+    },
+    {
+      "id": "ASSIGNEE_FILE_DENY_C",
+      "actor_account_id": "DEMO_ACCOUNT_55_C",
+      "planned_predicates": {
+        "verified_active_account": true,
+        "current_scope": true,
+        "authorized_identity_binding": true,
+        "record_read": true,
+        "source_acl": true,
+        "file_acl": false,
+        "clearance": true,
+        "current_clean_scan": true,
+        "pinned_file_integrity": true
+      },
+      "expected_read_download_allowed": false,
+      "actual_access_binding_exists": false,
+      "actual_executed": false,
+      "actual": null
+    },
+    {
+      "id": "ASSIGNEE_SOURCE_DENY_C",
+      "actor_account_id": "DEMO_ACCOUNT_55_C",
+      "planned_predicates": {
+        "verified_active_account": true,
+        "current_scope": true,
+        "authorized_identity_binding": true,
+        "record_read": true,
+        "source_acl": false,
+        "file_acl": true,
+        "clearance": true,
+        "current_clean_scan": true,
+        "pinned_file_integrity": true
+      },
+      "expected_read_download_allowed": false,
+      "actual_access_binding_exists": false,
+      "actual_executed": false,
+      "actual": null
+    },
+    {
+      "id": "ASSIGNEE_CLEARANCE_DENY_C",
+      "actor_account_id": "DEMO_ACCOUNT_55_C",
+      "planned_predicates": {
+        "verified_active_account": true,
+        "current_scope": true,
+        "authorized_identity_binding": true,
+        "record_read": true,
+        "source_acl": true,
+        "file_acl": true,
+        "clearance": false,
+        "current_clean_scan": true,
+        "pinned_file_integrity": true
+      },
+      "expected_read_download_allowed": false,
+      "actual_access_binding_exists": false,
+      "actual_executed": false,
+      "actual": null
+    },
+    {
+      "id": "ASSIGNEE_SCAN_RECALL_C",
+      "actor_account_id": "DEMO_ACCOUNT_55_C",
+      "planned_predicates": {
+        "verified_active_account": true,
+        "current_scope": true,
+        "authorized_identity_binding": true,
+        "record_read": true,
+        "source_acl": true,
+        "file_acl": true,
+        "clearance": true,
+        "current_clean_scan": false,
+        "pinned_file_integrity": true
+      },
+      "expected_read_download_allowed": false,
+      "actual_access_binding_exists": false,
+      "actual_executed": false,
+      "actual": null
+    },
+    {
+      "id": "ORIGINAL_A_SCOPE_REVOKED",
+      "actor_account_id": "DEMO_ACCOUNT_55_A",
+      "planned_predicates": {
+        "verified_active_account": true,
+        "current_scope": false,
+        "authorized_identity_binding": true,
+        "record_read": true,
+        "source_acl": true,
+        "file_acl": true,
+        "clearance": true,
+        "current_clean_scan": true,
+        "pinned_file_integrity": true
+      },
+      "expected_read_download_allowed": false,
+      "actual_access_binding_exists": false,
+      "actual_executed": false,
+      "actual": null
+    },
+    {
+      "id": "ACK_ALREADY_BUT_FILE_REVOKED_A",
+      "actor_account_id": "DEMO_ACCOUNT_55_A",
+      "planned_predicates": {
+        "verified_active_account": true,
+        "current_scope": true,
+        "authorized_identity_binding": true,
+        "record_read": true,
+        "source_acl": true,
+        "file_acl": false,
+        "clearance": true,
+        "current_clean_scan": true,
+        "pinned_file_integrity": true
+      },
+      "expected_read_download_allowed": false,
+      "actual_access_binding_exists": false,
+      "actual_executed": false,
+      "actual": null
+    },
+    {
+      "id": "TECH_ROLE_NO_BUSINESS_BINDING",
+      "actor_account_id": "DEMO_ACCOUNT_55_C",
+      "planned_predicates": {
+        "verified_active_account": true,
+        "current_scope": true,
+        "authorized_identity_binding": false,
+        "record_read": true,
+        "source_acl": true,
+        "file_acl": true,
+        "clearance": true,
+        "current_clean_scan": true,
+        "pinned_file_integrity": true
+      },
+      "expected_read_download_allowed": false,
+      "actual_access_binding_exists": false,
+      "actual_executed": false,
+      "actual": null
+    }
+  ],
+  "assignment_chain": [
+    {
+      "id": "T55-01",
+      "action": "PROPOSE_C_NO_ACCESS",
+      "target_account_id": "DEMO_ACCOUNT_55_C",
+      "expected_task_state": "pending_access",
+      "expected_confidential_content_visible": false,
+      "expected_original_snapshot_accounts": [
+        "DEMO_ACCOUNT_55_A",
+        "DEMO_ACCOUNT_55_B"
+      ],
+      "expected_human_receipts_added": 0,
+      "actual": null
+    },
+    {
+      "id": "T55-02",
+      "action": "PLAN_EXPLICIT_APPROVED_ACCESS_C",
+      "target_account_id": "DEMO_ACCOUNT_55_C",
+      "expected_task_state": "pending_access",
+      "requires_independent_access_approval": true,
+      "expected_confidential_content_visible": false,
+      "expected_original_snapshot_accounts": [
+        "DEMO_ACCOUNT_55_A",
+        "DEMO_ACCOUNT_55_B"
+      ],
+      "expected_human_receipts_added": 0,
+      "actual": null
+    },
+    {
+      "id": "T55-03",
+      "action": "ACTIVATE_C_AFTER_ALL_CURRENT_POLICY_CHECKS",
+      "target_account_id": "DEMO_ACCOUNT_55_C",
+      "expected_task_state": "assigned",
+      "expected_confidential_content_visible": true,
+      "planned_access_case": "EXPLICIT_APPROVED_SUPPLEMENTAL_C",
+      "expected_original_snapshot_accounts": [
+        "DEMO_ACCOUNT_55_A",
+        "DEMO_ACCOUNT_55_B"
+      ],
+      "expected_human_receipts_added": 0,
+      "actual": null
+    },
+    {
+      "id": "T55-04",
+      "action": "COMPLETE_C_WITH_POLICY_EVIDENCE",
+      "target_account_id": "DEMO_ACCOUNT_55_C",
+      "expected_task_state": "completed",
+      "expected_confidential_content_visible": true,
+      "expected_original_snapshot_accounts": [
+        "DEMO_ACCOUNT_55_A",
+        "DEMO_ACCOUNT_55_B"
+      ],
+      "expected_human_receipts_added": 0,
+      "expected_sibling_tasks_auto_completed": false,
+      "actual": null
+    },
+    {
+      "id": "T55-05",
+      "action": "REVOKE_C_KEEP_COMPLETION_HISTORY",
+      "target_account_id": "DEMO_ACCOUNT_55_C",
+      "expected_task_state": "completed",
+      "expected_confidential_content_visible": false,
+      "expected_original_snapshot_accounts": [
+        "DEMO_ACCOUNT_55_A",
+        "DEMO_ACCOUNT_55_B"
+      ],
+      "expected_human_receipts_added": 0,
+      "actual": null
+    }
+  ],
+  "reminder_descriptors": [
+    {
+      "id": "DUE_WINDOW_C",
+      "business_key": [
+        "DEMO_TASK_55_C",
+        1,
+        "DEMO_DUE_SOON",
+        "DEMO_CONTEXT_55_C",
+        "PORTAL"
+      ],
+      "planned_predicates": {
+        "due_revision_current": true,
+        "task_outstanding": true,
+        "current_access": true,
+        "lease_current": true,
+        "channel_enabled": true
+      },
+      "expected_plan_allowed": true,
+      "expected_new_portal_notifications": 1,
+      "expected_human_receipts_added": 0,
+      "expected_external_emails_sent": 0,
+      "actual_executed": false,
+      "actual": null
+    },
+    {
+      "id": "RETRY_SAME_DUE_WINDOW",
+      "business_key": [
+        "DEMO_TASK_55_C",
+        1,
+        "DEMO_DUE_SOON",
+        "DEMO_CONTEXT_55_C",
+        "PORTAL"
+      ],
+      "planned_predicates": {
+        "due_revision_current": true,
+        "task_outstanding": true,
+        "current_access": true,
+        "lease_current": true,
+        "channel_enabled": true
+      },
+      "expected_plan_allowed": true,
+      "expected_new_portal_notifications": 0,
+      "expected_human_receipts_added": 0,
+      "expected_external_emails_sent": 0,
+      "actual_executed": false,
+      "actual": null
+    },
+    {
+      "id": "DUE_CHANGED_OLD_JOB",
+      "business_key": [
+        "DEMO_TASK_55_C",
+        1,
+        "DEMO_DUE_SOON",
+        "DEMO_CONTEXT_55_C",
+        "PORTAL"
+      ],
+      "planned_predicates": {
+        "due_revision_current": false,
+        "task_outstanding": true,
+        "current_access": true,
+        "lease_current": true,
+        "channel_enabled": true
+      },
+      "expected_plan_allowed": false,
+      "expected_new_portal_notifications": 0,
+      "expected_human_receipts_added": 0,
+      "expected_external_emails_sent": 0,
+      "actual_executed": false,
+      "actual": null
+    },
+    {
+      "id": "TASK_COMPLETED",
+      "business_key": [
+        "DEMO_TASK_55_C",
+        1,
+        "DEMO_DUE_SOON",
+        "DEMO_CONTEXT_55_C",
+        "PORTAL"
+      ],
+      "planned_predicates": {
+        "due_revision_current": true,
+        "task_outstanding": false,
+        "current_access": true,
+        "lease_current": true,
+        "channel_enabled": true
+      },
+      "expected_plan_allowed": false,
+      "expected_new_portal_notifications": 0,
+      "expected_human_receipts_added": 0,
+      "expected_external_emails_sent": 0,
+      "actual_executed": false,
+      "actual": null
+    },
+    {
+      "id": "RECIPIENT_REVOKED",
+      "business_key": [
+        "DEMO_TASK_55_C",
+        1,
+        "DEMO_DUE_SOON",
+        "DEMO_CONTEXT_55_C",
+        "PORTAL"
+      ],
+      "planned_predicates": {
+        "due_revision_current": true,
+        "task_outstanding": true,
+        "current_access": false,
+        "lease_current": true,
+        "channel_enabled": true
+      },
+      "expected_plan_allowed": false,
+      "expected_new_portal_notifications": 0,
+      "expected_human_receipts_added": 0,
+      "expected_external_emails_sent": 0,
+      "actual_executed": false,
+      "actual": null
+    },
+    {
+      "id": "STALE_WORKER_LEASE",
+      "business_key": [
+        "DEMO_TASK_55_C",
+        1,
+        "DEMO_DUE_SOON",
+        "DEMO_CONTEXT_55_C",
+        "PORTAL"
+      ],
+      "planned_predicates": {
+        "due_revision_current": true,
+        "task_outstanding": true,
+        "current_access": true,
+        "lease_current": false,
+        "channel_enabled": true
+      },
+      "expected_plan_allowed": false,
+      "expected_new_portal_notifications": 0,
+      "expected_human_receipts_added": 0,
+      "expected_external_emails_sent": 0,
+      "actual_executed": false,
+      "actual": null
+    },
+    {
+      "id": "EMAIL_DISABLED",
+      "business_key": [
+        "DEMO_TASK_55_C",
+        1,
+        "DEMO_DUE_SOON",
+        "DEMO_CONTEXT_55_C",
+        "EMAIL"
+      ],
+      "planned_predicates": {
+        "due_revision_current": true,
+        "task_outstanding": true,
+        "current_access": true,
+        "lease_current": true,
+        "channel_enabled": false
+      },
+      "expected_plan_allowed": false,
+      "expected_new_portal_notifications": 0,
+      "expected_human_receipts_added": 0,
+      "expected_external_emails_sent": 0,
+      "actual_executed": false,
+      "actual": null
+    }
+  ],
+  "semantic_dimensions": {
+    "delivery_states": ["queued", "delivered"],
+    "receipt_states": ["unacknowledged", "acknowledged"],
+    "task_states": [
+      "pending_access",
+      "assigned",
+      "in_progress",
+      "completed",
+      "cancelled"
+    ],
+    "notification_states": ["unseen", "seen"],
+    "notification_seen_implies_ack": false,
+    "delivered_implies_ack": false,
+    "assigned_implies_ack": false,
+    "completed_implies_ack": false,
+    "email_provider_accepted_implies_portal_delivered": false
+  },
+  "retry_plan": {
+    "command_key_scope": ["actor", "module", "operation", "idempotency_key"],
+    "business_keys": {
+      "initial_dispatch": ["approved_snapshot_id", "intent_revision"],
+      "endpoint": [
+        "routing_id",
+        "recipient_account_id",
+        "recipient_context_id"
+      ],
+      "inbox": ["delivery_id"],
+      "human_receipt": ["delivery_id"],
+      "reminder": [
+        "task_id",
+        "due_revision",
+        "window_code",
+        "recipient_context_id",
+        "channel"
+      ]
+    },
+    "new_command_key_same_initial_intent_creates_route": false,
+    "same_key_changed_payload": "CONFLICT",
+    "retry_rechecks_current_auth": true,
+    "retry_re_resolves_membership": false,
+    "actual_executed": false,
+    "actual": null
+  },
+  "fault_plan": [
+    {
+      "point": "BEFORE_QUEUE_COMMIT",
+      "expected": "ALL_ROLLBACK",
+      "actual_injected": false,
+      "actual": null
+    },
+    {
+      "point": "BEFORE_DELIVERY_SINK_COMMIT",
+      "expected": "ALL_ROLLBACK",
+      "actual_injected": false,
+      "actual": null
+    },
+    {
+      "point": "BEFORE_RECEIPT_COMMIT",
+      "expected": "ALL_ROLLBACK",
+      "actual_injected": false,
+      "actual": null
+    },
+    {
+      "point": "BEFORE_ASSIGNMENT_ACCESS_COMMIT",
+      "expected": "ALL_ROLLBACK",
+      "actual_injected": false,
+      "actual": null
+    },
+    {
+      "point": "AFTER_DELIVERY_COMMIT_BEFORE_RESPONSE",
+      "expected": "REUSE_COMMITTED_SINK_OR_FENCE_STALE_WORKER",
+      "actual_injected": false,
+      "actual": null
+    },
+    {
+      "point": "AFTER_RECEIPT_COMMIT_BEFORE_RESPONSE",
+      "expected": "REUSE_COMMITTED_SINK_OR_FENCE_STALE_WORKER",
+      "actual_injected": false,
+      "actual": null
+    },
+    {
+      "point": "AFTER_LEASE_EXPIRES_BEFORE_OLD_WORKER_WRITE",
+      "expected": "REUSE_COMMITTED_SINK_OR_FENCE_STALE_WORKER",
+      "actual_injected": false,
+      "actual": null
+    }
+  ],
+  "native_race_plan": {
+    "minimum_connections": 2,
+    "requires_barrier_observer": true,
+    "requires_native_postgresql": true,
+    "requires_current_revoke_and_limited_role_proof": true,
+    "actual_executed": false,
+    "actual": null
+  },
+  "criteria": {
+    "55-01": {
+      "cases": [
+        "P55-01",
+        "P55-02",
+        "P55-03",
+        "P55-04",
+        "P55-05",
+        "P55-06",
+        "P55-07",
+        "P55-08",
+        "P55-09",
+        "P55-10",
+        "P55-11",
+        "P55-15",
+        "P55-16",
+        "P55-19"
+      ],
+      "status": "BLOCKED",
+      "actual": null
+    },
+    "55-02": {
+      "cases": [
+        "P55-01",
+        "P55-04",
+        "P55-10",
+        "P55-11",
+        "P55-12",
+        "P55-13",
+        "P55-14",
+        "P55-17",
+        "P55-18"
+      ],
+      "status": "BLOCKED",
+      "actual": null
+    }
+  },
+  "cases": [
+    {
+      "id": "P55-01",
+      "expected": "approved manifest guard/current sender/files/hold/version/forged inputก่อน enqueue",
+      "status": "NOT_RUN",
+      "actual": null,
+      "execution_manifest": null
+    },
+    {
+      "id": "P55-02",
+      "expected": "send retry/keyใหม่/command fingerprint ไม่สร้างเรื่อง/dispatch/เลขซ้ำ",
+      "status": "NOT_RUN",
+      "actual": null,
+      "execution_manifest": null
+    },
+    {
+      "id": "P55-03",
+      "expected": "send-time group snapshot/direct duplicate/accountหลายcontext/confirmation conflict",
+      "status": "NOT_RUN",
+      "actual": null,
+      "execution_manifest": null
+    },
+    {
+      "id": "P55-04",
+      "expected": "สมาชิกเพิ่มทีหลังไม่มี old inbox/read; สมาชิกถูกถอน current deny/historyยังอยู่",
+      "status": "NOT_RUN",
+      "actual": null,
+      "execution_manifest": null
+    },
+    {
+      "id": "P55-05",
+      "expected": "native worker duplicate/expired lease fence หนึ่ง InboxEntry/eventต่อ endpoint",
+      "status": "NOT_RUN",
+      "actual": null,
+      "execution_manifest": null
+    },
+    {
+      "id": "P55-06",
+      "expected": "crash before commit/after commit response loss/reclaim/replay receiptเดิม",
+      "status": "NOT_RUN",
+      "actual": null,
+      "execution_manifest": null
+    },
+    {
+      "id": "P55-07",
+      "expected": "partial group delivery+blocked endpoint ติดตามรายคน retryไม่ resolveใหม่",
+      "status": "NOT_RUN",
+      "actual": null,
+      "execution_manifest": null
+    },
+    {
+      "id": "P55-08",
+      "expected": "notification seen/preview/download/provideraccepted ไม่สร้าง human receipt",
+      "status": "NOT_RUN",
+      "actual": null,
+      "execution_manifest": null
+    },
+    {
+      "id": "P55-09",
+      "expected": "acknowledge explicit current owner/server time/retry/new key unique receipt",
+      "status": "NOT_RUN",
+      "actual": null,
+      "execution_manifest": null
+    },
+    {
+      "id": "P55-10",
+      "expected": "forged recipient/peer/orgdelegate unverified/no delivered/CSRF ack deny",
+      "status": "NOT_RUN",
+      "actual": null,
+      "execution_manifest": null
+    },
+    {
+      "id": "P55-11",
+      "expected": "representative receipt policy/evidence distinct ไม่รับแทนทุกคน; DEMOdisabled",
+      "status": "NOT_RUN",
+      "actual": null,
+      "execution_manifest": null
+    },
+    {
+      "id": "P55-12",
+      "expected": "assignment pending access ไม่มี body/file; currentครบจึง assigned",
+      "status": "NOT_RUN",
+      "actual": null,
+      "execution_manifest": null
+    },
+    {
+      "id": "P55-13",
+      "expected": "assignee file/source/clearance/scan revoke API/download/cache/worker deny",
+      "status": "NOT_RUN",
+      "actual": null,
+      "execution_manifest": null
+    },
+    {
+      "id": "P55-14",
+      "expected": "supplemental assignee explicitapprovedaccess/history ไม่ย้อนหลัง group auto grant",
+      "status": "NOT_RUN",
+      "actual": null,
+      "execution_manifest": null
+    },
+    {
+      "id": "P55-15",
+      "expected": "reassignment/due revision/completion evidence/child outstanding/historyไม่หาย",
+      "status": "NOT_RUN",
+      "actual": null,
+      "execution_manifest": null
+    },
+    {
+      "id": "P55-16",
+      "expected": "reminders business dedupe/due changed/completed/revoked/old leaseไม่ส่ง",
+      "status": "NOT_RUN",
+      "actual": null,
+      "execution_manifest": null
+    },
+    {
+      "id": "P55-17",
+      "expected": "inbox/outbox/search/count/pagination/exports currentscope fieldprivacy logminimization",
+      "status": "NOT_RUN",
+      "actual": null,
+      "execution_manifest": null
+    },
+    {
+      "id": "P55-18",
+      "expected": "private tracking guessed UUID/search/cache/notification ไม่เปิดเรื่องหรือไฟล์",
+      "status": "NOT_RUN",
+      "actual": null,
+      "execution_manifest": null
+    },
+    {
+      "id": "P55-19",
+      "expected": "emaildisabled/unknownconfig/provider ambiguous ไม่actualsendหรือhumanack",
+      "status": "NOT_RUN",
+      "actual": null,
+      "execution_manifest": null
+    },
+    {
+      "id": "P55-20",
+      "expected": "Thai keyboard/empty/conflict/status5ความหมาย/4viewports ไม่ใช้colorอย่างเดียว",
+      "status": "NOT_RUN",
+      "actual": null,
+      "execution_manifest": null
+    }
+  ],
+  "data_notes": [
+    "ทุกID/สมาชิก/นโยบาย/ชื่อ/เวลา/ผลเป็นสมมติ TEST/DEMO ไม่ seed หรือบัญชีจริง",
+    "proposedV4เพิ่ม group intentจากV2จึงต้องreview54ใหม่ ไม่อ้างว่า54fixtureเดิมอนุมัติกลุ่มไว้แล้ว",
+    "expected predicates/events/digests ไม่เป็น Auth/approval/CLEAN/worker/API/browserproof",
+    "portalผลในtransactionเดียวที่เสนอไม่ใช่ external exactly-once และ notification/providerreceiptไม่humanack",
+    "การเพิ่มสมาชิก/assignmentไม่เพิ่มสิทธิ์เก่าอัตโนมัติ snapshotเก่าคง A/B; supplementalaccessต้อง explicitpolicyครบ",
+    "ไม่มีหนังสือ/เลขทะเบียน/ไฟล์/receipt/task/reminder/emailจริงหรือเจ้าหน้าที่ signoff",
+    "ก่อนenqueueต้องตรวจสิทธิ์ทุกendpointครบ DEMOinitialsendถ้าผู้รับไม่ผ่านให้rejectทั้งintent; partialblockedกรณีBคือสิทธิ์ถูกถอนหลังenqueueแล้ว ไม่ใช่ส่งให้คนไม่มีสิทธิ์ตั้งแต่ต้น"
+  ]
+}

@@ -1,0 +1,205 @@
+{
+  "document_version": "0.1",
+  "lesson": 42,
+  "source_commit": "80e0331",
+  "created_on": "2026-10-05",
+  "status": "PLAN_ONLY",
+  "seeded": false,
+  "runtime_loaded": false,
+  "official_allowed": false,
+  "policy": {
+    "code": "DEMO_BUDGET_ALLOCATION_42",
+    "version": 1,
+    "verification_status": "TO_VERIFY",
+    "currency": "THB",
+    "amount_transport": "CANONICAL_STRING",
+    "money_storage_proposal": "NUMERIC(20,2)",
+    "authority_bands": [],
+    "source_evidence_document_id": null,
+    "cross_org_allowed": false,
+    "cross_fiscal_year_allowed": false,
+    "cross_funding_source_allowed": false,
+    "cross_currency_allowed": false
+  },
+  "context": {
+    "organization_ref": "DEMO_ORG_BUDGET_42_A",
+    "outside_scope_organization_ref": "DEMO_ORG_BUDGET_42_B",
+    "fiscal_year_ref": "DEMO_FY_2027",
+    "project_ref": "DEMO_PROJECT_EXAM_2027",
+    "funding_source_ref": "DEMO_FUNDING_42_A",
+    "plan_ref": "DEMO_PLAN_42_A",
+    "effective_on": "2027-04-01",
+    "actor_refs": {
+      "maker": "DEMO_BUDGET_MAKER_42",
+      "reviewer": "DEMO_BUDGET_REVIEWER_42",
+      "approver": "DEMO_BUDGET_APPROVER_42"
+    },
+    "actor_refs_are_runtime_accounts": false,
+    "approved_decision_id": null,
+    "document_file_version_id": null
+  },
+  "reference_examples": {
+    "estimated_revenue": "1000.00",
+    "planned_expense": "100.00",
+    "estimated_revenue_is_available_allocation": false,
+    "initial_source": {
+      "line_ref": "DEMO_LINE_42_SOURCE",
+      "allocated_net": "100.00",
+      "reserved_open": "20.00",
+      "obligated_unpaid": "0.00",
+      "spent_recorded": "0.00",
+      "available": "80.00"
+    },
+    "initial_destination": {
+      "line_ref": "DEMO_LINE_42_DESTINATION",
+      "allocated_net": "0.00",
+      "reserved_open": "0.00",
+      "obligated_unpaid": "0.00",
+      "spent_recorded": "0.00",
+      "available": "0.00"
+    },
+    "transfer": {
+      "amount": "60.00",
+      "legs_delta": ["-60.00", "60.00"],
+      "expected_delta_sum": "0.00",
+      "source_allocated_after": "40.00",
+      "source_available_after": "20.00",
+      "destination_allocated_after": "60.00",
+      "destination_available_after": "60.00",
+      "source_reserved_after": "20.00",
+      "retry_new_events": 0,
+      "followup_amount": "30.00",
+      "followup_expected": "REJECT_INSUFFICIENT_AVAILABLE"
+    },
+    "concurrent_transfer_plan": {
+      "amounts": ["60.00", "60.00"],
+      "initial_available": "80.00",
+      "expected_successes": 1,
+      "expected_rejections": 1,
+      "native_execution": "NOT_RUN"
+    },
+    "decrease": {
+      "initial_allocation": "100.00",
+      "delta": "-10.00",
+      "new_target_snapshot": "90.00",
+      "snapshot_is_extra_posting": false
+    },
+    "increase": {
+      "initial_allocation": "100.00",
+      "new_target_snapshot": "120.00",
+      "posted_delta": "20.00",
+      "expected_allocated_net": "120.00"
+    },
+    "report": {
+      "approved_planned_expense": "100.00",
+      "allocated_net_after_transfer": "40.00",
+      "allocation_minus_expense": "-60.00",
+      "currency": "THB"
+    }
+  },
+  "acceptance_cases": [
+    {
+      "id": "P42-01",
+      "case": "draft/returned/rejected/cancelled plans cannot reserve budget",
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "P42-02",
+      "case": "approved plan without posted effective allocation and future approval cannot reserve",
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "P42-03",
+      "case": "estimated revenue does not increase available allocation; unknown usage denies reduction",
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "P42-04",
+      "case": "draft resume/returned correction/revision conflict/sealed immutable hash",
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "P42-05",
+      "case": "maker/material editor/no authority/expired delegation cannot approve through API",
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "P42-06",
+      "case": "concurrent transfers with native multi-connection barrier cannot overspend",
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "P42-07",
+      "case": "overdrawn decrease or transfer rejected by service and restricted SQL constraints",
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "P42-08",
+      "case": "two-leg conservation/partial insert rollback/composite context/direct writer denial",
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "P42-09",
+      "case": "same key/hash retry one event; altered hash conflict; idempotent approval activation",
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "P42-10",
+      "case": "opposite-direction lock order/deadlock bounded whole transaction retry",
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "P42-11",
+      "case": "cross organization/FY/source/currency requires verified policy and both scopes",
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "P42-12",
+      "case": "URL/body/query/receipt/export/download cannot reveal outside scope data",
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "P42-13",
+      "case": "unknown funding restrictions/authority/evidence scan/ACL block official posting",
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "P42-14",
+      "case": "immutable ledger/new compensation/history/version snapshot no double count",
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "P42-15",
+      "case": "revoke account/assignment/approval affects API receipt and queued activation",
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "P42-16",
+      "case": "projection reconciles ledger; reserved/obligated/spent distinct; reduce below usage denied",
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "P42-17",
+      "case": "private plan-allocation report/canonical exact money/audit lineage/Thai dates/export",
+      "status": "NOT_RUN"
+    },
+    {
+      "id": "P42-18",
+      "case": "full UI wizard/review/evidence/keyboard/error focus/4viewports and outbox restart",
+      "status": "NOT_RUN"
+    }
+  ],
+  "acceptance_mapping": {
+    "42-01": ["P42-01", "P42-02", "P42-03", "P42-15"],
+    "42-02": [
+      "P42-06",
+      "P42-07",
+      "P42-08",
+      "P42-09",
+      "P42-10",
+      "P42-11",
+      "P42-14",
+      "P42-16"
+    ]
+  }
+}
