@@ -43,6 +43,12 @@ export default async function Layout({
           >
             สมัครสอบผ่าน Excel
           </Link>
+          <Link href="/app/documents" className="block px-3 py-3">
+            เอกสารกลาง
+          </Link>
+          <Link href="/app/notifications" className="block px-3 py-3">
+            แจ้งเตือน
+          </Link>
           {admin && (
             <Link href="/app/admin" className="block px-3 py-3">
               สถานะบริการ

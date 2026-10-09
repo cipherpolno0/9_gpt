@@ -1,6 +1,6 @@
 # รายการตัดสินใจ — เว็บไซต์กองบริหารทะเบียนและวัดผล
 
-ต่อยอด portal | รุ่นเอกสาร 1.49 | 9 ตุลาคม 2569 (2026-10-09)
+ต่อยอด portal | รุ่นเอกสาร 1.50 | 9 ตุลาคม 2569 (2026-10-09)
 
 Confirmed คือข้อกำหนดที่ผู้ใช้ให้ ไม่ใช่คำวินิจฉัยทางการ Proposal คือข้อเสนอที่รอผู้รับผิดชอบพิจารณา TO VERIFY คือยังไม่พอให้ตัดสินหรือใช้งานจริง ผู้ใช้อนุมัติแผนบท07แล้ว แต่ไม่ได้ยืนยันกฎทางการหรือแต่งตั้งเจ้าของงานจริงใน Q005
 
@@ -742,3 +742,13 @@ CI รอบแรก 37972574364 พบ root seed.ts เก่าที่ผ�
 DEC-307 Confirmed software change: แก้ clean-checkout typecheck และ test snapshot ตาม failure จริงใน CI คง scope checks/RLS และไม่ยืนยันกฎทางการจากการผ่าน test
 
 ผล native CI ที่รันจริง: commit ada2595c82dbd631bc5d915cc3de13f6a6f08fa3 · push run 37973088946 และ PR run 37973093420 success ทั้งคู่ เมื่อ 2026-10-09 ใช้ Ubuntu24.04 Node24.19.0 pnpm11.28.2 PostgreSQL18-bookworm ฐานสมมติแยกใหม่ migration2ผ่าน; unit23/23; native PostgreSQL18/18 (นับ parent tests2ด้วย); buildและHTTP25ผ่าน พร้อมlint/typecheck/schema/supported-patternscan ผลนี้ปิด blocker native foundation ในCI ไม่เปลี่ยนผล native localที่BLOCKED ไม่ใช่ all9 concurrency/UAT/provider/signoff
+
+## Shared services และ staging 0.8.0
+
+| รหัส | สถานะ | การตัดสินใจ | เหตุผล / ผลกระทบ | Ownerเสนอ |
+| --- | --- | --- | --- | --- |
+| DEC-308 | Confirmed user preference | สร้าง Supabase staging ใหม่ในcipherpolno0 | ฐานเดิมมีข้อมูล/schemaของผู้ใช้ ไม่เพิ่มทะเบียนกลางซ้ำ; creationติดget_cost UNAVAILABLE | C02 |
+| DEC-309 | Confirmed implementation / TO VERIFY authority | เปิดเฉพาะ synthetic generic workflow, explicitscope/maker-checker/currentdelegation/revision/hash | ยังไม่เป็นคำสั่งทะเบียนจริง; policyworkflow.synthetic1TO_VERIFYและdata_modeCHECK | C02/O04 |
+| DEC-310 | Confirmed software change | FileVersionimmutable, objectno-upsert, privatebucket/ACL+scan+SHA ก่อนอ่าน; upload4MiB | ครอบคลุมwebceiling; daemon/retention/activecontentpolicyจริงยังค้าง | C02/O08 |
+| DEC-311 | Confirmed transaction design | source/decision/audit/outbox/idempotency atomic; notificationreceiptunique+SESSION_USERscope | consumerล้มไม่ย้อนลบsource; noPIIpayload; nativeconcurrencyแยกจากWASM | C02 |
+| DEC-312 | Confirmed staging configuration / No release acceptance | Vercel project9-gpt-stagingและpreviewsyntheticenv ใช้personalcontextเดิม | การสร้างprojectไม่เท่ากับdeployพร้อมDB; ไม่production/merge; UATownerPENDING | C01/C02 |

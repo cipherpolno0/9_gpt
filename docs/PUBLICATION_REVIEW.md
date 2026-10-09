@@ -313,3 +313,7 @@ Draft PR: https://github.com/cipherpolno0/9_gpt/pull/1 · source snapshot commit
 ผล CI จริงและข้อจำกัด: tests/results/portal-foundation-results.json ไม่รับรอง provider/staging/9-system UAT หรือ deployment authority
 
 CI ที่ตรวจ source หลังแก้: https://github.com/cipherpolno0/9_gpt/actions/runs/37973088946 และ https://github.com/cipherpolno0/9_gpt/actions/runs/37973093420 สำเร็จทั้งคู่ commit ada2595c82dbd631bc5d915cc3de13f6a6f08fa3; unit23 native18 HTTP25 รวม migration2 บันทึก native18 นับ parent testsด้วย ไม่อ้างเป็น business9 acceptance
+
+## ต่อจากคำขอเชื่อม staging และพัฒนาธุรกรรม
+
+ผู้ใช้สั่งเชื่อมSupabase/Vercelstagingและพัฒนางานค้างต่อจากการอนุมัติส่งsource เอกสารส่งมอบบริการกลาง0.8.0กับโค้ดและtestsสมมติจะส่งต่อในDraftPRเดิม ไม่ส่งsecret/credential/ข้อมูลฐานเดิม/newrealdata สถานะผู้ให้บริการบันทึกเฉพาะprojectreferenceและผลสำเร็จ/ผิดพลาดที่ไม่มีsecret ไม่mergeproduction การส่งและdeploypreviewต้องตรวจchecks/tree/commit/environmentจริง ผลUATไม่ลงนามแทนเจ้าหน้าที่ ตาราง277ไฟล์ด้านบนเป็นประวัติsnapshotเดิม ไม่ใช่hashของsourceรุ่นใหม่

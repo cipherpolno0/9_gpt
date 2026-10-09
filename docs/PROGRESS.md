@@ -1,8 +1,8 @@
 # ความก้าวหน้าโครงการ — เว็บไซต์กองบริหารทะเบียนและวัดผล
 
-ต่อยอด runtime portal ตามคำขอผู้ใช้ | รุ่นเอกสารล่าสุด 1.70 | 9 ตุลาคม 2569 (2026-10-09)
+ต่อยอด runtime portal ตามคำขอผู้ใช้ | รุ่นเอกสารล่าสุด 1.73 | 9 ตุลาคม 2569 (2026-10-09)
 
-**สถานะล่าสุด: portal 0.7.0 มีหน้าสาธารณะ 7 เมนูและโค้ดบัญชีกลาง/ทะเบียนตาม scope จริงแล้ว แต่เปิดจริงครบ 9 ระบบยัง NO_GO ผู้ใช้ยืนยันว่ายังไม่มี Supabase/Vercel ผลจริง unit23/SQL-WASM23/HTTP25 และ build ผ่าน; provider/native/UAT ยังไม่ผ่าน ไม่ถือว่าเอกสารบทก่อนเป็น implementation**
+**สถานะล่าสุด: portal 0.8.0 เพิ่มเอกสารรุ่น/ACL และ workflow ทดลองแล้ว; Supabase/Vercel connector เชื่อมแล้ว สร้าง Vercel staging projectและpreview envแล้ว ฐาน Supabase แยกยังติด get_cost unavailable; เปิดจริงครบ9และเจ้าหน้าที่ UAT ยัง NO_GO ดูผลและข้อจำกัดท้ายเอกสาร**
 
 ## บันทึกบท 01 ที่เก็บไว้เป็นประวัติ
 
@@ -2610,3 +2610,17 @@ CI รอบแรก 37972574364 พบ root seed.ts เก่าที่ผ�
 หลังแก้รัน local lint/typecheck/unit 23/build/HTTP smoke 25/supported-pattern secrets scan ผ่าน รุ่นแอป/schema 0.7.0; 25 models; migration 2 ชุดและ SHA256 เดิมไม่เปลี่ยน Source publication สำเร็จไม่เท่ากับ full-project release: NO_GO ยังอยู่ ขั้นต่อไปปิด provider/Auth/MFA/documents/workflow/business/native/UAT/staging/restore gaps ตาม PORTAL_READINESS.md และทบทวนบท70–72 ไม่เลื่อนไปบท73
 
 ผล native CI ที่รันจริง: commit ada2595c82dbd631bc5d915cc3de13f6a6f08fa3 · push run 37973088946 และ PR run 37973093420 success ทั้งคู่ เมื่อ 2026-10-09 ใช้ Ubuntu24.04 Node24.19.0 pnpm11.28.2 PostgreSQL18-bookworm ฐานสมมติแยกใหม่ migration2ผ่าน; unit23/23; native PostgreSQL18/18 (นับ parent tests2ด้วย); buildและHTTP25ผ่าน พร้อมlint/typecheck/schema/supported-patternscan ผลนี้ปิด blocker native foundation ในCI ไม่เปลี่ยนผล native localที่BLOCKED ไม่ใช่ all9 concurrency/UAT/provider/signoff
+
+## ต่องาน staging และธุรกรรมร่วม 0.8.0
+
+2026-10-09 อ่าน BLUEPRINT/MASTER/PROGRESS/DECISIONS/AGENTS และ readinessก่อนแก้ ผู้ใช้เลือก Supabaseใหม่ในองค์กรcipherpolno0 ฐานเดิมมีข้อมูลและschemaต่างกัน ห้ามวางทะเบียนซ้ำ ยังไม่แก้ฐานเดิม เครื่องมือ get_cost unavailable สร้างฐานใหม่ยังBLOCKED Vercel project9-gpt-stagingสร้างแล้วและตั้งpreview envSYNTHETICสำเร็จ ยังไม่ถือว่าบัญชี/DB/storage/worker/UATเชื่อมครบ
+
+พัฒนา FileVersion/DocumentAccess/workflow revision/decisions/transactional outbox/receipt/notifications และ worker_scope/opreceipt รวม35models migration3ชุด รุ่นแอป/schema0.8.0 old migrations checksumเดิมไม่เปลี่ยน ใช้ฐานข้อมูลกลางและ Authเดิม ผูกpolicy workflow.synthetic1/TO_VERIFY ไม่มีสถานะข้อมูลจริง แยกผู้ยื่นตรวจอนุมัติ row/advisory locking+unique final decision ไม่แก้ทะเบียนหรืออนุมัติทางการ
+
+เพิ่มหน้าคำขอ4ขั้น resume/returned corrections คิวตรวจและไฟล์กลาง/แจ้งเตือน APIตรวจสิทธิ์ฝั่งserver+DB ทุกmutation คำขอ/หลักฐาน/privatecache defaultdeny มี scan worker adapterClamAVและ bounded notification worker ไม่มีscheduler/daemonจริงที่ตั้งแล้ว Webupload4MiB ต่ำกว่าFunctionpayloadceiling DBscan10MiBไม่อ้างรับweb10MiB privatebucketmetadataตรวจว่าpublicfalse hashbytesและตรวจACLหลังI/O ไฟล์เปลี่ยนต้องรุ่นใหม่
+
+แก้failuresจริง: migrationdropconstraintชื่อผิดทำให้roleใหม่ติดcheck แก้dropเฉพาะscopecheck1โดยคงends>starts; เพิ่มrequire_service_actor executeเฉพาะhelper; qualify policy id ในPLpgSQL; แยกdatafetch try/catchออกจากJSXตามReact lint; pnpmบนPATH11.25ผิดengines ใช้corepack11.28.2; Prismaformatใช้prismaformatไม่ใช่Prettierparserที่ไม่รองรับ
+
+ผลรันlocal: frozeninstall exit0, lint/typecheck/schema/unit27/27/buildผ่าน, SQL WASM34/34 (ไม่แทนnativeconcurrency), HTTPsmoke35ผ่าน, supportedpatternsecretscan+diffcheckผ่าน Nativeชุดใหม่ทดสอบ2connectionapproval/browserkey/outboxfailure ต้องอ่านผลCIจริงจากshared-workflow-results ไม่กรอกPASSล่วงหน้า UnitClamAVใช้protocolsimulator ไม่รับรองsignaturedatabase ไม่มีownerUAT/realproviderlogin/restore/officialforms
+
+ไฟล์หลัก src/server/documents, src/server/workflow, src/app/api/documents/requests/notifications, src/ui/workflow, src/app/app/requests/documents/notifications, worker/shared-services.ts, tests/database/workflow*, tests/documents.test.ts, migration/schema และ scripts/database/smoke/package พร้อมคู่มือSHARED_WORKFLOW_SETUP/UAT_SHARED_WORKFLOW ปรับreadinessสถานะตามจริง ขั้นต่อไปเชื่อมฐานstagingแยก+secretstoreแล้วUATบริการกลาง ตามด้วยธุรกรรมรายระบบ ไม่เลื่อนไปบท73หรือปิด9ระบบจากsharedtests

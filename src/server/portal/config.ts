@@ -85,6 +85,10 @@ export function databaseConfiguration(
 export function assertSameOrigin(request: Request) {
   const expected =
     process.env.PORTAL_ORIGIN ??
+    (process.env.VERCEL_ENV === "preview" &&
+    /^[a-z0-9-]+\.vercel\.app$/.test(process.env.VERCEL_URL ?? "")
+      ? "https://" + process.env.VERCEL_URL
+      : undefined) ??
     (process.env.NODE_ENV !== "production"
       ? new URL(request.url).origin
       : undefined);

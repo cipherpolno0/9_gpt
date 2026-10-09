@@ -1,6 +1,6 @@
 # ความพร้อม runtime หลังคำขอให้เว็บไซต์ใช้งานจริง
 
-รุ่น 0.1 · 2026-10-09 · app/schema 0.7.0 · คำตัดสินเปิดจริงครบโครงการ: NO_GO
+รุ่น 0.2 · 2026-10-09 · app/schema 0.8.0 · คำตัดสินเปิดจริงครบโครงการ: NO_GO
 
 เอกสารบทก่อนเป็น specification และแผนเป็นส่วนใหญ่ ไม่ใช่ implementation ที่ผ่านตรวจรับ การพัฒนารอบนี้เริ่มจาก core เดิมและสร้าง portal จริง ไม่ถือว่าได้พัฒนาบท 07–72 ครบจากการมีไฟล์เอกสาร
 
@@ -9,11 +9,11 @@
 | 1 บุคคล/หน้าที่ | หน้าค้น Person และชื่อที่มีผลจากข้อมูลกลาง ด้วย scope/RLS | แก้ไข ประวัติหน้าที่ workflow คำสั่งมีผล และอำนาจ |
 | 2 หน่วยงาน/สนาม | หน้าค้น Organization และชื่อที่มีผลด้วย scope/RLS | แม่บทสนามรายรอบ สายสังกัด ที่ตั้ง และ projection ตามคำสั่ง |
 | 3 การเรียน | เมนูและหน้าสาธารณะ ไม่มีข้อมูลเผยแพร่ | เนื้อหา pre/post lesson attempts คุณสมบัติผู้สอน |
-| 4 คำขอ | เมนูติดตามและข้อจำกัดการเปิดข้อมูล | draft/revision/decision/activation/tracking/outbox |
+| 4 คำขอ | wizard/r่าง/ส่งกลับ/คิวตรวจ/อนุมัติทดลอง, revision/maker-checker/idempotency/outbox | ประเภทคำขอจริง, impact, activation/history/amendment/public tracking และ UAT |
 | 5 สอบ | เมนูสาธารณะและพื้นที่ทำงาน | Candidate/Application/snapshot/eligibility/seat/score/release/export |
 | 6 งบ | เมนูพื้นที่ทำงาน ปิด mutation | ledger exact decimal/approval/locking/reversal/report/period close |
 | 7 พัสดุ | เมนูพื้นที่ทำงาน ปิด mutation | procurement/stock ledger/custody/loan/stocktake/disposal |
-| 8 สารบรรณ | เมนูพื้นที่ทำงาน ปิด mutation | FileVersion/ACL/เลขทะเบียน/delivery/retention/evidence |
+| 8 สารบรรณ | บริการ Document/FileVersion/ACL/upload/quarantine/scan adapter กลาง; หนังสือยังปิด mutation | เลขทะเบียน/delivery/retention/signing/เจ้าหน้าที่ UAT และ scan/storage จริง |
 | 9 Excel | API deny by default ไม่มี importer อีกทะเบียน | template/bounded parser/staging/dry-run/atomic commit/recovery |
 
 สิ่งร่วมที่ทำแล้ว: public navigation 7 เมนู, workspace navigation 9 เมนู, contact URL เดียว, login/password+verified TOTP ผ่าน Supabase API, server-side provider user validation, cookie HttpOnly, local session hash/revocation, timed role assignments, SQL scope ก่อน pagination, no-store private pages/API, จำกัด login form และ rate, fixed provider URL, TLS verify สำหรับ production DB, base API deny by default
@@ -35,3 +35,13 @@
 5. C01/ผู้รับผิดชอบจริงรับรอง UAT/security/restore และ deployment authorization ก่อน pilot
 
 owner เป็นบทบาทเสนอ ยังไม่มีการแต่งตั้งหรือกำหนดเสร็จที่ยืนยัน ไม่เปิดข้อมูลจริงหรือเซ็นรับมอบแทนหน่วยงาน
+
+## รอบ staging และ shared services 2026-10-09
+
+Supabase/Vercel connector ติดตั้งและเชื่อมแล้ว ไม่ใช่ blocker ว่าไม่มีบริการอีกต่อไป ผู้ใช้เลือกสร้าง Supabase staging ใหม่ใน cipherpolno0 ฐานเดิมมี public schema ที่ใช้งานแล้ว จึงไม่ apply private core เพื่อเลี่ยงทะเบียนกลางซ้ำ ขั้นสร้างใหม่ติด get_cost UNAVAILABLE (`MCP tool get_cost was not returned by tools/list`) ก่อน cost confirmation ไม่ปลอม confirmation ID/ราคา
+
+Vercel สร้าง project9-gpt-stagingแล้ว ตั้ง preview APP_ENV=staging/PORTAL_DATA_MODE=SYNTHETIC สำเร็จ ใช้ account context ที่สร้าง project; accountId ที่เริ่ม team_ ไม่ใช่หลักฐานว่า token มี team scope การใส่ teamId นั้นได้403และแก้โดยใช้ personal project context เดิม ไม่เปลี่ยนปลายทาง Preview/build/nativeCI ให้ดูผลล่าสุด ไม่ถือว่า project/env คือ deploymentพร้อมDB
+
+ส่งมอบร่วม: [SHARED_WORKFLOW_SETUP](SHARED_WORKFLOW_SETUP.md), [UAT_SHARED_WORKFLOW](UAT_SHARED_WORKFLOW.md), migration20261009190000_documents_workflow เพิ่ม10models รวม35 ใช้ Person/Organization/Document/PolicyVersion/UserAccount/RoleAssignmentเดิม ไม่สร้าง loginหรือApplicationชุดที่สอง คำอนุมัติทดลองไม่เปลี่ยนทะเบียน ไม่มีข้อความว่า digital signature สำเร็จ
+
+กฎจริง/ฟอร์ม/ผู้มีอำนาจและ UAT เจ้าหน้าที่ยัง PENDING/TO VERIFY ขั้นถัดไปปิด blockerสร้างฐานแยก/credentialsในsecretstore/privatebucket/daemon/workers แล้วตรวจ provider login/MFA/revocation/browserUAT บริการกลาง จากนั้นพัฒนา activation, Application/seat/import, ledgerงบ-stock และสารบรรณตามdependencyเดิม ไม่เปิดจริงครบ9หรือข้ามบท70–72

@@ -72,6 +72,7 @@ async function main() {
         const supported = [
           "20261003130000_core_foundation",
           "20261009170000_portal_access",
+          "20261009190000_documents_workflow",
         ];
         if (
           !migrations.rowCount ||
@@ -113,6 +114,7 @@ async function main() {
         "--test-concurrency=1",
         "tests/database/core.integration.ts",
         "tests/database/portal.integration.ts",
+        "tests/database/workflow.integration.ts",
       ],
       {
         env: { ...env, CH06_TEST_DATABASE_URL: connectionString },

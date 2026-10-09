@@ -1,6 +1,6 @@
 # ประเด็นที่ต้องยืนยัน — เว็บไซต์กองบริหารทะเบียนและวัดผล
 
-ต่อยอด portal | รุ่นเอกสาร 1.50 | 9 ตุลาคม 2569 (2026-10-09) | ทุกแถวมีสถานะเปิด
+ต่อยอด portal | รุ่นเอกสาร 1.51 | 9 ตุลาคม 2569 (2026-10-09) | ทุกแถวมีสถานะเปิด
 
 ผู้รับผิดชอบ O01–O09 และ C01–C04 เป็นบทบาทเสนอจาก Charter ไม่ใช่ชื่อบุคคล/ฝ่ายทางการที่เดาขึ้น C01 ประสานยืนยันผู้รับงานจริงใน Q005 การยังไม่มีคำตอบไม่ขวางการพัฒนาด้วยข้อมูลสมมติ แต่ห้ามนำกฎจำลองไปอ้างเป็นระเบียบหรือออกข้อมูล/ผล/เอกสารทางการของส่วนที่ยังขาดหลักฐาน
 
@@ -862,3 +862,14 @@ CI รอบแรก 37972574364 พบ root seed.ts เก่าที่ผ�
 Q019/Q023: การตั้ง CI และเริ่ม native tests ทำได้แล้ว ผลรวมต้องตรวจรอบที่สำเร็จจริง ยังไม่ปิด concurrency ระบบงบ/ที่นั่ง/stock/import ที่ยังไม่มี runtime หรือ UAT และไม่ใช้ผล foundation แทน provider/staging
 
 ผล native CI ที่รันจริง: commit ada2595c82dbd631bc5d915cc3de13f6a6f08fa3 · push run 37973088946 และ PR run 37973093420 success ทั้งคู่ เมื่อ 2026-10-09 ใช้ Ubuntu24.04 Node24.19.0 pnpm11.28.2 PostgreSQL18-bookworm ฐานสมมติแยกใหม่ migration2ผ่าน; unit23/23; native PostgreSQL18/18 (นับ parent tests2ด้วย); buildและHTTP25ผ่าน พร้อมlint/typecheck/schema/supported-patternscan ผลนี้ปิด blocker native foundation ในCI ไม่เปลี่ยนผล native localที่BLOCKED ไม่ใช่ all9 concurrency/UAT/provider/signoff
+
+## ปัญหาค้างจากการเชื่อม staging
+
+| รหัส | สถานะ / หลักฐาน | Ownerเสนอ | การแก้ถัดไป | Gate |
+| --- | --- | --- | --- | --- |
+| Q-STG-01 | Supabaseget_costUNAVAILABLEสองครั้ง แม้listorg/projects/schemaทำงาน | C02/provider | ใช้ช่องทางที่สอบราคา/ยืนยันค่าใช้จ่ายได้แล้วสร้าง9-gpt-stagingใหม่; userเลือกองค์กรแล้ว | providerDB |
+| Q-STG-02 | ไม่มีcredentialแยก/privatebucket/daemon/schedulerที่ทดสอบจริง | C02 | ตั้งsecretstore/limitedDBroles/boundworkerscope/ClamAVจริงแล้วhealth+UAT | sharedservices |
+| Q-STG-03 | O04/O08ยังไม่ได้ตรวจwizard/authority/filepolicyและลงนามUAT | ownersที่ยังไม่แต่งตั้ง | ใช้UAT_SHARED_WORKFLOWกับบัญชีสมมติ เก็บหลักฐานจริงและsignatureของผู้มีอำนาจ | ownerUAT |
+| Q-STG-04 | activation/exam/ledger/stock/records/ExcelยังขาดธุรกรรมครบและUATเดิม | O01–O09/C02 | พัฒนาตามdependencyจากPORTAL_READINESS ไม่อ้างgenericapprovalเป็นครบ9 | all9NO_GO |
+
+app/schema0.8.0 migrations3 models35 ไม่มีการปลดTO_VERIFYหรือเลือกฐานกฎหมายแทนหน่วยงาน ขั้นถัดไปแก้blockerแล้วทบทวน70–72 ไม่ใช่บท73

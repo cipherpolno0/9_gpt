@@ -152,6 +152,9 @@ model Organization {
   organizationContactByOrganizationId     OrganizationContact[]     @relation("OrganizationContact_organizationId")
   portalAssignments                       RoleAssignment[]
   portalAffiliations                      PersonAffiliation[]
+  workflowRequests                        WorkflowRequest[]
+  integrationEvents                       IntegrationOutbox[]
+  workerScopes                            WorkerScope[]
 
   @@index([organizationTypeId])
   @@index([mergedIntoOrganizationId])
@@ -184,6 +187,8 @@ model Document {
   addressVersionByEvidenceDocumentId          AddressVersion[]          @relation("AddressVersion_evidenceDocumentId")
   organizationContactByEvidenceDocumentId     OrganizationContact[]     @relation("OrganizationContact_evidenceDocumentId")
   portalAffiliations                          PersonAffiliation[]
+  fileVersions                                FileVersion[]
+  accessGrants                                DocumentAccess[]
 
   @@index([ownerOrganizationId])
   @@map("document")
@@ -206,11 +211,12 @@ model PolicyVersion {
   effectiveTo        DateTime? @map("effective_to") @db.Date
   evidenceDocumentId String?   @map("evidence_document_id") @db.Uuid
 
-  createdByActor                ServiceActor   @relation("PolicyVersion_createdByActorId", fields: [createdByActorId], references: [id], onDelete: Restrict, onUpdate: Restrict)
-  updatedByActor                ServiceActor   @relation("PolicyVersion_updatedByActorId", fields: [updatedByActorId], references: [id], onDelete: Restrict, onUpdate: Restrict)
-  evidenceDocument              Document?      @relation("PolicyVersion_evidenceDocumentId", fields: [evidenceDocumentId], references: [id], onDelete: Restrict, onUpdate: Restrict)
-  academicYearByPolicyVersionId AcademicYear[] @relation("AcademicYear_policyVersionId")
-  fiscalYearByPolicyVersionId   FiscalYear[]   @relation("FiscalYear_policyVersionId")
+  createdByActor                ServiceActor       @relation("PolicyVersion_createdByActorId", fields: [createdByActorId], references: [id], onDelete: Restrict, onUpdate: Restrict)
+  updatedByActor                ServiceActor       @relation("PolicyVersion_updatedByActorId", fields: [updatedByActorId], references: [id], onDelete: Restrict, onUpdate: Restrict)
+  evidenceDocument              Document?          @relation("PolicyVersion_evidenceDocumentId", fields: [evidenceDocumentId], references: [id], onDelete: Restrict, onUpdate: Restrict)
+  academicYearByPolicyVersionId AcademicYear[]     @relation("AcademicYear_policyVersionId")
+  fiscalYearByPolicyVersionId   FiscalYear[]       @relation("FiscalYear_policyVersionId")
+  workflowRevisions             WorkflowRevision[]
 
   @@unique([policyNamespace, versionNo])
   @@map("policy_version")
@@ -511,33 +517,42 @@ model AuditLog {
 
 // Portal access v0.7.0; credentials stay in the shared Supabase Auth provider.
 model UserAccount {
-  id            String              @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
-  authUserId    String              @unique @map("auth_user_id") @db.Uuid
-  personId      String?             @unique @map("person_id") @db.Uuid
-  isActive      Boolean             @default(true) @map("is_active")
-  requireMfa    Boolean             @default(true) @map("require_mfa")
-  revokedBefore DateTime            @default(dbgenerated("'-infinity'::timestamptz")) @map("revoked_before") @db.Timestamptz(6)
-  createdAt     DateTime            @default(now()) @map("created_at") @db.Timestamptz(6)
-  person        Person?             @relation(fields: [personId], references: [id], onDelete: Restrict, onUpdate: NoAction)
-  assignments   RoleAssignment[]
-  sessions      PortalSession[]
-  accessEvents  PortalAccessEvent[]
+  id                    String               @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  authUserId            String               @unique @map("auth_user_id") @db.Uuid
+  personId              String?              @unique @map("person_id") @db.Uuid
+  isActive              Boolean              @default(true) @map("is_active")
+  requireMfa            Boolean              @default(true) @map("require_mfa")
+  revokedBefore         DateTime             @default(dbgenerated("'-infinity'::timestamptz")) @map("revoked_before") @db.Timestamptz(6)
+  createdAt             DateTime             @default(now()) @map("created_at") @db.Timestamptz(6)
+  person                Person?              @relation(fields: [personId], references: [id], onDelete: Restrict, onUpdate: NoAction)
+  assignments           RoleAssignment[]
+  sessions              PortalSession[]
+  accessEvents          PortalAccessEvent[]
+  fileVersions          FileVersion[]
+  documentAccess        DocumentAccess[]     @relation("DocumentAccessRecipient")
+  grantedDocumentAccess DocumentAccess[]     @relation("DocumentAccessGrantor")
+  workflowRequests      WorkflowRequest[]
+  workflowRevisions     WorkflowRevision[]
+  workflowDecisions     WorkflowDecision[]
+  notifications         PortalNotification[]
+  operationReceipts     OperationReceipt[]
 
   @@map("user_account")
   @@schema("private")
 }
 
 model RoleAssignment {
-  id             String        @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
-  accountId      String        @map("account_id") @db.Uuid
-  organizationId String?       @map("organization_id") @db.Uuid
-  roleCode       String        @map("role_code")
-  actions        String[]
-  startsAt       DateTime      @map("starts_at") @db.Timestamptz(6)
-  endsAt         DateTime      @map("ends_at") @db.Timestamptz(6)
-  revokedAt      DateTime?     @map("revoked_at") @db.Timestamptz(6)
-  account        UserAccount   @relation(fields: [accountId], references: [id], onDelete: Restrict, onUpdate: NoAction)
-  organization   Organization? @relation(fields: [organizationId], references: [id], onDelete: Restrict, onUpdate: NoAction)
+  id                String             @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  accountId         String             @map("account_id") @db.Uuid
+  organizationId    String?            @map("organization_id") @db.Uuid
+  roleCode          String             @map("role_code")
+  actions           String[]
+  startsAt          DateTime           @map("starts_at") @db.Timestamptz(6)
+  endsAt            DateTime           @map("ends_at") @db.Timestamptz(6)
+  revokedAt         DateTime?          @map("revoked_at") @db.Timestamptz(6)
+  account           UserAccount        @relation(fields: [accountId], references: [id], onDelete: Restrict, onUpdate: NoAction)
+  organization      Organization?      @relation(fields: [organizationId], references: [id], onDelete: Restrict, onUpdate: NoAction)
+  workflowDecisions WorkflowDecision[]
 
   @@index([accountId, organizationId, startsAt, endsAt], map: "role_assignment_lookup")
   @@map("role_assignment")
@@ -590,5 +605,186 @@ model PortalAccessEvent {
   account    UserAccount @relation(fields: [accountId], references: [id], onDelete: Restrict, onUpdate: NoAction)
 
   @@map("portal_access_event")
+  @@schema("private")
+}
+
+model FileVersion {
+  id                 String      @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  documentId         String      @map("document_id") @db.Uuid
+  versionNo          Int         @map("version_no")
+  objectKey          String      @unique @map("object_key")
+  sha256             String
+  sizeBytes          Int         @map("size_bytes")
+  mimeType           String      @map("mime_type")
+  fileLabel          String      @map("file_label")
+  scanStatus         String      @default("UPLOAD_PENDING") @map("scan_status")
+  uploadedAt         DateTime?   @map("uploaded_at") @db.Timestamptz(6)
+  scannedAt          DateTime?   @map("scanned_at") @db.Timestamptz(6)
+  scanEngine         String?     @map("scan_engine")
+  createdByAccountId String      @map("created_by_account_id") @db.Uuid
+  createdAt          DateTime    @default(now()) @map("created_at") @db.Timestamptz(6)
+  document           Document    @relation(fields: [documentId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  creator            UserAccount @relation(fields: [createdByAccountId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@unique([documentId, versionNo])
+  @@map("file_version")
+  @@schema("private")
+}
+
+model DocumentAccess {
+  id                 String      @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  documentId         String      @map("document_id") @db.Uuid
+  accountId          String      @map("account_id") @db.Uuid
+  grantedByAccountId String      @map("granted_by_account_id") @db.Uuid
+  startsAt           DateTime    @default(now()) @map("starts_at") @db.Timestamptz(6)
+  endsAt             DateTime    @map("ends_at") @db.Timestamptz(6)
+  revokedAt          DateTime?   @map("revoked_at") @db.Timestamptz(6)
+  document           Document    @relation(fields: [documentId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  account            UserAccount @relation("DocumentAccessRecipient", fields: [accountId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  grantor            UserAccount @relation("DocumentAccessGrantor", fields: [grantedByAccountId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@unique([documentId, accountId])
+  @@map("document_access")
+  @@schema("private")
+}
+
+model WorkflowRequest {
+  id                 String               @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  organizationId     String               @map("organization_id") @db.Uuid
+  createdByAccountId String               @map("created_by_account_id") @db.Uuid
+  kind               String
+  status             String               @default("draft")
+  revision           Int                  @default(1)
+  eventVersion       Int                  @default(0) @map("event_version")
+  trackingCode       String               @unique @default(dbgenerated("replace((gen_random_uuid())::text, '-'::text, ''::text)")) @map("tracking_code")
+  createdAt          DateTime             @default(now()) @map("created_at") @db.Timestamptz(6)
+  updatedAt          DateTime             @default(now()) @map("updated_at") @db.Timestamptz(6)
+  dataMode           String               @default("SYNTHETIC") @map("data_mode")
+  organization       Organization         @relation(fields: [organizationId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  creator            UserAccount          @relation(fields: [createdByAccountId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  versions           WorkflowRevision[]   @relation("RequestVersions")
+  currentVersion     WorkflowRevision     @relation("CurrentVersion", fields: [id, revision], references: [requestId, revision], onDelete: NoAction, onUpdate: NoAction)
+  events             IntegrationOutbox[]
+  notifications      PortalNotification[]
+
+  @@map("workflow_request")
+  @@schema("private")
+}
+
+model WorkflowRevision {
+  id                 String             @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  requestId          String             @map("request_id") @db.Uuid
+  revision           Int
+  payload            Json
+  fileVersionIds     String[]           @default([]) @map("file_version_ids") @db.Uuid
+  snapshotHash       String             @map("snapshot_hash")
+  policyVersionId    String             @map("policy_version_id") @db.Uuid
+  createdByAccountId String             @map("created_by_account_id") @db.Uuid
+  createdAt          DateTime           @default(now()) @map("created_at") @db.Timestamptz(6)
+  request            WorkflowRequest    @relation("RequestVersions", fields: [requestId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  currentOf          WorkflowRequest[]  @relation("CurrentVersion")
+  creator            UserAccount        @relation(fields: [createdByAccountId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  policy             PolicyVersion      @relation(fields: [policyVersionId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  decisions          WorkflowDecision[]
+
+  @@unique([requestId, revision])
+  @@map("workflow_revision")
+  @@schema("private")
+}
+
+model WorkflowDecision {
+  authoritySnapshot     Json             @map("authority_snapshot") @db.JsonB
+  id                    String           @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  requestId             String           @map("request_id") @db.Uuid
+  revision              Int
+  decision              String
+  reason                String
+  accountId             String           @map("account_id") @db.Uuid
+  authorityAssignmentId String           @map("authority_assignment_id") @db.Uuid
+  snapshotHash          String           @map("snapshot_hash")
+  decidedAt             DateTime         @default(now()) @map("decided_at") @db.Timestamptz(6)
+  version               WorkflowRevision @relation(fields: [requestId, revision], references: [requestId, revision], onDelete: NoAction, onUpdate: NoAction)
+  account               UserAccount      @relation(fields: [accountId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  authority             RoleAssignment   @relation(fields: [authorityAssignmentId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@map("workflow_decision")
+  @@schema("private")
+}
+
+model IntegrationOutbox {
+  id               String               @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  eventType        String               @map("event_type")
+  aggregateId      String               @map("aggregate_id") @db.Uuid
+  aggregateVersion Int                  @map("aggregate_version")
+  organizationId   String               @map("organization_id") @db.Uuid
+  occurredAt       DateTime             @default(now()) @map("occurred_at") @db.Timestamptz(6)
+  correlationId    String               @map("correlation_id") @db.Uuid
+  payload          Json
+  processedAt      DateTime?            @map("processed_at") @db.Timestamptz(6)
+  request          WorkflowRequest      @relation(fields: [aggregateId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  organization     Organization         @relation(fields: [organizationId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  notifications    PortalNotification[]
+  receipts         IntegrationReceipt[]
+
+  @@unique([aggregateId, aggregateVersion])
+  @@map("integration_outbox")
+  @@schema("private")
+}
+
+model PortalNotification {
+  id             String            @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  eventId        String            @map("event_id") @db.Uuid
+  accountId      String            @map("account_id") @db.Uuid
+  requestId      String            @map("request_id") @db.Uuid
+  eventType      String            @map("event_type")
+  createdAt      DateTime          @default(now()) @map("created_at") @db.Timestamptz(6)
+  acknowledgedAt DateTime?         @map("acknowledged_at") @db.Timestamptz(6)
+  event          IntegrationOutbox @relation(fields: [eventId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  account        UserAccount       @relation(fields: [accountId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  request        WorkflowRequest   @relation(fields: [requestId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@unique([eventId, accountId])
+  @@map("portal_notification")
+  @@schema("private")
+}
+
+model IntegrationReceipt {
+  id          String            @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  eventId     String            @map("event_id") @db.Uuid
+  consumer    String
+  processedAt DateTime          @default(now()) @map("processed_at") @db.Timestamptz(6)
+  event       IntegrationOutbox @relation(fields: [eventId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@unique([eventId, consumer])
+  @@map("integration_receipt")
+  @@schema("private")
+}
+
+model WorkerScope {
+  id             String       @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  dbLogin        String       @map("db_login")
+  organizationId String       @map("organization_id") @db.Uuid
+  purpose        String
+  startsAt       DateTime     @map("starts_at") @db.Timestamptz(6)
+  endsAt         DateTime     @map("ends_at") @db.Timestamptz(6)
+  revokedAt      DateTime?    @map("revoked_at") @db.Timestamptz(6)
+  organization   Organization @relation(fields: [organizationId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@unique([dbLogin, organizationId, purpose])
+  @@map("worker_scope")
+  @@schema("private")
+}
+
+model OperationReceipt {
+  id             String      @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  accountId      String      @map("account_id") @db.Uuid
+  idempotencyKey String      @map("idempotency_key") @db.Uuid
+  fingerprint    String
+  response       Json
+  createdAt      DateTime    @default(now()) @map("created_at") @db.Timestamptz(6)
+  account        UserAccount @relation(fields: [accountId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@unique([accountId, idempotencyKey])
+  @@map("operation_receipt")
   @@schema("private")
 }

@@ -1,6 +1,6 @@
 {
   "name": "sangha-education-center",
-  "version": "0.7.0",
+  "version": "0.8.0",
   "private": true,
   "type": "module",
   "packageManager": "pnpm@11.28.2",
@@ -34,7 +34,9 @@
     "db:new:local": "node --import tsx scripts/database.mts create",
     "db:status": "node --import tsx scripts/database.mts status",
     "db:test": "node --import tsx scripts/database.mts test",
-    "db:test:sql": "node --import tsx --test tests/database/sql-wasm.test.ts tests/database/portal-sql.test.ts"
+    "db:test:sql": "node --import tsx --test tests/database/sql-wasm.test.ts tests/database/portal-sql.test.ts tests/database/workflow-sql.test.ts",
+    "worker:notifications": "node --import tsx worker/shared-services.ts notifications",
+    "worker:scan": "node --import tsx worker/shared-services.ts scan"
   },
   "dependencies": {
     "@fontsource/sarabun": "5.3.0",

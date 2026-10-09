@@ -1,0 +1,88 @@
+{
+  "version": "0.1",
+  "date": "2026-10-09",
+  "app_schema_version": "0.8.0",
+  "models": 35,
+  "source_base_commit": "6a22e59b138dfdbaf61f2fa9e58d3691f01c4eb8",
+  "migrations": {
+    "20261009190000_documents_workflow": "aa399441a55341b33b6794fc36ca5759e852d0eb08653f5f763492b5d0a961e0",
+    "20261003130000_core_foundation": "04a149fcd349f0ac3f1b5929cfcf571f8b0880541e84a40ad929054b67d72756",
+    "20261009170000_portal_access": "1f23ac1d90953ab3d6088f2915e18060fbf93ead05bdd3c70e7e56d87b5529d8"
+  },
+  "local": {
+    "frozen_install": {
+      "exit": 0
+    },
+    "lint": {
+      "exit": 0
+    },
+    "typecheck": {
+      "exit": 0
+    },
+    "unit": {
+      "exit": 0,
+      "tests": 27,
+      "passed": 27
+    },
+    "sql_wasm": {
+      "exit": 0,
+      "tests": 34,
+      "passed": 34,
+      "native_concurrency": false
+    },
+    "schema_validate": {
+      "exit": 0
+    },
+    "build": {
+      "exit": 0
+    },
+    "http_smoke": {
+      "exit": 0,
+      "checks": 35
+    },
+    "supported_secret_patterns": {
+      "exit": 0,
+      "full_history_scan": false
+    }
+  },
+  "native_ci": {
+    "status": "PENDING_RUN",
+    "tests": null
+  },
+  "staging": {
+    "vercel": {
+      "project_id": "prj_8CVr1S52aQ865ZjpbXEHReE6RXpo",
+      "name": "9-gpt-staging",
+      "preview_env_configured": true,
+      "deployment_status": "NOT_DEPLOYED_YET"
+    },
+    "supabase": {
+      "connector": "CONNECTED",
+      "new_staging": "NOT_CREATED",
+      "selected_organization": "cipherpolno0",
+      "blocker": "get_cost UNAVAILABLE: MCP tool get_cost was not returned by tools/list",
+      "existing_database_modified": false
+    },
+    "provider_login": "NOT_RUN",
+    "private_storage_scan": "NOT_RUN",
+    "worker_host": "NOT_CONFIGURED"
+  },
+  "uat": {
+    "software_shared_scope": "PARTIAL_LOCAL",
+    "owner_signoff": "PENDING_OWNER",
+    "all_9_systems": "NO_GO"
+  },
+  "not_run": [
+    "real ClamAV daemon/signature database",
+    "Supabase staging auth/TOTP/file/UAT",
+    "Playwright authenticated UI",
+    "all9 business transactions",
+    "backup restore drill"
+  ],
+  "limitations": [
+    "ClamAV unit tests simulate protocol, not signature scans",
+    "shared requests are SYNTHETIC; no register activation",
+    "owner UAT not signed",
+    "native concurrency requires real PostgreSQL; not WASM"
+  ]
+}

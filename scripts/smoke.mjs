@@ -96,6 +96,9 @@ try {
     "/app/people",
     "/app/organizations",
     "/app/exams/imports",
+    "/app/requests",
+    "/app/documents",
+    "/app/notifications",
   ]) {
     const r = await fetch(base + path, { redirect: "manual" });
     assert.equal(r.status, 307);
@@ -107,6 +110,10 @@ try {
     "/api/people",
     "/api/organizations",
     "/api/exams/imports",
+    "/api/requests",
+    "/api/documents/versions",
+    "/api/notifications",
+    "/api/documents/versions/00000000-0000-4000-8000-000000000000",
   ]) {
     const r = await fetch(base + path);
     assert.equal(r.status, 401);
@@ -125,6 +132,23 @@ try {
       body: "email=synthetic%40example.invalid&password=synthetic",
     });
     assert.equal(r.status, 403);
+    passed++;
+  }
+  for (const path of [
+    "/api/requests",
+    "/api/documents/access",
+    "/api/notifications",
+  ]) {
+    const response = await fetch(base + path, {
+      method: "POST",
+      headers: {
+        origin: "https://other.example.invalid",
+        "Content-Type": "application/json",
+      },
+      body: "{}",
+    });
+    assert.equal(response.status, 403);
+    assert.match(response.headers.get("cache-control"), /no-store/);
     passed++;
   }
   const health = await fetch(base + "/api/health");
